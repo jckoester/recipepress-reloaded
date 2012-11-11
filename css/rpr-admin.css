@@ -1,0 +1,179 @@
+@charset "UTF-8";
+/* RecipePress CSS Document for Administration */
+
+/**
+ * This file can not be moved to your theme folder - it is used only for the
+ * administration screens.
+*/
+/*Logo*/
+#icon-edit { 
+	background:transparent url('../images/icons/large_logo.png') no-repeat; 
+}     
+    
+table.editrecipe {
+     border-color: #dadada;
+}
+
+.rp-settings-notes {
+     background: #lightyellow;
+     border: solid 1px #E6DB55;
+     padding: 3px;
+}
+
+.rp-taxonomy-header {
+     background: #lightyellow;
+     border: solid 1px #E6DB55;
+     padding: 3px;
+}
+
+.recipe-press-settings-table {
+     min-height: 580px;
+}
+
+/*Settings tabs*/
+.rpr-tab,
+.rpr-sub-tab{
+    display:none;
+    border-top:#ccc solid 1px;
+    padding-top:10px;
+    border-bottom:#ccc solid 1px;
+}
+.rpr-tab.active,
+.rpr-sub-tab.active{
+    display:block;
+}
+
+/* Additional Styles */
+/*.recipe-details
+.attachment-32x32 {
+     float: left;
+     padding-right: 3px;
+}
+
+.row-actions {
+     clear: both;
+}
+
+th.recipe-press-header-sort {
+     width: 150px;
+     white-space: nowrap;
+}
+
+th.recipe-press-header-quantity {
+     width: 75px;
+}
+
+*/
+
+/* Autocomplete Styles */
+
+.ac_results {
+     border: 1px solid gray;
+     background-color: white;
+     padding: 0;
+     margin: 0;
+     list-style: none;
+     position: absolute;
+     z-index: 10000;
+     display: none;
+}
+
+.ac_results li {
+     padding: 2px 5px;
+     white-space: nowrap;
+     color: #101010;
+     text-align: left;
+}
+
+.ac_over {
+     cursor: pointer;
+     background-color: orange;
+}
+
+.ac_match {
+     text-decoration: underline;
+     color: black;
+}
+
+.ingredient-id {
+     display:none;
+}
+
+
+/*ingredients-table*/
+#rpr_ingredients th.rpr-header-sort{
+	width:8%;
+	min-width:45px;
+}
+#rpr_ingredients th.rpr-header-quantity{
+	width:10%;
+}
+input.recipe-press-quantity {
+     width: 50px;
+}
+#rpr_ingredients th.rpr-header-size{
+	width:12%;
+}
+#rpr_ingredients th.rpr-header-ingredient{
+	width:40%;
+}
+input.rpr-ingredients,
+input.rpr-ingredients-notes,
+input.rpr-ingredient-url,
+#rpr_ingredients select{
+	width:100%;
+}
+input.rpr-ingredients-notes,
+input.rpr-ingredient-url{
+	font-size:10px;
+}
+#rpr_ingredients th.rpr-header-page{
+	width:30%;
+}
+
+#rpr_ingredients tr:nth-child(odd){
+	/*background:red;*/
+}
+#rpr_ingredients tr:nth-child(even){
+	background:#dedede;
+	border:solid 1px #ccc;
+	border-radius:3px;
+}
+#rpr_ingredients input:-moz-placeholder{
+	color:grey;
+}
+#rpr_ingredients input:-ms-input-placeholder{
+	color:grey;
+}
+#rpr_ingredients input:-webkit-input-placeholder{
+	color:grey;
+}
+#rpr_ingredients input[placeholder]{
+/*	color:grey;*/
+}
+
+/*Styling the menu*/
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=category"],
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=post_tag"],
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-category"],
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-course"],
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-ingredient"],
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-cuisine"],
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-serving"],
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-size"],
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-season"]{
+	margin-left:10px;
+}
+
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=category"]:before,
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=post_tag"]:before,
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-category"]:before,
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-course"]:before,
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-ingredient"]:before,
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-cuisine"]:before,
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-serving"]:before,
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-size"]:before,
+#adminmenu #menu-posts-recipe .wp-submenu li a[href^="edit-tags.php?taxonomy=recipe-season"]:before{
+	content:"-\a0";
+	float_left;
+}

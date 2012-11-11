@@ -1,0 +1,1307 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RecipePress reloaded\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-09 17:44+0100\n"
+"PO-Revision-Date: 2012-11-09 17:46+0100\n"
+"Last-Translator: Jan Köster <koester_jan@gmx.net>\n"
+"Language-Team:  <dasmaeh@cbjck.de>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: gettext;gettext_noop;_e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../php/class/rpr_shortcodes.php:223
+msgid "Sorry, no recipes found."
+msgstr "Entschuldigung, es konnten keine Rezepte gefunden werden."
+
+#: ../php/class/rpr_shortcodes.php:272
+#: ../php/class/rpr_core.php:132
+#: ../php/class/rpr_initialize.php:203
+#: ../php/class/rpr_initialize.php:625
+#: ../php/class/rpr_initialize.php:641
+#: ../php/class/rpr_initialize.php:667
+msgid "Ingredients"
+msgstr "Zutaten"
+
+#: ../php/class/rpr_administration.php:110
+msgid "Image"
+msgstr "Bild"
+
+#: ../php/class/rpr_administration.php:111
+msgid "Recipe Title"
+msgstr "Rezepttitel"
+
+#: ../php/class/rpr_administration.php:112
+msgid "Introduction"
+msgstr "Einleitung"
+
+#: ../php/class/rpr_administration.php:125
+msgid "Featured"
+msgstr "Hervorgehoben"
+
+#: ../php/class/rpr_administration.php:128
+msgid "Author"
+msgstr "Autor"
+
+#: ../php/class/rpr_administration.php:134
+#: ../php/class/rpr_administration.php:347
+msgid "Date"
+msgstr "Datum"
+
+#: ../php/class/rpr_administration.php:164
+msgid "Yes"
+msgstr "Ja"
+
+#: ../php/class/rpr_administration.php:166
+msgid "No"
+msgstr "Nein"
+
+#: ../php/class/rpr_administration.php:188
+msgid "General Settings"
+msgstr "Allgemeine Einstellungen"
+
+#: ../php/class/rpr_administration.php:192
+msgid "Display Settings"
+msgstr "Anzeige-Einstellungen"
+
+#: ../php/class/rpr_administration.php:214
+msgid "RecipePress reloaded Settings"
+msgstr "RecipePress reloaded Einstellungen"
+
+#: ../php/class/rpr_administration.php:214
+#: ../php/class/rpr_administration.php:287
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: ../php/class/rpr_administration.php:215
+msgid "RecipePress reloaded Acknowledgements"
+msgstr "RecipePress reloaded Danksagungen"
+
+#: ../php/class/rpr_administration.php:215
+#: ../php/inc/acknowledgements.php:25
+msgid "Acknowledgements"
+msgstr "Danksagungen"
+
+#: ../php/class/rpr_administration.php:296
+msgid "Index slug"
+msgstr "Index-Slug"
+
+#: ../php/class/rpr_administration.php:296
+msgid "This will be used as the slug (URL) for the recipe index pages."
+msgstr "Dies wird als der Slug (URL) für die Rezept-Index-Seite verwendet."
+
+#: ../php/class/rpr_administration.php:296
+#: ../php/class/rpr_administration.php:324
+msgid "View on Site"
+msgstr "Auf der Seite betrachten"
+
+#: ../php/class/rpr_administration.php:297
+msgid "Use plugin permalinks?"
+msgstr "Plugin-Permalinks verwenden?"
+
+#: ../php/class/rpr_administration.php:297
+msgid "Check this if you want to use your own permalink structure defined below. If not checked the default wordpress permalink structure will be used"
+msgstr "Anklicken wenn Sie eine eigene Permalink-Struktur verwenden wollen. Diese können Sie unten definieren. Sonst wird die Standard-Permalink-Struktur von Wordpress verwendet."
+
+#: ../php/class/rpr_administration.php:298
+#: ../php/class/rpr_administration.php:325
+msgid "Singular name"
+msgstr "Name im Singular"
+
+#: ../php/class/rpr_administration.php:298
+msgid "The name for a single recipe-post"
+msgstr "Der Name für einen einzelnen Rezept-Post"
+
+#: ../php/class/rpr_administration.php:299
+#: ../php/class/rpr_administration.php:326
+msgid "Plural name"
+msgstr "Name im Plural"
+
+#: ../php/class/rpr_administration.php:299
+msgid "The name for multiple recipe-posts"
+msgstr "Der Name für mehrere Rezept-Posts"
+
+#: ../php/class/rpr_administration.php:300
+msgid "Identifier"
+msgstr "Identifikator"
+
+#: ../php/class/rpr_administration.php:300
+msgid "The <strong>%identifier%</strong> used in the permalink structure below"
+msgstr "Der <strong>%identifikator</strong> der in der Permalink-Struktur unten benutzt wird"
+
+#: ../php/class/rpr_administration.php:301
+msgid "Permalink structure"
+msgstr "Permalink-Struktur"
+
+#: ../php/class/rpr_administration.php:301
+msgid " This permalink structure will be used to create the custom URL structure for your individual recipes. These follow WP's normal <a href=\"http://codex.wordpress.org/Using_Permalinks\" title=\"Wordpress Documentation on permalinks\">permalink tags</a>, but must also include the content type <strong>%identifier%</strong> and at least one of these unique tags: <strong>%postname%</strong> or <strong>%post_id%</strong>.<br/>Allowed tags: %year%, %monthnum%, %day%, %hour%, %minute%, %second%, %postname%, %post_id% "
+msgstr " Diese Permalink-Struktur wird benutzt um eine eigene URL-Struktur für Ihre Rezepte zu erzeugen. Diese folgen den normalen Wordpress <a href=\"http://codex.wordpress.org/Using_Permalinks\" title=\"Wordpress Documentation on permalinks\">Permalink-Tags</a>, müssen aber den Inhaltstyp <strong>%identifier%</strong> und mindestens einen dieser eindeutigen Tags: <strong>%postname%</strong> oder <strong>%post_id%</strong>.<br/>Erlaubte Tags: %year%, %monthnum%, %day%, %hour%, %minute%, %second%, %postname%, %post_id% "
+
+#: ../php/class/rpr_administration.php:302
+msgid "Use categories?"
+msgstr "Kategorien verwenden?"
+
+#: ../php/class/rpr_administration.php:302
+msgid "Check this if you want to use the recipe categories taxonomy"
+msgstr "Anklicken falls Sie die Rezept-Kategorie Taxonomie verwenden wollen"
+
+#: ../php/class/rpr_administration.php:303
+msgid "Use cuisines?"
+msgstr "Küchen verwenden?"
+
+#: ../php/class/rpr_administration.php:303
+msgid "Check this if you want to use the recipe cuisines taxonomy"
+msgstr "Anklicken falls Sie die Rezept-Küchen-Taxonomie verwenden wollen"
+
+#: ../php/class/rpr_administration.php:304
+msgid "Use servings?"
+msgstr "Portionsgrößen vernden?"
+
+#: ../php/class/rpr_administration.php:304
+msgid "Check this if you want to use the servings taxonomy"
+msgstr "Anklicken falls Sie die Portionsgrößen-Taxonomie verwenden wollen"
+
+#: ../php/class/rpr_administration.php:305
+msgid "Use times?"
+msgstr "Zeiten verwenden?"
+
+#: ../php/class/rpr_administration.php:305
+msgid "Check this if you want to use the times taxonomy"
+msgstr "Anklicken falls Sie die Zeiten-Taxonomie verwenden wollen"
+
+#: ../php/class/rpr_administration.php:306
+msgid "Use courses?"
+msgstr "Gänge verwenden?"
+
+#: ../php/class/rpr_administration.php:306
+msgid "Check this if you want to use the courses taxonomy"
+msgstr "Anklicken falls Sie die Gänge-Taxonomie verwenden wollen"
+
+#: ../php/class/rpr_administration.php:307
+msgid "Use seasons?"
+msgstr "Saisons verwenden?"
+
+#: ../php/class/rpr_administration.php:307
+msgid "Check this if you want to use the seasons taxonomy"
+msgstr "Anklicken falls Sie die Saison-Taxonomie verwenden wollen"
+
+#: ../php/class/rpr_administration.php:308
+msgid "Use thumbnails?"
+msgstr "Vorschaubilder verwenden?"
+
+#: ../php/class/rpr_administration.php:308
+msgid "Check this if you want to use thumbnails"
+msgstr "Anklicken falls Sie Vorschaubilder verwenden möchten"
+
+#: ../php/class/rpr_administration.php:309
+msgid "Use featured?"
+msgstr "Empfehlungen verwenden?"
+
+#: ../php/class/rpr_administration.php:309
+msgid "Check this if you want to use featured recipes"
+msgstr "Anklicken falls Sie empfohlenen Rezepte verwenden wollen"
+
+#: ../php/class/rpr_administration.php:310
+msgid "Use comments?"
+msgstr "Kommentare verwenden?"
+
+#: ../php/class/rpr_administration.php:310
+msgid "Check this if you want to use comments"
+msgstr "Anklicken falls Sie Kommentare verwenden wollen"
+
+#: ../php/class/rpr_administration.php:311
+msgid "Use trackbacks?"
+msgstr "Trackbacks verwenden?"
+
+#: ../php/class/rpr_administration.php:311
+msgid "Check this if you want to use trackbacks"
+msgstr "Anklicken falls Sie Trackbacks verwenden wollen"
+
+#: ../php/class/rpr_administration.php:312
+msgid "Use custom fields?"
+msgstr "Individuelle Felder verwenden?"
+
+#: ../php/class/rpr_administration.php:312
+msgid "Check this if you want to use custom fields"
+msgstr "Anklicken falls Sie individuelle Felder verwenden wollen"
+
+#: ../php/class/rpr_administration.php:313
+msgid "Use revisions?"
+msgstr "Versionen verwenden?"
+
+#: ../php/class/rpr_administration.php:313
+msgid "Check this if you want to use revisions"
+msgstr "Anklicken falls Sie Versionierung verwenden wollen"
+
+#: ../php/class/rpr_administration.php:314
+msgid "Use post categories?"
+msgstr "Post-Kategorien verwenden?"
+
+#: ../php/class/rpr_administration.php:314
+msgid "Check this if you want to use the post categories instead of the recipe categories"
+msgstr "Anklicken falls Sie die Standard-Post-Kategorien anstelle der Rezept-Kategorien verwenden wollen"
+
+#: ../php/class/rpr_administration.php:315
+msgid "Use post tags?"
+msgstr "Post-Tags verwenden?"
+
+#: ../php/class/rpr_administration.php:315
+msgid "Check this if you want to use the post tags"
+msgstr "Anklicken falls Sie die Standard-Post-Tags verwenden wollen"
+
+#: ../php/class/rpr_administration.php:322
+#, php-format
+msgid "Taxonomy %s"
+msgstr "Taxonomie %s"
+
+#: ../php/class/rpr_administration.php:324
+msgid "Taxonomy slug"
+msgstr "Taxonomie-Slug"
+
+#: ../php/class/rpr_administration.php:324
+msgid "The URL slug for listing all terms of this taxonomy."
+msgstr "Der URL-Slug für Listen aller Begriffe dieser Taxonomie"
+
+#: ../php/class/rpr_administration.php:325
+msgid "The name for a single term."
+msgstr "Der Name für einen einzelnen Begriff"
+
+#: ../php/class/rpr_administration.php:326
+msgid "The name for multiple term."
+msgstr "Der Name für mehrere Begriffe"
+
+#: ../php/class/rpr_administration.php:327
+msgid "Display page"
+msgstr "Anzeigeseite"
+
+#: ../php/class/rpr_administration.php:327
+#, php-format
+msgid "The page where this taxonomy will be listed. You must place the short code <strong>[%1$s]</strong> on this page to display the recipes. This will be the page that users will be directed to if the template file \"%2$s\" does not exist in your theme."
+msgstr "Die Seite auf der diese Taxonomie angezeigt wird. Sie müssen den Shortcode  <strong>[%1$s]</strong> auf dieser Seite platzieren um die Rezepte anzuzeigen. Diese Seite wird Besuchern gezeigt falls die Template-Datei \"%2$s\" in Ihrem Theme nicht existiert."
+
+#: ../php/class/rpr_administration.php:328
+msgid "Display how many per page"
+msgstr "wie viele auf einer Seite anzeigen"
+
+#: ../php/class/rpr_administration.php:328
+msgid "How many items shall be shown on one page?"
+msgstr "Wie viele Einträge sollen auf einer Seite angezeigt werden?"
+
+#: ../php/class/rpr_administration.php:330
+msgid "Default value"
+msgstr "Vorbelegter Wert"
+
+#: ../php/class/rpr_administration.php:330
+msgid "Default value for this taxononomy."
+msgstr "Vorbelegter Wert für diese Taxonomie"
+
+#: ../php/class/rpr_administration.php:331
+msgid "Hierarchical"
+msgstr "Hierarchisch"
+
+#: ../php/class/rpr_administration.php:331
+msgid "Check this if you want to enable nested terms for this the taxonomy"
+msgstr "Anklicken falls Sie verschachtelte Begriffe für diese Taxonomie aktivieren wollen"
+
+#: ../php/class/rpr_administration.php:332
+msgid "Allow multiple"
+msgstr "Mehrere erlauben"
+
+#: ../php/class/rpr_administration.php:332
+msgid "Check this if you want to allow more than one term assigned to recipe"
+msgstr "Anklicken falls Sie das Zuweisen von mehr als einem Begriff dieser Taxonomie zu einem Rezept erlauben wollen"
+
+#: ../php/class/rpr_administration.php:333
+msgid "Active"
+msgstr "Aktiv"
+
+#: ../php/class/rpr_administration.php:333
+msgid "Check this if you want this taxonomy to be active"
+msgstr "Anklicken falls Sie diese Taxonomie aktivieren wollen"
+
+#: ../php/class/rpr_administration.php:344
+msgid "Default excerpt length"
+msgstr "Vorgegebene Auszugslänge"
+
+#: ../php/class/rpr_administration.php:344
+msgid "Default length of introduction excerpt when displaying in lists."
+msgstr "Vorgegebene Länge des Auszugs für die Darstellung von Rezepten in Listen."
+
+#: ../php/class/rpr_administration.php:345
+msgid "Add to author list"
+msgstr "Zur Liste des Autors hinzufügen"
+
+#: ../php/class/rpr_administration.php:345
+msgid "Check this to include the recipes by each author in their respective post list."
+msgstr "Anklicken falls Sie Rezepte zur jeweiligen Veröffentlichungliste des Autors hinzufügen wollen"
+
+#: ../php/class/rpr_administration.php:346
+msgid "Number of recipes to display per page"
+msgstr "Anzahl der Rezepte"
+
+#: ../php/class/rpr_administration.php:346
+msgid "How many recipes to display per page on the listing pages."
+msgstr "Wie viele Rezepte sollen pro Seite auf den Listenseiten angezeigt werden?"
+
+#: ../php/class/rpr_administration.php:347
+msgid "Order by"
+msgstr "Sortieren nach"
+
+#: ../php/class/rpr_administration.php:347
+msgid "Title"
+msgstr "Titel"
+
+#: ../php/class/rpr_administration.php:347
+msgid "Random"
+msgstr "Zufällig"
+
+#: ../php/class/rpr_administration.php:347
+msgid "Comment count"
+msgstr "Anzahl der Kommentare"
+
+#: ../php/class/rpr_administration.php:347
+msgid "Menu order"
+msgstr "Menüreihenfolge"
+
+#: ../php/class/rpr_administration.php:348
+msgid "Ascending"
+msgstr "Aufsteigend"
+
+#: ../php/class/rpr_administration.php:348
+msgid "Descending"
+msgstr "Absteigend"
+
+#: ../php/class/rpr_administration.php:348
+msgid "The listing order of recipes on the index page."
+msgstr "Die Listenreihenfolge der Rezepte auf der Index-Seite"
+
+#: ../php/class/rpr_administration.php:350
+msgid "Use plugin CSS"
+msgstr "Plugin-CSS verwenden"
+
+#: ../php/class/rpr_administration.php:350
+msgid "Check this to use the builtin css from the plugin."
+msgstr "Anklicken um die mitgelieferten CSS des Plugins zu verwenden."
+
+#: ../php/class/rpr_administration.php:351
+msgid "Disable content filter"
+msgstr "Inhaltsfilter deaktivieren"
+
+#: ../php/class/rpr_administration.php:351
+msgid "Check this this option to completely disable any content filtering. <strong>Warning!</strong> Only do this if you have created template files and are having an issue with template display."
+msgstr "Anklicken um jegliche Inhaltsfilterung zu deaktivieren. <strong>Warnung!</strong> Tuen Sie dies nur, wenn Sie Template-Dateien erzeugt haben und Probleme mit derTRemplate-Darstellung haben."
+
+#: ../php/class/rpr_administration.php:353
+msgid "Link ingredients"
+msgstr "Zutaten verlinken"
+
+#: ../php/class/rpr_administration.php:353
+msgid "Check this to link ingredients to the taxonomy listing or the page set in the taxonomies tab."
+msgstr "Anklicken um Zutaten auf die Zutatenliste oder die in den Taxonomie-Einstellungen gesetzte Seite zu verlinken."
+
+#: ../php/class/rpr_administration.php:355
+msgid "Time display type"
+msgstr "Zeitanzeigetyp"
+
+#: ../php/class/rpr_administration.php:355
+msgid "Two lines"
+msgstr "Zweizeilig"
+
+#: ../php/class/rpr_administration.php:355
+msgid "One line"
+msgstr "Einzeilig"
+
+#: ../php/class/rpr_administration.php:356
+msgid "Hours text"
+msgstr "Stundentext"
+
+#: ../php/class/rpr_administration.php:356
+msgid "Text that will be displayed in front of times greater than 60 min. Use singular only."
+msgstr "Text der hinter Zeiten größer 60 Minuten angezeigt wird. Bitte nur im Singular."
+
+#: ../php/class/rpr_administration.php:357
+msgid "Minutes text"
+msgstr "Minutentext"
+
+#: ../php/class/rpr_administration.php:357
+msgid "Text that will be displayed in front of times. Use singular only."
+msgstr "Text der hinter Zeiten angezeigt wird. Bitte nur Singular."
+
+#: ../php/class/rpr_administration.php:359
+msgid "Image size"
+msgstr "Bildgröße"
+
+#: ../php/class/rpr_administration.php:359
+msgid "Image size that will be used to display images in the single view. Might be overriden by your theme."
+msgstr "Bildgröße für die Anzeige von Bilder in der Einzelansicht von Rezepten. Könnte von Ihrem Theme überschrieben werden."
+
+#: ../php/class/rpr_administration.php:360
+msgid "Thumbnail size"
+msgstr "Vorschaubildgröße"
+
+#: ../php/class/rpr_administration.php:360
+msgid "Image size that will be used to display images in the list view. Might be overriden by your theme."
+msgstr "Bildgröße die benutzt wird um Bilder in der Listenansicht anzuzeigen. Könnte von Ihrem Theme überschrieben werden."
+
+#: ../php/class/rpr_administration.php:385
+#: ../php/class/rpr_administration.php:416
+#: ../php/class/rpr_administration.php:447
+#: ../php/class/rpr_administration.php:470
+#: ../php/class/rpr_administration.php:497
+#: ../php/class/rpr_administration.php:523
+#, php-format
+msgid "There was an error in %1$s in function %2$s. Please file a bug!"
+msgstr "In %1$s ist in Funktion %2$s ein Fehler aufgetreten. Bitte melden Sie diesen Fehler!"
+
+#: ../php/class/rpr_administration.php:462
+msgid "None"
+msgstr "Kein"
+
+#: ../php/class/rpr_administration.php:487
+msgid "No Default"
+msgstr "Keine Voreinstellung"
+
+#: ../php/class/rpr_administration.php:515
+msgid "crop"
+msgstr "beschneiden"
+
+#: ../php/class/rpr_administration.php:516
+msgid "proportional"
+msgstr "proportional"
+
+#: ../php/class/rpr_administration.php:868
+msgid "View All"
+msgstr "Alle betrachten"
+
+#: ../php/class/rpr_administration.php:890
+msgid "No categories"
+msgstr "Keine Kategorien"
+
+#: ../php/class/rpr_administration.php:927
+msgid "This form was submitted without a proper <emph>nonce</emph> - a security means. Please contact the site administrator."
+msgstr "Dieses Formular wurde ohne <emph>nonce</emph> - ein zufällig generiertes Sicherheitsmerkmal - verschickt. Bitte kontaktieren Sie den Administrator der Seite."
+
+#: ../php/class/custom-walkers.php:98
+#, php-format
+msgid "View all recipes filed under %s"
+msgstr "Alle Rezepte die unter %s abgelegt wurden ansehen"
+
+#: ../php/class/rpr_core.php:37
+msgid "RecipePress reloaded"
+msgstr "RecipePress reloaded"
+
+#: ../php/class/rpr_core.php:83
+#, fuzzy
+msgid "Recipe Category"
+msgstr "Neue Kategorie"
+
+#: ../php/class/rpr_core.php:84
+#, fuzzy
+msgid "Recipe Categories"
+msgstr "Kategorien suchen"
+
+#: ../php/class/rpr_core.php:95
+#, fuzzy
+msgid "Recipe Cuisine"
+msgstr "Neue Küche"
+
+#: ../php/class/rpr_core.php:96
+#, fuzzy
+msgid "Recipe Cuisines"
+msgstr "Küche suchen"
+
+#: ../php/class/rpr_core.php:107
+#: ../php/class/rpr_initialize.php:416
+msgid "Course"
+msgstr "Gang"
+
+#: ../php/class/rpr_core.php:108
+#: ../php/class/rpr_initialize.php:415
+#: ../php/class/rpr_initialize.php:431
+msgid "Courses"
+msgstr "Gänge"
+
+#: ../php/class/rpr_core.php:119
+#: ../php/class/rpr_initialize.php:521
+msgid "Season"
+msgstr "Saison"
+
+#: ../php/class/rpr_core.php:120
+#: ../php/class/rpr_initialize.php:520
+#: ../php/class/rpr_initialize.php:535
+msgid "Seasons"
+msgstr "Saisons"
+
+#: ../php/class/rpr_core.php:131
+#: ../php/class/rpr_initialize.php:626
+#: ../php/form/ingredient-form.php:29
+#: ../php/form/ingredient-form.php:45
+#: ../php/form/ingredient-form.php:108
+msgid "Ingredient"
+msgstr "Zutat"
+
+#: ../php/class/rpr_core.php:151
+msgid " hour"
+msgstr "h"
+
+#: ../php/class/rpr_core.php:152
+msgid " min"
+msgstr "min"
+
+#: ../php/class/rpr_initialize.php:96
+msgid "Add New"
+msgstr "Erstellen"
+
+#: ../php/class/rpr_initialize.php:97
+#, php-format
+msgid "Add New %1$s"
+msgstr "%1$s erstellen"
+
+#: ../php/class/rpr_initialize.php:98
+#, php-format
+msgid "Edit %1$s"
+msgstr "%1$s bearbeiten"
+
+#: ../php/class/rpr_initialize.php:99
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: ../php/class/rpr_initialize.php:100
+#, php-format
+msgid "New %1$s"
+msgstr "Neues %1$s"
+
+#: ../php/class/rpr_initialize.php:101
+#: ../php/class/rpr_initialize.php:105
+#, php-format
+msgid "View %1$s"
+msgstr "%1$s betrachten"
+
+#: ../php/class/rpr_initialize.php:102
+#, php-format
+msgid "Search %1$s"
+msgstr "%1$s suchen"
+
+#: ../php/class/rpr_initialize.php:103
+#, php-format
+msgid "No %1$s found"
+msgstr "Kein %1$s gefunden"
+
+#: ../php/class/rpr_initialize.php:104
+#, php-format
+msgid "No %1$s found in Trash"
+msgstr "Kein %1$s im Müll gefunden"
+
+#: ../php/class/rpr_initialize.php:106
+#, php-format
+msgid "Parent %1$s"
+msgstr "Übergeordnetes %1$s"
+
+#: ../php/class/rpr_initialize.php:107
+#, php-format
+msgid "Parent %1$s:"
+msgstr "Übergeordnetes %1$s"
+
+#: ../php/class/rpr_initialize.php:288
+msgid "Recipe Ingredients"
+msgstr "Zutaten"
+
+#: ../php/class/rpr_initialize.php:417
+msgid "Search Courses"
+msgstr "Gänge suchen"
+
+#: ../php/class/rpr_initialize.php:418
+msgid "Popular Courses"
+msgstr "Beliebte Gänge"
+
+#: ../php/class/rpr_initialize.php:419
+msgid "All Courses"
+msgstr "Alle Gänge"
+
+#: ../php/class/rpr_initialize.php:420
+msgid "Parent Course"
+msgstr "Übegeordneter Gang"
+
+#: ../php/class/rpr_initialize.php:421
+msgid "Edit Course"
+msgstr "Gang bearbeiten"
+
+#: ../php/class/rpr_initialize.php:422
+msgid "Update Course"
+msgstr "Gang aktualisieren"
+
+#: ../php/class/rpr_initialize.php:423
+msgid "Add Course"
+msgstr "Gang hinzufügen"
+
+#: ../php/class/rpr_initialize.php:424
+msgid "New Course"
+msgstr "Neuer Gang"
+
+#: ../php/class/rpr_initialize.php:425
+msgid "Add or remove Courses"
+msgstr "Gänge hinzufügen oder löschen"
+
+#: ../php/class/rpr_initialize.php:426
+msgid "Choose from the most used Courses"
+msgstr "Wähle aus den häufig genutzten Gängen"
+
+#: ../php/class/rpr_initialize.php:451
+#: ../php/class/rpr_initialize.php:466
+msgid "Cuisines"
+msgstr "Küchen"
+
+#: ../php/class/rpr_initialize.php:452
+msgid "Cuisine"
+msgstr "Küche"
+
+#: ../php/class/rpr_initialize.php:453
+msgid "Search Cuisines"
+msgstr "Küche suchen"
+
+#: ../php/class/rpr_initialize.php:454
+msgid "Popular Cuisines"
+msgstr "Beliebte Küchen"
+
+#: ../php/class/rpr_initialize.php:455
+msgid "All Cuisines"
+msgstr "Alle Küchen"
+
+#: ../php/class/rpr_initialize.php:456
+msgid "Parent Cuisine"
+msgstr "Übergeordnete Küche"
+
+#: ../php/class/rpr_initialize.php:457
+msgid "Edit Cuisine"
+msgstr "Küche bearbeiten"
+
+#: ../php/class/rpr_initialize.php:458
+msgid "Update Cuisine"
+msgstr "Küche aktualisieren"
+
+#: ../php/class/rpr_initialize.php:459
+msgid "Add Cuisine"
+msgstr "Küche hinzufügen"
+
+#: ../php/class/rpr_initialize.php:460
+msgid "New Cuisine"
+msgstr "Neue Küche"
+
+#: ../php/class/rpr_initialize.php:461
+msgid "Add or remove Cuisines"
+msgstr "Küche hinzufügen oder Löschen"
+
+#: ../php/class/rpr_initialize.php:462
+msgid "Choose from the most used Cuisines"
+msgstr "Wähle aus den häufig genutzten Küchen"
+
+#: ../php/class/rpr_initialize.php:485
+#: ../php/class/rpr_initialize.php:500
+msgid "Categories"
+msgstr "Kategorien"
+
+#: ../php/class/rpr_initialize.php:486
+msgid "Category"
+msgstr "Kategorie"
+
+#: ../php/class/rpr_initialize.php:487
+msgid "Search Categories"
+msgstr "Kategorien suchen"
+
+#: ../php/class/rpr_initialize.php:488
+msgid "Popular Category"
+msgstr "Beliebte Kategorien"
+
+#: ../php/class/rpr_initialize.php:489
+msgid "All Categories"
+msgstr "Alle Kategorien"
+
+#: ../php/class/rpr_initialize.php:490
+msgid "Parent Category"
+msgstr "Übergeordnete Kategorie"
+
+#: ../php/class/rpr_initialize.php:491
+msgid "Edit Category"
+msgstr "Kategorie bearbeiten"
+
+#: ../php/class/rpr_initialize.php:492
+msgid "Update Category"
+msgstr "Kategorie aktualisieren"
+
+#: ../php/class/rpr_initialize.php:493
+msgid "Add Category"
+msgstr "Kategorie hinzufügen"
+
+#: ../php/class/rpr_initialize.php:494
+msgid "New Category"
+msgstr "Neue Kategorie"
+
+#: ../php/class/rpr_initialize.php:495
+msgid "Add or remove Categories"
+msgstr "Kategorien hinzufügen oder löschen"
+
+#: ../php/class/rpr_initialize.php:496
+msgid "Choose from the most used Categories"
+msgstr "Wähle aus den häufig genutzten Kategorien"
+
+#: ../php/class/rpr_initialize.php:522
+#, fuzzy
+msgid "Search Seasons"
+msgstr "Saisons durchsuchen"
+
+#: ../php/class/rpr_initialize.php:523
+#, fuzzy
+msgid "Popular Seasons"
+msgstr "Beliebte Saisons"
+
+#: ../php/class/rpr_initialize.php:524
+#, fuzzy
+msgid "All Seasons"
+msgstr "Alle Saisons"
+
+#: ../php/class/rpr_initialize.php:525
+#, fuzzy
+msgid "Parent Season"
+msgstr "Übegeordnete Saison"
+
+#: ../php/class/rpr_initialize.php:526
+#, fuzzy
+msgid "Edit Season"
+msgstr "Saison bearbeiten"
+
+#: ../php/class/rpr_initialize.php:527
+#, fuzzy
+msgid "Update Season"
+msgstr "Saison aktualisieren"
+
+#: ../php/class/rpr_initialize.php:528
+#, fuzzy
+msgid "Add Season"
+msgstr "Saison hinzufügen"
+
+#: ../php/class/rpr_initialize.php:529
+#, fuzzy
+msgid "New Seasons"
+msgstr "Neue Saison"
+
+#: ../php/class/rpr_initialize.php:530
+#, fuzzy
+msgid "Add or remove Seasons"
+msgstr "Saison hinzufügen oder löschen"
+
+#: ../php/class/rpr_initialize.php:531
+msgid "Choose from the most used Seasons"
+msgstr "Wähle aus den häufig genutzten Saisons"
+
+#: ../php/class/rpr_initialize.php:555
+#: ../php/class/rpr_initialize.php:571
+msgid "Sizes"
+msgstr "Größen"
+
+#: ../php/class/rpr_initialize.php:556
+#: ../php/form/ingredient-form.php:28
+msgid "Size"
+msgstr "Größe"
+
+#: ../php/class/rpr_initialize.php:557
+msgid "Search Sizes"
+msgstr "Größen durchsuchen"
+
+#: ../php/class/rpr_initialize.php:558
+msgid "Popular Sizes"
+msgstr "Beliebte Größen"
+
+#: ../php/class/rpr_initialize.php:559
+msgid "All Sizes"
+msgstr "Alle Größen"
+
+#: ../php/class/rpr_initialize.php:560
+msgid "Parent Size"
+msgstr "Übergeordnete Größe"
+
+#: ../php/class/rpr_initialize.php:561
+msgid "Edit Size"
+msgstr "Größe bearbeiten"
+
+#: ../php/class/rpr_initialize.php:562
+msgid "Update Size"
+msgstr "Größe aktualisieren"
+
+#: ../php/class/rpr_initialize.php:563
+msgid "Add Size"
+msgstr "Größe hinzufügen"
+
+#: ../php/class/rpr_initialize.php:564
+msgid "New Size"
+msgstr "Neue Größe"
+
+#: ../php/class/rpr_initialize.php:565
+msgid "Add or remove Sizes"
+msgstr "Größe hinzufügen oder löschen"
+
+#: ../php/class/rpr_initialize.php:566
+msgid "Choose from the most used Sizes"
+msgstr "Wähle aus den häufig genutzten Größen"
+
+#: ../php/class/rpr_initialize.php:589
+#: ../php/class/rpr_initialize.php:605
+#, fuzzy
+msgid "Serving Sizes"
+msgstr "Portionsgrößen"
+
+#: ../php/class/rpr_initialize.php:590
+#, fuzzy
+msgid "Serving Size"
+msgstr "Portionsgröße"
+
+#: ../php/class/rpr_initialize.php:591
+#, fuzzy
+msgid "Search Serving Sizes"
+msgstr "Portionsgrößen durchsuchen"
+
+#: ../php/class/rpr_initialize.php:592
+#, fuzzy
+msgid "Popular Serving Sizes"
+msgstr "Beliebte Portionsgrößen"
+
+#: ../php/class/rpr_initialize.php:593
+#, fuzzy
+msgid "All Serving Sizes"
+msgstr "Alle Portionsgrößen"
+
+#: ../php/class/rpr_initialize.php:594
+#, fuzzy
+msgid "Parent Serving Size"
+msgstr "Übergeordnete Portionsgröße"
+
+#: ../php/class/rpr_initialize.php:595
+#, fuzzy
+msgid "Edit Serving Size"
+msgstr "Portionsgröße bearbeiten"
+
+#: ../php/class/rpr_initialize.php:596
+#, fuzzy
+msgid "Update Serving Size"
+msgstr "Portionsgröße aktualisieren"
+
+#: ../php/class/rpr_initialize.php:597
+#, fuzzy
+msgid "Add Serving Size"
+msgstr "Portionsgröße hinzufügen"
+
+#: ../php/class/rpr_initialize.php:598
+#, fuzzy
+msgid "New Serving Size"
+msgstr "Neue Portionsgröße"
+
+#: ../php/class/rpr_initialize.php:599
+#, fuzzy
+msgid "Add or remove Serving Sizes"
+msgstr "Portionsgröße hinzufügen oder löschen"
+
+#: ../php/class/rpr_initialize.php:600
+msgid "Choose from the most used Serving Sizes"
+msgstr "Wähle aus den häufig genutzten Portionsgrößen"
+
+#: ../php/class/rpr_initialize.php:627
+msgid "Search Ingredients"
+msgstr "Zutaten suchen"
+
+#: ../php/class/rpr_initialize.php:628
+msgid "Popular Ingredients"
+msgstr "Beliebte Zutaten"
+
+#: ../php/class/rpr_initialize.php:629
+msgid "All Ingredients"
+msgstr "Alle Zutaten"
+
+#: ../php/class/rpr_initialize.php:630
+msgid "Parent Ingredient"
+msgstr "Übergeordnete Zutat"
+
+#: ../php/class/rpr_initialize.php:631
+msgid "Edit Ingredient"
+msgstr "Zutat bearbeiten"
+
+#: ../php/class/rpr_initialize.php:632
+msgid "Update Ingredient"
+msgstr "Zutat aktualisieren"
+
+#: ../php/class/rpr_initialize.php:633
+#: ../php/form/ingredient-form.php:138
+msgid "Add Ingredient"
+msgstr "Zutat hinzufügen"
+
+#: ../php/class/rpr_initialize.php:634
+msgid "New Ingredient"
+msgstr "Neue Zutat"
+
+#: ../php/class/rpr_initialize.php:635
+msgid "Add or remove Ingredients"
+msgstr "Zutaten hinzufügen oder entfernen"
+
+#: ../php/class/rpr_initialize.php:636
+msgid "Choose from the most used Ingredients"
+msgstr "Wähle aus den häufig genutzten Zutaten"
+
+#: ../php/class/rpr_initialize.php:668
+msgid "Details"
+msgstr "Details"
+
+#: ../php/form/details-form.php:36
+#: ../php/form/ingredient-form.php:40
+#: ../php/form/ingredient-form.php:85
+msgid "No Size"
+msgstr "Keine Einheit"
+
+#: ../php/form/details-form.php:48
+msgid "Servings"
+msgstr "Portionen"
+
+#: ../php/form/details-form.php:56
+#: ../php/inc/template_tags.php:120
+#: ../php/inc/template_tags.php:169
+msgid "Prep Time"
+msgstr "Vorbereitungszeit"
+
+#: ../php/form/details-form.php:60
+#: ../php/inc/template_tags.php:204
+msgid "Cook Time"
+msgstr "Kochzeit"
+
+#: ../php/form/details-form.php:66
+msgid "Ready in"
+msgstr "Fertig in"
+
+#: ../php/form/details-form.php:75
+msgid "Featured?"
+msgstr "Hervorgehoben?"
+
+#: ../php/form/details-form.php:83
+msgid "Link ingredients?"
+msgstr "Zutaten verlinken?"
+
+#: ../php/form/ingredient-form.php:27
+msgid "Quantity"
+msgstr "Menge"
+
+#: ../php/form/ingredient-form.php:30
+msgid "Link to page"
+msgstr "Auf Seite verlinken"
+
+#: ../php/form/ingredient-form.php:36
+#: ../php/form/ingredient-form.php:65
+msgid "Drag Ingredient"
+msgstr "Zutat ziehen"
+
+#: ../php/form/ingredient-form.php:37
+#: ../php/form/ingredient-form.php:66
+msgid "Delete Ingredient"
+msgstr "Zutat löschen"
+
+#: ../php/form/ingredient-form.php:48
+#: ../php/form/ingredient-form.php:116
+msgid "Notes"
+msgstr "Notizen"
+
+#: ../php/form/ingredient-form.php:53
+#: ../php/form/ingredient-form.php:130
+msgid "URL"
+msgstr "URL"
+
+#: ../php/form/ingredient-form.php:138
+msgid "Add Divider"
+msgstr "Trenner hinzufügen"
+
+#: ../php/inc/taxonomy_tags.php:400
+#, php-format
+msgid "<span class=\"meta-nav\">&larr;</span> Previous %1$s"
+msgstr "<span class=\"meta-nav\">&larr;</span> Vorherige %1$s"
+
+#: ../php/inc/taxonomy_tags.php:419
+#, php-format
+msgid "Next %1$s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Nächste %1$s <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../php/inc/template_tags.php:240
+msgid "Ready Time"
+msgstr "Zubereitungszeit"
+
+#: ../php/inc/template_tags.php:595
+msgid "Posted In: "
+msgstr "Veröffentlicht in:"
+
+#: ../php/inc/template_tags.php:733
+msgid "Print"
+msgstr "Drucken"
+
+#: ../php/inc/template_tags.php:825
+msgid "&larr; More Recipes"
+msgstr "&larr; Mehr Rezepte"
+
+#: ../php/inc/template_tags.php:859
+msgid "More Recipes &rarr;"
+msgstr "Mehr Rezepte &rarr;"
+
+#: ../php/inc/settings.php:25
+msgid "Settings updated"
+msgstr "Die Einstellungen wurden aktualisiert"
+
+#: ../php/inc/settings.php:30
+msgid "Plugin Settings"
+msgstr "Plugin-Einstellungen"
+
+#: ../php/inc/settings.php:33
+msgid "General"
+msgstr "Allgemein"
+
+#: ../php/inc/settings.php:34
+msgid "Taxonomies"
+msgstr "Taxonomien"
+
+#: ../php/inc/settings.php:35
+msgid "Display"
+msgstr "Anzeige"
+
+#: ../php/inc/acknowledgements.php:27
+msgid "Thanks to GrandSlambert!"
+msgstr "Dank an GrandSlambert!"
+
+#: ../php/inc/acknowledgements.php:28
+msgid "This plugin was originally created to replace the plugin &quot;RecipePress&quot; by GrandSlambert. This was discontinued for some time. That's where the name of this plugin is coming from and it's also the reason why this plugin is using a good deal of code written by GrandSlambert."
+msgstr "Dieses Plugin wurde ursprünglich entwickelt um das Plugin &quot;RecipePress&quot; von GrandSlambert zu ersetzen. Dieses war für eine gewisse Zeit nicht mehr weiterentwickelt worden. Daher hat dieses Plugin seinen Namen erhalten und auch ein guter Teil Code wurde RecipePress entlehnt."
+
+#: ../php/inc/acknowledgements.php:29
+msgid "However, RecipePress is going to be continued now. RecipePress reloaded however is meant to become a more simple alternative."
+msgstr "RecipePress wird inzwischen wieder weiterentwickelt. RecipePress reloaded soll sich zu einer einfacheren Alternative entwickeln."
+
+#: ../php/inc/acknowledgements.php:30
+msgid "Anyhow: Thanks to GrandSlambert for his great work!"
+msgstr "Jedenfalls: Danke an GrandSlambert für seine hervorragende Arbeit!"
+
+#: ../php/inc/acknowledgements.php:32
+msgid "Thanks to all translators"
+msgstr "Dank an alle Übersetzer"
+
+#: ../php/inc/acknowledgements.php:33
+msgid "Help translate RecipePress reloaded and find your name here!"
+msgstr "Helfen Sie mit RecipePress reloaded zu übersetzen und lesen Sie Ihren Namen hier."
+
+#: ../php/inc/acknowledgements.php:35
+msgid "A copyright note on the logo"
+msgstr "Ein Urheberrechtshinweis zum Logo"
+
+#: ../php/inc/acknowledgements.php:36
+msgid "Please note: The logo is taken from a German traffic sign (Zeichen 376, VzKat). Therefore it is public domain and its use is not limited by the GPL."
+msgstr "Bitte beachten: Das Logo wurde aus einem deutschen Verkehrszeichen (Zeichen 376, VzKat) abgeleitet. Daher ist es gemeinfrei und unterliegt nicht den Beschränkungen der GPL."
+
+#: ../widgets/taxonomy-list-widget.php:28
+msgid "List recipe taxonomies on your sidebar."
+msgstr "Rezept-Taxonomien in Ihrer Sidebar anzeigen"
+
+#: ../widgets/taxonomy-list-widget.php:31
+msgid "RPR :: Taxonomy List"
+msgstr "RPR :: Taxonomie-Liste"
+
+#: ../widgets/taxonomy-list-widget.php:141
+#: ../widgets/taxonomy-cloud-widget.php:86
+#: ../widgets/list-widget.php:131
+#: ../widgets/same-taxonomy-widget.php:102
+msgid "Title (optional)"
+msgstr "Titel (optional)"
+
+#: ../widgets/taxonomy-list-widget.php:145
+#: ../widgets/same-taxonomy-widget.php:106
+msgid "Taxonomy to display"
+msgstr "Anzuzeigende Taxonomie"
+
+#: ../widgets/taxonomy-list-widget.php:153
+#: ../widgets/list-widget.php:134
+msgid "How many items would you like to display?"
+msgstr "Wie viele Einträge sollen angezeigt werden"
+
+#: ../widgets/taxonomy-list-widget.php:157
+msgid "Order items by"
+msgstr "Einträge ordnen nach"
+
+#: ../widgets/taxonomy-list-widget.php:158
+msgid "Name"
+msgstr "Name"
+
+#: ../widgets/taxonomy-list-widget.php:159
+msgid "Count"
+msgstr "Anzahl"
+
+#: ../widgets/taxonomy-list-widget.php:164
+msgid "ASC"
+msgstr "Ansteigend"
+
+#: ../widgets/taxonomy-list-widget.php:165
+msgid "DESC"
+msgstr "Absteigend"
+
+#: ../widgets/taxonomy-list-widget.php:170
+msgid "Show count with"
+msgstr "Zeige Anzahl mit"
+
+#: ../widgets/taxonomy-list-widget.php:173
+msgid "before and"
+msgstr "davor und"
+
+#: ../widgets/taxonomy-list-widget.php:176
+msgid "behind"
+msgstr "danach"
+
+#: ../widgets/taxonomy-list-widget.php:180
+msgid "Hide empty terms?"
+msgstr "Leere Begriffe verstecken?"
+
+#: ../widgets/taxonomy-list-widget.php:184
+#: ../widgets/taxonomy-cloud-widget.php:100
+msgid "Exclude terms"
+msgstr "Begriffe ausschließen"
+
+#: ../widgets/taxonomy-cloud-widget.php:16
+msgid "RPR :: Taxonomy Cloud"
+msgstr "RPR :: Taxonomie Wolke"
+
+#: ../widgets/taxonomy-cloud-widget.php:16
+msgid "Advanced tagcloud widget for to display any taxonomy with excludes"
+msgstr "Ein Schlagwortwolken-Widget das jede beliebige Taxonomie darstellen kann. Mit der Möglichkeit Begriffe auszuschließen."
+
+#: ../widgets/taxonomy-cloud-widget.php:89
+msgid "Taxonomy:"
+msgstr "Taxonomie:"
+
+#: ../widgets/taxonomy-cloud-widget.php:97
+msgid "Number auf items to display"
+msgstr "Anzahl der anzuzeigenden Einträge:"
+
+#: ../widgets/list-widget.php:29
+msgid "List recipes on your sidebar. By dasmaeh."
+msgstr "Rezpte in der Sidebar auflisten."
+
+#: ../widgets/list-widget.php:31
+msgid "RPR :: List"
+msgstr "RPR :: Liste"
+
+#: ../widgets/list-widget.php:137
+msgid "Display type:"
+msgstr "Anzeigeart:"
+
+#: ../widgets/list-widget.php:138
+msgid "Newest Recipes"
+msgstr "Neueste Rezepte"
+
+#: ../widgets/list-widget.php:139
+msgid "Random Recipes"
+msgstr "Zufällige Rezepte"
+
+#: ../widgets/list-widget.php:141
+msgid "Recently Updated"
+msgstr "Kürzlich aktualisiert"
+
+#: ../widgets/list-widget.php:145
+msgid "Sort order:"
+msgstr "Reihenfolge:"
+
+#: ../widgets/list-widget.php:151
+msgid "Show icon?"
+msgstr "Icon anzeigen?"
+
+#: ../widgets/list-widget.php:154
+msgid "Icon size (square)"
+msgstr "Icon-Größe (quadratisch)"
+
+#: ../widgets/same-taxonomy-widget.php:26
+msgid "RPR :: Same Taxonomy"
+msgstr "RPR :: gleiche Taxonomie"
+
+#: ../widgets/same-taxonomy-widget.php:26
+msgid "Lists posts from the same taxonomy on single-post view. Will not display elsewhere"
+msgstr "Zeigt Posts aus der gleichen Taxonomie wie der aktuelle. Wird nur in der Einzelansicht angezeigt"
+
+#: ../widgets/same-taxonomy-widget.php:115
+msgid "Number of posts"
+msgstr "Anzahl der Posts"
+
+#: ../templates/recipe-single.php:31
+#: ../templates/recipe-loop.php:31
+#: ../templates/recipe-archive.php:28
+#: ../templates/recipe-print.php:91
+#: ../templates/shortcode-list.php:34
+msgid "Posted in: "
+msgstr "Veröffentlicht in:"
+
+#: ../templates/recipe-single.php:37
+#: ../templates/recipe-loop.php:37
+#: ../templates/recipe-archive.php:34
+#: ../templates/recipe-print.php:97
+#: ../templates/shortcode-list.php:40
+msgid "from: "
+msgstr "aus:"
+
+#: ../templates/recipe-single.php:43
+#: ../templates/recipe-loop.php:43
+#: ../templates/recipe-archive.php:40
+#: ../templates/recipe-print.php:103
+#: ../templates/shortcode-list.php:46
+msgid "Season: "
+msgstr "Saison:"
+
+#: ../templates/recipe-single.php:55
+#: ../templates/recipe-loop.php:55
+#: ../templates/recipe-archive.php:52
+#: ../templates/recipe-print.php:74
+#: ../templates/shortcode-list.php:57
+msgid "for"
+msgstr "für"
+
+#: ../templates/recipe-single.php:75
+#: ../templates/recipe-print.php:113
+msgid "Directions"
+msgstr "Zubereitung"
+
+#: ../templates/recipe-single.php:79
+msgid "Pages:"
+msgstr "Seiten:"
+
+#: ../templates/recipe-taxonomy.php:31
+#: ../templates/recipe-taxonomy.php:48
+msgid "<span class=\"meta-nav\">&larr;</span>More Taxonomies"
+msgstr "<span class=\"meta-nav\">&larr;</span>Mehr Taxonomien"
+
+#: ../templates/recipe-taxonomy.php:32
+#: ../templates/recipe-taxonomy.php:49
+msgid "More Taxonomies <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Mehr Taxonomien <span class=\"meta-nav\">&rarr;</span>"
+
+#: ../templates/recipe-taxonomy.php:41
+msgid "Sample recipes"
+msgstr "Beispielrezepte"
+
+#: ../templates/recipe-print.php:50
+msgid "Hide image"
+msgstr "Bild verstecken"
+
+#: ../templates/recipe-print.php:52
+#, php-format
+msgid "Return to %1$s"
+msgstr "Zurück zu %1$s"
+
+#: ../templates/recipe-taxonomy-index.php:40
+#: ../templates/recipe-taxonomy-index.php:98
+#: ../templates/shortcode-index.php:37
+#: ../templates/shortcode-index.php:99
+msgid "Alphabetical index navigation"
+msgstr "Alphabetische Index-Navigation"
+
+#, fuzzy
+#~ msgid "Sorry, no recipe found."
+#~ msgstr "Entschuldigung, es konnte kein Rezept gefunden werden."

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+/* RecipePress CSS Document */
+
+/* This file styles the print-page, not the output sent to the printer.
+If you want to make changes to it, you will have to copy the recipe-print.php from templates to your theme folder and edit the path to your css in the header of that file.
+*/
+.clear{
+    clear:both;
+}
+
+body.print-recipes{
+    font-family:"Times New Roman", Times, serif;
+    font-size:16px;
+    line-height:20px;
+    background:#666;
+}
+a{
+    color:#666;
+    text-decoration:underline;
+    font-weight:bold;
+}
+a:hover{
+    text-decoration:none;
+    color:#000;
+}
+a:visited{
+    color:#666;
+}
+#recipe-image{
+    text-align:center;
+    width:100%;
+}
+#print-controls{
+    display:none;
+}
+
+.recipe-print a{
+    color:#000;
+    font-weight:bold;
+    text-decoration:none;
+    cursor:text;
+}
+.recipe-notes{
+    clear:both;
+}
+.recipe-header{
+    display;block;
+}
+.recipe-meta-left{
+    float:left;
+    padding-right:20px;
+    width:46%;
+    border-right:dotted 1px #ccc;
+    margin-bottom:20px;
+}
+.recipe-meta-right{
+    float:right;
+    padding-left:20px;
+    width:46%;
+    margin-bottom:20px;
+}
+.recipe-content{
+    clear:both;
+    margin-top:20px;
+}
+/*Times*/
+.recipe-print .recipe-times{
+
+}
+.recipe-print .recipe-times-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+.recipe-print .recipe-times-list li{
+    float:none;
+    border:0;
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-weight:bold;
+}
+.recipe-print .recipe-times-list li .details-header{
+    font-size:16px;
+    font-weight:normal;
+    color:black;
+    float:left;
+    margin-right:3px;
+}
