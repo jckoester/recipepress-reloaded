@@ -4,7 +4,7 @@
   Plugin Name: RecipePressReloaded
   Plugin URI: 
   Description: A Fork of the famous RecipePress Plugin by GrandSlambert. Turn your Wordpress site into a full fledged recipe sharing system. Allow users to submit recipes, organize recipes in hierarchal categories, make comments, and embed recipes in posts and pages.
-  Version: 0.1
+  Version: 0.2
   Author: dasmaeh
   Author URI: 
   License: GPL2

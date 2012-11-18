@@ -63,12 +63,13 @@ $irregulars=array (
 );
 
 function regular_plural($str){
-	if ( (preg_match('/[sxz]$/', $str) and !preg_match('/[es]/', $str) ) OR preg_match('/[^aeioudgkprt]h$/', $str)) {
+
+	if ( (preg_match('/[sxz]$/', $str) and !preg_match('/es/', $str) ) OR preg_match('/[^aeioudgkprt]h$/', $str)) {
 		$str .= 'es';
-	} elseif (preg_match('/[^aeiou]y$/', $str) and !preg_match('/[ies]/', $str)) {
+	} elseif (preg_match('/[^aeiou]y$/', $str) and !preg_match('/ies$/', $str)) {
 		//Change "y" to "ies" 
         $str = substr_replace($str, 'ies', -1);
-	} elseif ( !preg_match('/[es]$/', $str) and !preg_match('/[ies]$/', $str) ) {
+	} elseif ( !preg_match('/es$/', $str) and !preg_match('/ies$/', $str) ) {
 		$str .= 's';
 	}
 	return $str;

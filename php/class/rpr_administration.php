@@ -25,13 +25,21 @@ class RPR_Admin extends RPR_Core {
           parent::RPR_Core();
 
           /* Administration Actions */
+          /*Add a menu to our admin-area:*/
           add_action('admin_menu', array(&$this, 'rpr_admin_menu'));
-          add_action('admin_init', array(&$this, 'admin_init'));
+          /*Add styles and scripts to the admin-area*/
           add_action('admin_print_styles', array(&$this, 'admin_print_styles'));
           add_action('admin_print_scripts', array(&$this, 'admin_print_scripts'));
-          add_action('parse_request', array(&$this, 'catch_recipe_form'));
+          /*Initalize the settings*/
+          add_action('admin_init', array(&$this, 'admin_init'));
+          
+          /*Save a recipe*/
           add_action('save_post', array(&$this, 'save_recipe'));
-//          add_action('update_option_' . $this->optionsName, array(&$this, 'update_option'), 10, 2);
+          
+          /* Notices for the admin, ie error on save */
+          add_action( 'admin_notices', array( &$this, 'rpr_admin_notice_handler' ) );
+
+
           add_action('right_now_content_table_end', array(&$this, 'right_now_content_table_end'));
           add_action('manage_pages_custom_column', array(&$this, 'manage_pages_custom_column'));
           add_action('wp_ajax_ingredient_lookup', array(&$this, 'ingredient_lookup'));
@@ -906,7 +914,7 @@ class RPR_Admin extends RPR_Core {
      /**
       * Checks if the Recipe Form was submitted and creates the recipe.
       */
-	function catch_recipe_form() {
+	/*function catch_recipe_form() {
           // Check if form is submitted 
           if ( isset($_POST['recipe-form-nonce']) and wp_verify_nonce($_POST['recipe-form-nonce'], 'recipe-form-submit') ) {
                $errors = $this->create_recipe();
@@ -926,86 +934,77 @@ class RPR_Admin extends RPR_Core {
           } elseif ( isset($_POST['recipe-form-nonce']) ) {
                wp_die(__('This form was submitted without a proper <emph>nonce</emph> - a security means. Please contact the site administrator.', 'recipe-press-reloaded'));
           }
-     }
+     }*/
      
       /**
-      * Save the meta boxes for a recipe.
-      *
-      * @global <object> $postoptions
-      * @param <integer> $post_id
-      * @return <integer>
+      * Save the recipe.
       */
-     function save_recipe($post_id) {
-          global $post;
+	function save_recipe( $post_id ) {
+		$errors = false;
+     	// verify if this is an auto save routine. 
+		// If it is our form has not been submitted, so we dont want to do anything
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+			 $errors = "There was an error doing autosave";
+			//return;
 
-          if ( is_object($post) and $post->post_type == 'revision' ) {
-               return;
-          }
+      	//Verify the nonces for the metaboxes
+		if ( isset( $_POST['rpr_ingredients_nonce_field'] ) &&  !wp_verify_nonce($_POST['rpr_ingredients_nonce_field'],'rpr_ingredients_nonce') ){
+			$errors = "There was an error saving the recipe. Ingredients nonce not verified";
+			//return;
+		}	
+		if ( $_POST['rpr_details_nonce_field'] && !wp_verify_nonce($_POST['rpr_details_nonce_field'],'rpr_details_nonce') ){
+			$errors = "There was an error saving the recipe. Details nonce not verified";
+			//return;
+		}
+		
+		// Check permissions
+  		if ( !current_user_can( 'edit_post', $post_id ) )
+        	$errors = "There was an error saving the recipe. No sufficient rights.";
+        	//return;
+		
+		//If we have an error update the error_option and return
+		if( $errors ) {
+			update_option('rpr_admin_errors', $errors);
+			return;
+		}
+		
+  		
+  		// OK, we're authenticated: we need to find and save the data
+  		// Save the details
+  		$details = $_POST['recipe_details'];
+        $details['recipe_ready_time'] = $this->readyTime();
+        $details['recipe_ready_time_raw'] = $this->readyTime(NULL, NULL, false);
+  		foreach ( $details as $key => $value ) :
+			$key = '_' . $key . '_value';
+			if ( get_post_meta($post_id, $key) == "" ) {
+				add_post_meta($post_id, $key, $value, true);
+			} elseif ( $value != get_post_meta($post_id, $key . '_value', true) ) {
+				update_post_meta($post_id, $key, $value);
+			} elseif ( $value == "" ) {
+				delete_post_meta($post_id, $key, get_post_meta($post_id, $key, true));
+			}
+        endforeach;
+		
+		/* Turn off featured if not checked */
+		if ( !isset($_POST['recipe_details']['recipe_featured']) ) {
+			update_post_meta($post_id, '_recipe_featured_value', 0);
+		}
 
-          //do_action('rpr_before_save');
-
-          /* Save details */
-          if ( isset($_POST['recipe_details']) and isset($_POST['details_noncename']) and wp_verify_nonce($_POST['details_noncename'], 'recipe_press_details') ) {
-               $details = $_POST['recipe_details'];
-               $details['recipe_ready_time'] = $this->readyTime();
-               $details['recipe_ready_time_raw'] = $this->readyTime(NULL, NULL, false);
-
-
-               foreach ( $details as $key => $value ) {
-                    $key = '_' . $key . '_value';
-                    if ( get_post_meta($post_id, $key) == "" ) {
-                         add_post_meta($post_id, $key, $value, true);
-                    } elseif ( $value != get_post_meta($post_id, $key . '_value', true) ) {
-                         update_post_meta($post_id, $key, $value);
-                    } elseif ( $value == "" ) {
-                         delete_post_meta($post_id, $key, get_post_meta($post_id, $key, true));
-                    }
-               }
-          }
-
-          /* Turn off featured if not checked */
-          if ( !isset($_POST['recipe_details']['recipe_featured']) ) {
-               update_post_meta($post_id, '_recipe_featured_value', 0);
-          }
-
-          /* Turn off ingredient link if not checked */
-          if ( !isset($_POST['recipe_details']['recipe_link_ingredients']) ) {
-               update_post_meta($post_id, '_recipe_link_ingredients_value', 0);
-          }
-
-
-          if ( isset($_POST['ingredients']) and isset($_POST['ingredients_noncename']) and wp_verify_nonce($_POST['ingredients_noncename'], 'recipe_press_ingredients') ) {
-               $this->save_ingredients($post_id, $_POST['ingredients']);
-          }
-
-          //do_action('rpr_after_save');
-
-          return $post_id;
-     }
-     
-      /**
-      * Save the ingredients.
-      *
-      * @global object $post
-      * @param string $post_id
-      * @param array $ingredients
-      */
-     function save_ingredients($post_id, $ingredients) {
-          global $post;
-          $detailkey = '_recipe_ingredient_value';
-          $postIngredients = array();
-          delete_post_meta($post_id, $detailkey);
-          $ictr = 0;
-
-          foreach ( $ingredients as $id => $ingredient ) {
-               $ingredient['order'] = $ictr;
-
-               if ( (isset($ingredient['item']) and $ingredient['item'] != -1 and $ingredient['item'] != '' and $ingredient['item'] != '0')
-                       or (isset($ingredient['new-ingredient']) and $ingredient['new-ingredient'] != '') ) {
-
-                    if ( isset($ingredient['size']) and $ingredient['size'] == 'divider' ) {
+		// Save the ingredients
+		$detailkey = '_recipe_ingredient_value';
+        $postIngredients = array();
+        delete_post_meta($post_id, $detailkey);
+        $ing_count = 0;
+        
+        foreach ( $_POST['ingredients'] as $id => $ingredient ) :
+        	$ingredient['order'] = $ing_count;
+        	
+        	if ( (isset($ingredient['item']) and $ingredient['item'] != -1 and $ingredient['item'] != '' and $ingredient['item'] != '0')
+                       or (isset($ingredient['new-ingredient']) and $ingredient['new-ingredient'] != '') ) :
+                       
+            		if ( isset($ingredient['size']) and $ingredient['size'] == 'divider' ) :
                          $ingredient['item'] = $ingredient['new-ingredient'];
-                    } else {
+                	else :
                          /* Save ingredient taxonomy information */
                          if ( isset($ingredient['item']) ) {
                               $term = get_term_by('id', $ingredient['item'], 'recipe-ingredient');
@@ -1026,15 +1025,47 @@ class RPR_Admin extends RPR_Core {
                               $term = get_term_by('id', $ingredient['item'], 'recipe-ingredient');
                               array_push($postIngredients, $term->slug);
                          }
-                    }
+                    endif;
+                    
                     unset($ingredient['new-ingredient']);
 
                     add_post_meta($post_id, $detailkey, $ingredient, false);
-               }
-               ++$ictr;
+                       	
+            endif;
+        	
+        	++$ing_count;
+        endforeach;
+        
+        wp_set_object_terms($post_id, $postIngredients, 'recipe-ingredient', false);
+		
+		//WAS IST DAS HIER???
+  		/*
+          global $post;
+
+          if ( is_object($post) and $post->post_type == 'revision' ) {
+               return;
           }
 
-          wp_set_object_terms($post_id, $postIngredients, 'recipe-ingredient', false);
-     }
+          //do_action('rpr_before_save');
+		*/
+          
+		//do_action('rpr_after_save');
+
+        //return $post_id;
+	}
+     
+
+     
+     // Display any errors
+	function rpr_admin_notice_handler() {
+
+    	$errors = get_option('rpr_admin_errors');
+
+    	if($errors) {
+			echo '<div class="error"><p>' . $errors . '</p></div>';
+    	}
+    	/* Reset the option */
+		update_option('rpr_admin_errors', false);
+	}
 
 }

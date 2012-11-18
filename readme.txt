@@ -3,7 +3,7 @@ Contributors: dasmaeh
 Tags: recipes, cooking, food, recipe share
 Requires at least: 3.4
 Tested up to: 3.4
-Stable tag: tags/0.5
+Stable tag: 0.2
 License: GPLv2
 
 A simple recipe plugin. 

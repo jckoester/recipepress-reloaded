@@ -149,10 +149,9 @@ class rpr_inflector {
 
         if (isset(self::$irregular[$str])) {
             $str = self::$irregular[$str];
-        } else { 
+        } else {
         	$str = regular_plural($str); 
         }
-
         // Set the cache and return
         return self::$cache[$key] = $str;
     }

@@ -303,7 +303,6 @@ if ( !function_exists('get_recipe_servings') ) {
 
                /* translators: Displayed before serving information on recipe display pages. */
                $output = '<' . $args['tag'] . ' class="' . $args['class'] . '">' . $servings . ' ';
-
                if ( isset($size) ) {
                     if ( calculateIngredientSize($servings) > 1 ) {
                          $output.= rpr_inflector::plural($size);
