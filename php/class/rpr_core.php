@@ -18,7 +18,7 @@ class RPR_Core {
 
      var $menuName = 'recipe-press-reloaded';
      var $pluginName = 'RecipePress reloaded';
-     var $version = '0.1';
+     var $version = '0.2';
      var $optionsName = 'rpr-options';
      var $options = array();
      
@@ -33,19 +33,12 @@ class RPR_Core {
           load_plugin_textdomain('recipe-press', false, dirname(dirname(plugin_basename(__FILE__))) . '/lang');
 
           /* Plugin Settings */
-          /* translators: The name of the plugin, should be a translation of "RecipePress" only! */
+          /* translators: The name of the plugin, should be a translation of "RecipePress Reloaded" only! */
           $this->pluginName = __('RecipePress reloaded', 'recipe-press-reloaded');
 
-          /* Plugin Folders */
-          //RPR_PATH = WP_PLUGIN_DIR . '/' . basename(dirname(dirname(dirname(__FILE__)))) . '/';
-          //RPR_URL = WP_PLUGIN_URL . '/' . basename(dirname(dirname(dirname(__FILE__)))) . '/';
-          //RPR_TEMPLATES_PATH = WP_PLUGIN_DIR . '/' . basename(dirname(dirname(dirname(__FILE__)))) . '/templates/';
-          //RPR_TEMPLATES_URL = WP_PLUGIN_URL . '/' . basename(dirname(dirname(dirname(__FILE__)))) . '/templates/';
           $this->loadSettings();
 
-//Image-sizes are the job of the template!
           /* Add custom images sizes for RecipePress */
-
           foreach ( $this->rpr_options['image_sizes'] as $image => $size ) {
                add_image_size('rpr-' . $image, $size['width'], $size['height'],true);
           }
@@ -89,6 +82,7 @@ class RPR_Core {
 					'page' => false,
 					'builtin' => false,
 					'per_page' => 10,
+					'show_on_posts_list' => true,
 					),
 				'recipe-cuisine' => array(
 					'slug' => 'recipe-cuisine',
@@ -101,6 +95,7 @@ class RPR_Core {
 					'page' => false,
 					'builtin' => false,
 					'per_page' => 10,
+					'show_on_posts_list' => true,
 					),
 				'recipe-course' => array(
 					'slug' => 'recipe-course',
@@ -113,6 +108,7 @@ class RPR_Core {
 					'page' => false,
 					'builtin' => false,
 					'per_page' => 10,
+					'show_on_posts_list' => true,
 					),
 				'recipe-season' => array(
 					'slug' => 'recipe-season',
@@ -125,6 +121,7 @@ class RPR_Core {
 					'page' => false,
 					'builtin' => false,
 					'per_page' => 10,
+					'show_on_posts_list' => true,
 					),
 				'recipe-ingredient' => array(
 					'slug' => 'recipe-ingredient',
@@ -137,6 +134,7 @@ class RPR_Core {
 					'page' => false,
 					'builtin' => false,
 					'per_page' => 10,
+					'show_on_posts_list' => false,
 					),
 				),
 				/* Display Settings */
@@ -168,207 +166,11 @@ class RPR_Core {
 			);
 		  $this->rpr_options_defaults = $rpr_options_defaults;
 		  $this->rpr_options = wp_parse_args(get_option('rpr_options'), $rpr_options_defaults);
-			//var_dump($this->rpr_options);
-          /*$options = get_option($this->optionsName);
+		  //Unfortunately wp_parse_args can't handle nested args so we do a little trick here:
+		  foreach($this->rpr_options['taxonomies'] as $key => $options):
+		  	$this->rpr_options['taxonomies'][$key] = wp_parse_args($options, $rpr_options_defaults['taxonomies'][$key]);
+		  endforeach;
 
-          $defaults = array(
-               // Recipe Options 
-               'use-plugin-permalinks' => false,
-               'index-slug' => 'recipes',
-               'identifier' => 'recipe',
-               'permalink' => (get_option('permalink_structure')) ? '%identifier%' . get_option('permalink_structure') : '%identifier%/%postname%',
-               'plural-name' => __('Recipes', 'recipe-press-reloaded'),
-               'plural_name' => __('Recipes', 'recipe-press-reloaded'),
-               'singular-name' => __('Recipe', 'recipe-press-reloaded'),
-               
-'use-taxonomies' => true,//Deprecated
-			   'use-categories'=> '1',
-			   'use-cuisines'=> true,
-               'use-servings' => true,
-               'use-times' => true,
-               'use-courses' => true,
-               'use-seasons' => true,
-               'use-thumbnails' => true,
-               'use-featured' => true,
-               'use-comments' => false,
-               'use-trackbacks' => false,
-               'use-custom-fields' => false,
-               'use-revisions' => false,
-               'use-post-categories' => false,
-               'use-post-tags' => false,
-               //'use-categories' => false, // Depreciated 
-               //'use-cuisines' => false, // Depreciated 
-               'plural-times' => false,
-               // Taxonomy Defaults 
-               //'taxonomies' => array(
-                    
-                    
-                 //   'recipe-course' => array('slug' => 'recipe-course', 'plural' => __('Courses', 'recipe-press-reloaded'), 'singular' => __('Course', 'recipe-press-reloaded'), 'hierarchical' => false, 'active' => true, 'default' => false, 'allow_multiple' => true, 'page' => false, 'builtin' => false, 'per-page' => 10)
-               //),
-               'ingredient-slug' => 'recipe-ingredients',
-               'ingredients-per-page' => 10,
-               'ingredient-page' => 0,
-               // Image Sizes 
-               'image-sizes' => array(
-                    'image' => array('name' => 'RecipePress Image', 'width' => 250, 'height' => 250, 'crop' => isset($options['image-sizes']['image']['crop']) ? $options['image-sizes']['image']['crop'] : true, 'builtin' => true),
-                    'thumb' => array('name' => 'RecipePress Thumbnail', 'width' => 50, 'height' => 50, 'crop' => isset($options['image-sizes']['thumb']['crop']) ? $options['image-sizes']['thumb']['crop'] : true, 'builtin' => true),
-               ),
-               // Display Settings 
-               'menu-position' => 5,
-               'default-excerpt-length' => 20,
-               'recipe-count' => get_option('posts_per_page'),
-               'recipe-orderby' => 'title',
-               'recipe-order' => 'asc',
-               'add-to-author-list' => false,
-               'disable-content-filter' => false,
-               'custom-css' => (count($options) > 2) ? isset($options['custom-css']) : true,
-               'hour-text' => __(' hour', 'recipe-press-reloaded'),
-               'minute-text' => __(' min', 'recipe-press-reloaded'),
-               'time-display-type' => 'double',
-               // Form Defaults 
-//FRONTPAGE form should be removed!!
-               'form-page' => NULL,
-               'form-redirect' => NULL,
-               'use-form' => false,
-               'form-identifier' => 'submit-recipe',
-               'form-permalink' => '%identifier%',
-               'form-extension' => false,
-               'on-submit-redirect' => false,
-               'new-recipe-status' => 'pending',
-               'ingredients-fields' => 5,
-               'required-fields' => array('title', 'instructions', 'name', 'email'),
-               'submit-title' => 'Share a Recipe',
-               'require-login' => false,
-
-               // Widget Defaults 
-               'widget-orderby' => 'name',
-               'widget-order' => 'asc',
-               'widget-style' => 'list',
-               'widget-show-count' => false,
-               'widget-hide-empty' => (count($options) > 2) ? isset($options['widget-hide-empty']) : true,
-               'widget-items' => 10,
-               'widget-depth' => 0,
-               'widget-pad-counts' => false,
-               'widget-taxonomy' => 'recipe-category',
-               'widget-type' => 'Newest',
-               'widget-target' => NULL,
-               'widget-show-icon' => false,
-               'widget-icon-size' => 25,
-               // Printing Options 
-               'use-recipe-print' => false,
-               
-               // Recipe Box Options 
-               'use-recipe-box' => true,
-               'recipe-box-slug' => 'recipe-box',
-               'recipe-box-page' => false,
-               'recipe-box-title' => __('My Recipe Box', 'recipe-press-reloaded'),
-               'recipe-box-add-title' => __('Add To Box', 'recipe-press-reloaded'),
-               'recipe-box-view-title' => __('View My Box', 'recipe-press-reloaded'),
-               
-               // Non-Configurable Settings 
-               'menu-icon' => RPR_URL . 'images/icons/small_logo.png',
-               // Size Settings  - DEPRICATED FOR TAXONOMY USE 
-               'standard' => array(
-                    'ingredient-sizes' => array('bag', 'big', 'bottle', 'box', 'bunch', 'can', 'carton', 'container', 'count', 'cup', 'clove', 'dash', 'dozen', 'drop', 'envelope', 'fluid ounce', 'gallon', 'gram', 'head', 'jar', 'large', 'pound', 'leaf', 'link', 'liter', 'loaf', 'medium', 'ounce', 'package', 'packet', 'piece', 'pinch', 'pint', 'quart', 'scoop', 'sheet', 'slice', 'small', 'sprig', 'stalk', 'stick', 'strip', 'tablespoon', 'teaspoon', 'whole'),
-                    'serving-sizes' => array('cup', 'quart', 'pint', 'gallon', 'dozen', 'serving', 'piece')
-               ),
-               'metric' => array(
-                    'ingredient-sizes' => array('drop', 'dash', 'pinch', 'teaspoon', 'desert spoon', 'tablespoon', 'fluid ounce', 'pint', 'quart', 'gallon', 'pound', 'gram', 'stone', 'ton', 'milligram', 'kilogram'),
-                    'serving-sizes' => array('quart', 'pint', 'gallon', 'serving', 'piece')
-               ),
-               // Nutritional Markers 
-               'nutritional-markers' => array(
-                    'txt_glycemic_load' => array('name' => 'Glycemic Load'),
-                    'txt_calories' => array('name' => 'Calories'),
-                    'txt_total_fat' => array('name' => 'Total Fat', 'size' => 'g'),
-                    'txt_saturated_fat' => array('name' => 'Saturated Fat', 'size' => 'g'),
-                    'txt_polyunsaturated_fat' => array('name' => 'Polyunsaturated Fat', 'size' => 'g'),
-                    'txt_monounsaturated_fat' => array('name' => 'Monounsaturated Fat', 'size' => 'g'),
-                    'txt_cholesterol' => array('name' => 'Cholesterol', 'size' => 'mg'),
-                    'txt_sodium' => array('name' => 'Sodium', 'size' => 'mg'),
-                    'txt_potassium' => array('name' => 'Potassium', 'size' => 'mg'),
-                    'txt_total_carbohydrate' => array('name' => 'Total Carbohydrates', 'size' => 'g'),
-                    'txt_dietary_fiber' => array('name' => 'Dietary Fiber', 'size' => 'g'),
-                    'txt_sugars' => array('name' => 'Sugars', 'size' => 'g'),
-                    'txt_protein' => array('name' => 'Protein', 'size' => 'g'),
-               ),
-          );
-
-          $this->options = wp_parse_args($options, $defaults); */
-/*
-          // Handle renaming of built-in taxonomies
-          if ( isset($this->options['taxonomies']['recipe-categories']) ) {
-               $this->options['taxonomies']['recipe-category'] = $this->options['taxonomies']['recipe-categories'];
-               unset($this->options['taxonomies']['recipe-categories']);
-          }
-
-          if ( isset($this->options['taxonomies']['recipe-cuisines']) ) {
-               $this->options['taxonomies']['recipe-cuisine'] = $this->options['taxonomies']['recipe-cuisines'];
-               unset($this->options['taxonomies']['recipe-cuisines']);
-          }
-*/
-          /*if ( $this->options['use-thumbnails'] ) {
-               add_theme_support('post-thumbnails');
-          }*/
-
-/*          $this->formFieldNames = array(
-               'title' => __('Recipe Name', 'recipe-press-reloaded'),
-               'image' => __('Recipe Image', 'recipe-press-reloaded'),
-               'notes' => __('Recipe Notes', 'recipe-press-reloaded'),
-               'recipe-category' => $this->options['taxonomies']['recipe-category']['singular'],
-               'recipe-cuisine' => $this->options['taxonomies']['recipe-cuisine']['singular'],
-               'servings' => __('Servings', 'recipe-press-reloaded'),
-               'prep_time' => __('Prep Time', 'recipe-press-reloaded'),
-               'cook_time' => __('Cook Time', 'recipe-press-reloaded'),
-               'measure_type' => __('Measurement', 'recipe-press-reloaded'),
-               'ingredients' => __('Ingredients', 'recipe-press-reloaded'),
-               'instructions' => __('Instructions', 'recipe-press-reloaded'),
-               
-               'submitter' => __('Name', 'recipe-press-reloaded'),
-               'submitter_email' => __('Email', 'recipe-press-reloaded'),
-          );
-*/
-          /* Eliminate individual taxonomies */
-    /*      if ( $this->options['use-categories'] ) {
-               $this->options['use-taxonomies'] = true;
-               $this->options['taxonomies']['recipe-category'] = array(
-                    'plural' => __('Categories', 'recipe-press-reloaded'),
-                    'singular' => __('Category', 'recipe-press-reloaded'),
-                    'hierarchical' => true,
-                    'active' => true,
-                    'page' => $this->options['categories-page'],
-                    'converted' => true
-               );
-          }
-
-          if ( $this->options['use-cuisines'] ) {
-               $this->options['use-taxonomies'] = true;
-               $this->options['taxonomies']['recipe-cuisine'] = array(
-                    'plural' => __('Cuisines', 'recipe-press-reloaded'),
-                    'singular' => __('Cuisine', 'recipe-press-reloaded'),
-                    'hierarchical' => false,
-                    'active' => true,
-                    'page' => $this->options['cuisines-page'],
-                    'converted' => true
-               );
-          }
-
-          if ( is_array($this->options['taxonomies']) ) {
-               foreach ( $this->options['taxonomies'] as $key => $taxonomy ) {
-                    if ( isset($taxonomy['page']) ) {
-                         $this->pageIDs[$key] = $taxonomy['page'];
-                         $this->taxonomyPages[$key] = $taxonomy['page'];
-                    }
-               }
-          } else {
-               $this->options['taxonomies'] = array();
-          }
-*/
-    /*      if ( isset($this->options['new-recipe-status']) and $this->options['new-recipe-status'] == 'active' ) {
-               $this->options['new-recipe-status'] = 'publish';
-          }
-
-          return $this->options;*/
      }
 
      /**

@@ -30,9 +30,10 @@ global $RECIPEPRESSOBJ;
 	<h2><?php echo $this->pluginName; ?> &raquo; <?php _e('Plugin Settings', 'recipe-press-reloaded'); ?> </h2> 
 	<!-- Tab Menu -->
 	<nav id="rpr-tab-menu">
-		<a class="nav-tab" id="general-tab" href="#top#general"><?php _e( 'General', 'recipe-press' );?></a>
-		<a class="nav-tab" id="taxonomies-tab" href="#top#taxonomies"><?php _e( 'Taxonomies', 'recipe-press' );?></a>
-		<a class="nav-tab" id="display-tab" href="#top#display"><?php _e( 'Display', 'recipe-press' );?></a>
+		<a class="nav-tab" id="general-tab" href="#top#general"><?php _e( 'General', 'recipe-press-reloaded' );?></a>
+		<a class="nav-tab" id="taxonomies-tab" href="#top#taxonomies"><?php _e( 'Taxonomies', 'recipe-press-reloaded' );?></a>
+		<a class="nav-tab" id="display-tab" href="#top#display"><?php _e( 'Display', 'recipe-press-reloaded' );?></a>
+		<a class="nav-tab" id="admin-display-tab" href="#top#admin-display"><?php _e( 'Admin Display', 'recipe-press-reloaded' );?></a>
 	</nav>
 	
 	<?php echo '<form action="' . admin_url( 'options.php' ) . '" method="post" id="rpr-conf">';?>
@@ -59,6 +60,10 @@ global $RECIPEPRESSOBJ;
 		
 		<div id="display" class="rpr-tab">
 			<?php do_settings_sections('display'); ?>
+		</div>
+		
+		<div id="admin-display" class="rpr-tab">
+			<?php do_settings_sections('admin_post_list'); ?>
 		</div>
 		
 		<?php submit_button(); ?>

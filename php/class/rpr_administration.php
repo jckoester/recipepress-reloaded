@@ -41,7 +41,8 @@ class RPR_Admin extends RPR_Core {
 
 
           add_action('right_now_content_table_end', array(&$this, 'right_now_content_table_end'));
-          add_action('manage_pages_custom_column', array(&$this, 'manage_pages_custom_column'));
+          add_action('manage_posts_custom_column', array(&$this, 'manage_posts_custom_column'));
+          add_filter('manage_edit-recipe_columns', array(&$this, 'manage_recipe_edit_columns'));
           add_action('wp_ajax_ingredient_lookup', array(&$this, 'ingredient_lookup'));
 //          add_action('wp_ajax_nopriv_ingredient_lookup', array(&$this, 'ingredient_lookup'));
           add_action('wp_ajax_recipe_press_view_all_tax', array(&$this, 'view_all_taxonomy'));
@@ -49,7 +50,7 @@ class RPR_Admin extends RPR_Core {
 
           /* Administration Filters */
           add_filter('plugin_action_links', array(&$this, 'plugin_action_links'), 10, 2);
-          add_filter('manage_edit-recipe_columns', array(&$this, 'manage_recipe_edit_columns'));
+          
           if ( function_exists('register_uninstall_hook') ) register_uninstall_hook(__FILE__, 'example_deinstall');
      }
 
@@ -151,7 +152,7 @@ class RPR_Admin extends RPR_Core {
       * @param string $column      Name of the column
       * @return string
       */
-     function manage_pages_custom_column($column) {
+     function manage_posts_custom_column($column) {
           global $post;
 
           if ( $post->post_type != 'recipe' ) {
@@ -179,8 +180,8 @@ class RPR_Admin extends RPR_Core {
                     break;
           }
 
-          /* Display taxonomies if taxonomy is active */
-          if ( isset($this->rpr_ptions['taxonomies'][$column]) and taxonomy_exists($column) ) {
+          /* Display taxonomies if taxonomy is active and activate to display on posts list*/
+          if ( isset($this->rpr_options['taxonomies'][$column]) and $this->rpr_options['taxonomies'][$column] and taxonomy_exists($column) ) {
                echo get_the_term_list($post->ID, $column, '', ', ', '');
           }
      }
@@ -198,6 +199,8 @@ class RPR_Admin extends RPR_Core {
 		  $this->rpr_sections_taxonomies();
           //Settings section display
           add_settings_section('rpr_display', __("Display Settings", "recipe-press-reloaded"), array(&$this, 'rpr_section_display_callback_function'), 'display');
+          //Settings section admin display
+          add_settings_section('rpr_admin_post_list', __("Admin Post List Settings", "recipe-press-reloaded"), array(&$this, 'rpr_section_admin_post_list_callback_function'), 'admin_post_list');
           
           //Register Style and Scripts for the backend view
           wp_register_style('rpr_admin_CSS', RPR_URL . 'css/rpr-admin.css');
@@ -334,12 +337,14 @@ class RPR_Admin extends RPR_Core {
           	add_settings_field('rpr_taxonomies_'.$key.'_plural_name', __("Plural name", "recipe-press-reloaded"), array(&$this, 'rpr_options_input'), 'taxonomies_'.$key, 'rpr_taxonomies_'.$key, array( 'id'=>'taxonomies_'.$key.'_plural_name', 'name' => '[taxonomies][' . $key . '][plural_name]', 'value' => $this->rpr_options['taxonomies'][$key]['plural_name'],  'desc'=>__('The name for multiple term.', 'recipe-press-reloaded')));
           	add_settings_field('rpr_taxonomies_'.$key.'_page', __("Display page", "recipe-press-reloaded"), array(&$this, 'rpr_options_dropdown_pages'), 'taxonomies_'.$key, 'rpr_taxonomies_'.$key, array( 'key'=>$key, 'selected' => $this->rpr_options['taxonomies'][$key]['page'],  'desc'=>sprintf(__('The page where this taxonomy will be listed. You must place the short code <strong>[%1$s]</strong> on this page to display the recipes. This will be the page that users will be directed to if the template file "%2$s" does not exist in your theme.', 'recipe-press-reloaded'), 'recipe-tax tax=' . $key, 'taxonomy-recipe.php')));
           	add_settings_field('rpr_taxonomies_'.$key.'_per_page', __("Display how many per page", "recipe-press-reloaded"), array(&$this, 'rpr_options_dropdown'), 'taxonomies_'.$key, 'rpr_taxonomies_'.$key, array( 'name' => 'rpr_options[taxonomies]['.$key.'][per_page]', 'id' => 'rpr_taxonomies_'.$key.'_per_page', 'selected' => $this->rpr_options['taxonomies'][$key]['per_page'], 'options' => range(1,25), 'desc'=>__('How many items shall be shown on one page?', 'recipe-press-reloaded')));
+          	
           	if($key != "recipe-ingredient"):
           		add_settings_field('rpr_taxonomies_'.$key.'_default', __("Default value", "recipe-press-reloaded"), array(&$this, 'rpr_options_dropdown_categories'), 'taxonomies_'.$key, 'rpr_taxonomies_'.$key, array( 'key'=>$key, 'id' => 'default',  'selected' => $this->rpr_options['taxonomies'][$key]['default'], 'desc'=>__('Default value for this taxononomy.', 'recipe-press-reloaded'))); 
           		add_settings_field('rpr_taxonomies_'.$key.'_hierarchical', __("Hierarchical", "recipe-press-reloaded"), array(&$this, 'rpr_options_checkbox'), 'taxonomies_'.$key, 'rpr_taxonomies_'.$key, array( 'id'=>'taxonomies_'.$key.'_hierarchical',  'name' => '[taxonomies][' . $key . '][hierarchical]', 'checked' => $this->rpr_options['taxonomies'][$key]['hierarchical'],  'desc'=>__('Check this if you want to enable nested terms for this the taxonomy', 'recipe-press-reloaded')));
           		add_settings_field('rpr_taxonomies_'.$key.'_allow_multiple', __("Allow multiple", "recipe-press-reloaded"), array(&$this, 'rpr_options_checkbox'), 'taxonomies_'.$key, 'rpr_taxonomies_'.$key, array( 'id'=>'taxonomies_'.$key.'_allow_multiple',  'name' => '[taxonomies][' . $key . '][allow_multiple]', 'checked' => $this->rpr_options['taxonomies'][$key]['allow_multiple'],  'desc'=>__('Check this if you want to allow more than one term assigned to recipe', 'recipe-press-reloaded')));
           		add_settings_field('rpr_taxonomies_'.$key.'_active', __("Active", "recipe-press-reloaded"), array(&$this, 'rpr_options_checkbox'), 'taxonomies_'.$key, 'rpr_taxonomies_'.$key, array( 'id'=>'taxonomies_'.$key.'_active', 'name' => '[taxonomies][' . $key . '][active]', 'checked' => $this->rpr_options['taxonomies'][$key]['active'],  'desc'=>__('Check this if you want this taxonomy to be active', 'recipe-press-reloaded')));
           	endif;
+          	add_settings_field('rpr_taxonomies_'.$key.'_show_on_posts_list', __("Show on posts list", "recipe-press-reloaded"), array(&$this, 'rpr_options_checkbox'), 'taxonomies_'.$key, 'rpr_taxonomies_'.$key, array( 'name' => 'rpr_options[taxonomies]['.$key.'][show_on_posts_list]', 'id' => 'rpr_taxonomies_'.$key.'_show_on_posts_list', 'checked' => $this->rpr_options['taxonomies'][$key]['show_on_posts_list'],  'desc'=>__('Check this if you want to have the taxonomy items displayed on the recipes posts list in the admin area.', 'recipe-press-reloaded')));
 		endforeach;
      }
      
@@ -366,6 +371,14 @@ class RPR_Admin extends RPR_Core {
      	
      	add_settings_field('rpr_image_size_image', __("Image size", "recipe-press-reloaded"), array(&$this, 'rpr_options_image_size'), 'display', 'rpr_display', array('id' => 'image_sizes_image', 'name' => '[image_sizes][image]', 'width' => $this->rpr_options['image_sizes']['image']['width'], 'height' => $this->rpr_options['image_sizes']['image']['height'], 'crop' => $this->rpr_options['image_sizes']['image']['crop'], 'desc' => __( 'Image size that will be used to display images in the single view. Might be overriden by your theme.', 'recipe-press' ) ) );
      	add_settings_field('rpr_image_size_thumb', __("Thumbnail size", "recipe-press-reloaded"), array(&$this, 'rpr_options_image_size'), 'display', 'rpr_display', array('id' => 'image_sizes_thumb', 'name' => '[image_sizes][thumb]', 'width' => $this->rpr_options['image_sizes']['thumb']['width'], 'height' => $this->rpr_options['image_sizes']['thumb']['height'], 'crop' => $this->rpr_options['image_sizes']['thumb']['crop'], 'desc' => __( 'Image size that will be used to display images in the list view. Might be overriden by your theme.', 'recipe-press' ) ) );
+     }
+     
+     /*Section admin post_list*/
+     function rpr_section_admin_post_list_callback_function() {
+     	foreach($this->rpr_options['taxonomies'] as $key=>$tax):
+     	//	add_settings_section('rpr_taxonomies_'.$key, sprintf(__("Taxonomy %s", "recipe-press-reloaded"), $key), array(&$this, 'rpr_section_taxonomies_tax_callback_function'), 'taxonomies_'.$key, array('key'=>$key));
+     		add_settings_field('rpr_taxonomies_'.$key.'_show_on_posts_list', sprintf(__("Show ''%s' on posts list", "recipe-press-reloaded"), $key), array(&$this, 'rpr_options_checkbox'), 'admin_post_list', 'rpr_admin_post_list', array( 'name' => 'rpr_options[taxonomies]['.$key.'][show_on_posts_list]', 'id' => 'rpr_taxonomies_'.$key.'_show_on_posts_list', 'checked' => $this->rpr_options['taxonomies'][$key]['show_on_posts_list']));//,  'desc'=>__('Check this if you want to have the taxonomy items displayed on the recipes posts list in the admin area.', 'recipe-press-reloaded')));
+     	endforeach;
      }
      
      /*Creates a checkbox field
