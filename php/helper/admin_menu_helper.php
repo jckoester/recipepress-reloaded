@@ -11,56 +11,18 @@ function rpr_admin_latest_news_changelog()
     return $out;
 }
 
-function rpr_admin_latest_news_video_lessons()
-{
-    ob_start();
-    include('video_lessons.html');
-    $out = ob_get_contents();
-    ob_end_clean();
-
-    return $out;
-}
 
 function rpr_admin_recipe_slug_preview( $slug )
 {
     return __( 'The recipe archive can be found at', 'recipe-press-reloaded' ) . ' <a href="'.site_url('/'.$slug.'/').'" target="_blank">'.site_url('/'.$slug.'/').'</a>';
 }
 
-
-function rpr_admin_user_menus_slug_preview( $slug )
-{
-    return __( 'The user menus archive can be found at', 'recipe-press-reloaded' ) . ' <a href="'.site_url('/'.$slug.'/').'" target="_blank">'.site_url('/'.$slug.'/').'</a>';
-}
-
-
-function rpr_admin_premium_not_installed()
-{
-    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-    return !is_plugin_active( 'recipe-press-reloaded-premium/recipe-press-reloaded-premium.php' );
-}
-
-
-function rpr_admin_premium_installed()
-{
-    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-    return is_plugin_active( 'recipe-press-reloaded-premium/recipe-press-reloaded-premium.php' );
-}
-
-function rpr_admin_recipe_template_style($style)
-{
-    return $style == 'custom' ? true : false;
-}
-/*
 function rpr_admin_manage_tags()
 {
     return '<a href="'.admin_url('edit.php?post_type=rpr_recipe&page=rpr_taxonomies').'" class="button button-primary" target="_blank">'.__('Manage custom recipe tags', 'recipe-press-reloaded').'</a>';
 }
 
-function rpr_admin_import_recipress()
-{
-    return '<a href="'.admin_url('edit.php?post_type=rpr_recipe&page=rpr_import').'" class="button button-primary" target="_blank">'.__('Import ReciPress recipes', 'recipe-press-reloaded').'</a>';
-}
-*/
+
 //=-=-=-=-=-=-= SHORTCODE GENERATOR =-=-=-=-=-=-=
 
 function rpr_shortcode_generator_recipes_by_date()
@@ -177,14 +139,9 @@ function rpr_shortcode_generator_authors()
 //=-=-=-=-=-=-= WHITELIST =-=-=-=-=-=-=
 
 VP_Security::instance()->whitelist_function('rpr_admin_latest_news_changelog');
-VP_Security::instance()->whitelist_function('rpr_admin_latest_news_video_lessons');
 VP_Security::instance()->whitelist_function('rpr_admin_recipe_slug_preview');
-VP_Security::instance()->whitelist_function('rpr_admin_user_menus_slug_preview');
-VP_Security::instance()->whitelist_function('rpr_admin_premium_not_installed');
-VP_Security::instance()->whitelist_function('rpr_admin_premium_installed');
-VP_Security::instance()->whitelist_function('rpr_admin_recipe_template_style');
 VP_Security::instance()->whitelist_function('rpr_admin_manage_tags');
-VP_Security::instance()->whitelist_function('rpr_admin_import_recipress');
+
 
 VP_Security::instance()->whitelist_function('rpr_shortcode_generator_recipes_by_date');
 VP_Security::instance()->whitelist_function('rpr_shortcode_generator_recipes_by_title');

@@ -78,8 +78,10 @@ class RPR_Core extends RPReloaded {
 
     public function admin_plugin_styles()
     {
-        wp_register_style( $this->pluginName, $this->pluginUrl . '/css/rpr_admin.css', '', RPR_VERSION );
-        wp_enqueue_style( $this->pluginName );
+    	wp_register_style( 'rpr_fa', $this->pluginUrl . '/css/font-awesome.min.css');
+        wp_register_style( 'rpr_adm', $this->pluginUrl . '/css/rpr_admin.css', '', RPR_VERSION );
+        wp_enqueue_style( 'rpr_fa' );
+        wp_enqueue_style( 'rpr_adm' );
     }
 
     public function admin_plugin_scripts( $hook )
@@ -393,7 +395,7 @@ class RPR_Core extends RPReloaded {
 	    						if ( $term === 0 || $term === null) {
 	    							$term = wp_insert_term($ingredient['ingredient'], 'rpr_ingredient');
 	    						}
-	    						
+var_dump($term);	    						
 	    						$term_id = intval($term['term_id']);
 	    
 	    						$ingredient['ingredient_id'] = $term_id;
@@ -565,9 +567,9 @@ class RPR_Core extends RPReloaded {
             //$content = $recipe_post->post_excerpt
             $recipe = get_post_custom($recipe_post->ID);
 
-            //if($recipe_post->post_content == '' && empty($recipe_post->post_excerpt)) {
+            if( isset($recipe['rpr_recipe_description'][0]) ){
                 $content = $recipe['rpr_recipe_description'][0];
-            //}
+            }
 /*
             add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
         }
@@ -741,6 +743,13 @@ class RPR_Core extends RPReloaded {
  	* ///////////////////////////////////// TAXONOMIES ///////////////////////////////////////////
  	*/
 
+    public function activate_taxonomies()
+    {
+    	$this->recipes_init();
+    	$this->rpr_custom_taxonomies_init();
+    
+    	update_option( 'rpr_flush', '1' );
+    }
     // => Move to seperate class? (rpr_taxonomies...)   
     
     function get_custom_taxonomies()

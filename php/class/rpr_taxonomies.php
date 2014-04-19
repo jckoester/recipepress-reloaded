@@ -63,6 +63,7 @@ if( class_exists( 'RPReloaded' ) ) {
 		public function rpr_taxonomies_init() {
 		
 			$this->taxonomies = get_option('rpr_taxonomies', array());
+			
 
 			if( $this->option('recipe_tags_use_wp_categories', 1) == '1'):
 				/*if( taxonomy_exists( 'rpr_category' ) ) {

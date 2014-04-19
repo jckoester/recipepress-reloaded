@@ -81,14 +81,15 @@ if ( !function_exists('get_the_recipe_time_bar') ) {
      //   var_dump($recipe);
         $out = "";
         
-        if($recipe['rpr_recipe_prep_time'][0] != '') {
+        if( isset($recipe['rpr_recipe_prep_time'][0]) ) {
             $out .= '<span class="fa fa-cog recipe-times" title="'. __( 'Preparation Time', 'recipe-press-reloaded' ).'">';
             $out .= '<meta itemprop="prepTime" content="PT'.$recipe['rpr_recipe_prep_time'][0].'M">'.$recipe['rpr_recipe_prep_time'][0].'<span class="recipe-information-time-unit">'.__( 'min.', 'recipe-press-reloaded' ).'</span></span>';
         }
-        if($recipe['rpr_recipe_cook_time'][0] != '') {
+        if( isset($recipe['rpr_recipe_cook_time'][0]) ) {
             $out .= '<span class="fa fa-fire recipe-times" title="'.__( 'Cook Time', 'recipe-press-reloaded' ).'">';
             $out .= '<meta itemprop="cookTime" content="PT'.$recipe['rpr_recipe_cook_time'][0].'M">'.$recipe['rpr_recipe_cook_time'][0].'<span class="recipe-information-time-unit">'.__( 'min.', 'recipe-press-reloaded' ).'</span></span>';
         }
+        
         
         $total_time = $recipe['rpr_recipe_prep_time'][0]+$recipe['rpr_recipe_cook_time'][0]+$recipe['rpr_recipe_passive_time'][0];
         if($total_time != '') {
@@ -118,7 +119,7 @@ if ( !function_exists('get_the_recipe_footer') ) {
                 $out.= get_the_term_list( $recipe_post->ID, 'rpr_tag', '', ', ', '');
                 $out.="</span>";
             }
-        } elseif( RPReloaded::get_option('recipe_tags_display_in_recipe', '1') == '1' ) {
+        } elseif( RPReloaded::get_option('recipe_display_tags_in_recipe', '1') == '1' ) {
             $out.='<span class="fa fa-tags recipe-tags">';
             $out.=get_the_tag_list('', ', ', '');
             $out.="</span>"; 

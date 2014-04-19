@@ -45,6 +45,7 @@
 #recipe_ingredients_meta_box table,
 #recipe_instructions_meta_box table {
     width: 100%;
+    margin-bottom:6px;
 }
 
 #recipe_ingredients_meta_box textarea,
@@ -89,10 +90,10 @@
     cursor: pointer;
 }
 
-#recipe-ingredients td:nth-child(1) { width: 5%; text-align: center; }
+#recipe-ingredients td:nth-child(1) { width: 1%; text-align: center; padding-top:9px; }
 #recipe-ingredients td:nth-child(2) { width: 10%; }
 #recipe-ingredients td:nth-child(3) { width: 15%; }
-#recipe-ingredients td:nth-child(4) { width: 25%; }
+#recipe-ingredients td:nth-child(4) { width: 29%; }
 #recipe-ingredients td:nth-child(5) { width: 40%; }
 #recipe-ingredients td:nth-child(6) { width: 5%; text-align: center; }
 .center-column { text-align: center; }
@@ -105,38 +106,46 @@
     margin-top: 5px;
 }
 
-#recipe-instructions td:nth-child(1) { width: 5%; text-align: center; }
+#recipe-instructions td:nth-child(1) { width: 1%; text-align: center; padding-top:9px;}
 #recipe-instructions td:nth-child(2) { width: 60%; }
 #recipe-instructions td:nth-child(3) { width: 5%; text-align: center;}
 
-#recipe-instructions.images td:nth-child(1) { width: 5%; text-align: center; }
+#recipe-instructions.images td:nth-child(1) { width: 1%; text-align: center; padding-top:9px; }
 #recipe-instructions.images td:nth-child(2) { width: 60%; }
 #recipe-instructions.images td:nth-child(3) { width: 30%; vertical-align: top; }
 #recipe-instructions.images td:nth-child(4) { width: 5%; text-align: center;}
 
 
-.rpr_recipe_ingredients_add_link{
-	background-image:url('../img/wpicons.png')!important;
-	background-position:401px 22px!important;
-	height:25px!important;
-}
-.rpr_recipe_ingredients_add_link:hover{
-	background-position:401px 2px!important;
-}
+.rpr_recipe_ingredients_add_link,
 .rpr_recipe_ingredients_delete_link{
-	background-image:url('../img/wpicons.png')!important;
-	background-position:382px 22px!important;
+	width:25px!important;
 	height:25px!important;
+	padding:0 5px !important;
+	color:#777777!important;
 }
+.rpr_recipe_ingredients_add_link:hover,
 .rpr_recipe_ingredients_delete_link:hover{
-	background-position:382px 2px!important;
+	color:black!important;
 }
+
 .recipe_instructions_thumbnail {
     max-height: 50px;
 }
 
+#ingredients-add-group-box,
+#ingredients-add-box{
+	float:left;
+	margin:0 5px 0 0;
+	padding:0 5px 0 0;
+	border-right:solid 1px black;
+}
+#recipe-form-notes{
+	margin:0;
+	padding:0;
+}
 .rpr-has-link{
-	background-color:#bbff99!important;
+	color:green!important;
+	border-color:green!important;
 }
 
 .rpr-hide {
@@ -161,4 +170,13 @@
 
 .rpr_license .license_button {
     float: right;
+}
+
+
+#latest_news_changelog__dom ul{
+	list-style:disc;
+	padding-left:40px;
+}
+#latest_news_changelog__dom .date{
+	font-style:italic;
 }

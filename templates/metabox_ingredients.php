@@ -2,6 +2,7 @@
 $ingredients = get_post_meta( $recipe->ID, "rpr_recipe_ingredients", true );
 
 $ingredient_link = get_option('rpr_option')['recipe_ingredient_links'];
+$has_link=false;
 ?>
 <script>
     function autoSuggestTag(id, type) {
@@ -63,7 +64,7 @@ if( $ingredients != '')
 <?php
             $previous_group = $ingredient['group'];
         }
-        if($ingredient['link'])
+        if( isset($ingredient['link']) && $ingredient['link'] !="" )
         {
         	$has_link = true;
         }
@@ -73,7 +74,7 @@ if( $ingredients != '')
         }
 ?>
     <tr class="ingredient">
-        <td class="sort-handle"><img src="<?php echo $this->pluginUrl; ?>/img/arrows.png" width="18" height="16"></td>
+        <td class="sort-handle fa fa-arrows-v"></td>
         <td><input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][amount]"     class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo $ingredient['amount']; ?>" /></td>
         <td><input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][unit]"       class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo $ingredient['unit']; ?>" /></td>
         <td><input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');"  value="<?php echo $ingredient['ingredient']; ?>" /></td>
@@ -83,9 +84,9 @@ if( $ingredients != '')
         </td>
         <td>
         <?php if($ingredient_link == 'archive_custom' OR $ingredient_link == 'custom'): ?>
-        	<input name="rpr_recipe_ingredients[<?php echo $i; ?>][link]" class="rpr_recipe_ingredients_link" type="hidden" value="<?php echo $ingredient['link']; ?>" />
-            <span class="rpr_recipe_ingredients_add_link button <?php if($has_link) { echo ' rpr-has-link'; } ?>">&nbsp;</span>
-            <span class="rpr_recipe_ingredients_delete_link button">&nbsp;</span>
+        	<input name="rpr_recipe_ingredients[<?php echo $i; ?>][link]" class="rpr_recipe_ingredients_link" type="hidden" id="ingredient_link_<?php echo $i; ?>" value="<?php echo $ingredient['link']; ?>" />
+            <span class="rpr_recipe_ingredients_add_link button mce-ico mce-i-link <?php if($has_link === true) { echo ' rpr-has-link'; } ?>">&nbsp;</span>
+            <span class="rpr_recipe_ingredients_delete_link button mce-ico mce-i-unlink">&nbsp;</span>
         <?php else: ?>
         	&nbsp;
         <?php endif; ?>
@@ -99,7 +100,7 @@ if( $ingredients != '')
 }
 ?>
     <tr class="ingredient">
-        <td class="sort-handle"><img src="<?php echo $this->pluginUrl; ?>/img/arrows.png" width="18" height="16"></td>
+        <td class="sort-handle fa fa-arrows-v">&nbsp;</td>
         <td><input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][amount]"     class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" placeholder="1" /></td>
         <td><input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][unit]"       class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" placeholder="<?php _e( 'tbsp', $this->pluginName ); ?>" /></td>
         <td><input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'ingredient');" placeholder="<?php _e( 'olive oil', $this->pluginName ); ?>" /></td>
@@ -109,9 +110,9 @@ if( $ingredients != '')
         </td>
         <td>
         <?php if($ingredient_link == 'archive_custom' OR $ingredient_link == 'custom'): ?>
-        	<input name="rpr_recipe_ingredients[<?php echo $i; ?>][link]" class="rpr_recipe_ingredients_link" type="hidden" value="<?php echo $ingredient['link']; ?>" />
-            <span class="rpr_recipe_ingredients_add_link button">&nbsp;</span>
-            <span class="rpr_recipe_ingredients_delete_link button">&nbsp;</span>
+        	<input name="rpr_recipe_ingredients[<?php echo $i; ?>][link]" class="rpr_recipe_ingredients_link" type="hidden" id="ingredient_link_<?php echo $i; ?>"value="" />
+            <span class="rpr_recipe_ingredients_add_link button mce-ico mce-i-link">&nbsp;</span>
+            <span class="rpr_recipe_ingredients_delete_link button mce-ico mce-i-unlink">&nbsp;</span>
         <?php else: ?>
         	&nbsp;
        	<?php endif; ?>
@@ -120,12 +121,9 @@ if( $ingredients != '')
     </tr>
     </tbody>
 </table>
-<div id="ingredients-add-box">
-    <a href="#" id="ingredients-add"><?php _e( 'Add an ingredient', $this->pluginName ); ?></a>
-</div>
-<div id="ingredients-add-group-box">
-    <a href="#" id="ingredients-add-group"><?php _e( 'Add an ingredient group', $this->pluginName ); ?></a>
-</div>
+
+    <a href="#" id="ingredients-add-group" class="button button-primary"><?php _e( 'Add an ingredient group', $this->pluginName ); ?></a>
+    <a href="#" id="ingredients-add" class="button button-primary"><?php _e( 'Add an ingredient', $this->pluginName ); ?></a>
 <div class="recipe-form-notes">
-    <?php _e( "<strong>Use the TAB key</strong> while adding ingredients, it will automatically create new fields. <strong>Don't worry about empty lines</strong>, these will be ignored.", $this->pluginName ); ?>
+    <?php _e( "EasyType edit: <strong>Use the TAB key</strong> while adding ingredients. New fields will be created automatically. <strong>Don't worry about empty lines</strong>, these won't be saved.", $this->pluginName ); ?>
 </div>

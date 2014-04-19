@@ -252,13 +252,13 @@ $admin_menu = array(
                                 'function' => 'rpr_admin_recipe_slug_preview',
                             ),
                         ),
-                    		array(
+                    	/*	array(
                     				'type' => 'notebox',
                     				'name' => 'recipe_todo_item',
                     				'label' => 'TODO:',
                     				'description' => __('This link is wrong. Fix before release.', $this->pluginName) ,
                     				'status' => 'warning',
-                    		),
+                    		),*/
                         array(
                             'type' => 'notebox',
                             'name' => 'recipe_slug_notebox',

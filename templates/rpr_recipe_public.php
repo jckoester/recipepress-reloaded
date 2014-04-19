@@ -153,19 +153,21 @@ $recipe_title = get_the_title( $recipe_post );
                     $thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
                  
                 } else{
-                $thumb = wp_get_attachment_image_src( $instruction['image'], 'large' );
+                	$thumb = wp_get_attachment_image_src( $instruction['image'], 'large' );
                 }
 
                 $thumb_url = $thumb['0'];
                 $full_img = wp_get_attachment_image_src( $instruction['image'], 'full' );
                 $full_img_url = $full_img['0'];
 
-                if($this->option('recipe_images_clickable', '0') == 1) {
+                if($this->option('recipe_images_clickable', '0') == 1 && $thumb_url != "" ) {
                     $out .= '<a href="' . $full_img_url . '" rel="lightbox" title="' . $instruction['description'] . '">';
                     $out .= '<img src="' . $thumb_url . '" />';
                     $out .= '</a>';
                 } else {
-                    $out .= '<img src="' . $thumb_url . '" />';
+					if( $thumb_url != "" ){
+                    	$out .= '<img src="' . $thumb_url . '" />';
+                    }
                 }
             }
 

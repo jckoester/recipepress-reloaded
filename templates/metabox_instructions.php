@@ -63,7 +63,7 @@ if( $instructions != '')
         }
         ?>
         <tr class="instruction">
-            <td class="sort-handle"><img src="<?php echo $this->pluginUrl; ?>/img/arrows.png" width="18" height="16"></td>
+            <td class="sort-handle fa fa-arrows-v"></td>
             <td>
                 <textarea name="rpr_recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"><?php echo $instruction['description']; ?></textarea>
                 <input type="hidden" name="rpr_recipe_instructions[<?php echo $i; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="<?php echo $instruction['group']; ?>" />
@@ -87,7 +87,7 @@ if( $instructions != '')
 $image = $this->pluginUrl . '/img/image_placeholder.png';
 ?>
         <tr class="instruction">
-            <td class="sort-handle"><img src="<?php echo $this->pluginUrl; ?>/img/arrows.png" width="18" height="16"></td>
+            <td class="sort-handle fa fa-arrows-v"></td>
             <td>
                 <textarea name="rpr_recipe_instructions[<?php echo $i; ?>][description]" rows="4" id="ingredient_description_<?php echo $i; ?>"></textarea>
                 <input type="hidden" name="rpr_recipe_instructions[<?php echo $i; ?>][group]"    class="instructions_group" id="instruction_group_<?php echo $i; ?>" value="" />
@@ -114,12 +114,8 @@ $image = $this->pluginUrl . '/img/image_placeholder.png';
     </tbody>
 </table>
 
-<div id="instructions-add-box">
-    <a href="#" id="instructions-add"><?php _e( 'Add an instruction', $this->pluginName ); ?></a>
-</div>
-<div id="instructions-add-group-box">
-    <a href="#" id="instructions-add-group"><?php _e( 'Add an instruction group', $this->pluginName ); ?></a>
-</div>
+    <a href="#" id="instructions-add" class="button button-primary"><?php _e( 'Add an instruction', $this->pluginName ); ?></a>
+    <a href="#" id="instructions-add-group" class="button button-primary"><?php _e( 'Add an instruction group', $this->pluginName ); ?></a>
 <div class="recipe-form-notes">
-    <?php _e( "<strong>Use the TAB key</strong> while adding instructions, it will automatically create new fields. <strong>Don't worry about empty lines</strong>, these will be ignored.", $this->pluginName ); ?>
+    <?php _e( "EasyType edit: <strong>Use the TAB key</strong> while adding ingredients. New fields will be created automatically. <strong>Don't worry about empty lines</strong>, these won't be saved.", $this->pluginName ); ?>
 </div>
