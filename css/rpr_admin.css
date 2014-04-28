@@ -123,9 +123,12 @@
 	padding:0 5px !important;
 	color:#777777!important;
 }
-.rpr_recipe_ingredients_add_link:hover,
-.rpr_recipe_ingredients_delete_link:hover{
+.rpr_recipe_ingredients_add_link:hover{
 	color:black!important;
+}
+.rpr_recipe_ingredients_delete_link:hover{
+	color:red!important;
+	border-color:red!important;
 }
 
 .recipe_instructions_thumbnail {
