@@ -3,21 +3,21 @@ Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
 Requires at least: 3.4
 Tested up to: 3.9
-Stable tag: 0.5.1
+Stable tag: 0.3
 License: GPLv2
 
-A simple recipe plugin. It does all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically. Yet to come: easily create indexes of any taxonomy like ingredient, category, course, cuisine, ...
+A simple recipe plugin. It does all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically.
 
 == Description ==
 
 It basically adds a post type for recipes to your site. You can publish recipes as standalone posts or include in your normal posts and pages. 
 Organize your recipes in categories, cuisines, courses, seasons, ... It'S up to your choice how many taxonomies you are creating. Of course there are post images and all the normal wordpress post goodies for your recipes as well.
 The backend is designed to allow fast, keyboard-based input and not to bother you with to many clicks and choices.
-The frontend is using schema.org's recipe microformat to allow search engines like google to displa our recipes nicely.
+The frontend is using schema.org's recipe microformat to allow search engines like google to display our recipes nicely.
 
 = Features =
 
-* custom post type "recipe", made to be used alongside with otrher recipe plugins
+* custom post type "recipe", made to be used alongside with other recipe plugins
 * a bunch of taxonomies like cateogories, cuisines, seasons, course. You can add as many custom taxonomies as you like
 * options to also include categories and tags used from standard posts.
 * user comments and pingbacks
@@ -47,14 +47,14 @@ If you want a translation of another language included please help translating!
 == Changelog ==
 
 = 0.5.1 April 29th, 2014
-* Fixed a fatal error preventiung the plugin from installing.
+* Fixed a fatal error preventing the plugin from installing.
 
 = 0.5 April 18th, 2014
 * completely remade the codebase, backend and frontend for better maintenance
 * lighter backend for easy writing
 * simpler options page
 * added support for schema.org's recipe microformat
-* relabeled the post-type to avoid interference woith other recipe-plugins (now RPR creates pots of type "rpr-recipe" instead of "recipe")
+* relabeled the post-type to avoid interference with other recipe-plugins (now RPR creates posts of type "rpr-recipe" instead of "recipe")
 
 = 0.2 - November 18th, 2012 =
 * Fixed issues #1 and #2 on the RPR bugtracker (http://www.rp-reloaded.net/report-a-bug/)
