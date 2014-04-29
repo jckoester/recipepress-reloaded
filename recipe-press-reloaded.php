@@ -44,7 +44,7 @@ class RPReloaded{
 	
 	public function __construct()
 	{
-		$this->pluginName = 'recipe-press-reloaded';
+		$this->pluginName = 'recipepress-reloaded';
 		$this->pluginDir = WP_PLUGIN_DIR . '/' . $this->pluginName;
 		$this->pluginUrl = plugins_url() . '/' . $this->pluginName;
 	
