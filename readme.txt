@@ -3,10 +3,10 @@ Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
 Requires at least: 3.4
 Tested up to: 3.9
-Stable tag: 0.5
+Stable tag: 0.5.1
 License: GPLv2
 
-A simple recipe plugin. It does all you need for your food blog: add recipes as easily as extra post type or include them in your blog posts. Plus: there these nifty recipe previews in Google's search - automagically. Yet to come: easily create indexes of any taxonomy like ingredient, category, course, cuisine, ...
+A simple recipe plugin. It does all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically. Yet to come: easily create indexes of any taxonomy like ingredient, category, course, cuisine, ...
 
 == Description ==
 
@@ -45,6 +45,9 @@ If you want a translation of another language included please help translating!
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
+
+= 0.5.1 April 29th, 2014
+* Fixed a fatal error preventiung the plugin from installing.
 
 = 0.5 April 18th, 2014
 * completely remade the codebase, backend and frontend for better maintenance
