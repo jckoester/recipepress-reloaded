@@ -40,7 +40,7 @@ function rpr_shortcode_generator_recipes($orderby, $order)
     $recipe_list = array();
 
     $args = array(
-        'post_type' => 'recipe',
+        'post_type' => 'rpr_recipe',
         'post_status' => 'publish',
         'orderby' => $orderby,
         'order' => $order,

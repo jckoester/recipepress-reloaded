@@ -18,12 +18,22 @@ if( class_exists( 'RPReloaded' ) ) {
 			add_action('admin_notices', array( $this, 'rpr_admin_notice_migrate' ));
 		}
 		
+		
 		public function rpr_check_migration() {
+			
+			$version_updated=$this->get_version_updated();
+			
+			// Check the version we've laste updated to:
+			$version_updated = (get_option( 'rpr_version_updated' ));
+			
 			// Check if the version we've laste updated to is current:
 			if ( get_option( 'rpr_version_updated' ) === get_option( 'rpr_version' ) ) {
 				update_option( 'rpr_update_needed' , 0);
 			} else {
-				update_option( 'rpr_update_needed' , 1);
+				//check if old rpr or rp is installed
+				if( get_option( 'rpr_version_updated' ) == "0.3.0" || get_option( 'rpr_version_updated' ) == 'RecipePress' ){
+					update_option( 'rpr_update_needed' , 1);
+				}
 			}
 			
 		}
@@ -36,28 +46,12 @@ if( class_exists( 'RPReloaded' ) ) {
 		}
 		
 		public function rpr_do_migration() {
+			$version_updated=$this->get_version_updated();
 			
 			if( isset($_GET['rpr_do_migration']) && $_GET['rpr_do_migration'] == '1' ){
-				
-				// Check the version we've laste updated to:
-				$version_updated = (get_option( 'rpr_version_updated' ));
-				// fix if necessary:
-				if( ! $version_updated ){
-					// Check, if RPR < 0.5:
-					if( is_array( get_option( 'rpr_options' ) ) ) {
-						$version_updated = '0.3.0';
-						update_option( 'rpr_version_updated', '0.3.0' );
-					
-					//Check if RecipePress
-					} elseif( is_array( get_option( 'recipe-press-options' ) ) ) {
-						$version_updated = 'RecipePress';
-						update_option( 'rpr_version_updated', 'RecipePress' );
-					}
-				}
-				
-				
+
 				if( $version_updated == '0.3.0' || $version_updated == 'RecipePress' ){
-					$this->migrate_recipepress();
+					$this->migrate_recipepress_3();
 				}
 				
 				// Set version to current version
@@ -70,8 +64,25 @@ if( class_exists( 'RPReloaded' ) ) {
 				exit();
 			}						
 		}
+		
+		private function get_version_updated(){
+			// fix if necessary:
+			if( ! $version_updated ){
+				// Check, if RPR < 0.5:
+				if( is_array( get_option( 'rpr_options' ) ) ) {
+					$version_updated = '0.3.0';
+					update_option( 'rpr_version_updated', '0.3.0' );
+			
+					//Check if RecipePress
+				} elseif( is_array( get_option( 'recipe-press-options' ) ) ) {
+					$version_updated = 'RecipePress';
+					update_option( 'rpr_version_updated', 'RecipePress' );
+				}
+			}
+			return $version_updated;
+		}
 		//////////////////////// Migration from RecipePress and Recipe Press Reloaded < 0.5 ///////////////
-		public function migrate_recipepress() {
+		public function migrate_recipepress_3() {
 			// 1.) Register old posttype and taxonomies:
 			$this->setup_post_type();
 			$this->setup_ingredients();
@@ -139,7 +150,11 @@ if( class_exists( 'RPReloaded' ) ) {
 							}
 							
 							if( isset($ing['quantity'])) {
-								$ingredient['amount']=$ing['quantity'];
+								if ($ing['quantity']==0){
+									$ingredient['amount']="";
+								}else{
+									$ingredient['amount']=$ing['quantity'];
+								}
 							} else {
 								$ingredient['amount']="";
 							}
@@ -196,7 +211,7 @@ if( class_exists( 'RPReloaded' ) ) {
 						$non_empty_instructions = array();
 					
 						foreach( $new as $instruction ) {
-							if( isset($instruction['description']) || isset($instruction['image']) ) {
+							if( ( isset($instruction['description']) && $instruction['description'] != "" )|| isset($instruction['image']) ) {
 								$non_empty_instructions[] = $instruction;
 							}
 						}

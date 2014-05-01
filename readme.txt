@@ -17,6 +17,7 @@ The frontend is using schema.org's recipe microformat to allow search engines li
 
 = Features =
 
+* update from the famous but discontinued plugin "RecipePress" by grandslambert
 * custom post type "recipe", made to be used alongside with other recipe plugins
 * a bunch of taxonomies like cateogories, cuisines, seasons, course. You can add as many custom taxonomies as you like
 * options to also include categories and tags used from standard posts.
@@ -46,10 +47,13 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
-= 0.5.1 April 29th, 2014
-* Fixed a fatal error preventing the plugin from installing.
+= 0.5.2 April 30th, 2014
+* improved the migration scripts
 
-= 0.5 April 18th, 2014
+= 0.5.1 April 29th, 2014
+* Bugfix release
+
+= 0.5.0 April 18th, 2014
 * completely remade the codebase, backend and frontend for better maintenance
 * lighter backend for easy writing
 * simpler options page
@@ -65,28 +69,14 @@ If you want a translation of another language included please help translating!
 
 == Frequently Asked Questions ==
 
-= I found a bug. What's next? =
-
-Please report your bug at http://www.rp-reloaded.net/report-a-bug/.
-
-= Where can I get support? =
-
-I'm currently building up http://www.rp-reloaded.net/ as the home of RecipePress reloaded.
-
-== Screenshots ==
-
-TBD
-
-
-== Frequently Asked Questions ==
+= I've been using RecipePress by grandslambert. How can I migrate?
+Just install RecipePress Reloaded. Deactivate RecipePress and activate RecipePress Reloaded. RecipePress Reloaded will have to upgrade youre database. Pleas MAKE A BACKUP before you proceed.
 
 = I found a bug. What's next? =
-
-Please report your bug at http://www.rp-reloaded.net/report-a-bug/.
+Please open a thread in trhe wordpress.org support area.
 
 = Where can I get support? =
-
-I'm currently building up http://www.rp-reloaded.net/report-a-bug/ as the home of RecipePress reloaded.
+I'm currently building up http://www.rp-reloaded.net/ as the home of RecipePress reloaded. Please be aware that I'm working on this plugin only in my rare spare time and I do it mainly for my own website. I'll do what I can to help you out but it might take some time.
 
 == Screenshots ==
 
