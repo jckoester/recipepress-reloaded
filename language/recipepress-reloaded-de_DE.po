@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecipePress reloaded\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-29 19:14+0100\n"
-"PO-Revision-Date: 2014-04-29 19:14+0100\n"
+"POT-Creation-Date: 2014-05-03 18:48+0100\n"
+"PO-Revision-Date: 2014-05-03 18:48+0100\n"
 "Last-Translator: Jan Köster <jan.koester@cbjck.de>\n"
 "Language-Team:  <dasmaeh@cbjck.de>\n"
 "Language: de_DE\n"
@@ -78,7 +78,7 @@ msgid "Description"
 msgstr "Beschreibung"
 
 #: ../php/class/rpr_core.php:266 ../php/class/rpr_core.php:769
-#: ../php/class/rpr_migration.php:397 ../php/class/rpr_migration.php:401
+#: ../php/class/rpr_migration.php:412 ../php/class/rpr_migration.php:416
 #: ../templates/admin.php:117 ../templates/rpr_recipe_public.php:55
 msgid "Ingredients"
 msgstr "Zutaten"
@@ -273,7 +273,7 @@ msgstr "Wähle aus den häufig genutzten Bewertungen"
 msgid "No ratings found."
 msgstr "Keine Bewertungen gefunden"
 
-#: ../php/class/rpr_migration.php:33
+#: ../php/class/rpr_migration.php:40
 #, php-format
 msgid ""
 "The Recipe Press Reloaded database needs to upgraded. Make sure you have a "
@@ -795,17 +795,25 @@ msgstr ""
 "Verwende die Standard WP-Schlagworte, um deine Rezepte zu organisieren. Wenn "
 "auf \"Aus\" gesetzt wird RPR  eigene Schlagworte anlegen."
 
-#: ../templates/admin.php:322 ../templates/admin.php:337
-msgid "FAQ & Support"
-msgstr "FAQ & Support"
+#: ../templates/admin.php:322
+msgid "Documentation & Support"
+msgstr "Dokumentation & Support"
 
-#: ../templates/admin.php:330
-msgid "Fix this link."
-msgstr "Korrigiere diesen Link."
-
-#: ../templates/admin.php:336
+#: ../templates/admin.php:329
 msgid "Need more help?"
 msgstr "Du brauchst mehr Hilfe?"
+
+#: ../templates/admin.php:330
+msgid ""
+"Have a look at the <a href=\"http://rp-reloaded.net/documentation\" target="
+"\"_blank\">Documentation</a> (currently being built up) or ask your "
+"questions at the <a href=\"http://wordpress.org/support/plugin/recipepress-"
+"reloaded\" target=\"_blank\">support forum</a>."
+msgstr ""
+"Schau in die <a href=\"http://rp-reloaded.net/documentation\" target=\"_blank"
+"\">Dokumentation</a> (im Aufbau) oder stelle deine Fragen im <a href="
+"\"http://wordpress.org/support/plugin/recipepress-reloaded\" target=\"_blank"
+"\">Support-Forum</a>."
 
 #: ../templates/metabox_details.php:33
 msgid "star"
@@ -1064,6 +1072,12 @@ msgstr "danach"
 #: ../widgets/taxonomy-list-widget.php:180
 msgid "Hide empty terms?"
 msgstr "Leere Begriffe verstecken?"
+
+#~ msgid "FAQ & Support"
+#~ msgstr "FAQ & Support"
+
+#~ msgid "Fix this link."
+#~ msgstr "Korrigiere diesen Link."
 
 #~ msgid "The user menus archive can be found at"
 #~ msgstr "Das Benutzer Menü-Archive findet sich unter"
