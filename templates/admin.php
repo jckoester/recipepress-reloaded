@@ -263,7 +263,7 @@ $admin_menu = array(
                             'type' => 'notebox',
                             'name' => 'recipe_slug_notebox',
                             'label' => __('404 error/page not found?', $this->pluginName),
-                            'description' => __('Try', $this->pluginName) . ' <a href="http://rp-reloaded.net/en/solving-errors/error-404-page-not-found" target="_blank">'.__('flushing your permalinks', $this->pluginName).'</a>.',
+                            'description' => __('Try', $this->pluginName) . ' <a href="http://rp-reloaded.net/documentation/404-error-page-found/" target="_blank">'.__('flushing your permalinks', $this->pluginName).'</a>.',
                             'status' => 'info',
                         ),
                     ),
@@ -317,26 +317,19 @@ $admin_menu = array(
                 ),
             ),
         ),
-//=-=-=-=-=-=-= FAQ & SUPPORT =-=-=-=-=-=-=
+//=-=-=-=-=-=-= Documentation & SUPPORT =-=-=-=-=-=-=
         array(
-            'title' => __('FAQ & Support', $this->pluginName),
-            'name' => 'faq_support',
+            'title' => __('Documentation & Support', $this->pluginName),
+            'name' => 'doc_support',
             'icon' => 'font-awesome:fa-book',
             'controls' => array(
-            		array(
-            				'type' => 'notebox',
-            				'name' => 'recipe_todo_item',
-            				'label' => 'TODO:',
-            				'description' => __('Fix this link.', $this->pluginName) ,
-            				'status' => 'warning',
-            		),
-                array(
-                    'type' => 'notebox',
-                    'name' => 'faq_support_notebox',
-                    'label' => __('Need more help?', $this->pluginName),
-                    'description' => '<a href="http://rp-reloaded.net/support" target="_blank">Recipe Press Reloaded ' .__('FAQ & Support', $this->pluginName) . '</a>',
-                    'status' => 'info',
-                ),
+            	array(
+            		'type' => 'notebox',
+            		'name' => 'doc_support_notebox_sup',
+            		'label' => __('Need more help?', $this->pluginName),
+            		'description' => __('Have a look at the <a href="http://rp-reloaded.net/documentation" target="_blank">Documentation</a> (currently being built up) or ask your questions at the <a href="http://wordpress.org/support/plugin/recipepress-reloaded" target="_blank">support forum</a>.', $this->pluginName),
+            		'status' => 'info',
+            	),
             ),
         ),
     ),

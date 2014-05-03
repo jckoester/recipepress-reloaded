@@ -23,9 +23,6 @@ if( class_exists( 'RPReloaded' ) ) {
 			
 			$version_updated=$this->get_version_updated();
 			
-			// Check the version we've laste updated to:
-			$version_updated = (get_option( 'rpr_version_updated' ));
-			
 			// Check if the version we've laste updated to is current:
 			if ( get_option( 'rpr_version_updated' ) === get_option( 'rpr_version' ) ) {
 				update_option( 'rpr_update_needed' , 0);
@@ -66,6 +63,9 @@ if( class_exists( 'RPReloaded' ) ) {
 		}
 		
 		private function get_version_updated(){
+            // Check the version we've laste updated to:
+			$version_updated = (get_option( 'rpr_version_updated' ));
+			
 			// fix if necessary:
 			if( ! $version_updated ){
 				// Check, if RPR < 0.5:
@@ -89,7 +89,7 @@ if( class_exists( 'RPReloaded' ) ) {
 			$this->setup_oldtaxonomies();
 
 			// 2.) get all old recipes and walk through
-			$recipes = $this->get_recipes();
+			$recipes = $this->get_old_recipes();
 			
 			foreach( $recipes as $recipe ) {
 				// a) change post type
@@ -249,7 +249,7 @@ if( class_exists( 'RPReloaded' ) ) {
 			return true;
 		}
 				
-		function get_recipes($orderby = 'date', $order = 'DESC', $taxonomy = '', $term = '', $limit = -1, $author = '') {
+		function get_old_recipes($orderby = 'date', $order = 'DESC', $taxonomy = '', $term = '', $limit = -1, $author = '') {
 			$args = array(
 					'post_type' => 'recipe',
 					//'post_status' => 'publish',
