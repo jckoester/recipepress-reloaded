@@ -150,7 +150,7 @@ class RPR_Core extends RPReloaded {
 			    	),
 		    	'public' => true,
 		    	'menu_position' => 5,
-		    	'supports' => array( 'title', 'thumbnail', 'comments' ),
+		    	'supports' => array( 'title', 'thumbnail', 'comments', 'trackbacks', 'author' ),
 		    	'taxonomies' => $taxonomies,
 		    	'menu_icon' =>  $this->pluginUrl . '/img/icon_16.png',
 		    	'has_archive' => true,
