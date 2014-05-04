@@ -47,6 +47,9 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
+= 0.5.3 May 4th, 2014
+* Bugfix release
+
 = 0.5.2 April 30th, 2014
 * improved the migration scripts
 
@@ -80,5 +83,8 @@ I'm currently building up http://www.rp-reloaded.net/ as the home of RecipePress
 
 == Screenshots ==
 
-TBD
-
+1. Simple and clean interface to type your recipes easily.
+2. Sample recipe output. Find more at <a href="http://www.rp-reloaded.net/demo">http://www.rp-reloaded.net/demo</a>
+3. Output is using Schema.org's microformat for recipes to allow Google to create RichSnippets
+4. Details of the backend interface (ingredients). Easily add number, unit, ingredient name, comment and link. Ingredients will automatically be created as taxonomy items. You can also group ingredients.  
+5. Details of the backend interface (instructions). Add instructions step by step. You can even illustrate each step with a picture. Of course istructions can be grouped as well.
