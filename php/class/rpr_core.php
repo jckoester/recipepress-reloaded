@@ -37,6 +37,7 @@ class RPR_Core extends RPReloaded {
         // Filters
         add_filter( 'the_content', array( $this, 'recipes_content' ), 10 );
         add_filter( 'get_the_excerpt', array( $this, 'recipes_excerpt' ), 10 );
+//        add_filter( 'the_excerpt', array( $this, 'recipes_excerpt' ), 10 );
         // Add filters for author, category tag dependent on display settings!
         if( $this->option( 'recipe_display_author_in_recipe', '1') === '1') {
             add_filter( 'get_the_author', array( $this, 'recipes_author' ), 10 );
@@ -150,7 +151,7 @@ class RPR_Core extends RPReloaded {
 			    	),
 		    	'public' => true,
 		    	'menu_position' => 5,
-		    	'supports' => array( 'title', 'thumbnail', 'comments', 'trackbacks', 'author' ),
+		    	'supports' => array( 'title', 'thumbnail', 'comments' , 'author'),
 		    	'taxonomies' => $taxonomies,
 		    	'menu_icon' =>  $this->pluginUrl . '/img/icon_16.png',
 		    	'has_archive' => true,
@@ -547,7 +548,7 @@ var_dump($term);
     		}
     		else
     		{
-    			$content = $this->recipes_excerpt();
+    			$content = $this->get_recipes_excerpt();
     		}
     
     		add_filter('the_content', array( $this, 'recipes_content' ), 10);
@@ -556,13 +557,13 @@ var_dump($term);
     	return $content;
     }
     
-    public function recipes_excerpt() {
-    /*    if (!in_the_loop () || !is_main_query ()) {
+    public function recipes_excerpt( $content ) {
+        if (!in_the_loop () || !is_main_query ()) {
             return $content;
         }
 
         if ( get_post_type() == 'rpr_recipe' ) {
-            remove_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);*/
+            remove_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
             $recipe_post = get_post();
             //$content = $recipe_post->post_excerpt
             $recipe = get_post_custom($recipe_post->ID);
@@ -570,13 +571,36 @@ var_dump($term);
             if( isset($recipe['rpr_recipe_description'][0]) ){
                 $content = $recipe['rpr_recipe_description'][0];
             }
-/*
-            add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
+
+          add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
+          $content = get_the_recipe_category_bar().wpautop($content).get_the_recipe_time_bar();              
         }
-*/
-        return get_the_recipe_category_bar().wpautop($content).get_the_recipe_time_bar();
+        
+        return $content;
+
     }
      
+    public function get_recipes_excerpt() {
+/*        if (!in_the_loop () || !is_main_query ()) {
+            return $content;
+        }
+
+        if ( get_post_type() == 'rpr_recipe' ) {
+            remove_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
+*/            $recipe_post = get_post();
+            //$content = $recipe_post->post_excerpt
+            $recipe = get_post_custom($recipe_post->ID);
+
+            if( isset($recipe['rpr_recipe_description'][0]) ){
+                $content = $recipe['rpr_recipe_description'][0];
+            }
+
+  //          add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
+  //      }
+        
+    //    return $content;
+    return get_the_recipe_category_bar().wpautop($content).get_the_recipe_time_bar();    
+    }
 
     // These filters will only be regoistered, if the apropriate settings are made
     public function recipes_author() {
