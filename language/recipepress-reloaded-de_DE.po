@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecipePress reloaded\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-03 18:48+0100\n"
-"PO-Revision-Date: 2014-05-03 18:48+0100\n"
+"POT-Creation-Date: 2014-05-06 11:14+0100\n"
+"PO-Revision-Date: 2014-05-06 11:15+0100\n"
 "Last-Translator: Jan Köster <jan.koester@cbjck.de>\n"
 "Language-Team:  <dasmaeh@cbjck.de>\n"
 "Language: de_DE\n"
@@ -15,261 +15,289 @@ msgstr ""
 "X-Generator: Poedit 1.6.4\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../php/class/rpr_core.php:122
+#: ../php/class/rpr_core.php:135
 msgid "Recipes"
 msgstr "Rezepte"
 
-#: ../php/class/rpr_core.php:123 ../templates/admin.php:45
+#: ../php/class/rpr_core.php:136 ../templates/admin.php:45
 msgid "Recipe"
 msgstr "Rezept"
 
-#: ../php/class/rpr_core.php:139 ../php/class/rpr_core.php:140
-#: ../php/class/rpr_core.php:812 ../php/class/rpr_taxonomies.php:279
+#: ../php/class/rpr_core.php:152 ../php/class/rpr_core.php:153
+#: ../php/class/rpr_core.php:898 ../php/class/rpr_taxonomies.php:279
 msgid "Add New"
 msgstr "Erstellen"
 
-#: ../php/class/rpr_core.php:141 ../php/class/rpr_core.php:142
-#: ../php/class/rpr_core.php:810 ../php/class/rpr_taxonomies.php:277
+#: ../php/class/rpr_core.php:154 ../php/class/rpr_core.php:155
+#: ../php/class/rpr_core.php:896 ../php/class/rpr_taxonomies.php:277
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: ../php/class/rpr_core.php:143 ../php/class/rpr_core.php:813
+#: ../php/class/rpr_core.php:156 ../php/class/rpr_core.php:899
 #: ../php/class/rpr_taxonomies.php:280
 msgid "New"
 msgstr "Erstellen"
 
-#: ../php/class/rpr_core.php:144 ../php/class/rpr_core.php:145
+#: ../php/class/rpr_core.php:157 ../php/class/rpr_core.php:158
 msgid "View"
 msgstr "Betrachten"
 
-#: ../php/class/rpr_core.php:146 ../php/class/rpr_core.php:807
+#: ../php/class/rpr_core.php:159 ../php/class/rpr_core.php:893
 #: ../php/class/rpr_taxonomies.php:274
 msgid "Search"
 msgstr "Suchen"
 
-#: ../php/class/rpr_core.php:147 ../php/class/rpr_core.php:148
-#: ../php/class/rpr_core.php:817 ../php/class/rpr_taxonomies.php:284
+#: ../php/class/rpr_core.php:160 ../php/class/rpr_core.php:161
+#: ../php/class/rpr_core.php:903 ../php/class/rpr_taxonomies.php:284
 msgid "No"
 msgstr "Nein"
 
-#: ../php/class/rpr_core.php:147 ../php/class/rpr_core.php:817
+#: ../php/class/rpr_core.php:160 ../php/class/rpr_core.php:903
 #: ../php/class/rpr_taxonomies.php:284
 msgid "found."
 msgstr "gefunden."
 
-#: ../php/class/rpr_core.php:148
+#: ../php/class/rpr_core.php:161
 msgid "found in trash."
 msgstr "im Müll gefunden"
 
-#: ../php/class/rpr_core.php:149
+#: ../php/class/rpr_core.php:162
 msgid "Parent"
 msgstr "Übergeordnet"
 
-#: ../php/class/rpr_core.php:243
+#: ../php/class/rpr_core.php:256
 msgid "Post image"
 msgstr "Beitragsbild"
 
-#: ../php/class/rpr_core.php:248
+#: ../php/class/rpr_core.php:261
 msgid "Details"
 msgstr "Details"
 
-#: ../php/class/rpr_core.php:257
+#: ../php/class/rpr_core.php:270
 msgid "Description"
 msgstr "Beschreibung"
 
-#: ../php/class/rpr_core.php:266 ../php/class/rpr_core.php:769
+#: ../php/class/rpr_core.php:279 ../php/class/rpr_core.php:855
 #: ../php/class/rpr_migration.php:412 ../php/class/rpr_migration.php:416
-#: ../templates/admin.php:117 ../templates/rpr_recipe_public.php:55
+#: ../templates/admin.php:117 ../templates/rpr_recipe_public.php:57
 msgid "Ingredients"
 msgstr "Zutaten"
 
-#: ../php/class/rpr_core.php:275 ../templates/admin.php:176
-#: ../templates/rpr_recipe_public.php:129
+#: ../php/class/rpr_core.php:288 ../templates/admin.php:176
+#: ../templates/rpr_recipe_public.php:131
 msgid "Instructions"
 msgstr "Zubereitung"
 
-#: ../php/class/rpr_core.php:284
+#: ../php/class/rpr_core.php:297
 msgid "Notes"
 msgstr "Notizen"
 
-#: ../php/class/rpr_core.php:681 ../php/class/rpr_core.php:727
+#: ../php/class/rpr_core.php:458
+msgid "Image"
+msgstr "Bild"
+
+#: ../php/class/rpr_core.php:459
+msgid "Recipe Title"
+msgstr "Titel"
+
+#: ../php/class/rpr_core.php:460
+msgid "Author"
+msgstr "Autor"
+
+#: ../php/class/rpr_core.php:461
+msgid "Category"
+msgstr "Kategorie"
+
+#: ../php/class/rpr_core.php:462
+msgid "Tags"
+msgstr "Schlagworte"
+
+#: ../php/class/rpr_core.php:463
+msgid "Comments"
+msgstr "Kommentare"
+
+#: ../php/class/rpr_core.php:464
+msgid "Date"
+msgstr "Datum"
+
+#: ../php/class/rpr_core.php:767 ../php/class/rpr_core.php:813
 msgid ""
 "You have to create a recipe first, check the 'Recipes' menu on the left."
 msgstr ""
 "Sie müssen zuerst ein Rezept speichern, schauen Sie in das \"Rezepte\"-Menü "
 "rechts."
 
-#: ../php/class/rpr_core.php:769
+#: ../php/class/rpr_core.php:855
 msgid "Ingredient"
 msgstr "Zutat"
 
-#: ../php/class/rpr_core.php:770
+#: ../php/class/rpr_core.php:856
 msgid "Courses"
 msgstr "Gänge"
 
-#: ../php/class/rpr_core.php:770
+#: ../php/class/rpr_core.php:856
 msgid "Course"
 msgstr "Gang"
 
-#: ../php/class/rpr_core.php:771
+#: ../php/class/rpr_core.php:857
 msgid "Cuisines"
 msgstr "Küchen"
 
-#: ../php/class/rpr_core.php:771
+#: ../php/class/rpr_core.php:857
 msgid "Cuisine"
 msgstr "Küche"
 
-#: ../php/class/rpr_core.php:776
+#: ../php/class/rpr_core.php:862
 msgid "Breakfast"
 msgstr "Frühstück"
 
-#: ../php/class/rpr_core.php:777
+#: ../php/class/rpr_core.php:863
 msgid "Appetizer"
 msgstr "Vorspeise"
 
-#: ../php/class/rpr_core.php:778
+#: ../php/class/rpr_core.php:864
 msgid "Soup"
 msgstr "Suppe"
 
-#: ../php/class/rpr_core.php:779
+#: ../php/class/rpr_core.php:865
 msgid "Main Course"
 msgstr "Hauptgang"
 
-#: ../php/class/rpr_core.php:780
+#: ../php/class/rpr_core.php:866
 msgid "Side Dish"
 msgstr "Beilage"
 
-#: ../php/class/rpr_core.php:781
+#: ../php/class/rpr_core.php:867
 msgid "Salad"
 msgstr "Salat"
 
-#: ../php/class/rpr_core.php:782
+#: ../php/class/rpr_core.php:868
 msgid "Dessert"
 msgstr "Nachtisch"
 
-#: ../php/class/rpr_core.php:783
+#: ../php/class/rpr_core.php:869
 msgid "Snack"
 msgstr "Snack"
 
-#: ../php/class/rpr_core.php:784
+#: ../php/class/rpr_core.php:870
 msgid "Drinks"
 msgstr "Getränke"
 
-#: ../php/class/rpr_core.php:786
+#: ../php/class/rpr_core.php:872
 msgid "French"
 msgstr "Französisch"
 
-#: ../php/class/rpr_core.php:787
+#: ../php/class/rpr_core.php:873
 msgid "Italian"
 msgstr "Italienisch"
 
-#: ../php/class/rpr_core.php:788
+#: ../php/class/rpr_core.php:874
 msgid "Mediterranean"
 msgstr "Mediterran"
 
-#: ../php/class/rpr_core.php:789
+#: ../php/class/rpr_core.php:875
 msgid "Indian"
 msgstr "Indisch"
 
-#: ../php/class/rpr_core.php:790
+#: ../php/class/rpr_core.php:876
 msgid "Chinese"
 msgstr "Chinesisch"
 
-#: ../php/class/rpr_core.php:791
+#: ../php/class/rpr_core.php:877
 msgid "Japanese"
 msgstr "Japanisch"
 
-#: ../php/class/rpr_core.php:792
+#: ../php/class/rpr_core.php:878
 msgid "American"
 msgstr "Amerikanisch"
 
-#: ../php/class/rpr_core.php:793
+#: ../php/class/rpr_core.php:879
 msgid "Mexican"
 msgstr "Mexikanisch"
 
-#: ../php/class/rpr_core.php:808 ../php/class/rpr_taxonomies.php:275
+#: ../php/class/rpr_core.php:894 ../php/class/rpr_taxonomies.php:275
 msgid "Popular"
 msgstr "Beliebt"
 
-#: ../php/class/rpr_core.php:809 ../php/class/rpr_taxonomies.php:276
+#: ../php/class/rpr_core.php:895 ../php/class/rpr_taxonomies.php:276
 msgid "All"
 msgstr "Alle"
 
-#: ../php/class/rpr_core.php:811 ../php/class/rpr_taxonomies.php:278
+#: ../php/class/rpr_core.php:897 ../php/class/rpr_taxonomies.php:278
 msgid "Update"
 msgstr "Aktualisierung"
 
-#: ../php/class/rpr_core.php:813 ../php/class/rpr_taxonomies.php:126
+#: ../php/class/rpr_core.php:899 ../php/class/rpr_taxonomies.php:126
 #: ../php/class/rpr_taxonomies.php:182 ../php/class/rpr_taxonomies.php:280
 #: ../widgets/taxonomy-list-widget.php:158
 msgid "Name"
 msgstr "Name"
 
-#: ../php/class/rpr_core.php:814 ../php/class/rpr_taxonomies.php:281
+#: ../php/class/rpr_core.php:900 ../php/class/rpr_taxonomies.php:281
 msgid "Separate"
 msgstr "Trenne"
 
-#: ../php/class/rpr_core.php:814 ../php/class/rpr_taxonomies.php:281
+#: ../php/class/rpr_core.php:900 ../php/class/rpr_taxonomies.php:281
 msgid "with commas"
 msgstr "mit Kommata"
 
-#: ../php/class/rpr_core.php:815 ../php/class/rpr_taxonomies.php:282
+#: ../php/class/rpr_core.php:901 ../php/class/rpr_taxonomies.php:282
 msgid "Add or remove"
 msgstr "hinzufügen oder löschen"
 
-#: ../php/class/rpr_core.php:816 ../php/class/rpr_taxonomies.php:283
+#: ../php/class/rpr_core.php:902 ../php/class/rpr_taxonomies.php:283
 msgid "Choose from the most used"
 msgstr "Wähle aus den häufig genutzten"
 
-#: ../php/class/rpr_core.php:842 ../php/class/rpr_core.php:855
+#: ../php/class/rpr_core.php:928 ../php/class/rpr_core.php:941
 msgid "Ratings"
 msgstr "Bewertungen"
 
-#: ../php/class/rpr_core.php:843 ../templates/metabox_details.php:27
+#: ../php/class/rpr_core.php:929 ../templates/metabox_details.php:27
 msgid "Rating"
 msgstr "Bewertung"
 
-#: ../php/class/rpr_core.php:844
+#: ../php/class/rpr_core.php:930
 msgid "Search Ratings"
 msgstr "Bewertungen durchsuchen"
 
-#: ../php/class/rpr_core.php:845
+#: ../php/class/rpr_core.php:931
 msgid "Popular Ratings"
 msgstr "Beliebte Bewertungen"
 
-#: ../php/class/rpr_core.php:846
+#: ../php/class/rpr_core.php:932
 msgid "All Ratings"
 msgstr "Alle Bewertungen"
 
-#: ../php/class/rpr_core.php:847
+#: ../php/class/rpr_core.php:933
 msgid "Edit Rating"
 msgstr "Bewertung bearbeiten"
 
-#: ../php/class/rpr_core.php:848
+#: ../php/class/rpr_core.php:934
 msgid "Update Rating"
 msgstr "Bewertung aktualisieren"
 
-#: ../php/class/rpr_core.php:849
+#: ../php/class/rpr_core.php:935
 msgid "Add New Rating"
 msgstr "Neue Bewertung hinzufügen"
 
-#: ../php/class/rpr_core.php:850
+#: ../php/class/rpr_core.php:936
 msgid "New Rating Name"
 msgstr "Neuer Bewertungs-Name"
 
-#: ../php/class/rpr_core.php:851
+#: ../php/class/rpr_core.php:937
 msgid "Separate ratings with commas"
 msgstr "Trenne Bewertungen mit Kommata"
 
-#: ../php/class/rpr_core.php:852
+#: ../php/class/rpr_core.php:938
 msgid "Add or remove ratings"
 msgstr "Bewertung hinzufügen oder löschen"
 
-#: ../php/class/rpr_core.php:853
+#: ../php/class/rpr_core.php:939
 msgid "Choose from the most used ratings"
 msgstr "Wähle aus den häufig genutzten Bewertungen"
 
-#: ../php/class/rpr_core.php:854
+#: ../php/class/rpr_core.php:940
 msgid "No ratings found."
 msgstr "Keine Bewertungen gefunden"
 
@@ -915,11 +943,11 @@ msgstr "Zubereitungsschritt hinzufügen"
 msgid "Add an instruction group"
 msgstr "Zubereitungs-Gruppe hinzufügen"
 
-#: ../templates/rpr_recipe_public.php:57
+#: ../templates/rpr_recipe_public.php:59
 msgid "For: "
 msgstr "Für:"
 
-#: ../templates/rpr_recipe_public.php:184
+#: ../templates/rpr_recipe_public.php:186
 msgid "Recipe notes"
 msgstr "Notizen"
 

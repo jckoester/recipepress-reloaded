@@ -50,7 +50,7 @@ if( $instructions != '')
             $previous_group = $instruction['group'];
         }
 
-        if($instruction['image'])
+        if( isset($instruction['image']) )
         {
             $image = wp_get_attachment_image_src($instruction['image'], 'thumbnail');
             $image = $image[0];

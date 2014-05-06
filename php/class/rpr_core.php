@@ -24,6 +24,7 @@ class RPR_Core extends RPReloaded {
         $this->tax = new RPR_Taxonomies($this->pluginName, $this->pluginDir, $this->pluginUrl);  
         
         add_action( 'init', array( $this, 'ratings_init' ));
+        add_action( 'init', array( $this, 'rpr_add_image_sizes' ));
         add_action( 'wp_enqueue_scripts', array( $this, 'public_plugin_styles' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'public_plugin_scripts' ) );
         add_action( 'admin_enqueue_scripts', array( $this, 'admin_plugin_styles' ) );
@@ -52,6 +53,9 @@ class RPR_Core extends RPReloaded {
         if( $this->option( 'recipe_display_tags_in_recipe', '1') === '1') {
             add_filter( 'get_the_tag_list', array( $this, 'recipes_tag_list' ), 10 );
         }
+        //make the recipe table nicer:
+        add_filter('manage_rpr_recipe_posts_columns', array( $this, 'rpr_recipe_table_head') );
+        add_action( 'manage_rpr_recipe_posts_custom_column', array( $this, 'rpr_recipe_table_content') , 10, 2 );
 
         // Shortcodes
         add_shortcode("rpr-recipe", array( $this, 'recipes_shortcode' ));
@@ -112,6 +116,14 @@ class RPR_Core extends RPReloaded {
         }
     }
 
+    /*
+     * Add image sizes for RPR
+     * Sizes should be adjustable in settings!
+     */
+    public function rpr_add_image_sizes(){
+    	// Thumb size for recipes table
+    	add_image_size( 'rpr-table-thumb', 50, 50, true ); //(cropped)
+    }
     /*
      * //////////////////////////////////////////// RECIPES ///////////////////////////////////////////
     */
@@ -396,7 +408,7 @@ class RPR_Core extends RPReloaded {
 	    						if ( $term === 0 || $term === null) {
 	    							$term = wp_insert_term($ingredient['ingredient'], 'rpr_ingredient');
 	    						}
-var_dump($term);	    						
+//var_dump($term);	    						
 	    						$term_id = intval($term['term_id']);
 	    
 	    						$ingredient['ingredient_id'] = $term_id;
@@ -435,6 +447,56 @@ var_dump($term);
 	    		}
     		}
     	}
+    }
+    
+    /* 
+     * Make the recipe table nicer by adding extra metadata
+     */
+    function rpr_recipe_table_head( $defaults ) {
+    	$defaults = array(
+    			'cb' => '<input type="checkbox" />',
+    			'thumbnail' => __('Image', $this->pluginName ),
+    			'title' => __('Recipe Title', $this->pluginName ),
+    			'author' =>	__('Author', $this->pluginName ),
+    			'categories' => __( 'Category', $this->pluginName ),
+    			'tags' => __( 'Tags', $this->pluginName ),
+    			'comments' => __( 'Comments', $this->pluginName ),
+    			'date' => __('Date', $this->pluginName )
+    	);
+    	//$defaults['thumbnail']=__('Image', $this->pluginName );
+    	/*foreach ( $this->options['taxonomies'] as $tax => $settings ) {
+    		$settings = $this->taxDefaults($settings);
+    		if ( $settings['active'] and taxonomy_exists($tax) ) {
+    			$columns[$tax] = $settings['plural'];
+    		}
+    	}
+    	
+    	$columns['ingredients'] = __('Ingredients', 'recipe-press');
+    	
+    	if ( $this->options['use-featured'] ) {
+    		$columns['featured'] = __('Featured', 'recipe-press');
+    	}
+    	
+    	$columns ['author'] = __('Author', 'recipe-press');
+    	
+    	if ( $this->options['use-comments'] ) {
+    		$columns['comments'] = '<img src="' . get_option('siteurl') . '/wp-admin/images/comment-grey-bubble.png" alt="Comments">';
+    	}
+    	
+    	$columns['date'] = __('Date', 'recipe-press');
+    	 */
+    	//$defaults['thumbnail']  = 'Thumbnail';
+    	return $defaults;
+    }
+    
+    function rpr_recipe_table_content( $column_name, $post_id ) {
+    	if ($column_name == 'thumbnail') {
+    		if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) {
+            	the_post_thumbnail('rpr-table-thumb');
+            }
+    	}
+    	
+    
     }
     
     /*TODO: make this nice and working!

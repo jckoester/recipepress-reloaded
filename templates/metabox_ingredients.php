@@ -53,7 +53,7 @@ if( $ingredients != '')
             }
         }
 
-        if($ingredient['group'] != $previous_group) { ?>
+        if( $ingredient['group'] != $previous_group ) { ?>
             <tr class="ingredient-group">
                 <td>&nbsp;</td>
                 <td><strong><?php _e( 'Group', $this->pluginName ); ?>:</strong></td>
