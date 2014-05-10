@@ -34,6 +34,370 @@ $admin_menu = array(
                 ),
             ),
         ),
+//=============== TEST=======================
+    		array(
+    				'title' => __('Image', 'vp_textdomain'),
+    				'name' => 'submenu_2',
+    				'icon' => 'font-awesome:fa-picture-o',
+    				'controls' => array(
+    						array(
+    								'type' => 'section',
+    								'title' => __('Check Images', 'vp_textdomain'),
+    								'fields' => array(
+    										array(
+    												'type' => 'textbox',
+    												'name' => 'tb_3',
+    												'label' => __('Numeric', 'vp_textdomain'),
+    												'description' => __('Only numbers allowed here.', 'vp_textdomain'),
+    												'default' => '123',
+    												'validation' => 'numeric'
+    								),
+    										array(
+    												'type' => 'slider',
+    												'name' => 'sl_1',
+    												'label' => __('Decimal Slider', 'vp_textdomain'),
+    												'description' => __('This slider has minimum value of -10, maximum value of 17.5, sliding step of 0.1 and default value 15.9, everything can be customized.', 'vp_textdomain'),
+    												'min' => '0',
+    												'max' => '800',
+    												'step' => '1',
+    												'default' => '300',
+    										),
+    								),
+    						),
+    						array(
+    								'type' => 'section',
+    								'title' => __('Check Images', 'vp_textdomain'),
+    								'fields' => array(
+    										array(
+    												'type' => 'checkimage',
+    												'name' => 'ci_1',
+    												'label' => __('Various Sized Images', 'vp_textdomain'),
+    												'description' => __('CheckImage with unspecified item max height and item max width', 'vp_textdomain'),
+    												'items' => array(
+    														array(
+    																'value' => 'value_1',
+    																'label' => __('Label 1', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/100x100',
+    														),
+    														array(
+    																'value' => 'value_2',
+    																'label' => __('Label 2', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/120x80',
+    														),
+    														array(
+    																'value' => 'value_3',
+    																'label' => __('Label 3', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x120',
+    														),
+    														array(
+    																'value' => 'value_4',
+    																'label' => __('Label 4', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/50x50',
+    														),
+    												),
+    										),
+    										array(
+    												'type' => 'checkimage',
+    												'name' => 'ci_2',
+    												'label' => __('Specified Images Maximum Height', 'vp_textdomain'),
+    												'description' => __('CheckImage with specified item max height', 'vp_textdomain'),
+    												'item_max_height' => '70',
+    												'items' => array(
+    														array(
+    																'value' => 'value_1',
+    																'label' => __('Label 1', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/100x100',
+    														),
+    														array(
+    																'value' => 'value_2',
+    																'label' => __('Label 2', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/120x80',
+    														),
+    														array(
+    																'value' => 'value_3',
+    																'label' => __('Label 3', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x120',
+    														),
+    														array(
+    																'value' => 'value_4',
+    																'label' => __('Label 4', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/50x50',
+    														),
+    												),
+    												'default' => array(
+    														'value_1',
+    														'value_2',
+    												),
+    										),
+    										array(
+    												'type' => 'checkimage',
+    												'name' => 'ci_3',
+    												'label' => __('Specified Images Maximum Width', 'vp_textdomain'),
+    												'description' => __('CheckImage with specified item max width', 'vp_textdomain'),
+    												'item_max_width' => '50',
+    												'items' => array(
+    														array(
+    																'value' => 'value_1',
+    																'label' => __('Label 1', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/100x100',
+    														),
+    														array(
+    																'value' => 'value_2',
+    																'label' => __('Label 2', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/120x80',
+    														),
+    														array(
+    																'value' => 'value_3',
+    																'label' => __('Label 3', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x120',
+    														),
+    														array(
+    																'value' => 'value_4',
+    																'label' => __('Label 4', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/50x50',
+    														),
+    												),
+    												'default' => array(
+    														'value_3',
+    														'value_4',
+    												),
+    										),
+    										array(
+    												'type' => 'checkimage',
+    												'name' => 'ci_4',
+    												'label' => __('Specified Images Maximum Width and Height', 'vp_textdomain'),
+    												'description' => __('CheckImage with specified item max width and item max height', 'vp_textdomain'),
+    												'item_max_height' => '70',
+    												'item_max_width' => '70',
+    												'items' => array(
+    														array(
+    																'value' => 'value_1',
+    																'label' => __('Label 1', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/100x100',
+    														),
+    														array(
+    																'value' => 'value_2',
+    																'label' => __('Label 2', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/120x80',
+    														),
+    														array(
+    																'value' => 'value_3',
+    																'label' => __('Label 3', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x120',
+    														),
+    														array(
+    																'value' => 'value_4',
+    																'label' => __('Label 4', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/50x50',
+    														),
+    												),
+    												'default' => array(
+    														'value_1',
+    														'value_4',
+    												),
+    										),
+    										array(
+    												'type' => 'checkimage',
+    												'name' => 'ci_5',
+    												'label' => __('Validation Rules Applied', 'vp_textdomain'),
+    												'description' => __('Minimum selected of 2 items and Maximum selected of 3 items.', 'vp_textdomain'),
+    												'item_max_height' => '70',
+    												'item_max_width' => '70',
+    												'validation' => 'required|minselected[2]|maxselected[3]',
+    												'items' => array(
+    														array(
+    																'value' => 'value_1',
+    																'label' => __('Label 1', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x80',
+    														),
+    														array(
+    																'value' => 'value_2',
+    																'label' => __('Label 2', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x80',
+    														),
+    														array(
+    																'value' => 'value_3',
+    																'label' => __('Label 3', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x80',
+    														),
+    														array(
+    																'value' => 'value_4',
+    																'label' => __('Label 4', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x80',
+    														),
+    												),
+    												'default' => array(
+    														'value_1',
+    												),
+    										),
+    								),
+    						),
+    						array(
+    								'type' => 'section',
+    								'title' => __('Radio Images', 'vp_textdomain'),
+    								'fields' => array(
+    										array(
+    												'type' => 'radioimage',
+    												'name' => 'ri_1',
+    												'label' => __('Various Sized Images', 'vp_textdomain'),
+    												'description' => __('RadioImage with unspecified item max height and item max width', 'vp_textdomain'),
+    												'items' => array(
+    														array(
+    																'value' => 'value_1',
+    																'label' => __('Label 1', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/100x100',
+    														),
+    														array(
+    																'value' => 'value_2',
+    																'label' => __('Label 2', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/120x80',
+    														),
+    														array(
+    																'value' => 'value_3',
+    																'label' => __('Label 3', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x120',
+    														),
+    														array(
+    																'value' => 'value_4',
+    																'label' => __('Label 4', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/50x50',
+    														),
+    												),
+    										),
+    										array(
+    												'type' => 'radioimage',
+    												'name' => 'ri_2',
+    												'label' => __('Specified Images Maximum Height', 'vp_textdomain'),
+    												'description' => __('RadioImage with specified item max height', 'vp_textdomain'),
+    												'item_max_height' => '70',
+    												'items' => array(
+    														array(
+    																'value' => 'value_1',
+    																'label' => __('Label 1', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/100x100',
+    														),
+    														array(
+    																'value' => 'value_2',
+    																'label' => __('Label 2', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/120x80',
+    														),
+    														array(
+    																'value' => 'value_3',
+    																'label' => __('Label 3', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x120',
+    														),
+    														array(
+    																'value' => 'value_4',
+    																'label' => __('Label 4', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/50x50',
+    														),
+    												),
+    												'default' => array(
+    														'value_1',
+    												),
+    										),
+    										array(
+    												'type' => 'radioimage',
+    												'name' => 'ri_3',
+    												'label' => __('Specified Images Maximum Width', 'vp_textdomain'),
+    												'description' => __('RadioImage with specified item max width', 'vp_textdomain'),
+    												'item_max_width' => '50',
+    												'items' => array(
+    														array(
+    																'value' => 'value_1',
+    																'label' => __('Label 1', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/100x100',
+    														),
+    														array(
+    																'value' => 'value_2',
+    																'label' => __('Label 2', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/120x80',
+    														),
+    														array(
+    																'value' => 'value_3',
+    																'label' => __('Label 3', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x120',
+    														),
+    														array(
+    																'value' => 'value_4',
+    																'label' => __('Label 4', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/50x50',
+    														),
+    												),
+    												'default' => array(
+    														'value_3',
+    												),
+    										),
+    										array(
+    												'type' => 'radioimage',
+    												'name' => 'ri_4',
+    												'label' => __('Specified Images Maximum Width and Height', 'vp_textdomain'),
+    												'description' => __('RadioImage with specified item max width and item max height', 'vp_textdomain'),
+    												'item_max_height' => '70',
+    												'item_max_width' => '70',
+    												'items' => array(
+    														array(
+    																'value' => 'value_1',
+    																'label' => __('Label 1', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/100x100',
+    														),
+    														array(
+    																'value' => 'value_2',
+    																'label' => __('Label 2', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/120x80',
+    														),
+    														array(
+    																'value' => 'value_3',
+    																'label' => __('Label 3', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x120',
+    														),
+    														array(
+    																'value' => 'value_4',
+    																'label' => __('Label 4', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/50x50',
+    														),
+    												),
+    												'default' => array(
+    														'value_4',
+    												),
+    										),
+    										array(
+    												'type' => 'radioimage',
+    												'name' => 'ri_5',
+    												'label' => __('Validation Rules Applied', 'vp_textdomain'),
+    												'description' => __('Required to Choose.', 'vp_textdomain'),
+    												'item_max_height' => '70',
+    												'item_max_width' => '70',
+    												'validation' => 'required',
+    												'items' => array(
+    														array(
+    																'value' => 'value_1',
+    																'label' => __('Label 1', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x80',
+    														),
+    														array(
+    																'value' => 'value_2',
+    																'label' => __('Label 2', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x80',
+    														),
+    														array(
+    																'value' => 'value_3',
+    																'label' => __('Label 3', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x80',
+    														),
+    														array(
+    																'value' => 'value_4',
+    																'label' => __('Label 4', 'vp_textdomain'),
+    																'img' => 'http://placehold.it/80x80',
+    														),
+    												),
+    										),
+    								),
+    						),
+    				),
+    		),
+    	
+    	  		
 //=-=-=-=-=-=-= GENERAL SETTINGS =-=-=-=-=-=-=
         array(
             'title' => __('General Settings', $this->pluginName),

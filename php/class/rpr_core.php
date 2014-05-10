@@ -24,7 +24,10 @@ class RPR_Core extends RPReloaded {
         $this->tax = new RPR_Taxonomies($this->pluginName, $this->pluginDir, $this->pluginUrl);  
         
         add_action( 'init', array( $this, 'ratings_init' ));
+        //add image sizes
+        add_filter( 'image_size_names_choose', 'rpr_image_sizes' );
         add_action( 'init', array( $this, 'rpr_add_image_sizes' ));
+        
         add_action( 'wp_enqueue_scripts', array( $this, 'public_plugin_styles' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'public_plugin_scripts' ) );
         add_action( 'admin_enqueue_scripts', array( $this, 'admin_plugin_styles' ) );
@@ -56,6 +59,7 @@ class RPR_Core extends RPReloaded {
         //make the recipe table nicer:
         add_filter('manage_rpr_recipe_posts_columns', array( $this, 'rpr_recipe_table_head') );
         add_action( 'manage_rpr_recipe_posts_custom_column', array( $this, 'rpr_recipe_table_content') , 10, 2 );
+                
 
         // Shortcodes
         add_shortcode("rpr-recipe", array( $this, 'recipes_shortcode' ));
@@ -123,6 +127,11 @@ class RPR_Core extends RPReloaded {
     public function rpr_add_image_sizes(){
     	// Thumb size for recipes table
     	add_image_size( 'rpr-table-thumb', 50, 50, true ); //(cropped)
+    }
+    public function rpr_image_sizes( $sizes ) {
+    	return array_merge( $sizes, array(
+    			'rpr-table-thumb' => __('RPR table thumbnail', $this->pluginName ),
+    	) );
     }
     /*
      * //////////////////////////////////////////// RECIPES ///////////////////////////////////////////
