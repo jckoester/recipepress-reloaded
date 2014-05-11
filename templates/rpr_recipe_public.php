@@ -52,7 +52,7 @@ if(!is_null($thumb_url)) {
 
     
     <!-- Taxonomies -->
-    <?php the_recipe_category_bar( $recipe_post ); ?>
+    <?php the_recipe_category_bar( $recipe_post->ID ); ?>
     
     <!-- DESCRIPTION -->                  
     <span class="rpr_description" itemprop="description"><?php echo $recipe['rpr_recipe_description'][0]; ?></span>
@@ -61,7 +61,7 @@ if(!is_null($thumb_url)) {
     <div class="rpr-clear"></div>
     
     <!-- INGREDIENTS -->
-    <h3><?php _e('Ingredients', 'recipe-press-reloaded' ); ?></h3>
+    <h3><?php _e('Ingredients', $this->pluginName ); ?></h3>
    
 	<?php the_recipe_servings_bar( $recipe_post->ID ); ?> 
     <?php the_recipe_ingredient_list( array( 'ID' => $recipe_post->ID) ); ?>
@@ -69,7 +69,7 @@ if(!is_null($thumb_url)) {
   
     
     <!--- INSTRUCTIONS --->
-    <h3><?php _e( 'Instructions', 'recipe-press-reloaded' ); ?></h3>
+    <h3><?php _e( 'Instructions', $this->pluginName ); ?></h3>
     <!-- INFO LINE (Times) -->
     <?php the_recipe_time_bar( $recipe_post->ID ); ?>
     <?php the_recipe_instruction_list( array( 'ID' => $recipe_post->ID ) ); ?>

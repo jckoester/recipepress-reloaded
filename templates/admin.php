@@ -1,5 +1,15 @@
 <?php
+/*
+if ($handle = opendir($this->pluginDir.'/themes')) {
+	while (false !== ($file = readdir($handle))) {
+		if( $file !='.' && $file !='..') {
+			//echo "$file\n";
+		}
+	}
+}
 
+$themes_array=array();
+*/
 $admin_menu = array(
     'title' => 'Recipe Press Reloaded ' . __('Settings', $this->pluginName),
     'logo'  => $this->pluginUrl . '/img/logo.png',
@@ -35,7 +45,7 @@ $admin_menu = array(
             ),
         ),
 //=============== TEST=======================
-    		array(
+/*    		array(
     				'title' => __('Image', 'vp_textdomain'),
     				'name' => 'submenu_2',
     				'icon' => 'font-awesome:fa-picture-o',
@@ -397,7 +407,7 @@ $admin_menu = array(
     				),
     		),
     	
-    	  		
+    	  		*/
 //=-=-=-=-=-=-= GENERAL SETTINGS =-=-=-=-=-=-=
         array(
             'title' => __('General Settings', $this->pluginName),

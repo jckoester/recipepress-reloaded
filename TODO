@@ -11,6 +11,7 @@ TODO:
 - testten, testen, testen
 - Schnittstelle für Addons implementieren (0.6)
 - überlegen, welche features ggf. als Addon umgesetzt werden sollten (0.6)
+- INFLECTOR!
 
 BUGS:
-- Template tags funktionieren nicht mit Shortcode rpr_recipe (get_post() holt den Post, in den eingebettet wird!)
+

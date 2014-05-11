@@ -3,7 +3,7 @@ Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
 Requires at least: 3.4
 Tested up to: 3.9
-Stable tag: 0.5.3
+Stable tag: 0.5.4
 License: GPLv2
 
 A simple recipe plugin. It does all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically.
@@ -47,16 +47,21 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
-= 0.5.3 May 4th, 2014
+= 0.5.4 May 11th. 2014 =
+* fixed a bug in display of times
+* improved template tags
+* improved display of embedded recipes
+
+= 0.5.3 May 4th, 2014 =
 * Bugfix release
 
-= 0.5.2 April 30th, 2014
+= 0.5.2 April 30th, 2014 =
 * improved the migration scripts
 
-= 0.5.1 April 29th, 2014
+= 0.5.1 April 29th, 2014 =
 * Bugfix release
 
-= 0.5.0 April 18th, 2014
+= 0.5.0 April 18th, 2014 =
 * completely remade the codebase, backend and frontend for better maintenance
 * lighter backend for easy writing
 * simpler options page

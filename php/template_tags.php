@@ -1,12 +1,12 @@
 <?php
 if ( !function_exists('get_the_recipe_category_bar') ) {
     // template tag for category list:
-    function get_the_recipe_category_bar( $recipe_post ){
-    	if( !$recipe_post || $recipe_post == '' ){
-    		$recipe_post = get_post();
+    function get_the_recipe_category_bar( $recipe_id='' ){
+    	if( !$recipe_id || !is_numeric( $recipe_id ) ){
+    		$recipe_id = get_post()->ID;
     	}
     	
-        $recipe = get_post_custom($recipe_post->ID);
+        $recipe = get_post_custom($recipe_id);
         $out="";
         
         // Categories:
@@ -23,7 +23,7 @@ if ( !function_exists('get_the_recipe_category_bar') ) {
                     );
             }
         } else {
-            $terms = get_the_term_list( $recipe_post->ID, 'rpr_category', '', ', ');
+            $terms = get_the_term_list( $recipe_id, 'rpr_category', '', ', ');
             if(!is_wp_error($terms) && $terms != '') {
                 $out .= sprintf(
                         '<span itemprop="recipeCategory" class="fa fa-list-ul category-list">%s</span>',
@@ -33,20 +33,20 @@ if ( !function_exists('get_the_recipe_category_bar') ) {
         }
         
         // Course:
-        $terms = get_the_term_list( $recipe_post->ID, 'rpr_course', '', ', ');
+        $terms = get_the_term_list( $recipe_id, 'rpr_course', '', ', ');
         if(!is_wp_error($terms) && $terms != '') {
             $out .= sprintf(
                     '<span class="fa fa-cutlery category-list">%s</span>',
-                     get_the_term_list( $recipe_post->ID, 'rpr_course', '', __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ), '' )
+                     get_the_term_list( $recipe_id, 'rpr_course', '', __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ), '' )
                     );
         }
         
         //Cuisine:
-        $terms = get_the_term_list( $recipe_post->ID, 'rpr_cuisine', '', ', ');
+        $terms = get_the_term_list( $recipe_id, 'rpr_cuisine', '', ', ');
         if(!is_wp_error($terms) && $terms != '') {
             $out .=  sprintf(
                         '<span itemprop="recipeCuisine" class="fa fa-flag category-list">%s</span>',
-                        get_the_term_list( $recipe_post->ID, 'rpr_cuisine', '', __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ), '' )
+                        get_the_term_list( $recipe_id, 'rpr_cuisine', '', __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ), '' )
                     );
         }
         
@@ -55,11 +55,11 @@ if ( !function_exists('get_the_recipe_category_bar') ) {
         $taxonomies = get_option('rpr_taxonomies', array());
         foreach($taxonomies as $taxonomy => $options) {
             if( ! in_array($taxonomy, $done ) ){
-                 $terms = get_the_term_list( $recipe_post->ID, $taxonomy, '', ', ');
+                 $terms = get_the_term_list( $recipe_id, $taxonomy, '', ', ');
                 if(!is_wp_error($terms) && $terms != '') {
                     $out .= sprintf(
                         '<span class="fa fa-list-alt category-list">%s</span>',
-                        get_the_term_list( $recipe_post->ID, $taxonomy, '', __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ), '' )
+                        get_the_term_list( $recipe_id, $taxonomy, '', __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ), '' )
                     );
                 }
             }
@@ -72,8 +72,8 @@ if ( !function_exists('get_the_recipe_category_bar') ) {
  }
  
 if ( !function_exists('the_recipe_category_bar') ) {
-    function the_recipe_category_bar( $recipe_post ){
-        echo get_the_recipe_category_bar( $recipe_post );
+    function the_recipe_category_bar( $recipe_id ){
+        echo get_the_recipe_category_bar( $recipe_id );
     }
 } 
 
@@ -201,7 +201,7 @@ if ( ! function_exists('the_recipe_ingredient_list') ) {
 
 // ================= RECIPE TIME BAR ==============
 if ( !function_exists('get_the_recipe_time_bar') ) {
-	function get_the_recipe_time_bar( $recipe_id ){
+	function get_the_recipe_time_bar( $recipe_id='' ){
 		$out='';
 		 
 		// Get the ID of the recipe:
@@ -212,11 +212,11 @@ if ( !function_exists('get_the_recipe_time_bar') ) {
 		// Get the recipe
 		$recipe = get_post_custom( $recipe_id );
 
-		if( isset($recipe['rpr_recipe_prep_time'][0]) ) {
+		if( isset($recipe['rpr_recipe_prep_time'][0]) && $recipe['rpr_recipe_prep_time'][0] != '' ) {
 			$out .= '<span class="fa fa-cog recipe-times" title="'. __( 'Preparation Time', 'recipe-press-reloaded' ).'">';
 			$out .= '<meta itemprop="prepTime" content="PT'.$recipe['rpr_recipe_prep_time'][0].'M">'.$recipe['rpr_recipe_prep_time'][0].'<span class="recipe-information-time-unit">'.__( 'min.', 'recipe-press-reloaded' ).'</span></span>';
 		}
-		if( isset($recipe['rpr_recipe_cook_time'][0]) ) {
+		if( isset($recipe['rpr_recipe_cook_time'][0]) && $recipe['rpr_recipe_cook_time'][0] != '' ) {
 			$out .= '<span class="fa fa-fire recipe-times" title="'.__( 'Cook Time', 'recipe-press-reloaded' ).'">';
 			$out .= '<meta itemprop="cookTime" content="PT'.$recipe['rpr_recipe_cook_time'][0].'M">'.$recipe['rpr_recipe_cook_time'][0].'<span class="recipe-information-time-unit">'.__( 'min.', 'recipe-press-reloaded' ).'</span></span>';
 		}
