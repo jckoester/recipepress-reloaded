@@ -76,13 +76,15 @@ class RPR_Core extends RPReloaded {
     public function public_plugin_styles()
     {
         wp_register_style( 'rpr_fa', $this->pluginUrl . '/css/font-awesome.min.css');
-        wp_register_style( 'rpr_pub', $this->pluginUrl . '/css/rpr_public.css');
+        wp_register_style( 'rpr_pub', $this->pluginUrl . '/templates/'. $this->option( 'rpr_template', 'rpr_default' ). '/template.css');
         wp_enqueue_style( 'rpr_fa' );    	
         wp_enqueue_style( 'rpr_pub' );
     }
 
     public function public_plugin_scripts( $hook )
     {
+    	wp_register_script( $this->pluginName, $this->pluginUrl . '/js/rpr_public.js', array('jquery'), RPR_VERSION );
+    	wp_enqueue_script( $this->pluginName );
     }
 
     public function admin_plugin_styles()
@@ -318,35 +320,35 @@ class RPR_Core extends RPReloaded {
     {
     	/* Use nonce for verification */
     	echo wp_nonce_field( 'rpr_details_nonce', 'rpr_details_nonce_field' );
-    	include($this->pluginDir . '/templates/metabox_details.php');
+    	include($this->pluginDir . '/views/metabox_details.php');
     }
     
     public function recipe_description_meta_box($recipe)
     {
     	/* Use nonce for verification */
     	echo wp_nonce_field( 'rpr_description_nonce', 'rpr_description_nonce_field' );
-    	include($this->pluginDir . '/templates/metabox_description.php');
+    	include($this->pluginDir . '/views/metabox_description.php');
     }
     
     public function recipe_ingredients_meta_box($recipe)
     {
     	/* Use nonce for verification */
     	echo wp_nonce_field( 'rpr_ingredients_nonce', 'rpr_ingredients_nonce_field' );
-    	include($this->pluginDir . '/templates/metabox_ingredients.php');
+    	include($this->pluginDir . '/views/metabox_ingredients.php');
     }
     
     public function recipe_instructions_meta_box($recipe)
     {
     	/* Use nonce for verification */
     	echo wp_nonce_field( 'rpr_instructions_nonce', 'rpr_instructions_nonce_field' );
-    	include($this->pluginDir . '/templates/metabox_instructions.php');
+    	include($this->pluginDir . '/views/metabox_instructions.php');
     }
     
     public function recipe_notes_meta_box($recipe)
     {
     	/* Use nonce for verification */
     	echo wp_nonce_field( 'rpr_notes_nonce', 'rpr_notes_nonce_field' );
-    	include($this->pluginDir . '/templates/metabox_notes.php');
+    	include($this->pluginDir . '/views/metabox_notes.php');
     }
     
     public function recipes_save( $recipe_id, $recipe )
@@ -601,12 +603,8 @@ class RPR_Core extends RPReloaded {
     			unset($taxonomies['ingredient']);
     
     			ob_start();
-    
-    			/*if( $this->is_premium_addon_active('custom-templates') && !is_null($this->option( 'recipe_template_layout', null )) ) {
-    				include($this->premiumDir . '/addons/custom-templates/layouts/' . $this->option( 'recipe_template_layout' ) . '.php');
-    			} else {*/
-    				include($this->pluginDir . '/templates/rpr_recipe_public.php');
-    			//}
+    			
+    			include($this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/recipe.php');
     
     			$recipe_box = ob_get_contents();
     			ob_end_clean();
@@ -722,7 +720,7 @@ class RPR_Core extends RPReloaded {
             /*if( $this->is_premium_addon_active('custom-templates') && !is_null($this->option( 'recipe_template_layout', null )) ) {
                 include($this->premiumDir . '/addons/custom-templates/layouts/' . $this->option( 'recipe_template_layout' ) . '.php');
             } else {*/
-                include($this->pluginDir . '/templates/rpr_recipe_public.php');
+                include($this->pluginDir . '/views/rpr_recipe_public.php');
             //}
             $output = ob_get_contents();
             ob_end_clean();
