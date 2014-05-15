@@ -164,7 +164,7 @@ if ( ! function_exists('get_the_recipe_ingredient_list') ) {
 					}
 			
 					if($custom_link !== false && $custom_link !== '' && $custom_link !== NULL ) {
-						$out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.$this->option('recipe_ingredient_custom_links_target', '_blank').'">';
+						$out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.RPReloaded::get_option('recipe_ingredient_custom_links_target', '_blank').'">';
 						$closing_tag = '</a>';
 					} elseif($ingredient_links != 'custom') {
 						$out .= '<a href="'.get_term_link($taxonomy->slug, 'rpr_ingredient').'">';
@@ -267,11 +267,11 @@ if ( ! function_exists('get_the_recipe_instruction_list') ) {
 			
 				$out .= '<li itemprop="recipeInstructions">';
 				$instr_class="";
-				if( isset($instruction['image']) && $this->option('recipe_images_clickable', '0') == 1 ) { $instr_class = "has_thumbnail"; }
+				if( isset($instruction['image']) && RPReloaded::get_option('recipe_images_clickable', '0') == 1 ) { $instr_class = "has_thumbnail"; }
 				$out .= '<span class="recipe-instruction '.$instr_class.'">'.$instruction['description'].'</span>';
 			
 				if( isset($instruction['image']) ) {
-					if($this->option('recipe_images_clickable', '0') == 1) {
+					if(RPReloaded::get_option('recipe_images_clickable', '0') == 1) {
 						$thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
 						 
 					} else{
@@ -282,7 +282,7 @@ if ( ! function_exists('get_the_recipe_instruction_list') ) {
 					$full_img = wp_get_attachment_image_src( $instruction['image'], 'full' );
 					$full_img_url = $full_img['0'];
 			
-					if($this->option('recipe_images_clickable', '0') == 1 && $thumb_url != "" ) {
+					if(RPReloaded::get_option('recipe_images_clickable', '0') == 1 && $thumb_url != "" ) {
 						$out .= '<a href="' . $full_img_url . '" rel="lightbox" title="' . $instruction['description'] . '">';
 						$out .= '<img src="' . $thumb_url . '" />';
 						$out .= '</a>';
