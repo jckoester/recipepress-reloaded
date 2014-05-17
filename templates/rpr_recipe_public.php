@@ -1,9 +1,4 @@
-<script>
-var rpr_pluginUrl = '<?php echo $this->pluginUrl; ?>';
-var rpr_template = '<?php echo $this->option( 'rpr_template', 'rpr_default' ); ?>';
-</script>
 <?php
-// RPR Default Template
 // Check if we are in single mode or shortcode mode (aka included recipe)
 if( get_post_type( ) != 'rpr_recipe' ){
 	$mode = 'shortcode';
@@ -19,7 +14,7 @@ $recipe_title = get_the_title( $recipe_post );
 <?php if ( $mode == 'shortcode' ){?>
 	<h2 class="rpr_title"><?php echo get_the_title( $recipe_post ); ?></h2>
 <?php } ?>
- <a href="#" class="print-recipe fa fa-print"></a>
+
 <!-- displaying these data is the job of the theme. Therefore they're hidden! -->
 	<span class="rpr_title hidden" itemprop="name"><?php echo get_the_title( $recipe_post ); ?></span>
   	<span class="rpr_author hidden" itemprop="author"><?php  the_author(); ?></span>
