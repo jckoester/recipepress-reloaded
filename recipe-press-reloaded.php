@@ -115,7 +115,7 @@ class RPReloaded{
 	{
 		require_once('php/helper/admin_menu_helper.php');
 		
-		require_once('views/admin.php');
+		require_once('templates/admin.php');
 	
 		new VP_Option(array(
 				'is_dev_mode'           => false,

@@ -3,7 +3,7 @@ Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
 Requires at least: 3.4
 Tested up to: 3.9.1
-Stable tag: 0.5.5
+Stable tag: 0.5.4
 License: GPLv2
 
 A simple recipe plugin. It does all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically.
