@@ -92,7 +92,7 @@ if ( !function_exists('get_the_recipe_servings_bar') ) {
 		// Get the recipe
 		$recipe = get_post_custom( $recipe_id );
 		
-		if($recipe['rpr_recipe_servings'][0] != '') {
+		if( isset( $recipe['rpr_recipe_servings'][0] ) &&  $recipe['rpr_recipe_servings'][0] != 0 ) {
 			$out .= __( 'For: ', 'recipe-press-reloaded' );
 			$out .= '<span itemprop="recipeYield"><span class="recipe-information-servings">';
 			$out .= $recipe['rpr_recipe_servings'][0];
@@ -222,10 +222,21 @@ if ( !function_exists('get_the_recipe_time_bar') ) {
 		}
 
 
-		$total_time = $recipe['rpr_recipe_prep_time'][0]+$recipe['rpr_recipe_cook_time'][0]+$recipe['rpr_recipe_passive_time'][0];
-		if($total_time != '') {
+		$totaltime = 0;
+		// Calculate total time:
+		if(isset ($recipe['rpr_recipe_prep_time'][0]) && $recipe['rpr_recipe_prep_time'][0] != 0){
+			$totaltime += $recipe['rpr_recipe_prep_time'][0];
+		}
+		if( isset( $recipe['rpr_recipe_cook_time'][0] ) && $recipe['rpr_recipe_cook_time'][0] != 0 ){
+			$totaltime += $recipe['rpr_recipe_cook_time'][0];
+		}
+		if( isset( $recipe['rpr_recipe_passive_time'][0] ) && $recipe['rpr_recipe_passive_time'][0] != 0){
+			$totaltime += $recipe['rpr_recipe_passive_time'][0];
+		}
+		
+		if($totaltime != 0 ) {
 			$out .= '<span class="fa fa-clock-o recipe-times" title="'.__( 'Total Time', 'recipe-press-reloaded' ).'">';
-			$out .= '<meta itemprop="totalTime" content="PT'.$total_time.'">'.$total_time.'<span class="recipe-information-time-unit">'.__( 'min.', 'recipe-press-reloaded' ).'</span></span>';
+			$out .= '<meta itemprop="totalTime" content="PT'.$totaltime.'">'.$totaltime.'<span class="recipe-information-time-unit">'.__( 'min.', 'recipe-press-reloaded' ).'</span></span>';
 		}
 		if( $out != '') {
 			return '<div class="entry-meta rpr_time_line" >'.$out.'</div>';

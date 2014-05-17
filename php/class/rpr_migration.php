@@ -229,7 +229,8 @@ if( class_exists( 'RPReloaded' ) ) {
 				//MISSING: delete old post_meta
 				
 				// RecipePress Taxonomies:
-				$taxonomies = get_option('recipe-press-options')['taxonomies'];
+				$options = get_option('recipe-press-options');
+				$taxonomies = $options['taxonomies'];
 				
 				foreach ( $taxonomies as $taxonomy ) {
 					$this->recipe_migrate_term($recipe->ID, $taxonomy['slug']);

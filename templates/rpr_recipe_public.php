@@ -75,7 +75,7 @@ if(!is_null($thumb_url)) {
     <?php the_recipe_instruction_list( array( 'ID' => $recipe_post->ID ) ); ?>
     
     <!--  NOTES -->
-    <?php if( $recipe['rpr_recipe_notes'][0] ) { ?>
+    <?php if( isset( $recipe['rpr_recipe_notes'][0] ) && $recipe['rpr_recipe_notes'][0] != '' ) { ?>
     <h3><?php _e( 'Recipe notes', 'recipe-press-reloaded' ); ?></h3>
 	<?php the_recipe_notes( array('ID' => $recipe_post->ID ) )?>
     <?php } ?>

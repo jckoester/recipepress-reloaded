@@ -47,6 +47,9 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
+= 0.5.6 May 17th. 2014 =
+* bugfix release, fixing several bugs introduced with 0.5.5
+
 = 0.5.5 May 15th. 2014 =
 * bugfix release
 
