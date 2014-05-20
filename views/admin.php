@@ -50,7 +50,7 @@ $admin_menu = array(
     	array(
     			'title' => __('Display', $this->pluginName),
     			'name' => 'display',
-    			'icon' => 'font-awesome:fa-picture-o',
+    			'icon' => 'font-awesome:fa-file-photo-o',
     			'controls' => array(
     					array(
 							'type' => 'notebox',
