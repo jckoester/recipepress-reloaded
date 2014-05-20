@@ -3,18 +3,44 @@
 
 function rpr_admin_latest_news_changelog()
 {
-    ob_start();
-    include('changelog.html');
-    $out = ob_get_contents();
-    ob_end_clean();
-
-    return $out;
+	// Idea found at http://www.webmaster-source.com/2009/07/08/parse-a-wordpress-plugins-readme-txt-with-regular-expressions/
+	$readme = file_get_contents( WP_PLUGIN_DIR . '/recipepress-reloaded/readme.txt');
+	// Find the changelog part:
+	$start = strpos ( $readme, '== Changelog ==' );
+	$end = strpos ( $readme, '== Frequently Asked Questions ==' );
+	$readme = substr( $readme, $start, ( $end-$start ) );
+	
+	// Make links clickable
+	$readme = make_clickable(nl2br(esc_html($readme)));
+	
+	// Backticks to <code>-Tags:
+	$readme = preg_replace('/`(.*?)`/', '<code>\\1</code>', $readme);
+	
+	// * to italic and ** to bold
+	$readme = preg_replace('/[\040]\*\*(.*?)\*\*/', ' <strong>\\1</strong>', $readme);
+	$readme = preg_replace('/[\040]\*(.*?)\*/', ' <em>\\1</em>', $readme);
+	
+	// headlines
+	$readme = preg_replace('/== (.*?) ==/', '', $readme);
+	$readme = preg_replace('/= (.*?) =/', '<h4>\\1</h4>', $readme);
+	
+	// creating lists:
+	$readme = preg_replace('/\*(.*?)\n/', ' <li>\\1</li>', $readme);
+	$readme = preg_replace('/<\/h4>/', '</h4><ul>', $readme);
+	$readme = preg_replace('/<h4>/', '</ul><h4>', $readme);
+	
+	
+	
+	// Remove <br>
+	$readme = preg_replace('/(<br\W*?\/>)/', '', $readme);
+	
+    return $readme;
 }
 
 
 function rpr_admin_recipe_slug_preview( $slug )
 {
-    return __( 'The recipe archive can be found at', 'recipe-press-reloaded' ) . ' <a href="'.site_url('/'.$slug.'/').'" target="_blank">'.site_url('/'.$slug.'/').'</a>';
+    return __( 'The recipe archive can be found at', 'recipepress-reloaded' ) . ' <a href="'.site_url('/'.$slug.'/').'" target="_blank">'.site_url('/'.$slug.'/').'</a>';
 }
 
 function rpr_admin_manage_tags()
@@ -22,6 +48,47 @@ function rpr_admin_manage_tags()
     return '<a href="'.admin_url('edit.php?post_type=rpr_recipe&page=rpr_taxonomies').'" class="button button-primary" target="_blank">'.__('Manage custom recipe tags', 'recipe-press-reloaded').'</a>';
 }
 
+function rpr_admin_template_list()
+{
+	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/templates/';
+	$templates = array();
+	
+	if ($handle = opendir( $dirname )) {
+		while (false !== ($file = readdir($handle))) {
+			if( $file !='.' && $file !='..' && $file != '.svn' ) {
+				// Param parsing inspired by http://stackoverflow.com/questions/11504541/get-comments-in-a-php-file
+				// put in an extra function?
+				$params=array();
+				$filename = $dirname . $file . '/recipe.php';
+				
+				$docComments = array_filter(
+						token_get_all( file_get_contents( $filename ) ), function($entry) {
+							return $entry[0] == T_COMMENT;
+						}
+				);
+				
+				$fileDocComment = array_shift( $docComments );
+				
+				$regexp = "/.*\:.*\n/";
+				preg_match_all($regexp, $fileDocComment[1], $matches);
+				
+				foreach( $matches[0] as $match ){
+					$param = explode(": ", $match);
+					$params[ trim( $param[0] ) ] = trim( $param[1] );
+				}
+
+				array_push( $templates, 
+					 array(
+						'value' => $file,
+						'label' => $params['Template Name'],
+						'img' => WP_PLUGIN_URL . '/recipepress-reloaded/templates/' . $file . '/screenshot.png',
+					)
+				);
+			}
+		}
+	}
+	return $templates;
+}
 
 //=-=-=-=-=-=-= SHORTCODE GENERATOR =-=-=-=-=-=-=
 

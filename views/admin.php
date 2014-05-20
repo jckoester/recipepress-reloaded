@@ -1,4 +1,6 @@
 <?php
+
+$templates = rpr_admin_template_list();
 /*
 if ($handle = opendir($this->pluginDir.'/themes')) {
 	while (false !== ($file = readdir($handle))) {
@@ -44,6 +46,38 @@ $admin_menu = array(
                 ),
             ),
         ),
+// =============== DISPLAY & TEMPLATES =============
+    	array(
+    			'title' => __('Display', $this->pluginName),
+    			'name' => 'display',
+    			'icon' => 'font-awesome:fa-picture-o',
+    			'controls' => array(
+    					array(
+							'type' => 'notebox',
+    						'name' => 'recipe_todo_item',
+    						'label' => 'TODO:',
+    						'description' => __('Very very beta!', $this->pluginName) ,
+    						'status' => 'warning',
+    						),
+    					array(
+    						'type' => 'section',
+    						'title' => __('Template', $this->pluginName),
+    						'name' => 'section_template',
+    						'fields' => array(
+    							array(
+    								'type' => 'radioimage',
+    								'name' => 'rpr_template',
+    								'label' => __( 'Choose a template', $this->pluginName ),
+    								'description' => sprintf (__( 'Templates define how your recipes will look like. Choose one of the installed templates or <a href="%s">create one yourself</a>.', $this->pluginName ) , 'http://rp-reloaded.net/templates/create' ),
+    								'item_max_height' => '300',
+    								'item_max_width' => '300',
+    								'items' => $templates,
+    								),
+    						),
+    					),
+    			),
+    	),
+ 
 //=============== TEST=======================
 /*    		array(
     				'title' => __('Image', 'vp_textdomain'),

@@ -115,10 +115,10 @@ class RPReloaded{
 	{
 		require_once('php/helper/admin_menu_helper.php');
 		
-		require_once('templates/admin.php');
+		require_once('views/admin.php');
 	
 		new VP_Option(array(
-				'is_dev_mode'           => false,
+				'is_dev_mode'           => true,
 				'option_key'            => 'rpr_option',
 				'page_slug'             => 'rpr_admin',
 				'template'              => $admin_menu,
