@@ -111,6 +111,70 @@ if ( !function_exists('the_recipe_servings_bar') ) {
 	}
 }
 
+// ======= RECIPE NUTRITION BAR =======
+if ( !function_exists('get_the_recipe_nutrition_bar') ) {
+	function get_the_recipe_nutrition_bar( $recipe_id ){
+		$out='';
+
+		if( RPReloaded::get_option( 'recipe_use_nutritional_info', 0 ) == 1 ) {
+			// Get the ID of the recipe:
+			if( !isset( $recipe_id ) || !is_numeric( $recipe_id ) ){
+				$recipe_id = get_post()->ID;
+			}
+
+			// Get the recipe
+			$recipe = get_post_custom( $recipe_id );
+
+			//TODO: schema.org microformats!
+			//TODO: format as list (dictionary)
+			//TODO: display option for this template tag!
+			
+			$out .= '<div class="nutrition" itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation">';
+			$out .= '<span class="nutrition_per" itemprop="servingSize">';
+			
+			switch( $recipe['rpr_recipe_nutrition_per'][0] ) {
+				case 'per_100g':
+					$out .= __('Per 100g', 'recipepress-reloaded' );
+					break;
+				case 'per_portion':
+					$out .= __('Per portion', 'recipepress-reloaded' );
+					break;
+				case 'per_recipe':
+					$out .= __('Per recipe', 'recipepress-reloaded' );
+					break;
+				default:
+					$out .= __('Per 100g', 'recipepress-reloaded' );
+			}
+			
+			$out .= '</span>';
+			$out .= '<dl>';
+			
+			if( isset( $recipe['rpr_recipe_calorific_value'][0] ) ){
+				$out .= sprintf( __( '<dt>Energy:</dt><dd itemprop="calories"> %1s kcal / %2s kJ</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_calorific_value'][0], round( 4.18*$recipe['rpr_recipe_calorific_value'][0] ) );
+			}
+			if( isset( $recipe['rpr_recipe_fat'][0] ) ){
+				$out .= sprintf( __( '<dt>Fat:</dt><dd itemprop="fatContent">%s g</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_fat'][0] );
+			}
+			if( isset( $recipe['rpr_recipe_protein'][0] ) ){
+				$out .= sprintf( __( '<dt>Protein:</dt><dd itemprop="proteinContent">%s g</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_protein'][0] );
+			}
+			if( isset( $recipe['rpr_recipe_carbohydrate'][0] ) ){
+				$out .= sprintf( __( '<dt>Carbohydrate:</dt><dd itemprop="carbohydrateContent">%s g</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_carbohydrate'][0] );
+			}
+			$out .= '</dl>';
+			$out .= '</div>';
+		
+		}
+		return $out;
+	}
+}
+
+if ( !function_exists('the_recipe_nutrition_bar') ) {
+	function the_recipe_nutrition_bar( $recipe_id ){
+		echo get_the_recipe_nutrition_bar( $recipe_id);
+	}
+}
+
 // ======= INGREDIENT LIST =========
 if ( ! function_exists('get_the_recipe_ingredient_list') ) {
 	function get_the_recipe_ingredient_list( $args ){

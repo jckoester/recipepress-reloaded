@@ -92,7 +92,7 @@ class RPReloaded{
 	 * Used in various places.
 	*/
 	protected function recipes_fields() {
-		return array(
+		$return = array(
 				//'recipe_title',
 				'rpr_recipe_description',
 				'rpr_recipe_rating',
@@ -106,6 +106,14 @@ class RPReloaded{
 				'rpr_recipe_instructions',
 				'rpr_recipe_notes',
 		);
+		if( $this->get_option( 'recipe_use_nutritional_info', 0 ) == 1 ){
+			array_push( $return, 'rpr_recipe_calorific_value' );
+			array_push( $return, 'rpr_recipe_protein' );
+			array_push( $return, 'rpr_recipe_fat' );
+			array_push( $return, 'rpr_recipe_carbohydrate' );
+			array_push( $return, 'rpr_recipe_nutrition_per' );
+		}
+		return $return;
 	}
 	
 	/*
@@ -118,7 +126,7 @@ class RPReloaded{
 		require_once('views/admin.php');
 	
 		new VP_Option(array(
-				'is_dev_mode'           => true,
+				'is_dev_mode'           => false,
 				'option_key'            => 'rpr_option',
 				'page_slug'             => 'rpr_admin',
 				'template'              => $admin_menu,

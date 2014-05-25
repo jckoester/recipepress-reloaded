@@ -1,5 +1,6 @@
 TODO:
-
+- BUG: Zubereitungsbilder werden als fehlend angezeigt, wenn kein Bild hinzugefügt wurde
+- BUG: Link-Icons werden nur mit WSIWIG-Editor geladen
 - Shortcodes dokumentieren (rpr_recipe, rpr_recipe_index, rpr_tax_list)
 - Schortcodes an einer Stelle definieren (da liegen noch welche in admin_helper!)
 - weitere sinnvolle Optionen für shortcodes überlegen

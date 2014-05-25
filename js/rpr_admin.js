@@ -333,6 +333,15 @@ jQuery(document).ready(function() {
     	return false;
     });
     
+    /* Automatically convert calories to joulke and vice versa*/
+    jQuery('#rpr_recipe_calorific_value').on('change', function(e) {
+    	var kilojoule = Math.round(jQuery('#rpr_recipe_calorific_value').val() * 4.18);
+    	jQuery('#rpr_recipe_calorific_value_kj').val( kilojoule );
+    });
+    jQuery('#rpr_recipe_calorific_value_kj').on('change', function(e) {
+    	var kcal = Math.round(jQuery('#rpr_recipe_calorific_value_kj').val() / 4.18);
+    	jQuery('#rpr_recipe_calorific_value').val( kcal );
+    });
 
 /* jQuery('.recipe_thumbnail_add_image').on('click', function(e) {  
 

@@ -275,6 +275,17 @@ class RPR_Core extends RPReloaded {
     		'side',
     		'high'
     			);
+    	// Metabox for nutritional information
+    	if( $this->get_option( 'recipe_use_nutritional_info', 0 ) == 1 ) {
+    		add_meta_box(
+    			'recipe_nutrition_meta_box',
+    			__('Nutritional information', $this->pluginName),
+    			array(&$this, 'recipe_nutrition_meta_box'),
+    			'rpr_recipe',
+    			'side',
+    			'high'
+    			);
+    	}
     	//Meta box for description
     	add_meta_box(
     		'recipe_description_meta_box',
@@ -321,6 +332,15 @@ class RPR_Core extends RPReloaded {
     	/* Use nonce for verification */
     	echo wp_nonce_field( 'rpr_details_nonce', 'rpr_details_nonce_field' );
     	include($this->pluginDir . '/views/metabox_details.php');
+    }
+    
+    public function recipe_nutrition_meta_box($recipe)
+    {
+    	if( $this->get_option( 'recipe_use_nutritional_info', 0 ) == 1 ) {
+    		/* Use nonce for verification */
+    		echo wp_nonce_field( 'rpr_nutrition_nonce', 'rpr_nutrition_nonce_field' );
+    		include($this->pluginDir . '/views/metabox_nutrition.php');
+    	}
     }
     
     public function recipe_description_meta_box($recipe)
@@ -384,6 +404,10 @@ class RPR_Core extends RPReloaded {
     			$errors = "There was an error saving the recipe. Details nonce not verified";
     			//return;
     		}
+    		if ( isset($data['rpr_nutrition_nonce_field']) && !wp_verify_nonce($data['rpr_nutrition_nonce_field'],'rpr_nutrition_nonce') ){
+    			$errors = "There was an error saving the recipe. Nutrition nonce not verified";
+    			//return;
+    		}
     		
     		// Check permissions
     		if ( !current_user_can( 'edit_post', $recipe_id ) ){
@@ -398,6 +422,7 @@ class RPR_Core extends RPReloaded {
     		}
     
     		$fields = $this->recipes_fields();
+    		//var_dump($fields); die;
 //var_dump($_POST);
     		foreach ( $fields as $field )
     		{

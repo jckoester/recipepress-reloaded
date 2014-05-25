@@ -593,6 +593,27 @@ $admin_menu = array(
             					),
                             )
             	),
+            	array(
+            			'type' => 'section',
+            			'title' => __('Nutritional Information', $this->pluginName),
+            			'name' => 'section_nutrition',
+            			'fields' => array(
+            					array(
+            							'type' => 'notebox',
+            							'name' => 'recipe_todo_item',
+            							'label' => 'TODO:',
+            							'description' => __('This needs to be moved somewhere else.', $this->pluginName) ,
+            							'status' => 'warning',
+            					),
+            					array(
+            							'type' => 'toggle',
+            							'name' => 'recipe_use_nutritional_info',
+            							'label' => __('Use nutritional information', $this->pluginName),
+            							'description' => __( 'Add nutritional information to your recipes.', $this->pluginName ),
+            							'default' => '0',
+            					),
+            			)
+            	),
                 array(
                     'type' => 'section',
                     'title' => __('Recipe Archive Pages', $this->pluginName),

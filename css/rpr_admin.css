@@ -7,13 +7,15 @@
 	clear:both;
 	
 }
-#recipe_details_meta_box label{
+#recipe_details_meta_box label,
+#recipe_nutrition_meta_box label{
 	width:55%;
 	overflow:hidden;
 	float:left;
 	line-height:29px;
 }
-#recipe_details_meta_box input{
+#recipe_details_meta_box input,
+#recipe_nutrition_meta_box input{
 	width:30%;
 	float:left;
 }

@@ -70,6 +70,28 @@ ul.rpr_info_line li i{
     margin-right:2px;
 }
 
+/* Nutrional Information */
+
+div.nutrition{
+	clear:both;
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    text-align:center;
+}
+div.nutrition span.nutrition_per{
+	float:left;
+	margin: 0 5px 0 0;
+}
+div.nutrition dl{
+	margin:0;
+}
+
+div.nutrition dt,
+div.nutrition dd {
+	margin:0 5px 0 0;
+	display:inline;
+}
+
 /* recipe instructions */
 ol.recipe-instructions{
     vertical-align:top!important;
@@ -91,3 +113,4 @@ ol.recipe-instructions li a{
     display:inline-block;
     vertical-align:top;
 }
+

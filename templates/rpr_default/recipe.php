@@ -71,6 +71,10 @@ if(!is_null($thumb_url)) {
     
     <div class="rpr-clear"></div>
     
+    <!--  NUTROTIONAL INFORMATION -->
+    <?php if( $this->get_option( 'recipe_use_nutritional_info', 0 ) == 1 ) {
+    	the_recipe_nutrition_bar ($recipe_post->ID );
+    } ?>
     <!-- INGREDIENTS -->
     <h3><?php _e('Ingredients', $this->pluginName ); ?></h3>
    
@@ -86,7 +90,7 @@ if(!is_null($thumb_url)) {
     <?php the_recipe_instruction_list( array( 'ID' => $recipe_post->ID ) ); ?>
     
     <!--  NOTES -->
-    <?php if( $recipe['rpr_recipe_notes'][0] ) { ?>
+    <?php if( isset( $recipe['rpr_recipe_notes'][0] ) ) { ?>
     <h3><?php _e( 'Recipe notes', 'recipe-press-reloaded' ); ?></h3>
 	<?php the_recipe_notes( array('ID' => $recipe_post->ID ) )?>
     <?php } ?>
