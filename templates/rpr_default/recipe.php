@@ -22,10 +22,12 @@ $recipe_title = get_the_title( $recipe_post );
 //the_post_thumbnail();
 ?>
 <div class="rpr-container" itemscope itemtype="http://schema.org/Recipe" >
+
 <?php if ( $mode == 'shortcode' ){?>
 	<h2 class="rpr_title"><?php echo get_the_title( $recipe_post ); ?></h2>
 <?php } ?>
- <a href="#" class="print-recipe fa fa-print"></a>
+<?php the_recipe_print_link(); ?>
+ 
 <!-- displaying these data is the job of the theme. Therefore they're hidden! -->
 	<span class="rpr_title hidden" itemprop="name"><?php echo get_the_title( $recipe_post ); ?></span>
   	<span class="rpr_author hidden" itemprop="author"><?php  the_author(); ?></span>
@@ -63,7 +65,7 @@ if(!is_null($thumb_url)) {
 
     
     <!-- Taxonomies -->
-    <?php the_recipe_category_bar( $recipe_post->ID ); ?>
+    <?php the_recipe_taxonomy_bar( $recipe_post->ID ); ?>
     
     <!-- DESCRIPTION -->                  
     <span class="rpr_description" itemprop="description"><?php echo $recipe['rpr_recipe_description'][0]; ?></span>
@@ -73,7 +75,7 @@ if(!is_null($thumb_url)) {
     
     <!--  NUTROTIONAL INFORMATION -->
     <?php if( $this->get_option( 'recipe_use_nutritional_info', 0 ) == 1 ) {
-    	the_recipe_nutrition_bar ($recipe_post->ID );
+    	the_recipe_nutrition($recipe_post->ID );
     } ?>
     <!-- INGREDIENTS -->
     <h3><?php _e('Ingredients', $this->pluginName ); ?></h3>
@@ -86,12 +88,12 @@ if(!is_null($thumb_url)) {
     <!--- INSTRUCTIONS --->
     <h3><?php _e( 'Instructions', $this->pluginName ); ?></h3>
     <!-- INFO LINE (Times) -->
-    <?php the_recipe_time_bar( $recipe_post->ID ); ?>
+    <?php the_recipe_times( $recipe_post->ID ); ?>
     <?php the_recipe_instruction_list( array( 'ID' => $recipe_post->ID ) ); ?>
     
     <!--  NOTES -->
     <?php if( isset( $recipe['rpr_recipe_notes'][0] ) ) { ?>
-    <h3><?php _e( 'Recipe notes', 'recipe-press-reloaded' ); ?></h3>
+    <h3><?php _e( 'Recipe notes', $this->pluginName ); ?></h3>
 	<?php the_recipe_notes( array('ID' => $recipe_post->ID ) )?>
     <?php } ?>
     

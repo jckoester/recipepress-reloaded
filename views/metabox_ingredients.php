@@ -1,7 +1,8 @@
 <?php 
 $ingredients = get_post_meta( $recipe->ID, "rpr_recipe_ingredients", true );
 
-$ingredient_link = get_option('rpr_option')['recipe_ingredient_links'];
+
+$ingredient_link = RPReloaded::get_option('recipe_ingredient_links');
 $has_link=false;
 ?>
 <script>

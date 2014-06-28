@@ -72,24 +72,33 @@ ul.rpr_info_line li i{
 
 /* Nutrional Information */
 
-div.nutrition{
+div.recipe-nutrition,
+dl.recipe-times,
+dl.rpr_times{
 	clear:both;
     border-top: solid 1px #ccc;
     border-bottom: solid 1px #ccc;
     text-align:center;
+    text-transform:none !important;
 }
-div.nutrition span.nutrition_per{
+div.recipe-nutrition span.nutrition_per{
 	float:left;
 	margin: 0 5px 0 0;
 }
-div.nutrition dl{
+div.recipe-nutrition dl{
 	margin:0;
 }
 
-div.nutrition dt,
-div.nutrition dd {
+div.recipe-nutrition dt,
+div.recipe-nutrition dd,
+.rpr_times dt,
+.rpr_times dd {
 	margin:0 5px 0 0;
 	display:inline;
+}
+
+.recipe-times-name{
+	display:none;	
 }
 
 /* recipe instructions */
@@ -114,3 +123,6 @@ ol.recipe-instructions li a{
     vertical-align:top;
 }
 
+span.print-link{
+	float:right;
+}

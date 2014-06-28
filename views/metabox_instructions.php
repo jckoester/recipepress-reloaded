@@ -1,6 +1,6 @@
 <?php 
 $instructions = get_post_meta( $recipe->ID, "rpr_recipe_instructions", true );
-$images = get_option('rpr_option')['recipe_instruction_image'];
+$images = RPReloaded::get_option('recipe_instruction_image');
 ?>
 
 <table id="recipe-instructions" class=" <?php if($images){ echo 'images'; }?>">

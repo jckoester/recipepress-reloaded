@@ -6,13 +6,7 @@ $prep_time = get_post_meta( $recipe->ID, "rpr_recipe_prep_time", true );
 $cook_time= get_post_meta( $recipe->ID, "rpr_recipe_cook_time", true );
 $passive_time= get_post_meta( $recipe->ID, "rpr_recipe_passive_time", true );
 $featured= get_post_meta( $recipe->ID, "rpr_recipe_featured", true );
-//$fields = array('rpr_recipe_rating');//$this->recipes_fields();
- 
-/*foreach( $fields as $field)
-{
-    $variable_name = str_replace( 'rpr_recipe_', '', $field );
-    $$variable_name = get_post_meta( $recipe->ID, $field, true );
-}*/
+
 
 ?>
 <script>

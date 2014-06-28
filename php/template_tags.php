@@ -1,7 +1,85 @@
 <?php
-if ( !function_exists('get_the_recipe_category_bar') ) {
-    // template tag for category list:
-    function get_the_recipe_category_bar( $recipe_id='' ){
+/*----------------------- Display Mode ----------------------------*/
+/*
+ * Decides wether we are in  embedded or single mode
+ */
+if ( !function_exists('is_recipe_embedded') ) {
+	function is_recipe_embedded(){
+		// Check if we are in single mode or shortcode mode (aka included recipe)
+		if( get_post_type( ) != 'rpr_recipe' ){
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
+/*----------------------- Recipe Thumbnail ----------------------------*/
+if ( !function_exists('get_the_recipe_thumbnail') ) {
+	// thumbnail of the recipe.
+	function get_the_recipe_thumbnail( $recipe_id = '') {
+		$out = '';
+		
+		$imgclass="hidden";
+		if( RPReloaded::get_option( 'recipe_display_image', '0' ) || is_recipe_embedded() ) { $imgclass=""; }
+		
+		$recipe_title = get_the_title( $recipe_id );
+		
+		// Get the image URL:
+		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $recipe_id ), 'large' );
+		$thumb_url = $thumb['0'];
+		
+		if(!is_null($thumb_url)) {
+			$full_img = wp_get_attachment_image_src( get_post_thumbnail_id( $recipe_id), 'full' );
+			$full_img_url = $full_img['0'];
+			
+			$out .= '<div class="recipe-header-image">';
+		    
+		    if( RPReloaded::get_option( 'recipe_images_clickable', '0' ) == 1 ) {
+		    	$out .= '<a href="' . $full_img_url . '" rel="lightbox" title="'. $recipe_title . '">';
+		        $out .= '<img class="' . $imgclass . '" itemprop="image" src="' . $thumb_url . '" title="' . $recipe_title . '" />';
+		        $out .= '</a>';
+		    } else {
+				$out .= '<img class="' . $imgclass . '" itemprop="image" src="' . $thumb_url . '" title="' . $recipe_title . '" />';
+			}
+			
+		    $out .= '</div>';
+		}
+		return $out;
+	}
+}
+
+if ( !function_exists('the_recipe_thumbnail') ) {
+	function the_recipe_thumbnail( $recipe_id ) {
+		echo get_the_recipe_thumbnail( $recipe_id );
+	}
+}
+
+
+
+if ( !function_exists('get_the_recipe_print_link') ) {
+	// a link to print only the recipe.
+	function get_the_recipe_print_link() {
+		$out = '';
+		if (  RPReloaded::get_option('recipe_display_printlink', 0) == '1' ){
+			$out .= '<script>';
+			$out .= 'var rpr_printarea="' . RPReloaded::get_option('recipe_printlink_class', '.rpr_recipe') . '";' ;
+			$out .= '</script>';
+			$out .= '<span class="print-link"></span>';
+		}
+		return $out;
+	}
+}
+
+if ( !function_exists('the_recipe_print_link') ) {
+	function the_recipe_print_link() {
+		echo get_the_recipe_print_link();
+	}
+}
+
+if ( !function_exists('get_the_recipe_taxonomy_bar') ) {
+    // template tag for taxonomy bar:
+    function get_the_recipe_taxonomy_bar( $recipe_id='' ){
     	if( !$recipe_id || !is_numeric( $recipe_id ) ){
     		$recipe_id = get_post()->ID;
     	}
@@ -14,12 +92,12 @@ if ( !function_exists('get_the_recipe_category_bar') ) {
             if( RPReloaded::get_option('recipe_display_categories_in_recipe', 1) == '1' ) {
                 $out .= sprintf(
                     '<span itemprop="recipeCategory" class="fa fa-list-ul category-list">%s</span>',
-                    get_the_category_list(  __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ) )
+                    get_the_category_list(  __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ) )
                     );
             } else {
                 $out .= sprintf(
                     '<span itemprop="recipeCategory" class="category-list rpr_hidden">%s</span>',
-                    get_the_category_list(  __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ) )
+                    get_the_category_list(  __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ) )
                     );
             }
         } else {
@@ -27,7 +105,7 @@ if ( !function_exists('get_the_recipe_category_bar') ) {
             if(!is_wp_error($terms) && $terms != '') {
                 $out .= sprintf(
                         '<span itemprop="recipeCategory" class="fa fa-list-ul category-list">%s</span>',
-                         get_the_term_list( $recipe_post->ID, 'rpr_category', '', __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ), '' )
+                         get_the_term_list( $recipe_post->ID, 'rpr_category', '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
                     );
             }
         }
@@ -37,7 +115,7 @@ if ( !function_exists('get_the_recipe_category_bar') ) {
         if(!is_wp_error($terms) && $terms != '') {
             $out .= sprintf(
                     '<span class="fa fa-cutlery category-list">%s</span>',
-                     get_the_term_list( $recipe_id, 'rpr_course', '', __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ), '' )
+                     get_the_term_list( $recipe_id, 'rpr_course', '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
                     );
         }
         
@@ -46,7 +124,7 @@ if ( !function_exists('get_the_recipe_category_bar') ) {
         if(!is_wp_error($terms) && $terms != '') {
             $out .=  sprintf(
                         '<span itemprop="recipeCuisine" class="fa fa-flag category-list">%s</span>',
-                        get_the_term_list( $recipe_id, 'rpr_cuisine', '', __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ), '' )
+                        get_the_term_list( $recipe_id, 'rpr_cuisine', '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
                     );
         }
         
@@ -59,7 +137,7 @@ if ( !function_exists('get_the_recipe_category_bar') ) {
                 if(!is_wp_error($terms) && $terms != '') {
                     $out .= sprintf(
                         '<span class="fa fa-list-alt category-list">%s</span>',
-                        get_the_term_list( $recipe_id, $taxonomy, '', __( '&nbsp;/&nbsp; ', 'recipe-press-reloaded' ), '' )
+                        get_the_term_list( $recipe_id, $taxonomy, '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
                     );
                 }
             }
@@ -71,12 +149,43 @@ if ( !function_exists('get_the_recipe_category_bar') ) {
     }
  }
  
-if ( !function_exists('the_recipe_category_bar') ) {
-    function the_recipe_category_bar( $recipe_id ){
-        echo get_the_recipe_category_bar( $recipe_id );
+if ( !function_exists('the_recipe_taxonomy_bar') ) {
+    function the_recipe_taxonomy_bar( $recipe_id ){
+        echo get_the_recipe_taxonomy_bar( $recipe_id );
     }
 } 
 
+if ( !function_exists('get_the_recipe_taxonomy_term_list') ) {
+	function get_the_recipe_taxonomy_term_list( $recipe_id, $taxonomy ){
+		$out = '';
+		
+		if( isset( $taxonomy ) && $taxonomy != '' && taxonomy_exists( $taxonomy ) ){
+			$terms =  get_the_terms( $recipe_id, $taxonomy);
+			
+			if( $terms) {
+				foreach ( $terms as $term){
+					$out .= '<li>';
+					$out .= '<a href="' . get_term_link( $term, $taxonomy ) . '">';
+					$out .= $term->name;
+					$out .= '</a>';
+					$out .= '</li>';
+				}
+			}
+		}
+		
+		if( $out != '' ){
+			return '<ul class="recipe-taxonomy entry-meta">' . $out . '</ul>';
+		}
+		
+		return $out;
+	}
+}
+
+if ( !function_exists('the_recipe_taxonomy_term_list') ) {
+	function the_recipe_taxonomy_term_list( $recipe_id, $taxonomy ){
+		echo get_the_recipe_taxonomy_term_list( $recipe_id, $taxonomy );
+	}
+}
 
 
 // ======= RECIPE SERVINGS BAR =======
@@ -93,8 +202,8 @@ if ( !function_exists('get_the_recipe_servings_bar') ) {
 		$recipe = get_post_custom( $recipe_id );
 		
 		if( isset( $recipe['rpr_recipe_servings'][0] ) &&  $recipe['rpr_recipe_servings'][0] != 0 ) {
-			$out .= __( 'For: ', 'recipe-press-reloaded' );
-			$out .= '<span itemprop="recipeYield"><span class="recipe-information-servings">';
+			$out .= __( 'For: ', 'recipepress-reloaded' );
+			$out .= '&nbsp;<span itemprop="recipeYield"><span class="recipe-information-servings">';
 			$out .= $recipe['rpr_recipe_servings'][0];
 			$out .= '</span> <span class="recipe-information-servings-type">';
 			$out .= $recipe['rpr_recipe_servings_type'][0];
@@ -112,8 +221,8 @@ if ( !function_exists('the_recipe_servings_bar') ) {
 }
 
 // ======= RECIPE NUTRITION BAR =======
-if ( !function_exists('get_the_recipe_nutrition_bar') ) {
-	function get_the_recipe_nutrition_bar( $recipe_id ){
+if ( !function_exists('get_the_recipe_nutrition') ) {
+	function get_the_recipe_nutrition( $recipe_id ){
 		$out='';
 
 		if( RPReloaded::get_option( 'recipe_use_nutritional_info', 0 ) == 1 ) {
@@ -129,49 +238,52 @@ if ( !function_exists('get_the_recipe_nutrition_bar') ) {
 			//TODO: format as list (dictionary)
 			//TODO: display option for this template tag!
 			
-			$out .= '<div class="nutrition" itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation">';
-			$out .= '<span class="nutrition_per" itemprop="servingSize">';
+			if( isset( $recipe['rpr_recipe_nutrition_per'][0] ) ){
+				$out .= '<div class="recipe-nutrition entry-meta" itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation">';
+				$out .= '<span class="nutrition_per" itemprop="servingSize">';
 			
-			switch( $recipe['rpr_recipe_nutrition_per'][0] ) {
-				case 'per_100g':
-					$out .= __('Per 100g', 'recipepress-reloaded' );
-					break;
-				case 'per_portion':
-					$out .= __('Per portion', 'recipepress-reloaded' );
-					break;
-				case 'per_recipe':
-					$out .= __('Per recipe', 'recipepress-reloaded' );
-					break;
-				default:
-					$out .= __('Per 100g', 'recipepress-reloaded' );
-			}
 			
-			$out .= '</span>';
-			$out .= '<dl>';
+				switch( $recipe['rpr_recipe_nutrition_per'][0] ) {
+					case 'per_100g':
+						$out .= __('Per 100g', 'recipepress-reloaded' );
+						break;
+					case 'per_portion':
+						$out .= __('Per portion', 'recipepress-reloaded' );
+						break;
+					case 'per_recipe':
+						$out .= __('Per recipe', 'recipepress-reloaded' );
+						break;
+					default:
+						$out .= __('Per 100g', 'recipepress-reloaded' );
+				}
 			
-			if( isset( $recipe['rpr_recipe_calorific_value'][0] ) ){
-				$out .= sprintf( __( '<dt>Energy:</dt><dd itemprop="calories"> %1s kcal / %2s kJ</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_calorific_value'][0], round( 4.18*$recipe['rpr_recipe_calorific_value'][0] ) );
+			
+				$out .= '</span>';
+				$out .= '<dl>';
+				
+				if( isset( $recipe['rpr_recipe_calorific_value'][0] ) ){
+					$out .= sprintf( __( '<dt>Energy:</dt><dd itemprop="calories"> %1s kcal / %2s kJ</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_calorific_value'][0], round( 4.18*$recipe['rpr_recipe_calorific_value'][0] ) );
+				}
+				if( isset( $recipe['rpr_recipe_fat'][0] ) ){
+					$out .= sprintf( __( '<dt>Fat:</dt><dd itemprop="fatContent">%s g</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_fat'][0] );
+				}
+				if( isset( $recipe['rpr_recipe_protein'][0] ) ){
+					$out .= sprintf( __( '<dt>Protein:</dt><dd itemprop="proteinContent">%s g</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_protein'][0] );
+				}
+				if( isset( $recipe['rpr_recipe_carbohydrate'][0] ) ){
+					$out .= sprintf( __( '<dt>Carbohydrate:</dt><dd itemprop="carbohydrateContent">%s g</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_carbohydrate'][0] );
+				}
+				$out .= '</dl>';
+				$out .= '</div>';
 			}
-			if( isset( $recipe['rpr_recipe_fat'][0] ) ){
-				$out .= sprintf( __( '<dt>Fat:</dt><dd itemprop="fatContent">%s g</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_fat'][0] );
-			}
-			if( isset( $recipe['rpr_recipe_protein'][0] ) ){
-				$out .= sprintf( __( '<dt>Protein:</dt><dd itemprop="proteinContent">%s g</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_protein'][0] );
-			}
-			if( isset( $recipe['rpr_recipe_carbohydrate'][0] ) ){
-				$out .= sprintf( __( '<dt>Carbohydrate:</dt><dd itemprop="carbohydrateContent">%s g</dd>', 'recipepress-reloaded' ), $recipe['rpr_recipe_carbohydrate'][0] );
-			}
-			$out .= '</dl>';
-			$out .= '</div>';
-		
 		}
 		return $out;
 	}
 }
 
-if ( !function_exists('the_recipe_nutrition_bar') ) {
-	function the_recipe_nutrition_bar( $recipe_id ){
-		echo get_the_recipe_nutrition_bar( $recipe_id);
+if ( !function_exists('the_recipe_nutrition') ) {
+	function the_recipe_nutrition( $recipe_id ){
+		echo get_the_recipe_nutrition( $recipe_id);
 	}
 }
 
@@ -264,8 +376,8 @@ if ( ! function_exists('the_recipe_ingredient_list') ) {
 }
 
 // ================= RECIPE TIME BAR ==============
-if ( !function_exists('get_the_recipe_time_bar') ) {
-	function get_the_recipe_time_bar( $recipe_id='' ){
+if ( !function_exists('get_the_recipe_times') ) {
+	function get_the_recipe_times( $recipe_id='' ){
 		$out='';
 		 
 		// Get the ID of the recipe:
@@ -277,12 +389,23 @@ if ( !function_exists('get_the_recipe_time_bar') ) {
 		$recipe = get_post_custom( $recipe_id );
 
 		if( isset($recipe['rpr_recipe_prep_time'][0]) && $recipe['rpr_recipe_prep_time'][0] != '' ) {
-			$out .= '<span class="fa fa-cog recipe-times" title="'. __( 'Preparation Time', 'recipe-press-reloaded' ).'">';
-			$out .= '<meta itemprop="prepTime" content="PT'.$recipe['rpr_recipe_prep_time'][0].'M">'.$recipe['rpr_recipe_prep_time'][0].'<span class="recipe-information-time-unit">'.__( 'min.', 'recipe-press-reloaded' ).'</span></span>';
+			$out .= '<dt>';
+			$out .= '<i class="fa fa-cog recipe-times-icon" title="' . __( 'Preparation Time', 'recipepress-reloaded' ) . '"></i>';
+			$out .= '<span class="recipe-times-name">' . __( 'Preparation', 'recipepress-reloaded' ) . '</span>';
+			$out .= '</dt>';
+			$out .= '<dd>';
+			$out .= '<meta itemprop="prepTime" content="PT'.$recipe['rpr_recipe_prep_time'][0].'M">'.$recipe['rpr_recipe_prep_time'][0].' <span class="recipe-information-time-unit">'.__( 'min.', 'recipepress-reloaded' ).'</span>';
+			$out .= '</dd>';
 		}
+		
 		if( isset($recipe['rpr_recipe_cook_time'][0]) && $recipe['rpr_recipe_cook_time'][0] != '' ) {
-			$out .= '<span class="fa fa-fire recipe-times" title="'.__( 'Cook Time', 'recipe-press-reloaded' ).'">';
-			$out .= '<meta itemprop="cookTime" content="PT'.$recipe['rpr_recipe_cook_time'][0].'M">'.$recipe['rpr_recipe_cook_time'][0].'<span class="recipe-information-time-unit">'.__( 'min.', 'recipe-press-reloaded' ).'</span></span>';
+			$out .= '<dt>';
+			$out .= '<i class="fa fa-fire recipe-times-icon" title="' . __( 'Cook Time', 'recipepress-reloaded' ) . '"></i>';
+			$out .= '<span class="recipe-times-name">' . __( 'Cooking', 'recipepress-reloaded' ) . '</span>';
+			$out .= '</dt>';
+			$out .= '<dd>';
+			$out .= '<meta itemprop="cookTime" content="PT'.$recipe['rpr_recipe_cook_time'][0].'M">'.$recipe['rpr_recipe_cook_time'][0].' <span class="recipe-information-time-unit">'.__( 'min.', 'recipepress-reloaded' ).'</span>';
+			$out .= '</dd>';
 		}
 
 
@@ -299,18 +422,23 @@ if ( !function_exists('get_the_recipe_time_bar') ) {
 		}
 		
 		if($totaltime != 0 ) {
-			$out .= '<span class="fa fa-clock-o recipe-times" title="'.__( 'Total Time', 'recipe-press-reloaded' ).'">';
-			$out .= '<meta itemprop="totalTime" content="PT'.$totaltime.'">'.$totaltime.'<span class="recipe-information-time-unit">'.__( 'min.', 'recipe-press-reloaded' ).'</span></span>';
+			$out .= '<dt>';
+			$out .= '<i class="fa fa-clock-o recipe-times-icon" title="'.__( 'Total Time', 'recipepress-reloaded' ).'"></i>';
+			$out .= '<span class="recipe-times-name">' . __( 'Ready in', 'recipepress-reloaded' ) . '</span>';
+			$out .= '</dt>';
+			$out .= '<dd>';
+			$out .= '<meta itemprop="totalTime" content="PT'.$totaltime.'">'.$totaltime.' <span class="recipe-information-time-unit">'.__( 'min.', 'recipepress-reloaded' ).'</span>';
+			$out .= '</dd>';
 		}
 		if( $out != '') {
-			return '<div class="entry-meta rpr_time_line" >'.$out.'</div>';
+			return '<dl class="entry-meta rpr_times" >'.$out.'</dl>';
 		}
 	}
 }
 
-if ( !function_exists('the_recipe_time_bar') ) {
-	function the_recipe_time_bar( $recipe_id ){
-		echo get_the_recipe_time_bar( $recipe_id );
+if ( !function_exists('the_recipe_times') ) {
+	function the_recipe_times( $recipe_id ){
+		echo get_the_recipe_times( $recipe_id );
 	}
 }
 

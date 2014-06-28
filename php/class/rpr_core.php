@@ -77,14 +77,18 @@ class RPR_Core extends RPReloaded {
     {
         wp_register_style( 'rpr_fa', $this->pluginUrl . '/css/font-awesome.min.css');
         wp_register_style( 'rpr_pub', $this->pluginUrl . '/templates/' . $this->option( 'rpr_template', 'rpr_default') . '/public.css');
+        wp_register_style( 'rpr_pub_prn', $this->pluginUrl . '/templates/' . $this->option( 'rpr_template', 'rpr_default') . '/print.css', '', RPR_VERSION, 'print');
         wp_enqueue_style( 'rpr_fa' );    	
         wp_enqueue_style( 'rpr_pub' );
+        wp_enqueue_style( 'rpr_pub_prn' );
     }
 
     public function public_plugin_scripts( $hook )
     {
     	wp_register_script( $this->pluginName, $this->pluginUrl . '/js/rpr_public.js', array('jquery'), RPR_VERSION );
+    	wp_register_script( 'jquery-print', $this->pluginUrl . '/js/rpr_print.js', array('jquery'), RPR_VERSION );
     	wp_enqueue_script( $this->pluginName );
+    	wp_enqueue_script( 'jquery-print' );
     }
 
     public function admin_plugin_styles()
