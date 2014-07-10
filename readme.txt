@@ -17,14 +17,17 @@ The frontend is using schema.org's recipe microformat to allow search engines li
 
 = Features =
 
-* update from the famous but discontinued plugin "RecipePress" by grandslambert
+
 * custom post type "recipe", made to be used alongside with other recipe plugins
 * a bunch of taxonomies like cateogories, cuisines, seasons, course. You can add as many custom taxonomies as you like
+* display nutritional information alongside your recipes
 * options to also include categories and tags used from standard posts.
 * user comments and pingbacks
 * recipe photo using featured thumbnail tools.
 * easy-type backend
 * schema.org's recipe microformat
+* choose between templates to determine how your recipes should look like or create e template yourself
+* update from the famous but discontinued plugin "RecipePress" by grandslambert
 
 = Languages =
 
@@ -46,6 +49,11 @@ If you want a translation of another language included please help translating!
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
+
+= 0.6.0 June 29th, 2014
+* added support for nutritional information
+* choose between two templates
+* rearranged settings for a better overview
 
 = 0.5.6 May 17th, 2014 =
 * bugfix release, fixing several bugs introduced with 0.5.5
