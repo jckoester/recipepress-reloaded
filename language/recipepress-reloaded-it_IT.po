@@ -1,0 +1,1266 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RecipePress reloaded\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-10 15:47+0100\n"
+"PO-Revision-Date: 2014-07-11 19:02+0100\n"
+"Last-Translator: SDM <druid986@gmail.com>\n"
+"Language-Team:  <webmaster@paperelloweb.net>\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: gettext;gettext_noop;_e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Bookmarks: -1,-1,-1,-1,-1,-1,-1,-1,239,-1\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../php/class/rpr_core.php:133
+msgid "RPR table thumbnail"
+msgstr "RPR miniatura tabella"
+
+#: ../php/class/rpr_core.php:144
+msgid "Recipes"
+msgstr "Ricette"
+
+#: ../php/class/rpr_core.php:145 ../templates/admin.php:409
+msgid "Recipe"
+msgstr "Ricetta"
+
+#: ../php/class/rpr_core.php:161 ../php/class/rpr_core.php:162
+#: ../php/class/rpr_core.php:907 ../php/class/rpr_taxonomies.php:279
+msgid "Add New"
+msgstr "Aggiungi Ricetta"
+
+#: ../php/class/rpr_core.php:163 ../php/class/rpr_core.php:164
+#: ../php/class/rpr_core.php:905 ../php/class/rpr_taxonomies.php:277
+msgid "Edit"
+msgstr "Modifica"
+
+#: ../php/class/rpr_core.php:165 ../php/class/rpr_core.php:908
+#: ../php/class/rpr_taxonomies.php:280
+msgid "New"
+msgstr "Nuovo"
+
+#: ../php/class/rpr_core.php:166 ../php/class/rpr_core.php:167
+msgid "View"
+msgstr "Visualizza"
+
+#: ../php/class/rpr_core.php:168 ../php/class/rpr_core.php:902
+#: ../php/class/rpr_taxonomies.php:274
+msgid "Search"
+msgstr "Cerca"
+
+#: ../php/class/rpr_core.php:169 ../php/class/rpr_core.php:170
+#: ../php/class/rpr_core.php:912 ../php/class/rpr_taxonomies.php:284
+msgid "No"
+msgstr "No"
+
+#: ../php/class/rpr_core.php:169 ../php/class/rpr_core.php:912
+#: ../php/class/rpr_taxonomies.php:284
+msgid "found."
+msgstr "trovata."
+
+#: ../php/class/rpr_core.php:170
+msgid "found in trash."
+msgstr "trovata nel cestino."
+
+#: ../php/class/rpr_core.php:171
+msgid "Parent"
+msgstr "Genitore"
+
+#: ../php/class/rpr_core.php:265
+msgid "Post image"
+msgstr "Immagine del post"
+
+#: ../php/class/rpr_core.php:270
+msgid "Details"
+msgstr "Dettagli"
+
+#: ../php/class/rpr_core.php:279
+msgid "Description"
+msgstr "Descrizione"
+
+#: ../php/class/rpr_core.php:288 ../php/class/rpr_core.php:864
+#: ../php/class/rpr_migration.php:412 ../php/class/rpr_migration.php:416
+#: ../templates/admin.php:481 ../templates/rpr_recipe_public.php:64
+msgid "Ingredients"
+msgstr "Ingredienti"
+
+#: ../php/class/rpr_core.php:297 ../templates/admin.php:540
+#: ../templates/rpr_recipe_public.php:72
+msgid "Instructions"
+msgstr "Istruzioni"
+
+#: ../php/class/rpr_core.php:306
+msgid "Notes"
+msgstr "Note"
+
+#: ../php/class/rpr_core.php:467 ../templates/admin.php:39
+msgid "Image"
+msgstr "Immagine"
+
+#: ../php/class/rpr_core.php:468
+msgid "Recipe Title"
+msgstr "Titolo ricetta"
+
+#: ../php/class/rpr_core.php:469
+msgid "Author"
+msgstr "Autore"
+
+#: ../php/class/rpr_core.php:470
+msgid "Category"
+msgstr "Categoria"
+
+#: ../php/class/rpr_core.php:471
+msgid "Tags"
+msgstr "Tags"
+
+#: ../php/class/rpr_core.php:472
+msgid "Comments"
+msgstr "Commenti"
+
+#: ../php/class/rpr_core.php:473
+msgid "Date"
+msgstr "Data"
+
+#: ../php/class/rpr_core.php:776 ../php/class/rpr_core.php:822
+msgid ""
+"You have to create a recipe first, check the 'Recipes' menu on the left."
+msgstr ""
+"È necessario creare una ricetta in prima, controlla 'ricette' nel menu a "
+"sinistra."
+
+#: ../php/class/rpr_core.php:864
+msgid "Ingredient"
+msgstr "Ingrediente"
+
+#: ../php/class/rpr_core.php:865
+msgid "Courses"
+msgstr "Corsi (o Portate)"
+
+#: ../php/class/rpr_core.php:865
+msgid "Course"
+msgstr "Procedimento (o Portata)"
+
+#: ../php/class/rpr_core.php:866
+msgid "Cuisines"
+msgstr "Cucine"
+
+#: ../php/class/rpr_core.php:866
+msgid "Cuisine"
+msgstr "Cucina"
+
+#: ../php/class/rpr_core.php:871
+msgid "Breakfast"
+msgstr "Prima colazione"
+
+#: ../php/class/rpr_core.php:872
+msgid "Appetizer"
+msgstr "Antipasto"
+
+#: ../php/class/rpr_core.php:873
+msgid "Soup"
+msgstr "Zuppa"
+
+#: ../php/class/rpr_core.php:874
+msgid "Main Course"
+msgstr "Portata principale"
+
+#: ../php/class/rpr_core.php:875
+msgid "Side Dish"
+msgstr "Contorno"
+
+#: ../php/class/rpr_core.php:876
+msgid "Salad"
+msgstr "Insalata"
+
+#: ../php/class/rpr_core.php:877
+msgid "Dessert"
+msgstr "Dolce"
+
+#: ../php/class/rpr_core.php:878
+msgid "Snack"
+msgstr "Spuntino"
+
+#: ../php/class/rpr_core.php:879
+msgid "Drinks"
+msgstr "Bevande"
+
+#: ../php/class/rpr_core.php:881
+msgid "French"
+msgstr "Francese"
+
+#: ../php/class/rpr_core.php:882
+msgid "Italian"
+msgstr "Italiana"
+
+#: ../php/class/rpr_core.php:883
+msgid "Mediterranean"
+msgstr "Mediterraneo"
+
+#: ../php/class/rpr_core.php:884
+msgid "Indian"
+msgstr "Indiano"
+
+#: ../php/class/rpr_core.php:885
+msgid "Chinese"
+msgstr "Cinese"
+
+#: ../php/class/rpr_core.php:886
+msgid "Japanese"
+msgstr "Giapponese"
+
+#: ../php/class/rpr_core.php:887
+msgid "American"
+msgstr "Americana"
+
+#: ../php/class/rpr_core.php:888
+msgid "Mexican"
+msgstr "Messicana"
+
+#: ../php/class/rpr_core.php:903 ../php/class/rpr_taxonomies.php:275
+msgid "Popular"
+msgstr "Popolare"
+
+#: ../php/class/rpr_core.php:904 ../php/class/rpr_taxonomies.php:276
+msgid "All"
+msgstr "Qualsiasi"
+
+#: ../php/class/rpr_core.php:906 ../php/class/rpr_taxonomies.php:278
+msgid "Update"
+msgstr "Aggiorna"
+
+#: ../php/class/rpr_core.php:908 ../php/class/rpr_taxonomies.php:126
+#: ../php/class/rpr_taxonomies.php:182 ../php/class/rpr_taxonomies.php:280
+#: ../widgets/taxonomy-list-widget.php:158
+msgid "Name"
+msgstr "Nome"
+
+#: ../php/class/rpr_core.php:909 ../php/class/rpr_taxonomies.php:281
+msgid "Separate"
+msgstr "Indipendente"
+
+#: ../php/class/rpr_core.php:909 ../php/class/rpr_taxonomies.php:281
+msgid "with commas"
+msgstr "con virgole"
+
+#: ../php/class/rpr_core.php:910 ../php/class/rpr_taxonomies.php:282
+msgid "Add or remove"
+msgstr "Aggiungi o rimuovi"
+
+#: ../php/class/rpr_core.php:911 ../php/class/rpr_taxonomies.php:283
+msgid "Choose from the most used"
+msgstr "Scegli tra i più utilizzati"
+
+#: ../php/class/rpr_core.php:937 ../php/class/rpr_core.php:950
+msgid "Ratings"
+msgstr "Valutazioni"
+
+#: ../php/class/rpr_core.php:938 ../templates/metabox_details.php:27
+msgid "Rating"
+msgstr "Valutazione"
+
+#: ../php/class/rpr_core.php:939
+msgid "Search Ratings"
+msgstr "Cerca Valutazioni"
+
+#: ../php/class/rpr_core.php:940
+msgid "Popular Ratings"
+msgstr "Valutazioni più richieste"
+
+#: ../php/class/rpr_core.php:941
+msgid "All Ratings"
+msgstr "Tutte le valutazioni"
+
+#: ../php/class/rpr_core.php:942
+msgid "Edit Rating"
+msgstr "Modifica valutazione"
+
+#: ../php/class/rpr_core.php:943
+msgid "Update Rating"
+msgstr "Aggiorna valutazione"
+
+#: ../php/class/rpr_core.php:944
+msgid "Add New Rating"
+msgstr "Aggiungi nuova valutazione"
+
+#: ../php/class/rpr_core.php:945
+msgid "New Rating Name"
+msgstr "Nome nuova valutazione"
+
+#: ../php/class/rpr_core.php:946
+msgid "Separate ratings with commas"
+msgstr "Voti separati con virgole"
+
+#: ../php/class/rpr_core.php:947
+msgid "Add or remove ratings"
+msgstr "Aggiungi o rimuovi voti"
+
+#: ../php/class/rpr_core.php:948
+msgid "Choose from the most used ratings"
+msgstr "Scegliere tra i più votati"
+
+#: ../php/class/rpr_core.php:949
+msgid "No ratings found."
+msgstr "Nessuna valutazione trovata."
+
+#: ../php/class/rpr_migration.php:40
+#, php-format
+msgid ""
+"The Recipe Press Reloaded database needs to upgraded. Make sure you have a "
+"backup before you proceed. | <a href=\"%1$s\">Proceed</a>"
+msgstr ""
+"Il database di Recipe Press Reloaded deve essere aggiornato. Assicurarsi di "
+"avere una copia di backup prima di procedere. | <a href=\"%1$s\">Procedi</a>"
+
+#: ../php/class/rpr_taxonomies.php:42 ../php/class/rpr_taxonomies.php:52
+#: ../php/helper/rpr_taxonomies_builder.php:6
+msgid "Custom Taxonomies"
+msgstr "Tassonomie personalizzate"
+
+#: ../php/class/rpr_taxonomies.php:42 ../php/class/rpr_taxonomies.php:52
+msgid "Manage Tags"
+msgstr "Gestisci Tags"
+
+#: ../php/class/rpr_taxonomies.php:43
+msgid "Current Recipe Taxonomies"
+msgstr "Tassonomie Ricetta corrente"
+
+#: ../php/class/rpr_taxonomies.php:44
+msgid "Add new / edit Recipe Taxonomy"
+msgstr "Aggiungi nuova / modifica Tassonomia Ricetta"
+
+#: ../php/class/rpr_taxonomies.php:77
+msgid "Recipe Category"
+msgstr "Categoria Ricetta"
+
+#: ../php/class/rpr_taxonomies.php:91
+msgid "Recipe Tag"
+msgstr "Tag Ricetta"
+
+#: ../php/class/rpr_taxonomies.php:120
+msgid "Tag"
+msgstr "Tag"
+
+#: ../php/class/rpr_taxonomies.php:123 ../php/class/rpr_taxonomies.php:191
+msgid "Singular Name"
+msgstr "Nome particolare"
+
+#: ../php/class/rpr_taxonomies.php:129 ../php/class/rpr_taxonomies.php:200
+#: ../templates/admin.php:607
+msgid "Slug"
+msgstr "Slug"
+
+#: ../php/class/rpr_taxonomies.php:132
+msgid "Actions"
+msgstr "Azioni"
+
+#: ../php/class/rpr_taxonomies.php:170
+msgid "Create custom tags for your recipes."
+msgstr "Crea Tag personalizzati per le tue Ricette."
+
+#: ../php/class/rpr_taxonomies.php:177
+msgid "Currently editing tag: "
+msgstr "Tag attualmente modificato:"
+
+#: ../php/class/rpr_taxonomies.php:185
+msgid "(e.g. Courses)"
+msgstr "(esempio: Portate (o Procedimenti))"
+
+#: ../php/class/rpr_taxonomies.php:194
+msgid "(e.g. Course)"
+msgstr "(esempio: Portata (o Procedimento))"
+
+#: ../php/class/rpr_taxonomies.php:203
+msgid "(e.g. http://www.yourwebsite.com/course/)"
+msgstr "(esempio: http://www.tuosito.com/portata/)"
+
+#: ../php/class/rpr_taxonomies.php:214
+msgid "Edit tag"
+msgstr "Modifica Tag"
+
+#: ../php/class/rpr_taxonomies.php:215
+msgid "Cancel Edit"
+msgstr "Annulla modifica"
+
+#: ../php/helper/admin_menu_helper.php:17
+msgid "The recipe archive can be found at"
+msgstr "L'archivio ricette può essere trovato a"
+
+#: ../php/helper/admin_menu_helper.php:22
+msgid "Manage custom recipe tags"
+msgstr "Gestione personalizzata Tags ricetta"
+
+#: ../php/lib/vafpress/bootstrap.php:88
+#: ../php/lib/vafpress/classes/option.php:364
+#: ../php/lib/vafpress/classes/option.php:389
+msgid "Successful"
+msgstr "Riuscito"
+
+#: ../php/lib/vafpress/bootstrap.php:99
+msgid "Unauthorized function"
+msgstr "Funzione non autorizzata"
+
+#: ../php/lib/vafpress/classes/metabox.php:35
+msgid "[Development Mode] "
+msgstr "[Modo-Sviluppatore]"
+
+#: ../php/lib/vafpress/classes/metabox.php:564
+#: ../php/lib/vafpress/classes/metabox/alchemy.php:493
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: ../php/lib/vafpress/classes/metabox.php:586
+#: ../php/lib/vafpress/classes/metabox/alchemy.php:515
+msgid "Add More"
+msgstr "Aggiungi ancora"
+
+#: ../php/lib/vafpress/classes/option.php:47
+#: ../php/lib/vafpress/classes/option.php:48
+msgid "Vafpress Options"
+msgstr "Opzioni Vafpress"
+
+#: ../php/lib/vafpress/classes/option.php:61
+msgid "Option Key is required"
+msgstr "È necessaria l'opzione Key"
+
+#: ../php/lib/vafpress/classes/option.php:63
+msgid "Template Array/File is required"
+msgstr "È richiesto il Modello Array / File"
+
+#: ../php/lib/vafpress/classes/option.php:65
+msgid "Page Slug is required"
+msgstr "É richiesta una Pagina Slug"
+
+#: ../php/lib/vafpress/classes/option.php:167
+msgid ""
+"Development Mode is Active, options' values won't be saved into database."
+msgstr ""
+"La Modalità di Sviluppo è Attiva, i valori 'opzioni' non verranno salvate "
+"nel database."
+
+#: ../php/lib/vafpress/classes/option.php:306
+msgid "Can not be empty"
+msgstr "Non può essere vuoto"
+
+#: ../php/lib/vafpress/classes/option.php:331
+msgid "Invalid data"
+msgstr "Dati non validi"
+
+#: ../php/lib/vafpress/classes/option.php:394
+msgid "Unverified Access"
+msgstr "Accesso non verificato"
+
+#: ../php/lib/vafpress/classes/option.php:460
+msgid "Invalid template supplied"
+msgstr "Modello fornito non valido"
+
+#: ../php/lib/vafpress/classes/option.php:473
+msgid "Utility"
+msgstr "Utilità"
+
+#: ../php/lib/vafpress/classes/option.php:479
+#: ../php/lib/vafpress/views/option/restore.php:13
+msgid "Restore Default"
+msgstr "Ripristina valori iniziali"
+
+#: ../php/lib/vafpress/classes/option.php:488
+msgid "Export/Import"
+msgstr "Esporta/Importa"
+
+#: ../php/lib/vafpress/classes/option/control/set.php:359
+msgid "Saving successful"
+msgstr "Salvato correttamente"
+
+#: ../php/lib/vafpress/classes/option/control/set.php:370
+msgid "Saving failed"
+msgstr "Salvataggio fallito"
+
+#: ../php/lib/vafpress/classes/option/control/set.php:376
+msgid "No changes made"
+msgstr "Nessuna modifica apportata"
+
+#: ../php/lib/vafpress/classes/shortcodegenerator.php:260
+msgid "Insert"
+msgstr "Inserisci"
+
+#: ../php/lib/vafpress/classes/shortcodegenerator.php:261
+msgid "Cancel"
+msgstr "Cancella"
+
+#: ../php/lib/vafpress/config/messages.php:13
+msgid "Value needs to be Alphabet"
+msgstr "Il valore deve essere Alfabetico"
+
+#: ../php/lib/vafpress/config/messages.php:14
+msgid "Value needs to be Alphanumeric"
+msgstr "Il valore deve essere Alfanumerico"
+
+#: ../php/lib/vafpress/config/messages.php:15
+msgid "Value needs to be Numeric"
+msgstr "Il valore deve essere Numerico"
+
+#: ../php/lib/vafpress/config/messages.php:16
+msgid "Value needs to be Valid Email"
+msgstr "Il valore deve essere una eMail valida"
+
+#: ../php/lib/vafpress/config/messages.php:17
+msgid "Value needs to be Valid URL"
+msgstr "Il valore deve essere un URL valido"
+
+#: ../php/lib/vafpress/config/messages.php:18
+msgid "Length needs to be less than {0} characters"
+msgstr "La Lunghezza deve essere inferiore a {0} caratteri"
+
+#: ../php/lib/vafpress/config/messages.php:19
+msgid "Length needs to be more than {0} characters"
+msgstr "La Lunghezza deve essere superiore a {0} caratteri"
+
+#: ../php/lib/vafpress/config/messages.php:20
+msgid "Select no more than {0} items"
+msgstr "Seleziona non più di {0} articoli"
+
+#: ../php/lib/vafpress/config/messages.php:21
+msgid "Select at least {0} items"
+msgstr "Seleziona almeno {0} articoli"
+
+#: ../php/lib/vafpress/config/messages.php:22
+msgid "This is required"
+msgstr "Questo è necessario"
+
+#: ../php/lib/vafpress/config/messages.php:29
+msgid "Import succeed, option page will be refreshed.."
+msgstr "Importazione riuscita, la pagina Opzioni verrà aggiornata…"
+
+#: ../php/lib/vafpress/config/messages.php:30
+msgid "Import failed"
+msgstr "Importazione fallita"
+
+#: ../php/lib/vafpress/config/messages.php:31
+msgid "Export succeed, copy the JSON formatted options"
+msgstr "Esportazione riuscita, copia le opzioni JSON formattate"
+
+#: ../php/lib/vafpress/config/messages.php:32
+msgid "Export failed"
+msgstr "Espotazione fallita"
+
+#: ../php/lib/vafpress/config/messages.php:33
+msgid "Restoration succeed, option page will be refreshed.."
+msgstr "Ripristino riuscita, la pagina Opzioni verrà aggiornata…"
+
+#: ../php/lib/vafpress/config/messages.php:34
+msgid "Options identical to default"
+msgstr "Opzioni identiche all'impostazione predefinita"
+
+#: ../php/lib/vafpress/config/messages.php:35
+msgid "Restoration failed"
+msgstr "Ripristino fallito"
+
+#: ../php/lib/vafpress/config/messages.php:43
+msgid "Select option(s)"
+msgstr "Seleziona l'opzione(i)"
+
+#: ../php/lib/vafpress/config/messages.php:45
+msgid "Select an Icon"
+msgstr "Seleziona un'Icona"
+
+#: ../php/lib/vafpress/views/control/upload.php:5
+msgid "Choose File"
+msgstr "Scegli un File"
+
+#: ../php/lib/vafpress/views/option/impexp.php:4
+#: ../php/lib/vafpress/views/option/impexp.php:14
+msgid "Import"
+msgstr "Importa"
+
+#: ../php/lib/vafpress/views/option/impexp.php:7
+msgid "Import Options"
+msgstr "Opzioni d'Importazione"
+
+#: ../php/lib/vafpress/views/option/impexp.php:27
+#: ../php/lib/vafpress/views/option/impexp.php:37
+msgid "Export"
+msgstr "Esporta"
+
+#: ../php/lib/vafpress/views/option/impexp.php:30
+msgid "Export Options"
+msgstr "Opzioni d'Esportazione"
+
+#: ../php/lib/vafpress/views/option/restore.php:4
+msgid "Restore Default Options"
+msgstr "Ripristina le Opzioni Predefinite"
+
+#: ../php/lib/vafpress/views/option/restore.php:7
+msgid "Restore options to initial default values."
+msgstr "Ripristina le Opzioni ai valori iniziali predefiniti."
+
+#: ../php/lib/vafpress/views/option/restore.php:14
+msgid ""
+"** Please make sure you have already make a backup data of your current "
+"settings. Once you click this button, your current settings will be gone."
+msgstr ""
+"** Se pregato di assicurarti di aver già fatto un backup dei dati delle "
+"impostazioni correnti. Dopo aver fatto clic su questo pulsante, le "
+"impostazioni correnti saranno non più recuperabili."
+
+#: ../php/lib/vafpress/views/option/set.php:69
+#: ../php/lib/vafpress/views/option/set.php:84
+msgid "Save Changes"
+msgstr "Salva modifiche"
+
+#: ../php/lib/vafpress/views/option/set.php:70
+#: ../php/lib/vafpress/views/option/set.php:85
+msgid "Saving Now"
+msgstr "Salvataggio ora"
+
+#: ../php/lib/vafpress/views/option/set.php:93
+#, php-format
+msgid ""
+"This option panel is built using <a href=\"http://vafpress.com/vafpress-"
+"framework\">Vafpress Framework %s</a> powered by <a href=\"http://vafpress."
+"com\">Vafpress</a>"
+msgstr ""
+"Questo pannello opzione è costruito utilizzando <a href=\"http://vafpress."
+"com/vafpress-framework\">Vafpress Framework %s</a> seguito da <a href="
+"\"http://vafpress.com\">Vafpress</a>"
+
+#: ../php/template_tags.php:17 ../php/template_tags.php:22
+#: ../php/template_tags.php:30 ../php/template_tags.php:40
+#: ../php/template_tags.php:49 ../php/template_tags.php:62
+msgid "&nbsp;/&nbsp; "
+msgstr "&nbsp;/&nbsp; "
+
+#: ../php/template_tags.php:96
+msgid "For: "
+msgstr "Per: "
+
+#: ../php/template_tags.php:189
+msgid "No ingredients could be found for this recipe."
+msgstr "Nessun ingrediente è stato trovato per questa ricetta."
+
+#: ../php/template_tags.php:216
+msgid "Preparation Time"
+msgstr "Tempo di Preparazione"
+
+#: ../php/template_tags.php:217 ../php/template_tags.php:221
+#: ../php/template_tags.php:228 ../templates/metabox_details.php:47
+#: ../templates/metabox_details.php:52 ../templates/metabox_details.php:57
+msgid "min."
+msgstr "min."
+
+#: ../php/template_tags.php:220 ../templates/metabox_details.php:50
+msgid "Cook Time"
+msgstr "Tempo di Cottura"
+
+#: ../php/template_tags.php:227
+msgid "Total Time"
+msgstr "Tempo Totale"
+
+#: ../php/template_tags.php:300
+msgid "No instructions could be found for this recipe."
+msgstr "Nessuna istruzione è stata trovata per questa ricetta."
+
+#: ../recipe-press-reloaded.php:130 ../recipe-press-reloaded.php:131
+#: ../templates/admin.php:4
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: ../templates/admin.php:9
+msgid "Latest News"
+msgstr "Ultime Notizie"
+
+#: ../templates/admin.php:22
+msgid "Changelog"
+msgstr "Changelog"
+
+#: ../templates/admin.php:45 ../templates/admin.php:69
+msgid "Check Images"
+msgstr "Controllo immagini"
+
+#: ../templates/admin.php:50
+msgid "Numeric"
+msgstr "Numerico"
+
+#: ../templates/admin.php:51
+msgid "Only numbers allowed here."
+msgstr "Sono permessi solo valori numerici."
+
+#: ../templates/admin.php:58
+msgid "Decimal Slider"
+msgstr "Cursore dei decimali"
+
+#: ../templates/admin.php:59
+msgid ""
+"This slider has minimum value of -10, maximum value of 17.5, sliding step of "
+"0.1 and default value 15.9, everything can be customized."
+msgstr ""
+"Questo cursore ha un valore minimo di -10, valore massimo di 17,5, passo di "
+"0,1 e un valore predefinito di 15,9 scorrevole, tutto può essere "
+"personalizzato."
+
+#: ../templates/admin.php:74 ../templates/admin.php:242
+msgid "Various Sized Images"
+msgstr "Immagini di varie dimensioni"
+
+#: ../templates/admin.php:75
+msgid "CheckImage with unspecified item max height and item max width"
+msgstr ""
+"CheckImage con elemento non specificato in altezza massima e larghezza "
+"massima"
+
+#: ../templates/admin.php:79 ../templates/admin.php:108
+#: ../templates/admin.php:141 ../templates/admin.php:175
+#: ../templates/admin.php:210 ../templates/admin.php:247
+#: ../templates/admin.php:276 ../templates/admin.php:308
+#: ../templates/admin.php:341 ../templates/admin.php:375
+msgid "Label 1"
+msgstr "Etichetta 1"
+
+#: ../templates/admin.php:84 ../templates/admin.php:113
+#: ../templates/admin.php:146 ../templates/admin.php:180
+#: ../templates/admin.php:215 ../templates/admin.php:252
+#: ../templates/admin.php:281 ../templates/admin.php:313
+#: ../templates/admin.php:346 ../templates/admin.php:380
+msgid "Label 2"
+msgstr "Etichetta 2"
+
+#: ../templates/admin.php:89 ../templates/admin.php:118
+#: ../templates/admin.php:151 ../templates/admin.php:185
+#: ../templates/admin.php:220 ../templates/admin.php:257
+#: ../templates/admin.php:286 ../templates/admin.php:318
+#: ../templates/admin.php:351 ../templates/admin.php:385
+msgid "Label 3"
+msgstr "Etichetta 3"
+
+#: ../templates/admin.php:94 ../templates/admin.php:123
+#: ../templates/admin.php:156 ../templates/admin.php:190
+#: ../templates/admin.php:225 ../templates/admin.php:262
+#: ../templates/admin.php:291 ../templates/admin.php:323
+#: ../templates/admin.php:356 ../templates/admin.php:390
+msgid "Label 4"
+msgstr "Etichetta 4"
+
+#: ../templates/admin.php:102 ../templates/admin.php:270
+msgid "Specified Images Maximum Height"
+msgstr "Immagini specificate Altezza massima"
+
+#: ../templates/admin.php:103
+msgid "CheckImage with specified item max height"
+msgstr "CheckImage con elemento specificato in altezza massima"
+
+#: ../templates/admin.php:135 ../templates/admin.php:302
+msgid "Specified Images Maximum Width"
+msgstr "Immagini specificate in massima larghezza"
+
+#: ../templates/admin.php:136
+msgid "CheckImage with specified item max width"
+msgstr "CheckImage con elemento specificato in larghezza massima"
+
+#: ../templates/admin.php:168 ../templates/admin.php:334
+msgid "Specified Images Maximum Width and Height"
+msgstr "Immagini specificate in massima altezza e larghezza"
+
+#: ../templates/admin.php:169
+msgid "CheckImage with specified item max width and item max height"
+msgstr ""
+"CheckImage con elemento specificato in altezza massima e larghezza massima"
+
+#: ../templates/admin.php:202 ../templates/admin.php:367
+msgid "Validation Rules Applied"
+msgstr "Regole di convalida applicate"
+
+#: ../templates/admin.php:203
+msgid "Minimum selected of 2 items and Maximum selected of 3 items."
+msgstr "Minima selezione di 2 articoli e massima selezione di 3 articoli."
+
+#: ../templates/admin.php:237
+msgid "Radio Images"
+msgstr "Immagini Radio"
+
+#: ../templates/admin.php:243
+msgid "RadioImage with unspecified item max height and item max width"
+msgstr ""
+"RadioImage con oggetto non specificato in altezza massima e larghezza massima"
+
+#: ../templates/admin.php:271
+msgid "RadioImage with specified item max height"
+msgstr "RadioImage con oggetto specificato in altezza massima"
+
+#: ../templates/admin.php:303
+msgid "RadioImage with specified item max width"
+msgstr "RadioImage con oggetto specificato in larghezza massima"
+
+#: ../templates/admin.php:335
+msgid "RadioImage with specified item max width and item max height"
+msgstr ""
+"RadioImage con oggetto specificato in altezza massima e larghezza massima"
+
+#: ../templates/admin.php:368
+msgid "Required to Choose."
+msgstr "È necessaria una scelta"
+
+#: ../templates/admin.php:403
+msgid "General Settings"
+msgstr "Impostazioni Generali"
+
+#: ../templates/admin.php:415
+msgid "Display recipe image"
+msgstr "Visualizza immagine ricetta"
+
+#: ../templates/admin.php:416
+msgid ""
+"Usually this is the job of your theme. Only use, if your theme does not "
+"support post images"
+msgstr ""
+"Di solito questo lavoro è affidato al vostro tema. Utilizzare solo, se il "
+"tema non supporta la pubblicazione delle immagini"
+
+#: ../templates/admin.php:438
+msgid "Clickable Images"
+msgstr "Immagini cliccabili"
+
+#: ../templates/admin.php:439
+msgid "Best used in combination with a lightbox plugin."
+msgstr "Miglio se usato in combinazione con il plugin lightbox."
+
+#: ../templates/admin.php:445
+msgid "Display the author in recipe"
+msgstr "Visualizza l'autore nella ricetta"
+
+#: ../templates/admin.php:446
+msgid ""
+"Display the author in the recipe part of the theme. Ususally your theme will "
+"display the author."
+msgstr ""
+"Visualizza l'autore nella sezione ricetta del tema. Di solito il vostro tema "
+"visualizza l'autore."
+
+#: ../templates/admin.php:452
+msgid "Display date in recipe"
+msgstr "Mostra la data nella ricetta."
+
+#: ../templates/admin.php:453
+msgid ""
+"Display date in the recipe part of the theme. Ususally your theme will "
+"display the date."
+msgstr ""
+"Visualizza la data nella sezione ricetta del tema. Di solito il vostro tema "
+"visualizza l'autore."
+
+#: ../templates/admin.php:459
+msgid "Display Categories in recipe"
+msgstr "Mostra le Categorie nella ricetta"
+
+#: ../templates/admin.php:460
+msgid ""
+"Display WP Categories in the recipe part of the theme instead the default "
+"one."
+msgstr ""
+"Mostra WP Categorie nella sezione ricetta del tema invece che quello di "
+"default."
+
+#: ../templates/admin.php:466
+msgid "Display tags in recipe"
+msgstr "Mostra tags nella ricetta"
+
+#: ../templates/admin.php:467
+msgid ""
+"Display WP Tags in the recipe part of the theme instead the default one."
+msgstr ""
+"Mostra WP Tags nella sezione ricetta del tema invece che quello di default."
+
+#: ../templates/admin.php:487
+msgid "Ingredient Links"
+msgstr "Collegamenti agli ingredienti"
+
+#: ../templates/admin.php:488
+msgid "Links to be used in the ingredient list."
+msgstr "Collegamenti da utilizzare nella lista degli ingredienti."
+
+#: ../templates/admin.php:492
+msgid "No ingredient links"
+msgstr "Nessun collegamento agli ingredienti"
+
+#: ../templates/admin.php:496
+msgid "Only link to ingredient archive page"
+msgstr "Solo un collegamento alla pagina archivio dell'ingrediente "
+
+#: ../templates/admin.php:500
+msgid "Custom link if provided, otherwise archive page"
+msgstr ""
+"Collegamento personalizzato se previsto, in caso contrario pagina di archivio"
+
+#: ../templates/admin.php:504
+msgid "Custom links if provided, otherwise no link"
+msgstr ""
+"Collegamenti personalizzati se disponibili, altrimenti nessun collegamento"
+
+#: ../templates/admin.php:546
+msgid "Instruction Images"
+msgstr "Ordine Immagini"
+
+#: ../templates/admin.php:547
+msgid "Allow to attach images to instruction steps."
+msgstr ""
+"Permette di allegare immagini in ordine con le istruzioni di preparazione."
+
+#: ../templates/admin.php:554
+msgid "Recipe Archive Pages"
+msgstr "Archivio Pagine Ricette"
+
+#: ../templates/admin.php:560
+msgid "Display"
+msgstr "Visualizza"
+
+#: ../templates/admin.php:564
+msgid "Only the excerpt"
+msgstr "Solo l'estratto"
+
+#: ../templates/admin.php:568
+msgid "The entire recipe"
+msgstr "L'intera ricetta"
+
+#: ../templates/admin.php:629
+msgid "404 error/page not found?"
+msgstr "Errore 404/pagina non trovata?"
+
+#: ../templates/admin.php:630
+msgid "Try"
+msgstr "Provare"
+
+#: ../templates/admin.php:630
+msgid "flushing your permalinks"
+msgstr "Scorri i tuoi permalinks"
+
+#: ../templates/admin.php:641
+msgid "Recipe Tags"
+msgstr "Tags Ricette"
+
+#: ../templates/admin.php:647
+msgid "Custom Recipe Tags"
+msgstr "Tags Ricette personalizzati"
+
+#: ../templates/admin.php:662
+msgid "WordPress Categories & Tags"
+msgstr "WordPress Categorie & Tags"
+
+#: ../templates/admin.php:668
+msgid "Use Categories"
+msgstr "Utilizza le Categorie"
+
+#: ../templates/admin.php:669
+msgid ""
+"Use the default WP Categories to organize your recipes. If set to \"Off\", "
+"RPR will create own categories."
+msgstr ""
+"Utilizza le Categorie WP di default per organizzare le vostre ricette. Se "
+"impostato su \"Off\", RPR creerà proprie categorie."
+
+#: ../templates/admin.php:675
+msgid "Use Tags"
+msgstr "Utilizza Tags"
+
+#: ../templates/admin.php:676
+msgid ""
+"Use the default WP Tags to organize your recipes. If set to \"Off\", RPR "
+"will create own tags."
+msgstr ""
+"Utilizza i Tags WP di default per organizzare le vostre ricette. Se "
+"impostato su \"Off\", RPR creerà proprie categorie."
+
+#: ../templates/admin.php:686
+msgid "Documentation & Support"
+msgstr "Documentazione e Supporto"
+
+#: ../templates/admin.php:693
+msgid "Need more help?"
+msgstr "Hai bisogno di aiuto?"
+
+#: ../templates/admin.php:694
+msgid ""
+"Have a look at the <a href=\"http://rp-reloaded.net/documentation\" target="
+"\"_blank\">Documentation</a> (currently being built up) or ask your "
+"questions at the <a href=\"http://wordpress.org/support/plugin/recipepress-"
+"reloaded\" target=\"_blank\">support forum</a>."
+msgstr ""
+"Date un'occhiata alla <a href=\"http://rp-reloaded.net/documentation\" "
+"target=\"_blank\">Documentazione</a> (attualmente in costruzione) oppure "
+"poni le tue domande al <a href=\"http://wordpress.org/support/plugin/"
+"recipepress-reloaded\" target=\"_blank\">forum di supporto</a>."
+
+#: ../templates/metabox_details.php:33
+msgid "star"
+msgstr "stella"
+
+#: ../templates/metabox_details.php:33
+msgid "stars"
+msgstr "stelle"
+
+#: ../templates/metabox_details.php:39
+msgid "Servings"
+msgstr "Porzioni"
+
+#: ../templates/metabox_details.php:42
+msgid "(e.g. 2 people, 3 loafs, ...)"
+msgstr "(ad es. 2 persone, 3 pagnotte, …)"
+
+#: ../templates/metabox_details.php:45
+msgid "Prep Time"
+msgstr "Tempo di Preparaz"
+
+#: ../templates/metabox_details.php:55
+msgid "Passive Time"
+msgstr "Tempo Attesa"
+
+#: ../templates/metabox_details.php:60
+msgid "Featured?"
+msgstr "Caratteristiche?"
+
+#: ../templates/metabox_ingredients.php:19
+#: ../templates/metabox_ingredients.php:38
+#: ../templates/metabox_ingredients.php:59
+#: ../templates/metabox_instructions.php:11
+#: ../templates/metabox_instructions.php:28
+#: ../templates/metabox_instructions.php:44
+msgid "Group"
+msgstr "Gruppo"
+
+#: ../templates/metabox_ingredients.php:21
+msgid "Main Ingredients"
+msgstr "Ingredienti principali"
+
+#: ../templates/metabox_ingredients.php:21
+#: ../templates/metabox_instructions.php:12
+msgid "(this label is not shown)"
+msgstr "(questa etichetta non verrà mostrata)"
+
+#: ../templates/metabox_ingredients.php:105
+msgid "tbsp"
+msgstr "cucchiai"
+
+#: ../templates/metabox_ingredients.php:106
+msgid "olive oil"
+msgstr "olio di oliva"
+
+#: ../templates/metabox_ingredients.php:108
+msgid "extra virgin"
+msgstr "extra virgine"
+
+#: ../templates/metabox_ingredients.php:125
+msgid "Add an ingredient group"
+msgstr "Aggiungi un gruppo di ingredienti"
+
+#: ../templates/metabox_ingredients.php:126
+msgid "Add an ingredient"
+msgstr "Aggiungi un ingrediente"
+
+#: ../templates/metabox_ingredients.php:128
+#: ../templates/metabox_instructions.php:120
+msgid ""
+"EasyType edit: <strong>Use the TAB key</strong> while adding ingredients. "
+"New fields will be created automatically. <strong>Don't worry about empty "
+"lines</strong>, these won't be saved."
+msgstr ""
+"EasyType modifica: <strong>Utilizza il tasto TAB</strong> durante l'aggiunta "
+"di ingredienti. I nuovi campi vengono creati automaticamente. <strong>Non "
+"preoccuparti delle righe vuote</strong>, queste non verranno salvate."
+
+#: ../templates/metabox_instructions.php:12
+msgid "Main Instructions"
+msgstr "Istruzioni principali"
+
+#: ../templates/metabox_instructions.php:74
+#: ../templates/metabox_instructions.php:97
+#: ../templates/metabox_instructions.php:106
+msgid "Add Image"
+msgstr "Aggiungi Immagine"
+
+#: ../templates/metabox_instructions.php:75
+#: ../templates/metabox_instructions.php:107
+msgid "Remove Image"
+msgstr "Rimuovi Immagine"
+
+#: ../templates/metabox_instructions.php:117
+msgid "Add an instruction"
+msgstr "Aggiungi un istruzione"
+
+#: ../templates/metabox_instructions.php:118
+msgid "Add an instruction group"
+msgstr "Aggiungi un gruppo di istruzioni"
+
+#: ../templates/rpr_recipe_public.php:79
+msgid "Recipe notes"
+msgstr "Note Ricetta"
+
+#. translators: The description of the Recpipe List widget on the Appearance->Widgets page.
+#: ../widgets/list-widget.php:29
+msgid "List recipes on your sidebar. By dasmaeh."
+msgstr "Elenca le ricette sulla tua sidebar. By dasmaeh."
+
+#. translators: The title for the Recipe List widget.
+#: ../widgets/list-widget.php:31
+msgid "RPR :: List"
+msgstr "RPR :: Lista"
+
+#: ../widgets/list-widget.php:131 ../widgets/same-taxonomy-widget.php:102
+#: ../widgets/taxonomy-cloud-widget.php:86
+#: ../widgets/taxonomy-list-widget.php:141
+msgid "Title (optional)"
+msgstr "Titolo (opzionale)"
+
+#: ../widgets/list-widget.php:134 ../widgets/taxonomy-list-widget.php:153
+msgid "How many items would you like to display?"
+msgstr "Quanti articoli desideri visualizzare?"
+
+#: ../widgets/list-widget.php:137
+msgid "Display type:"
+msgstr "Tipo di visualizzazione:"
+
+#: ../widgets/list-widget.php:138
+msgid "Newest Recipes"
+msgstr "Ricette recenti"
+
+#: ../widgets/list-widget.php:139
+msgid "Random Recipes"
+msgstr "Ricette casuali"
+
+#: ../widgets/list-widget.php:140
+msgid "Featured"
+msgstr "In primo piano"
+
+#: ../widgets/list-widget.php:141
+msgid "Recently Updated"
+msgstr "Aggiornate recentemente"
+
+#: ../widgets/list-widget.php:145
+msgid "Sort order:"
+msgstr "Ordina per:"
+
+#: ../widgets/list-widget.php:146
+msgid "Ascending"
+msgstr "Ascendente"
+
+#: ../widgets/list-widget.php:147
+msgid "Descending"
+msgstr "Discendente"
+
+#: ../widgets/list-widget.php:151
+msgid "Show icon?"
+msgstr "Mostra icona?"
+
+#: ../widgets/list-widget.php:154
+msgid "Icon size (square)"
+msgstr "Dimensione icona (quadrato)"
+
+#: ../widgets/same-taxonomy-widget.php:26
+msgid "RPR :: Same Taxonomy"
+msgstr "RPR :: Stessa Tassonomia"
+
+#: ../widgets/same-taxonomy-widget.php:26
+msgid ""
+"Lists posts from the same taxonomy on single-post view. Will not display "
+"elsewhere"
+msgstr ""
+"Elenca i messaggi dalla stessa tassonomia a vista singolo post. Non sarà "
+"visualizzato altrove"
+
+#: ../widgets/same-taxonomy-widget.php:106
+#: ../widgets/taxonomy-list-widget.php:145
+msgid "Taxonomy to display"
+msgstr "Tassonomia da visualizzare"
+
+#: ../widgets/same-taxonomy-widget.php:115
+msgid "Number of posts"
+msgstr "Numero dei posts"
+
+#: ../widgets/taxonomy-cloud-widget.php:16
+msgid "RPR :: Taxonomy Cloud"
+msgstr "RPR :: Tassonomia a Nuvola"
+
+#: ../widgets/taxonomy-cloud-widget.php:16
+msgid "Advanced tagcloud widget for to display any taxonomy with excludes"
+msgstr ""
+"Widget di tag-nuvola avanzato per visualizzare qualsiasi tassonomia da "
+"escludere"
+
+#: ../widgets/taxonomy-cloud-widget.php:89
+msgid "Taxonomy:"
+msgstr "Tassonomia:"
+
+#: ../widgets/taxonomy-cloud-widget.php:97
+msgid "Number auf items to display"
+msgstr "Numero di oggetti da visualizzare"
+
+#: ../widgets/taxonomy-cloud-widget.php:100
+#: ../widgets/taxonomy-list-widget.php:184
+msgid "Exclude terms"
+msgstr "Escludi termini"
+
+#. translators: The description of the Category List widget on the Appearance->Widgets page.
+#: ../widgets/taxonomy-list-widget.php:28
+msgid "List recipe taxonomies on your sidebar."
+msgstr "Elenco tassonomie ricette sulla tua barra laterale."
+
+#. translators: The title for the Taxonomy List widget.
+#: ../widgets/taxonomy-list-widget.php:31
+msgid "RPR :: Taxonomy List"
+msgstr "RPR :: Lista Tassonomie"
+
+#: ../widgets/taxonomy-list-widget.php:82
+msgid "No categories"
+msgstr "Nessuna categoria"
+
+#: ../widgets/taxonomy-list-widget.php:157
+msgid "Order items by"
+msgstr "Ordina gli elementi da"
+
+#: ../widgets/taxonomy-list-widget.php:159
+msgid "Count"
+msgstr "Conteggio"
+
+#: ../widgets/taxonomy-list-widget.php:164
+msgid "ASC"
+msgstr "CRES"
+
+#: ../widgets/taxonomy-list-widget.php:165
+msgid "DESC"
+msgstr "DECRES"
+
+#: ../widgets/taxonomy-list-widget.php:170
+msgid "Show count with"
+msgstr "Mostra conteggio con"
+
+#: ../widgets/taxonomy-list-widget.php:173
+msgid "before and"
+msgstr "prima e"
+
+#: ../widgets/taxonomy-list-widget.php:176
+msgid "behind"
+msgstr "dopo"
+
+#: ../widgets/taxonomy-list-widget.php:180
+msgid "Hide empty terms?"
+msgstr "Nascondi termini vuoti?"
+
+#~ msgid "FAQ & Support"
+#~ msgstr "FAQ & Support"
+
+#~ msgid "Fix this link."
+#~ msgstr "Korrigiere diesen Link."
+
+#~ msgid "The user menus archive can be found at"
+#~ msgstr "Das Benutzer Menü-Archive findet sich unter"
+
+#~ msgid "This link is wrong. Fix before release."
+#~ msgstr "Dieser Link ist nicht korrekt. Vor dem Release korrigieren."
+
+#~ msgid ""
+#~ "<strong>Use the TAB key</strong> while adding instructions, it will "
+#~ "automatically create new fields. <strong>Don't worry about empty lines</"
+#~ "strong>, these will be ignored."
+#~ msgstr ""
+#~ "<strong>Verwenden Sie die TAB-Taste</strong> wenn Sie Schritte "
+#~ "hinzufügen, dadurch wird automatisch eine neue leere Zeile erzeugt. "
+#~ "<strong>Leere Zeilen werden nicht gespeichert!</strong>"
