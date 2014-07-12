@@ -1,7 +1,7 @@
 === RecipePress reloaded===
 Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
-Requires at least: 3.4
+Requires at least: 3.8
 Tested up to: 3.9.1
 Stable tag: 0.5.6
 License: GPLv2
@@ -35,6 +35,8 @@ This plugin includes the following translations:
 
 * English
 * German
+* Italian, thanks to [link](https://wordpress.org/support/profile/bonecruncher"Bonecruncher")
+
 If you want a translation of another language included please help translating!
 
 = Future Features =
@@ -50,10 +52,11 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
-= 0.6.0 June 29th, 2014
+= 0.6.0 July 19th, 2014 =
 * added support for nutritional information
 * choose between two templates
 * rearranged settings for a better overview
+* added Italian translation, thanks to [link](https://wordpress.org/support/profile/bonecruncher"Bonecruncher")
 
 = 0.5.6 May 17th, 2014 =
 * bugfix release, fixing several bugs introduced with 0.5.5
