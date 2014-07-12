@@ -706,7 +706,7 @@ class RPR_Core extends RPReloaded {
   //      }
         
     //    return $content;
-    return get_the_recipe_category_bar().wpautop($content).get_the_recipe_time_bar();    
+    return get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();    
     }
 
     // These filters will only be regoistered, if the apropriate settings are made
