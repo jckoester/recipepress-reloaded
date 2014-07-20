@@ -149,7 +149,7 @@ $admin_menu = array(
    												'type' => 'radioimage',
    												'name' => 'rpr_template',
    												'label' => __( 'Choose a template', $this->pluginName ),
-   												'description' => sprintf (__( 'Templates define how your recipes will look like. Choose one of the installed templates or <a href="%s">create one yourself</a>.', $this->pluginName ) , 'http://rp-reloaded.net/templates/create' ),
+   												'description' => sprintf (__( 'Templates define how your recipes will look like. Choose one of the installed templates.', $this->pluginName), ''),// or <a href="%s">create one yourself</a>.', $this->pluginName ) , 'http://rp-reloaded.net/templates/create' ),
    												'item_max_height' => '300',
    												'item_max_width' => '300',
 									    		'items' => $templates,

@@ -1,6 +1,8 @@
 @CHARSET "UTF-8";
 
-
+.rpr-clear{
+	clear:both;
+}
 
 /* hide some information*/
 .hidden, .rpr_hidden{
@@ -66,6 +68,8 @@ ol.recipe-instructions{
     vertical-align:top!important;
     }
 ol.recipe-instructions li{
+	list-style:decimal;
+	margin:0 0 0.5em 0;
     vertical-align:top!important;
     clear:both;
    }
@@ -86,4 +90,8 @@ ol.recipe-instructions li a{
 
 span.print-link{
 	float:right;
+}
+
+i.rpr_cuisine:before{
+	content:"\f024";
 }

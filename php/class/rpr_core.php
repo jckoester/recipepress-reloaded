@@ -680,7 +680,7 @@ class RPR_Core extends RPReloaded {
             }
 
           add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
-          $content = get_the_recipe_category_bar().wpautop($content).get_the_recipe_time_bar();              
+          $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
         }
         
         return $content;

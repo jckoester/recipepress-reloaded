@@ -1,14 +1,14 @@
 @CHARSET "UTF-8";
 
-@CHARSET "UTF-8";
-
-
 
 /* hide some information*/
 .hidden, .rpr_hidden{
     display:none!important;
 }
 
+.rpr-clear{
+	clear:both;
+}
 .rpr-container{
     vertical-align:top!important;
 }

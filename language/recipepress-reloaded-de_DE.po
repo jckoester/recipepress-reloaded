@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecipePress reloaded\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-28 21:02+0100\n"
-"PO-Revision-Date: 2014-06-28 21:32+0100\n"
+"POT-Creation-Date: 2014-07-20 21:28+0100\n"
+"PO-Revision-Date: 2014-07-20 21:28+0100\n"
 "Last-Translator: Jan Köster <jan.koester@cbjck.de>\n"
 "Language-Team:  <dasmaeh@cbjck.de>\n"
 "Language: de_DE\n"
@@ -790,13 +790,12 @@ msgid "Choose a template"
 msgstr "Wähle ein Template"
 
 #: ../views/admin.php:152
-#, php-format
 msgid ""
 "Templates define how your recipes will look like. Choose one of the "
-"installed templates or <a href=\"%s\">create one yourself</a>."
+"installed templates."
 msgstr ""
-"Templates bestimmen wie deine Rezpte aussehen. Wähle eines der instalierte "
-"templates aus oder <a href=\"%s\" >erstelle selbst eines</a>."
+"Templates bestimmen wie deine Rezepte aussehen. Wähle eines der instalierte "
+"templates aus."
 
 #: ../views/admin.php:161
 msgid "Images"
