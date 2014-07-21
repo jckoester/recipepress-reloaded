@@ -74,7 +74,7 @@ if(!is_null($thumb_url)) {
     <div class="rpr-clear"></div>
     
     <!--  NUTROTIONAL INFORMATION -->
-    <?php if( $this->get_option( 'recipe_use_nutritional_info', 0 ) == 1 ) {
+    <?php if( has_recipe_nutrition( $recipe_post->ID ) ) {
     	the_recipe_nutrition($recipe_post->ID );
     } ?>
     <!-- INGREDIENTS -->

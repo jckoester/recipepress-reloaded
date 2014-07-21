@@ -53,7 +53,7 @@ var rpr_template = '<?php echo $this->option( 'rpr_template', 'rpr_default' ); ?
     		<?php the_recipe_times( $recipe_post->ID ); ?>
     	<?php } ?>
     	
-    	<?php if( $this->get_option( 'recipe_use_nutritional_info', 0 ) == 1  && get_the_recipe_nutrition ($recipe_post->ID ) != '' ) { ?>
+    	<?php if( has_recipe_nutrition ($recipe_post->ID ) ) { ?>
     		<h3><i class="fa fa-fire"></i><?php _e( 'Nutritional Information', $this->pluginName ); ?></h3>
     		<?php the_recipe_nutrition ($recipe_post->ID ); ?>
     	<?php } ?>

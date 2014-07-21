@@ -221,6 +221,23 @@ if ( !function_exists('the_recipe_servings_bar') ) {
 }
 
 // ======= RECIPE NUTRITION BAR =======
+if ( !function_exists('has_recipe_nutrition') ) {
+	function has_recipe_nutrition( $recipe_id ){
+		// Get the ID of the recipe:
+			if( !isset( $recipe_id ) || !is_numeric( $recipe_id ) ){
+				$recipe_id = get_post()->ID;
+			}
+
+			// Get the recipe
+			$recipe = get_post_custom( $recipe_id );
+			if ( RPReloaded::get_option( 'recipe_use_nutritional_info', 0 ) == 1 && ( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) >= 0 ){
+				return true;
+			}
+		return false;		
+	}
+	
+}
+
 if ( !function_exists('get_the_recipe_nutrition') ) {
 	function get_the_recipe_nutrition( $recipe_id ){
 		$out='';
