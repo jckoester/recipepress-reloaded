@@ -35,7 +35,7 @@ This plugin includes the following translations:
 
 * English
 * German
-* Italian, thanks to [link](https://wordpress.org/support/profile/bonecruncher"Bonecruncher")
+* Italian, thanks to [Bonecruncher](https://wordpress.org/support/profile/bonecruncher)
 
 If you want a translation of another language included please help translating!
 
