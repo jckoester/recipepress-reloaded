@@ -48,6 +48,9 @@ function rpr_admin_manage_tags()
     return '<a href="'.admin_url('edit.php?post_type=rpr_recipe&page=rpr_taxonomies').'" class="button button-primary" target="_blank">'.__('Manage custom recipe tags', 'recipe-press-reloaded').'</a>';
 }
 
+function f_comment( $entry ){
+	return $entry[0] == T_COMMENT;
+}
 function rpr_admin_template_list()
 {
 	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/templates/';
@@ -62,9 +65,11 @@ function rpr_admin_template_list()
 				$filename = $dirname . $file . '/recipe.php';
 				
 				$docComments = array_filter(
-						token_get_all( file_get_contents( $filename ) ), function($entry) {
+						token_get_all( file_get_contents( $filename ) ), 
+						/*function($entry) {
 							return $entry[0] == T_COMMENT;
-						}
+						}*/
+						"f_comment"
 				);
 				
 				$fileDocComment = array_shift( $docComments );
