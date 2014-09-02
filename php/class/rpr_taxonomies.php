@@ -243,7 +243,7 @@ if( class_exists( 'RPReloaded' ) ) {
 			if( strlen($edit_tag_name) > 0 ) {
 				$editing = true;
 			}
-		
+			
 			if( !$editing ) {
 				die( 'There was an unexpected error. Please try again.' );
 			}
@@ -293,8 +293,7 @@ if( class_exists( 'RPReloaded' ) ) {
 								'hierarchical' => true
 						)
 				);
-//var_dump($taxonomies); die;
-				//update_option('rpr_taxonomies', $taxonomies);
+				update_option('rpr_taxonomies', $taxonomies);
                 $this->taxonomies=$taxonomies;
 				return true;
 			}
