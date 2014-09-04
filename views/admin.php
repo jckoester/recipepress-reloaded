@@ -1,7 +1,8 @@
 <?php
 
 $templates = rpr_admin_template_list();
-
+$ingredients = rpr_admin_ingredients_list();
+var_dump($ingredients);
 
 $admin_menu = array(
     'title' => 'Recipe Press Reloaded ' . __('Settings', $this->pluginName),
@@ -109,7 +110,7 @@ $admin_menu = array(
                             'type' => 'notebox',
                             'name' => 'recipe_slug_notebox',
                             'label' => __('404 error/page not found?', $this->pluginName),
-                            'description' => __('Try', $this->pluginName) . ' <a href="http://rp-reloaded.net/documentation/404-error-page-found/" target="_blank">'.__('flushing your permalinks', $this->pluginName).'</a>.',
+                            'description' => __('Try', $this->pluginName) . ' <a href="http://rp-reloaded.net/documentation/solving-problems/fix-404-error-page-found/" target="_blank">'.__('flushing your permalinks', $this->pluginName).'</a>.',
                             'status' => 'info',
                         ),
                     	
@@ -175,8 +176,29 @@ $admin_menu = array(
    											'description' => __( 'Allow to attach images to instruction steps.', $this->pluginName ),
    											'default' => '1',
    									),
+   									array(
+   											'type' => 'select',
+   											'name' => 'recipe_instruction_image_position',
+   											'label' => __( 'Position of instruction images', $this->pluginName ),
+   											'description' => __( 'Decide wether your instruction images should be display next to the instructions or below.', $this->pluginName ),
+   											'items' => array(
+   												array(
+   													'value' => 'rpr_instrimage_right',
+   													'label' => __('Right of instruction', 'vp_textdomain'),
+   												),
+   												array(
+   													'value' => 'rpr_instrimage_below',
+   													'label' => __('Below the instruction', 'vp_textdomain'),
+   												),
+   											),
+   											'default' => array(
+   												'right',
+   											),
+   									),
+   									
    								),		
    						),
+   						
    						array(
    							'type' => 'section',
 				    		'title' => __('Print Link', $this->pluginName),
@@ -255,6 +277,29 @@ $admin_menu = array(
     												'default' => '0'
     										),
     								),
+    						),
+    						array(
+    								'type' => 'section',
+    								'title' => __('Icons' , $this->pluginName ),
+    								'name' => 'section_icons',
+    								'fields' => array(
+    										array(
+    												'type' => 'toggle',
+    												'name' => 'recipe_icons_display',
+    												'label' => __( 'Use icons' , $this->pluginName ),
+    												'description' => __( 'Display icons in front of headlines.' , $this->pluginName ),
+    												'default' => '0',
+    										),
+    										array(
+    												'type' => 'notebox',
+    												'name' => 'recipe_icons_note_item',
+    												'label' => __( 'Planned feature:', $this->pluginName ) ,
+    												'description' => __( 'In the future you should be able to select icons for taxonomies and headlines here or enter your own css classes. But at the oment nothing is here.' , $this->pluginName ) ,
+    												'status' => 'warning',
+    										),
+    						
+    								),
+    						//),
     						),
     				),
     		),
@@ -360,6 +405,43 @@ $admin_menu = array(
                     	),
                     	
                     ),
+                ),
+            	array(
+            			'type' => 'section',
+            			'title' => __('Excludelist test', $this->pluginName),
+            			'name' => 'section_recipe_exclude_ings',
+            			'fields' => array(
+            					array(
+            							'type' => 'multiselect',
+            							'name' => 'ms_1',
+            							'label' => __('Multiple Select Box', 'vp_textdomain'),
+            							'description' => __('Minimum selected of 2 items and maximum selected of 3 items.', 'vp_textdomain'),
+            							'validation' => 'minselected[2]|maxselected[3]',
+            							'items' => array(
+            									array(
+            											'value' => 'value_1',
+            											'label' => __('Label 1', 'vp_textdomain'),
+            									),
+            									array(
+            											'value' => 'value_2',
+            											'label' => __('Label 2', 'vp_textdomain'),
+            									),
+            									array(
+            											'value' => 'value_3',
+            											'label' => __('Label 3', 'vp_textdomain'),
+            									),
+            									array(
+            											'value' => 'value_4',
+            											'label' => __('Label 4', 'vp_textdomain'),
+            									),
+            									$ingredients,
+            							),
+            							'default' => array(
+            									'{{first}}',
+            									'{{last}}',
+            							),
+            					),
+            			)
                 ),
             ),
         ),

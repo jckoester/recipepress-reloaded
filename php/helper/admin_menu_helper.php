@@ -95,6 +95,25 @@ function rpr_admin_template_list()
 	return $templates;
 }
 
+function rpr_admin_ingredients_list()
+{
+	// no chance to get ingredients this way. Taxonoies are not setup yet when this code will be called.Either query the database directly or quit using vafpress!
+	$ingredients = get_terms( 'rpr_ingredient', '' );
+	
+	if( ! is_wp_error( $ingredients ) ){
+		$inglist = array();
+		
+		foreach( $ingredients as $ing ){
+			$inglist[] = array( 
+					'value' => $ing->term_id,
+					'label' => $ing->name
+			);
+		}
+		return $inglist;
+	}
+	
+}
+
 //=-=-=-=-=-=-= SHORTCODE GENERATOR =-=-=-=-=-=-=
 
 function rpr_shortcode_generator_recipes_by_date()

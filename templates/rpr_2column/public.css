@@ -76,14 +76,15 @@ ol.recipe-instructions li{
    
 /* Nutrition */
 
-
-ol.recipe-instructions li .has_thumbnail{
-    float:left;
+ol.recipe-instructions span.rpr_instrimage_right{
+	display:block;
+	float:left;
     width:60%;
     width: calc( 100% - 165px );
 }
-ol.recipe-instructions li a{
-    margin-left:10px;
+
+ol.recipe-instructions img.rpr_instrimage_right{
+	margin-left:10px;
     display:inline-block;
     vertical-align:top;
 }

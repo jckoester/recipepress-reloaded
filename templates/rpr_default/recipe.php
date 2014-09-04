@@ -78,7 +78,7 @@ if(!is_null($thumb_url)) {
     	the_recipe_nutrition($recipe_post->ID );
     } ?>
     <!-- INGREDIENTS -->
-    <h3><?php _e('Ingredients', $this->pluginName ); ?></h3>
+    <h3><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-shopping-cart"></i> <?php }?><?php _e('Ingredients', $this->pluginName ); ?></h3>
    
 	<?php the_recipe_servings_bar( $recipe_post->ID ); ?> 
     <?php the_recipe_ingredient_list( array( 'ID' => $recipe_post->ID) ); ?>
@@ -86,14 +86,14 @@ if(!is_null($thumb_url)) {
   
     
     <!--- INSTRUCTIONS --->
-    <h3><?php _e( 'Instructions', $this->pluginName ); ?></h3>
+    <h3><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-cogs"></i> <?php } ?><?php _e( 'Instructions', $this->pluginName ); ?></h3>
     <!-- INFO LINE (Times) -->
     <?php the_recipe_times( $recipe_post->ID ); ?>
     <?php the_recipe_instruction_list( array( 'ID' => $recipe_post->ID ) ); ?>
     
     <!--  NOTES -->
     <?php if( isset( $recipe['rpr_recipe_notes'][0] ) ) { ?>
-    <h3><?php _e( 'Recipe notes', $this->pluginName ); ?></h3>
+    <h3><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-paperclip"></i> <?php }?><?php _e( 'Recipe notes', $this->pluginName ); ?></h3>
 	<?php the_recipe_notes( array('ID' => $recipe_post->ID ) )?>
     <?php } ?>
     

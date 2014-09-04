@@ -28,7 +28,8 @@ if( class_exists( 'RPReloaded' ) ) {
 				update_option( 'rpr_update_needed' , 0);
 			} else {
 				//check if old rpr or rp is installed
-				if( get_option( 'rpr_version_updated' ) == "0.3.0" || get_option( 'rpr_version_updated' ) == 'RecipePress' ){
+				$update_array = array("0.6.0", "0.5.6", "0.5.5", "0.5.4", "0.5.3", "0.5.2", "0.5.1", "0.5.0", "0.3.0");
+				if( in_array( get_option( 'rpr_version_updated' ), $update_array ) || get_option( 'rpr_version_updated' ) == 'RecipePress' ){
 					update_option( 'rpr_update_needed' , 1);
 				}
 			}
@@ -37,18 +38,21 @@ if( class_exists( 'RPReloaded' ) ) {
 		public function rpr_admin_notice_migrate(){
 			if( get_option( 'rpr_update_needed' ) == '1' ) {
 				echo '<div class="updated"><p>';
-				printf(__('The Recipe Press Reloaded database needs to upgraded. Make sure you have a backup before you proceed. | <a href="%1$s">Proceed</a>', $this->pluginName), '?post_type=rpr_recipe&rpr_do_migration=1');
+				printf(__('The Recipe Press Reloaded database needs to be upgraded. Make sure you have a backup before you proceed. | <a href="%1$s">Proceed</a>', $this->pluginName), '?post_type=rpr_recipe&rpr_do_migration=1');
 				echo "</p></div>";
 			}
 		}
 		
 		public function rpr_do_migration() {
 			$version_updated=$this->get_version_updated();
-			
-			if( isset($_GET['rpr_do_migration']) && $_GET['rpr_do_migration'] == '1' ){
 
+			if( isset($_GET['rpr_do_migration']) && $_GET['rpr_do_migration'] == '1' ){
+				
 				if( $version_updated == '0.3.0' || $version_updated == 'RecipePress' ){
 					$this->migrate_recipepress_3();
+				} elseif( in_array( $version_updated, array( "0.6.0", "0.5.6", "0.5.5", "0.5.4", "0.5.3", "0.5.2", "0.5.1", "0.5.0" ) ) ){
+					
+					$this->migrate_recipepress_06();
 				}
 				
 				// Set version to current version
@@ -81,6 +85,37 @@ if( class_exists( 'RPReloaded' ) ) {
 			}
 			return $version_updated;
 		}
+		
+		//////////////////////// Migration from RecipePress and Recipe Press Reloaded < 0.6 ///////////////
+		public function migrate_recipepress_06() {
+			//Walk through all recipes and set post_content and post_excerpt
+			$args = array(
+					'post_type' => 'rpr_recipe',
+					//'post_status' => 'publish',
+					'posts_per_page' => -1,
+			);
+			
+			$query = new WP_Query( $args );
+			$recipes = array();
+			
+			if( $query->have_posts() ) { //recipes found
+			
+				while( $query->have_posts() ) {
+					$query->the_post();
+					
+					global $post;
+					
+					$description = get_post_meta( $post->ID, 'rpr_recipe_description', true );
+					
+					$post->post_content = $description;
+					$post->post_excerpt = $description;
+					
+					wp_update_post( $post );
+				}
+			}
+			return true;
+		}
+		
 		//////////////////////// Migration from RecipePress and Recipe Press Reloaded < 0.5 ///////////////
 		public function migrate_recipepress_3() {
 			// 1.) Register old posttype and taxonomies:

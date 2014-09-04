@@ -2,7 +2,7 @@
 Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
 Requires at least: 3.8
-Tested up to: 3.9.1
+Tested up to: 4.0
 Stable tag: 0.6.1
 License: GPLv2
 
@@ -51,6 +51,11 @@ If you want a translation of another language included please help translating!
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
+
+= 0.7.0 =
+* proper excerpts for recipes
+* templates can define the look & feel of excerpts
+* option for placement of instruction images
 
 = 0.6.1 =
 * Bugfix release

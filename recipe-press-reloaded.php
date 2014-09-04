@@ -4,7 +4,7 @@
   Plugin Name: RecipePressReloaded
   Plugin URI: http://rp-reloaded.net 
   Description: A simple recipe plugin doing all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically. Yet to come: easily create indexes of any taxonomy like ingredient, category, course, cuisine, ...
-  Version: 0.6.1
+  Version: 0.7.0
   Author: Jan Köster
   Author URI: http://www.cbjck.de/author/jan
   License: GPL2
@@ -31,7 +31,8 @@
  */
  
 /*Set plugin version*/
-define( 'RPR_VERSION', '0.6.1' );
+define( 'RPR_VERSION', '0.7.0' );
+
 
 
 class RPReloaded{
@@ -66,6 +67,7 @@ class RPReloaded{
 //!!TBD
 		// Actions
 		add_action( 'after_setup_theme', array( $this, 'rpr_admin_menu' ) );
+		add_action( 'admin_menu', array( $this, 'rpr_admin_menu_dev' ) );
 		//add_action( 'after_setup_theme', array( $this, 'rpr_shortcodegenerator' ) );
 		//add_action( 'init', array( $this, 'rpr_check_premium' ) );
 		//add_action( 'admin_init', array( $this, 'rpr_hide_notice' ) );
@@ -123,10 +125,10 @@ class RPReloaded{
 	{
 		require_once('php/helper/admin_menu_helper.php');
 		
-		require_once('views/admin.php');
+		require('views/admin.php');
 	
 		new VP_Option(array(
-				'is_dev_mode'           => false,
+				'is_dev_mode'           => true,
 				'option_key'            => 'rpr_option',
 				'page_slug'             => 'rpr_admin',
 				'template'              => $admin_menu,
@@ -154,9 +156,26 @@ class RPReloaded{
 	
 		return is_null($option) ? $default : $option;
 	}
+	
+	function rpr_admin_menu_dev()
+	{
+		if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' ) ) {
+			require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' );
+		}
+		if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' ) ) {
+			require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' );
+		}
+	}
 }
 
 require_once('php/lib/vafpress/bootstrap.php');
 $rpr = new RPReloaded();
 
 include_once('php/template_tags.php');
+
+if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' ) ) {
+	require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' );
+}
+if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' ) ) {
+	require_once( dirname( __FILE__ ) . '/views/settings.php' );
+}

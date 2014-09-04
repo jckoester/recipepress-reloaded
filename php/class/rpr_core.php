@@ -65,6 +65,9 @@ class RPR_Core extends RPReloaded {
         add_shortcode("rpr-recipe", array( $this, 'recipes_shortcode' ));
         add_shortcode("rpr-recipe-index", array( $this, 'recipes_index_shortcode' ));
         add_shortcode( "rpr-tax-list", array( $this, 'recipes_taxlist_shortcode' ));
+        
+        // Widgets
+        add_action( 'widgets_init', array( $this, 'rpr_load_widgets' ) );
 
         // Other
 //        $this->add_link_to_ingredients();
@@ -492,7 +495,28 @@ class RPR_Core extends RPReloaded {
 	    			}
 	    		}
     		}
+    	} //endforeach
+    	
+    	if( isset( $data['rpr_recipe_description'] ) ){
+    		//if ( ! wp_is_post_revision( $recipe_id ) ){
+    		// unhook this function so it doesn't loop infinitely
+    		remove_action('save_post', array($this, __FUNCTION__));
+    		
+    		$recipe->post_content = $data['rpr_recipe_description'];
+    		 
+    		// update the post, which calls save_post again
+    		$x = wp_update_post( array(
+    				'ID' => $recipe_id,
+    				'post_content' => $recipe->post_content,
+    				'post_excerpt' => $recipe->post_content
+    		) );
+    		 
+    		// re-hook this function
+    		add_action('save_post', array($this, __FUNCTION__));
+    		//}	
     	}
+    	
+    	
     }
     
     /* 
@@ -681,12 +705,19 @@ class RPR_Core extends RPReloaded {
             //$content = $recipe_post->post_excerpt
             $recipe = get_post_custom($recipe_post->ID);
 
-            if( isset($recipe['rpr_recipe_description'][0]) ){
+            ob_start();
+             
+            include($this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/excerpt.php');
+            
+            $content = ob_get_contents();
+            ob_end_clean();
+            
+            /*if( isset($recipe['rpr_recipe_description'][0]) ){
                 $content = $recipe['rpr_recipe_description'][0];
-            }
+            }*/
 
           add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
-          $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
+          //$content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
         }
         
         return $content;
@@ -996,7 +1027,15 @@ class RPR_Core extends RPReloaded {
     	);
     }
     
-
-
+	/*
+	 * ////////////////////////////////// WIDGETS ////////////////////////////////////////////////////
+	 */
+    
+    // Register and load the widgets
+    function rpr_load_widgets() {
+    	include_once $this->pluginDir . '/widgets/same-taxonomy-widget.php';
+    	register_widget( 'RPR_Same_Taxonomy_Widget' );
+    }
       
+    
 }

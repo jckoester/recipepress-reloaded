@@ -39,12 +39,26 @@ class RPR_Same_Taxonomy_Widget extends WP_Widget {
         $post_id = get_the_id();
 		$terms= get_the_terms($post_id, $instance['taxonomy']);
 
-		if($terms):
-			$id=array_pop(array_values($terms))->term_id;
+		if( $terms ):
+			$term_ids = array(); 
+		
+			foreach( array_values( $terms ) as $term )
+			{
+				array_push( $term_ids, $term->term_id );
+				//echo $term->name;
+			}
+			
+			/*var_dump( $term_ids );
+			$term = array_pop( array_values( $terms ) );
+		
+			//$id=array_pop(array_values($terms))->term_id;
             $name=array_pop(array_values($terms))->name;
-
+*/
  		   	echo $before_widget;
           
+ 		   	if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
+ 		   		$before_title.='<i class="fa fa-list"></i> ';
+ 		   	}
        		if ( $instance['title'] ) {
         		echo $before_title . $instance['title'] . $after_title;
         	}
@@ -52,11 +66,12 @@ class RPR_Same_Taxonomy_Widget extends WP_Widget {
  		   	$the_query= null;
 			
 			$the_query = new WP_Query(array(
-					'post_type'=>array('post', 'recipe'), 
+					'post_type'=>array('post', 'rpr_recipe'), 
 					'tax_query' => array( array(
+											//'operator' => 'AND',
 											'taxonomy' => $instance['taxonomy'],
 											'field' => 'term_id',
-											'terms' => $id
+											'terms' => $term_ids//$term->term_id
 									)),
 					'posts_per_page'=>$instance['limit'],
 					'paged'=>1
