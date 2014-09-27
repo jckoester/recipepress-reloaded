@@ -67,7 +67,6 @@ class RPReloaded{
 //!!TBD
 		// Actions
 		add_action( 'after_setup_theme', array( $this, 'rpr_admin_menu' ) );
-		add_action( 'admin_menu', array( $this, 'rpr_admin_menu_dev' ) );
 		//add_action( 'after_setup_theme', array( $this, 'rpr_shortcodegenerator' ) );
 		//add_action( 'init', array( $this, 'rpr_check_premium' ) );
 		//add_action( 'admin_init', array( $this, 'rpr_hide_notice' ) );
@@ -157,18 +156,9 @@ class RPReloaded{
 		return is_null($option) ? $default : $option;
 	}
 	
-	function rpr_admin_menu_dev()
-	{
-		if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' ) ) {
-			require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' );
-		}
-		if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' ) ) {
-			require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' );
-		}
-	}
 }
 
-require_once('php/lib/vafpress/bootstrap.php');
+require_once('lib/vafpress/bootstrap.php');
 $rpr = new RPReloaded();
 
 include_once('php/template_tags.php');
