@@ -4,7 +4,11 @@
   Plugin Name: RecipePressReloaded
   Plugin URI: http://rp-reloaded.net 
   Description: A simple recipe plugin doing all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically. Yet to come: easily create indexes of any taxonomy like ingredient, category, course, cuisine, ...
-  Version: 0.6.1
+<<<<<<< HEAD
+  Version: 0.7.0
+=======
+  Version: 0.6.0
+>>>>>>> fixed version information
   Author: Jan Köster
   Author URI: http://www.cbjck.de/author/jan
   License: GPL2
@@ -31,7 +35,8 @@
  */
  
 /*Set plugin version*/
-define( 'RPR_VERSION', '0.6.1' );
+define( 'RPR_VERSION', '0.7.0' );
+
 
 
 class RPReloaded{
@@ -123,10 +128,10 @@ class RPReloaded{
 	{
 		require_once('php/helper/admin_menu_helper.php');
 		
-		require_once('views/admin.php');
+		require('views/admin.php');
 	
 		new VP_Option(array(
-				'is_dev_mode'           => false,
+				'is_dev_mode'           => true,
 				'option_key'            => 'rpr_option',
 				'page_slug'             => 'rpr_admin',
 				'template'              => $admin_menu,
@@ -154,10 +159,7 @@ class RPReloaded{
 	
 		return is_null($option) ? $default : $option;
 	}
-<<<<<<< HEAD
 	
-=======
->>>>>>> 05b6d33d08bb39259a161366f260973594a50c6b
 }
 
 require_once('lib/vafpress/bootstrap.php');
@@ -165,13 +167,9 @@ $rpr = new RPReloaded();
 
 include_once('php/template_tags.php');
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 05b6d33d08bb39259a161366f260973594a50c6b
-/*if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' ) ) {
+if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' ) ) {
 	require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' );
 }
 if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' ) ) {
 	require_once( dirname( __FILE__ ) . '/views/settings.php' );
-}*/
+}
