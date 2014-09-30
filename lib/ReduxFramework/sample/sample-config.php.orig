@@ -11,7 +11,7 @@ require_once( __DIR__ . '/../php/helper/admin_menu_helper.php');
      * ReduxFramework Sample Config File
      * For full documentation, please visit: https://docs.reduxframework.com
      * */
->>>>>>> New version of ReduxFramework
+>>>>>>> Testing Redux
 
     if ( ! class_exists( 'Redux_Framework_sample_config' ) ) {
 
@@ -30,7 +30,7 @@ require_once( __DIR__ . '/../php/helper/admin_menu_helper.php');
             public $sections = array();
             public $theme;
             public $ReduxFramework;
->>>>>>> New version of ReduxFramework
+>>>>>>> Testing Redux
 
             public function __construct() {
 
@@ -560,7 +560,7 @@ require_once( __DIR__ . '/../php/helper/admin_menu_helper.php');
                             'default'       => array(
                                 1 => 100,
                                 2 => 300,
->>>>>>> New version of ReduxFramework
+>>>>>>> Testing Redux
                             ),
                             'min'           => 0,
                             'step'          => 5,
@@ -1805,7 +1805,7 @@ require_once( __DIR__ . '/../php/helper/admin_menu_helper.php');
                     'id'      => 'redux-help-tab-1',
                     'title'   => __( 'Theme Information 1', 'redux-framework-demo' ),
                     'content' => __( '<p>This is the tab content, HTML is allowed.</p>', 'redux-framework-demo' )
->>>>>>> New version of ReduxFramework
+>>>>>>> Testing Redux
                 );
 
                 $this->args['help_tabs'][] = array(
@@ -2171,7 +2171,7 @@ require_once( __DIR__ . '/../php/helper/admin_menu_helper.php');
                         ),
                     )
                 );
->>>>>>> New version of ReduxFramework
+>>>>>>> Testing Redux
 
                 // ADMIN BAR LINKS -> Setup custom links in the admin bar menu as external items.
                 $this->args['admin_bar_links'][] = array(
@@ -2281,7 +2281,7 @@ require_once( __DIR__ . '/../php/helper/admin_menu_helper.php');
               } elseif(something else) {
                 $error = true;
                 $value = $existing_value;
->>>>>>> New version of ReduxFramework
+>>>>>>> Testing Redux
                 
               }
              */
@@ -2462,4 +2462,4 @@ function readme_parser_get_version( $file )
 }
 =======
     endif;
->>>>>>> New version of ReduxFramework
+>>>>>>> Testing Redux

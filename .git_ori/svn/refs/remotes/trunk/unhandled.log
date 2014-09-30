@@ -1,0 +1,133 @@
+r623561
+r623675
+  +dir_prop: trunk svn:ignore .git%0AREADME.md%0A
+  +file_prop: trunk/images/icons/delete.gif svn:mime-type image/gif
+  +file_prop: trunk/images/icons/drag-icon.png svn:mime-type image/png
+  +file_prop: trunk/images/icons/help.jpg svn:mime-type image/jpeg
+  +file_prop: trunk/images/icons/large_logo.png svn:mime-type image/png
+  +file_prop: trunk/images/icons/search-icon.png svn:mime-type image/png
+  +file_prop: trunk/images/icons/small_logo.png svn:mime-type image/png
+  +file_prop: trunk/language/recipe-press-reloaded-de_DE.mo svn:mime-type application/octet-stream
+r623677
+r626630
+  +dir_prop: trunk svn:ignore .project%0A.git%0AREADME.md%0A
+r630442
+r897533
+  -empty_dir: trunk/css
+  -empty_dir: trunk/images
+  -empty_dir: trunk/js
+  -empty_dir: trunk/language
+  -empty_dir: trunk/php
+  -empty_dir: trunk/readme.txt
+  -empty_dir: trunk/recipe-press-reloaded.php
+  -empty_dir: trunk/templates
+  -empty_dir: trunk/widgets
+r897541
+  +file_prop: trunk/fonts/FontAwesome.otf svn:mime-type application/octet-stream
+  +file_prop: trunk/fonts/fontawesome-webfont.eot svn:mime-type application/octet-stream
+  +file_prop: trunk/fonts/fontawesome-webfont.ttf svn:mime-type application/octet-stream
+  +file_prop: trunk/fonts/fontawesome-webfont.woff svn:mime-type application/octet-stream
+  +file_prop: trunk/img/Logo.xcf svn:mime-type application/octet-stream
+  +file_prop: trunk/img/Logo_20.xcf svn:mime-type application/octet-stream
+  +file_prop: trunk/img/arrows.png svn:mime-type application/octet-stream
+  +file_prop: trunk/img/bg1.png svn:mime-type application/octet-stream
+  +file_prop: trunk/img/icon_16.png svn:mime-type application/octet-stream
+  +file_prop: trunk/img/icon_20.png svn:mime-type application/octet-stream
+  +file_prop: trunk/img/image_placeholder.png svn:mime-type application/octet-stream
+  +file_prop: trunk/img/logo.png svn:mime-type application/octet-stream
+  +file_prop: trunk/img/minus.png svn:mime-type application/octet-stream
+  +file_prop: trunk/img/printer.png svn:mime-type application/octet-stream
+  +file_prop: trunk/img/star.png svn:mime-type application/octet-stream
+  +file_prop: trunk/img/star_grey.png svn:mime-type application/octet-stream
+  +file_prop: trunk/img/wpicons-2x.png svn:mime-type application/octet-stream
+  +file_prop: trunk/img/wpicons.png svn:mime-type application/octet-stream
+  +file_prop: trunk/language/recipe-press-reloaded-de_DE.mo svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/lang/de_DE.mo svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/lang/es_ES.mo svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/lang/id_ID.mo svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/lang/ja_JP.mo svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/lang/nl_NL.mo svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/lang/pl_PL.mo svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/lang/tr_TR.mo svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-bg_flat_0_aaaaaa_40x100.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-bg_flat_75_ffffff_40x100.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-bg_glass_55_fbf9ee_1x400.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-bg_glass_65_ffffff_1x400.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-bg_glass_75_dadada_1x400.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-bg_glass_95_fef1ec_1x400.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-icons_222222_256x240.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-icons_2e83ff_256x240.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-icons_454545_256x240.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-icons_888888_256x240.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/css/vendor/jqueryui/themes/smoothness/images/ui-icons_cd0a0a_256x240.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/font/FontAwesome.otf svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/font/fontawesome-webfont.eot svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/font/fontawesome-webfont.ttf svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/font/fontawesome-webfont.woff svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/img/ajax-loader.gif svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/img/bootstrap-colorpicker/alpha.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/img/bootstrap-colorpicker/hue.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/img/bootstrap-colorpicker/saturation.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/img/select2/select2-spinner.gif svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/img/select2/select2.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/img/select2/select2x2.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/img/vp-logo.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/img/vp-sprite.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/img/vp_shortcode_icon.png svn:mime-type application/octet-stream
+  +file_prop: trunk/php/lib/vafpress/public/img/vp_shortcode_icon_sprite.png svn:mime-type application/octet-stream
+r897971
+  +dir_prop: trunk svn:ignore .project%0A.git%0A.gitmodules%0AREADME.md%0A
+r904252
+r904884
+r904886
+r904898
+r906136
+r907472
+r907473
+  -empty_dir: trunk/language/recipe-press-reloaded-de_DE.mo
+  -empty_dir: trunk/language/recipe-press-reloaded-de_DE.po
+  +file_prop: trunk/language/recipepress-reloaded-de_DE.mo svn:mime-type application/octet-stream
+r907526
+r907714
+r907776
+r907795
+r907804
+r908760
+r911630
+r912271
+r914725
+  -empty_dir: trunk/css/rpr_public.css
+  -empty_dir: trunk/templates
+r914726
+  +file_prop: trunk/templates/rpr_default/screenshot.png svn:mime-type application/octet-stream
+r914808
+r916185
+r916189
+  -empty_dir: trunk/templates/rpr_default
+  +file_prop: trunk/img/Logo_frameless.png svn:mime-type image/png
+  +file_prop: trunk/img/Logo_frameless.xcf svn:mime-type image/x-xcf
+r916195
+r916198
+r916199
+r918184
+  -empty_dir: trunk/php/helper/changelog.html
+  +file_prop: trunk/templates/rpr_default/screenshot.png svn:mime-type application/octet-stream
+r918189
+r920643
+r940102
+  -empty_dir: trunk/templates/rpr_default/recipe_print.php
+r946530
+r947397
+r947403
+r947404
+r947528
+r951880
+r952253
+r952564
+r952565
+r957958
+r977095
+r980621
+r980623

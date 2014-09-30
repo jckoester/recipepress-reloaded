@@ -62,7 +62,7 @@ If you want a translation of another language included please help translating!
 * added support for nutritional information
 * choose between two templates
 * rearranged settings for a better overview
-* added Italian translation, thanks to [Bonecruncher](https://wordpress.org/support/profile/bonecruncher)
+* added Italian translation, thanks to [link](https://wordpress.org/support/profile/bonecruncher"Bonecruncher")
 
 = 0.5.6 May 17th, 2014 =
 * bugfix release, fixing several bugs introduced with 0.5.5

@@ -1,0 +1,10 @@
+; This file is used internally by git-svn
+; You should not have to edit it
+[svn-remote "svn"]
+	reposRoot = http://plugins.svn.wordpress.org
+	uuid = b8457f37-d9ea-0310-8a92-e5e31aec5664
+	branches-maxRev = 977110
+	tags-maxRev = 977110
+[svn-remote "assets"]
+	reposRoot = http://plugins.svn.wordpress.org
+	uuid = b8457f37-d9ea-0310-8a92-e5e31aec5664
