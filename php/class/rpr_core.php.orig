@@ -496,6 +496,7 @@ class RPR_Core extends RPReloaded {
 	    		}
     		}
     	} //endforeach
+<<<<<<< HEAD
     	
     	if( isset( $data['rpr_recipe_description'] ) ){
     		//if ( ! wp_is_post_revision( $recipe_id ) ){
@@ -517,6 +518,24 @@ class RPR_Core extends RPReloaded {
     	}
     	
     	
+=======
+    	//if ( ! wp_is_post_revision( $recipe_id ) ){
+    	// unhook this function so it doesn't loop infinitely
+    	remove_action('save_post', array($this, __FUNCTION__));
+    	
+    	$recipe->post_content = $data['rpr_recipe_description'];
+    	
+    	// update the post, which calls save_post again
+    	$x = wp_update_post( array(
+    			'ID' => $recipe_id,
+    			'post_content' => $recipe->post_content,
+    			'post_excerpt' => $recipe->post_content
+    			) );
+    	
+    	// re-hook this function
+    	add_action('save_post', array($this, __FUNCTION__));
+    	//}
+>>>>>>> Included gist 58601609a899eb7f9fc3 to iprove handling of excerpts
     }
     
     /* 
@@ -717,11 +736,7 @@ class RPR_Core extends RPReloaded {
             }*/
 
           add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
-<<<<<<< HEAD
           //$content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
-=======
-          $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
->>>>>>> Added screenshot for template rpr2column
         }
         
         return $content;
