@@ -89,7 +89,7 @@ ol.recipe-instructions img.rpr_instrimage_right{
 <<<<<<< HEAD
 
 =======
->>>>>>> Added option for position of instruction images and finished excerpts in templates
+>>>>>>> Testing Redux Framework ... and wordpress 4.0
     display:inline-block;
     vertical-align:top;
 }

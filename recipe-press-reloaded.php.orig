@@ -168,7 +168,7 @@ class RPReloaded{
 			require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' );
 		}
 	}
->>>>>>> Testing Reux Framework ... and wordpress 4.0
+>>>>>>> Testing Redux Framework ... and wordpress 4.0
 }
 
 require_once('lib/vafpress/bootstrap.php');
