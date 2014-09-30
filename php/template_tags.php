@@ -90,17 +90,8 @@ if ( !function_exists('get_the_recipe_taxonomy_bar') ) {
         // Categories:
         if ( RPReloaded::get_option('recipe_tags_use_wp_categories', 1) == '1' ) { 
             if( RPReloaded::get_option('recipe_display_categories_in_recipe', 1) == '1' ) {
-            	$tax = get_taxonomy( 'category' );
-
-            	$icon='';
-            	if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){ 
-            		$icon = '<i class="fa fa-list-ul" title=' . $tax->labels->name . '></i> ';
-        		} else {
-        			$icon=$tax->labels->name . ': ';
-	        	}
                 $out .= sprintf(
-                    '<span itemprop="recipeCategory" class="category-list">%1s%2s</span>',
-                	$icon,
+                    '<span itemprop="recipeCategory" class="fa fa-list-ul category-list">%s</span>',
                     get_the_category_list(  __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ) )
                     );
             } else {
@@ -111,18 +102,9 @@ if ( !function_exists('get_the_recipe_taxonomy_bar') ) {
             }
         } else {
             $terms = get_the_term_list( $recipe_id, 'rpr_category', '', ', ');
-            $tax = get_taxonomy( 'rpr_category' );
-            
             if(!is_wp_error($terms) && $terms != '') {
-            	$icon='';
-            	if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
-            		$icon = '<i class="fa fa-list-ul" title=' . $tax->labels->name . '></i> ';
-        		} else {
-        			$icon=$tax->labels->name . ': ';
-	        	}
                 $out .= sprintf(
-                        '<span itemprop="recipeCategory" class="category-list">%1s%2s</span>',
-                		$icon,
+                        '<span itemprop="recipeCategory" class="fa fa-list-ul category-list">%s</span>',
                          get_the_term_list( $recipe_post->ID, 'rpr_category', '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
                     );
             }
@@ -130,35 +112,18 @@ if ( !function_exists('get_the_recipe_taxonomy_bar') ) {
         
         // Course:
         $terms = get_the_term_list( $recipe_id, 'rpr_course', '', ', ');
-        $tax = get_taxonomy( 'rpr_course' );
-        
         if(!is_wp_error($terms) && $terms != '') {
-        	$icon='';
-        	if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
-        		$icon = '<i class="fa fa-cutlery" title=' . $tax->labels->name . '></i> ';
-        	} else {
-        		$icon=$tax->labels->name . ': ';
-        	}
             $out .= sprintf(
-                    '<span class="fa fa-cutlery category-list">%1s%2s</span>',
-            		$icon,
+                    '<span class="fa fa-cutlery category-list">%s</span>',
                      get_the_term_list( $recipe_id, 'rpr_course', '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
                     );
         }
         
         //Cuisine:
         $terms = get_the_term_list( $recipe_id, 'rpr_cuisine', '', ', ');
-        $tax = get_taxonomy( 'rpr_cuisine' );
         if(!is_wp_error($terms) && $terms != '') {
-        	$icon='';
-        	if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
-        		$icon = '<i class="fa fa-flag" title=' . $tax->labels->name . '></i> ';
-        	} else {
-        		$icon=$tax->labels->name . ': ';
-        	}
             $out .=  sprintf(
-                        '<span itemprop="recipeCuisine" class="category-list">%1s%2s</span>',
-            			$icon,
+                        '<span itemprop="recipeCuisine" class="fa fa-flag category-list">%s</span>',
                         get_the_term_list( $recipe_id, 'rpr_cuisine', '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
                     );
         }
@@ -169,17 +134,9 @@ if ( !function_exists('get_the_recipe_taxonomy_bar') ) {
         foreach($taxonomies as $taxonomy => $options) {
             if( ! in_array($taxonomy, $done ) ){
                  $terms = get_the_term_list( $recipe_id, $taxonomy, '', ', ');
-                 $tax = get_taxonomy( $taxonomy );
                 if(!is_wp_error($terms) && $terms != '') {
-                	$icon='';
-                	if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){ 
-                		$icon = '<i class="fa fa-list-alt title=' . $tax->labels->name . '></i> '; 
-                	} else {
-                		$icon=$tax->labels->name . ': '; 
-                	}
                     $out .= sprintf(
-                        '<span class="fa fa-list-alt category-list">%1s%2s</span>',
-                    	$icon,
+                        '<span class="fa fa-list-alt category-list">%s</span>',
                         get_the_term_list( $recipe_id, $taxonomy, '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
                     );
                 }
@@ -450,11 +407,7 @@ if ( !function_exists('get_the_recipe_times') ) {
 
 		if( isset($recipe['rpr_recipe_prep_time'][0]) && $recipe['rpr_recipe_prep_time'][0] != '' ) {
 			$out .= '<dt>';
-			if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
-				$out .= '<i class="fa fa-cog recipe-times-icon" title="'.__( 'Preparation Time', 'recipepress-reloaded' ).'"></i>';
-			} else {
-				$out .= __( 'Preparation Time', 'recipepress-reloaded' );
-			}
+			$out .= '<i class="fa fa-cog recipe-times-icon" title="' . __( 'Preparation Time', 'recipepress-reloaded' ) . '"></i>';
 			$out .= '<span class="recipe-times-name">' . __( 'Preparation', 'recipepress-reloaded' ) . '</span>';
 			$out .= '</dt>';
 			$out .= '<dd>';
@@ -464,11 +417,7 @@ if ( !function_exists('get_the_recipe_times') ) {
 		
 		if( isset($recipe['rpr_recipe_cook_time'][0]) && $recipe['rpr_recipe_cook_time'][0] != '' ) {
 			$out .= '<dt>';
-			if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
-				$out .= '<i class="fa fa-fire recipe-times-icon" title="'.__( 'Cook Time', 'recipepress-reloaded' ).'"></i>';
-			} else {
-				$out .= __( 'Cook Time', 'recipepress-reloaded' );
-			}
+			$out .= '<i class="fa fa-fire recipe-times-icon" title="' . __( 'Cook Time', 'recipepress-reloaded' ) . '"></i>';
 			$out .= '<span class="recipe-times-name">' . __( 'Cooking', 'recipepress-reloaded' ) . '</span>';
 			$out .= '</dt>';
 			$out .= '<dd>';
@@ -491,11 +440,7 @@ if ( !function_exists('get_the_recipe_times') ) {
 		
 		if($totaltime != 0 ) {
 			$out .= '<dt>';
-			if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
-				$out .= '<i class="fa fa-clock-o recipe-times-icon" title="'.__( 'Total Time', 'recipepress-reloaded' ).'"></i>';
-			} else {
-				$out .= __( 'Total Time', 'recipepress-reloaded' );
-			}
+			$out .= '<i class="fa fa-clock-o recipe-times-icon" title="'.__( 'Total Time', 'recipepress-reloaded' ).'"></i>';
 			$out .= '<span class="recipe-times-name">' . __( 'Ready in', 'recipepress-reloaded' ) . '</span>';
 			$out .= '</dt>';
 			$out .= '<dd>';
@@ -542,15 +487,11 @@ if ( ! function_exists('get_the_recipe_instruction_list') ) {
 			
 				$out .= '<li itemprop="recipeInstructions">';
 				$instr_class="";
-				if( isset($instruction['image']) && $instruction['image'] != "" && RPReloaded::get_option('recipe_images_clickable', '0') == 1 ) { $instr_class = "has_thumbnail"; }
-				if( isset($instruction['image']) && $instruction['image'] != "" ) { $instr_class .= " " . RPReloaded::get_option('recipe_instruction_image_position', 'rpr_instrimage_right'); }
-				
+				if( isset($instruction['image']) && RPReloaded::get_option('recipe_images_clickable', '0') == 1 ) { $instr_class = "has_thumbnail"; }
 				$out .= '<span class="recipe-instruction '.$instr_class.'">'.$instruction['description'].'</span>';
 			
 				if( isset($instruction['image']) ) {
-					//if(RPReloaded::get_option('recipe_images_clickable', '0') == 1) {
-					if( RPReloaded::get_option('recipe_instruction_image_position', 'rpr_instrimage_right') == 'rpr_instrimage_right' ) {
-						
+					if(RPReloaded::get_option('recipe_images_clickable', '0') == 1) {
 						$thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
 						 
 					} else{
@@ -563,7 +504,7 @@ if ( ! function_exists('get_the_recipe_instruction_list') ) {
 			
 					if(RPReloaded::get_option('recipe_images_clickable', '0') == 1 && $thumb_url != "" ) {
 						$out .= '<a href="' . $full_img_url . '" rel="lightbox" title="' . $instruction['description'] . '">';
-						$out .= '<img class="'. RPReloaded::get_option('recipe_instruction_image_position', 'rpr_instrimage_right') .'" src="' . $thumb_url . '" />';
+						$out .= '<img src="' . $thumb_url . '" />';
 						$out .= '</a>';
 					} else {
 						if( $thumb_url != "" ){

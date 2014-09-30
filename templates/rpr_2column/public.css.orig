@@ -77,19 +77,21 @@ ol.recipe-instructions li{
    
 /* Nutrition */
 
-ol.recipe-instructions span.rpr_instrimage_right{
-	display:block;
-	float:left;
+
+ol.recipe-instructions li .has_thumbnail{
+    float:left;
     width:60%;
     width: calc( 100% - 165px );
 }
+<<<<<<< HEAD
 
 ol.recipe-instructions img.rpr_instrimage_right{
 	margin-left:10px;
-<<<<<<< HEAD
 
 =======
->>>>>>> Testing Redux Framework ... and wordpress 4.0
+ol.recipe-instructions li a{
+    margin-left:10px;
+>>>>>>> Revert "Testing Redux Framework ... and wordpress 4.0"
     display:inline-block;
     vertical-align:top;
 }
