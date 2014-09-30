@@ -56,6 +56,15 @@ If you want a translation of another language included please help translating!
 * proper excerpts for recipes
 * templates can define the look & feel of excerpts
 * option for placement of instruction images
+<<<<<<< HEAD
+=======
+
+= 0.7.0 =
+* proper excerpts for recipes
+* templates can define the look & feel of excerpts
+* option for placement of instruction images
+
+>>>>>>> Added option for position of instruction images and finished excerpts in templates
 = 0.6.1 =
 * Bugfix release
 = 0.6.0 July 19th, 2014 =
