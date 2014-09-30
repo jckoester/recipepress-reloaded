@@ -243,11 +243,11 @@ if( class_exists( 'RPReloaded' ) ) {
 			if( strlen($edit_tag_name) > 0 ) {
 				$editing = true;
 			}
-			
+			/*
 			if( !$editing ) {
 				die( 'There was an unexpected error. Please try again.' );
 			}
-		
+		*/
 			if( !$editing && taxonomy_exists( strtolower($singular) ) ) {
 				die( 'This taxonomy already exists.' );
 			}
