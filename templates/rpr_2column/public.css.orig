@@ -3,10 +3,7 @@
 .rpr-clear{
 	clear:both;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> Added screenshot for template rpr2column
 
 /* hide some information*/
 .hidden, .rpr_hidden{
@@ -89,7 +86,10 @@ ol.recipe-instructions span.rpr_instrimage_right{
 
 ol.recipe-instructions img.rpr_instrimage_right{
 	margin-left:10px;
+<<<<<<< HEAD
 
+=======
+>>>>>>> Added option for position of instruction images and finished excerpts in templates
     display:inline-block;
     vertical-align:top;
 }
@@ -100,8 +100,4 @@ span.print-link{
 
 i.rpr_cuisine:before{
 	content:"\f024";
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> Added screenshot for template rpr2column

@@ -2,11 +2,7 @@
 Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
 Requires at least: 3.8
-<<<<<<< HEAD
 Tested up to: 4.0
-=======
-Tested up to: 3.9.1
->>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
 Stable tag: 0.6.1
 License: GPLv2
 
@@ -55,17 +51,21 @@ If you want a translation of another language included please help translating!
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> Added option for position of instruction images and finished excerpts in templates
 = 0.7.0 =
 * proper excerpts for recipes
 * templates can define the look & feel of excerpts
 * option for placement of instruction images
-= 0.6.1 =
-* Bugfix release
 <<<<<<< HEAD
 =======
 
->>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
+>>>>>>> Added option for position of instruction images and finished excerpts in templates
+= 0.6.1 =
+* Bugfix release
 = 0.6.0 July 19th, 2014 =
 * added support for nutritional information
 * choose between two templates
