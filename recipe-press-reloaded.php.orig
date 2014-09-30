@@ -155,10 +155,7 @@ class RPReloaded{
 	
 		return is_null($option) ? $default : $option;
 	}
-<<<<<<< HEAD
 	
-=======
->>>>>>> Fixed a bug preventing the creation of new taxonomies
 }
 
 require_once('lib/vafpress/bootstrap.php');
