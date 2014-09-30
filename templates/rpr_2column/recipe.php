@@ -19,13 +19,13 @@ var rpr_template = '<?php echo $this->option( 'rpr_template', 'rpr_default' ); ?
 	<!-- displaying these data is the job of the theme. Therefore they're hidden! -->
 	<span class="rpr_title hidden" itemprop="name"><?php echo get_the_title( $recipe_post ); ?></span>
 	
-	<? if( $this->get_option( 'recipe_author_display_in_recipe', 0) == '1' ){ ?>
+	<?php if( $this->get_option( 'recipe_author_display_in_recipe', 0) == '1' ){ ?>
 		<?php _e( 'By:', $this->pluginName ); ?>&nbsp;<span class="rpr_author" itemprop="author"><?php  the_author_link(); ?></span>
 	<?php } else { ?>
 		<span class="rpr_author hidden" itemprop="author"><?php  the_author(); ?></span>	
 	<?php } ?>
   	
-  	<? if( $this->get_option( 'recipe_time_display_in_recipe', 0) == '1' ){ ?>
+  	<?php if( $this->get_option( 'recipe_time_display_in_recipe', 0) == '1' ){ ?>
   		<span class="rpr_date" itemprop="datePublished" content="<?php the_time( 'Y-m-d' ); ?>">(<?php the_time( get_option('date_format') ); ?>)</span>
   	<?php  } else { ?>
   		<span class="rpr_date hidden" itemprop="datePublished" content="<?php the_time( 'Y-m-d' ); ?>"><?php the_time( get_option('date_format') ); ?></span>
