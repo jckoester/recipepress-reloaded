@@ -56,7 +56,6 @@ If you want a translation of another language included please help translating!
 * proper excerpts for recipes
 * templates can define the look & feel of excerpts
 * option for placement of instruction images
-
 = 0.6.1 =
 * Bugfix release
 = 0.6.0 July 19th, 2014 =
