@@ -7,8 +7,8 @@
 <<<<<<< HEAD
   Version: 0.7.0
 =======
-  Version: 0.6.0
->>>>>>> fixed version information
+  Version: 0.6.1
+>>>>>>> Fixed a bug preventing chnages in taxonomy settings to be saved
   Author: Jan Köster
   Author URI: http://www.cbjck.de/author/jan
   License: GPL2
