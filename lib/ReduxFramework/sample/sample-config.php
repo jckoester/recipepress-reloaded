@@ -4,11 +4,15 @@
   ReduxFramework Sample Config File
   For full documentation, please visit: https://docs.reduxframework.com
  * */
+require_once( __DIR__ . '/../php/helper/admin_menu_helper.php');
 
 if (!class_exists('Redux_Framework_sample_config')) {
 
     class Redux_Framework_sample_config {
 
+    	//pluginName for i8n, should be set by parameter...
+    	private $pluginName = 'recipepress-reloaded';
+    	
         public $args        = array();
         public $sections    = array();
         public $theme;
@@ -383,6 +387,13 @@ if (!class_exists('Redux_Framework_sample_config')) {
                         'title'     => __('Switch On', 'redux-framework-demo'),
                         'subtitle'  => __('Look, it\'s on!', 'redux-framework-demo'),
                         'default'   => true,
+                    ),
+                    array(
+                    		'id'        => 'recipe_images_clickable',
+                    		'type'      => 'switch',
+                    		'title'     => __('Clickable Images', $this->pluginName),
+                    		'subtitle'  => __('Look, it\'s on!', 'redux-framework-demo'),
+                    		'default'   => true,
                     ),
                     array(
                         'id'        => 'switch-off',
@@ -1267,7 +1278,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
             }
             $theme_info .= '</div>';
 
-            if (file_exists(dirname(__FILE__) . '/../README.md')) {
+            if (file_exists(dirname(__FILE__) . '/../lib/ReduxFramework/README.md')) {
                 $this->sections['theme_docs'] = array(
                     'icon'      => 'el-icon-list-alt',
                     'title'     => __('Documentation', 'redux-framework-demo'),
@@ -1276,7 +1287,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
                             'id'        => '17',
                             'type'      => 'raw',
                             'markdown'  => true,
-                            'content'   => file_get_contents(dirname(__FILE__) . '/../README.md')
+                            'content'   => file_get_contents(dirname(__FILE__) . '/../lib/ReduxFramework/README.md')
                         ),
                     ),
                 );
@@ -1460,7 +1471,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
                 )
             );            
             
-            $this->sections[] = array(
+           /* $this->sections[] = array(
                 'title'     => __('Import / Export', 'redux-framework-demo'),
                 'desc'      => __('Import and Export your Redux Framework settings from file, text or URL.', 'redux-framework-demo'),
                 'icon'      => 'el-icon-refresh',
@@ -1473,32 +1484,48 @@ if (!class_exists('Redux_Framework_sample_config')) {
                         'full_width'    => false,
                     ),
                 ),
-            );                     
+            );  */
+
+            $this->sections[] = array(
+            	'icon' 		=> 'fa-cogs',
+            	'title'		=> __( 'General Settings', $this->pluginName ),
+            	'fields'	=> array(
+            		array(
+            				'id'        => 'section_recipe_archive_pages',
+            				'icon'		=> 'fa-folder',
+            				'type'      => 'info',
+            				'notice'    => true,
+            				'style'     => 'info',
+            				'title'     => __('Recipe Archive Pages', $this->pluginName),
+            				'desc'      => __('This is an info notice field with the info style applied, a header and an icon.', 'redux-framework-demo')
+            		),
+            		array(
+            			'id'	=> 'recipe_archive_display',
+            			'type'	=> 'select',
+            			'options'	=> array(
+            				'excerpt' => __( 'Only the excerpt', $this->pluginName ),
+            			)
+            		)	
+            	)
+            );
                     
             $this->sections[] = array(
                 'type' => 'divide',
             );
 
             $this->sections[] = array(
-                'icon'      => 'el-icon-info-sign',
-                'title'     => __('Theme Information', 'redux-framework-demo'),
-                'desc'      => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'redux-framework-demo'),
+                'icon'      => 'fa-exchange',
+                'title'     => __('Changelog', $this->pluginName ),
+                //'desc'      => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'redux-framework-demo'),
                 'fields'    => array(
                     array(
-                        'id'        => 'opt-raw-info',
+                        'id'        => 'changelog',
                         'type'      => 'raw',
-                        'content'   => $item_info,
+                    	'content'   => rpr_admin_latest_news_changelog(),
+                    	'content'   => replace_readme_parser_tag(trailingslashit(dirname(__FILE__)) . '../readme.txt'),
                     )
                 ),
             );
-
-            if (file_exists(trailingslashit(dirname(__FILE__)) . 'README.html')) {
-                $tabs['docs'] = array(
-                    'icon'      => 'el-icon-book',
-                    'title'     => __('Documentation', 'redux-framework-demo'),
-                    'content'   => nl2br(file_get_contents(trailingslashit(dirname(__FILE__)) . 'README.html'))
-                );
-            }
         }
 
         public function setHelpTabs() {
@@ -1532,7 +1559,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 
             $this->args = array(
                 // TYPICAL -> Change these values as you need/desire
-                'opt_name'          => 'redux_demo',            // This is where your data is stored in the database and also becomes your global variable name.
+                'opt_name'          => 'rpr_option',            // This is where your data is stored in the database and also becomes your global variable name.
                 'display_name'      => $theme->get('Name'),     // Name that appears at the top of your panel
                 'display_version'   => $theme->get('Version'),  // Version that appears at the top of your panel
                 'menu_type'         => 'menu',                  //Specify if the admin menu should appear or not. Options: menu or submenu (Under appearance only)
@@ -1565,7 +1592,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
                 'save_defaults'     => true,                    // On load save the defaults to DB before user clicks save or not
                 'default_show'      => false,                   // If true, shows the default value next to each field that is not the default value.
                 'default_mark'      => '',                      // What to print by the field's title if the value shown is default. Suggested: *
-                'show_import_export' => true,                   // Shows the Import/Export panel when not used as a field.
+                'show_import_export' => false,                   // Shows the Import/Export panel when not used as a field.
                 
                 // CAREFUL -> These options are for advanced use only
                 'transient_time'    => 60 * MINUTE_IN_SECONDS,
@@ -1692,3 +1719,113 @@ if (!function_exists('redux_validate_callback_function')):
         return $return;
     }
 endif;
+
+if( ! function_exists( 'replace_readme_parser_tag' ) ){
+// Idea Taken from here: http://www.tomsdimension.de/wp-plugins/readme-parser, an abandoned wordpress plugin
+ // and here:  http://www.webmaster-source.com/2009/07/08/parse-a-wordpress-plugins-readme-txt-with-regular-expressions/
+/**
+ * creates readme code
+ *
+ * @param string $url URL of textfile readme.txt
+ * @return string readme code
+ */
+	function replace_readme_parser_tag( $url )
+	{
+		// no/wrong url
+		if ( empty($url) or basename($url) != 'readme.txt')
+			return false;
+	
+		// read file
+		$file = @file_get_contents( $url );
+		if (empty($file))
+			return __( '<b>Readme Parser: readme.txt ot found!</b>' , 'recipepress-reloaded' );
+	
+		// Find the changelog part:
+		$start = strpos ( $file, '== Changelog ==' );
+		$end = strpos ( $file, '== Frequently Asked Questions ==' );
+		$file = substr( $file, $start, ( $end-$start ) );
+		
+		// line end to \n
+		$file = preg_replace("/(\n\r|\r\n|\r|\n)/", "\n", $file);
+	
+		// place version
+		$file = readme_parser_get_version( $file );
+	
+		// set screenshot links
+		//$file = readme_parser_get_screenshots( $url, $file );
+	
+		// urls
+		$file = str_replace('http://www.', 'www.', $file);
+		$file = str_replace('www.', 'http://www.', $file);
+		$file = preg_replace("/\[(.*?)\]\s?\((.*?)\)/i", '<a href="$2">$1</a>', $file);
+		$file = preg_replace('#(^|[^\"=]{1})(http://|ftp://|mailto:|https://)([^\s<>]+)([\s\n<>]|$)#', '$1<a href="$2$3">$3</a>$4', $file);
+		
+		
+		// headlines
+		$s = array('===','==','=' );
+		$r = array('h2' ,'h3','h4');
+		for ( $x = 0; $x < sizeof($s); $x++ )
+			$file = preg_replace('/(.*?)'.$s[$x].'(?!\")(.*?)'.$s[$x].'(.*?)/', '$1<'.$r[$x].'>$2</'.$r[$x].'>$3', $file);
+	
+		// inline
+		$s = array('\*\*','\''  );
+		$r = array('b'   ,'code');
+		for ( $x = 0; $x < sizeof($s); $x++ )
+			$file = preg_replace('/(.*?)'.$s[$x].'(?!\s)(.*?)(?!\s)'.$s[$x].'(.*?)/', '$1<'.$r[$x].'>$2</'.$r[$x].'>$3', $file);
+	
+		// ' _italic_ '
+		$file = preg_replace('/(\s)_(\S.*?\S)_(\s|$)/', ' <em>$2</em> ', $file);
+	
+		// ul lists
+		$s = array('\*','\+','\-');
+		for ( $x = 0; $x < sizeof($s); $x++ )
+		$file = preg_replace('/^['.$s[$x].'](\s)(.*?)(\n|$)/m', '<li>$2</li>', $file);
+		$file = preg_replace('/\n<li>(.*?)/', '<ul><li>$1', $file);
+		$file = preg_replace('/(<\/li>)(?!<li>)/', '$1</ul>', $file);
+	
+		// ol lists
+		$file = preg_replace('/(\d{1,2}\.)\s(.*?)(\n|$)/', '<li>$2</li>', $file);
+		$file = preg_replace('/\n<li>(.*?)/', '<ol><li>$1', $file);
+		$file = preg_replace('/(<\/li>)(?!(\<li\>|\<\/ul\>))/', '$1</ol>', $file);
+	
+		// ol screenshots style
+		$file = preg_replace('/(?=Screenshots)(.*?)<ol>/', '$1<ol class="readme-parser-screenshots">', $file);
+	
+		// line breaks
+		$file = preg_replace('/(.*?)(\n)/', "$1<br/>\n", $file);
+		$file = preg_replace('/(1|2|3|4)(><br\/>)/', '$1>', $file);
+		$file = str_replace('</ul><br/>', '</ul>', $file);
+		$file = str_replace('<br/><br/>', '<br/>', $file);
+	
+	
+		// divs
+		//$file = preg_replace('/(<h3> Description <\/h3>)/', "$1\n<div id=\"readme-description\" class=\"readme-div\">\n", $file);
+		//$file = preg_replace('/(<h3> Installation <\/h3>)/', "</div>\n$1\n<div id=\"readme-installation\" class=\"readme-div\">\n", $file);
+		//$file = preg_replace('/(<h3> Frequently Asked Questions <\/h3>)/', "</div>\n$1\n<div id=\"readme-faq\" class=\"readme-div\">\n", $file);
+		//$file = preg_replace('/(<h3> Screenshots <\/h3>)/', "</div>\n$1\n<div id=\"readme-screenshots\" class=\"readme-div\">\n", $file);
+		//$file = preg_replace('/(<h3> Arbitrary section <\/h3>)/', "</div>\n$1\n<div id=\"readme-arbitrary\" class=\"readme-div\">\n", $file);
+		$file = preg_replace('/(<h3> Changelog <\/h3>)/', "", $file);
+		$file = $file.'</div>';
+	
+		// promotion ;)
+		//$promo = '<div style="text-align:right;"><small>created by <a href="http://www.tomsdimension.de/wp-plugins/readme-parser">Readme Parser</a></small></div>';
+	
+		return  '<div class="readme-parser">'.$file.'</div>';
+	}
+}
+
+
+/**
+ * inserts version in after plugin name
+ *
+ * @param string $file file
+ * @return string file
+ */
+function readme_parser_get_version( $file )
+{
+	$start = strpos( $file, 'Stable tag:' ) + 12;
+	$end = strpos( $file, "\n", $start );
+	$version = substr( $file, $start, $end - $start );
+	$file = str_replace( ' ===', ' '.$version.' ===', $file );
+	return $file;
+}

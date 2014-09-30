@@ -155,11 +155,10 @@ class RPReloaded{
 	
 		return is_null($option) ? $default : $option;
 	}
-	
 <<<<<<< HEAD
+	
 =======
-
->>>>>>> Fixed two minor bugs
+>>>>>>> old state
 }
 
 require_once('lib/vafpress/bootstrap.php');

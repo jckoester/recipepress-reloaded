@@ -185,3 +185,27 @@
 #latest_news_changelog__dom .date{
 	font-style:italic;
 }
+
+
+/* Option Page */
+.redux-sidebar [class*="fa-"],
+.redux-notice-field  [class*="fa-"] {
+    font-family: "FontAwesome";
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-transform:none;
+    text-align:center;
+}
+
+/*.redux-sidebar i.fa-info {
+  background: none repeat scroll 0 0 #555;
+  border-radius: 16px;
+  color: #fff;
+  font-size: 14px;
+  height: 16px;
+  padding: 2px 0;
+  vertical-align: middle;
+  width: 20px;
+}*/
