@@ -127,7 +127,7 @@ class RPReloaded{
 		require_once('views/admin.php');
 	
 		new VP_Option(array(
-				'is_dev_mode'           => false,
+				'is_dev_mode'           => true,
 				'option_key'            => 'rpr_option',
 				'page_slug'             => 'rpr_admin',
 				'template'              => $admin_menu,
@@ -155,11 +155,10 @@ class RPReloaded{
 	
 		return is_null($option) ? $default : $option;
 	}
-	
 <<<<<<< HEAD
+	
 =======
-
->>>>>>> Testing Redux
+>>>>>>> Fixed a bug preventing the creation of new taxonomies
 }
 
 require_once('lib/vafpress/bootstrap.php');
@@ -171,5 +170,5 @@ if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/l
 	require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' );
 }
 if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' );
+	require_once( dirname( __FILE__ ) . '/views/settings.php' );
 }
