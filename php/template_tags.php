@@ -379,7 +379,7 @@ if ( ! function_exists('get_the_recipe_ingredient_list') ) {
 			$out.='</ul>';
 			
 		} else {
-			$out.='<p class="warning">'.__('No ingredients could be found for this recipe.', $this->pluginName).'</p>';
+			$out.='<p class="warning">'.__('No ingredients could be found for this recipe.', 'recipepress-reloaded' ).'</p>';
 		}
 		// Return output
 		return $out;

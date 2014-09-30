@@ -211,8 +211,8 @@ if( class_exists( 'RPReloaded' ) ) {
 			//echo '<strong> ' . __( 'Adding new tags is only possible in', $this->pluginName ) . ' <a href="http://www.wpultimaterecipeplugin.com/premium/" target="_blank">WP Ultimate Recipe Premium</a></strong>';
 			echo '</span>';
 			echo '<span>';
-			submit_button( __( 'Edit tag', $this->pluginName ), 'primary', 'submit', false );
-			echo ' <button type="button" id="rpr_cancel_editing" class="button">'.__( 'Cancel Edit', $this->pluginName ).'</button>';
+			submit_button( __( 'Save', $this->pluginName ), 'primary', 'submit', false );
+			echo ' <button type="button" id="rpr_cancel_editing" class="button">'.__( 'Cancel', $this->pluginName ).'</button>';
 			echo '</span></form>';
 		}
 		

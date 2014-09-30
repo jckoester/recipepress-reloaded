@@ -224,8 +224,14 @@ class RPR_Core extends RPReloaded {
                 }
             }
             
-            if ( is_home() && $query->is_main_query() ){
-            	$query->set( 'post_type', array( 'post', 'rpr_recipe') );
+            if ( $query->is_main_query() ){
+                $post_type = $query->get('post_type');
+                if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){
+                    $post_type[] = 'rpr_recipe';
+                } else {
+                    $post_type = array( 'post', 'rpr_recipe' );
+                }
+                $query->set( 'post_type', $post_type );
             }
 
             // No idea why we neeed(ed) this. However it is interfering in the search preventing other cpt to be found!
@@ -432,7 +438,8 @@ class RPR_Core extends RPReloaded {
     		}
     
     		$fields = $this->recipes_fields();
-    		//var_dump($fields); die;
+ //   		var_dump($fields); 
+ //   		var_dump($_POST['rpr_recipe_ingredients']); die;
 //var_dump($_POST);
     		foreach ( $fields as $field )
     		{
