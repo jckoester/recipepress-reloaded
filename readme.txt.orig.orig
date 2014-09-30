@@ -7,8 +7,8 @@ Tested up to: 4.0
 =======
 =======
 Tested up to: 3.9.1
->>>>>>> Fixed a bug preventing chnages in taxonomy settings to be saved
->>>>>>> Fixed a bug preventing chnages in taxonomy settings to be saved
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
 Stable tag: 0.6.1
 License: GPLv2
 
@@ -66,8 +66,11 @@ If you want a translation of another language included please help translating!
 * Bugfix release
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
->>>>>>> Fixed a bug preventing chnages in taxonomy settings to be saved
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
 = 0.6.0 July 19th, 2014 =
 * added support for nutritional information
 * choose between two templates

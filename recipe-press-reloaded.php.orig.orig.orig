@@ -11,9 +11,9 @@
 =======
 =======
   Version: 0.6.1
->>>>>>> Fixed a bug preventing chnages in taxonomy settings to be saved
->>>>>>> Fixed a bug preventing chnages in taxonomy settings to be saved
->>>>>>> Fixed a bug preventing chnages in taxonomy settings to be saved
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
   Author: Jan Köster
   Author URI: http://www.cbjck.de/author/jan
   License: GPL2
@@ -40,16 +40,17 @@
  */
  
 /*Set plugin version*/
-define( 'RPR_VERSION', '0.7.0' );
-
-
 <<<<<<< HEAD
+define( 'RPR_VERSION', '0.7.0' );
+=======
+define( 'RPR_VERSION', '0.6.1' );
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
+
+
 <<<<<<< HEAD
 
 =======
 >>>>>>> fixed version information
-=======
->>>>>>> Fixed a bug preventing chnages in taxonomy settings to be saved
 class RPReloaded{
 	
 	protected $pluginName;
@@ -175,7 +176,6 @@ class RPReloaded{
 		return is_null($option) ? $default : $option;
 	}
 <<<<<<< HEAD
-<<<<<<< HEAD
 	
 =======
 <<<<<<< HEAD
@@ -183,9 +183,8 @@ class RPReloaded{
 =======
 >>>>>>> fixed version information
 >>>>>>> fixed version information
-=======
->>>>>>> Fixed a bug preventing chnages in taxonomy settings to be saved
 }
+
 require_once('lib/vafpress/bootstrap.php');
 $rpr = new RPReloaded();
 

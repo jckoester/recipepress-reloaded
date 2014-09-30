@@ -226,17 +226,20 @@ class RPR_Core extends RPReloaded {
                     }
                 }
             }
-            
-            if ( $query->is_main_query() ){
-                $post_type = $query->get('post_type');
-                if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){
-                    $post_type[] = 'rpr_recipe';
-                } else {
-                    $post_type = array( 'post', 'rpr_recipe' );
-                }
-                $query->set( 'post_type', $post_type );
-            }
+ if ( $query->is_main_query() ){
+$post_type = $query->get('post_type');
+if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){
+$post_type[] = 'rpr_recipe';
+} else {
+$post_type = array( 'post', 'rpr_recipe' );
+}
+$query->set( 'post_type', $post_type );
+}            
 
+/*if ( is_home() && $query->is_main_query() ){
+            	$query->set( 'post_type', array( 'post', 'rpr_recipe') );
+            }
+*/
             // No idea why we neeed(ed) this. However it is interfering in the search preventing other cpt to be found!
             /*$post_type = $query->get('post_type');
             var_dump($post_type);
@@ -502,7 +505,28 @@ class RPR_Core extends RPReloaded {
 	    			}
 	    		}
     		}
+    	} //endforeach
+    	
+    	if( isset( $data['rpr_recipe_description'] ) ){
+    		//if ( ! wp_is_post_revision( $recipe_id ) ){
+    		// unhook this function so it doesn't loop infinitely
+    		remove_action('save_post', array($this, __FUNCTION__));
+    		
+    		$recipe->post_content = $data['rpr_recipe_description'];
+    		 
+    		// update the post, which calls save_post again
+    		$x = wp_update_post( array(
+    				'ID' => $recipe_id,
+    				'post_content' => $recipe->post_content,
+    				'post_excerpt' => $recipe->post_content
+    		) );
+    		 
+    		// re-hook this function
+    		add_action('save_post', array($this, __FUNCTION__));
+    		//}	
     	}
+    	
+    	
     }
     
     /* 
@@ -696,10 +720,6 @@ class RPR_Core extends RPReloaded {
             }
 
           add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
-<<<<<<< HEAD
-=======
-          //$content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
->>>>>>> Added screenshot for template rpr2column
           $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
         }
         
@@ -1010,7 +1030,15 @@ class RPR_Core extends RPReloaded {
     	);
     }
     
-
-
+	/*
+	 * ////////////////////////////////// WIDGETS ////////////////////////////////////////////////////
+	 */
+    
+    // Register and load the widgets
+    function rpr_load_widgets() {
+    	include_once $this->pluginDir . '/widgets/same-taxonomy-widget.php';
+    	register_widget( 'RPR_Same_Taxonomy_Widget' );
+    }
       
+    
 }

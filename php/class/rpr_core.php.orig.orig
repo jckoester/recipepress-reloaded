@@ -239,6 +239,7 @@ class RPR_Core extends RPReloaded {
             }
 
 =======
+<<<<<<< HEAD
  if ( $query->is_main_query() ){
 $post_type = $query->get('post_type');
 if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){
@@ -253,7 +254,14 @@ $query->set( 'post_type', $post_type );
             	$query->set( 'post_type', array( 'post', 'rpr_recipe') );
             }
 */
->>>>>>> releasing v0.6.0
+=======
+            
+            if ( is_home() && $query->is_main_query() ){
+            	$query->set( 'post_type', array( 'post', 'rpr_recipe') );
+            }
+
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
             // No idea why we neeed(ed) this. However it is interfering in the search preventing other cpt to be found!
             /*$post_type = $query->get('post_type');
             var_dump($post_type);
@@ -458,12 +466,8 @@ $query->set( 'post_type', $post_type );
     		}
     
     		$fields = $this->recipes_fields();
-<<<<<<< HEAD
  //   		var_dump($fields); 
  //   		var_dump($_POST['rpr_recipe_ingredients']); die;
-=======
-    		//var_dump($fields); die;
->>>>>>> releasing v0.6.0
 //var_dump($_POST);
     		foreach ( $fields as $field )
     		{
@@ -548,7 +552,7 @@ $query->set( 'post_type', $post_type );
     	}
     	
     	
->>>>>>> releasing v0.6.0
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
     }
     
     /* 
@@ -737,7 +741,6 @@ $query->set( 'post_type', $post_type );
             //$content = $recipe_post->post_excerpt
             $recipe = get_post_custom($recipe_post->ID);
 
-<<<<<<< HEAD
             if( isset($recipe['rpr_recipe_description'][0]) ){
                 $content = $recipe['rpr_recipe_description'][0];
             }
@@ -748,29 +751,6 @@ $query->set( 'post_type', $post_type );
           //$content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
 >>>>>>> Added screenshot for template rpr2column
           $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
-=======
-            ob_start();
-             
-            include($this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/excerpt.php');
-            
-            $content = ob_get_contents();
-            ob_end_clean();
-            
-            /*if( isset($recipe['rpr_recipe_description'][0]) ){
-                $content = $recipe['rpr_recipe_description'][0];
-            }*/
-
-          add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
-<<<<<<< HEAD
-<<<<<<< HEAD
-          //$content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
-=======
-          $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
->>>>>>> Added screenshot for template rpr2column
-=======
-          $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
->>>>>>> Added screenshot for template rpr2column
->>>>>>> releasing v0.6.0
         }
         
         return $content;
@@ -1080,21 +1060,7 @@ $query->set( 'post_type', $post_type );
     	);
     }
     
-<<<<<<< HEAD
 
 
       
-=======
-	/*
-	 * ////////////////////////////////// WIDGETS ////////////////////////////////////////////////////
-	 */
-    
-    // Register and load the widgets
-    function rpr_load_widgets() {
-    	include_once $this->pluginDir . '/widgets/same-taxonomy-widget.php';
-    	register_widget( 'RPR_Same_Taxonomy_Widget' );
-    }
-      
-    
->>>>>>> releasing v0.6.0
 }

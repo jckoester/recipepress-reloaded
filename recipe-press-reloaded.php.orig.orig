@@ -34,10 +34,6 @@
 define( 'RPR_VERSION', '0.7.0' );
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> fixed version information
 class RPReloaded{
 	
 	protected $pluginName;
@@ -127,11 +123,7 @@ class RPReloaded{
 	{
 		require_once('php/helper/admin_menu_helper.php');
 		
-<<<<<<< HEAD
 		require_once('views/admin.php');
-=======
-		require('views/admin.php');
->>>>>>> fixed version information
 	
 		new VP_Option(array(
 				'is_dev_mode'           => true,
@@ -162,14 +154,6 @@ class RPReloaded{
 	
 		return is_null($option) ? $default : $option;
 	}
-<<<<<<< HEAD
-	
-=======
-<<<<<<< HEAD
->>>>>>> Fixed a bug preventing the creation of new taxonomies
-=======
->>>>>>> fixed version information
->>>>>>> fixed version information
 }
 
 require_once('lib/vafpress/bootstrap.php');
