@@ -1,8 +1,7 @@
 <?php
 
 $templates = rpr_admin_template_list();
-$ingredients = rpr_admin_ingredients_list();
-var_dump($ingredients);
+
 
 $admin_menu = array(
     'title' => 'Recipe Press Reloaded ' . __('Settings', $this->pluginName),
@@ -290,16 +289,7 @@ $admin_menu = array(
     												'description' => __( 'Display icons in front of headlines.' , $this->pluginName ),
     												'default' => '0',
     										),
-    										array(
-    												'type' => 'notebox',
-    												'name' => 'recipe_icons_note_item',
-    												'label' => __( 'Planned feature:', $this->pluginName ) ,
-    												'description' => __( 'In the future you should be able to select icons for taxonomies and headlines here or enter your own css classes. But at the oment nothing is here.' , $this->pluginName ) ,
-    												'status' => 'warning',
-    										),
-    						
     								),
-    						//),
     						),
     				),
     		),
@@ -405,43 +395,6 @@ $admin_menu = array(
                     	),
                     	
                     ),
-                ),
-            	array(
-            			'type' => 'section',
-            			'title' => __('Excludelist test', $this->pluginName),
-            			'name' => 'section_recipe_exclude_ings',
-            			'fields' => array(
-            					array(
-            							'type' => 'multiselect',
-            							'name' => 'ms_1',
-            							'label' => __('Multiple Select Box', 'vp_textdomain'),
-            							'description' => __('Minimum selected of 2 items and maximum selected of 3 items.', 'vp_textdomain'),
-            							'validation' => 'minselected[2]|maxselected[3]',
-            							'items' => array(
-            									array(
-            											'value' => 'value_1',
-            											'label' => __('Label 1', 'vp_textdomain'),
-            									),
-            									array(
-            											'value' => 'value_2',
-            											'label' => __('Label 2', 'vp_textdomain'),
-            									),
-            									array(
-            											'value' => 'value_3',
-            											'label' => __('Label 3', 'vp_textdomain'),
-            									),
-            									array(
-            											'value' => 'value_4',
-            											'label' => __('Label 4', 'vp_textdomain'),
-            									),
-            									$ingredients,
-            							),
-            							'default' => array(
-            									'{{first}}',
-            									'{{last}}',
-            							),
-            					),
-            			)
                 ),
             ),
         ),

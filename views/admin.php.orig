@@ -1,10 +1,8 @@
 <?php
 
 $templates = rpr_admin_template_list();
-<<<<<<< HEAD
-=======
-
->>>>>>> 05b6d33d08bb39259a161366f260973594a50c6b
+$ingredients = rpr_admin_ingredients_list();
+var_dump($ingredients);
 
 $admin_menu = array(
     'title' => 'Recipe Press Reloaded ' . __('Settings', $this->pluginName),
@@ -112,7 +110,7 @@ $admin_menu = array(
                             'type' => 'notebox',
                             'name' => 'recipe_slug_notebox',
                             'label' => __('404 error/page not found?', $this->pluginName),
-                            'description' => __('Try', $this->pluginName) . ' <a href="http://rp-reloaded.net/documentation/404-error-page-found/" target="_blank">'.__('flushing your permalinks', $this->pluginName).'</a>.',
+                            'description' => __('Try', $this->pluginName) . ' <a href="http://rp-reloaded.net/documentation/solving-problems/fix-404-error-page-found/" target="_blank">'.__('flushing your permalinks', $this->pluginName).'</a>.',
                             'status' => 'info',
                         ),
                     	
@@ -178,7 +176,6 @@ $admin_menu = array(
    											'description' => __( 'Allow to attach images to instruction steps.', $this->pluginName ),
    											'default' => '1',
    									),
-
    									array(
    											'type' => 'select',
    											'name' => 'recipe_instruction_image_position',
@@ -195,13 +192,13 @@ $admin_menu = array(
    												),
    											),
    											'default' => array(
-   												'rpr_instrimage_right',
+   												'right',
    											),
    									),
    									
-
    								),		
    						),
+   						
    						array(
    							'type' => 'section',
 				    		'title' => __('Print Link', $this->pluginName),
@@ -281,7 +278,6 @@ $admin_menu = array(
     										),
     								),
     						),
-<<<<<<< HEAD
     						array(
     								'type' => 'section',
     								'title' => __('Icons' , $this->pluginName ),
@@ -294,9 +290,21 @@ $admin_menu = array(
     												'description' => __( 'Display icons in front of headlines.' , $this->pluginName ),
     												'default' => '0',
     										),
-    						),
+<<<<<<< HEAD
+    										array(
+    												'type' => 'notebox',
+    												'name' => 'recipe_icons_note_item',
+    												'label' => __( 'Planned feature:', $this->pluginName ) ,
+    												'description' => __( 'In the future you should be able to select icons for taxonomies and headlines here or enter your own css classes. But at the oment nothing is here.' , $this->pluginName ) ,
+    												'status' => 'warning',
+    										),
+    						
+    								),
+    						//),
 =======
->>>>>>> 05b6d33d08bb39259a161366f260973594a50c6b
+    								),
+>>>>>>> Made the use of icons optional
+    						),
     				),
     		),
     		
@@ -402,10 +410,7 @@ $admin_menu = array(
                     	
                     ),
                 ),
-<<<<<<< HEAD
-=======
-
-            	/*array(
+            	array(
             			'type' => 'section',
             			'title' => __('Excludelist test', $this->pluginName),
             			'name' => 'section_recipe_exclude_ings',
@@ -441,9 +446,7 @@ $admin_menu = array(
             							),
             					),
             			)
-                ),*/
-
->>>>>>> 05b6d33d08bb39259a161366f260973594a50c6b
+                ),
             ),
         ),
 //=-=-=-=-=-=-= Documentation & SUPPORT =-=-=-=-=-=-=
@@ -461,5 +464,5 @@ $admin_menu = array(
             	),
             ),
         ),
-    ),)
+    ),
 );
