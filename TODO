@@ -1,0 +1,18 @@
+TODO:
+- BUG: Zubereitungsbilder werden als fehlend angezeigt, wenn kein Bild hinzugefügt wurde
+- BUG: Link-Icons werden nur mit WSIWIG-Editor geladen
+- Shortcodes dokumentieren (rpr_recipe, rpr_recipe_index, rpr_tax_list)
+- Schortcodes an einer Stelle definieren (da liegen noch welche in admin_helper!)
+- weitere sinnvolle Optionen für shortcodes überlegen
+- rpr_core aufräumen
+- Ordnerstruktur klarer gestalten!
+- Rezepte in Suche aufnhemen (0.6)
+- mehr template_tags verwenden (0.6)
+- portionen / zutaten skalieren (0.7)
+- testten, testen, testen
+- Schnittstelle für Addons implementieren (0.6)
+- überlegen, welche features ggf. als Addon umgesetzt werden sollten (0.6)
+- INFLECTOR!
+
+BUGS:
+

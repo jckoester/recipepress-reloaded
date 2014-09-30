@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+#rpr_editing {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.rpr_editing {
+    display: none;
+}
+
+#rpr-tags-table tr {
+    height: 32px;
+}
+
+#rpr-tags-table #tag { width: 20%; }
+#rpr-tags-table #singular-name { width: 20%; }
+#rpr-tags-table #name { width: 20%; }
+#rpr-tags-table #slug { width: 20%; }
+#rpr-tags-table #action { width: 20%; }

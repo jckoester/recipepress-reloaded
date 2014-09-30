@@ -1,0 +1,158 @@
+@CHARSET "UTF-8";
+/* Details meta box */
+.recipe_details_row{
+padding: 2px 10px;
+min-height:20px;
+clear:both;
+}
+#recipe_details_meta_box label,
+#recipe_nutrition_meta_box label{
+width:55%;
+overflow:hidden;
+float:left;
+line-height:29px;
+}
+#recipe_details_meta_box input,
+#recipe_nutrition_meta_box input{
+width:30%;
+float:left;
+}
+#recipe_details_meta_box .rpr_servings label{
+width:35%;
+}
+#recipe_details_meta_box input#rpr_recipe_servings{
+width: 15%!important;
+}
+#recipe_details_meta_box input#rpr_recipe_servings_type{
+width:34%;
+}
+#recipe_details_meta_box input#rpr_recipe_featured{
+width:10px;
+height:10px;
+margin:9px 0;
+}
+.recipe-general-form-notes{
+padding-left:5px;
+line-height:29px;
+}
+#servings_note{
+clear:both;
+padding-left:35%;
+font-style:italic;
+}
+#recipe_ingredients_meta_box table,
+#recipe_instructions_meta_box table {
+width: 100%;
+margin-bottom:6px;
+}
+#recipe_ingredients_meta_box textarea,
+#recipe_instructions_meta_box textarea {
+resize: vertical;
+width: 100%;
+}
+.recipe-form-notes {
+font-style: italic;
+padding-top: 20px;
+}
+/*#recipe_meta_box #recipe_rating_star_selection .star {
+cursor: pointer;
+}*/
+/* Ingredients meta box */
+.ingredient-group-stub,
+.instruction-group-stub {
+display: none;
+}
+.instruction-group-label,
+.instruction-groups-disabled {
+margin-left: 20px;
+}
+#recipe-ingredients input {
+width: 100%;
+}
+.sort-handle {
+cursor: move;
+}
+#recipe-ingredients .ingredients-delete img,
+#recipe-instructions .instructions-delete img,
+#recipe-ingredients .ingredient-group-delete img,
+#recipe-ingredients .instruction-group-delete img {
+cursor: pointer;
+}
+#recipe-ingredients td:nth-child(1) { width: 1%; text-align: center; padding-top:9px; }
+#recipe-ingredients td:nth-child(2) { width: 10%; }
+#recipe-ingredients td:nth-child(3) { width: 15%; }
+#recipe-ingredients td:nth-child(4) { width: 29%; }
+#recipe-ingredients td:nth-child(5) { width: 40%; }
+#recipe-ingredients td:nth-child(6) { width: 5%; text-align: center; }
+.center-column { text-align: center; }
+.recipe-ingredients-notes {
+font-style: italic;
+}
+#ingredients-add-box {
+margin-top: 5px;
+}
+#recipe-instructions td:nth-child(1) { width: 1%; text-align: center; padding-top:9px;}
+#recipe-instructions td:nth-child(2) { width: 60%; }
+#recipe-instructions td:nth-child(3) { width: 5%; text-align: center;}
+#recipe-instructions.images td:nth-child(1) { width: 1%; text-align: center; padding-top:9px; }
+#recipe-instructions.images td:nth-child(2) { width: 60%; }
+#recipe-instructions.images td:nth-child(3) { width: 30%; vertical-align: top; }
+#recipe-instructions.images td:nth-child(4) { width: 5%; text-align: center;}
+.rpr_recipe_ingredients_add_link,
+.rpr_recipe_ingredients_delete_link{
+width:25px!important;
+height:25px!important;
+padding:0 5px !important;
+color:#777777!important;
+}
+.rpr_recipe_ingredients_add_link:hover{
+color:black!important;
+}
+.rpr_recipe_ingredients_delete_link:hover{
+color:red!important;
+border-color:red!important;
+}
+.recipe_instructions_thumbnail {
+max-height: 50px;
+}
+#ingredients-add-group-box,
+#ingredients-add-box{
+float:left;
+margin:0 5px 0 0;
+padding:0 5px 0 0;
+border-right:solid 1px black;
+}
+#recipe-form-notes{
+margin:0;
+padding:0;
+}
+.rpr-has-link{
+color:green!important;
+border-color:green!important;
+}
+.rpr-hide {
+display: none !important;
+}
+.rpr-error {
+background-color: #ffebe8;
+border: 1px solid #c00;
+margin: 5px 0 15px;
+padding: 0.6em;
+}
+.rpr_license {
+width: 100%;
+}
+.rpr_license th,
+.rpr_license td {
+vertical-align: middle;
+}
+.rpr_license .license_button {
+float: right;
+}
+#latest_news_changelog__dom ul{
+list-style:disc;
+padding-left:40px;
+}
+#latest_news_changelog__dom .date{
+font-style:italic;
+}

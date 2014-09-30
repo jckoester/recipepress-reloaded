@@ -1,0 +1,95 @@
+@CHARSET "UTF-8";
+
+
+/* hide some information*/
+.hidden, .rpr_hidden{
+    display:none!important;
+}
+
+.rpr-clear{
+	clear:both;
+}
+.rpr-container{
+    vertical-align:top!important;
+}
+/* Info line */
+/*.rpr_info_line,*/
+.rpr_time_line,
+.recipe_footer {
+    clear:both;
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;    
+}
+.rpr_info_line > span,
+.rpr_time_line > span,
+.recipe_footer > span{
+    margin-right:10px;
+}
+.rpr_info_line > span.fa:before,
+.rpr_time_line > span.fa:before,
+.recipe_footer > span.fa:before{
+    margin-right:2px;
+}
+.rpr_time_line{
+    text-align:center;
+}
+
+ul.rpr_letter_nav{
+    margin:0;
+    padding:0;
+    text-align:center;
+    width:100%;
+    height:2em;
+    clear:both;
+}
+ul.rpr_letter_nav li{
+    list-style:none;
+    margin:10px 5px;
+    padding:0;
+    float:left;
+}
+div.rpr-index-container{
+    clear:both;
+}
+/* ALT */
+ul.rpr_info_line{
+    list-style:none!important;
+    padding:2px 8px;
+    margin:0;
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    height:22px;
+}
+ul.rpr_info_line li{
+    float:left;
+    margin:0 0 0 25px;
+    padding:0;
+}
+ul.rpr_info_line li:first-child{
+    margin:0;
+}
+ul.rpr_info_line li i{
+    margin-right:2px;
+}
+
+/* recipe instructions */
+ol.recipe-instructions{
+    vertical-align:top!important;
+    }
+ol.recipe-instructions li{
+    vertical-align:top!important;
+    clear:both;
+   }
+   
+
+
+ol.recipe-instructions li .has_thumbnail{
+    float:left;
+    width:60%;
+    width: calc( 100% - 165px );
+}
+ol.recipe-instructions li a{
+    margin-left:10px;
+    display:inline-block;
+    vertical-align:top;
+}
