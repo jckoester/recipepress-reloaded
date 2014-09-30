@@ -65,6 +65,9 @@ class RPR_Core extends RPReloaded {
         add_shortcode("rpr-recipe", array( $this, 'recipes_shortcode' ));
         add_shortcode("rpr-recipe-index", array( $this, 'recipes_index_shortcode' ));
         add_shortcode( "rpr-tax-list", array( $this, 'recipes_taxlist_shortcode' ));
+        
+        // Widgets
+        add_action( 'widgets_init', array( $this, 'rpr_load_widgets' ) );
 
         // Other
 //        $this->add_link_to_ingredients();
@@ -223,7 +226,6 @@ class RPR_Core extends RPReloaded {
                     }
                 }
             }
-<<<<<<< HEAD
             
             if ( $query->is_main_query() ){
                 $post_type = $query->get('post_type');
@@ -233,22 +235,8 @@ class RPR_Core extends RPReloaded {
                     $post_type = array( 'post', 'rpr_recipe' );
                 }
                 $query->set( 'post_type', $post_type );
-=======
- if ( $query->is_main_query() ){
-$post_type = $query->get('post_type');
-if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){
-$post_type[] = 'rpr_recipe';
-} else {
-$post_type = array( 'post', 'rpr_recipe' );
-}
-$query->set( 'post_type', $post_type );
-}            
-
-/*if ( is_home() && $query->is_main_query() ){
-            	$query->set( 'post_type', array( 'post', 'rpr_recipe') );
->>>>>>> Added screenshot for template rpr2column
             }
-*/
+
             // No idea why we neeed(ed) this. However it is interfering in the search preventing other cpt to be found!
             /*$post_type = $query->get('post_type');
             var_dump($post_type);
@@ -709,14 +697,10 @@ $query->set( 'post_type', $post_type );
 
           add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
 <<<<<<< HEAD
-          $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
 =======
-<<<<<<< HEAD
           //$content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
-=======
+>>>>>>> Added screenshot for template rpr2column
           $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
->>>>>>> Added screenshot for template rpr2column
->>>>>>> Added screenshot for template rpr2column
         }
         
         return $content;
