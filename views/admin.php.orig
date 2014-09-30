@@ -1,8 +1,10 @@
 <?php
 
 $templates = rpr_admin_template_list();
-$ingredients = rpr_admin_ingredients_list();
-var_dump($ingredients);
+<<<<<<< HEAD
+
+=======
+>>>>>>> Testing Redux
 
 $admin_menu = array(
     'title' => 'Recipe Press Reloaded ' . __('Settings', $this->pluginName),
@@ -110,7 +112,7 @@ $admin_menu = array(
                             'type' => 'notebox',
                             'name' => 'recipe_slug_notebox',
                             'label' => __('404 error/page not found?', $this->pluginName),
-                            'description' => __('Try', $this->pluginName) . ' <a href="http://rp-reloaded.net/documentation/solving-problems/fix-404-error-page-found/" target="_blank">'.__('flushing your permalinks', $this->pluginName).'</a>.',
+                            'description' => __('Try', $this->pluginName) . ' <a href="http://rp-reloaded.net/documentation/404-error-page-found/" target="_blank">'.__('flushing your permalinks', $this->pluginName).'</a>.',
                             'status' => 'info',
                         ),
                     	
@@ -176,6 +178,8 @@ $admin_menu = array(
    											'description' => __( 'Allow to attach images to instruction steps.', $this->pluginName ),
    											'default' => '1',
    									),
+<<<<<<< HEAD
+=======
    									array(
    											'type' => 'select',
    											'name' => 'recipe_instruction_image_position',
@@ -192,13 +196,13 @@ $admin_menu = array(
    												),
    											),
    											'default' => array(
-   												'right',
+   												'rpr_instrimage_right',
    											),
    									),
    									
+>>>>>>> Testing Redux
    								),		
    						),
-   						
    						array(
    							'type' => 'section',
 				    		'title' => __('Print Link', $this->pluginName),
@@ -277,33 +281,6 @@ $admin_menu = array(
     												'default' => '0'
     										),
     								),
-    						),
-    						array(
-    								'type' => 'section',
-    								'title' => __('Icons' , $this->pluginName ),
-    								'name' => 'section_icons',
-    								'fields' => array(
-    										array(
-    												'type' => 'toggle',
-    												'name' => 'recipe_icons_display',
-    												'label' => __( 'Use icons' , $this->pluginName ),
-    												'description' => __( 'Display icons in front of headlines.' , $this->pluginName ),
-    												'default' => '0',
-    										),
-<<<<<<< HEAD
-    										array(
-    												'type' => 'notebox',
-    												'name' => 'recipe_icons_note_item',
-    												'label' => __( 'Planned feature:', $this->pluginName ) ,
-    												'description' => __( 'In the future you should be able to select icons for taxonomies and headlines here or enter your own css classes. But at the oment nothing is here.' , $this->pluginName ) ,
-    												'status' => 'warning',
-    										),
-    						
-    								),
-    						//),
-=======
-    								),
->>>>>>> Made the use of icons optional
     						),
     				),
     		),
@@ -410,7 +387,9 @@ $admin_menu = array(
                     	
                     ),
                 ),
-            	array(
+<<<<<<< HEAD
+=======
+            	/*array(
             			'type' => 'section',
             			'title' => __('Excludelist test', $this->pluginName),
             			'name' => 'section_recipe_exclude_ings',
@@ -446,7 +425,8 @@ $admin_menu = array(
             							),
             					),
             			)
-                ),
+                ),*/
+>>>>>>> Testing Redux
             ),
         ),
 //=-=-=-=-=-=-= Documentation & SUPPORT =-=-=-=-=-=-=
