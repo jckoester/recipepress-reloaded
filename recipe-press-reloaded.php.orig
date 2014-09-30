@@ -8,7 +8,7 @@
   Version: 0.7.0
 =======
   Version: 0.6.1
->>>>>>> Fixed a bug preventing chnages in taxonomy settings to be saved
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
   Author: Jan Köster
   Author URI: http://www.cbjck.de/author/jan
   License: GPL2
@@ -35,8 +35,12 @@
  */
  
 /*Set plugin version*/
+<<<<<<< HEAD
 define( 'RPR_VERSION', '0.7.0' );
 
+=======
+define( 'RPR_VERSION', '0.6.1' );
+>>>>>>> Fixing bug causing interference with other custom post types / custom taxonomies
 
 
 class RPReloaded{
