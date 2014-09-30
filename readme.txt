@@ -59,7 +59,6 @@ If you want a translation of another language included please help translating!
 
 = 0.6.1 =
 * Bugfix release
-
 = 0.6.0 July 19th, 2014 =
 * added support for nutritional information
 * choose between two templates

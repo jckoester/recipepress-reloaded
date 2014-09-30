@@ -4,6 +4,7 @@
 	clear:both;
 }
 
+
 /* hide some information*/
 .hidden, .rpr_hidden{
     display:none!important;
@@ -85,6 +86,7 @@ ol.recipe-instructions span.rpr_instrimage_right{
 
 ol.recipe-instructions img.rpr_instrimage_right{
 	margin-left:10px;
+
     display:inline-block;
     vertical-align:top;
 }
