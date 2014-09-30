@@ -65,9 +65,6 @@ class RPR_Core extends RPReloaded {
         add_shortcode("rpr-recipe", array( $this, 'recipes_shortcode' ));
         add_shortcode("rpr-recipe-index", array( $this, 'recipes_index_shortcode' ));
         add_shortcode( "rpr-tax-list", array( $this, 'recipes_taxlist_shortcode' ));
-        
-        // Widgets
-        add_action( 'widgets_init', array( $this, 'rpr_load_widgets' ) );
 
         // Other
 //        $this->add_link_to_ingredients();
@@ -226,11 +223,32 @@ class RPR_Core extends RPReloaded {
                     }
                 }
             }
+<<<<<<< HEAD
             
-            if ( is_home() && $query->is_main_query() ){
-            	$query->set( 'post_type', array( 'post', 'rpr_recipe') );
-            }
+            if ( $query->is_main_query() ){
+                $post_type = $query->get('post_type');
+                if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){
+                    $post_type[] = 'rpr_recipe';
+                } else {
+                    $post_type = array( 'post', 'rpr_recipe' );
+                }
+                $query->set( 'post_type', $post_type );
+=======
+ if ( $query->is_main_query() ){
+$post_type = $query->get('post_type');
+if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){
+$post_type[] = 'rpr_recipe';
+} else {
+$post_type = array( 'post', 'rpr_recipe' );
+}
+$query->set( 'post_type', $post_type );
+}            
 
+/*if ( is_home() && $query->is_main_query() ){
+            	$query->set( 'post_type', array( 'post', 'rpr_recipe') );
+>>>>>>> Added screenshot for template rpr2column
+            }
+*/
             // No idea why we neeed(ed) this. However it is interfering in the search preventing other cpt to be found!
             /*$post_type = $query->get('post_type');
             var_dump($post_type);
@@ -435,7 +453,8 @@ class RPR_Core extends RPReloaded {
     		}
     
     		$fields = $this->recipes_fields();
-    		//var_dump($fields); die;
+ //   		var_dump($fields); 
+ //   		var_dump($_POST['rpr_recipe_ingredients']); die;
 //var_dump($_POST);
     		foreach ( $fields as $field )
     		{
@@ -495,47 +514,7 @@ class RPR_Core extends RPReloaded {
 	    			}
 	    		}
     		}
-    	} //endforeach
-<<<<<<< HEAD
-    	
-    	if( isset( $data['rpr_recipe_description'] ) ){
-    		//if ( ! wp_is_post_revision( $recipe_id ) ){
-    		// unhook this function so it doesn't loop infinitely
-    		remove_action('save_post', array($this, __FUNCTION__));
-    		
-    		$recipe->post_content = $data['rpr_recipe_description'];
-    		 
-    		// update the post, which calls save_post again
-    		$x = wp_update_post( array(
-    				'ID' => $recipe_id,
-    				'post_content' => $recipe->post_content,
-    				'post_excerpt' => $recipe->post_content
-    		) );
-    		 
-    		// re-hook this function
-    		add_action('save_post', array($this, __FUNCTION__));
-    		//}	
     	}
-    	
-    	
-=======
-    	//if ( ! wp_is_post_revision( $recipe_id ) ){
-    	// unhook this function so it doesn't loop infinitely
-    	remove_action('save_post', array($this, __FUNCTION__));
-    	
-    	$recipe->post_content = $data['rpr_recipe_description'];
-    	
-    	// update the post, which calls save_post again
-    	$x = wp_update_post( array(
-    			'ID' => $recipe_id,
-    			'post_content' => $recipe->post_content,
-    			'post_excerpt' => $recipe->post_content
-    			) );
-    	
-    	// re-hook this function
-    	add_action('save_post', array($this, __FUNCTION__));
-    	//}
->>>>>>> Included gist 58601609a899eb7f9fc3 to iprove handling of excerpts
     }
     
     /* 
@@ -724,19 +703,20 @@ class RPR_Core extends RPReloaded {
             //$content = $recipe_post->post_excerpt
             $recipe = get_post_custom($recipe_post->ID);
 
-            ob_start();
-             
-            include($this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/excerpt.php');
-            
-            $content = ob_get_contents();
-            ob_end_clean();
-            
-            /*if( isset($recipe['rpr_recipe_description'][0]) ){
+            if( isset($recipe['rpr_recipe_description'][0]) ){
                 $content = $recipe['rpr_recipe_description'][0];
-            }*/
+            }
 
           add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
+<<<<<<< HEAD
+          $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
+=======
+<<<<<<< HEAD
           //$content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
+=======
+          $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
+>>>>>>> Added screenshot for template rpr2column
+>>>>>>> Added screenshot for template rpr2column
         }
         
         return $content;
@@ -1046,15 +1026,7 @@ class RPR_Core extends RPReloaded {
     	);
     }
     
-	/*
-	 * ////////////////////////////////// WIDGETS ////////////////////////////////////////////////////
-	 */
-    
-    // Register and load the widgets
-    function rpr_load_widgets() {
-    	include_once $this->pluginDir . '/widgets/same-taxonomy-widget.php';
-    	register_widget( 'RPR_Same_Taxonomy_Widget' );
-    }
+
+
       
-    
 }

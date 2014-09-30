@@ -65,6 +65,9 @@ class RPR_Core extends RPReloaded {
         add_shortcode("rpr-recipe", array( $this, 'recipes_shortcode' ));
         add_shortcode("rpr-recipe-index", array( $this, 'recipes_index_shortcode' ));
         add_shortcode( "rpr-tax-list", array( $this, 'recipes_taxlist_shortcode' ));
+        
+        // Widgets
+        add_action( 'widgets_init', array( $this, 'rpr_load_widgets' ) );
 
         // Other
 //        $this->add_link_to_ingredients();
