@@ -183,11 +183,11 @@ $admin_menu = array(
    											'items' => array(
    												array(
    													'value' => 'rpr_instrimage_right',
-   													'label' => __('Right of instruction', 'vp_textdomain'),
+   													'label' => __('Right of instruction', $this->pluginName ),
    												),
    												array(
    													'value' => 'rpr_instrimage_below',
-   													'label' => __('Below the instruction', 'vp_textdomain'),
+   													'label' => __('Below the instruction', $this->pluginName ),
    												),
    											),
    											'default' => array(
