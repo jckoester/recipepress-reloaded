@@ -12,7 +12,7 @@ $images = RPReloaded::get_option('recipe_instruction_image');
             <span class="instruction-groups-disabled"><?php echo __( 'Main Instructions', $this->pluginName ) . ' ' . __( '(this label is not shown)', $this->pluginName ); ?></span>
             <?php
             $previous_group = '';
-            if( isset($instructions[0]) ) {
+            if( isset($instructions[0]) && isset($instructions[0]['group'] ) ) {
                 $previous_group = $instructions[0]['group'];
             }
             ?>
@@ -36,7 +36,7 @@ $i = 0;
 if( $instructions != '')
 {
     foreach($instructions as $instruction) {
-        if($instruction['group'] != $previous_group)
+        if( isset( $instruction['group'] ) && $instruction['group'] != $previous_group)
         { ?>
             <tr class="instruction-group">
                 <td>&nbsp;</td>

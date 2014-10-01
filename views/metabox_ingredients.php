@@ -22,7 +22,7 @@ $has_link=false;
             <span class="ingredient-groups-disabled"><?php echo __( 'Main Ingredients', $this->pluginName ) . ' ' . __( '(this label is not shown)', $this->pluginName ); ?></span>
             <?php
             $previous_group = '';
-            if( isset($ingredients[0]) ) {
+            if( isset($ingredients[0]) && isset( $ingredients[0]['group'] ) ) {
                 $previous_group = $ingredients[0]['group'];
             }
             ?>
@@ -54,7 +54,7 @@ if( $ingredients != '')
             }
         }
 
-        if( $ingredient['group'] != $previous_group ) { ?>
+        if( isset( $ingredient['group']) &&  $ingredient['group'] != $previous_group ) { ?>
             <tr class="ingredient-group">
                 <td>&nbsp;</td>
                 <td><strong><?php _e( 'Group', $this->pluginName ); ?>:</strong></td>
