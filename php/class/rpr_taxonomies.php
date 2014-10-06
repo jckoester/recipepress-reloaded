@@ -69,7 +69,9 @@ if( class_exists( 'RPReloaded' ) ) {
 				/*if( taxonomy_exists( 'rpr_category' ) ) {
 					$this->delete_taxonomy('rpr_category');
 				}*/
-				unset($this->taxonomies['rpr_category']);
+				if( isset( $this->taxonomies['rpr_category'] ) ){
+    				unset($this->taxonomies['rpr_category']);
+    			}
 				update_option('rpr_taxonomies', $this->taxonomies);
 			else:
 				// Not using WP categories

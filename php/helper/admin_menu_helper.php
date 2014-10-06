@@ -1,5 +1,6 @@
 <?php
 //=-=-=-=-=-=-= ADMIN =-=-=-=-=-=-=
+global $rpr_option;
 
 function rpr_admin_latest_news_changelog()
 {
@@ -41,6 +42,12 @@ function rpr_admin_latest_news_changelog()
 function rpr_admin_recipe_slug_preview( $slug )
 {
     return __( 'The recipe archive can be found at', 'recipepress-reloaded' ) . ' <a href="'.site_url('/'.$slug.'/').'" target="_blank">'.site_url('/'.$slug.'/').'</a>';
+}
+
+function rpr_admin_slug_preview( $slug )
+{
+    global $rpr_option;
+    print __( 'The recipe archive can be found at', 'recipepress-reloaded' ) . ' <a href="'.site_url('/'.$rpr_option['recipe_slug'] .'/').'" target="_blank">'.site_url('/'.$rpr_option['recipe_slug'] . '/').'</a>';
 }
 
 function rpr_admin_manage_tags()

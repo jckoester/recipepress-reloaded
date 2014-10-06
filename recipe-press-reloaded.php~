@@ -127,7 +127,7 @@ class RPReloaded{
 		require_once('views/admin.php');
 	
 		new VP_Option(array(
-				'is_dev_mode'           => true,
+				'is_dev_mode'           => false,
 				'option_key'            => 'rpr_option',
 				'page_slug'             => 'rpr_admin',
 				'template'              => $admin_menu,

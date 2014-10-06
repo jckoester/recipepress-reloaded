@@ -156,3 +156,7 @@ padding-left:40px;
 #latest_news_changelog__dom .date{
 font-style:italic;
 }
+
+.redux-notice-field .redux-info-icon i {
+    font-style: normal;
+}
