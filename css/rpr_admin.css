@@ -157,6 +157,24 @@ padding-left:40px;
 font-style:italic;
 }
 
-.redux-notice-field .redux-info-icon i {
+.redux-notice-field .redux-info-icon i,
+.redux-sidebar .redux-group-tab-link-a i {
     font-style: normal;
+    font-weight: normal;
+}
+.redux-notice-field .redux-info-icon i[class^=fa],
+.redux-sidebar .redux-group-tab-link-a i[class^=fa]{
+	font: normal normal normal 18px/1 FontAwesome;
+	font-size: inherit;
+  	text-rendering: auto;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+  	font-size:18px;
+ }
+.admin_demo{
+	border:solid 1px #aaa;
+	background:#eee; 
+	padding:2px;
+	margin: 0 2px;
+	border-radius:3px;
 }

@@ -24,7 +24,7 @@ function rpr_admin_latest_news_changelog()
 	// headlines
 	$readme = preg_replace('/== (.*?) ==/', '', $readme);
 	$readme = preg_replace('/= (.*?) =/', '<h4>\\1</h4>', $readme);
-	
+	rpr_admin_template_list();
 	// creating lists:
 	$readme = preg_replace('/\*(.*?)\n/', ' <li>\\1</li>', $readme);
 	$readme = preg_replace('/<\/h4>/', '</h4><ul>', $readme);
@@ -100,6 +100,96 @@ function rpr_admin_template_list()
 		}
 	}
 	return $templates;
+}
+
+function rpr_admin_template_list_redux()
+{
+	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/templates/';
+	$templates = array();
+	
+	if ($handle = opendir( $dirname )) {
+		//$i=0;
+		while (false !== ($file = readdir($handle))) {
+			if( $file !='.' && $file !='..' && $file != '.svn' ) {
+				// Param parsing inspired by http://stackoverflow.com/questions/11504541/get-comments-in-a-php-file
+				// put in an extra function?
+				$params=array();
+				$filename = $dirname . $file . '/recipe.php';
+				
+				$docComments = array_filter(
+						token_get_all( file_get_contents( $filename ) ), 
+						/*function($entry) {
+							return $entry[0] == T_COMMENT;
+						}*/
+						"f_comment"
+				);
+				
+				$fileDocComment = array_shift( $docComments );
+				
+				$regexp = "/.*\:.*\n/";
+				preg_match_all($regexp, $fileDocComment[1], $matches);
+				
+				foreach( $matches[0] as $match ){
+					$param = explode(": ", $match);
+					$params[ trim( $param[0] ) ] = trim( $param[1] );
+				}
+
+				$templates[$file] = array(
+						'value' => $file,
+						'title' => $params['Template Name'],
+						'img' => WP_PLUGIN_URL . '/recipepress-reloaded/templates/' . $file . '/screenshot.png',
+					);
+				//$i++;
+			}
+		}
+	}
+	return $templates;
+}
+
+function rpr_admin_template_settings_redux()
+{
+	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/templates/';
+	$templates = array();
+	
+	$template_settings=array(
+						array(
+    						'type' => 'switch',
+    						'id' => 'recipe_icons_display',
+    						'title' => __( 'Use icons' , 'recipepress-reloaded' ),
+    						'subtitle' => __( 'Display icons in front of headlines.' , 'recipepress-reloaded' ),
+    						'description' => __( 'Icons not only look nice. They also can save you space. With this setting activated most layouts <span class="admin_demo""><i class="fa fa-clock-o" title="ready in" ></i> 35min</span> will display instead of <span class="admin_demo"><span style="text-transform:uppercase; font-weight:bold;">Ready in: </span>35min</span>.', 'recipepress-reloaded'),
+    						'default' => false,
+    						),
+    						
+						array(
+                        	'id'        => 'rpr_template',
+                        	'type'      => 'image_select',
+                        	'title'     => __( 'Choose a layout', 'recipepress-reloaded' ),
+                        	'subtitle'  => sprintf (__( 'Layouts define how your recipes will look like. Choose one of the installed templates.', 'recipepress-reloaded'), ''), // or <a href="%s">create one yourself</a>.', $this->pluginName ) , 'http://rp-reloaded.net/templates/create' ),),
+                        	//'desc'      => sprintf (__( 'Templates define how your recipes will look like. Choose one of the installed templates.', $this->pluginName), ''), // or <a href="%s">create one yourself</a>.', $this->pluginName ) , 'http://rp-reloaded.net/templates/create' ),),
+                        
+                        	//Must provide key => value(array:title|img) pairs for radio options
+                        	'options'   => rpr_admin_template_list_redux(),
+                        	'default'   => 'rpr_default',
+                        	'width' => 300,
+                        	'height' => 300
+                      	),
+                      	
+                      	
+	);
+	
+	if ($handle = opendir( $dirname )) {
+		while (false !== ($file = readdir($handle))) {
+			if( $file !='.' && $file !='..' && $file != '.svn' ) {
+				if( file_exists($dirname . $file . '/settings.php') ){
+					include_once( $dirname . $file . '/settings.php' );
+				}
+				
+			}
+		}
+	}
+	
+	return $template_settings;
 }
 
 //=-=-=-=-=-=-= SHORTCODE GENERATOR =-=-=-=-=-=-=

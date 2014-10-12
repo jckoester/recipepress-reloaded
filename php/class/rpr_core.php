@@ -190,7 +190,36 @@ class RPR_Core extends RPReloaded {
     }
 
     function query_recipes($query) {
+    	
+		// Don't change query on admin page
+    	if (is_admin()){
+    		return;
+    	}
 
+		if ( ! is_admin() && $query->is_main_query() ) {
+				
+			// Post archive page:
+    		if ( is_post_type_archive( 'rpr_recipe' ) ) {
+    			//set post type to only recipes
+      			$query->set('post_type', 'rpr_recipe' );
+				return;
+    		}
+			
+			// All other pages:
+			if( !is_page() ){
+				// add post type to query
+				$post_type = $query->get('post_type');
+            	if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){
+            		$post_type[] = 'rpr_recipe';
+            	} else {
+            		$post_type = array( 'post', 'rpr_recipe' );
+            	}
+            	$query->set( 'post_type', $post_type );
+				return;
+			}
+  		}
+		
+		/*
         //if($this->option('recipe_as_posts', '1') == '1')
         //{
             // Hide recipes in admin posts overview when enabled
@@ -233,7 +262,7 @@ class RPR_Core extends RPReloaded {
                 }
                 $query->set( 'post_type', $post_type );
             }
-
+*/
             // No idea why we neeed(ed) this. However it is interfering in the search preventing other cpt to be found!
             /*$post_type = $query->get('post_type');
             var_dump($post_type);
@@ -251,7 +280,7 @@ class RPR_Core extends RPReloaded {
 			var_dump($post_type);*/
     //       $query->set('post_type',$post_type);
 
-            return;
+           // return;
         /*}
         else
         {
@@ -273,7 +302,7 @@ class RPR_Core extends RPReloaded {
             }
         }*/
 
-        return;
+        //return;
     }
     
     public function rpr_metabox_init()

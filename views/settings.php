@@ -1541,6 +1541,110 @@ if (!class_exists('RPR_Settings')) {
                     ),
                 )
             );
+			
+			$this->sections[] = array(
+            	'icon' 		=> 'fa-newspaper-o',
+            	'title'		=> __( 'Appearance', $this->pluginName ),
+            	'fields'	=> rpr_admin_template_settings_redux(),
+            );
+			
+			$this->sections[] = array(
+            	'icon' 		=> 'fa-image',
+            	'title'		=> __( 'Images', $this->pluginName ),
+            	'subsection' => true,
+            	'fields'	=> array(
+								array(
+									'id' => 'recipes_images_clickable',
+   									'type' => 'switch',
+   									'title' => __('Clickable Images', $this->pluginName),
+   									'subtitle' => __( 'Best used in combination with a lightbox plugin.', $this->pluginName ),
+   									'default' => false,
+   								),
+   								array(
+   									'id' => 'recipe_instruction_image',
+   									'type' => 'switch',
+   									'title' => __('Instruction Images', $this->pluginName),
+   									'subtitle' => __( 'Allow to attach images to instruction steps.', $this->pluginName ),
+   									'default' => true,
+								),
+								array(
+									'id' => 'recipe_instruction_image_position',
+   									'type' => 'select',
+   									'title' => __( 'Position of instruction images', $this->pluginName ),
+   									'subtitle' => __( 'Decide wether your instruction images should be display next to the instructions or below.', $this->pluginName ),
+   									'options' => array(
+   													'rpr_instrimage_right' => __('Right of instruction', $this->pluginName ),
+   													'rpr_instrimage_below' =>  __('Below the instruction', $this->pluginName ),
+   												),
+   									'default' => 'rpr_instrimage_right',
+   									'required' => array('recipe_instruction_image','!=','0')
+   								),
+							)
+            	);
+				
+			$this->sections[] = array(
+				'icon'		=> 'fa-file-photo-o',
+				'title' 	=> __('Advanced theming options', $this->pluginName),
+				'subsection' => true,
+    			'fields' 	=> array(
+    							array(
+    						 		'type' => 'info',
+    								'id' => 'recipe_note_item',
+    								'title' => __( 'Please note:', $this->pluginName ) ,
+    								'subtitle' => __( 'In this section you can make some adjustments on the look and feel of your recipes. Normally this should not be necessary and your theme should take care of all this. Some themes however might have limited capabilities and you might want RecipePress reloaded to display some information in it\'s part of the theme. Then however you might also consider to adjust your theme, i.e. by creating a child theme.' , $this->pluginName ) ,
+    								),
+    							array(
+									'type' => 'switch',
+									'id' => 'rpr_use_advanced_theming',
+									'title' => __( 'Use advanced theming settings', $this->pluginName ),
+									'default' => false
+									),
+    							array(
+    								'type' => 'switch',
+    								'id' => 'recipe_display_image',
+    								'title' => __('Display recipe image', $this->pluginName),
+    								'subtitle' => __('Usually this is the job of your theme. Only use, if your theme does not support post images', $this->pluginName),
+    								'default' => false,
+    								'required' => array('rpr_use_advanced_theming', 'equals', true)
+    								),
+    							array(
+    								'type' => 'switch',
+    								'id' => 'recipe_author_display_in_recipe',
+    								'title' => __('Display the author in recipe', $this->pluginName),
+    								'description' => __('Display the author in the recipe part of the theme. Ususally your theme will display the author.', $this->pluginName ),
+    								'default' => false,
+    								'required' => array('rpr_use_advanced_theming', 'equals', true)
+    								),
+    							array(
+    								'type' => 'switch',
+    								'id' => 'recipe_time_display_in_recipe',
+    								'title' => __('Display date in recipe', $this->pluginName),
+    								'subtitle' => __('Display date in the recipe part of the theme. Ususally your theme will display the date.', $this->pluginName ),
+    								'default' => false,
+    								'required' => array('rpr_use_advanced_theming', 'equals', true)
+    								),
+    							array(
+    								'type' => 'switch',
+    								'id' => 'recipe_display_categories_in_recipe',
+    								'title' => __('Display Categories in recipe', $this->pluginName ),
+    								'subtitle' => __('Display WP Categories in the recipe part of the theme instead the default one.', $this->pluginName),
+    								'default' => false,
+    								'required' => array('rpr_use_advanced_theming', 'equals', true)
+    								),
+    							array(
+    								'type' => 'switch',
+    								'id' => 'recipe_display_tags_in_recipe',
+    								'title' => __('Display tags in recipe', $this->pluginName ),
+    								'subtitle' => __('Display WP Tags in the recipe part of the theme instead the default one.', $this->pluginName),
+    								'default' => false,
+    								'required' => array('rpr_use_advanced_theming', 'equals', true)
+    								),
+    					),
+    		);
+    						
+    						
+				
+			//var_dump($rpr_option['recipe_instruction_image']);
                     
             $this->sections[] = array(
                 'type' => 'divide',

@@ -166,6 +166,10 @@ include_once('php/template_tags.php');
 if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' ) ) {
 	require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' );
 }
-if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' ) ) {
+if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/views/settings.php' ) ) {
 	require_once( dirname( __FILE__ ) . '/views/settings.php' );
+}
+
+if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' ) ) {
+//	require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' );
 }
