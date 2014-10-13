@@ -4,7 +4,7 @@
   Plugin Name: RecipePressReloaded
   Plugin URI: http://rp-reloaded.net 
   Description: A simple recipe plugin doing all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically. Yet to come: easily create indexes of any taxonomy like ingredient, category, course, cuisine, ...
-  Version: 0.7.0
+  Version: 0.7.1
   Author: Jan Köster
   Author URI: http://www.cbjck.de/author/jan
   License: GPL2
@@ -31,7 +31,7 @@
  */
  
 /*Set plugin version*/
-define( 'RPR_VERSION', '0.7.0' );
+define( 'RPR_VERSION', '0.7.1' );
 define( 'RPR_TITLE', 'RecipePress reloaded' );
 
 
@@ -167,7 +167,7 @@ if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/l
 	require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' );
 }
 if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/views/settings.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/views/settings.php' );
+//	require_once( dirname( __FILE__ ) . '/views/settings.php' );
 }
 
 if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' ) ) {

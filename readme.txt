@@ -52,6 +52,9 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
+= 0.7.1 =
+* completly recoded function for querying recipes 
+
 = 0.7.0 =
 * proper excerpts for recipes
 * templates can define the look & feel of excerpts

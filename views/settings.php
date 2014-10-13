@@ -1583,7 +1583,7 @@ if (!class_exists('RPR_Settings')) {
             	);
 				
 			$this->sections[] = array(
-				'icon'		=> 'fa-file-photo-o',
+				'icon'		=> 'fa-plus-square-o',
 				'title' 	=> __('Advanced theming options', $this->pluginName),
 				'subsection' => true,
     			'fields' 	=> array(
@@ -1611,7 +1611,7 @@ if (!class_exists('RPR_Settings')) {
     								'type' => 'switch',
     								'id' => 'recipe_author_display_in_recipe',
     								'title' => __('Display the author in recipe', $this->pluginName),
-    								'description' => __('Display the author in the recipe part of the theme. Ususally your theme will display the author.', $this->pluginName ),
+    								'subtitle ' => __('Display the author in the recipe part of the theme. Ususally your theme will display the author.', $this->pluginName ),
     								'default' => false,
     								'required' => array('rpr_use_advanced_theming', 'equals', true)
     								),
