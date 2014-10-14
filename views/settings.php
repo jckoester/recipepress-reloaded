@@ -1583,13 +1583,15 @@ if (!class_exists('RPR_Settings')) {
             	);
 				
 			$this->sections[] = array(
-				'icon'		=> 'fa-plus-square-o',
+				'icon'		=> 'fa-sliders',
 				'title' 	=> __('Advanced theming options', $this->pluginName),
 				'subsection' => true,
     			'fields' 	=> array(
     							array(
     						 		'type' => 'info',
     								'id' => 'recipe_note_item',
+    								'icon' => 'fa-lightbulb-o',
+    								'class' => 'warning',
     								'title' => __( 'Please note:', $this->pluginName ) ,
     								'subtitle' => __( 'In this section you can make some adjustments on the look and feel of your recipes. Normally this should not be necessary and your theme should take care of all this. Some themes however might have limited capabilities and you might want RecipePress reloaded to display some information in it\'s part of the theme. Then however you might also consider to adjust your theme, i.e. by creating a child theme.' , $this->pluginName ) ,
     								),
@@ -1597,6 +1599,7 @@ if (!class_exists('RPR_Settings')) {
 									'type' => 'switch',
 									'id' => 'rpr_use_advanced_theming',
 									'title' => __( 'Use advanced theming settings', $this->pluginName ),
+									'subtitle' => __( 'Activate additional settings', $this->pluginName ),
 									'default' => false
 									),
     							array(

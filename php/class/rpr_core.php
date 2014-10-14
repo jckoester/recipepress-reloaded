@@ -212,7 +212,7 @@ class RPR_Core extends RPReloaded {
             	if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){
             		$post_type[] = 'rpr_recipe';
             	} else {
-            		$post_type = array( 'post', 'rpr_recipe' );
+            		$post_type = array( 'post', $post_type, 'rpr_recipe' );
             	}
             	$query->set( 'post_type', $post_type );
 				return;

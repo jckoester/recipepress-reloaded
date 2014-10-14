@@ -52,6 +52,8 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
+= 0.7.2 =
+* fixed a bug affecting foreign post types
 = 0.7.1 =
 * completly recoded function for querying recipes 
 
