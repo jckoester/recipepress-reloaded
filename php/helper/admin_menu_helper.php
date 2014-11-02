@@ -160,13 +160,28 @@ function rpr_admin_template_settings_redux()
     						'description' => __( 'Icons not only look nice. They also can save you space. With this setting activated most layouts <span class="admin_demo""><i class="fa fa-clock-o" title="ready in" ></i> 35min</span> will display instead of <span class="admin_demo"><span style="text-transform:uppercase; font-weight:bold;">Ready in: </span>35min</span>.', 'recipepress-reloaded'),
     						'default' => false,
     						),
+    					array(
+   							'type' => 'switch',
+   							'id' => 'recipe_display_printlink',
+   							'title' => __('Display print link', 'recipepress-reloaded'),
+   							'subtitle' => __( 'Adds a print link to your recipes. It\'s recommended to use one of the numerous print plugins for wordpress to include a print link to ALL of your posts.', 'recipepress-reloaded' ),
+   							'default' => false,
+   							),
+   						array(
+   							'type' => 'text',
+   							'id' => 'recipe_printlink_class',
+   							'title' => __('Class of the print area', 'recipepress-reloaded'),
+   							'subtitle' => __( 'Print links should only print an area of the page, usually a post. This is higly depending on wordpress theme you are using. Add here the class (prefixed by \'.\') or the id (prefixed by \'#\') of the printable area.', 'recipepress-reloaded'),
+   							'default' => '.rpr_recipe',
+   							'required' => array('recipe_display_printlink','equals',true),
+   						),
     						
 						array(
                         	'id'        => 'rpr_template',
                         	'type'      => 'image_select',
                         	'title'     => __( 'Choose a layout', 'recipepress-reloaded' ),
-                        	'subtitle'  => sprintf (__( 'Layouts define how your recipes will look like. Choose one of the installed templates.', 'recipepress-reloaded'), ''), // or <a href="%s">create one yourself</a>.', $this->pluginName ) , 'http://rp-reloaded.net/templates/create' ),),
-                        	//'desc'      => sprintf (__( 'Templates define how your recipes will look like. Choose one of the installed templates.', $this->pluginName), ''), // or <a href="%s">create one yourself</a>.', $this->pluginName ) , 'http://rp-reloaded.net/templates/create' ),),
+                        	'subtitle'  => sprintf (__( 'Layouts define how your recipes will look like. Choose one of the installed templates.', 'recipepress-reloaded'), ''), // or <a href="%s">create one yourself</a>.', 'recipepress-reloaded' ) , 'http://rp-reloaded.net/templates/create' ),),
+                        	//'desc'      => sprintf (__( 'Templates define how your recipes will look like. Choose one of the installed templates.', 'recipepress-reloaded'), ''), // or <a href="%s">create one yourself</a>.', 'recipepress-reloaded' ) , 'http://rp-reloaded.net/templates/create' ),),
                         
                         	//Must provide key => value(array:title|img) pairs for radio options
                         	'options'   => rpr_admin_template_list_redux(),
@@ -249,6 +264,7 @@ function get_recipe_title( $recipe )
         return $recipe->post_title;
     }
 }
+
 
 function rpr_shortcode_generator_taxonomies()
 {

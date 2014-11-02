@@ -1,9 +1,8 @@
 
-
 <div class="wrap">
 
 <div id="icon-themes" class="icon32"></div>
-<h2>Recipe Press Reloaded <?php _e( 'Custom Taxonomies', $this->pluginName );?></h2>
+<h2>Recipe Press Reloaded <?php _e( 'Manage Taxonomies', $this->pluginName );?></h2>
 
     <?php settings_errors(); ?>
 

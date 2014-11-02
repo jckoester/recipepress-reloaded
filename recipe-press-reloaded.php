@@ -171,5 +171,5 @@ if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/views/setting
 }
 
 if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' );
+//	require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' );
 }

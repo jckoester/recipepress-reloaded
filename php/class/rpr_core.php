@@ -95,6 +95,7 @@ class RPR_Core extends RPReloaded {
     {
     	wp_register_style( 'rpr_fa', $this->pluginUrl . '/css/font-awesome.min.css');
         wp_register_style( 'rpr_adm', $this->pluginUrl . '/css/rpr_admin.css', '', RPR_VERSION );
+		wp_enqueue_style (  'wp-jquery-ui-dialog');
         wp_enqueue_style( 'rpr_fa' );
         wp_enqueue_style( 'rpr_adm' );
     }
@@ -104,8 +105,16 @@ class RPR_Core extends RPReloaded {
         if( 'post-new.php' != $hook && 'post.php' != $hook && isset($_GET['post_type']) && 'rpr_recipe' != $_GET['post_type'] ) {
             return;
         } else {
-            wp_register_script( $this->pluginName, $this->pluginUrl . '/js/rpr_admin.js', array('jquery', 'jquery-ui-sortable', 'suggest', 'wp-color-picker' ), RPR_VERSION );
+            wp_register_script( $this->pluginName, $this->pluginUrl . '/js/rpr_admin.js', array('jquery', 'jquery-form', 'jquery-ui-dialog', 'jquery-ui-sortable', 'suggest', 'wp-color-picker' ), RPR_VERSION );
             wp_enqueue_script( $this->pluginName );
+			wp_localize_script( $this->pluginName, 'objectL10n', array(
+				'submit' => __( 'Submit', $this->pluginName ),
+				'save' => __( 'Save', $this->pluginName),
+				'cancel' => __( 'Cancel', $this->pluginName),
+				'edit' => __( 'Edit', $this->pluginName),
+				'delete' => __( 'Delete', $this->pluginName),
+				'rpr_taxdialog_title' => __( 'Edit Taxonomy', $this->pluginName),
+			) );
         }
     }
 
@@ -190,7 +199,6 @@ class RPR_Core extends RPReloaded {
     }
 
     function query_recipes($query) {
-    	
 		// Don't change query on admin page
     	if (is_admin()){
     		return;
@@ -206,7 +214,7 @@ class RPR_Core extends RPReloaded {
     		}
 			
 			// All other pages:
-			if( !is_page() ){
+			if( !is_page() && ! is_attachment() ){
 				// add post type to query
 				$post_type = $query->get('post_type');
             	if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){

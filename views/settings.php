@@ -1645,7 +1645,72 @@ if (!class_exists('RPR_Settings')) {
     					),
     		);
     						
-    						
+    		$this->sections[] = array(
+				'icon'		=> '',
+				'title' 	=> __( 'Recipe Metadata' , $this->pluginName ),
+				'fields' 	=> array(
+            					array(
+            						'type' => 'select',
+            						'id' => 'recipe_ingredient_links',
+            						'title' => __('Ingredient Links', $this->pluginName),
+            						'subtitle' => __( 'Links to be used in the ingredient list.', $this->pluginName ),
+            						'options' => array(
+            										'disabled'	=> __('No ingredient links', $this->pluginName),
+            										'archive' 	=> __('Only link to ingredient archive page', $this->pluginName),
+            										'archive_custom' => __('Custom link if provided, otherwise archive page', $this->pluginName),
+            										'custom' => __('Custom links if provided, otherwise no link', $this->pluginName),
+            										),
+            						'default' => 'archive_custom',
+            					),
+            					array(
+									'type' => 'select',
+									'id' => 'ingredients_exclude_list',
+									'title' => __( 'Exclude ingredients from listings', $this->pluginName ),
+									'subtitle' => __( 'Choose ingredients you don\'t want to appear on ingredeint listings like the ingredient index or the ingredient cloud', $this->pluginName ),
+									'description' => __( 'Select multiple ingredients like "salt" or "pepper" you don\'t want to see on the listings', $this->pluginName ),
+									'data' => 'terms',
+									'args' => array( 'taxonomies' => 'rpr_ingredient', 'args' => array() ),
+									'multi' => true,
+								),
+								array(
+                        			'id'    => 'ingredients-divide',
+                        			'type'  => 'divide',
+                    			),
+								array(
+            						'type' => 'switch',
+            						'id' => 'recipe_use_nutritional_info',
+            						'title' => __('Use nutritional information', $this->pluginName),
+            						'subtitle' => __( 'Add nutritional information to your recipes.', $this->pluginName ),
+            						'default' => '0',
+            					),
+            					array(
+                        			'id'    => 'taxonomies-divide',
+                        			'type'  => 'divide',
+                    			),
+                    			array(
+									'id' => 'manage_custom_taxonomies_box',
+									'type' => 'raw',
+									'title' => __( 'Manage custom taxonomies', $this->pluginName ),
+									//'subtitle' => __( 'Subt', $this->pluginName ),
+									//'desc' => 'test',
+									'content' => rpr_admin_manage_tags(),
+								),
+            					array(
+                            		'type' => 'switch',
+                            		'id' => 'recipe_tags_use_wp_categories',
+                            		'title' => __('Use Categories', $this->pluginName),
+                            		'subtitle' => __( 'Use the default WP Categories to organize your recipes. If set to "Off", RPR will create own categories.', $this->pluginName ),
+                            		'default' => true,
+                        		),
+                    			array(
+                    				'type' => 'switch',
+                    				'id' => 'recipe_tags_use_wp_tags',
+                    				'title' => __('Use Tags', $this->pluginName),
+                    				'subtitle' => __( 'Use the default WP Tags to organize your recipes. If set to "Off", RPR will create own tags.', $this->pluginName ),
+                    				'default' => true,
+                    			),
+            			)
+			);		
 				
 			//var_dump($rpr_option['recipe_instruction_image']);
                     
@@ -1709,10 +1774,10 @@ if (!class_exists('RPR_Settings')) {
                 
                 // You will need to generate a Google API key to use this feature.
                 // Please visit: https://developers.google.com/fonts/docs/developer_api#Auth
-                'google_api_key' => '', // Must be defined to add google fonts to the typography module
+                //'google_api_key' => '', // Must be defined to add google fonts to the typography module
                 
                 'async_typography'  => true,                    // Use a asynchronous font on the front end or font string
-                //'disable_google_fonts_link' => true,                    // Disable this in case you want to create your own google fonts loader
+                'disable_google_fonts_link' => true,                    // Disable this in case you want to create your own google fonts loader
                 'admin_bar'         => true,                    // Show the panel pages on the admin bar
                 'global_variable'   => '',                      // Set a different name for your global variable other than the opt_name
                 'dev_mode'          => true,                    // Show the time the page took to load, etc

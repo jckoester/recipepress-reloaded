@@ -11,7 +11,7 @@ A simple recipe plugin. It does all you need for your food blog. Plus: there the
 == Description ==
 
 It basically adds a post type for recipes to your site. You can publish recipes as standalone posts or include in your normal posts and pages. 
-Organize your recipes in categories, cuisines, courses, seasons, ... It'S up to your choice how many taxonomies you are creating. Of course there are post images and all the normal wordpress post goodies for your recipes as well.
+Organize your recipes in categories, cuisines, courses, seasons, ... It's up to your choice how many taxonomies you are creating. Of course there are post images and all the normal wordpress post goodies for your recipes as well.
 The backend is designed to allow fast, keyboard-based input and not to bother you with to many clicks and choices.
 The frontend is using schema.org's recipe microformat to allow search engines like google to display our recipes nicely.
 

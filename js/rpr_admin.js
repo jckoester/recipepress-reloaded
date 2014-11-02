@@ -735,4 +735,65 @@ jQuery(document).ready(function() {
         button.addClass('rpr-hide');
     });
     
+    /* PopUp for editing taxonomies */
+    jQuery(function($) {
+        var $info = $("#rpr_manage_taxonomies_dialog");
+        $info.dialog({
+        	'title' : objectL10n.rpr_taxdialog_title,
+            'dialogClass'   : 'wp-dialog',           
+            'modal'         : true,
+            'autoOpen'      : false, 
+            'minWidth'		: 400,
+            'closeOnEscape' : true,      
+            'buttons'       : [
+                               {	'text' : 'Save',
+                               		'class' : 'button-primary',
+                               		'value': objectL10n.save,
+                               		'click' : function() {
+                               					$("#rpr_manage_taxonomies_dialog_form").ajaxSubmit({
+                               						success: function(){
+                               									location.reload();
+                               						}
+                               					});
+                               		}
+                               },
+                               {
+                            	   'text' : 'Cancel',
+                            	   'value': objectL10n.cancel,
+                            	   'click' : function() {
+                                       $(this).dialog('close');
+                                   }
+                               }
+                              ]
+        		
+            });
+    }); 
+    jQuery('.rpr-edit-tag').on('click', function(event) {
+        var tag = jQuery(this).data('tag');
+
+        var singular = jQuery(this).parents('tr').find('.singular-name').text();
+        var name = jQuery(this).parents('tr').find('.name').text();
+        var slug = jQuery(this).parents('tr').find('.slug').text();
+
+        jQuery('input#rpr_edit_tag_name').val(tag);
+        jQuery('input#rpr_custom_taxonomy_singular_name').val(singular);
+        jQuery('input#rpr_custom_taxonomy_name').val(name);
+        jQuery('input#rpr_custom_taxonomy_slug').val(slug);
+
+        jQuery('#rpr_editing_tag').text(tag);
+
+        event.preventDefault();
+        jQuery("#rpr_manage_taxonomies_dialog").dialog('open');
+        
+        /*jQuery('.rpr_adding').hide();
+        jQuery('.rpr_editing').show();*/
+    });
+    jQuery('.rpr-delete-tag').on('click', function() {
+        var tag = jQuery(this).data('tag');
+
+        jQuery('input#rpr_delete_taxonomy_name').val(tag);
+        
+        jQuery('form#rpr_delete_taxonomy').submit();
+    });
+
 });
