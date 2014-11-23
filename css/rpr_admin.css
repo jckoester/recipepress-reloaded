@@ -164,7 +164,8 @@ font-style:italic;
     font-weight: normal;
 }
 .redux-notice-field .redux-info-icon i[class^=fa],
-.redux-sidebar .redux-group-tab-link-a i[class^=fa]{
+.redux-sidebar .redux-group-tab-link-a i[class^=fa],
+#redux-share i[class^=fa]{ 
 	font: normal normal normal 18px/1 FontAwesome;
 	font-size: inherit;
   	text-rendering: auto;

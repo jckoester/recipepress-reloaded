@@ -795,5 +795,9 @@ jQuery(document).ready(function() {
         
         jQuery('form#rpr_delete_taxonomy').submit();
     });
+    
+    
+    
 
 });
+

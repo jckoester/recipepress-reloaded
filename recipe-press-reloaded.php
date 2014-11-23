@@ -4,14 +4,14 @@
   Plugin Name: RecipePressReloaded
   Plugin URI: http://rp-reloaded.net 
   Description: A simple recipe plugin doing all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically. Yet to come: easily create indexes of any taxonomy like ingredient, category, course, cuisine, ...
-  Version: 0.7.2
+  Version: 0.7.3
   Author: Jan Köster
   Author URI: http://www.cbjck.de/author/jan
   License: GPL2
 
  * *************************************************************************
 
-  Copyright (C) 2012 Jan Köster
+  Copyright (C) 2012-2014 Jan Köster
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
  */
  
 /*Set plugin version*/
-define( 'RPR_VERSION', '0.7.2' );
+define( 'RPR_VERSION', '0.7.3' );
 define( 'RPR_TITLE', 'RecipePress reloaded' );
 
 
@@ -66,7 +66,7 @@ class RPReloaded{
 
 //!!TBD
 		// Actions
-		add_action( 'after_setup_theme', array( $this, 'rpr_admin_menu' ) );
+		//add_action( 'after_setup_theme', array( $this, 'rpr_admin_menu' ) );
 		//add_action( 'after_setup_theme', array( $this, 'rpr_shortcodegenerator' ) );
 		//add_action( 'init', array( $this, 'rpr_check_premium' ) );
 		//add_action( 'admin_init', array( $this, 'rpr_hide_notice' ) );
@@ -144,16 +144,36 @@ class RPReloaded{
 	
 	public function option( $name, $default = null )
 	{
+		global $rpr_option;
+		
+		if( !is_null($rpr_option) &&array_key_exists($name, $rpr_option ) ) {
+			return $rpr_option[$name];	
+		} else {
+			return false;
+		}
+		/*
 		$option = vp_option( "rpr_option." . $name );
 	
 		return is_null($option) ? $default : $option;
+		 * 
+		 */
 	}
 	
 	static function get_option( $name, $default = null )
 	{
+		global $rpr_option;
+		
+		if( !is_null($rpr_option) &&array_key_exists($name, $rpr_option ) ) {
+			return $rpr_option[$name];	
+		} else {
+			return false;
+		}
+		/*
 		$option = vp_option( "rpr_option." . $name );
 	
 		return is_null($option) ? $default : $option;
+		 * 
+		 */
 	}
 	
 }
@@ -168,8 +188,4 @@ if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/l
 }
 if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/views/settings.php' ) ) {
 	require_once( dirname( __FILE__ ) . '/views/settings.php' );
-}
-
-if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' ) ) {
-//	require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/sample/sample-config.php' );
 }

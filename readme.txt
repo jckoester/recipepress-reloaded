@@ -2,7 +2,7 @@
 Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
 Requires at least: 3.8
-Tested up to: 4.0.0
+Tested up to: 4.0.1
 Stable tag: 0.7.2
 License: GPLv2
 
@@ -22,6 +22,8 @@ The frontend is using schema.org's recipe microformat to allow search engines li
 * a bunch of taxonomies like cateogories, cuisines, seasons, course. You can add as many custom taxonomies as you like
 * display nutritional information alongside your recipes
 * options to also include categories and tags used from standard posts.
+* easily include recipes into posts and pages
+* shortcodes for displaying an alphabetic index of recipes, ingredients
 * user comments and pingbacks
 * recipe photo using featured thumbnail tools.
 * easy-type backend
@@ -41,7 +43,6 @@ If you want a translation of another language included please help translating!
 
 = Future Features =
 
-* shortcodes for displaying an alphabetic index of recipes, ingredients, ...
 
 
 == Installation ==
@@ -51,7 +52,11 @@ If you want a translation of another language included please help translating!
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
-
+=0.7.3=
+* button for the editor to include shortcodes
+* exclude ingredients like 'salt' and 'pepper' from ingredient listings
+* completely refurbished settings page
+* fixing a bug affecting attachment pages
 = 0.7.2 =
 * fixed a bug affecting foreign post types
 = 0.7.1 =

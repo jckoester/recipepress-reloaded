@@ -41,13 +41,13 @@ function rpr_admin_latest_news_changelog()
 
 function rpr_admin_recipe_slug_preview( $slug )
 {
-    return __( 'The recipe archive can be found at', 'recipepress-reloaded' ) . ' <a href="'.site_url('/'.$slug.'/').'" target="_blank">'.site_url('/'.$slug.'/').'</a>';
+    return  __( 'The recipe archive can be found at', 'recipepress-reloaded' ) . ' <a href="'.site_url('/'.$slug.'/').'" target="_blank">'.site_url('/'.$slug.'/').'</a>';
 }
 
 function rpr_admin_slug_preview( $slug )
 {
     global $rpr_option;
-    print __( 'The recipe archive can be found at', 'recipepress-reloaded' ) . ' <a href="'.site_url('/'.$rpr_option['recipe_slug'] .'/').'" target="_blank">'.site_url('/'.$rpr_option['recipe_slug'] . '/').'</a>';
+    print '<div style="margin:10px 0">'.__( 'The recipe archive can be found at', 'recipepress-reloaded' ) . ' <a href="'.site_url('/'.$rpr_option['recipe_slug'] .'/').'" target="_blank">'.site_url('/'.$rpr_option['recipe_slug'] . '/').'</a></div>';
 }
 
 function rpr_admin_manage_tags()
@@ -58,51 +58,8 @@ function rpr_admin_manage_tags()
 function f_comment( $entry ){
 	return $entry[0] == T_COMMENT;
 }
+
 function rpr_admin_template_list()
-{
-	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/templates/';
-	$templates = array();
-	
-	if ($handle = opendir( $dirname )) {
-		while (false !== ($file = readdir($handle))) {
-			if( $file !='.' && $file !='..' && $file != '.svn' ) {
-				// Param parsing inspired by http://stackoverflow.com/questions/11504541/get-comments-in-a-php-file
-				// put in an extra function?
-				$params=array();
-				$filename = $dirname . $file . '/recipe.php';
-				
-				$docComments = array_filter(
-						token_get_all( file_get_contents( $filename ) ), 
-						/*function($entry) {
-							return $entry[0] == T_COMMENT;
-						}*/
-						"f_comment"
-				);
-				
-				$fileDocComment = array_shift( $docComments );
-				
-				$regexp = "/.*\:.*\n/";
-				preg_match_all($regexp, $fileDocComment[1], $matches);
-				
-				foreach( $matches[0] as $match ){
-					$param = explode(": ", $match);
-					$params[ trim( $param[0] ) ] = trim( $param[1] );
-				}
-
-				array_push( $templates, 
-					 array(
-						'value' => $file,
-						'label' => $params['Template Name'],
-						'img' => WP_PLUGIN_URL . '/recipepress-reloaded/templates/' . $file . '/screenshot.png',
-					)
-				);
-			}
-		}
-	}
-	return $templates;
-}
-
-function rpr_admin_template_list_redux()
 {
 	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/templates/';
 	$templates = array();
@@ -146,7 +103,7 @@ function rpr_admin_template_list_redux()
 	return $templates;
 }
 
-function rpr_admin_template_settings_redux()
+function rpr_admin_template_settings()
 {
 	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/templates/';
 	$templates = array();
@@ -184,7 +141,7 @@ function rpr_admin_template_settings_redux()
                         	//'desc'      => sprintf (__( 'Templates define how your recipes will look like. Choose one of the installed templates.', 'recipepress-reloaded'), ''), // or <a href="%s">create one yourself</a>.', 'recipepress-reloaded' ) , 'http://rp-reloaded.net/templates/create' ),),
                         
                         	//Must provide key => value(array:title|img) pairs for radio options
-                        	'options'   => rpr_admin_template_list_redux(),
+                        	'options'   => rpr_admin_template_list(),
                         	'default'   => 'rpr_default',
                         	'width' => 300,
                         	'height' => 300

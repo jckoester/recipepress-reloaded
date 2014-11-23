@@ -24,6 +24,7 @@ class RPR_Core extends RPReloaded {
         $this->tax = new RPR_Taxonomies($this->pluginName, $this->pluginDir, $this->pluginUrl);  
         
         add_action( 'init', array( $this, 'ratings_init' ));
+
         //add image sizes
         add_filter( 'image_size_names_choose', array( $this, 'rpr_image_sizes' ) );
         add_action( 'init', array( $this, 'rpr_add_image_sizes' ));
@@ -66,9 +67,18 @@ class RPR_Core extends RPReloaded {
         add_shortcode("rpr-recipe-index", array( $this, 'recipes_index_shortcode' ));
         add_shortcode( "rpr-tax-list", array( $this, 'recipes_taxlist_shortcode' ));
 
+		// Shortcode dialog
+		add_action('admin_head', array($this, 'rpr_add_tinymce'));
         // Other
 //        $this->add_link_to_ingredients();
+		/*
+		 * Add a button to TinyMce to easily include shortcodes:
+		 */
+		 add_action('admin_enqueue_scripts', array($this, 'rpr_ajax_load_scripts'));
+		 add_action('wp_ajax_rpr_get_results', array($this, 'rpr_process_ajax'));
+		 add_action('in_admin_footer', array($this, 'rpr_in_admin_footer'));
     }
+
     
     /*
      * //////////////////////////////////////// General & Inits ///////////////////////////////////////
@@ -105,8 +115,10 @@ class RPR_Core extends RPReloaded {
         if( 'post-new.php' != $hook && 'post.php' != $hook && isset($_GET['post_type']) && 'rpr_recipe' != $_GET['post_type'] ) {
             return;
         } else {
-            wp_register_script( $this->pluginName, $this->pluginUrl . '/js/rpr_admin.js', array('jquery', 'jquery-form', 'jquery-ui-dialog', 'jquery-ui-sortable', 'suggest', 'wp-color-picker' ), RPR_VERSION );
+            wp_register_script( $this->pluginName, $this->pluginUrl . '/js/rpr_admin.js', array('wpdialogs', 'jquery', 'jquery-form', 'wpdialogs', 'jquery-ui-dialog', 'jquery-ui-sortable', 'suggest', 'wp-color-picker' ), RPR_VERSION );
             wp_enqueue_script( $this->pluginName );
+			
+			
 			wp_localize_script( $this->pluginName, 'objectL10n', array(
 				'submit' => __( 'Submit', $this->pluginName ),
 				'save' => __( 'Save', $this->pluginName),
@@ -148,6 +160,94 @@ class RPR_Core extends RPReloaded {
     			'rpr-table-thumb' => __('RPR table thumbnail', $this->pluginName ),
     	) );
     }
+	
+/*
+* Add a button to TinyMce to easily include shortcodes:
+*/
+function rpr_ajax_load_scripts($hook){
+	global $post_type;
+	
+	// Only load on pages where it is necessary:
+	if(!in_array($post_type,array('post','page')))
+		return;
+	
+	wp_enqueue_style('rpr_mce', $this->pluginUrl . '/css/rpr_mce.css');
+	
+	
+	wp_enqueue_script('rpr_ajax', $this->pluginUrl .'/js/rpr_ajax.js', array('jquery'));
+	wp_localize_script('rpr_ajax', 'rpr_vars', array(
+			'rpr_ajax_nonce' => wp_create_nonce('rpr-ajax-nonce')
+		)
+	);
+	wp_localize_script( 'rpr_ajax', 'rprLinkL10n', array(
+		'noTitle' => __( 'No title', $this->pluginName ),
+		'recipe' => __( 'Recipe', $this->pluginName ),
+		'save' => __( 'Insert', $this->pluginName ),
+		'update' => __( 'Insert', $this->pluginName ),
+	) );
+}
+function rpr_process_ajax() {
+	
+	check_ajax_referer( 'rpr-ajax-nonce', 'rpr_ajax_nonce' );
+
+	$args = array();
+
+	if ( isset( $_POST['search'] ) ){
+		$args['s'] = wp_unslash( $_POST['search'] );
+	} else {
+		$args['s'] = '';
+	}
+	
+	$args['pagenum'] = ! empty( $_POST['page'] ) ? absint( $_POST['page'] ) : 1;
+
+	$query=array(
+		'posts_per_page' => 10,
+	);
+	$query['offset'] = $args['pagenum'] > 1 ? $query['posts_per_page'] * ( $args['pagenum'] - 1 ) : 0;
+	
+	$recipes = get_posts(array('s'=> $args['s'], 'post_type' => 'rpr_recipe', 'posts_per_page' => $query['posts_per_page'], 'offset'=> $query['offset'], 'orderby'=> 'post_date'));
+	
+	$json = array();
+	
+	foreach($recipes as $recipe){
+		array_push($json, array('id'=>$recipe->ID, 'title'=>$recipe->post_title));
+	}
+	
+	wp_send_json($json);
+	die();
+}
+
+function rpr_in_admin_footer(){
+ global $post_type;
+ if(!in_array($post_type,array('post','page')))
+	return;
+
+ include $this->pluginDir . '/views/mce_dialog.php';
+}
+/**
+ * Shortcode Dialog for Tinymce
+*/
+public function rpr_add_tinymce() {
+	global $typenow;
+	if (empty($typenow)) return;
+	    
+	add_filter('mce_external_plugins', array( $this, 'rpr_mce_external_plugins_filter'));
+	add_filter('mce_buttons', array($this, 'rpr_mce_buttons_filter'));
+}
+
+function rpr_mce_external_plugins_filter($plugin_array) {
+	$plugin_array['rpr_mce_plugin'] = $this->pluginUrl . '/js/rpr-mce-plugin.js';
+	    
+	return $plugin_array;
+}
+
+function rpr_mce_buttons_filter($buttons) {
+	array_push($buttons, 'rpr_mce_plugin');
+	    
+	return $buttons;
+}
+
+
     /*
      * //////////////////////////////////////////// RECIPES ///////////////////////////////////////////
     */
@@ -777,6 +877,8 @@ class RPR_Core extends RPReloaded {
     }
     
     public function recipes_taxlist_shortcode($options) {
+    	global $rpr_option;
+		
         $options = shortcode_atts(array(
             'headers' => 'false',
             'tax' => 'n/a',
@@ -791,27 +893,53 @@ class RPR_Core extends RPReloaded {
 
             foreach($terms as $term) {
 
-                $title = ucfirst($term->name);//$this->get_recipe_title( $post );
-
-                if($title != '')
-                {
-                    //if ($options['headers'] != 'false'){
-                        $first_letter = substr($title,0,1);
-
-                        if(!in_array($first_letter, $letters))
-                        {
-                            $letters[] = $first_letter;
-                            $out .= '<h2><a name="'.$first_letter.'"></a>';
-                            $out .= $first_letter;
-                            $out .= '</h2>';
-                        }
-                    //}
-
-                    //$out .= '<a href="'.get_permalink($term->term_id).'">';
-                    $out .= '<a href="'.get_term_link( $term ).'">';
-                    $out .= $title;
-                    $out .= '</a><br/>';
-                }
+				if( $options['tax'] == 'rpr_ingredient'){
+					if( !in_array($term->term_id, $rpr_option['ingredients_exclude_list']) ){
+		                $title = ucfirst($term->name);//$this->get_recipe_title( $post );
+		
+		                if($title != '')
+		                {
+		                    //if ($options['headers'] != 'false'){
+		                        $first_letter = substr($title,0,1);
+		
+		                        if(!in_array($first_letter, $letters))
+		                        {
+		                            $letters[] = $first_letter;
+		                            $out .= '<h2><a name="'.$first_letter.'"></a>';
+		                            $out .= $first_letter;
+		                            $out .= '</h2>';
+		                        }
+		                    //}
+		
+		                    //$out .= '<a href="'.get_permalink($term->term_id).'">';
+		                    $out .= '<a href="'.get_term_link( $term ).'">';
+		                    $out .= $title;
+		                    $out .= '</a><br/>';
+		                }
+		                }
+				} else {
+					$title = ucfirst($term->name);//$this->get_recipe_title( $post );
+	
+	                if($title != '')
+	                {
+	                    //if ($options['headers'] != 'false'){
+	                        $first_letter = substr($title,0,1);
+	
+	                        if(!in_array($first_letter, $letters))
+	                        {
+	                            $letters[] = $first_letter;
+	                            $out .= '<h2><a name="'.$first_letter.'"></a>';
+	                            $out .= $first_letter;
+	                            $out .= '</h2>';
+	                        }
+	                    //}
+	
+	                    //$out .= '<a href="'.get_permalink($term->term_id).'">';
+	                    $out .= '<a href="'.get_term_link( $term ).'">';
+	                    $out .= $title;
+	                    $out .= '</a><br/>';
+	                }
+					}
             }
         }
         else
