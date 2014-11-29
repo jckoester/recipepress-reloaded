@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: RecipePress reloaded\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-26 18:20+0100\n"
-"PO-Revision-Date: 2014-11-28 18:02+0100\n"
+"PO-Revision-Date: 2014-11-29 18:59+0100\n"
 "Last-Translator: Jan Köster <jan.koester@cbjck.de>\n"
 "Language-Team:  <dasmaeh@cbjck.de>\n"
 "Language: de_DE\n"
@@ -39,9 +39,8 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: ../php/class/rpr_core.php:128 ../php/class/rpr_taxonomies.php:163
-#, fuzzy
 msgid "Edit Taxonomy"
-msgstr "Taxonomie:"
+msgstr "Taxonomie bearbeiten"
 
 #: ../php/class/rpr_core.php:160
 msgid "RPR table thumbnail"
@@ -360,9 +359,8 @@ msgid "Manage Tags"
 msgstr "Tags verwalten"
 
 #: ../php/class/rpr_taxonomies.php:34
-#, fuzzy
 msgid "Manage Recipe Taxonomies"
-msgstr "Aktuelle Rezept-Taxonomie"
+msgstr "Rezept-Taxonomien verwalten"
 
 #: ../php/class/rpr_taxonomies.php:70
 msgid "Recipe Category"
@@ -394,9 +392,8 @@ msgid "Actions"
 msgstr "Aktionen"
 
 #: ../php/class/rpr_taxonomies.php:160
-#, fuzzy
 msgid "Add Taxonomy"
-msgstr "Taxonomie:"
+msgstr "Taxonomie hinzufügen"
 
 #: ../php/class/rpr_taxonomies.php:170
 msgid "Currently editing tag: "
@@ -439,6 +436,11 @@ msgid ""
 "\"admin_demo\"><span style=\"text-transform:uppercase; font-weight:bold;"
 "\">Ready in: </span>35min</span>."
 msgstr ""
+"Icons sehen nicht nur gut aus, sie können auch Platz sparen. Wenn Sie diese "
+"Einstellung aktivieren, werden die meisten Layouts <span class=\"admin_demo"
+"\"\"><i class=\"fa fa-clock-o\" title=\"Fertig in\" ></i> 35 min</span> "
+"anstelle von <span class=\"admin_demo\"><span style=\"text-transform:"
+"uppercase; font-weight:bold;\">Fertig in: </span>35min</span> anzeigen."
 
 #: ../php/helper/admin_menu_helper.php:123 ../views/admin.php:209
 msgid "Display print link"
@@ -471,23 +473,20 @@ msgstr ""
 "an."
 
 #: ../php/helper/admin_menu_helper.php:139
-#, fuzzy
 msgid "Choose a layout"
-msgstr "Wähle ein Template"
+msgstr "Wähle ein Layout"
 
 #: ../php/helper/admin_menu_helper.php:140
-#, fuzzy
 msgid ""
 "Layouts define how your recipes will look like. Choose one of the installed "
 "templates."
 msgstr ""
-"Templates bestimmen wie deine Rezepte aussehen. Wähle eines der instalierte "
-"templates aus."
+"Layouts bestimmen wie deine Rezepte aussehen. Wähle eines der instalierten "
+"Layouts aus."
 
 #: ../php/helper/rpr_taxonomies_builder.php:5
-#, fuzzy
 msgid "Manage Taxonomies"
-msgstr "Tags verwalten"
+msgstr "Taxonomien verwalten"
 
 #: ../php/template_tags.php:104 ../php/template_tags.php:109
 #: ../php/template_tags.php:126 ../php/template_tags.php:145
@@ -596,9 +595,8 @@ msgid "Recipe notes"
 msgstr "Notizen"
 
 #: ../templates/rpr_2column/settings.php:6
-#, fuzzy
 msgid "Sample Option"
-msgstr "Vafpress Optionen"
+msgstr "Beispieleinstellung"
 
 #: ../templates/rpr_2column/settings.php:7
 #, php-format
@@ -606,6 +604,8 @@ msgid ""
 "In here layout specific options for the RPR 2column layout could appear. "
 "Read here how to use layout specific options: %s"
 msgstr ""
+"Hier könnten layoutspezifische Einstellungen für das RPR2coumn Layout "
+"erscheinen. Lesen Sie hier mehr über layoutspezifische Einstellungen: %s"
 
 #: ../views/admin.php:12
 msgid "Latest News"
@@ -688,25 +688,24 @@ msgid "Allow to attach images to instruction steps."
 msgstr "Erlaube es, Bilder an die Zubereitungsschritte anzuhängen."
 
 #: ../views/admin.php:181 ../views/settings.php:331
-#, fuzzy
 msgid "Position of instruction images"
-msgstr "Zubereitungs-Bild"
+msgstr "Position des Zubereitungs-Bild"
 
 #: ../views/admin.php:182 ../views/settings.php:332
 msgid ""
 "Decide wether your instruction images should be display next to the "
 "instructions or below."
 msgstr ""
+"Entscheiden Sie ob Bilder jeweils neben oder unterhalb der Zubereitsschritte "
+"angezeigt werden sollen."
 
 #: ../views/admin.php:186 ../views/settings.php:334
-#, fuzzy
 msgid "Right of instruction"
-msgstr "Zubereitungsschritt hinzufügen"
+msgstr "Rechts neben der Beschreibung"
 
 #: ../views/admin.php:190 ../views/settings.php:335
-#, fuzzy
 msgid "Below the instruction"
-msgstr "Zubereitungsschritt hinzufügen"
+msgstr "Unterhalb der Beschreibung"
 
 #: ../views/admin.php:203
 msgid "Print Link"
@@ -800,7 +799,7 @@ msgstr ""
 
 #: ../views/admin.php:282
 msgid "Icons"
-msgstr ""
+msgstr "Icons"
 
 #: ../views/admin.php:299 ../views/settings.php:408
 msgid "Recipe Metadata"
@@ -892,46 +891,46 @@ msgstr ""
 
 #: ../views/mce_dialog.php:6
 msgid "Insert RecipePress reloaded Shortcode"
-msgstr ""
+msgstr "Füge RPR Shortcode ein"
 
 #: ../views/mce_dialog.php:7
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: ../views/mce_dialog.php:12
 msgid "Select the type of shortcode to embed:"
-msgstr ""
+msgstr "Wählen Sie aus, welchen Shortcode Sie einfügen möchten:"
 
 #: ../views/mce_dialog.php:14
-#, fuzzy
 msgid "Embed recipe"
-msgstr "Für das ganze Rezept"
+msgstr "Rezept einbetten"
 
 #: ../views/mce_dialog.php:15
 msgid "Embed taxonomy index"
-msgstr ""
+msgstr "Taxonomie-Index einbetten"
 
 #: ../views/mce_dialog.php:16
 msgid "Embed recipe index"
-msgstr ""
+msgstr "Rezept-Index einbetten"
 
 #: ../views/mce_dialog.php:22
-#, fuzzy
 msgid "Taxonomy"
-msgstr "Taxonomie:"
+msgstr "Taxonomie"
 
 #: ../views/mce_dialog.php:41
 msgid ""
 "Choose the recipe you want to include from the list below or search for it."
 msgstr ""
+"Wählen Sie das einzubettende Rezept aus der Liste unten aus oder suchen Sie "
+"danach."
 
 #: ../views/mce_dialog.php:57
 msgid "No search term specified. Showing recent items."
-msgstr ""
+msgstr "Kein Suchbegriff angegeben. Zeige die aktuellesten EInträge."
 
 #: ../views/mce_dialog.php:58
 msgid "Search or use up and down arrow keys to select an item."
-msgstr ""
+msgstr "Suchen oder die Pfeiltasten verwenden um einen Eintrag auszuwählen."
 
 #: ../views/metabox_details.php:27
 msgid "star"
@@ -1060,7 +1059,7 @@ msgstr "Rezept"
 
 #: ../views/settings.php:120
 msgid "Section via hook"
-msgstr ""
+msgstr "Abschnitt über Haken"
 
 #: ../views/settings.php:121
 msgid ""
@@ -1072,62 +1071,63 @@ msgstr ""
 #: ../views/settings.php:272
 msgid "Defines what to show of your recipes on the archive page"
 msgstr ""
+"Gibt an, was von Ihren Rezepten auf den Archivseiten angezeigt werden soll."
 
 #: ../views/settings.php:359
-#, fuzzy
 msgid "Use advanced theming settings"
-msgstr "Weiterführende Theme-Einstellungen"
+msgstr "Weiterführende Theme-Einstellungen verwenden"
 
 #: ../views/settings.php:360
 msgid "Activate additional settings"
-msgstr ""
+msgstr "Zusätzliche Einstellungen anzeigen"
 
 #: ../views/settings.php:426
-#, fuzzy
 msgid "Exclude ingredients from listings"
-msgstr "keine Zutaten-Links"
+msgstr "Zutateb von Listen ausschließen"
 
 #: ../views/settings.php:427
 msgid ""
 "Choose ingredients you don't want to appear on ingredeint listings like the "
 "ingredient index or the ingredient cloud"
 msgstr ""
+"Geben Sie Zutaten an, die nicht in Zutatenlisten wie besipielsweise dem "
+"Zutaten-Index oder der Zutatenwolke erscheinen sollen."
 
 #: ../views/settings.php:428
 msgid ""
 "Select multiple ingredients like \"salt\" or \"pepper\" you don't want to "
 "see on the listings"
 msgstr ""
+"Wählen Sie mehrer Zuaten wie \"Salz\" oder \"Pfeffer\" die nicht in den "
+"Listen erscheinen sollen"
 
 #: ../views/settings.php:451
-#, fuzzy
 msgid "Manage custom taxonomies"
-msgstr "Eigene Taxonomien"
+msgstr "Eigene Taxonomien verwalten"
 
 #: ../views/settings.php:493
-#, fuzzy
 msgid "Documentation"
-msgstr "Dokumentation & Support"
+msgstr "Dokumentation"
 
 #: ../views/settings.php:512
 msgid "Theme Information 1"
-msgstr ""
+msgstr "Theme Information 1"
 
 #: ../views/settings.php:513 ../views/settings.php:519
 msgid "<p>This is the tab content, HTML is allowed.</p>"
-msgstr ""
+msgstr "<p>Dies ist der Tabinhalt, HTML ist erlaubt.</p>"
 
 #: ../views/settings.php:518
 msgid "Theme Information 2"
-msgstr ""
+msgstr "Theme Information 2"
 
 #: ../views/settings.php:523
 msgid "<p>This is the sidebar content, HTML is allowed.</p>"
-msgstr ""
+msgstr "<p>Dies ist der Inhalt der Seitenleiste. HTML ist erlaubt.</p>"
 
 #: ../views/settings.php:699
 msgid "<b>Readme Parser: readme.txt ot found!</b>"
-msgstr ""
+msgstr "<b>Readme Parser: readme.txt wurde nicht gefunden!</b>"
 
 #. translators: The description of the Recpipe List widget on the Appearance->Widgets page.
 #: ../widgets/list-widget.php:29
