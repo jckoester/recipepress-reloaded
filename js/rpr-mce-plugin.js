@@ -7,7 +7,7 @@
 	tinymce.create('tinymce.plugins.rpr_mce_plugin', {
         init: function(editor, url) {
             editor.addButton('rpr_mce_plugin', {
-            	title: 'My MCE Plugin',
+            	title: 'RPR Shortcodes',
                 icon: 'rpr-icon-mce',
                 onclick: function() {
                 	tinyMCE.activeEditor.execCommand('RPR_Link'); 

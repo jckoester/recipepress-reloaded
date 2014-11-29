@@ -479,7 +479,6 @@ if (!class_exists('RPR_Settings')) {
             $this->sections[] = array(
                 'icon'      => 'fa-exchange',
                 'title'     => __('Changelog', $this->pluginName ),
-                //'desc'      => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'redux-framework-demo'),
                 'fields'    => array(
                     array(
                         'id'        => 'changelog',
