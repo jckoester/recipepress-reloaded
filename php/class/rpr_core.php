@@ -791,7 +791,8 @@ function rpr_mce_buttons_filter($buttons) {
     
     public function recipes_shortcode($options) {
         $options = shortcode_atts(array(
-            'id' => 'n/a'
+            'id' => 'n/a',
+            'excerpt' => 0,
         ), $options);
 
         $recipe_post = null;
@@ -810,7 +811,7 @@ function rpr_mce_buttons_filter($buttons) {
                 $recipe_post = get_post(intval($options['id']));
             }
         }
-        if(!is_null($recipe_post) && $recipe_post->post_type == 'rpr_recipe')
+        if(!is_null($recipe_post) && $recipe_post->post_type == 'rpr_recipe' )
         {
             $recipe = get_post_custom($recipe_post->ID);
 
@@ -818,9 +819,16 @@ function rpr_mce_buttons_filter($buttons) {
 
             ob_start();
             
-            include($this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/recipe.php');
-            
-            $output = ob_get_contents();
+			if( $options['excerpt']== 0 ){
+				$output='';
+            	include($this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/recipe.php');
+			} elseif( $options['excerpt']== 1 ){
+				//var_dump($recipe_post);
+				$output = '<h2 class="rpr_title">'.$recipe_post->post_title.'</h2>';
+				$output .= get_the_post_thumbnail($recipe_post->ID); 
+				include($this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/excerpt.php');
+			}
+            $output .= ob_get_contents();
             ob_end_clean();
         }
         else
