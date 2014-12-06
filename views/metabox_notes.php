@@ -5,7 +5,7 @@ $options = array(
 );
 
 //if(isset($wpurp_user_submission)) {
-    $options['media_buttons'] = false;
+    $options['media_buttons'] = true;
 //}
 
 wp_editor( $notes, 'rpr_recipe_notes',  $options );
