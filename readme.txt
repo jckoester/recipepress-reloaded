@@ -56,6 +56,7 @@ If you want a translation of another language included please help translating!
 * button for the editor to include shortcodes
 * exclude ingredients like 'salt' and 'pepper' from ingredient listings
 * completely refurbished settings page
+* media buttons for description and notes sections
 * fixing a bug affecting attachment pages
 = 0.7.2 =
 * fixed a bug affecting foreign post types
