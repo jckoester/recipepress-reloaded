@@ -52,7 +52,7 @@ If you want a translation of another language included please help translating!
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
-=0.7.3=
+= 0.7.3 =
 * button for the editor to include shortcodes
 * exclude ingredients like 'salt' and 'pepper' from ingredient listings
 * completely refurbished settings page
@@ -129,3 +129,4 @@ I'm currently building up http://www.rp-reloaded.net/ as the home of RecipePress
 3. Output is using Schema.org's microformat for recipes to allow Google to create RichSnippets
 4. Details of the backend interface (ingredients). Easily add number, unit, ingredient name, comment and link. Ingredients will automatically be created as taxonomy items. You can also group ingredients.  
 5. Details of the backend interface (instructions). Add instructions step by step. You can even illustrate each step with a picture. Of course istructions can be grouped as well.
+6. Easily embed recipes into posts or pages using the shortcode button in the editor
