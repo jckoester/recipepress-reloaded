@@ -278,14 +278,3 @@ function rpr_shortcode_generator_authors()
     return $authors_list;
 }
 
-//=-=-=-=-=-=-= WHITELIST =-=-=-=-=-=-=
-
-VP_Security::instance()->whitelist_function('rpr_admin_latest_news_changelog');
-VP_Security::instance()->whitelist_function('rpr_admin_recipe_slug_preview');
-VP_Security::instance()->whitelist_function('rpr_admin_manage_tags');
-
-
-VP_Security::instance()->whitelist_function('rpr_shortcode_generator_recipes_by_date');
-VP_Security::instance()->whitelist_function('rpr_shortcode_generator_recipes_by_title');
-VP_Security::instance()->whitelist_function('rpr_shortcode_generator_taxonomies');
-VP_Security::instance()->whitelist_function('rpr_shortcode_generator_authors');

@@ -178,7 +178,7 @@ class RPReloaded{
 	
 }
 
-require_once('lib/vafpress/bootstrap.php');
+//require_once('lib/vafpress/bootstrap.php');
 $rpr = new RPReloaded();
 
 include_once('php/template_tags.php');
