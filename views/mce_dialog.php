@@ -31,7 +31,10 @@
 	 					?>
 	 				</select>
 	 			</div>
-	 			
+	 		</div>
+	 		<div id="embed-excerpt-div">
+	 			<input type="checkbox" id="rpr-embed-excerpt" name="embed-excerpt" value="true" />
+	 			<label for="rpr-embed-excerpt"><span><?php _e( 'Embed excerpt only', 'recipepress-reloaded' ); ?></span></label>
 	 		</div>
 	 		<div id="rpr-recipelist-panel" style="display:none;"></div>
 			<div id="rpr-recipe-panel">

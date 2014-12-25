@@ -3,7 +3,7 @@
     background-color: #fff;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
     display: none;
-    height: 250px;
+    height: 266px;
     left: 50%;
     margin-left: -250px;
     margin-top: -125px;
@@ -161,7 +161,7 @@
     overflow: auto;
     position: absolute;
     right: 16px;
-    top: 116px;
+    top: 136px;
 }
 #rpr-link li {
     border-bottom: 1px solid #f1f1f1;
@@ -338,4 +338,8 @@
 
 i.mce-i-rpr-icon-mce{
 	background:url('../img/icon_mce.png') no-repeat;
+}
+
+#embed-excerpt-div{
+	border-bottom:solid 1px #dfdfdf;
 }

@@ -25,10 +25,10 @@
         },
         getInfo: function() {
             return {
-                longname : 'My MCE Plugin',
-                author : 'laubsterboy',
-                authorurl : 'http://laubsterboy.com',
-                infourl : 'http://laubsterboy.com',
+                longname : 'RPR Shortcode Plugin',
+                author : 'Jan Köster',
+                authorurl : 'http://rp-reloaded.net',
+                infourl : 'http://rp-reloaded.net',
                 version : "1.0"
             };
         },

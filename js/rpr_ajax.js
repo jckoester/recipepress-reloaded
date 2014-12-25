@@ -34,6 +34,8 @@ rprLink = {
 		inputs.taxonomy =$( '#recipe-taxonomy' );
 		inputs.openInNewTab = $( '#link-target-checkbox' );
 		inputs.search = $( '#rpr-search-field' );
+		inputs.excerpt = $( '#rpr-embed-excerpt' );
+		inputs.excerpt.prop("checked", false);
 		
 		// Shortcode Panes
 		inputs.tax_wrap = $( '#rpr-taxonomy-panel');
@@ -304,6 +306,10 @@ rprLink = {
 				}
 				out+="[rpr-recipe";
 				out+=" id="+inputs.id.val();
+				
+				if( inputs.excerpt.val() == 'true' ){
+					out+= " excerpt=1";
+				}
 				out+=" ]";
 				break;
 			case 'rpr-tax-list':
