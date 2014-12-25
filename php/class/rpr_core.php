@@ -299,6 +299,8 @@ function rpr_mce_buttons_filter($buttons) {
     }
 
     function query_recipes($query) {
+    	global $rpr_option;
+		
 		// Don't change query on admin page
     	if (is_admin()){
     		return;
@@ -313,20 +315,34 @@ function rpr_mce_buttons_filter($buttons) {
 				return;
     		}
 			
+			// Homepage
+			if ($rpr_option['recipe_homepage_display']==true){
+				if( is_home() ){
+					$this->add_recipe_to_query($query);
+				}
+			}
 			// All other pages:
-			if( !is_page() && ! is_attachment() ){
-				// add post type to query
-				$post_type = $query->get('post_type');
-            	if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){
-            		$post_type[] = 'rpr_recipe';
-            	} else {
-            		$post_type = array( 'post', $post_type, 'rpr_recipe' );
-            	}
-            	$query->set( 'post_type', $post_type );
-				return;
+			if( is_home() || is_category() || is_tag() ){
+				$this->add_recipe_to_query($query);
 			}
   		}
+		return;
     }
+	
+	private function add_recipe_to_query($query)
+	{
+		// add post type to query
+		$post_type = $query->get('post_type');
+        
+        if( is_array( $post_type ) && ! array_key_exists( 'rpr_recipe', $post_type ) ){
+        	$post_type[] = 'rpr_recipe';
+        } else {
+        	$post_type = array( 'post', $post_type, 'rpr_recipe' );
+        }
+        
+		$query->set( 'post_type', $post_type );
+		return;
+	}
     
     public function rpr_metabox_init()
     {

@@ -266,9 +266,18 @@ if (!class_exists('RPR_Settings')) {
             	'heading'	=> __( 'Recipe Archive Pages', $this->pluginName ),
             	'fields'	=> array(
             		array(
+            			'id'	=> 'recipe_homepage_display',
+            			'type'	=> 'switch',
+            			'title' => __('Home Page', $this->pluginName),
+            			'subtitle' => __( 'Defines if recipes should be displayed on the homepage like \'normal\' posts.', $this->pluginName) ,
+            			'default' => true,
+            			'on' => __( 'Yes', $this->pluginName ),
+            			'off' => __( 'No', $this->pluginName ),
+            		),
+            		array(
             			'id'	=> 'recipe_archive_display',
             			'type'	=> 'select',
-            			'title' => __('Display', $this->pluginName),
+            			'title' => __('Archive Page', $this->pluginName),
             			'subtitle' => __( 'Defines what to show of your recipes on the archive page', $this->pluginName) ,
             			'options'	=> array(
             				'excerpt' => __( 'Only the excerpt', $this->pluginName ),
