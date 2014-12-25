@@ -210,8 +210,7 @@
                 $css   = '';
                 $value = $this->value;
 
-                $output = '';
-                if ( ! empty( $value ) && ! is_array($value) ) {
+                if ( ! empty( $value ) ) {
                     switch ( $mode ) {
                         case 'background-image':
                             $output = "background-image: url('" . $value . "');";

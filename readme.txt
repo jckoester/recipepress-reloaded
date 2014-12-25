@@ -2,8 +2,8 @@
 Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
 Requires at least: 3.8
-Tested up to: 4.0.1
-Stable tag: 0.7.3
+Tested up to: 4.1
+Stable tag: 0.7.4
 License: GPLv2
 
 A simple recipe plugin. It does all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically.
@@ -52,6 +52,10 @@ If you want a translation of another language included please help translating!
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
+
+= 0.7.4 =
+* added an option to hide recipes from homepage
+* fixed a problem of RPR interfering with other plugins
 = 0.7.3 =
 * button for the editor to include shortcodes
 * exclude ingredients like 'salt' and 'pepper' from ingredient listings
@@ -62,7 +66,6 @@ If you want a translation of another language included please help translating!
 * fixed a bug affecting foreign post types
 = 0.7.1 =
 * completly recoded function for querying recipes 
-
 = 0.7.0 =
 * proper excerpts for recipes
 * templates can define the look & feel of excerpts
