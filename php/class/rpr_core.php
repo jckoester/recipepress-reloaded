@@ -316,16 +316,18 @@ function rpr_mce_buttons_filter($buttons) {
     		}
 			
 			// Homepage
-			if ($rpr_option['recipe_homepage_display']==true){
-				if( is_home() ){
+			if ( $rpr_option['recipe_homepage_display']=='1' ){
+				if( is_home() || $query->is_home() || $query->is_front_page() ){
 					$this->add_recipe_to_query($query);
 				}
 			}
 			// All other pages:
-			if( is_home() || is_category() || is_tag() ){
+			if( is_category() || is_tag() ){
 				$this->add_recipe_to_query($query);
+				return;
 			}
   		}
+		
 		return;
     }
 	
@@ -457,6 +459,8 @@ function rpr_mce_buttons_filter($buttons) {
     
     public function recipes_save( $recipe_id, $recipe )
     {
+    	remove_action('save_post', array($this, 'recipes_save'));
+		
     	$data=$_POST;
     	//if(!isset($data)||$data==""){$data=$_POST;}
     	if( $recipe->post_type == 'rpr_recipe' )
@@ -555,6 +559,14 @@ function rpr_mce_buttons_filter($buttons) {
 	    
 	    				$new = $non_empty_instructions;
 	    			}
+					elseif ( $field == 'rpr_recipe_description' )
+					{
+						// Set Excerpt:
+						$recipe->post_content = $data[$field];
+						$recipe->post_excerpt = $data[$field];
+						wp_update_post($recipe);
+						
+					}
 	    			//echo '<div style="color:red">';var_dump($new);echo'</div>';
 	    			// Update or delete meta data if changed
 	    			if (isset($new) && $new != $old)
@@ -565,9 +577,11 @@ function rpr_mce_buttons_filter($buttons) {
 	    			{
 	    				delete_post_meta( $recipe_id, $field, $old );
 	    			}
+					
 	    		}
     		}
     	}
+	add_action('save_post', array($this, 'recipes_save'));
     }
     
     /* 
