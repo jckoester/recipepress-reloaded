@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecipePress reloaded\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-25 21:55+0100\n"
-"PO-Revision-Date: 2014-12-25 21:56+0100\n"
+"POT-Creation-Date: 2014-12-25 23:34+0100\n"
+"PO-Revision-Date: 2014-12-25 23:34+0100\n"
 "Last-Translator: Jan Köster <jan.koester@cbjck.de>\n"
 "Language-Team:  <dasmaeh@cbjck.de>\n"
 "Language: de_DE\n"
@@ -24,7 +24,7 @@ msgstr "Absenden"
 msgid "Save"
 msgstr "Speichern"
 
-#: ../php/class/rpr_core.php:125 ../views/mce_dialog.php:69
+#: ../php/class/rpr_core.php:125 ../views/mce_dialog.php:72
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -77,7 +77,7 @@ msgid "View"
 msgstr "Betrachten"
 
 #: ../php/class/rpr_core.php:283 ../php/class/rpr_core.php:1051
-#: ../php/class/rpr_taxonomies.php:258 ../views/mce_dialog.php:44
+#: ../php/class/rpr_taxonomies.php:258 ../views/mce_dialog.php:47
 msgid "Search"
 msgstr "Suchen"
 
@@ -918,18 +918,22 @@ msgstr "Rezept-Index einbetten"
 msgid "Taxonomy"
 msgstr "Taxonomie"
 
-#: ../views/mce_dialog.php:41
+#: ../views/mce_dialog.php:37
+msgid "Embed excerpt only"
+msgstr "Nur Auszug einbetten"
+
+#: ../views/mce_dialog.php:44
 msgid ""
 "Choose the recipe you want to include from the list below or search for it."
 msgstr ""
 "Wählen Sie das einzubettende Rezept aus der Liste unten aus oder suchen Sie "
 "danach."
 
-#: ../views/mce_dialog.php:57
+#: ../views/mce_dialog.php:60
 msgid "No search term specified. Showing recent items."
 msgstr "Kein Suchbegriff angegeben. Zeige die aktuellesten EInträge."
 
-#: ../views/mce_dialog.php:58
+#: ../views/mce_dialog.php:61
 msgid "Search or use up and down arrow keys to select an item."
 msgstr "Suchen oder die Pfeiltasten verwenden um einen Eintrag auszuwählen."
 

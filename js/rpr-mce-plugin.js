@@ -26,7 +26,7 @@
         getInfo: function() {
             return {
                 longname : 'RPR Shortcode Plugin',
-                author : 'Jan Köster',
+                author : 'Jan Koester',
                 authorurl : 'http://rp-reloaded.net',
                 infourl : 'http://rp-reloaded.net',
                 version : "1.0"

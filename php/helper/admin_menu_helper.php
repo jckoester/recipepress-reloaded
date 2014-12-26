@@ -100,6 +100,14 @@ function rpr_admin_template_list()
 			}
 		}
 	}
+	
+	// Include local layouts from theme directory as well
+	$dirname = get_stylesheet_directory() . '/rprp_layouts/';
+	if ($handle = opendir( $dirname )) {
+		vars_dump('Local Templates found');
+	}
+	
+	
 	return $templates;
 }
 
