@@ -455,7 +455,7 @@ if ( !function_exists('get_the_recipe_times') ) {
 		if( isset($recipe['rpr_recipe_prep_time'][0]) && $recipe['rpr_recipe_prep_time'][0] != '' ) {
 			$out .= '<dt>';
 			if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
-				$out .= '<i class="fa fa-cog recipe-times-icon" title="'.__( 'Preparation Time', 'recipepress-reloaded' ).'"></i>';
+				$out .= '<i class="fa fa-cog recipe-times-icon" title="'.__( 'Preparation Time', 'recipepress-reloaded' ).'"></i><span class="hidden recipe-times-text">' . __( 'Preparation', 'recipepress-reloaded' ) . '</span>';
 			} else {
 				$out .= __( 'Preparation', 'recipepress-reloaded' );
 			}
@@ -469,7 +469,7 @@ if ( !function_exists('get_the_recipe_times') ) {
 		if( isset($recipe['rpr_recipe_cook_time'][0]) && $recipe['rpr_recipe_cook_time'][0] != '' ) {
 			$out .= '<dt>';
 			if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
-				$out .= '<i class="fa fa-fire recipe-times-icon" title="'.__( 'Cook Time', 'recipepress-reloaded' ).'"></i>';
+				$out .= '<i class="fa fa-fire recipe-times-icon" title="'.__( 'Cook Time', 'recipepress-reloaded' ).'"></i><span class="hidden recipe-times-text">' . __( 'Cooking', 'recipepress-reloaded' ) . '</span>';
 			} else {
 				$out .= __( 'Cooking', 'recipepress-reloaded' );
 			}
@@ -496,7 +496,7 @@ if ( !function_exists('get_the_recipe_times') ) {
 		if($totaltime != 0 ) {
 			$out .= '<dt>';
 			if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
-				$out .= '<i class="fa fa-clock-o recipe-times-icon" title="'.__( 'Total Time', 'recipepress-reloaded' ).'"></i>';
+				$out .= '<i class="fa fa-clock-o recipe-times-icon" title="'.__( 'Total Time', 'recipepress-reloaded' ).'"></i><span class="hidden recipe-times-text">' . __( 'Ready in', 'recipepress-reloaded' ) . '</span>';
 			} else {
 				$out .= __( 'Ready in', 'recipepress-reloaded' );
 			}

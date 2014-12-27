@@ -62,7 +62,10 @@ li.ingredient-in-group{
 }
 /* Times */
 .recipe-times-icon{
-	/*display:none;*/
+	display:none;
+}
+.recipe-times-text{
+	display:inline!important;
 }
 
 /* recipe instructions */
