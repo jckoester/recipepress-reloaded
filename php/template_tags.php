@@ -173,12 +173,12 @@ if ( !function_exists('get_the_recipe_taxonomy_bar') ) {
                 if(!is_wp_error($terms) && $terms != '') {
                 	$icon='';
                 	if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){ 
-                		$icon = '<i class="fa fa-list-alt title=' . $tax->labels->name . '></i> '; 
+                		$icon = '<i class="fa fa-list" title=' . $tax->labels->name . '></i> '; 
                 	} else {
                 		$icon=$tax->labels->name . ': '; 
                 	}
                     $out .= sprintf(
-                        '<span class="fa fa-list-alt category-list">%1s%2s</span>',
+                        '<span class="category-list">%1s%2s</span>',
                     	$icon,
                         get_the_term_list( $recipe_id, $taxonomy, '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
                     );
