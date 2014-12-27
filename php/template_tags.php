@@ -380,7 +380,11 @@ if ( ! function_exists('get_the_recipe_ingredient_list') ) {
 					$previous_group = $ingredient['group'];
 				}
 			
-				$out .= '<li itemprop="ingredients">';
+				$out .= '<li itemprop="ingredients"';
+				if(isset($ingredient['group'])){
+					$out .= 'class="ingredient-in-group" ';
+				}
+				$out .= '>';
 				$out .= '<span class="recipe-ingredient-quantity-unit"><span class="recipe-ingredient-quantity" data-original="'.$ingredient['amount'].'">'.$ingredient['amount'].'</span> <span class="recipe-ingredient-unit">'.$ingredient['unit'].'</span></span>';
 			
 			
@@ -574,7 +578,7 @@ if ( ! function_exists('get_the_recipe_instruction_list') ) {
 			}
 			$out .= '</ol>';
 		} else {
-			$out.='<p class="warning">'.__('No instructions could be found for this recipe.', $this->pluginName).'</p>';
+			$out.='<p class="warning">'.__('No instructions could be found for this recipe.', 'recipepress-reloaded' ).'</p>';
 		}
 		
 		return $out;

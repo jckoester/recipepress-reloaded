@@ -307,7 +307,7 @@ rprLink = {
 				out+="[rpr-recipe";
 				out+=" id="+inputs.id.val();
 				
-				if( inputs.excerpt.val() == 'true' ){
+				if( inputs.excerpt.prop("checked") == true ){
 					out+= " excerpt=1";
 				}
 				out+=" ]";

@@ -704,6 +704,8 @@ function rpr_mce_buttons_filter($buttons) {
     
     public function recipes_content( $content )
     {
+    	global $rpr_option;
+		
     	if (!in_the_loop () || !is_main_query ()) {
     		return $content;
     	}
@@ -732,25 +734,9 @@ function rpr_mce_buttons_filter($buttons) {
     
     		if (is_single() || $this->option('recipe_archive_display', 'excerpt') == 'full')
     		{
-    			$taxonomies = $this->get_custom_taxonomies();
-    			unset($taxonomies['ingredient']);
-    
-    			ob_start();
-    			
-    			include($this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/recipe.php');
-    
-    			$recipe_box = ob_get_contents();
-    			ob_end_clean();
-
-    			//if(strpos($content, '[rpr_recipe]') !== false) {
-    			//	$content = str_replace('[rpr_recipe]', $recipe_box, $content);
-    			//} else { // Add recipe to end of post
-    				$content = $recipe_box;
-    			//}
-    		}
-    		else
-    		{
-    			$content = $this->get_recipes_excerpt();
+    			$content = $this->get_recipes_content($recipe_post);
+    		} else {
+    			$content = $this->get_recipes_excerpt( $recipe_post );
     		}
     
     		add_filter('the_content', array( $this, 'recipes_content' ), 10);
@@ -759,6 +745,33 @@ function rpr_mce_buttons_filter($buttons) {
     	return $content;
     }
     
+	private function get_recipes_content ($recipe_post ){
+		global $rpr_option;
+		
+    	$recipe = get_post_custom($recipe_post->ID);
+		ob_start();
+		
+		// Check if a global or local layout should be used:
+		if( strpos( $rpr_option['rpr_template'], 'local') !== false ){
+			//Local layout
+			$includepath = get_stylesheet_directory() . '/rpr_layouts/'. preg_replace('/^local\_/', '', $this->option( 'rpr_template', 'rpr_default' )) . '/recipe.php';
+		} else {
+			//Global layout
+			$includepath = $this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/recipe.php';
+		}
+		
+		if( file_exists($includepath) ){
+    		include($includepath);
+			$content = ob_get_contents();
+		} else {
+			$content = __('There was an error parsing the layout file. No content can be displayed', $this->pluginName );
+		}
+		
+		ob_end_clean();
+		
+		return $content;
+	}
+	
     public function recipes_excerpt( $content ) {
         if (!in_the_loop () || !is_main_query ()) {
             return $content;
@@ -767,39 +780,40 @@ function rpr_mce_buttons_filter($buttons) {
         if ( get_post_type() == 'rpr_recipe' ) {
             remove_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
             $recipe_post = get_post();
-            //$content = $recipe_post->post_excerpt
-            $recipe = get_post_custom($recipe_post->ID);
-
-            if( isset($recipe['rpr_recipe_description'][0]) ){
-                $content = $recipe['rpr_recipe_description'][0];
-            }
-
-          add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
-          $content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();              
+            
+			$content = $this->get_recipes_excerpt($recipe_post);
+			
+          	add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
         }
         return $content;
     }
      
-    public function get_recipes_excerpt() {
-/*        if (!in_the_loop () || !is_main_query ()) {
-            return $content;
-        }
-
-        if ( get_post_type() == 'rpr_recipe' ) {
-            remove_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
-*/            $recipe_post = get_post();
-            //$content = $recipe_post->post_excerpt
-            $recipe = get_post_custom($recipe_post->ID);
-
-            if( isset($recipe['rpr_recipe_description'][0]) ){
-                $content = $recipe['rpr_recipe_description'][0];
-            }
-
-  //          add_filter('get_the_excerpt', array( $this, 'recipes_excerpt' ), 10);
-  //      }
-        
-    //    return $content;
-    return get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();    
+    private function get_recipes_excerpt($recipe_post) {
+    	global $rpr_option;
+		
+    	$recipe = get_post_custom($recipe_post->ID);
+		
+		$content = $this->get_recipes_content($recipe_post);
+		ob_start();
+		
+    	// Check if a global or local layout should be used:
+		if( strpos( $rpr_option['rpr_template'], 'local') !== false ){
+			//Local layout
+			$includepath = get_stylesheet_directory() . '/rpr_layouts/'. preg_replace('/^local\_/', '', $this->option( 'rpr_template', 'rpr_default' )) . '/excerpt.php';
+		} else {
+			//Global layout
+			$includepath = $this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/excerpt.php';
+		}
+		if(file_exists($includepath)){
+			include( $includepath);
+			$content = ob_get_contents();
+		} else {
+			$content = get_the_recipe_taxonomy_bar().wpautop($content).get_the_recipe_times();
+		}
+		
+    	ob_end_clean();
+		
+		return $content;
     }
 
     // These filters will only be regoistered, if the apropriate settings are made
@@ -820,6 +834,8 @@ function rpr_mce_buttons_filter($buttons) {
     }
     
     public function recipes_shortcode($options) {
+    	global $rpr_option;
+		
         $options = shortcode_atts(array(
             'id' => 'n/a',
             'excerpt' => 0,
@@ -846,20 +862,16 @@ function rpr_mce_buttons_filter($buttons) {
             $recipe = get_post_custom($recipe_post->ID);
 
             $taxonomies = $this->get_custom_taxonomies();
-
-            ob_start();
             
-			if( $options['excerpt']== 0 ){
-				$output='';
-            	include($this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/recipe.php');
+			if( $options['excerpt'] == 0 ){
+				// Embed complete recipe
+				$output = $this->get_recipes_content($recipe_post);
 			} elseif( $options['excerpt']== 1 ){
-				//var_dump($recipe_post);
+				// Embed excerpt only
 				$output = '<h2 class="rpr_title">'.$recipe_post->post_title.'</h2>';
 				$output .= get_the_post_thumbnail($recipe_post->ID); 
-				include($this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/excerpt.php');
+				$output .=  $this->get_recipes_excerpt($recipe_post);
 			}
-            $output .= ob_get_contents();
-            ob_end_clean();
         }
         else
         {

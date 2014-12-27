@@ -61,55 +61,76 @@ function f_comment( $entry ){
 
 function rpr_admin_template_list()
 {
-	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/templates/';
 	$templates = array();
 	
+	// Check for global layouts
+	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/templates/';
+	
 	if ($handle = opendir( $dirname )) {
-		//$i=0;
+		// Walk through all folders in that directory:
 		while (false !== ($file = readdir($handle))) {
 			if( $file !='.' && $file !='..' && $file != '.svn' ) {
-				// Param parsing inspired by http://stackoverflow.com/questions/11504541/get-comments-in-a-php-file
-				// put in an extra function?
-				$params=array();
-				$filename = $dirname . $file . '/recipe.php';
-				
-				$docComments = array_filter(
-						token_get_all( file_get_contents( $filename ) ), 
-						/*function($entry) {
-							return $entry[0] == T_COMMENT;
-						}*/
-						"f_comment"
-				);
-				
-				$fileDocComment = array_shift( $docComments );
-				
-				$regexp = "/.*\:.*\n/";
-				preg_match_all($regexp, $fileDocComment[1], $matches);
-				
-				foreach( $matches[0] as $match ){
-					$param = explode(": ", $match);
-					$params[ trim( $param[0] ) ] = trim( $param[1] );
-				}
-
-				$templates[$file] = array(
-						'value' => $file,
-						'title' => $params['Template Name'],
-						'img' => WP_PLUGIN_URL . '/recipepress-reloaded/templates/' . $file . '/screenshot.png',
-					);
-				//$i++;
+				// Goto each folder and create an array
+				$templates[$file] = layout2option( $dirname, $file );	
 			}
 		}
 	}
 	
-	// Include local layouts from theme directory as well
+	// Check for local layouts from theme directory as well
 	$dirname = get_stylesheet_directory() . '/rpr_layouts/';
+	
 	if ( file_exists($dirname ) && $handle = opendir( $dirname )) {
-		vars_dump('Local Templates found');
+		// Walk through all folders in that directory:
+		while (false !== ($file = readdir($handle))) {
+			if( $file !='.' && $file !='..' && $file != '.svn' ) {
+				// Goto each folder and create an array
+				$templates['local_'.$file] = layout2option( $dirname, $file );
+			}
+		}
 	}
 	
+		
+	//var_dump($templates);
 	
 	return $templates;
 }
+
+function layout2option($dirname, $file)
+{
+	// Param parsing inspired by http://stackoverflow.com/questions/11504541/get-comments-in-a-php-file
+	$params=array();
+	$filename = $dirname . $file . '/recipe.php';
+					
+	$docComments = array_filter(
+		token_get_all( file_get_contents( $filename ) ), 
+			"f_comment"
+	);
+	
+	$fileDocComment = array_shift( $docComments );
+					
+	$regexp = "/.*\:.*\n/";
+	preg_match_all($regexp, $fileDocComment[1], $matches);
+					
+	foreach( $matches[0] as $match ){
+		$param = explode(": ", $match);
+		$params[ trim( $param[0] ) ] = trim( $param[1] );
+	}
+					
+	$options = array(
+			'value' => $file,
+			'title' => $params['Template Name'],
+			'img' => WP_PLUGIN_URL . '/recipepress-reloaded/templates/' . $file . '/screenshot.png',
+		);
+	if( strpos($dirname, get_stylesheet_directory() ) !== false){
+		$options['value'] = 'local_'.$file;
+		$options['title'] = strtoupper( __('Local', 'recipepress-reloaded' )) . ' ' . $params['Template Name'];
+		$options['img'] = get_stylesheet_directory_uri() . '/rpr_layouts/' . $file . '/screenshot.png';
+	}
+	
+	return $options;
+}
+
+
 
 function rpr_admin_template_settings()
 {

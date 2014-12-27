@@ -57,7 +57,9 @@ ul.recipe-ingredients li{
 	/*border-bottom:#ccc 1px solid;*/
 	padding:0.25ex 0;
 }
-
+li.ingredient-in-group{
+	margin-left:32px; 
+}
 /* Times */
 .recipe-times-icon{
 	/*display:none;*/

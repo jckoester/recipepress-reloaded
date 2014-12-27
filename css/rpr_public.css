@@ -51,6 +51,10 @@ ul.rpr_letter_nav li{
 div.rpr-index-container{
     clear:both;
 }
+
+li.ingredient-in-group{
+	margin-left:32px; 
+}
 /* ALT */
 ul.rpr_info_line{
     list-style:none!important;

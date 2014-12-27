@@ -128,3 +128,6 @@ ol.recipe-instructions img.rpr_instrimage_right{
 span.print-link{
 	float:right;
 }
+li.ingredient-in-group{
+	margin-left:32px; 
+}
