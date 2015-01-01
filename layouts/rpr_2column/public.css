@@ -1,0 +1,103 @@
+@CHARSET "UTF-8";
+
+.rpr-clear{
+	clear:both;
+}
+
+/* hide some information*/
+.hidden, .rpr_hidden{
+    display:none!important;
+}
+
+.rpr-container{
+    vertical-align:top!important;
+}
+
+.rpr-container h3 i.fa{
+	margin-right:0.25em;
+}
+
+.rpr_col1{
+	width:66%;
+	float:left;
+}
+.rpr_col2{
+	width:33%;
+	float:right;
+}
+/* definiton-lists */
+.rpr-container dl{
+	
+}
+
+.rpr-container dt{
+	float:left;
+	width:70%;
+	display:table-cell;
+}
+.rpr-container dd{
+	width:30%;
+	display:table-cell;
+	text-align:right;
+	text-transform: none;
+}
+
+.rpr-container li{
+	list-style:none;
+}
+
+/* ingredients */
+ul.recipe-ingredients{
+	list-style:none;
+	display:table;
+	margin-left:0;
+	padding-left:0;
+}
+ul.recipe-ingredients li{
+	/*border-bottom:#ccc 1px solid;*/
+	padding:0.25ex 0;
+}
+li.ingredient-in-group{
+	margin-left:32px; 
+}
+/* Times */
+.recipe-times-icon{
+	display:none;
+}
+.recipe-times-text{
+	display:inline!important;
+}
+
+/* recipe instructions */
+ol.recipe-instructions{
+    vertical-align:top!important;
+    }
+ol.recipe-instructions li{
+	list-style:decimal;
+	margin:0 0 0.5em 0;
+    vertical-align:top!important;
+    clear:both;
+   }
+   
+/* Nutrition */
+
+ol.recipe-instructions span.rpr_instrimage_right{
+	display:block;
+	float:left;
+    width:60%;
+    width: calc( 100% - 165px );
+}
+
+ol.recipe-instructions img.rpr_instrimage_right{
+	margin-left:10px;
+    display:inline-block;
+    vertical-align:top;
+}
+
+span.print-link{
+	float:right;
+}
+
+i.rpr_cuisine:before{
+	content:"\f024";
+}

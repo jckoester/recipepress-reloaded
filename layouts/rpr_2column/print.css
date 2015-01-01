@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+img{
+	display:none!important;
+}
+
+.print-link{
+	display:none;
+}
+
+a{
+	color:black!important;
+	text-decoration:none!important;
+}

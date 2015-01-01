@@ -24,7 +24,7 @@ function rpr_admin_latest_news_changelog()
 	// headlines
 	$readme = preg_replace('/== (.*?) ==/', '', $readme);
 	$readme = preg_replace('/= (.*?) =/', '<h4>\\1</h4>', $readme);
-	rpr_admin_template_list();
+	rpr_admin_layout_list();
 	// creating lists:
 	$readme = preg_replace('/\*(.*?)\n/', ' <li>\\1</li>', $readme);
 	$readme = preg_replace('/<\/h4>/', '</h4><ul>', $readme);
@@ -59,19 +59,22 @@ function f_comment( $entry ){
 	return $entry[0] == T_COMMENT;
 }
 
-function rpr_admin_template_list()
+function rpr_admin_layout_list()
 {
-	$templates = array();
+	$layouts = array();
+	$layouts['description']=array();
 	
 	// Check for global layouts
-	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/templates/';
+	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/layouts/';
 	
 	if ($handle = opendir( $dirname )) {
 		// Walk through all folders in that directory:
 		while (false !== ($file = readdir($handle))) {
 			if( $file !='.' && $file !='..' && $file != '.svn' ) {
 				// Goto each folder and create an array
-				$templates[$file] = layout2option( $dirname, $file );	
+				$options = layout2option( $dirname, $file );
+				$layouts['selection'][$file] = $options['selection'];	
+				$layouts['description'][$file] = $options['description'];	
 			}
 		}
 	}
@@ -84,15 +87,14 @@ function rpr_admin_template_list()
 		while (false !== ($file = readdir($handle))) {
 			if( $file !='.' && $file !='..' && $file != '.svn' ) {
 				// Goto each folder and create an array
-				$templates['local_'.$file] = layout2option( $dirname, $file );
+				$options = layout2option( $dirname, $file );
+				$layouts['selection']['local_'.$file] = $options['selection'];
+				$layouts['description']['local_'.$file] = $options['description'];	
 			}
 		}
 	}
 	
-		
-	//var_dump($templates);
-	
-	return $templates;
+	return $layouts;
 }
 
 function layout2option($dirname, $file)
@@ -116,15 +118,45 @@ function layout2option($dirname, $file)
 		$params[ trim( $param[0] ) ] = trim( $param[1] );
 	}
 					
-	$options = array(
+	$options['selection'] = array(
 			'value' => $file,
-			'title' => $params['Template Name'],
-			'img' => WP_PLUGIN_URL . '/recipepress-reloaded/templates/' . $file . '/screenshot.png',
+			'title' => $params['Layout Name'],
+			'img' => WP_PLUGIN_URL . '/recipepress-reloaded/layouts/' . $file . '/screenshot.png',
 		);
+	$options['description'] = array(
+		'id' => $file . '_desc',
+		'type' => 'info',
+    	'title' => $params['Layout Name'],
+    	'subtitle' => sprintf( __('Version %s | ', 'recipepress-reloaded' ), $params['Version']),
+		'required' => array('rpr_template','equals',$file)
+	);
+	
+	if( isset( $params['Author URL'] ) && $params['Author URL'] != "" )
+	{
+		$link = $params['Author URL'];
+		$link = parse_url($link, PHP_URL_SCHEME) === null ? 'http://' . $link : $link;
+		$options['description']['subtitle'].= sprintf( __('By <a href="%s">%s</a> |  ', 'recipepress-reloaded' ), $link, $params['Author']);
+	} else {
+		$options['description']['subtitle'].= __('By %s |  ', 'recipepress-reloaded' );
+	}
+	
+	if( isset( $params['Author Mail'] ) && $params['Author Mail'] != "" )
+	{
+		$options['description']['subtitle'].= sprintf( __('<a href="mailto:%s">Contact</a>', 'recipepress-reloaded' ), $params['Author Mail'] );	
+	}
+	
+	if( isset( $params['Description'] ) && $params['Description'] != "" )
+	{
+		$options['description']['subtitle'].= '</br>' . $params['Description'];	
+	}
+	
+	
 	if( strpos($dirname, get_stylesheet_directory() ) !== false){
-		$options['value'] = 'local_'.$file;
-		$options['title'] = strtoupper( __('Local', 'recipepress-reloaded' )) . ' ' . $params['Template Name'];
-		$options['img'] = get_stylesheet_directory_uri() . '/rpr_layouts/' . $file . '/screenshot.png';
+		$options['selection']['value'] = 'local_'.$file;
+		$options['selection']['title'] = strtoupper( __('Local', 'recipepress-reloaded' )) . ' ' . $params['Layout Name'];
+		$options['selection']['img'] = get_stylesheet_directory_uri() . '/rpr_layouts/' . $file . '/screenshot.png';
+		
+		$options['description']['required'] = array('rpr_template','equals','local_'.$file);
 	}
 	
 	return $options;
@@ -132,12 +164,11 @@ function layout2option($dirname, $file)
 
 
 
-function rpr_admin_template_settings()
+function rpr_admin_layout_settings()
 {
-	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/templates/';
-	$templates = array();
+	$layouts = rpr_admin_layout_list();
 	
-	$template_settings=array(
+	$layout_settings=array(
 						array(
     						'type' => 'switch',
     						'id' => 'recipe_icons_display',
@@ -166,19 +197,42 @@ function rpr_admin_template_settings()
                         	'id'        => 'rpr_template',
                         	'type'      => 'image_select',
                         	'title'     => __( 'Choose a layout', 'recipepress-reloaded' ),
-                        	'subtitle'  => sprintf (__( 'Layouts define how your recipes will look like. Choose one of the installed templates.', 'recipepress-reloaded'), ''), // or <a href="%s">create one yourself</a>.', 'recipepress-reloaded' ) , 'http://rp-reloaded.net/templates/create' ),),
-                        	//'desc'      => sprintf (__( 'Templates define how your recipes will look like. Choose one of the installed templates.', 'recipepress-reloaded'), ''), // or <a href="%s">create one yourself</a>.', 'recipepress-reloaded' ) , 'http://rp-reloaded.net/templates/create' ),),
+                        	'subtitle'  => sprintf (__( 'Layouts define how your recipes will look like. Choose one of the installed layouts.', 'recipepress-reloaded'), ''), // or <a href="%s">create one yourself</a>.', 'recipepress-reloaded' ) , 'http://rp-reloaded.net/layouts/create' ),),
+                        	//'desc'      => sprintf (__( 'layouts define how your recipes will look like. Choose one of the installed layouts.', 'recipepress-reloaded'), ''), // or <a href="%s">create one yourself</a>.', 'recipepress-reloaded' ) , 'http://rp-reloaded.net/layouts/create' ),),
                         
                         	//Must provide key => value(array:title|img) pairs for radio options
-                        	'options'   => rpr_admin_template_list(),
+                        	'options'   => $layouts['selection'],
                         	'default'   => 'rpr_default',
-                        	'width' => 300,
-                        	'height' => 300
+                        	'width' => 100,
+                        	'height' => 200
                       	),
                       	
                       	
 	);
 	
+	foreach( $layouts['description'] as $desc )
+	{
+		array_push($layout_settings, $desc);
+	}
+	/*
+	echo "<pre>";
+	var_dump($layout_settings);
+	echo "</pre>";
+	*/
+	// Settings section for global layouts
+	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/layouts/';
+	if ($handle = opendir( $dirname )) {
+		while (false !== ($file = readdir($handle))) {
+			if( $file !='.' && $file !='..' && $file != '.svn' ) {
+				if( file_exists($dirname . $file . '/settings.php') ){
+					include_once( $dirname . $file . '/settings.php' );
+				}
+				
+			}
+		}
+	}
+	// Settings section for local layouts
+	$dirname = get_stylesheet_directory() . '/rpr_layouts/';
 	if ($handle = opendir( $dirname )) {
 		while (false !== ($file = readdir($handle))) {
 			if( $file !='.' && $file !='..' && $file != '.svn' ) {
@@ -190,7 +244,7 @@ function rpr_admin_template_settings()
 		}
 	}
 	
-	return $template_settings;
+	return $layout_settings;
 }
 
 //=-=-=-=-=-=-= SHORTCODE GENERATOR =-=-=-=-=-=-=

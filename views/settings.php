@@ -312,7 +312,7 @@ if (!class_exists('RPR_Settings')) {
 			$this->sections[] = array(
             	'icon' 		=> 'fa-newspaper-o',
             	'title'		=> __( 'Appearance', $this->pluginName ),
-            	'fields'	=> rpr_admin_template_settings(),
+            	'fields'	=> rpr_admin_layout_settings(),
             );
 			
 			$this->sections[] = array(
