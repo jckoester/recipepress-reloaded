@@ -1,8 +1,11 @@
 <?php
 /*
 	Author: Jan Köster
-	Layout Name: RPR Default
-	Version: 0.1
+	Author Mail: dasmaeh@rp-reloaded.net
+	Author URL: www.cbjck.de
+	Layout Name: RPR default
+ 	Version: 0.1
+	Description: The default layout.
 */
 ?>
 <script>

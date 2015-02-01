@@ -1,7 +1,11 @@
 <?php
 /*
-	Author: jan
-	Template Name: RPR Default
+	Author: Jan Köster
+	Author Mail: dasmaeh@rp-reloaded.net
+	Author URL: www.cbjck.de
+	Layout Name: RPR default
+ 	Version: 0.1
+	Description: Default layout for RecipePress reloaded
 */
 ?>
 <script>

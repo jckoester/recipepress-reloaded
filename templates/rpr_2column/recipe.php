@@ -5,7 +5,7 @@
 	Author URL: www.cbjck.de
 	Layout Name: RPR 2column
  	Version: 0.1
-	Description: Lorem Ipsum tralalal
+	Description: A layout in two columns.
 */
 ?>
 <script>

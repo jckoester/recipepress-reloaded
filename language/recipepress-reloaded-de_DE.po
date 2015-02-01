@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RecipePress reloaded\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-25 23:34+0100\n"
-"PO-Revision-Date: 2014-12-25 23:34+0100\n"
+"POT-Creation-Date: 2015-02-01 19:38+0100\n"
+"PO-Revision-Date: 2015-02-01 20:22+0100\n"
 "Last-Translator: Jan Köster <jan.koester@cbjck.de>\n"
 "Language-Team:  <dasmaeh@cbjck.de>\n"
 "Language: de_DE\n"
@@ -12,9 +12,53 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: gettext;gettext_noop;_e;__\n"
 "X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.3\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPathExcluded-0: ../lib\n"
+
+#: ../layouts/rpr_2column/recipe.php:27 ../templates/rpr_2column/recipe.php:27
+msgid "By:"
+msgstr "Von:"
+
+#: ../layouts/rpr_2column/recipe.php:49 ../layouts/rpr_default/recipe.php:82
+#: ../php/class/rpr_core.php:391 ../php/class/rpr_core.php:1043
+#: ../php/class/rpr_migration.php:424 ../php/class/rpr_migration.php:428
+#: ../templates/rpr_2column/recipe.php:49
+#: ../templates/rpr_default/recipe.php:81 ../views/admin.php:319
+#: ../views/rpr_recipe_public.php:64
+msgid "Ingredients"
+msgstr "Zutaten"
+
+#: ../layouts/rpr_2column/recipe.php:59 ../templates/rpr_2column/recipe.php:59
+msgid "Time"
+msgstr "Zeit"
+
+#: ../layouts/rpr_2column/recipe.php:64 ../templates/rpr_2column/recipe.php:64
+#: ../views/admin.php:305
+msgid "Nutritional Information"
+msgstr "Nährwerte"
+
+#: ../layouts/rpr_2column/recipe.php:69 ../templates/rpr_2column/recipe.php:69
+msgid "Categories"
+msgstr "Kategorien"
+
+#: ../layouts/rpr_2column/recipe.php:74 ../php/class/rpr_core.php:601
+#: ../templates/rpr_2column/recipe.php:74
+msgid "Tags"
+msgstr "Schlagworte"
+
+#: ../layouts/rpr_2column/recipe.php:98 ../layouts/rpr_default/recipe.php:90
+#: ../php/class/rpr_core.php:400 ../templates/rpr_2column/recipe.php:98
+#: ../templates/rpr_default/recipe.php:89 ../views/rpr_recipe_public.php:72
+msgid "Instructions"
+msgstr "Zubereitung"
+
+#: ../layouts/rpr_2column/recipe.php:103 ../layouts/rpr_default/recipe.php:97
+#: ../templates/rpr_2column/recipe.php:103
+#: ../templates/rpr_default/recipe.php:96 ../views/rpr_recipe_public.php:79
+msgid "Recipe notes"
+msgstr "Notizen"
 
 #: ../php/class/rpr_core.php:123
 msgid "Submit"
@@ -29,16 +73,15 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 #: ../php/class/rpr_core.php:126 ../php/class/rpr_core.php:278
-#: ../php/class/rpr_core.php:279 ../php/class/rpr_core.php:1054
-#: ../php/class/rpr_taxonomies.php:146 ../php/class/rpr_taxonomies.php:261
+#: ../php/class/rpr_core.php:1084 ../php/class/rpr_taxonomies.php:154
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: ../php/class/rpr_core.php:127 ../php/class/rpr_taxonomies.php:148
+#: ../php/class/rpr_core.php:127 ../php/class/rpr_taxonomies.php:156
 msgid "Delete"
 msgstr "Löschen"
 
-#: ../php/class/rpr_core.php:128 ../php/class/rpr_taxonomies.php:163
+#: ../php/class/rpr_core.php:128 ../php/class/rpr_taxonomies.php:171
 msgid "Edit Taxonomy"
 msgstr "Taxonomie bearbeiten"
 
@@ -51,6 +94,7 @@ msgid "No title"
 msgstr "Kein Titel"
 
 #: ../php/class/rpr_core.php:184 ../php/class/rpr_core.php:260
+#: ../php/class/rpr_core.php:275
 msgid "Recipe"
 msgstr "Rezept"
 
@@ -58,287 +102,297 @@ msgstr "Rezept"
 msgid "Insert"
 msgstr "Einfügen"
 
-#: ../php/class/rpr_core.php:259
+#: ../php/class/rpr_core.php:259 ../php/class/rpr_core.php:274
 msgid "Recipes"
 msgstr "Rezepte"
 
-#: ../php/class/rpr_core.php:276 ../php/class/rpr_core.php:277
-#: ../php/class/rpr_core.php:1056 ../php/class/rpr_taxonomies.php:263
-msgid "Add New"
+#: ../php/class/rpr_core.php:276
+msgid "Add new"
 msgstr "Erstellen"
 
-#: ../php/class/rpr_core.php:280 ../php/class/rpr_core.php:1057
-#: ../php/class/rpr_taxonomies.php:264
-msgid "New"
-msgstr "Erstellen"
+#: ../php/class/rpr_core.php:277
+msgid "Add new recipe"
+msgstr "Rezept erstellen"
 
-#: ../php/class/rpr_core.php:281 ../php/class/rpr_core.php:282
+#: ../php/class/rpr_core.php:279
+msgid "Edit recipe"
+msgstr "Rezept bearbeiten"
+
+#: ../php/class/rpr_core.php:280
+msgid "New recipe"
+msgstr "Neues Rezept"
+
+#: ../php/class/rpr_core.php:281
 msgid "View"
 msgstr "Betrachten"
 
-#: ../php/class/rpr_core.php:283 ../php/class/rpr_core.php:1051
-#: ../php/class/rpr_taxonomies.php:258 ../views/mce_dialog.php:47
-msgid "Search"
-msgstr "Suchen"
+#: ../php/class/rpr_core.php:282
+msgid "View recipe"
+msgstr "Rezept betrachten"
 
-#: ../php/class/rpr_core.php:284 ../php/class/rpr_core.php:285
-#: ../php/class/rpr_core.php:1061 ../php/class/rpr_taxonomies.php:268
-#: ../views/settings.php:275
-msgid "No"
-msgstr "Nein"
+#: ../php/class/rpr_core.php:283
+msgid "Search recipes"
+msgstr "Rezepte suchen"
 
-#: ../php/class/rpr_core.php:284 ../php/class/rpr_core.php:1061
-#: ../php/class/rpr_taxonomies.php:268
-msgid "found."
-msgstr "gefunden."
+#: ../php/class/rpr_core.php:284
+msgid "No recipes found."
+msgstr "Keine Rezepte gefunden."
 
 #: ../php/class/rpr_core.php:285
-msgid "found in trash."
-msgstr "im Papierkorb gefunden"
+msgid "No recipes found in trash."
+msgstr "Keine Rezepte im Papierkorb gefunden."
 
 #: ../php/class/rpr_core.php:286
-msgid "Parent"
-msgstr "Übergeordnet"
+msgid "Parent recipe"
+msgstr "Übergeordnetes Rezept"
 
-#: ../php/class/rpr_core.php:351
+#: ../php/class/rpr_core.php:357
 msgid "Post image"
 msgstr "Beitragsbild"
 
-#: ../php/class/rpr_core.php:356
+#: ../php/class/rpr_core.php:362
 msgid "Details"
 msgstr "Details"
 
-#: ../php/class/rpr_core.php:366
+#: ../php/class/rpr_core.php:372
 msgid "Nutritional information"
 msgstr "Nährwerte"
 
-#: ../php/class/rpr_core.php:376
+#: ../php/class/rpr_core.php:382
 msgid "Description"
 msgstr "Beschreibung"
 
-#: ../php/class/rpr_core.php:385 ../php/class/rpr_core.php:1013
-#: ../php/class/rpr_migration.php:413 ../php/class/rpr_migration.php:417
-#: ../templates/rpr_2column/recipe.php:45
-#: ../templates/rpr_default/recipe.php:81 ../views/admin.php:319
-#: ../views/rpr_recipe_public.php:64
-msgid "Ingredients"
-msgstr "Zutaten"
-
-#: ../php/class/rpr_core.php:394 ../templates/rpr_2column/recipe.php:94
-#: ../templates/rpr_default/recipe.php:89 ../views/rpr_recipe_public.php:72
-msgid "Instructions"
-msgstr "Zubereitung"
-
-#: ../php/class/rpr_core.php:403
+#: ../php/class/rpr_core.php:409
 msgid "Notes"
 msgstr "Notizen"
 
-#: ../php/class/rpr_core.php:579
+#: ../php/class/rpr_core.php:597
 msgid "Image"
 msgstr "Bild"
 
-#: ../php/class/rpr_core.php:580
+#: ../php/class/rpr_core.php:598
 msgid "Recipe Title"
 msgstr "Titel"
 
-#: ../php/class/rpr_core.php:581
+#: ../php/class/rpr_core.php:599
 msgid "Author"
 msgstr "Autor"
 
-#: ../php/class/rpr_core.php:582
+#: ../php/class/rpr_core.php:600
 msgid "Category"
 msgstr "Kategorie"
 
-#: ../php/class/rpr_core.php:583 ../templates/rpr_2column/recipe.php:70
-msgid "Tags"
-msgstr "Schlagworte"
-
-#: ../php/class/rpr_core.php:584
+#: ../php/class/rpr_core.php:602
 msgid "Comments"
 msgstr "Kommentare"
 
-#: ../php/class/rpr_core.php:585
+#: ../php/class/rpr_core.php:603
 msgid "Date"
 msgstr "Datum"
 
-#: ../php/class/rpr_core.php:896 ../php/class/rpr_core.php:971
+#: ../php/class/rpr_core.php:771
+msgid "There was an error parsing the layout file. No content can be displayed"
+msgstr ""
+"Beim Verarbeiten des Layouts ist ein Fehler aufgetreten. Es kann kein Inhalt "
+"angezeigt werden."
+
+#: ../php/class/rpr_core.php:926 ../php/class/rpr_core.php:1001
 msgid ""
 "You have to create a recipe first, check the 'Recipes' menu on the left."
 msgstr ""
 "Sie müssen zuerst ein Rezept speichern, schauen Sie in das \"Rezepte\"-Menü "
 "rechts."
 
-#: ../php/class/rpr_core.php:1013
+#: ../php/class/rpr_core.php:1043
 msgid "Ingredient"
 msgstr "Zutat"
 
-#: ../php/class/rpr_core.php:1014
+#: ../php/class/rpr_core.php:1044
 msgid "Courses"
 msgstr "Gänge"
 
-#: ../php/class/rpr_core.php:1014
+#: ../php/class/rpr_core.php:1044
 msgid "Course"
 msgstr "Gang"
 
-#: ../php/class/rpr_core.php:1015
+#: ../php/class/rpr_core.php:1045
 msgid "Cuisines"
 msgstr "Küchen"
 
-#: ../php/class/rpr_core.php:1015
+#: ../php/class/rpr_core.php:1045
 msgid "Cuisine"
 msgstr "Küche"
 
-#: ../php/class/rpr_core.php:1020
+#: ../php/class/rpr_core.php:1050
 msgid "Breakfast"
 msgstr "Frühstück"
 
-#: ../php/class/rpr_core.php:1021
+#: ../php/class/rpr_core.php:1051
 msgid "Appetizer"
 msgstr "Vorspeise"
 
-#: ../php/class/rpr_core.php:1022
+#: ../php/class/rpr_core.php:1052
 msgid "Soup"
 msgstr "Suppe"
 
-#: ../php/class/rpr_core.php:1023
+#: ../php/class/rpr_core.php:1053
 msgid "Main Course"
 msgstr "Hauptgang"
 
-#: ../php/class/rpr_core.php:1024
+#: ../php/class/rpr_core.php:1054
 msgid "Side Dish"
 msgstr "Beilage"
 
-#: ../php/class/rpr_core.php:1025
+#: ../php/class/rpr_core.php:1055
 msgid "Salad"
 msgstr "Salat"
 
-#: ../php/class/rpr_core.php:1026
+#: ../php/class/rpr_core.php:1056
 msgid "Dessert"
 msgstr "Nachtisch"
 
-#: ../php/class/rpr_core.php:1027
+#: ../php/class/rpr_core.php:1057
 msgid "Snack"
 msgstr "Snack"
 
-#: ../php/class/rpr_core.php:1028
+#: ../php/class/rpr_core.php:1058
 msgid "Drinks"
 msgstr "Getränke"
 
-#: ../php/class/rpr_core.php:1030
+#: ../php/class/rpr_core.php:1060
 msgid "French"
 msgstr "Französisch"
 
-#: ../php/class/rpr_core.php:1031
+#: ../php/class/rpr_core.php:1061
 msgid "Italian"
 msgstr "Italienisch"
 
-#: ../php/class/rpr_core.php:1032
+#: ../php/class/rpr_core.php:1062
 msgid "Mediterranean"
 msgstr "Mediterran"
 
-#: ../php/class/rpr_core.php:1033
+#: ../php/class/rpr_core.php:1063
 msgid "Indian"
 msgstr "Indisch"
 
-#: ../php/class/rpr_core.php:1034
+#: ../php/class/rpr_core.php:1064
 msgid "Chinese"
 msgstr "Chinesisch"
 
-#: ../php/class/rpr_core.php:1035
+#: ../php/class/rpr_core.php:1065
 msgid "Japanese"
 msgstr "Japanisch"
 
-#: ../php/class/rpr_core.php:1036
+#: ../php/class/rpr_core.php:1066
 msgid "American"
 msgstr "Amerikanisch"
 
-#: ../php/class/rpr_core.php:1037
+#: ../php/class/rpr_core.php:1067
 msgid "Mexican"
 msgstr "Mexikanisch"
 
-#: ../php/class/rpr_core.php:1052 ../php/class/rpr_taxonomies.php:259
+#: ../php/class/rpr_core.php:1081 ../views/mce_dialog.php:47
+msgid "Search"
+msgstr "Suchen"
+
+#: ../php/class/rpr_core.php:1082
 msgid "Popular"
 msgstr "Beliebt"
 
-#: ../php/class/rpr_core.php:1053 ../php/class/rpr_taxonomies.php:260
+#: ../php/class/rpr_core.php:1083
 msgid "All"
 msgstr "Alle"
 
-#: ../php/class/rpr_core.php:1055 ../php/class/rpr_taxonomies.php:262
+#: ../php/class/rpr_core.php:1085
 msgid "Update"
 msgstr "Aktualisierung"
 
-#: ../php/class/rpr_core.php:1057 ../php/class/rpr_taxonomies.php:122
-#: ../php/class/rpr_taxonomies.php:175 ../php/class/rpr_taxonomies.php:264
-#: ../widgets/taxonomy-list-widget.php:158
+#: ../php/class/rpr_core.php:1086
+msgid "Add New"
+msgstr "Erstellen"
+
+#: ../php/class/rpr_core.php:1087
+msgid "New"
+msgstr "Erstellen"
+
+#: ../php/class/rpr_core.php:1087 ../php/class/rpr_taxonomies.php:130
+#: ../php/class/rpr_taxonomies.php:183 ../widgets/taxonomy-list-widget.php:158
 msgid "Name"
 msgstr "Name"
 
-#: ../php/class/rpr_core.php:1058 ../php/class/rpr_taxonomies.php:265
+#: ../php/class/rpr_core.php:1088
 msgid "Separate"
 msgstr "Trenne"
 
-#: ../php/class/rpr_core.php:1058 ../php/class/rpr_taxonomies.php:265
+#: ../php/class/rpr_core.php:1088
 msgid "with commas"
 msgstr "mit Kommata"
 
-#: ../php/class/rpr_core.php:1059 ../php/class/rpr_taxonomies.php:266
+#: ../php/class/rpr_core.php:1089
 msgid "Add or remove"
 msgstr "hinzufügen oder löschen"
 
-#: ../php/class/rpr_core.php:1060 ../php/class/rpr_taxonomies.php:267
+#: ../php/class/rpr_core.php:1090
 msgid "Choose from the most used"
 msgstr "Wähle aus den häufig genutzten"
 
-#: ../php/class/rpr_core.php:1086 ../php/class/rpr_core.php:1099
+#: ../php/class/rpr_core.php:1091 ../views/settings.php:275
+msgid "No"
+msgstr "Nein"
+
+#: ../php/class/rpr_core.php:1091
+msgid "found."
+msgstr "gefunden."
+
+#: ../php/class/rpr_core.php:1116 ../php/class/rpr_core.php:1129
 msgid "Ratings"
 msgstr "Bewertungen"
 
-#: ../php/class/rpr_core.php:1087 ../views/metabox_details.php:21
+#: ../php/class/rpr_core.php:1117 ../views/metabox_details.php:21
 msgid "Rating"
 msgstr "Bewertung"
 
-#: ../php/class/rpr_core.php:1088
+#: ../php/class/rpr_core.php:1118
 msgid "Search Ratings"
 msgstr "Bewertungen durchsuchen"
 
-#: ../php/class/rpr_core.php:1089
+#: ../php/class/rpr_core.php:1119
 msgid "Popular Ratings"
 msgstr "Beliebte Bewertungen"
 
-#: ../php/class/rpr_core.php:1090
+#: ../php/class/rpr_core.php:1120
 msgid "All Ratings"
 msgstr "Alle Bewertungen"
 
-#: ../php/class/rpr_core.php:1091
+#: ../php/class/rpr_core.php:1121
 msgid "Edit Rating"
 msgstr "Bewertung bearbeiten"
 
-#: ../php/class/rpr_core.php:1092
+#: ../php/class/rpr_core.php:1122
 msgid "Update Rating"
 msgstr "Bewertung aktualisieren"
 
-#: ../php/class/rpr_core.php:1093
+#: ../php/class/rpr_core.php:1123
 msgid "Add New Rating"
 msgstr "Neue Bewertung hinzufügen"
 
-#: ../php/class/rpr_core.php:1094
+#: ../php/class/rpr_core.php:1124
 msgid "New Rating Name"
 msgstr "Neuer Bewertungs-Name"
 
-#: ../php/class/rpr_core.php:1095
+#: ../php/class/rpr_core.php:1125
 msgid "Separate ratings with commas"
 msgstr "Trenne Bewertungen mit Kommata"
 
-#: ../php/class/rpr_core.php:1096
+#: ../php/class/rpr_core.php:1126
 msgid "Add or remove ratings"
 msgstr "Bewertung hinzufügen oder löschen"
 
-#: ../php/class/rpr_core.php:1097
+#: ../php/class/rpr_core.php:1127
 msgid "Choose from the most used ratings"
 msgstr "Wähle aus den häufig genutzten Bewertungen"
 
-#: ../php/class/rpr_core.php:1098
+#: ../php/class/rpr_core.php:1128
 msgid "No ratings found."
 msgstr "Keine Bewertungen gefunden"
 
@@ -371,46 +425,101 @@ msgstr "Rezept-Kategorie"
 msgid "Recipe Tag"
 msgstr "Rezept-Schlagwort"
 
-#: ../php/class/rpr_taxonomies.php:105
+#: ../php/class/rpr_taxonomies.php:113
 msgid "Do you really want to delete this taxonomy?"
 msgstr "Wollen Sie diese Taxonomie wirklich löschen?"
 
-#: ../php/class/rpr_taxonomies.php:116
+#: ../php/class/rpr_taxonomies.php:124
 msgid "Tag"
 msgstr "Tag"
 
-#: ../php/class/rpr_taxonomies.php:119 ../php/class/rpr_taxonomies.php:184
+#: ../php/class/rpr_taxonomies.php:127 ../php/class/rpr_taxonomies.php:192
 msgid "Singular Name"
 msgstr "Name in Einzahl"
 
-#: ../php/class/rpr_taxonomies.php:125 ../php/class/rpr_taxonomies.php:193
+#: ../php/class/rpr_taxonomies.php:133 ../php/class/rpr_taxonomies.php:201
 #: ../views/admin.php:96 ../views/settings.php:291
 msgid "Slug"
 msgstr "Slug"
 
-#: ../php/class/rpr_taxonomies.php:128
+#: ../php/class/rpr_taxonomies.php:136
 msgid "Actions"
 msgstr "Aktionen"
 
-#: ../php/class/rpr_taxonomies.php:160
+#: ../php/class/rpr_taxonomies.php:168
 msgid "Add Taxonomy"
 msgstr "Taxonomie hinzufügen"
 
-#: ../php/class/rpr_taxonomies.php:170
+#: ../php/class/rpr_taxonomies.php:178
 msgid "Currently editing tag: "
 msgstr "Bearbeite Schlagwort:"
 
-#: ../php/class/rpr_taxonomies.php:178
+#: ../php/class/rpr_taxonomies.php:186
 msgid "(e.g. Courses)"
 msgstr "(z.B. Gänge)"
 
-#: ../php/class/rpr_taxonomies.php:187
+#: ../php/class/rpr_taxonomies.php:195
 msgid "(e.g. Course)"
 msgstr "(z.B. Gang)"
 
-#: ../php/class/rpr_taxonomies.php:196
+#: ../php/class/rpr_taxonomies.php:204
 msgid "(e.g. http://www.yourwebsite.com/course/)"
 msgstr "(z.B.: http://deineseite.de/gang/)"
+
+#: ../php/class/rpr_taxonomies.php:266
+#, php-format
+msgid "Search %s"
+msgstr "Suche %s"
+
+#: ../php/class/rpr_taxonomies.php:267
+#, php-format
+msgid "Popular %s"
+msgstr "Beliebte %s"
+
+#: ../php/class/rpr_taxonomies.php:268
+#, php-format
+msgid "All %s"
+msgstr "Alle %s"
+
+#: ../php/class/rpr_taxonomies.php:269
+#, php-format
+msgid "Edit %s"
+msgstr "%s bearbeiten"
+
+#: ../php/class/rpr_taxonomies.php:270
+#, php-format
+msgid "Update %s"
+msgstr "%s aktualisieren"
+
+#: ../php/class/rpr_taxonomies.php:271
+#, php-format
+msgid "Add New %s"
+msgstr "Neue %s hinzufügen"
+
+#: ../php/class/rpr_taxonomies.php:272
+#, php-format
+msgid "New %s Name"
+msgstr "Neue/r/s %s Name"
+
+#: ../php/class/rpr_taxonomies.php:273
+#, php-format
+msgid "Separate %s with commas"
+msgstr "Trenne %s mit Kommata"
+
+#: ../php/class/rpr_taxonomies.php:274
+#, php-format
+msgid "Add or remove %s"
+msgstr "%s hinzufügen oder löschen"
+
+#: ../php/class/rpr_taxonomies.php:275
+#, php-format
+msgid "Choose from the most used %s"
+msgstr "Wähle aus den häufig genutzten %s"
+
+#: ../php/class/rpr_taxonomies.php:276
+#, php-format
+msgid "No %s found."
+msgstr "Keine %s gefunden"
 
 #: ../php/helper/admin_menu_helper.php:44
 #: ../php/helper/admin_menu_helper.php:50
@@ -421,15 +530,39 @@ msgstr "Das Rezept-Archiv befindet sich unter"
 msgid "Manage custom recipe tags"
 msgstr "Benutzerdefinierte Rezept-Schlagworte verwalten"
 
-#: ../php/helper/admin_menu_helper.php:115 ../views/admin.php:288
+#: ../php/helper/admin_menu_helper.php:130
+#, php-format
+msgid "Version %s | "
+msgstr "Version %s |"
+
+#: ../php/helper/admin_menu_helper.php:138
+#, php-format
+msgid "By <a href=\"%s\">%s</a> |  "
+msgstr "Von <a href=\"%s\">%s</a> |  "
+
+#: ../php/helper/admin_menu_helper.php:140
+#, php-format
+msgid "By %s |  "
+msgstr "Von %s |  "
+
+#: ../php/helper/admin_menu_helper.php:145
+#, php-format
+msgid "<a href=\"mailto:%s\">Contact</a>"
+msgstr "<a href=\"mailto:%s\">Kontakt</a>"
+
+#: ../php/helper/admin_menu_helper.php:156
+msgid "Local"
+msgstr "Lokal"
+
+#: ../php/helper/admin_menu_helper.php:175 ../views/admin.php:288
 msgid "Use icons"
 msgstr "Icons verwenden"
 
-#: ../php/helper/admin_menu_helper.php:116 ../views/admin.php:289
+#: ../php/helper/admin_menu_helper.php:176 ../views/admin.php:289
 msgid "Display icons in front of headlines."
 msgstr "Icons vor Überschriften anzeigen."
 
-#: ../php/helper/admin_menu_helper.php:117
+#: ../php/helper/admin_menu_helper.php:177
 msgid ""
 "Icons not only look nice. They also can save you space. With this setting "
 "activated most layouts <span class=\"admin_demo\"\"><i class=\"fa fa-clock-o"
@@ -443,11 +576,11 @@ msgstr ""
 "anstelle von <span class=\"admin_demo\"><span style=\"text-transform:"
 "uppercase; font-weight:bold;\">Fertig in: </span>35min</span> anzeigen."
 
-#: ../php/helper/admin_menu_helper.php:123 ../views/admin.php:209
+#: ../php/helper/admin_menu_helper.php:183 ../views/admin.php:209
 msgid "Display print link"
 msgstr "Zeige Drucken-Link"
 
-#: ../php/helper/admin_menu_helper.php:124 ../views/admin.php:210
+#: ../php/helper/admin_menu_helper.php:184 ../views/admin.php:210
 msgid ""
 "Adds a print link to your recipes. It's recommended to use one of the "
 "numerous print plugins for wordpress to include a print link to ALL of your "
@@ -457,11 +590,11 @@ msgstr ""
 "der zahlreichen Druck-Plugins für Wordpress zu verwenden um einen 'Drucken'-"
 "Link zu <b>allen</b> Beiträgen hinzuzufügen."
 
-#: ../php/helper/admin_menu_helper.php:130 ../views/admin.php:216
+#: ../php/helper/admin_menu_helper.php:190 ../views/admin.php:216
 msgid "Class of the print area"
 msgstr "CSS-Klasse der Druckbereiches"
 
-#: ../php/helper/admin_menu_helper.php:131 ../views/admin.php:217
+#: ../php/helper/admin_menu_helper.php:191 ../views/admin.php:217
 msgid ""
 "Print links should only print an area of the page, usually a post. This is "
 "higly depending on wordpress theme you are using. Add here the class "
@@ -473,17 +606,17 @@ msgstr ""
 "oder die CSS_Id (mit vorangestellter Raute '#') des zu druckenden Bereichs "
 "an."
 
-#: ../php/helper/admin_menu_helper.php:139
+#: ../php/helper/admin_menu_helper.php:199
 msgid "Choose a layout"
 msgstr "Wähle ein Layout"
 
-#: ../php/helper/admin_menu_helper.php:140
+#: ../php/helper/admin_menu_helper.php:200
 msgid ""
 "Layouts define how your recipes will look like. Choose one of the installed "
-"templates."
+"layouts."
 msgstr ""
-"Layouts bestimmen wie deine Rezepte aussehen. Wähle eines der instalierten "
-"Layouts aus."
+"Layouts bestimmen, wie diene Rezepte aussehen. Wähle eines der installierten "
+"Layouts."
 
 #: ../php/helper/rpr_taxonomies_builder.php:5
 msgid "Manage Taxonomies"
@@ -531,88 +664,54 @@ msgstr "<dt>Eiweiß:</dt><dd itemprop=\"proteinContent\">%s g</dd>"
 msgid "<dt>Carbohydrate:</dt><dd itemprop=\"carbohydrateContent\">%s g</dd>"
 msgstr "<dt>Kohlenhydrate:</dt><dd itemprop=\"carbohydrateContent\">%s g</dd>"
 
-#: ../php/template_tags.php:425
+#: ../php/template_tags.php:429
 msgid "No ingredients could be found for this recipe."
 msgstr "Für dieses Rezept konnten keine Zutaten gefunden werden."
 
-#: ../php/template_tags.php:454
+#: ../php/template_tags.php:458
 msgid "Preparation Time"
 msgstr "Vorbereitungszeit"
 
-#: ../php/template_tags.php:456
+#: ../php/template_tags.php:458 ../php/template_tags.php:460
 msgid "Preparation"
 msgstr "Vorbereitung"
 
-#: ../php/template_tags.php:461 ../php/template_tags.php:475
-#: ../php/template_tags.php:502 ../views/metabox_details.php:41
+#: ../php/template_tags.php:465 ../php/template_tags.php:479
+#: ../php/template_tags.php:506 ../views/metabox_details.php:41
 #: ../views/metabox_details.php:46 ../views/metabox_details.php:51
 msgid "min."
 msgstr "min."
 
-#: ../php/template_tags.php:468 ../views/metabox_details.php:44
+#: ../php/template_tags.php:472 ../views/metabox_details.php:44
 msgid "Cook Time"
 msgstr "Kochzeit"
 
-#: ../php/template_tags.php:470
+#: ../php/template_tags.php:472 ../php/template_tags.php:474
 msgid "Cooking"
 msgstr "Kochen"
 
-#: ../php/template_tags.php:495
+#: ../php/template_tags.php:499
 msgid "Total Time"
 msgstr "Gesamtzeit"
 
-#: ../php/template_tags.php:497
+#: ../php/template_tags.php:499 ../php/template_tags.php:501
 msgid "Ready in"
 msgstr "Fertig in"
 
-#: ../php/template_tags.php:577
+#: ../php/template_tags.php:581
 msgid "No instructions could be found for this recipe."
 msgstr "Für dieses Rezepte konnte keine Zubereitung gefunden werden."
 
 #: ../recipe-press-reloaded.php:139 ../recipe-press-reloaded.php:140
-#: ../views/admin.php:7 ../views/settings.php:552 ../views/settings.php:553
+#: ../views/admin.php:7 ../views/settings.php:550 ../views/settings.php:551
 msgid "Settings"
 msgstr "Einstellungen"
-
-#: ../templates/rpr_2column/recipe.php:23
-msgid "By:"
-msgstr "Von:"
-
-#: ../templates/rpr_2column/recipe.php:55
-msgid "Time"
-msgstr "Zeit"
-
-#: ../templates/rpr_2column/recipe.php:60 ../views/admin.php:305
-msgid "Nutritional Information"
-msgstr "Nährwerte"
-
-#: ../templates/rpr_2column/recipe.php:65
-msgid "Categories"
-msgstr "Kategorien"
-
-#: ../templates/rpr_2column/recipe.php:99
-#: ../templates/rpr_default/recipe.php:96 ../views/rpr_recipe_public.php:79
-msgid "Recipe notes"
-msgstr "Notizen"
-
-#: ../templates/rpr_2column/settings.php:6
-msgid "Sample Option"
-msgstr "Beispieleinstellung"
-
-#: ../templates/rpr_2column/settings.php:7
-#, php-format
-msgid ""
-"In here layout specific options for the RPR 2column layout could appear. "
-"Read here how to use layout specific options: %s"
-msgstr ""
-"Hier könnten layoutspezifische Einstellungen für das RPR2column Layout "
-"erscheinen. Lesen Sie hier mehr über layoutspezifische Einstellungen: %s"
 
 #: ../views/admin.php:12
 msgid "Latest News"
 msgstr "Letzte Neuigkeiten"
 
-#: ../views/admin.php:18 ../views/settings.php:490
+#: ../views/admin.php:18 ../views/settings.php:488
 msgid "Changelog"
 msgstr "Änderungshistorie"
 
@@ -846,11 +945,11 @@ msgstr "Benutzerdefinierte Rezept-Schlagworte"
 msgid "WordPress Categories & Tags"
 msgstr "WordPress Kategorien & Schlagworte"
 
-#: ../views/admin.php:385 ../views/settings.php:468
+#: ../views/admin.php:385 ../views/settings.php:466
 msgid "Use Categories"
 msgstr "Kategorien verwenden"
 
-#: ../views/admin.php:386 ../views/settings.php:469
+#: ../views/admin.php:386 ../views/settings.php:467
 msgid ""
 "Use the default WP Categories to organize your recipes. If set to \"Off\", "
 "RPR will create own categories."
@@ -858,11 +957,11 @@ msgstr ""
 "Verwende die Standard WP-Kategorien um deine Rezepte zu organisieren. Wenn "
 "auf \"Aus\" gesetzt, wird RPR eigene Kategorien anlegen."
 
-#: ../views/admin.php:392 ../views/settings.php:475
+#: ../views/admin.php:392 ../views/settings.php:473
 msgid "Use Tags"
 msgstr "Schlagworte verwenden"
 
-#: ../views/admin.php:393 ../views/settings.php:476
+#: ../views/admin.php:393 ../views/settings.php:474
 msgid ""
 "Use the default WP Tags to organize your recipes. If set to \"Off\", RPR "
 "will create own tags."
@@ -870,15 +969,15 @@ msgstr ""
 "Verwende die Standard WP-Schlagworte, um deine Rezepte zu organisieren. Wenn "
 "auf \"Aus\" gesetzt wird RPR  eigene Schlagworte anlegen."
 
-#: ../views/admin.php:403 ../views/settings.php:503
+#: ../views/admin.php:403 ../views/settings.php:501
 msgid "Documentation & Support"
 msgstr "Dokumentation & Support"
 
-#: ../views/admin.php:410 ../views/settings.php:509
+#: ../views/admin.php:410 ../views/settings.php:507
 msgid "Need more help?"
 msgstr "Du brauchst mehr Hilfe?"
 
-#: ../views/admin.php:411 ../views/settings.php:510
+#: ../views/admin.php:411 ../views/settings.php:508
 msgid ""
 "Have a look at the <a href=\"http://rp-reloaded.net/documentation\" target="
 "\"_blank\">Documentation</a> (currently being built up) or ask your "
@@ -1107,7 +1206,7 @@ msgstr "Zusätzliche Einstellungen anzeigen"
 
 #: ../views/settings.php:435
 msgid "Exclude ingredients from listings"
-msgstr "Zutateb von Listen ausschließen"
+msgstr "Zutaten von Listen ausschließen"
 
 #: ../views/settings.php:436
 msgid ""
@@ -1129,27 +1228,27 @@ msgstr ""
 msgid "Manage custom taxonomies"
 msgstr "Eigene Taxonomien verwalten"
 
-#: ../views/settings.php:502
+#: ../views/settings.php:500
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: ../views/settings.php:521
+#: ../views/settings.php:519
 msgid "Theme Information 1"
 msgstr "Theme Information 1"
 
-#: ../views/settings.php:522 ../views/settings.php:528
+#: ../views/settings.php:520 ../views/settings.php:526
 msgid "<p>This is the tab content, HTML is allowed.</p>"
 msgstr "<p>Dies ist der Tabinhalt, HTML ist erlaubt.</p>"
 
-#: ../views/settings.php:527
+#: ../views/settings.php:525
 msgid "Theme Information 2"
 msgstr "Theme Information 2"
 
-#: ../views/settings.php:532
+#: ../views/settings.php:530
 msgid "<p>This is the sidebar content, HTML is allowed.</p>"
 msgstr "<p>Dies ist der Inhalt der Seitenleiste. HTML ist erlaubt.</p>"
 
-#: ../views/settings.php:708
+#: ../views/settings.php:706
 msgid "<b>Readme Parser: readme.txt ot found!</b>"
 msgstr "<b>Readme Parser: readme.txt wurde nicht gefunden!</b>"
 
@@ -1302,6 +1401,29 @@ msgstr "danach"
 #: ../widgets/taxonomy-list-widget.php:180
 msgid "Hide empty terms?"
 msgstr "Leere Begriffe verstecken?"
+
+#~ msgid "found in trash."
+#~ msgstr "im Papierkorb gefunden"
+
+#~ msgid "Parent"
+#~ msgstr "Übergeordnet"
+
+#~ msgid ""
+#~ "Layouts define how your recipes will look like. Choose one of the "
+#~ "installed templates."
+#~ msgstr ""
+#~ "Layouts bestimmen wie deine Rezepte aussehen. Wähle eines der "
+#~ "instalierten Layouts aus."
+
+#~ msgid "Sample Option"
+#~ msgstr "Beispieleinstellung"
+
+#~ msgid ""
+#~ "In here layout specific options for the RPR 2column layout could appear. "
+#~ "Read here how to use layout specific options: %s"
+#~ msgstr ""
+#~ "Hier könnten layoutspezifische Einstellungen für das RPR2column Layout "
+#~ "erscheinen. Lesen Sie hier mehr über layoutspezifische Einstellungen: %s"
 
 #, fuzzy
 #~ msgid "Options"

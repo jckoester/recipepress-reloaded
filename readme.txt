@@ -53,6 +53,9 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
+= 0.7.5 =
+* improved layout engine
+* several bugfixes
 = 0.7.4 =
 * added an option to hide recipes from homepage
 * fixed a problem of RPR interfering with other plugins

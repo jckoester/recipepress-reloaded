@@ -4,7 +4,7 @@
   ReduxFramework Sample Config File
   For full documentation, please visit: https://docs.reduxframework.com
  * */
-require_once( __DIR__ . '/../php/helper/admin_menu_helper.php');
+require_once( WP_PLUGIN_DIR . '/recipepress-reloaded/php/helper/admin_menu_helper.php');
 
 if (!class_exists('RPR_Settings')) {
 
@@ -269,7 +269,7 @@ if (!class_exists('RPR_Settings')) {
             			'id'	=> 'recipe_homepage_display',
             			'type'	=> 'switch',
             			'title' => __('Home Page', $this->pluginName),
-            			'subtitle' => __( 'Defines if recipes should be displayed on the homepage like \'normal\' posts.', $this->pluginName) ,
+            			'subtitle' => __( 'Defines if recipes should be displayed on the homepage like \'normal\' posts.', 'recipepress-reloaded' ) ,
             			'default' => true,
             			'on' => __( 'Yes', $this->pluginName ),
             			'off' => __( 'No', $this->pluginName ),
@@ -458,8 +458,6 @@ if (!class_exists('RPR_Settings')) {
 									'id' => 'manage_custom_taxonomies_box',
 									'type' => 'raw',
 									'title' => __( 'Manage custom taxonomies', $this->pluginName ),
-									//'subtitle' => __( 'Subt', $this->pluginName ),
-									//'desc' => 'test',
 									'content' => rpr_admin_manage_tags(),
 								),
             					array(

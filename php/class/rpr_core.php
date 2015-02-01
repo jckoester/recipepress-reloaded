@@ -23,7 +23,7 @@ class RPR_Core extends RPReloaded {
         require_once('rpr_taxonomies.php');
         $this->tax = new RPR_Taxonomies($this->pluginName, $this->pluginDir, $this->pluginUrl);  
         
-        add_action( 'init', array( $this, 'ratings_init' ));
+        //add_action( 'init', array( $this, 'ratings_init' ));
 
         //add image sizes
         add_filter( 'image_size_names_choose', array( $this, 'rpr_image_sizes' ) );
@@ -34,7 +34,7 @@ class RPR_Core extends RPReloaded {
         add_action( 'admin_enqueue_scripts', array( $this, 'admin_plugin_styles' ) );
         add_action( 'admin_enqueue_scripts', array( $this, 'admin_plugin_scripts' ) );
         add_action( 'do_meta_boxes', array( $this, 'rpr_metabox_init' ));
-        add_action( 'vp_option_set_after_save', array( $this, 'set_flush_needed' ) );
+    //    add_action( 'vp_option_set_after_save', array( $this, 'set_flush_needed' ) );
         add_action( 'admin_init', array( $this, 'flush_permalinks_if_needed' ));
         add_action( 'save_post', array( $this, 'recipes_save' ), 10, 2 );
         add_action( 'pre_get_posts', array( $this, 'query_recipes' ) );
@@ -86,8 +86,8 @@ class RPR_Core extends RPReloaded {
     public function public_plugin_styles()
     {
         wp_register_style( 'rpr_fa', $this->pluginUrl . '/css/font-awesome.min.css');
-        wp_register_style( 'rpr_pub', $this->pluginUrl . '/templates/' . $this->option( 'rpr_template', 'rpr_default') . '/public.css');
-        wp_register_style( 'rpr_pub_prn', $this->pluginUrl . '/templates/' . $this->option( 'rpr_template', 'rpr_default') . '/print.css', '', RPR_VERSION, 'print');
+        wp_register_style( 'rpr_pub', $this->pluginUrl . '/layouts/' . $this->option( 'rpr_template', 'rpr_default') . '/public.css');
+        wp_register_style( 'rpr_pub_prn', $this->pluginUrl . '/layouts/' . $this->option( 'rpr_template', 'rpr_default') . '/print.css', '', RPR_VERSION, 'print');
         wp_enqueue_style( 'rpr_fa' );    	
         wp_enqueue_style( 'rpr_pub' );
         wp_enqueue_style( 'rpr_pub_prn' );
@@ -271,19 +271,19 @@ function rpr_mce_buttons_filter($buttons) {
     	register_post_type( 'rpr_recipe',
 	    	array(
 		    	'labels' => array(
-			    	'name' => $name,
-			    	'singular_name' => $singular,
-			    	'add_new' => __( 'Add New', $this->pluginName ),
-			    	'add_new_item' => sprintf( __( 'Add New %s', $this->pluginName ), $singular ),
+			    	'name' => __( 'Recipes', $this->pluginName ),
+			    	'singular_name' => __( 'Recipe', $this->pluginName ),
+			    	'add_new' => __( 'Add new', $this->pluginName ),
+			    	'add_new_item' => __( 'Add new recipe', $this->pluginName ),
 			    	'edit' => __( 'Edit', $this->pluginName ),
-			    	'edit_item' => sprintf( __( 'Edit %s', $this->pluginName ), $singular ),
-			    	'new_item' => sprintf( __( 'New %s', $this->pluginName ), $singular ),
+			    	'edit_item' => __( 'Edit recipe', $this->pluginName ),
+			    	'new_item' => __( 'New recipe', $this->pluginName ),
 			    	'view' => __( 'View', $this->pluginName ),
-			    	'view_item' => sprintf( __( 'View %s', $this->pluginName ), $singular ),
-			    	'search_items' => sprintf( __( 'Search %s', $this->pluginName ), $name ),
-			    	'not_found' => sprintf( __( 'No %s found.', $this->pluginName ), $name ),
-			    	'not_found_in_trash' => sprintf( __( 'No %s found in trash.', $this->pluginName ), $name ),
-			    	'parent' => sprintf( __( 'Parent %s', $this->pluginName ), $singular ),
+			    	'view_item' => __( 'View recipe', $this->pluginName ),
+			    	'search_items' => __( 'Search recipes', $this->pluginName ),
+			    	'not_found' => __( 'No recipes found.', $this->pluginName ),
+			    	'not_found_in_trash' => __( 'No recipes found in trash.', $this->pluginName ),
+			    	'parent' => __( 'Parent recipe', $this->pluginName ),
 			    	),
 		    	'public' => true,
 		    	'menu_position' => 5,
@@ -296,6 +296,10 @@ function rpr_mce_buttons_filter($buttons) {
 			    	)
 	    	)
 		);
+		
+		// Re-register categories and tags for posts, else they will disappear 
+    	register_taxonomy_for_object_type( 'category', 'post' );
+    	register_taxonomy_for_object_type( 'post_tag', 'post' );
     }
 
     function query_recipes($query) {
@@ -457,7 +461,7 @@ function rpr_mce_buttons_filter($buttons) {
     	include($this->pluginDir . '/views/metabox_notes.php');
     }
     
-    public function recipes_save( $recipe_id, $recipe )
+    public function recipes_save( $recipe_id, $recipe = NULL )
     {
     	remove_action('save_post', array($this, 'recipes_save'));
 		
@@ -757,7 +761,7 @@ function rpr_mce_buttons_filter($buttons) {
 			$includepath = get_stylesheet_directory() . '/rpr_layouts/'. preg_replace('/^local\_/', '', $this->option( 'rpr_template', 'rpr_default' )) . '/recipe.php';
 		} else {
 			//Global layout
-			$includepath = $this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/recipe.php';
+			$includepath = $this->pluginDir . '/layouts/'.$this->option( 'rpr_template', 'rpr_default' ).'/recipe.php';
 		}
 		
 		if( file_exists($includepath) ){
@@ -802,7 +806,7 @@ function rpr_mce_buttons_filter($buttons) {
 			$includepath = get_stylesheet_directory() . '/rpr_layouts/'. preg_replace('/^local\_/', '', $this->option( 'rpr_template', 'rpr_default' )) . '/excerpt.php';
 		} else {
 			//Global layout
-			$includepath = $this->pluginDir . '/templates/'.$this->option( 'rpr_template', 'rpr_default' ).'/excerpt.php';
+			$includepath = $this->pluginDir . '/layouts/'.$this->option( 'rpr_template', 'rpr_default' ).'/excerpt.php';
 		}
 		if(file_exists($includepath)){
 			include( $includepath);

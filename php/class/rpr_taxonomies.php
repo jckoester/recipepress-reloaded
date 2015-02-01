@@ -86,6 +86,14 @@ if( class_exists( 'RPReloaded' ) ) {
 				endif;
 			endif;
 			
+			// add optional taxonomies:
+/*
+			if( $this->option( 'recipe_use_difficulty', 1) == '1')
+			{
+				$this->add_taxonomy(__('Difficulty', $this->pluginName), __('Difficulty', $this->pluginName), 'rpr_difficulty', 'rpr_difficulty');
+    			update_option('rpr_taxonomies', $this->taxonomies);
+			}
+*/
             // register taxonomies:
 			foreach($this->taxonomies as $name => $options) {
 				register_taxonomy(

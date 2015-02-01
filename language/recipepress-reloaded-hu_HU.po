@@ -1,0 +1,1584 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RecipePress reloaded\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-26 18:20+0100\n"
+"PO-Revision-Date: 2014-12-28 14:59+0100\n"
+"Last-Translator: Tamás Boros <taboros@gmail.com>\n"
+"Language-Team:  <dasmaeh@cbjck.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: gettext;gettext_noop;_e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: hu\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPathExcluded-0: ../lib\n"
+
+#: ../php/class/rpr_core.php:123
+msgid "Submit"
+msgstr "Küldés"
+
+#: ../php/class/rpr_core.php:124
+msgid "Save"
+msgstr "Mentés"
+
+#: ../php/class/rpr_core.php:125 ../views/mce_dialog.php:69
+msgid "Cancel"
+msgstr "Mégse"
+
+#: ../php/class/rpr_core.php:126 ../php/class/rpr_core.php:278
+#: ../php/class/rpr_core.php:279 ../php/class/rpr_core.php:1030
+#: ../php/class/rpr_taxonomies.php:146 ../php/class/rpr_taxonomies.php:261
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: ../php/class/rpr_core.php:127 ../php/class/rpr_taxonomies.php:148
+msgid "Delete"
+msgstr "Törlés"
+
+#: ../php/class/rpr_core.php:128 ../php/class/rpr_taxonomies.php:163
+msgid "Edit Taxonomy"
+msgstr "Besorolás módosítása"
+
+#: ../php/class/rpr_core.php:160
+msgid "RPR table thumbnail"
+msgstr "RPR táblázat miniatűr"
+
+#: ../php/class/rpr_core.php:183
+msgid "No title"
+msgstr "nincs cim"
+
+#: ../php/class/rpr_core.php:184 ../php/class/rpr_core.php:260
+msgid "Recipe"
+msgstr "Recept"
+
+#: ../php/class/rpr_core.php:185 ../php/class/rpr_core.php:186
+msgid "Insert"
+msgstr "Beillesztés"
+
+#: ../php/class/rpr_core.php:259
+msgid "Recipes"
+msgstr "Receptek"
+
+#: ../php/class/rpr_core.php:276 ../php/class/rpr_core.php:277
+#: ../php/class/rpr_core.php:1032 ../php/class/rpr_taxonomies.php:263
+msgid "Add New"
+msgstr "Új létrehozása"
+
+#: ../php/class/rpr_core.php:280 ../php/class/rpr_core.php:1033
+#: ../php/class/rpr_taxonomies.php:264
+msgid "New"
+msgstr "Új"
+
+#: ../php/class/rpr_core.php:281 ../php/class/rpr_core.php:282
+msgid "View"
+msgstr "Megjelenítés"
+
+#: ../php/class/rpr_core.php:283 ../php/class/rpr_core.php:1027
+#: ../php/class/rpr_taxonomies.php:258 ../views/mce_dialog.php:44
+msgid "Search"
+msgstr "Keresés"
+
+#: ../php/class/rpr_core.php:284 ../php/class/rpr_core.php:285
+#: ../php/class/rpr_core.php:1037 ../php/class/rpr_taxonomies.php:268
+msgid "No"
+msgstr "Nem"
+
+#: ../php/class/rpr_core.php:284 ../php/class/rpr_core.php:1037
+#: ../php/class/rpr_taxonomies.php:268
+msgid "found."
+msgstr "találat."
+
+#: ../php/class/rpr_core.php:285
+msgid "found in trash."
+msgstr "szemetet talált."
+
+#: ../php/class/rpr_core.php:286
+msgid "Parent"
+msgstr "Szülő"
+
+#: ../php/class/rpr_core.php:335
+msgid "Post image"
+msgstr "Kép hozzáadása"
+
+#: ../php/class/rpr_core.php:340
+msgid "Details"
+msgstr "Részletek"
+
+#: ../php/class/rpr_core.php:350
+msgid "Nutritional information"
+msgstr "Tápérték információ"
+
+#: ../php/class/rpr_core.php:360
+msgid "Description"
+msgstr "Leírás"
+
+#: ../php/class/rpr_core.php:369 ../php/class/rpr_core.php:989
+#: ../php/class/rpr_migration.php:413 ../php/class/rpr_migration.php:417
+#: ../templates/rpr_2column/recipe.php:45
+#: ../templates/rpr_default/recipe.php:81 ../views/admin.php:319
+#: ../views/rpr_recipe_public.php:64
+msgid "Ingredients"
+msgstr "Hozzávalók"
+
+#: ../php/class/rpr_core.php:378 ../templates/rpr_2column/recipe.php:94
+#: ../templates/rpr_default/recipe.php:89 ../views/rpr_recipe_public.php:72
+msgid "Instructions"
+msgstr "Elkészítés"
+
+#: ../php/class/rpr_core.php:387
+msgid "Notes"
+msgstr "Megjegyzések"
+
+#: ../php/class/rpr_core.php:563
+msgid "Image"
+msgstr "Kép"
+
+#: ../php/class/rpr_core.php:564
+msgid "Recipe Title"
+msgstr "Recept megnevezése"
+
+#: ../php/class/rpr_core.php:565
+msgid "Author"
+msgstr "Szerző"
+
+#: ../php/class/rpr_core.php:566
+msgid "Category"
+msgstr "Kategória"
+
+#: ../php/class/rpr_core.php:567 ../templates/rpr_2column/recipe.php:70
+msgid "Tags"
+msgstr "Címkék"
+
+#: ../php/class/rpr_core.php:568
+msgid "Comments"
+msgstr "Hozzászólások"
+
+#: ../php/class/rpr_core.php:569
+msgid "Date"
+msgstr "Dátum"
+
+#: ../php/class/rpr_core.php:872 ../php/class/rpr_core.php:947
+msgid ""
+"You have to create a recipe first, check the 'Recipes' menu on the left."
+msgstr ""
+"Először hozzon létre egy receptet, megtalálja a bal oldalon \"Receptek\" "
+"menü alatt."
+
+#: ../php/class/rpr_core.php:989
+msgid "Ingredient"
+msgstr "Hozzávaló"
+
+#: ../php/class/rpr_core.php:990
+msgid "Courses"
+msgstr "Fogások"
+
+#: ../php/class/rpr_core.php:990
+msgid "Course"
+msgstr "Fogás"
+
+#: ../php/class/rpr_core.php:991
+msgid "Cuisines"
+msgstr "Konyhastílusok"
+
+#: ../php/class/rpr_core.php:991
+msgid "Cuisine"
+msgstr "Konyhastílus"
+
+#: ../php/class/rpr_core.php:996
+msgid "Breakfast"
+msgstr "Reggeli"
+
+#: ../php/class/rpr_core.php:997
+msgid "Appetizer"
+msgstr "Előétel"
+
+#: ../php/class/rpr_core.php:998
+msgid "Soup"
+msgstr "Leves"
+
+#: ../php/class/rpr_core.php:999
+msgid "Main Course"
+msgstr "Főétel"
+
+#: ../php/class/rpr_core.php:1000
+msgid "Side Dish"
+msgstr "Köret"
+
+#: ../php/class/rpr_core.php:1001
+msgid "Salad"
+msgstr "Saláta"
+
+#: ../php/class/rpr_core.php:1002
+msgid "Dessert"
+msgstr "Desszert"
+
+#: ../php/class/rpr_core.php:1003
+msgid "Snack"
+msgstr "Falatok"
+
+#: ../php/class/rpr_core.php:1004
+msgid "Drinks"
+msgstr "Italok"
+
+#: ../php/class/rpr_core.php:1006
+msgid "French"
+msgstr "francia"
+
+#: ../php/class/rpr_core.php:1007
+msgid "Italian"
+msgstr "olasz"
+
+#: ../php/class/rpr_core.php:1008
+msgid "Mediterranean"
+msgstr "Mediterrán"
+
+#: ../php/class/rpr_core.php:1009
+msgid "Indian"
+msgstr "indiai"
+
+#: ../php/class/rpr_core.php:1010
+msgid "Chinese"
+msgstr "kínai"
+
+#: ../php/class/rpr_core.php:1011
+msgid "Japanese"
+msgstr "japán"
+
+#: ../php/class/rpr_core.php:1012
+msgid "American"
+msgstr "amerikai"
+
+#: ../php/class/rpr_core.php:1013
+msgid "Mexican"
+msgstr "mexikói"
+
+#: ../php/class/rpr_core.php:1028 ../php/class/rpr_taxonomies.php:259
+msgid "Popular"
+msgstr "Népszerű"
+
+#: ../php/class/rpr_core.php:1029 ../php/class/rpr_taxonomies.php:260
+msgid "All"
+msgstr "Összes"
+
+#: ../php/class/rpr_core.php:1031 ../php/class/rpr_taxonomies.php:262
+msgid "Update"
+msgstr "Frissítés"
+
+#: ../php/class/rpr_core.php:1033 ../php/class/rpr_taxonomies.php:122
+#: ../php/class/rpr_taxonomies.php:175 ../php/class/rpr_taxonomies.php:264
+#: ../widgets/taxonomy-list-widget.php:158
+msgid "Name"
+msgstr "Név"
+
+#: ../php/class/rpr_core.php:1034 ../php/class/rpr_taxonomies.php:265
+msgid "Separate"
+msgstr "Elválasztás"
+
+#: ../php/class/rpr_core.php:1034 ../php/class/rpr_taxonomies.php:265
+msgid "with commas"
+msgstr "vesszőkkel"
+
+#: ../php/class/rpr_core.php:1035 ../php/class/rpr_taxonomies.php:266
+msgid "Add or remove"
+msgstr "Hozzáadás vagy eltávolítás"
+
+#: ../php/class/rpr_core.php:1036 ../php/class/rpr_taxonomies.php:267
+msgid "Choose from the most used"
+msgstr "Választás a leggyakrabban használtak közül"
+
+#: ../php/class/rpr_core.php:1062 ../php/class/rpr_core.php:1075
+msgid "Ratings"
+msgstr "Minősítések"
+
+#: ../php/class/rpr_core.php:1063 ../views/metabox_details.php:21
+msgid "Rating"
+msgstr "Minősítés"
+
+#: ../php/class/rpr_core.php:1064
+msgid "Search Ratings"
+msgstr "Keresés a minősítések között"
+
+#: ../php/class/rpr_core.php:1065
+msgid "Popular Ratings"
+msgstr "Népszerű minősítések"
+
+#: ../php/class/rpr_core.php:1066
+msgid "All Ratings"
+msgstr "Összes minősítés"
+
+#: ../php/class/rpr_core.php:1067
+msgid "Edit Rating"
+msgstr "Minősítés módosítása"
+
+#: ../php/class/rpr_core.php:1068
+msgid "Update Rating"
+msgstr "Minősítés frissítése"
+
+#: ../php/class/rpr_core.php:1069
+msgid "Add New Rating"
+msgstr "Új minősítés létrehozása"
+
+#: ../php/class/rpr_core.php:1070
+msgid "New Rating Name"
+msgstr "Új minősítési név"
+
+#: ../php/class/rpr_core.php:1071
+msgid "Separate ratings with commas"
+msgstr "Minősítések elválasztása vesszővel!"
+
+#: ../php/class/rpr_core.php:1072
+msgid "Add or remove ratings"
+msgstr "Minősítések hozzáadása vagy eltávolítása"
+
+#: ../php/class/rpr_core.php:1073
+msgid "Choose from the most used ratings"
+msgstr "Választás a leggyakrabban használt minősítések közül"
+
+#: ../php/class/rpr_core.php:1074
+msgid "No ratings found."
+msgstr "Nem található minősítés"
+
+#: ../php/class/rpr_migration.php:40
+#, php-format
+msgid ""
+"The Recipe Press Reloaded database needs to upgraded. Make sure you have a "
+"backup before you proceed. | <a href=\"%1$s\">Proceed</a>"
+msgstr ""
+"A Recipe Press Reloaded adatbázist frissíteni kell. Győződjön meg róla, hogy "
+"rendelkezik biztonsági mentéssel, mielőtt belekezd. | <a href=\"%1$s"
+"\">Frissítés</a>"
+
+#: ../php/class/rpr_taxonomies.php:33 ../php/class/rpr_taxonomies.php:43
+msgid "Custom Taxonomies"
+msgstr "Egyéni besorolások"
+
+#: ../php/class/rpr_taxonomies.php:33 ../php/class/rpr_taxonomies.php:43
+msgid "Manage Tags"
+msgstr "Címkék kezelése"
+
+#: ../php/class/rpr_taxonomies.php:34
+msgid "Manage Recipe Taxonomies"
+msgstr "Recept besorolások kezelése"
+
+#: ../php/class/rpr_taxonomies.php:70
+msgid "Recipe Category"
+msgstr "Recept kategória"
+
+#: ../php/class/rpr_taxonomies.php:84
+msgid "Recipe Tag"
+msgstr "Recept címke"
+
+#: ../php/class/rpr_taxonomies.php:105
+msgid "Do you really want to delete this taxonomy?"
+msgstr "Biztosan törli ezt a besorolást?"
+
+#: ../php/class/rpr_taxonomies.php:116
+msgid "Tag"
+msgstr "Címke"
+
+#: ../php/class/rpr_taxonomies.php:119 ../php/class/rpr_taxonomies.php:184
+msgid "Singular Name"
+msgstr "Név egyes számban"
+
+#: ../php/class/rpr_taxonomies.php:125 ../php/class/rpr_taxonomies.php:193
+#: ../views/admin.php:96 ../views/settings.php:282
+msgid "Slug"
+msgstr "Keresőbarát név (slug)"
+
+#: ../php/class/rpr_taxonomies.php:128
+msgid "Actions"
+msgstr "Műveletek"
+
+#: ../php/class/rpr_taxonomies.php:160
+msgid "Add Taxonomy"
+msgstr "Besorolás hozzáadása"
+
+#: ../php/class/rpr_taxonomies.php:170
+msgid "Currently editing tag: "
+msgstr "A jelenleg szerkesztett tag:"
+
+#: ../php/class/rpr_taxonomies.php:178
+msgid "(e.g. Courses)"
+msgstr "(pl. Fogások)"
+
+#: ../php/class/rpr_taxonomies.php:187
+msgid "(e.g. Course)"
+msgstr "(pl. Fogás)"
+
+#: ../php/class/rpr_taxonomies.php:196
+msgid "(e.g. http://www.yourwebsite.com/course/)"
+msgstr "(pl. http://www.a_te:oldalad.com/fogas/))"
+
+#: ../php/helper/admin_menu_helper.php:44
+#: ../php/helper/admin_menu_helper.php:50
+msgid "The recipe archive can be found at"
+msgstr "A recept-archívum megtalálható itt:"
+
+#: ../php/helper/admin_menu_helper.php:55
+msgid "Manage custom recipe tags"
+msgstr "Egyedi mezők kezelése"
+
+#: ../php/helper/admin_menu_helper.php:115 ../views/admin.php:288
+msgid "Use icons"
+msgstr "Ikonok használata"
+
+#: ../php/helper/admin_menu_helper.php:116 ../views/admin.php:289
+msgid "Display icons in front of headlines."
+msgstr "Ikonok megjelenítése a címsorok előtt"
+
+#: ../php/helper/admin_menu_helper.php:117
+msgid ""
+"Icons not only look nice. They also can save you space. With this setting "
+"activated most layouts <span class=\"admin_demo\"\"><i class=\"fa fa-clock-o"
+"\" title=\"ready in\" ></i> 35min</span> will display instead of <span class="
+"\"admin_demo\"><span style=\"text-transform:uppercase; font-weight:bold;"
+"\">Ready in: </span>35min</span>."
+msgstr ""
+"Az ikonok nem csak jól néznek ki. Helyet is spórolnak. Ennek a beállításnak "
+"aktíválásával a legtöbb elrendezésben <span class=\"admin_demo\"\"><i class="
+"\"fa fa-clock-o\" title=\"Elkészülési idő:\" ></i> 35 perc</span> jelenik "
+"meg <span class=\"admin_demo\"><span style=\"text-transform:uppercase; font-"
+"weight:bold;\">Elkészülési idő: </span>35 perc</span> helyett."
+
+#: ../php/helper/admin_menu_helper.php:123 ../views/admin.php:209
+msgid "Display print link"
+msgstr "Nyomtatás link megjelenítése"
+
+#: ../php/helper/admin_menu_helper.php:124 ../views/admin.php:210
+msgid ""
+"Adds a print link to your recipes. It's recommended to use one of the "
+"numerous print plugins for wordpress to include a print link to ALL of your "
+"posts."
+msgstr ""
+"Hozzáad egy nyomtatási linket a receptekhez. Minden bejegyzésnél ajánlott a "
+"számos Wordpress nyomtatási bővítmény (plugin) egyikének használata."
+
+#: ../php/helper/admin_menu_helper.php:130 ../views/admin.php:216
+msgid "Class of the print area"
+msgstr "Nyomtatási terület fajta"
+
+#: ../php/helper/admin_menu_helper.php:131 ../views/admin.php:217
+msgid ""
+"Print links should only print an area of the page, usually a post. This is "
+"higly depending on wordpress theme you are using. Add here the class "
+"(prefixed by '.') or the id (prefixed by '#') of the printable area."
+msgstr ""
+"A nyomtatási linkek csak az oldal egy részének,  általában a bejegyzés "
+"nyomtatására szolgálnak. Ez erősen függ a használt Wordpress témától. Add "
+"meg itt a nyomtatható területet fajtáját (előtaggal \".\") vagy id-jét ('#' "
+"előtaggal)."
+
+#: ../php/helper/admin_menu_helper.php:139
+msgid "Choose a layout"
+msgstr "Elrendezés kiválasztása"
+
+#: ../php/helper/admin_menu_helper.php:140
+msgid ""
+"Layouts define how your recipes will look like. Choose one of the installed "
+"templates."
+msgstr ""
+"Az elrendezés határozza meg, hogyan fognak kinézni a receptek. Válasszon "
+"egyet a telepített sablonok közül."
+
+#: ../php/helper/rpr_taxonomies_builder.php:5
+msgid "Manage Taxonomies"
+msgstr "Besorolások kezelése"
+
+# non breaking space = nem tördelhető helyköz
+#: ../php/template_tags.php:104 ../php/template_tags.php:109
+#: ../php/template_tags.php:126 ../php/template_tags.php:145
+#: ../php/template_tags.php:162 ../php/template_tags.php:183
+msgid "&nbsp;/&nbsp; "
+msgstr "&nbsp;/&nbsp; "
+
+# In context "for how many people", to be checked!
+#: ../php/template_tags.php:248
+msgid "For: "
+msgstr "Elegendő:"
+
+#: ../php/template_tags.php:308 ../php/template_tags.php:317
+msgid "Per 100g"
+msgstr "100 grammonként"
+
+#: ../php/template_tags.php:311
+msgid "Per portion"
+msgstr "Adagonként"
+
+#: ../php/template_tags.php:314
+msgid "Per recipe"
+msgstr "Receptenként"
+
+#: ../php/template_tags.php:325
+#, php-format
+msgid "<dt>Energy:</dt><dd itemprop=\"calories\"> %1s kcal / %2s kJ</dd>"
+msgstr "<dt>Energia:</dt><dd itemprop=\"kalória\"> %1s kcal / %2s kJ</dd>"
+
+#: ../php/template_tags.php:328
+#, php-format
+msgid "<dt>Fat:</dt><dd itemprop=\"fatContent\">%s g</dd>"
+msgstr "<dt>Zsír:</dt><dd itemprop=\"zsírtartalom\">%s g</dd>"
+
+#: ../php/template_tags.php:331
+#, php-format
+msgid "<dt>Protein:</dt><dd itemprop=\"proteinContent\">%s g</dd>"
+msgstr "<dt>Fehérje:</dt><dd itemprop=\"fehérjetartalom\">%s g</dd>"
+
+#: ../php/template_tags.php:334
+#, php-format
+msgid "<dt>Carbohydrate:</dt><dd itemprop=\"carbohydrateContent\">%s g</dd>"
+msgstr "<dt>Szénhidrát:</dt><dd itemprop=\"Szénhidráttartalom\">%s g</dd>"
+
+#: ../php/template_tags.php:425
+msgid "No ingredients could be found for this recipe."
+msgstr "Nincsenek megadva hozzávalók ehhez a recepthez."
+
+#: ../php/template_tags.php:454
+msgid "Preparation Time"
+msgstr "Elkészítési idő"
+
+#: ../php/template_tags.php:456
+msgid "Preparation"
+msgstr "Előkészítés"
+
+#: ../php/template_tags.php:461 ../php/template_tags.php:475
+#: ../php/template_tags.php:502 ../views/metabox_details.php:41
+#: ../views/metabox_details.php:46 ../views/metabox_details.php:51
+msgid "min."
+msgstr "perc"
+
+#: ../php/template_tags.php:468 ../views/metabox_details.php:44
+msgid "Cook Time"
+msgstr "Főzési ill. sütési"
+
+#: ../php/template_tags.php:470
+msgid "Cooking"
+msgstr "Főzés"
+
+#: ../php/template_tags.php:495
+msgid "Total Time"
+msgstr "Teljes idő"
+
+#: ../php/template_tags.php:497
+msgid "Ready in"
+msgstr "Elkészülési idő"
+
+#: ../php/template_tags.php:577
+msgid "No instructions could be found for this recipe."
+msgstr "Nincsenek megadva utasítások ehhez a recepthez."
+
+#: ../recipe-press-reloaded.php:139 ../recipe-press-reloaded.php:140
+#: ../views/admin.php:7 ../views/settings.php:543 ../views/settings.php:544
+msgid "Settings"
+msgstr "Beállítások"
+
+#: ../templates/rpr_2column/recipe.php:23
+msgid "By:"
+msgstr "Írta:"
+
+#: ../templates/rpr_2column/recipe.php:55
+msgid "Time"
+msgstr "Idő"
+
+#: ../templates/rpr_2column/recipe.php:60 ../views/admin.php:305
+msgid "Nutritional Information"
+msgstr "Tápérték információ"
+
+#: ../templates/rpr_2column/recipe.php:65
+msgid "Categories"
+msgstr "Kategóriák"
+
+#: ../templates/rpr_2column/recipe.php:99
+#: ../templates/rpr_default/recipe.php:96 ../views/rpr_recipe_public.php:79
+msgid "Recipe notes"
+msgstr "Recept megjegyzések"
+
+#: ../templates/rpr_2column/settings.php:6
+msgid "Sample Option"
+msgstr "Minta opciók"
+
+#: ../templates/rpr_2column/settings.php:7
+#, php-format
+msgid ""
+"In here layout specific options for the RPR 2column layout could appear. "
+"Read here how to use layout specific options: %s"
+msgstr ""
+"Itt jelenhetnek meg az RPR 2 hasábos elrendezésre vonatkozó opciók. Itt "
+"olvashat a elrendezésre vonatkozó opciók használatáról: %s"
+
+#: ../views/admin.php:12
+msgid "Latest News"
+msgstr "Legfrissebb hírek"
+
+#: ../views/admin.php:18 ../views/settings.php:481
+msgid "Changelog"
+msgstr "Változtatási napló"
+
+#: ../views/admin.php:37 ../views/settings.php:265
+msgid "General Settings"
+msgstr "Általános beállítások"
+
+#: ../views/admin.php:43 ../views/settings.php:266
+msgid "Recipe Archive Pages"
+msgstr "Recept archívum"
+
+#: ../views/admin.php:49 ../views/settings.php:271
+msgid "Display"
+msgstr "Megjelenítés"
+
+#: ../views/admin.php:53 ../views/settings.php:274
+msgid "Only the excerpt"
+msgstr "Csak a kivonat"
+
+#: ../views/admin.php:57 ../views/settings.php:275
+msgid "The entire recipe"
+msgstr "A teljes recept"
+
+#: ../views/admin.php:111 ../views/settings.php:297
+msgid "404 error/page not found?"
+msgstr "404-es hiba: a fájl nem található?"
+
+#: ../views/admin.php:112 ../views/settings.php:298
+msgid "Try"
+msgstr "Próbálja"
+
+#: ../views/admin.php:112 ../views/settings.php:298
+msgid "flushing your permalinks"
+msgstr "a permalinkeket kiüríteni."
+
+#: ../views/admin.php:139 ../views/settings.php:305
+msgid "Appearance"
+msgstr "Megjelenés"
+
+#: ../views/admin.php:145
+msgid "Template"
+msgstr "Sablon"
+
+#: ../views/admin.php:151
+msgid "Choose a template"
+msgstr "Válasszon ki egy sablont"
+
+#: ../views/admin.php:152
+msgid ""
+"Templates define how your recipes will look like. Choose one of the "
+"installed templates."
+msgstr ""
+"Az elrendezés határozza meg, hogyan fognak kinézni a receptek. Válasszon "
+"egyet a telepített sablonok közül."
+
+#: ../views/admin.php:161 ../views/settings.php:311
+msgid "Images"
+msgstr "Képek"
+
+#: ../views/admin.php:167 ../views/settings.php:317
+msgid "Clickable Images"
+msgstr "Kattintható képek"
+
+#: ../views/admin.php:168 ../views/settings.php:318
+msgid "Best used in combination with a lightbox plugin."
+msgstr "Legjobban egy lightbox bővítménnyel (plugin-nal) együtt használható."
+
+#: ../views/admin.php:174 ../views/settings.php:324
+msgid "Instruction Images"
+msgstr "Elkészítési képek"
+
+#: ../views/admin.php:175 ../views/settings.php:325
+msgid "Allow to attach images to instruction steps."
+msgstr "Lehetővé teszi képek csatolását a utasítási lépésekhez."
+
+#: ../views/admin.php:181 ../views/settings.php:331
+msgid "Position of instruction images"
+msgstr "Elkészítési képek elhelyezkedése"
+
+#: ../views/admin.php:182 ../views/settings.php:332
+msgid ""
+"Decide wether your instruction images should be display next to the "
+"instructions or below."
+msgstr ""
+"Döntsön, hogy az elkészítési képek az utasítások mellett vagy alatt legyenek."
+
+#: ../views/admin.php:186 ../views/settings.php:334
+msgid "Right of instruction"
+msgstr "Utasításoktól jobbra"
+
+#: ../views/admin.php:190 ../views/settings.php:335
+msgid "Below the instruction"
+msgstr "Utasítások alatt"
+
+#: ../views/admin.php:203
+msgid "Print Link"
+msgstr "Nyomtatási link"
+
+#: ../views/admin.php:227 ../views/settings.php:345
+msgid "Advanced theming options"
+msgstr "Speciális sablon-beállítások megjelenítése"
+
+#: ../views/admin.php:234 ../views/settings.php:353
+msgid "Please note:"
+msgstr "Kérjük, vegye figyelembe:"
+
+#: ../views/admin.php:235 ../views/settings.php:354
+msgid ""
+"In this section you can make some adjustments on the look and feel of your "
+"recipes. Normally this should not be necessary and your theme should take "
+"care of all this. Some themes however might have limited capabilities and "
+"you might want RecipePress reloaded to display some information in it's part "
+"of the theme. Then however you might also consider to adjust your theme, i."
+"e. by creating a child theme."
+msgstr ""
+"Ebben a részben a receptek kinézete módosítható néhány vontakozásban. Normál "
+"esetben nincs erre szükség és a használt sablon gondoskodik minderről. "
+"Néhány sablon esetében a lehetőségek korlátozottak lehetnek és a RecipePress "
+"Reloaded-nek kell megjeleníteni információkat a sablon általa használt "
+"részén. Persze arra is gondolhat, hogy módosítja a sablont, pl. egy alsablon "
+"létrehozásával."
+
+#: ../views/admin.php:240
+msgid "Display options"
+msgstr "Megjelenítési beállítások"
+
+#: ../views/admin.php:246 ../views/settings.php:366
+msgid "Display recipe image"
+msgstr "Recept képének megjelenítése"
+
+#: ../views/admin.php:247 ../views/settings.php:367
+msgid ""
+"Usually this is the job of your theme. Only use, if your theme does not "
+"support post images"
+msgstr ""
+"Általában ez a sablon feladata. Csak akkor használja, ha sablonja nem "
+"támogatja képek beillesztését."
+
+#: ../views/admin.php:253 ../views/settings.php:374
+msgid "Display the author in recipe"
+msgstr "Szerző képének megjelenítése a receptben"
+
+#: ../views/admin.php:254 ../views/settings.php:375
+msgid ""
+"Display the author in the recipe part of the theme. Ususally your theme will "
+"display the author."
+msgstr ""
+"A szerző képének megjelenítése a receptben a sablon része. A sablonja "
+"általában megjeleníti a szerzőt."
+
+#: ../views/admin.php:260 ../views/settings.php:382
+msgid "Display date in recipe"
+msgstr "Recept dátum megjelenítése"
+
+#: ../views/admin.php:261 ../views/settings.php:383
+msgid ""
+"Display date in the recipe part of the theme. Ususally your theme will "
+"display the date."
+msgstr ""
+"A recept dátum megjelenítése a receptben a sablon része. A sablonja "
+"általában megjeleníti a dátumot."
+
+#: ../views/admin.php:267 ../views/settings.php:390
+msgid "Display Categories in recipe"
+msgstr "Kategóriák megjelenítése a receptben"
+
+#: ../views/admin.php:268 ../views/settings.php:391
+msgid ""
+"Display WP Categories in the recipe part of the theme instead the default "
+"one."
+msgstr ""
+"Az alapértelmezettek helyett WP kategóriák megjelenítése a sablon recept "
+"részén."
+
+#: ../views/admin.php:274 ../views/settings.php:398
+msgid "Display tags in recipe"
+msgstr "Recept címkék megjelenítése"
+
+#: ../views/admin.php:275 ../views/settings.php:399
+msgid ""
+"Display WP Tags in the recipe part of the theme instead the default one."
+msgstr ""
+"Az alapértelmezettek helyett WP címkék megjelenítése a sablon recept részén."
+
+#: ../views/admin.php:282
+msgid "Icons"
+msgstr "Ikonok"
+
+#: ../views/admin.php:299 ../views/settings.php:408
+msgid "Recipe Metadata"
+msgstr "Recept metaadatok "
+
+#: ../views/admin.php:311 ../views/settings.php:440
+msgid "Use nutritional information"
+msgstr "Tápérték információ használata"
+
+#: ../views/admin.php:312 ../views/settings.php:441
+msgid "Add nutritional information to your recipes."
+msgstr "Tápérték információ hozzáadása a receptekhez."
+
+#: ../views/admin.php:325 ../views/settings.php:413
+msgid "Ingredient Links"
+msgstr "Hozzávaló linkek"
+
+#: ../views/admin.php:326 ../views/settings.php:414
+msgid "Links to be used in the ingredient list."
+msgstr "Az hozzávalók listájában használandó linkek"
+
+#: ../views/admin.php:330 ../views/settings.php:416
+msgid "No ingredient links"
+msgstr "Nincs hozzávalókhoz link"
+
+#: ../views/admin.php:334 ../views/settings.php:417
+msgid "Only link to ingredient archive page"
+msgstr "Link csak a hozzávalók archivált oldalához"
+
+#: ../views/admin.php:338 ../views/settings.php:418
+msgid "Custom link if provided, otherwise archive page"
+msgstr "Egyéni link, ha van, egyébként archivált oldal"
+
+#: ../views/admin.php:342 ../views/settings.php:419
+msgid "Custom links if provided, otherwise no link"
+msgstr "Egyéni link, ha van, egyébként  nincs link"
+
+#: ../views/admin.php:364
+msgid "Custom Recipe Tags"
+msgstr "Egyedi recept címkék"
+
+#: ../views/admin.php:379
+msgid "WordPress Categories & Tags"
+msgstr "WordPress kategóriák & címkék"
+
+#: ../views/admin.php:385 ../views/settings.php:459
+msgid "Use Categories"
+msgstr "Kategóriák használata"
+
+#: ../views/admin.php:386 ../views/settings.php:460
+msgid ""
+"Use the default WP Categories to organize your recipes. If set to \"Off\", "
+"RPR will create own categories."
+msgstr ""
+"Az alapértelmezett WP kategóriákat használja receptjei rendszerezéséhez. Ha "
+"\"Ki\"-re van állítva, az RPR saját kategóriákat hoz létre."
+
+#: ../views/admin.php:392 ../views/settings.php:466
+msgid "Use Tags"
+msgstr "Címkék használata"
+
+#: ../views/admin.php:393 ../views/settings.php:467
+msgid ""
+"Use the default WP Tags to organize your recipes. If set to \"Off\", RPR "
+"will create own tags."
+msgstr ""
+"Az alapértelmezett WP címkéket használja receptjei rendszerezéséhez. Ha \"Ki"
+"\"-re van állítva, az RPR saját címkéket hoz létre."
+
+#: ../views/admin.php:403 ../views/settings.php:494
+msgid "Documentation & Support"
+msgstr "Dokumentáció & támogatás"
+
+#: ../views/admin.php:410 ../views/settings.php:500
+msgid "Need more help?"
+msgstr "További segítségre van szüksége?"
+
+#: ../views/admin.php:411 ../views/settings.php:501
+msgid ""
+"Have a look at the <a href=\"http://rp-reloaded.net/documentation\" target="
+"\"_blank\">Documentation</a> (currently being built up) or ask your "
+"questions at the <a href=\"http://wordpress.org/support/plugin/recipepress-"
+"reloaded\" target=\"_blank\">support forum</a>."
+msgstr ""
+"Lásd <a href=\"http://rp-reloaded.net/documentation\" target=\"_blank\">az "
+"angol nyelvű dokumentációt</a> (létrehozás alatt) vagy tegye fel kérdését <a "
+"href=\"http://wordpress.org/support/plugin/recipepress-reloaded\" target="
+"\"_blank\">az angol nyelvű támogatási fórumon</a>."
+
+#: ../views/mce_dialog.php:6
+msgid "Insert RecipePress reloaded Shortcode"
+msgstr "RecipePress Reloaded rövidítés beszúrása "
+
+#: ../views/mce_dialog.php:7
+msgid "Close"
+msgstr "Bezárás"
+
+#: ../views/mce_dialog.php:12
+msgid "Select the type of shortcode to embed:"
+msgstr "Válassza ki a beágyazandó rövidítés típusát."
+
+#: ../views/mce_dialog.php:14
+msgid "Embed recipe"
+msgstr "Recept beágyazása"
+
+#: ../views/mce_dialog.php:15
+msgid "Embed taxonomy index"
+msgstr "Besorolás:i index beágyazása"
+
+#: ../views/mce_dialog.php:16
+msgid "Embed recipe index"
+msgstr "Recept index beágyazása"
+
+#: ../views/mce_dialog.php:22
+msgid "Taxonomy"
+msgstr "Besorolás"
+
+#: ../views/mce_dialog.php:41
+msgid ""
+"Choose the recipe you want to include from the list below or search for it."
+msgstr ""
+"Válassza ki a felvenni kívánt receptet az alábbi listából vagy keressen rá."
+
+#: ../views/mce_dialog.php:57
+msgid "No search term specified. Showing recent items."
+msgstr "Nincs keresési kifejezés megadva. Legutóbbi elemek listázása."
+
+#: ../views/mce_dialog.php:58
+msgid "Search or use up and down arrow keys to select an item."
+msgstr "Keress vagy a fel és le nyilakkal válasszon ki egy elemet."
+
+#: ../views/metabox_details.php:27
+msgid "star"
+msgstr "csillag"
+
+#: ../views/metabox_details.php:27
+msgid "stars"
+msgstr "csillagok"
+
+#: ../views/metabox_details.php:33
+msgid "Servings"
+msgstr "Adag"
+
+#: ../views/metabox_details.php:36
+msgid "(e.g. 2 people, 3 loafs, ...)"
+msgstr "(pl. 2 személy, 3 rúd, ...)"
+
+#: ../views/metabox_details.php:39
+msgid "Prep Time"
+msgstr "Elkészítési idő"
+
+#: ../views/metabox_details.php:49
+msgid "Passive Time"
+msgstr "Passzív idő"
+
+#: ../views/metabox_details.php:54
+msgid "Featured?"
+msgstr "Kiemelt?"
+
+#: ../views/metabox_ingredients.php:20 ../views/metabox_ingredients.php:39
+#: ../views/metabox_ingredients.php:60 ../views/metabox_instructions.php:11
+#: ../views/metabox_instructions.php:28 ../views/metabox_instructions.php:44
+msgid "Group"
+msgstr "Csoport"
+
+#: ../views/metabox_ingredients.php:22
+msgid "Main Ingredients"
+msgstr "Fő hozzávalók"
+
+#: ../views/metabox_ingredients.php:22 ../views/metabox_instructions.php:12
+msgid "(this label is not shown)"
+msgstr "(ez a címke nem jelenik meg)"
+
+#: ../views/metabox_ingredients.php:106
+msgid "tbsp"
+msgstr "ek."
+
+#: ../views/metabox_ingredients.php:107
+msgid "olive oil"
+msgstr "olívaolaj"
+
+#: ../views/metabox_ingredients.php:109
+msgid "extra virgin"
+msgstr "extra szűz"
+
+#: ../views/metabox_ingredients.php:126
+msgid "Add an ingredient group"
+msgstr "Hozzávalók csoport hozzáadása"
+
+#: ../views/metabox_ingredients.php:127
+msgid "Add an ingredient"
+msgstr "Hozzávaló hozzáadása"
+
+#: ../views/metabox_ingredients.php:129 ../views/metabox_instructions.php:120
+msgid ""
+"EasyType edit: <strong>Use the TAB key</strong> while adding ingredients. "
+"New fields will be created automatically. <strong>Don't worry about empty "
+"lines</strong>, these won't be saved."
+msgstr ""
+"EasyType szerkesztés: <strong>használja a TAB billentyűt</strong>, amikor "
+"hozzávalókat add hozzá. Automatikusan új mezők jönnek létre. <strong>Ne "
+"aggódjon az üres sorok miatt,</strong> ezek nem lesznek elmentve."
+
+#: ../views/metabox_instructions.php:12
+msgid "Main Instructions"
+msgstr "Fő elkészítési utasítások"
+
+#: ../views/metabox_instructions.php:74 ../views/metabox_instructions.php:97
+#: ../views/metabox_instructions.php:106
+msgid "Add Image"
+msgstr "Kép hozzáadása"
+
+#: ../views/metabox_instructions.php:75 ../views/metabox_instructions.php:107
+msgid "Remove Image"
+msgstr "Kép eltávolítása"
+
+#: ../views/metabox_instructions.php:117
+msgid "Add an instruction"
+msgstr "Utasítás hozzáadása"
+
+#: ../views/metabox_instructions.php:118
+msgid "Add an instruction group"
+msgstr "Utasítás csoport hozzáadása"
+
+#: ../views/metabox_nutrition.php:12
+msgid "Calorific value"
+msgstr "Kalóriaérték"
+
+#: ../views/metabox_nutrition.php:23
+msgid "Protein"
+msgstr "Fehérje"
+
+#: ../views/metabox_nutrition.php:28
+msgid "Fat"
+msgstr "Zsír"
+
+#: ../views/metabox_nutrition.php:33
+msgid "Carbohydrate"
+msgstr "Szénhidrát"
+
+# context must be checked
+#: ../views/metabox_nutrition.php:39
+msgid "Per"
+msgstr "??Per??"
+
+#: ../views/metabox_nutrition.php:41
+msgid "100g"
+msgstr "100 gr"
+
+#: ../views/metabox_nutrition.php:42
+msgid "portion"
+msgstr "adag"
+
+#: ../views/metabox_nutrition.php:43
+msgid "recipe"
+msgstr "recept"
+
+#: ../views/settings.php:120
+msgid "Section via hook"
+msgstr "Fejezet hook-on keresztül"
+
+#: ../views/settings.php:121
+msgid ""
+"<p class=\"description\">This is a section created by adding a filter to the "
+"sections array. Can be used by child themes to add/remove sections from the "
+"options.</p>"
+msgstr ""
+"<p class=\"description\"> Ezt a részt a szegmens tömbhöz adott szűrő hozta "
+"létre. Altémák használhatják szegmensek hozzáadásáta ill. eltávolítására a "
+"lehetőségek közül. </p>"
+
+#: ../views/settings.php:272
+msgid "Defines what to show of your recipes on the archive page"
+msgstr "Meghatározza, hogy mit látható a receptekből az archív oldalon"
+
+#: ../views/settings.php:359
+msgid "Use advanced theming settings"
+msgstr "Speciális sablon beállítások használata"
+
+#: ../views/settings.php:360
+msgid "Activate additional settings"
+msgstr "További beállítások aktiválása"
+
+#: ../views/settings.php:426
+msgid "Exclude ingredients from listings"
+msgstr "A hozzávalók kizárása a listákból"
+
+#: ../views/settings.php:427
+msgid ""
+"Choose ingredients you don't want to appear on ingredeint listings like the "
+"ingredient index or the ingredient cloud"
+msgstr ""
+"Válassza ki azokat a hozzávalókat, amiket nem kíván megjeleníteni a "
+"hozzávalók listáiban, mint pl. a hozzávalók indexe vagy hozzávalók felhője."
+
+#: ../views/settings.php:428
+msgid ""
+"Select multiple ingredients like \"salt\" or \"pepper\" you don't want to "
+"see on the listings"
+msgstr ""
+"Válassza ki azokat a hozzávalókat, mint pl. \"só\" or \"bors\", amiket nem "
+"akar megjeleníteni a listákban."
+
+#: ../views/settings.php:451
+msgid "Manage custom taxonomies"
+msgstr "Egyéni besorolások kezelése"
+
+#: ../views/settings.php:493
+msgid "Documentation"
+msgstr "Dokumentáció"
+
+#: ../views/settings.php:512
+msgid "Theme Information 1"
+msgstr "Sablon információ 1"
+
+#: ../views/settings.php:513 ../views/settings.php:519
+msgid "<p>This is the tab content, HTML is allowed.</p>"
+msgstr "<p>Ez a tab? tartalom, HTML engedélyezve.</p>"
+
+#: ../views/settings.php:518
+msgid "Theme Information 2"
+msgstr "Sablon információ 2"
+
+#: ../views/settings.php:523
+msgid "<p>This is the sidebar content, HTML is allowed.</p>"
+msgstr "<p>Ez az oldalsáv tartalom, HTML engedélyezve.</p>"
+
+#: ../views/settings.php:699
+msgid "<b>Readme Parser: readme.txt ot found!</b>"
+msgstr "<b>Readme rutin: readme.txt nem található!</b>"
+
+#. translators: The description of the Recpipe List widget on the Appearance->Widgets page.
+#: ../widgets/list-widget.php:29
+msgid "List recipes on your sidebar. By dasmaeh."
+msgstr "Receptek listája az oldalsávon. Írta dasmaeh"
+
+#. translators: The title for the Recipe List widget.
+#: ../widgets/list-widget.php:31
+msgid "RPR :: List"
+msgstr "RPR :: Lista"
+
+#: ../widgets/list-widget.php:131 ../widgets/same-taxonomy-widget.php:102
+#: ../widgets/taxonomy-cloud-widget.php:86
+#: ../widgets/taxonomy-list-widget.php:141
+msgid "Title (optional)"
+msgstr "Cím (opcionális)"
+
+#: ../widgets/list-widget.php:134 ../widgets/taxonomy-list-widget.php:153
+msgid "How many items would you like to display?"
+msgstr "Hány elemet szeretne megjeleníteni?"
+
+#: ../widgets/list-widget.php:137
+msgid "Display type:"
+msgstr "Megjelenítés típusa:"
+
+#: ../widgets/list-widget.php:138
+msgid "Newest Recipes"
+msgstr "Legújabb receptek"
+
+#: ../widgets/list-widget.php:139
+msgid "Random Recipes"
+msgstr "Receptek véletlenszerűen"
+
+#: ../widgets/list-widget.php:140
+msgid "Featured"
+msgstr "Kiemelt"
+
+#: ../widgets/list-widget.php:141
+msgid "Recently Updated"
+msgstr "Nemrég frissített"
+
+#: ../widgets/list-widget.php:145
+msgid "Sort order:"
+msgstr "Rendezési sorrend:"
+
+#: ../widgets/list-widget.php:146
+msgid "Ascending"
+msgstr "Növekvő"
+
+#: ../widgets/list-widget.php:147
+msgid "Descending"
+msgstr "Csökkenő"
+
+#: ../widgets/list-widget.php:151
+msgid "Show icon?"
+msgstr "Ikon megjelenítése?"
+
+#: ../widgets/list-widget.php:154
+msgid "Icon size (square)"
+msgstr "Ikon méret (négyzetes)"
+
+#: ../widgets/same-taxonomy-widget.php:26
+msgid "RPR :: Same Taxonomy"
+msgstr "RPR :: Azonos besorolás"
+
+#: ../widgets/same-taxonomy-widget.php:26
+msgid ""
+"Lists posts from the same taxonomy on single-post view. Will not display "
+"elsewhere"
+msgstr ""
+"Bejegyzések listázása azonos besorolás alapján egy-bejegyzés nézetben. "
+"Máshol nem jelenik meg."
+
+#: ../widgets/same-taxonomy-widget.php:106
+#: ../widgets/taxonomy-list-widget.php:145
+msgid "Taxonomy to display"
+msgstr "Megjelenítendő besorolás"
+
+#: ../widgets/same-taxonomy-widget.php:115
+msgid "Number of posts"
+msgstr "Bejegyzések száma:"
+
+#: ../widgets/taxonomy-cloud-widget.php:16
+msgid "RPR :: Taxonomy Cloud"
+msgstr "RPR ::  Besorolás felhő"
+
+#: ../widgets/taxonomy-cloud-widget.php:16
+msgid "Advanced tagcloud widget for to display any taxonomy with excludes"
+msgstr ""
+"Fejlett címkefelhő widget bármilyen besorolás megjelenítésére, kizárási "
+"lehetőséggel"
+
+#: ../widgets/taxonomy-cloud-widget.php:89
+msgid "Taxonomy:"
+msgstr "Besorolás:"
+
+#: ../widgets/taxonomy-cloud-widget.php:97
+msgid "Number auf items to display"
+msgstr "Megjelenítendő elemek száma"
+
+#: ../widgets/taxonomy-cloud-widget.php:100
+#: ../widgets/taxonomy-list-widget.php:184
+msgid "Exclude terms"
+msgstr "Ezen kifejezések kivételével:"
+
+#. translators: The description of the Category List widget on the Appearance->Widgets page.
+#: ../widgets/taxonomy-list-widget.php:28
+msgid "List recipe taxonomies on your sidebar."
+msgstr "Recept besorolások listázása az oldalsávon"
+
+#. translators: The title for the Taxonomy List widget.
+#: ../widgets/taxonomy-list-widget.php:31
+msgid "RPR :: Taxonomy List"
+msgstr "RPR :: besorolások listázása "
+
+#: ../widgets/taxonomy-list-widget.php:82
+msgid "No categories"
+msgstr "Nincsenek kategóriák"
+
+#: ../widgets/taxonomy-list-widget.php:157
+msgid "Order items by"
+msgstr "Rendezési sorrend:"
+
+#: ../widgets/taxonomy-list-widget.php:159
+msgid "Count"
+msgstr "Darabszám"
+
+#: ../widgets/taxonomy-list-widget.php:164
+msgid "ASC"
+msgstr "Növ."
+
+#: ../widgets/taxonomy-list-widget.php:165
+msgid "DESC"
+msgstr "Csökk."
+
+#: ../widgets/taxonomy-list-widget.php:170
+msgid "Show count with"
+msgstr "A darabszám megjelenítése"
+
+#: ../widgets/taxonomy-list-widget.php:173
+msgid "before and"
+msgstr "előtt és"
+
+#: ../widgets/taxonomy-list-widget.php:176
+msgid "behind"
+msgstr "után"
+
+#: ../widgets/taxonomy-list-widget.php:180
+msgid "Hide empty terms?"
+msgstr "Üres kifejezések elrejtése?"
+
+msgid "Options"
+msgstr "Opciók"
+
+msgid "Please Wait"
+msgstr "Kérjük várjon..."
+
+msgid "Default"
+msgstr "Alapértelmezett"
+
+msgid "Developer Mode Enabled"
+msgstr "A fejlesztői mód engedélyezése"
+
+msgid "Save Changes"
+msgstr "Módosítások mentése"
+
+msgid "Settings Imported!"
+msgstr "Beállítások importálva!"
+
+msgid "Settings Saved!"
+msgstr "Beállítások mentve!"
+
+msgid "Remove"
+msgstr "Eltávolítás"
+
+msgid "Active"
+msgstr "Aktív"
+
+msgid "Add More"
+msgstr "Továbbiak hozzáadása"
+
+msgid "Select an item"
+msgstr "Válaszzon egy elemet"
+
+msgid "Add %s"
+msgstr "Adj hozzá %"
+
+msgid "Text Decoration"
+msgstr "Szöveg díszítés "
+
+msgid "Import / Export Options"
+msgstr "Import / Export opciók"
+
+msgid "Import Options"
+msgstr "Import opciók"
+
+msgid "Import from file"
+msgstr "Fájl importálása"
+
+msgid "Import"
+msgstr "Importálás"
+
+msgid "Export Options"
+msgstr "Exportálási opciók"
+
+msgid "Import / Export"
+msgstr "Importálás és exportálás"
+
+msgid "our documentation"
+msgstr "dokumentációnk"
+
+msgid "donation"
+msgstr "Pénzadomány"
+
+msgid "What's New"
+msgstr "Újdonságok"
+
+msgid "Credits"
+msgstr "Közreműködők"
+
+msgid "Some Feature"
+msgstr "Néhány funkció"
+
+msgid "Feature"
+msgstr "Funkció"
+
+msgid "Some feature"
+msgstr "Néhány funkció"
+
+msgid "More Features"
+msgstr "További funkciók"
+
+msgid "description"
+msgstr "leírás"
+
+msgid "Full Changelog"
+msgstr "Teljes változtatási napló"
+
+msgid "Display a Product Grid"
+msgstr "Egy termék rács megjelenítése"
+
+msgid "Additional Display Options"
+msgstr "További megjelenítési beállítások"
+
+msgid "Need Help?"
+msgstr "Segítségre van szüksége?"
+
+msgid "Phenomenal Support"
+msgstr "Rendkívüli támogatás"
+
+msgid "No valid changlog was found."
+msgstr "Nem található érvényes változtatási napló."
+
+msgid "View %s"
+msgstr "Lásd %"
+
+msgid "Successful"
+msgstr "Sikeres"
+
+msgid "Unauthorized function"
+msgstr "Érvénytelen funkció"
+
+msgid "[Development Mode] "
+msgstr "[Fejlesztői mód]"
+
+msgid "Vafpress Options"
+msgstr "Vafpress opciók"
+
+msgid "Option Key is required"
+msgstr "Opció kulcs szükséges"
+
+msgid "Template Array/File is required"
+msgstr "Sablon tömb/fájl szükséges"
+
+msgid "Page Slug is required"
+msgstr "Keresőbarát oldalnév szükséges"
+
+msgid ""
+"Development Mode is Active, options' values won't be saved into database."
+msgstr ""
+"Fejlesztői mód aktív, az opciók értékei nem kerülnek mentésre az adatbázisba."
+
+msgid "Can not be empty"
+msgstr "Nem lehet üres."
+
+msgid "Invalid data"
+msgstr "Érvénytelen adat"
+
+msgid "Unverified Access"
+msgstr "Ellenőrizettlen hozzáférés"
+
+msgid "Invalid template supplied"
+msgstr "Érvénytelen sablon"
+
+msgid "Utility"
+msgstr "Segédprogram"
+
+msgid "Restore Default"
+msgstr "Az alapértelmezés visszaállítása"
+
+msgid "Export/Import"
+msgstr "Export/Import"
+
+msgid "Saving successful"
+msgstr "Mentés sikeres"
+
+msgid "Saving failed"
+msgstr "A mentés nem sikerült"
+
+msgid "No changes made"
+msgstr "Nincs változás"
+
+msgid "Value needs to be Alphabet"
+msgstr "Az értéknek betűnek kell lennie "
+
+msgid "Value needs to be Alphanumeric"
+msgstr "Az értéknek betűnek vagy számnak kell lennie "
+
+msgid "Value needs to be Numeric"
+msgstr "Az értéknek számnak kell lennie "
+
+msgid "Value needs to be Valid Email"
+msgstr "Az értéknek érvényes e-mail címnek kell lennie "
+
+msgid "Value needs to be Valid URL"
+msgstr "Az értéknek érvényes URL-nek kell lennie "
+
+msgid "Length needs to be less than {0} characters"
+msgstr "A hosszúság {0} karakternél kevesebb legyen"
+
+msgid "Length needs to be more than {0} characters"
+msgstr "A hosszúság {0} karakternél több legyen"
+
+msgid "Select no more than {0} items"
+msgstr "Válasszön legfeljebb {0} elemet"
+
+msgid "Select at least {0} items"
+msgstr "Válasszön legalább {0} elemet"
+
+msgid "This is required"
+msgstr "Ez kötelező"
+
+msgid "Import succeed, option page will be refreshed.."
+msgstr "Az importálás sikeres, az opciók oldala frissítve lesz.."
+
+msgid "Import failed"
+msgstr "Importálás sikertelen"
+
+msgid "Export succeed, copy the JSON formatted options"
+msgstr "Az exportálás sikeres, másolja a JSON formátumú opciókat"
+
+msgid "Export failed"
+msgstr "Exportálás sikertelen"
+
+msgid "Restoration succeed, option page will be refreshed.."
+msgstr "A helyreállítás sikeres, a beállítási oldal frissülni fog..."
+
+msgid "Options identical to default"
+msgstr "A beállítások azonosak az alapértelmezettel"
+
+msgid "Restoration failed"
+msgstr "Helyreállítás sikertelen"
+
+msgid "Select option(s)"
+msgstr "Válasszon opció(ka)t"
+
+msgid "Select an Icon"
+msgstr "Jelöljön ki egy ikont"
+
+msgid "Choose File"
+msgstr "Fájl kiválasztása"
+
+msgid "Export"
+msgstr "Export"
+
+msgid "Restore Default Options"
+msgstr "Alapértelmezett beállítások visszaállítása"
+
+msgid "Restore options to initial default values."
+msgstr "Az opciók alapértelmezett értékének visszaállítása."
+
+msgid ""
+"** Please make sure you have already make a backup data of your current "
+"settings. Once you click this button, your current settings will be gone."
+msgstr ""
+"** Kérjük, győződjön meg arról, hogy rendelkezik az aktuális beállítások "
+"adatainak biztonsági másolatával . Amikor erre a gombra kattint, a jelenlegi "
+"beállítások eltűnnek."
+
+msgid "Saving Now"
+msgstr "Mentés most"
+
+msgid ""
+"This option panel is built using <a href=\"http://vafpress.com/vafpress-"
+"framework\">Vafpress Framework %s</a> powered by <a href=\"http://vafpress."
+"com\">Vafpress</a>"
+msgstr ""
+"Ez az opciós panel a <a href=\"http://vafpress.com\">Vafpress</a>-en futó <a "
+"href=\"http://vafpress.com/vafpress-framework\">Vafpress keretrendszer %s</"
+"a> segítéségével készült."
+
+msgid "Add new / edit Recipe Taxonomy"
+msgstr "Recept besorolás létrehozása ill. szerkesztése"
+
+msgid "Create custom tags for your recipes."
+msgstr "Hozzon létre egyéni címkéket receptjeihez."
+
+msgid "Edit tag"
+msgstr "Címke szerkesztése"
+
+msgid "Cancel Edit"
+msgstr "Szerkesztés megszakítása"
+
+msgid "This needs to be moved somewhere else."
+msgstr "Ez máshova kell áthelyezni."
+
+msgid "Recipe Tags"
+msgstr "Recept címkék"
+
+msgid "Very very beta!"
+msgstr "Nagyon-nagyon béta!"
+
+msgid "Check Images"
+msgstr "Képek ellenőrzése"
+
+msgid "Numeric"
+msgstr "Numerikus"
+
+msgid "Radio Images"
+msgstr "Választó gomb képek"
+
+msgid "FAQ & Support"
+msgstr "GYIK és Támogatás"
+
+msgid "Fix this link."
+msgstr "Javítsa ki ezt a linket."
+
+msgid "The user menus archive can be found at"
+msgstr "A felhasználói menük archívuma megtalálható a"
+
+msgid "This link is wrong. Fix before release."
+msgstr "A link rossz. Javítsa ki közzététel előtt."
+
+msgid ""
+"<strong>Use the TAB key</strong> while adding instructions, it will "
+"automatically create new fields. <strong>Don't worry about empty lines</"
+"strong>, these will be ignored."
+msgstr ""
+"<strong>Használja a TAB billentyűt</strong> utasítások hozzáadása során, "
+"automatikusan új mezők jönnek létre. <strong>Ne aggódjon az üres sorok "
+"miatt</strong>, ezek nem lesznek elmentve."

@@ -315,6 +315,17 @@ if( class_exists( 'RPReloaded' ) ) {
 			}
 		}
 		
+		
+     	function emptyIngredients($count = 5) {
+         	$ingredients = array();
+          	for ( $ctr = 0; $ctr < $count; ++$ctr ) {
+               $ingredients[$ctr]['size'] = 'none';
+               $ingredients[$ctr]['item'] = 0;
+          	}
+
+        	return $ingredients;
+     	}
+		
 		function recipe_migrate_term($recipe_id, $slug)
 		{
 			global $wp_taxonomies;
