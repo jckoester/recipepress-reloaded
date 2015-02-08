@@ -221,28 +221,32 @@ function rpr_admin_layout_settings()
 	*/
 	// Settings section for global layouts
 	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/layouts/';
-	if ($handle = opendir( $dirname )) {
-		while (false !== ($file = readdir($handle))) {
-			if( $file !='.' && $file !='..' && $file != '.svn' ) {
-				if( file_exists($dirname . $file . '/settings.php') ){
-					include_once( $dirname . $file . '/settings.php' );
+	if ( file_exists($dirname)){
+		if( $handle = opendir( $dirname )) {
+			while (false !== ($file = readdir($handle))) {
+				if( $file !='.' && $file !='..' && $file != '.svn' ) {
+					if( file_exists($dirname . $file . '/settings.php') ){
+						include_once( $dirname . $file . '/settings.php' );
+					}
+					
 				}
-				
 			}
 		}
 	}
 	// Settings section for local layouts
 	$dirname = get_stylesheet_directory() . '/rpr_layouts/';
-	if ($handle = opendir( $dirname )) {
-		while (false !== ($file = readdir($handle))) {
-			if( $file !='.' && $file !='..' && $file != '.svn' ) {
-				if( file_exists($dirname . $file . '/settings.php') ){
-					include_once( $dirname . $file . '/settings.php' );
+	if ( file_exists($dirname)){
+		if ($handle = opendir( $dirname )) {
+			while (false !== ($file = readdir($handle))) {
+				if( $file !='.' && $file !='..' && $file != '.svn' ) {
+					if( file_exists($dirname . $file . '/settings.php') ){
+						include_once( $dirname . $file . '/settings.php' );
+					}
+					
 				}
-				
 			}
 		}
-	}
+		}
 	
 	return $layout_settings;
 }
