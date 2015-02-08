@@ -350,6 +350,29 @@ if (!class_exists('RPR_Settings')) {
             	);
 				
 			$this->sections[] = array(
+            	'icon' 		=> 'fa-cog',
+            	'title'		=> __( 'Widgets', $this->pluginName ),
+            	'subsection' => true,
+            	'fields'	=> array(
+            					array(
+									'id' => 'widget_info',
+									'type' => 'info',
+									'icon' => 'fa-lightbulb-o',
+									'class' => 'info',
+									'title' => __('Widgets', $this->pluginName), 
+									'subtitle' => __('Widgets can be really useful to display information in sidebars or other places.<br/> However, if you have a lot of widgets its hard to keep the overview. Here you can switch of widgets shipped with RecipePress reloaded if you don\'t need them.', $this->pluginName )
+								),
+								array(
+									'id' => 'use_taxcloud_widget',
+   									'type' => 'switch',
+   									'title' => __('Taxonomy Cloud', $this->pluginName),
+   									'subtitle' => __( 'Allows you to create tag clouds not only from tags but from every taxonomy.<br/><b>Good to know:</b> You can use this widget for any type of taxonomy, not only recipe related.', $this->pluginName ),
+   									'default' => true,
+   								),
+							)
+            	);
+				
+			$this->sections[] = array(
 				'icon'		=> 'fa-sliders',
 				'title' 	=> __('Advanced theming options', $this->pluginName),
 				'subsection' => true,

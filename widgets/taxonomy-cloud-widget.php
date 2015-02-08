@@ -13,20 +13,16 @@ class RPR_Widget_Taxonomy_Cloud extends WP_Widget {
 	// constructor
 	function RPR_Widget_Taxonomy_Cloud() {
 		// use parent constructor to re-write standard class properties
-		parent::WP_Widget('RPR_Widget_Taxonomy_Cloud_base', __('RPR :: Taxonomy Cloud', 'recipe-press-reloaded'), array('description' => __('Advanced tagcloud widget for to display any taxonomy with excludes', 'recipe-press-reloaded'), 'class' => 'rpr-widget-taxonomy-cloud'));	
+		parent::WP_Widget('RPR_Widget_Taxonomy_Cloud_base', __('Taxonomy Cloud', 'recipe-press-reloaded'), array('description' => __('Allows you to create tag clouds not only from tags but from every taxonomy. Good to know: You can use this widget for any type of taxonomy, not only recipe related.', 'recipe-press-reloaded'), 'class' => 'rpr-widget-taxonomy-cloud'));	
 	}
 
 /**
 	 * display widget
 	 */	 
 	function widget($args, $instance) {
+		global $rpr_option;
+		
 		extract($args, EXTR_SKIP);
-		//Prepare exclude string:
-		$excludes=explode(',', $instance['exclude']);
-        $excludestring="0";
-        foreach($excludes as $ex):
-            $excludestring.=",".$this->get_tag_id_by_name($ex);
-        endforeach;
         //collect arguments for wp_tag_cloud
 		$args = array(
 			'smallest'                  => 10, 
@@ -37,7 +33,7 @@ class RPR_Widget_Taxonomy_Cloud extends WP_Widget {
     		'separator'                 => "\n",
     		'orderby'                   => 'name', 
     		'order'                     => 'ASC',
-    		'exclude'                   => $excludestring, 
+    		'exclude'                   => $rpr_option['ingredients_exclude_list'], 
     		'include'                   => null, 
     		'topic_count_text_callback' => 'default_topic_count_text',
     		'link'                      => 'view', 
@@ -66,7 +62,7 @@ class RPR_Widget_Taxonomy_Cloud extends WP_Widget {
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['taxonomy'] = strip_tags($new_instance['taxonomy']);
 		$instance['limit'] = intval($new_instance['limit']);
-        $instance['exclude'] = trim($new_instance['exclude']);
+        //$instance['exclude'] = trim($new_instance['exclude']);
 		// and now we return new values and wordpress do all work for you
 		return $instance;
 	}
@@ -77,7 +73,7 @@ class RPR_Widget_Taxonomy_Cloud extends WP_Widget {
 					'title' => '',
 					'taxonomy'=>'category',
 					'limit'=>45,
-					'exclude'=>'',
+					//'exclude'=>'',
 		);
 		$instance = wp_parse_args( (array) $instance, $default );
  
@@ -95,19 +91,8 @@ class RPR_Widget_Taxonomy_Cloud extends WP_Widget {
 		$field_id = $this->get_field_id('limit');
 		$field_name = $this->get_field_name('limit');
 		echo "\r\n".'<p><label for="'.$field_id.'">'.__('Number auf items to display', 'recipe-press-reloaded').': <input type="text" class="widefat" id="'.$field_id.'" name="'.$field_name.'" value="'.esc_attr( $instance['limit'] ).'" /><label></p>';
-        $field_id = $this->get_field_id('exclude');
-		$field_name = $this->get_field_name('exclude');
-		echo "\r\n".'<p><label for="'.$field_id.'">'.__('Exclude terms', 'recipe-press-reloaded').': </label><textarea class="widefat" id="'.$field_id.'" name="'.$field_name.'">'.esc_attr( $instance['exclude'] ).'</textarea></p>';
+        //$field_id = $this->get_field_id('exclude');
+		//$field_name = $this->get_field_name('exclude');
+		//echo "\r\n".'<p><label for="'.$field_id.'">'.__('Exclude terms', 'recipe-press-reloaded').': </label><textarea class="widefat" id="'.$field_id.'" name="'.$field_name.'">'.esc_attr( $instance['exclude'] ).'</textarea></p>';
 	}
-	
-	//From:  http://cfpg.me/post/WordPress%3A+Get+Tag+ID+using+only+the+Tag+Name/
-	private function get_tag_id_by_name($tag_name) {
-		global $wpdb;
-		$tag_ID = $wpdb->get_var("SELECT * FROM ".$wpdb->terms." WHERE  `name` =  '".$tag_name."'");
-
-		return $tag_ID;
-	}
-	
 }
-
- add_action('widgets_init', create_function('', 'return register_widget("RPR_Widget_Taxonomy_Cloud");'));

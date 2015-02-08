@@ -4,6 +4,7 @@ class RPR_Core extends RPReloaded {
 
  public function __construct( $pluginName, $pluginDir, $pluginUrl )
     {
+    	global $rpr_option;
 
         $this->pluginName = $pluginName;
         $this->pluginDir = $pluginDir;
@@ -38,6 +39,7 @@ class RPR_Core extends RPReloaded {
         add_action( 'admin_init', array( $this, 'flush_permalinks_if_needed' ));
         add_action( 'save_post', array( $this, 'recipes_save' ), 10, 2 );
         add_action( 'pre_get_posts', array( $this, 'query_recipes' ) );
+		add_action( 'widgets_init', array( $this, 'rpr_add_widgets') );
 
         // Filters
         add_filter( 'the_content', array( $this, 'recipes_content' ), 10 );
@@ -161,6 +163,17 @@ class RPR_Core extends RPReloaded {
     	) );
     }
 	
+	// Add Widgets
+	function rpr_add_widgets()
+	{
+		global $rpr_option;
+		
+		if($rpr_option['use_taxcloud_widget'] == true ){
+			require_once( $this->pluginDir . '/widgets/taxonomy-cloud-widget.php');
+			register_widget( 'RPR_Widget_Taxonomy_Cloud' );
+		}
+		
+	}
 /*
 * Add a button to TinyMce to easily include shortcodes:
 */
@@ -254,6 +267,8 @@ function rpr_mce_buttons_filter($buttons) {
     
     public function recipes_init()
     {
+    	global $rpr_option;
+		
     	$slug = $this->option('recipe_slug', 'recipe');
     
     	$name = __( 'Recipes', $this->pluginName );

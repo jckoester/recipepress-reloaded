@@ -52,6 +52,8 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
+= 0.7.6 =
+* Taxonomy cloud widget
 = 0.7.5 =
 * improved layout engine
 * several bugfixes

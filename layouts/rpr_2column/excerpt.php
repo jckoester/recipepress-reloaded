@@ -20,6 +20,3 @@
    
     
 	<div class="rpr-clear"></div>
-
-
-</div>
