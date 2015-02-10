@@ -152,7 +152,7 @@ if ( !function_exists('get_the_recipe_taxonomy_bar') ) {
         if(!is_wp_error($terms) && $terms != '') {
         	$icon='';
         	if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
-        		$icon = '<i class="fa fa-flag" title=' . $tax->labels->name . '></i> ';
+        		$icon = '<i class="fa fa-flag" title="' . $tax->labels->name . '"></i> ';
         	} else {
         		$icon=$tax->labels->name . ': ';
         	}

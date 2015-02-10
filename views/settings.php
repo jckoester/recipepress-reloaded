@@ -6,6 +6,7 @@
  * */
 require_once( WP_PLUGIN_DIR . '/recipepress-reloaded/php/helper/admin_menu_helper.php');
 
+
 if (!class_exists('RPR_Settings')) {
 
     class RPR_Settings {
@@ -38,7 +39,7 @@ if (!class_exists('RPR_Settings')) {
         public function initSettings() {
 
             // Just for demo purposes. Not needed per say.
-            $this->theme = wp_get_theme();
+//            $this->theme = wp_get_theme();
 
             // Set the default arguments
             $this->setArguments();
@@ -366,9 +367,16 @@ if (!class_exists('RPR_Settings')) {
 									'id' => 'use_taxcloud_widget',
    									'type' => 'switch',
    									'title' => __('Taxonomy Cloud', $this->pluginName),
-   									'subtitle' => __( 'Allows you to create tag clouds not only from tags but from every taxonomy.<br/><b>Good to know:</b> You can use this widget for any type of taxonomy, not only recipe related.', $this->pluginName ),
+   									'subtitle' => __( 'Allows you to create tag clouds not only from tags but from every taxonomy.<br/><b>Good to know:</b> You can use this widget for any type of taxonomy, not only recipe related. <br/>If used the standard tag cloud will be hidden.', $this->pluginName ),
    									'default' => true,
    								),
+   							/*	array(
+									'id' => 'use_taxlist_widget',
+   									'type' => 'switch',
+   									'title' => __('Taxonomy List', $this->pluginName),
+   									'subtitle' => __( 'Allows you to create tag lists not only from tags but from every taxonomy.<br/><b>Good to know:</b> You can use this widget for any type of taxonomy, not only recipe related.', $this->pluginName ),
+   									'default' => true,
+   								),*/
 							)
             	);
 				
@@ -802,18 +810,19 @@ if( ! function_exists( 'replace_readme_parser_tag' ) ){
 	}
 }
 
-
-/**
- * inserts version in after plugin name
- *
- * @param string $file file
- * @return string file
- */
-function readme_parser_get_version( $file )
-{
-	$start = strpos( $file, 'Stable tag:' ) + 12;
-	$end = strpos( $file, "\n", $start );
-	$version = substr( $file, $start, $end - $start );
-	$file = str_replace( ' ===', ' '.$version.' ===', $file );
-	return $file;
+if( !function_exists('readme_parser_get_version')){
+	/**
+	 * inserts version in after plugin name
+	 *
+	 * @param string $file file
+	 * @return string file
+	 */
+	function readme_parser_get_version( $file )
+	{
+		$start = strpos( $file, 'Stable tag:' ) + 12;
+		$end = strpos( $file, "\n", $start );
+		$version = substr( $file, $start, $end - $start );
+		$file = str_replace( ' ===', ' '.$version.' ===', $file );
+		return $file;
+	}
 }

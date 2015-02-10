@@ -6,104 +6,98 @@ if ( preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF']) ) {
 
 /**
  * taxonomy-widget.php - sidebar widget for displaying recipe taxonomies.
- *
- * @package RecipePress
- * @subpackage widgets
- * @author GrandSlambert
- * @copyright 2009-2011
- * @access public
- * @since 2.2
- */
-class RPR_Taxonomy_List_Widget extends WP_Widget {
+*/
+
+class RPR_Widget_Taxonomy_List extends WP_Widget {
 
      var $options = array();
 
      /**
       * Constructor
       */
-     function RPR_Taxonomy_List_Widget() {
-          load_plugin_textdomain('recipe-press', false, dirname(dirname(plugin_basename(__FILE__))) . '/language');
-
-          /* translators: The description of the Category List widget on the Appearance->Widgets page. */
-          $widget_ops = array('description' => __('List recipe taxonomies on your sidebar.', 'recipe-press-reloaded'));
-          $control_ops = array('width' => 400, 'height' => 350);
-          /* translators: The title for the Taxonomy List widget. */
-          $this->WP_Widget('recipe_press_taxonomy_widget', __('RPR :: Taxonomy List', 'recipe-press-reloaded'), $widget_ops, $control_ops);
-
-          /* Plugin Folders */
-/*          $this->pluginPath = WP_PLUGIN_DIR . '/' . basename(dirname(dirname(__FILE__))) . '/';
-          $this->pluginURL = WP_PLUGIN_URL . '/' . basename(dirname(dirname(__FILE__))) . '/';
-          $this->templatesPath = WP_PLUGIN_DIR . '/' . basename(dirname(dirname(__FILE__))) . '/templates/';
-          $this->templatesURL = WP_PLUGIN_URL . '/' . basename(dirname(dirname(__FILE__))) . '/templates/';*/
-
-          include (RPR_PATH . 'php/class/custom-walkers.php');
-          /*require_once (RPR_Path . 'php/class/rpr_core.php');
-          $this->recipePress = new RPR_Core();*/
-          global $RECIPEPRESSOBJ;
-          $this->options = $RECIPEPRESSOBJ->loadSettings();
-     }
+	function RPR_Widget_Taxonomy_List() {
+		// use parent constructor to re-write standard class properties
+		parent::WP_Widget(
+			'RPR_Widget_Taxonomy_List_base', 
+			__('Taxonomy List', 'recipe-press-reloaded'), 
+			array(
+				'description' => __('Allows you to create tag lists not only from tags but from every taxonomy. Good to know: You can use this widget for any type of taxonomy, not only recipe related.', 'recipe-press-reloaded'),
+				'class' => 'rpr-widget-taxonomy-cloud'
+				)
+			);	
+	}
 
      /**
       * Widget code
       */
      function widget($args, $instance) {
-		extract($args, EXTR_SKIP);
-		//Prepare exclude string:
-		$excludes=explode(',', $instance['exclude']);
-        $excludestring="0";
-        foreach($excludes as $ex):
-            $excludestring.=",".$this->get_tag_id_by_name($ex);
-        endforeach;
+     	global $rpr_option;
+		
+		$excludestring='';
+		
+		if($instance['taxonomy']=='rpr_ingredient'){
+			$excludestring = $rpr_option['ingredients_exclude_list'];
+		}
         
         if ( isset($instance['error']) && $instance['error'] ) {
         	return;
        	}
 
-        echo $before_widget;
-          
-        if ( $instance['title'] ) {
-        	echo $before_title . $instance['title'] . $after_title;
-        }
+         extract($args, EXTR_SKIP);
+        //collect arguments for wp_tag_cloud
+		$args = array(
+			'smallest'                  => 10, 
+    		'largest'                   => 22,
+    		'unit'                      => 'px', 
+    		//'number'                    => $instance['limit'],  
+    		'format'                    => 'flat',
+    		'separator'                 => "\n",
+    		'orderby'                   => 'name', 
+    		'order'                     => 'ASC',
+    		'exclude'                   => $excludestring, 
+    		'include'                   => null, 
+    		'topic_count_text_callback' => 'default_topic_count_text',
+    		'link'                      => 'view', 
+    		'taxonomy'                  => $instance['taxonomy'], 
+    		'echo'                      => true 
+    		);
+    		
+		echo $before_widget;
+		
+		if ( $instance['title'] ) {
+               echo $before_title . $instance['title'] . $after_title;
+         }
+        
+        
+        $terms = get_terms( $instance['taxonomy'], $args );
+		if( count( $terms ) > 0 ){
+			echo '<ul class="taglist">';
+			foreach( $terms as $term ){
+				echo '<li>';
+				//var_dump($term);
+				echo '<a href="' . get_term_link( $term, $instance['taxonomy'] ) . '">' . $term->name ;
+				var_dump($instance['show_count']);
+				if( $instance['show_count'] == true ){
+					var_dump($term);
+				}
+				echo '</a>';
+				echo '</li>';
+			}
+			echo '</ul>';
+		} else {
+			echo '<p class="taglist taglist-warning">' . __('No terms found', 'recipepress-reloaded' ) .'</p>';
+		}
+        		
 
-	    echo '<ul id="the_' . $args['widget_id'] . '" class="rpr_taxonomy_list">';
-
-          $taxArgs = array(
-               'orderby' => $instance['order_by'],
-               'order' => $instance['order'],
-               'style' => 'list',
-               'show_count' => $instance['show_count'],
-               'hide_empty' => $instance['hide_empty'],
-               'use_desc_for_title' => 1,
-               'child_of' => 0,
-               'exclude' => $instance['exclude'],
-               'include' => get_published_categories($instance['taxonomy']),
-               'hierarchical' => ($instance['taxonomy'] == 'recipe-ingredient' ) ? false : $this->options['taxonomies'][$instance['taxonomy']]['hierarchical'],
-               'title_li' => '',
-               'show_option_none' => __('No categories'),
-               'number' => $instance['items'],
-               'echo' => 1,
-               'depth' => 0,
-               'current_category' => 0,
-               'pad_counts' => false,
-               'taxonomy' => $instance['taxonomy'],
-               'walker' => new Walker_RPR_Taxonomy
-          );
-
-          wp_list_categories($taxArgs);
-
-         
-      	echo '</ul>';
-      	
-          echo '<div class="cleared" style="clear:both"></div>';
-
-
-          echo $after_widget;
+		echo $after_widget;
      }
      
      /** @see WP_Widget::update */
 	function update($new_instance, $old_instance) {
 		// fill current state with old data to be sure we not loose anything
 		$instance = $old_instance;
+		
+		//var_dump($new_instance); die;
 		// for example we want title always have capitalized first letter
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['taxonomy'] = strip_tags($new_instance['taxonomy']);
@@ -124,13 +118,13 @@ class RPR_Taxonomy_List_Widget extends WP_Widget {
      	   $default = array(
 				'title' => '',
 			   	'taxonomy' => 'recipe-category', 
-			   	'items' => $this->options['widget-items'],
-			   	'order_by' => $this->options['widget-orderby'],	
-               	'order' => $this->options['widget-order'],
+			   	//'items' => $this->options['widget-items'],
+			   	//'order_by' => $this->options['widget-orderby'],	
+               	//'order' => $this->options['widget-order'],
                	'show_count' => false,
                	'before_count' => ' ( ',
                	'after_count' => ' ) ',
-               	'hide_empty' => $this->options['widget-hide-empty'],
+               	//'hide_empty' => $this->options['widget-hide-empty'],
 	            'exclude' => NULL,
           );
           

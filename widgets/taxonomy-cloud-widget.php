@@ -3,12 +3,7 @@ if ( preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF']) ) {
      die('You are not allowed to call this page directly.');
 }
 
-/*
- * Created on 30.10.2012
- *
- * To change the template for this generated file go to
- * Window - Preferences - PHPeclipse - PHP - Code Templates
- */
+
 class RPR_Widget_Taxonomy_Cloud extends WP_Widget {
 	// constructor
 	function RPR_Widget_Taxonomy_Cloud() {
@@ -22,6 +17,12 @@ class RPR_Widget_Taxonomy_Cloud extends WP_Widget {
 	function widget($args, $instance) {
 		global $rpr_option;
 		
+		$excludestring='';
+		
+		if($instance['taxonomy']=='rpr_ingredient'){
+			$excludestring = $rpr_option['ingredients_exclude_list'];
+		}
+		
 		extract($args, EXTR_SKIP);
         //collect arguments for wp_tag_cloud
 		$args = array(
@@ -33,7 +34,7 @@ class RPR_Widget_Taxonomy_Cloud extends WP_Widget {
     		'separator'                 => "\n",
     		'orderby'                   => 'name', 
     		'order'                     => 'ASC',
-    		'exclude'                   => $rpr_option['ingredients_exclude_list'], 
+    		'exclude'                   => $excludestring, 
     		'include'                   => null, 
     		'topic_count_text_callback' => 'default_topic_count_text',
     		'link'                      => 'view', 

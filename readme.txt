@@ -3,7 +3,7 @@ Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 0.7.5
+Stable tag: 0.7.6
 License: GPLv2
 
 A simple recipe plugin. It does all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically.
@@ -54,6 +54,8 @@ If you want a translation of another language included please help translating!
 
 = 0.7.6 =
 * Taxonomy cloud widget
+* Redux-Framework is now pulled in as a dependency. Keeping it up to date is much easier this way.
+* Fixed a bug in excerpt view.
 = 0.7.5 =
 * improved layout engine
 * several bugfixes

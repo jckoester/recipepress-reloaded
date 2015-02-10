@@ -169,8 +169,14 @@ class RPR_Core extends RPReloaded {
 		global $rpr_option;
 		
 		if($rpr_option['use_taxcloud_widget'] == true ){
-			require_once( $this->pluginDir . '/widgets/taxonomy-cloud-widget.php');
-			register_widget( 'RPR_Widget_Taxonomy_Cloud' );
+			require_once( $this->pluginDir . '/widgets/rpr_widget_tag_cloud.php');
+			register_widget( 'RPR_Widget_Tag_Cloud' );
+			unregister_widget( 'WP_Widget_Tag_Cloud' );
+		}
+
+		if($rpr_option['use_taxlist_widget'] == true ){
+			require_once( $this->pluginDir . '/widgets/taxonomy-list-widget.php');
+			register_widget( 'RPR_Widget_Taxonomy_List' );
 		}
 		
 	}
