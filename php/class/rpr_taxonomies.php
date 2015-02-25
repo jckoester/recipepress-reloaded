@@ -52,7 +52,8 @@ if( class_exists( 'RPReloaded' ) ) {
 		}
 		
 		public function rpr_taxonomies_init() {
-		
+			global $rpr_option;
+			
 			$this->taxonomies = get_option('rpr_taxonomies', array());
 			
 
@@ -94,15 +95,19 @@ if( class_exists( 'RPReloaded' ) ) {
     			update_option('rpr_taxonomies', $this->taxonomies);
 			}
 */
+
             // register taxonomies:
 			foreach($this->taxonomies as $name => $options) {
-				register_taxonomy(
-					$name,
-					'rpr_recipe',
-					$options
-				);
-		
-				register_taxonomy_for_object_type( $name, 'rpr_recipe' );
+				// Check if taxonomy is enabled:
+				if( isset($rpr_option['taxonomies'][$name]) && $rpr_option['taxonomies'][$name] == 1 ){
+					register_taxonomy(
+						$name,
+						'rpr_recipe',
+						$options
+					);
+			
+					register_taxonomy_for_object_type( $name, 'rpr_recipe' );
+				}
 			}
 		}
 		

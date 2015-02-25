@@ -488,7 +488,7 @@ function rpr_mce_buttons_filter($buttons) {
 		
     	$data=$_POST;
     	//if(!isset($data)||$data==""){$data=$_POST;}
-    	if( $recipe->post_type == 'rpr_recipe' )
+    	if( $recipe !== NULL && $recipe->post_type == 'rpr_recipe' )
     	{
     		$errors = false;
     		// verify if this is an auto save routine.
@@ -1063,7 +1063,7 @@ function rpr_mce_buttons_filter($buttons) {
     
     		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_ingredient', __( 'Ingredients', $this->pluginName ), __( 'Ingredient', $this->pluginName ));
     		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_course', __( 'Courses', $this->pluginName ), __( 'Course', $this->pluginName ));
-    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_cuisine', __( 'Cuisines', $this->pluginName ), __( 'Cuisine', $this->pluginName ));
+    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_cuisine', _x( 'Cuisines', $this->pluginName ), _x( 'Cuisine', $this->pluginName ));
     
     		update_option('rpr_taxonomies', $taxonomies);
     		update_option( 'rpr_flush', '1' );

@@ -370,13 +370,13 @@ if (!class_exists('RPR_Settings')) {
    									'subtitle' => __( 'Allows you to create tag clouds not only from tags but from every taxonomy.<br/><b>Good to know:</b> You can use this widget for any type of taxonomy, not only recipe related. <br/>If used the standard tag cloud will be hidden.', $this->pluginName ),
    									'default' => true,
    								),
-   							/*	array(
+   								array(
 									'id' => 'use_taxlist_widget',
    									'type' => 'switch',
    									'title' => __('Taxonomy List', $this->pluginName),
    									'subtitle' => __( 'Allows you to create tag lists not only from tags but from every taxonomy.<br/><b>Good to know:</b> You can use this widget for any type of taxonomy, not only recipe related.', $this->pluginName ),
    									'default' => true,
-   								),*/
+   								),
 							)
             	);
 				
@@ -485,12 +485,6 @@ if (!class_exists('RPR_Settings')) {
                         			'id'    => 'taxonomies-divide',
                         			'type'  => 'divide',
                     			),
-                    			array(
-									'id' => 'manage_custom_taxonomies_box',
-									'type' => 'raw',
-									'title' => __( 'Manage custom taxonomies', $this->pluginName ),
-									'content' => rpr_admin_manage_tags(),
-								),
             					array(
                             		'type' => 'switch',
                             		'id' => 'recipe_tags_use_wp_categories',
@@ -505,6 +499,29 @@ if (!class_exists('RPR_Settings')) {
                     				'subtitle' => __( 'Use the default WP Tags to organize your recipes. If set to "Off", RPR will create own tags.', $this->pluginName ),
                     				'default' => true,
                     			),
+                    			array(
+									'type' => 'checkbox',
+									'id' => 'taxonomies',
+									'title' => __('Predefined Taxonomies', $this->pluginName),
+									'subtitle' => __('Decide which of the predefined taxonomies you want to use'),
+									'options' => array(
+										'rpr_course' => __('Course', $this->pluginName ),
+										'rpr_cuisine' => __('Cuisine', $this->pluginName ),
+										'rpr_season' => __('Season', $this->pluginName ),
+									),
+									'default' => array(
+										'rpr_course' => 1,
+										'rpr_cuisine' => 1,
+										'rpr_season' => 1,
+									)
+								),
+								array(
+									'id' => 'manage_custom_taxonomies_box',
+									'type' => 'raw',
+									'title' => __( 'Manage custom taxonomies', $this->pluginName ),
+									'subtitle' => __('Use this to change the name and/or slug of the predefined taxonomies. You can also create your own taxonomies.', $this->pluginName ),
+									'content' => rpr_admin_manage_tags(),
+								),
             			)
 			);		
 				
@@ -521,7 +538,7 @@ if (!class_exists('RPR_Settings')) {
                     array(
                         'id'        => 'changelog',
                         'type'      => 'raw',
-                    	'content'   => rpr_admin_latest_news_changelog(),
+                    	//'content'   => rpr_admin_latest_news_changelog(),
                     	'content'   => replace_readme_parser_tag(trailingslashit(dirname(__FILE__)) . '../readme.txt'),
                     )
                 ),
