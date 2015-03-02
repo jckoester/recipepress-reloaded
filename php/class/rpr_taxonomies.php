@@ -55,57 +55,27 @@ if( class_exists( 'RPReloaded' ) ) {
 			global $rpr_option;
 			
 			$this->taxonomies = get_option('rpr_taxonomies', array());
-			
-
-			if( $this->option('recipe_tags_use_wp_categories', 1) == '1'):
-				/*if( taxonomy_exists( 'rpr_category' ) ) {
-					$this->delete_taxonomy('rpr_category');
-				}*/
-				if( isset( $this->taxonomies['rpr_category'] ) ){
-    				unset($this->taxonomies['rpr_category']);
-    			}
-				update_option('rpr_taxonomies', $this->taxonomies);
-			else:
-				// Not using WP categories
-				if( ! in_array( 'rpr_category', $this->taxonomies )):
-                    $this->add_taxonomy(__('Recipe Category', $this->pluginName), __('Recipe Category', $this->pluginName), 'rpr_category', 'rpr_category');
-                    update_option('rpr_taxonomies', $this->taxonomies);
-				endif;
-			endif;
-	
-			if( $this->option( 'recipe_tags_use_wp_tags', 1) == '1'):
-				/*if( taxonomy_exists( 'rpr_tag' ) ) {
-					$this->delete_taxonomy('rpr_tag');
-				}*/
-				unset($this->taxonomies['rpr_tag']);
-				update_option('rpr_taxonomies', $this->taxonomies);
-			else:
-				// Not using WP tags
-				if( ! in_array( 'rpr_tag', $this->taxonomies )):
-    				$this->add_taxonomy(__('Recipe Tag', $this->pluginName), __('Recipe Tag', $this->pluginName), 'rpr_tag', 'rpr_tag');
-    				update_option('rpr_taxonomies', $this->taxonomies);
-				endif;
-			endif;
-			
-			// add optional taxonomies:
-/*
-			if( $this->option( 'recipe_use_difficulty', 1) == '1')
-			{
-				$this->add_taxonomy(__('Difficulty', $this->pluginName), __('Difficulty', $this->pluginName), 'rpr_difficulty', 'rpr_difficulty');
-    			update_option('rpr_taxonomies', $this->taxonomies);
-			}
-*/
 
             // register taxonomies:
 			foreach($this->taxonomies as $name => $options) {
-				// Check if taxonomy is enabled:
-				if( isset($rpr_option['taxonomies'][$name]) && $rpr_option['taxonomies'][$name] == 1 ){
+				if( $name != 'rpr_ingredient' ){
+					// Check if taxonomy is enabled:
+					if( isset($rpr_option['taxonomies'][$name]) && $rpr_option['taxonomies'][$name] == 1 ){
+						register_taxonomy(
+							$name,
+							'rpr_recipe',
+							$options
+						);
+				
+						register_taxonomy_for_object_type( $name, 'rpr_recipe' );
+					}
+				} else {
 					register_taxonomy(
-						$name,
-						'rpr_recipe',
-						$options
+							$name,
+							'rpr_recipe',
+							$options
 					);
-			
+				
 					register_taxonomy_for_object_type( $name, 'rpr_recipe' );
 				}
 			}
@@ -333,6 +303,70 @@ if( class_exists( 'RPReloaded' ) ) {
 			
 			return true;
 		}
+		
+		/*
+	 	* ACTIVATE TAXONOMIES
+	 	* called in the register_activation_hook in recipe-press-reloaded.php
+	 	*/
+	 
+		public function activate_taxonomies()
+    	{
+    		$this->recipes_init();
+    		$this->rpr_custom_taxonomies_init();
+    
+   		 	update_option( 'rpr_flush', '1' );
+    	}
+
+		function rpr_custom_taxonomies_init()
+	    {
+	    	$taxonomies = get_option('rpr_taxonomies', array() );
+	
+	    	if(count($taxonomies) == 0)
+	    	{
+	    
+	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_ingredient', __( 'Ingredients', $this->pluginName ), __( 'Ingredient', $this->pluginName ));
+	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_course', __( 'Courses', $this->pluginName ), __( 'Course', $this->pluginName ));
+	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_cuisine', __( 'Cuisines', $this->pluginName ), __( 'Cuisine', $this->pluginName ));
+				$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_season', __( 'Seasons', $this->pluginName ), __( 'Season', $this->pluginName ));
+				
+	    		update_option('rpr_taxonomies', $taxonomies);
+	    		update_option( 'rpr_flush', '1' );
+	    	}
+	    }
+    
+	    public function add_taxonomy_to_array($arr, $tag, $name, $singular)
+	    {
+	    	$name_lower = strtolower($name);
+	    	$singular_lower = strtolower($singular);
+	    
+	    	$arr[$tag] =
+	    	array(
+	    			'labels' => array(
+	    					'name'                       => $name,
+	    					'singular_name'              => $singular,
+	    					'search_items'               => __( 'Search', $this->pluginName ) . ' ' . $name,
+	    					'popular_items'              => __( 'Popular', $this->pluginName ) . ' ' . $name,
+	    					'all_items'                  => __( 'All', $this->pluginName ) . ' ' . $name,
+	    					'edit_item'                  => __( 'Edit', $this->pluginName ) . ' ' . $singular,
+	    					'update_item'                => __( 'Update', $this->pluginName ) . ' ' . $singular,
+	    					'add_new_item'               => __( 'Add New', $this->pluginName ) . ' ' . $singular,
+	    					'new_item_name'              => __( 'New', $this->pluginName ) . ' ' . $singular . ' ' . __( 'Name', $this->pluginName ),
+	    					'separate_items_with_commas' => __( 'Separate', $this->pluginName ) . ' ' . $name_lower . ' ' . __( 'with commas', $this->pluginName ),
+	    					'add_or_remove_items'        => __( 'Add or remove', $this->pluginName ) . ' ' . $name_lower,
+	    					'choose_from_most_used'      => __( 'Choose from the most used', $this->pluginName ) . ' ' . $name_lower,
+	    					'not_found'                  => __( 'No', $this->pluginName ) . ' ' . $name_lower . ' ' . __( 'found.', $this->pluginName ),
+	    					'menu_name'                  => $name
+	    			),
+	    			'show_ui' => true,
+	    			'show_tagcloud' => true,
+	    			'hierarchical' => true,
+	    			'rewrite' => array(
+	    					'slug' => $singular_lower
+	    			)
+	    	);
+	    
+	    	return $arr;
+	    }
 		
 	}
 }

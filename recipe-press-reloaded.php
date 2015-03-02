@@ -4,7 +4,7 @@
   Plugin Name: RecipePressReloaded
   Plugin URI: http://rp-reloaded.net 
   Description: A simple recipe plugin doing all you need for your food blog. Plus: there are these nifty recipe previews in Google's search - automagically. Yet to come: easily create indexes of any taxonomy like ingredient, category, course, cuisine, ...
-  Version: 0.7.6
+  Version: 0.7.7
   Author: Jan Köster
   Author URI: http://www.cbjck.de/author/jan
   License: GPL2
@@ -31,7 +31,7 @@
  */
  
 /*Set plugin version*/
-define( 'RPR_VERSION', '0.7.6' );
+define( 'RPR_VERSION', '0.7.7' );
 define( 'RPR_TITLE', 'RecipePress reloaded' );
 
 
@@ -60,7 +60,7 @@ class RPReloaded{
 		$this->rpr_core = new RPR_Core( $this->pluginName, $this->pluginDir, $this->pluginUrl );
 //!!TBD>>	
 		// Hooks
-		register_activation_hook( __FILE__, array( $this->rpr_core, 'activate_taxonomies' ) );
+		register_activation_hook( __FILE__, array( $this->rpr_core->tax, 'activate_taxonomies' ) );
 		//register_activation_hook( __FILE__, array( $this, 'activation_notice' ) );
 //>>TBD
 

@@ -14,7 +14,6 @@ class RPR_Core extends RPReloaded {
         // Actions
 //???       add_action( 'init', array( $this, 'check_theme_support' ), 20 );
         add_action( 'init', array( $this, 'recipes_init' ), 1);
-//???activation!        add_action( 'init', array( $this, 'rpr_custom_taxonomies_init' ));
         
         //if migration necessary!!
         require_once 'rpr_migration.php';
@@ -1034,95 +1033,7 @@ function rpr_mce_buttons_filter($buttons) {
         $out .= '</ul>';
         return $out;
     }
-	/*
- 	* ///////////////////////////////////// TAXONOMIES ///////////////////////////////////////////
- 	*/
 
-    public function activate_taxonomies()
-    {
-    	$this->recipes_init();
-    	$this->rpr_custom_taxonomies_init();
-    
-    	update_option( 'rpr_flush', '1' );
-    }
-    // => Move to seperate class? (rpr_taxonomies...)   
-    
-    function get_custom_taxonomies()
-    {
-    	return get_option('rpr_taxonomies', array());
-    }
-    
-    
-    /* in install routine einbauen?*/
-    function rpr_custom_taxonomies_init()
-    {
-    	$taxonomies = $this->get_custom_taxonomies();
-
-    	if(count($taxonomies) == 0)
-    	{
-    
-    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_ingredient', __( 'Ingredients', $this->pluginName ), __( 'Ingredient', $this->pluginName ));
-    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_course', __( 'Courses', $this->pluginName ), __( 'Course', $this->pluginName ));
-    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_cuisine', _x( 'Cuisines', $this->pluginName ), _x( 'Cuisine', $this->pluginName ));
-    
-    		update_option('rpr_taxonomies', $taxonomies);
-    		update_option( 'rpr_flush', '1' );
-    
-    		wp_insert_term( __( 'Breakfast', $this->pluginName ), 'course' );
-    		wp_insert_term( __( 'Appetizer', $this->pluginName ), 'course' );
-    		wp_insert_term( __( 'Soup', $this->pluginName ), 'course' );
-    		wp_insert_term( __( 'Main Course', $this->pluginName ), 'course' );
-    		wp_insert_term( __( 'Side Dish', $this->pluginName ), 'course' );
-    		wp_insert_term( __( 'Salad', $this->pluginName ), 'course' );
-    		wp_insert_term( __( 'Dessert', $this->pluginName ), 'course' );
-    		wp_insert_term( __( 'Snack', $this->pluginName ), 'course' );
-    		wp_insert_term( __( 'Drinks', $this->pluginName ), 'course' );
-    
-    		wp_insert_term( __( 'French', $this->pluginName ), 'cuisine' );
-    		wp_insert_term( __( 'Italian', $this->pluginName ), 'cuisine' );
-    		wp_insert_term( __( 'Mediterranean', $this->pluginName ), 'cuisine' );
-    		wp_insert_term( __( 'Indian', $this->pluginName ), 'cuisine' );
-    		wp_insert_term( __( 'Chinese', $this->pluginName ), 'cuisine' );
-    		wp_insert_term( __( 'Japanese', $this->pluginName ), 'cuisine' );
-    		wp_insert_term( __( 'American', $this->pluginName ), 'cuisine' );
-    		wp_insert_term( __( 'Mexican', $this->pluginName ), 'cuisine' );
-    	}
-    }
-    
-    private function add_taxonomy_to_array($arr, $tag, $name, $singular)
-    {
-    	$name_lower = strtolower($name);
-    	$singular_lower = strtolower($singular);
-    
-    	$arr[$tag] =
-    	array(
-    			'labels' => array(
-    					'name'                       => $name,
-    					'singular_name'              => $singular,
-    					'search_items'               => __( 'Search', $this->pluginName ) . ' ' . $name,
-    					'popular_items'              => __( 'Popular', $this->pluginName ) . ' ' . $name,
-    					'all_items'                  => __( 'All', $this->pluginName ) . ' ' . $name,
-    					'edit_item'                  => __( 'Edit', $this->pluginName ) . ' ' . $singular,
-    					'update_item'                => __( 'Update', $this->pluginName ) . ' ' . $singular,
-    					'add_new_item'               => __( 'Add New', $this->pluginName ) . ' ' . $singular,
-    					'new_item_name'              => __( 'New', $this->pluginName ) . ' ' . $singular . ' ' . __( 'Name', $this->pluginName ),
-    					'separate_items_with_commas' => __( 'Separate', $this->pluginName ) . ' ' . $name_lower . ' ' . __( 'with commas', $this->pluginName ),
-    					'add_or_remove_items'        => __( 'Add or remove', $this->pluginName ) . ' ' . $name_lower,
-    					'choose_from_most_used'      => __( 'Choose from the most used', $this->pluginName ) . ' ' . $name_lower,
-    					'not_found'                  => __( 'No', $this->pluginName ) . ' ' . $name_lower . ' ' . __( 'found.', $this->pluginName ),
-    					'menu_name'                  => $name
-    			),
-    			'show_ui' => true,
-    			'show_tagcloud' => true,
-    			'hierarchical' => true,
-    			'rewrite' => array(
-    					'slug' => $singular_lower
-    			)
-    	);
-    
-    	return $arr;
-    }
-    
     /*
      * ////////////////////////////////////////// RATINGS //////////////////////////////////////////////
      */

@@ -20,6 +20,7 @@ if( class_exists( 'RPReloaded' ) ) {
 		
 		
 		public function rpr_check_migration() {
+			global $rpr_option;
 			
 			$version_updated=$this->get_version_updated();
 			
@@ -27,6 +28,9 @@ if( class_exists( 'RPReloaded' ) ) {
 			if ( get_option( 'rpr_version_updated' ) === get_option( 'rpr_version' ) ) {
 				update_option( 'rpr_update_needed' , 0);
 			} else {
+				if ( version_compare(get_option( 'rpr_version_updated' ), '0.7.7', '<') ){
+					update_option( 'rpr_update_needed' , 1);
+				}
 				//check if old rpr or rp is installed
 				if( get_option( 'rpr_version_updated' ) == "0.3.0" || get_option( 'rpr_version_updated' ) == 'RecipePress' ){
 					update_option( 'rpr_update_needed' , 1);
@@ -43,10 +47,27 @@ if( class_exists( 'RPReloaded' ) ) {
 		}
 		
 		public function rpr_do_migration() {
+			global $rpr_reduxConfig;
+			global $rpr_option;
+			
 			$version_updated=$this->get_version_updated();
 			
 			if( isset($_GET['rpr_do_migration']) && $_GET['rpr_do_migration'] == '1' ){
 
+				if ( version_compare(get_option( 'rpr_version_updated' ), '0.7.7', '<') ){
+					$array = $rpr_option['taxonomies'];
+					$array['category'] = $rpr_option['recipe_tags_use_wp_categories'];
+					$array['post_tag'] = $rpr_option['recipe_tags_use_wp_tags'];
+					$rpr_reduxConfig->ReduxFramework->set('taxonomies', $array);
+					
+					require_once('rpr_taxonomies.php');
+        			$this->tax = new RPR_Taxonomies($this->pluginName, $this->pluginDir, $this->pluginUrl);  
+					$taxonomies = get_option('rpr_taxonomies');
+					$taxonomies = $this->tax->add_taxonomy_to_array($taxonomies, 'rpr_season', __( 'Seasons', $this->pluginName ), __( 'Season', $this->pluginName ));
+
+					update_option('rpr_taxonomies', $taxonomies);
+					
+				}
 				if( $version_updated == '0.3.0' || $version_updated == 'RecipePress' ){
 					$this->migrate_recipepress_3();
 				}

@@ -485,31 +485,25 @@ if (!class_exists('RPR_Settings')) {
                         			'id'    => 'taxonomies-divide',
                         			'type'  => 'divide',
                     			),
-            					array(
-                            		'type' => 'switch',
-                            		'id' => 'recipe_tags_use_wp_categories',
-                            		'title' => __('Use Categories', $this->pluginName),
-                            		'subtitle' => __( 'Use the default WP Categories to organize your recipes. If set to "Off", RPR will create own categories.', $this->pluginName ),
-                            		'default' => true,
-                        		),
-                    			array(
-                    				'type' => 'switch',
-                    				'id' => 'recipe_tags_use_wp_tags',
-                    				'title' => __('Use Tags', $this->pluginName),
-                    				'subtitle' => __( 'Use the default WP Tags to organize your recipes. If set to "Off", RPR will create own tags.', $this->pluginName ),
-                    				'default' => true,
-                    			),
                     			array(
 									'type' => 'checkbox',
 									'id' => 'taxonomies',
 									'title' => __('Predefined Taxonomies', $this->pluginName),
-									'subtitle' => __('Decide which of the predefined taxonomies you want to use'),
+									'subtitle' => __('Decide which of the predefined taxonomies you want to use. Here you can disable unneeded taxonomies. Using the link below you can also delete unneeded taxonomies or create your own.'),
 									'options' => array(
+										'category' => __('Wordpress Category', $this->pluginName ),
+										'post_tag' => __('Wordpress Tag', $this->pluginName ),
+										'rpr_category' => __('RecipePress reloaded category', $this->pluginName ),
+										'rpr_tag' => __('RecipePress reloaded tag', $this->pluginName ),
 										'rpr_course' => __('Course', $this->pluginName ),
 										'rpr_cuisine' => __('Cuisine', $this->pluginName ),
 										'rpr_season' => __('Season', $this->pluginName ),
 									),
 									'default' => array(
+										'category' => 1,
+										'post_tag' => 1,
+										'rpr_category' => 0,
+										'rpr_tag' => 0,
 										'rpr_course' => 1,
 										'rpr_cuisine' => 1,
 										'rpr_season' => 1,
@@ -690,8 +684,8 @@ if (!class_exists('RPR_Settings')) {
 
     }
     
-    global $reduxConfig;
-    $reduxConfig = new RPR_Settings();
+    global $rpr_reduxConfig;
+    $rpr_reduxConfig = new RPR_Settings();
 }
 
 /**
