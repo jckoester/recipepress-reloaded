@@ -54,6 +54,9 @@ if( class_exists( 'RPReloaded' ) ) {
 		public function rpr_taxonomies_init() {
 			global $rpr_option;
 			
+			//				update_option( 'rpr_version_updated', '0.7.5' );
+			
+			
 			$this->taxonomies = get_option('rpr_taxonomies', array());
 
             // register taxonomies:
@@ -78,6 +81,15 @@ if( class_exists( 'RPReloaded' ) ) {
 				
 					register_taxonomy_for_object_type( $name, 'rpr_recipe' );
 				}
+			}
+
+			// Register WP Categories if necessary:
+			if( $rpr_option['taxonomies']['category'] == 1 ){
+				register_taxonomy_for_object_type( 'category', 'rpr_recipe' );
+			}
+			// Register WP Tags if necessary:
+			if( $rpr_option['taxonomies']['post_tag'] == 1 ){
+				register_taxonomy_for_object_type( 'post_tag', 'rpr_recipe' );
 			}
 		}
 		
@@ -328,6 +340,7 @@ if( class_exists( 'RPReloaded' ) ) {
 	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_course', __( 'Courses', $this->pluginName ), __( 'Course', $this->pluginName ));
 	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_cuisine', __( 'Cuisines', $this->pluginName ), __( 'Cuisine', $this->pluginName ));
 				$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_season', __( 'Seasons', $this->pluginName ), __( 'Season', $this->pluginName ));
+				$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_difficulty', __( 'Difficulties', $this->pluginName ), __( 'Difficulty', $this->pluginName ));
 				
 	    		update_option('rpr_taxonomies', $taxonomies);
 	    		update_option( 'rpr_flush', '1' );

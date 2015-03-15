@@ -154,7 +154,7 @@ if ( !function_exists('get_the_recipe_taxonomy_bar') ) {
         	if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
         		$icon = '<i class="fa fa-flag" title="' . $tax->labels->name . '"></i> ';
         	} else {
-        		$icon=$tax->labels->name . ': ';
+        		$icon=$tax->labels->singular_name . ': ';
         	}
             $out .=  sprintf(
                         '<span itemprop="recipeCuisine" class="category-list">%1s%2s</span>',
@@ -162,9 +162,43 @@ if ( !function_exists('get_the_recipe_taxonomy_bar') ) {
                         get_the_term_list( $recipe_id, 'rpr_cuisine', '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
                     );
         }
+		
+		//Season:
+        $terms = get_the_term_list( $recipe_id, 'rpr_season', '', ', ');
+        $tax = get_taxonomy( 'rpr_season' );
+        if(!is_wp_error($terms) && $terms != '') {
+        	$icon='';
+        	if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
+        		$icon = '<i class="fa fa-sun-o" title="' . $tax->labels->name . '"></i> ';
+        	} else {
+        		$icon=$tax->labels->singular_name . ': ';
+        	}
+            $out .=  sprintf(
+                        '<span class="category-list">%1s%2s</span>',
+            			$icon,
+                        get_the_term_list( $recipe_id, 'rpr_season', '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
+                    );
+        }
+		
+		//Difficulty
+		$terms = get_the_term_list( $recipe_id, 'rpr_difficulty', '', ', ');
+        $tax = get_taxonomy( 'rpr_difficulty' );
+        if(!is_wp_error($terms) && $terms != '') {
+        	$icon='';
+        	if( RPReloaded::get_option( 'recipe_icons_display', 0 ) == 1 ){
+        		$icon = '<i class="fa fa-tasks" title="' . $tax->labels->name . '"></i> ';
+        	} else {
+        		$icon=$tax->labels->singular_name . ': ';
+        	}
+            $out .=  sprintf(
+                        '<span class="category-list">%1s%2s</span>',
+            			$icon,
+                        get_the_term_list( $recipe_id, 'rpr_difficulty', '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
+                    );
+        }
         
         // Custom Taxonomies:
-        $done = array('rpr_category', 'rpr_tag', 'rpr_course', 'rpr_cuisine', 'rpr_ingredient');
+        $done = array('rpr_category', 'rpr_tag', 'rpr_course', 'rpr_cuisine', 'rpr_season', 'rpr_difficulty', 'rpr_ingredient');
         $taxonomies = get_option('rpr_taxonomies', array());
         foreach($taxonomies as $taxonomy => $options) {
             if( ! in_array($taxonomy, $done ) ){
@@ -234,7 +268,7 @@ if ( !function_exists('the_recipe_taxonomy_term_list') ) {
 // ======= RECIPE SERVINGS BAR =======
 if ( !function_exists('get_the_recipe_servings_bar') ) {
 	function get_the_recipe_servings_bar( $recipe_id ){
-		$out='';
+		$out='<p class="rpr_servings">';
 		
 		// Get the ID of the recipe:
 		if( !isset( $recipe_id ) || !is_numeric( $recipe_id ) ){
@@ -253,6 +287,7 @@ if ( !function_exists('get_the_recipe_servings_bar') ) {
 			$out .= '</span></span>';
 		}
 		
+		$out .= '</p>';
 		return $out;
 	}
 }
@@ -621,6 +656,7 @@ if ( ! function_exists('the_recipe_notes') ) {
 
 if ( !function_exists('get_the_recipe_footer') ) {
     function get_the_recipe_footer(){
+    	$recipe_post = get_post();
         $out="";
     
         if( RPReloaded::get_option('recipe_tags_use_wp_tags', '1') != '1' ) { 

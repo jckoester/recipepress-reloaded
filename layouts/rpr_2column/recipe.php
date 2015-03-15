@@ -45,7 +45,7 @@ var rpr_template = '<?php echo $this->option( 'rpr_template', 'rpr_default' ); ?
     
     <div class="rpr_col1">
     	 <!-- INGREDIENTS -->
-    	<h3>
+    	<h3 class="rpr_ingredients">
     		<?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-shopping-cart"></i><?php }?><?php _e( 'Ingredients', $this->pluginName ); ?>
     	</h3>
    
@@ -55,23 +55,23 @@ var rpr_template = '<?php echo $this->option( 'rpr_template', 'rpr_default' ); ?
     <div class="rpr_col2">
     
     	<?php if( get_the_recipe_times( $recipe_post->ID ) != "" ){ ?>
-    		<h3>
+    		<h3 class="rpr_times">
     		<?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-clock-o"></i><?php } ?><?php _e( 'Time', $this->pluginName ); ?></h3>
     		<?php the_recipe_times( $recipe_post->ID ); ?>
     	<?php } ?>
     	
     	<?php if( has_recipe_nutrition ($recipe_post->ID ) ) { ?>
-    		<h3><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-fire"></i><?php } ?><?php _e( 'Nutritional Information', $this->pluginName ); ?></h3>
+    		<h3 class="rpr_nutrition"><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-fire"></i><?php } ?><?php _e( 'Nutritional Information', $this->pluginName ); ?></h3>
     		<?php the_recipe_nutrition ($recipe_post->ID ); ?>
     	<?php } ?>
     	
     	<?php  if( $this->option( 'recipe_tags_use_wp_categories', 1) == '1' && $this->option( 'recipe_display_categories_in_recipe' , 1 ) == '1' && get_the_recipe_taxonomy_term_list( $recipe_post->ID, 'category' ) != '' ) {?>
-    		<h3><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-list-ul"></i><?php } ?><?php _e( 'Categories', $this->pluginName ); ?></h3>
+    		<h3 class="rpr_categories"><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-list-ul"></i><?php } ?><?php _e( 'Categories', $this->pluginName ); ?></h3>
     	<?php the_recipe_taxonomy_term_list( $recipe_post->ID, 'category' ); ?>
     	<?php } ?>
     	
     	<?php  if( $this->option( 'recipe_tags_use_wp_tags', 1) == '1' && $this->option( 'recipe_display_tags_in_recipe' , 1 ) == '1' && get_the_recipe_taxonomy_term_list( $recipe_post->ID, 'post_tag' ) != '' ) {?>
-    		<h3><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-tags"></i><?php } ?><?php _e( 'Tags', $this->pluginName ); ?></h3>
+    		<h3 class="rpr_tags"><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-tags"></i><?php } ?><?php _e( 'Tags', $this->pluginName ); ?></h3>
     	<?php the_recipe_taxonomy_term_list( $recipe_post->ID, 'post_tag' ); ?>
     	<?php } ?>
     	
@@ -80,7 +80,7 @@ var rpr_template = '<?php echo $this->option( 'rpr_template', 'rpr_default' ); ?
     	foreach( array_keys( $taxonomies ) as $tax ){
 			if( $tax != 'rpr_ingredient' && get_the_recipe_taxonomy_term_list( $recipe_post->ID, $tax ) != '' ){
 		?>
-				<h3><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa <?php echo $tax; ?>"></i><?php } ?><?php echo $taxonomies[$tax]['labels']['singular_name']; ?></h3>
+				<h3 class="rpr_<?php echo $tax; ?>"><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa <?php echo $tax; ?>"></i><?php } ?><?php echo $taxonomies[$tax]['labels']['singular_name']; ?></h3>
 		<?php 
 				the_recipe_taxonomy_term_list( $recipe_post->ID, $tax );
 			}
@@ -95,12 +95,12 @@ var rpr_template = '<?php echo $this->option( 'rpr_template', 'rpr_default' ); ?
 
     
     <!--- INSTRUCTIONS --->
-    <h3><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-cogs"></i><?php } ?><?php _e( 'Instructions', $this->pluginName ); ?></h3>
+    <h3 class="rpr_instructions"><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-cogs"></i><?php } ?><?php _e( 'Instructions', $this->pluginName ); ?></h3>
     <?php the_recipe_instruction_list( array( 'ID' => $recipe_post->ID ) ); ?>
     
     <!--  NOTES -->
     <?php if( isset( $recipe['rpr_recipe_notes'][0] ) && $recipe['rpr_recipe_notes'][0] != "" ) { ?>
-    <h3><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-paperclip"></i><?php }?><?php _e( 'Recipe notes', $this->pluginName ); ?></h3>
+    <h3 class="rpr_notes"><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-paperclip"></i><?php }?><?php _e( 'Recipe notes', $this->pluginName ); ?></h3>
 	<?php the_recipe_notes( array('ID' => $recipe_post->ID ) )?>
     <?php } ?>
     

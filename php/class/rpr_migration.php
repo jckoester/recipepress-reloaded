@@ -64,6 +64,7 @@ if( class_exists( 'RPReloaded' ) ) {
         			$this->tax = new RPR_Taxonomies($this->pluginName, $this->pluginDir, $this->pluginUrl);  
 					$taxonomies = get_option('rpr_taxonomies');
 					$taxonomies = $this->tax->add_taxonomy_to_array($taxonomies, 'rpr_season', __( 'Seasons', $this->pluginName ), __( 'Season', $this->pluginName ));
+					$taxonomies = $this->tax->add_taxonomy_to_array($taxonomies, 'rpr_difficulty', __( 'Difficulties', $this->pluginName ), __( 'Difficulty', $this->pluginName ));
 
 					update_option('rpr_taxonomies', $taxonomies);
 					

@@ -52,6 +52,11 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
+= 0.7.7 =
+* New taxonomy 'Season'
+* New taxonomy 'Difficulty' (still to be improved)
+* Easier management of taxonomies
+* Taxonomy initialisation improved. Now faster.
 = 0.7.6 =
 * Taxonomy cloud widget
 * Redux-Framework is now pulled in as a dependency. Keeping it up to date is much easier this way.

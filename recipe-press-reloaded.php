@@ -64,22 +64,9 @@ class RPReloaded{
 		//register_activation_hook( __FILE__, array( $this, 'activation_notice' ) );
 //>>TBD
 
-//!!TBD
 		// Add required plugins:
 		add_action( 'tgmpa_register', array($this, 'rpr_register_required_plugins') );
-		// Load Config
-		
-		// Actions
-		//add_action( 'after_setup_theme', array( $this, 'rpr_admin_menu' ) );
-		//add_action( 'after_setup_theme', array( $this, 'rpr_shortcodegenerator' ) );
-		//add_action( 'init', array( $this, 'rpr_check_premium' ) );
-		//add_action( 'admin_init', array( $this, 'rpr_hide_notice' ) );
-		//add_action( 'wp_print_scripts', array( $this, 'rpr_styles' ), 99 ); // Not wp_print_styles because we need this to be the last outputted css
-		//add_action( 'wp_footer', array( $this, 'rpr_scripts' ) );
-		//add_action( 'admin_head', array( $this, 'rpr_admin_styles' ) );
-		//add_action( 'admin_footer', array( $this, 'rpr_admin_scripts' ) );
-		//add_action( 'admin_notices', array( $this, 'rpr_admin_notices' ) );
-		//add_action( 'admin_footer-recipe_page_rpr_admin', array( $this, 'support_tab' ) );
+
 //>>TBD	
 		// Other
 		if ( function_exists( 'add_image_size' ) ) {
@@ -174,31 +161,6 @@ class RPReloaded{
 		return $return;
 	}
 	
-	/*
-	 * RP Reloaded Settings page
-	*/
-	public function rpr_admin_menu()
-	{
-		require_once('php/helper/admin_menu_helper.php');
-		
-		require_once('views/admin.php');
-	
-		new VP_Option(array(
-				'is_dev_mode'           => false,
-				'option_key'            => 'rpr_option',
-				'page_slug'             => 'rpr_admin',
-				'template'              => $admin_menu,
-				'menu_page'             => 'edit.php?post_type=rpr_recipe',
-				'use_auto_group_naming' => true,
-				'use_exim_menu'         => true,
-				'minimum_role'          => 'manage_options',
-				'layout'                => 'fluid',
-				'page_title'            => __( 'Settings', $this->pluginName ),
-				'menu_label'            => __( 'Settings', $this->pluginName ),
-				'use_util_menu'			=> false,
-		));
-	}
-	
 	public function option( $name, $default = null )
 	{
 		global $rpr_option;
@@ -208,12 +170,6 @@ class RPReloaded{
 		} else {
 			return false;
 		}
-		/*
-		$option = vp_option( "rpr_option." . $name );
-	
-		return is_null($option) ? $default : $option;
-		 * 
-		 */
 	}
 	
 	static function get_option( $name, $default = null )
@@ -225,34 +181,23 @@ class RPReloaded{
 		} else {
 			return false;
 		}
-		/*
-		$option = vp_option( "rpr_option." . $name );
-	
-		return is_null($option) ? $default : $option;
-		 * 
-		 */
 	}
 	
 }
 
-//require_once('lib/vafpress/bootstrap.php');
+// Instantiate the Plugin
 $rpr = new RPReloaded();
 
+// Include Template Tags
 include_once('php/template_tags.php');
 
+// Required Script for plugin dependencies
 require_once(dirname( __FILE__ ) . '/lib/tgm/class-tgm-plugin-activation.php');
 
-
-
-//function init_rpr_redux()
-//{
-	if ( !class_exists( 'ReduxFramework' ) && file_exists( WP_PLUGIN_DIR . '/redux-framework/ReduxCore/framework.php' ) ) {
-		//require_once( dirname( __FILE__ ) . '/lib/ReduxFramework/ReduxCore/framework.php' );
-		require_once( WP_PLUGIN_DIR . '/redux-framework/ReduxCore/framework.php');
-	}
-	if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/views/settings.php' ) ) {
-		require_once( dirname( __FILE__ ) . '/views/settings.php' );
-	}
-//}
-
-//add_action('plugins_loaded', 'init_rpr_redux', 50);
+// Required script for settings page
+if ( !class_exists( 'ReduxFramework' ) && file_exists( WP_PLUGIN_DIR . '/redux-framework/ReduxCore/framework.php' ) ) {
+	require_once( WP_PLUGIN_DIR . '/redux-framework/ReduxCore/framework.php');
+}
+if ( !isset( $redux_demo ) && file_exists( dirname( __FILE__ ) . '/views/settings.php' ) ) {
+	require_once( dirname( __FILE__ ) . '/views/settings.php' );
+}

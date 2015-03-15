@@ -115,7 +115,7 @@ if (!class_exists('RPR_Settings')) {
           so you must use get_template_directory_uri() if you want to use any of the built in icons
 
          * */
-        function dynamic_section($sections) {
+        /*function dynamic_section($sections) {
             //$sections = array();
             $sections[] = array(
                 'title' => __('Section via hook', 'redux-framework-demo'),
@@ -127,7 +127,7 @@ if (!class_exists('RPR_Settings')) {
 
             return $sections;
         }
-
+*/
         /**
 
           Filter hook for filtering the args. Good for child themes to override or add to the args array. Can also be used in other functions.
@@ -498,6 +498,7 @@ if (!class_exists('RPR_Settings')) {
 										'rpr_course' => __('Course', $this->pluginName ),
 										'rpr_cuisine' => __('Cuisine', $this->pluginName ),
 										'rpr_season' => __('Season', $this->pluginName ),
+										'rpr_difficulty' => __('Difficulty', $this->pluginName ),
 									),
 									'default' => array(
 										'category' => 1,
@@ -507,6 +508,7 @@ if (!class_exists('RPR_Settings')) {
 										'rpr_course' => 1,
 										'rpr_cuisine' => 1,
 										'rpr_season' => 1,
+										'rpr_difficulty' => 0
 									)
 								),
 								array(

@@ -885,7 +885,7 @@ function rpr_mce_buttons_filter($buttons) {
         {
             $recipe = get_post_custom($recipe_post->ID);
 
-            $taxonomies = $this->get_custom_taxonomies();
+            $taxonomies = get_option('rpr_taxonomies', array());
             
 			if( $options['excerpt'] == 0 ){
 				// Embed complete recipe
