@@ -12,7 +12,6 @@ class RPR_Core extends RPReloaded {
 
         
         // Actions
-//???       add_action( 'init', array( $this, 'check_theme_support' ), 20 );
         add_action( 'init', array( $this, 'recipes_init' ), 1);
         
         //if migration necessary!!
@@ -58,6 +57,8 @@ class RPR_Core extends RPReloaded {
         if( $this->option( 'recipe_display_tags_in_recipe', '1') === '1') {
             add_filter( 'get_the_tag_list', array( $this, 'recipes_tag_list' ), 10 );
         }
+		//Add recipes to main rss
+		add_filter('request', array($this, 'rpr_add2feed'));
         //make the recipe table nicer:
         add_filter('manage_rpr_recipe_posts_columns', array( $this, 'rpr_recipe_table_head') );
         add_action( 'manage_rpr_recipe_posts_custom_column', array( $this, 'rpr_recipe_table_content') , 10, 2 );
@@ -968,7 +969,7 @@ function rpr_mce_buttons_filter($buttons) {
             foreach($terms as $term) {
 
 				if( $options['tax'] == 'rpr_ingredient'){
-					if( !in_array($term->term_id, $rpr_option['ingredients_exclude_list']) ){
+					if( !isset($rpr_option['ingredients_exclude_list']) || !in_array($term->term_id, $rpr_option['ingredients_exclude_list']) ){
 		                $title = ucfirst($term->name);//$this->get_recipe_title( $post );
 		
 		                if($title != '')
@@ -1034,7 +1035,22 @@ function rpr_mce_buttons_filter($buttons) {
         return $out;
     }
 
-    /*
+	/* 
+	 * Add recipes to the main RSS feed
+    */
+    public function rpr_add2feed($qv)
+	{
+		global $rpr_option;
+		
+		if( $rpr_option['recipe_homepage_display']=='1' ){
+			if (isset($qv['feed']) && !isset($qv['post_type'])) {
+	        	$qv['post_type'] = array('post', 'rpr_recipe');
+			}
+		}
+	    return $qv;
+	}
+	
+	/*
      * ////////////////////////////////////////// RATINGS //////////////////////////////////////////////
      */
     

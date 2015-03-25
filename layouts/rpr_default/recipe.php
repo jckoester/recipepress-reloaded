@@ -97,7 +97,7 @@ if(!is_null($thumb_url)) {
     
     <!--  NOTES -->
     <?php if( isset( $recipe['rpr_recipe_notes'][0] ) ) { ?>
-    <h3 class="rpr_notes"><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-paperclip"></i> <?php }?><?php _e( 'Recipe notes', $this->pluginName ); ?></>
+    <h3 class="rpr_notes"><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-paperclip"></i> <?php }?><?php _e( 'Recipe notes', $this->pluginName ); ?></h3>
 	<?php the_recipe_notes( array('ID' => $recipe_post->ID ) )?>
     <?php } ?>
     

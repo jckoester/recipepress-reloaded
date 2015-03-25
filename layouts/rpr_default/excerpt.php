@@ -14,7 +14,7 @@
     <?php the_recipe_taxonomy_bar( $recipe_post->ID ); ?>
     
     <!-- DESCRIPTION -->                  
-    <span class="rpr_description" itemprop="description"><?php echo $recipe['rpr_recipe_description'][0]; ?></span>
+    <p class="rpr_description" itemprop="description"><?php echo $recipe['rpr_recipe_description'][0]; ?></p>
     
     
     <div class="rpr-clear"></div>
