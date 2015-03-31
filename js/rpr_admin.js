@@ -769,18 +769,29 @@ jQuery(document).ready(function() {
             });
     }); 
     jQuery('.rpr-edit-tag').on('click', function(event) {
+    	jQuery('#hierarchy_row').show();
+    	
         var tag = jQuery(this).data('tag');
 
         var singular = jQuery(this).parents('tr').find('.singular-name').text();
         var name = jQuery(this).parents('tr').find('.name').text();
         var slug = jQuery(this).parents('tr').find('.slug').text();
+        var hierarch = jQuery(this).parents('tr').find('.hierarchical-value').text();
 
         jQuery('input#rpr_edit_tag_name').val(tag);
         jQuery('input#rpr_custom_taxonomy_singular_name').val(singular);
         jQuery('input#rpr_custom_taxonomy_name').val(name);
         jQuery('input#rpr_custom_taxonomy_slug').val(slug);
-
+        if( hierarch == true){
+        	jQuery('input#rpr_custom_taxonomy_hierarchical').attr('checked', true);
+        } else {
+        	jQuery('input#rpr_custom_taxonomy_hierarchical').attr('checked', false);
+    	}
         jQuery('#rpr_editing_tag').text(tag);
+        
+        if( tag == 'rpr_ingredient' || tag == 'category' || tag == 'post_tag' ){
+        	jQuery('#hierarchy_row').hide();
+        }
 
         event.preventDefault();
         jQuery("#rpr_manage_taxonomies_dialog").dialog('open');

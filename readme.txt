@@ -52,6 +52,11 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
+= 0.7.8 =
+* Recipes now also appear in your main RSS feed
+* Improved taxonomy management. You can now decide if a taxonomy should be category like (hierarchical) or term like.
+* Improved recipe index, now dealing well with special characters
+* Several bug fixes 
 = 0.7.7 =
 * New taxonomy 'Season'
 * New taxonomy 'Difficulty' (still to be improved)

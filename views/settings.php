@@ -38,9 +38,6 @@ if (!class_exists('RPR_Settings')) {
 
         public function initSettings() {
 
-            // Just for demo purposes. Not needed per say.
-//            $this->theme = wp_get_theme();
-
             // Set the default arguments
             $this->setArguments();
 
@@ -55,100 +52,32 @@ if (!class_exists('RPR_Settings')) {
             }
 
             // If Redux is running as a plugin, this will remove the demo notice and links
-            //add_action( 'redux/loaded', array( $this, 'remove_demo' ) );
+            add_action( 'redux/loaded', array( $this, 'remove_demo' ) );
             
-            // Function to test the compiler hook and demo CSS output.
-            // Above 10 is a priority, but 2 in necessary to include the dynamically generated CSS to be sent to the function.
-            //add_filter('redux/options/'.$this->args['opt_name'].'/compiler', array( $this, 'compiler_action' ), 10, 3);
-            
-            // Change the arguments after they've been declared, but before the panel is created
-            //add_filter('redux/options/'.$this->args['opt_name'].'/args', array( $this, 'change_arguments' ) );
-            
-            // Change the default value of a field after it's been set, but before it's been useds
-            //add_filter('redux/options/'.$this->args['opt_name'].'/defaults', array( $this,'change_defaults' ) );
-            
-            // Dynamically add a section. Can be also used to modify sections/fields
-            //add_filter('redux/options/' . $this->args['opt_name'] . '/sections', array($this, 'dynamic_section'));
-
             $this->ReduxFramework = new ReduxFramework($this->sections, $this->args);
         }
 
         /**
 
-          This is a test function that will let you see when the compiler hook occurs.
-          It only runs if a field	set with compiler=>true is changed.
-
-         * */
-        function compiler_action($options, $css, $changed_values) {
-            echo '<h1>The compiler hook has run!</h1>';
-            echo "<pre>";
-            print_r($changed_values); // Values that have changed since the last save
-            echo "</pre>";
-            //print_r($options); //Option values
-            //print_r($css); // Compiler selector CSS values  compiler => array( CSS SELECTORS )
-
-            /*
-              // Demo of how to use the dynamic CSS and write your own static CSS file
-              $filename = dirname(__FILE__) . '/style' . '.css';
-              global $wp_filesystem;
-              if( empty( $wp_filesystem ) ) {
-                require_once( ABSPATH .'/wp-admin/includes/file.php' );
-              WP_Filesystem();
-              }
-
-              if( $wp_filesystem ) {
-                $wp_filesystem->put_contents(
-                    $filename,
-                    $css,
-                    FS_CHMOD_FILE // predefined mode settings for WP files
-                );
-              }
-             */
-        }
-
-        /**
-
-          Custom function for filtering the sections array. Good for child themes to override or add to the sections.
-          Simply include this function in the child themes functions.php file.
-
-          NOTE: the defined constants for URLs, and directories will NOT be available at this point in a child theme,
-          so you must use get_template_directory_uri() if you want to use any of the built in icons
-
-         * */
-        /*function dynamic_section($sections) {
-            //$sections = array();
-            $sections[] = array(
-                'title' => __('Section via hook', 'redux-framework-demo'),
-                'desc' => __('<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', 'redux-framework-demo'),
-                'icon' => 'el-icon-paper-clip',
-                // Leave this as a blank section, no options just some intro text set above.
-                'fields' => array()
-            );
-
-            return $sections;
-        }
-*/
-        /**
-
           Filter hook for filtering the args. Good for child themes to override or add to the args array. Can also be used in other functions.
 
          * */
-        function change_arguments($args) {
+       /* function change_arguments($args) {
             //$args['dev_mode'] = true;
 
             return $args;
-        }
+        }*/
 
         /**
 
           Filter hook for filtering the default value of any given field. Very useful in development mode.
 
          * */
-        function change_defaults($defaults) {
+        /*function change_defaults($defaults) {
             $defaults['str_replace'] = 'Testing filter hook!';
 
             return $defaults;
-        }
+        }*/
 
         // Remove the demo link and the notice of integrated demo from the redux-framework plugin
         function remove_demo() {
@@ -165,101 +94,8 @@ if (!class_exists('RPR_Settings')) {
         public function setSections() {
 
             global $rpr_option;
-            /**
-              Used within different fields. Simply examples. Search for ACTUAL DECLARATION for field examples
-             * */
-            // Background Patterns Reader
-/*            $sample_patterns_path   = ReduxFramework::$_dir . '../sample/patterns/';
-            $sample_patterns_url    = ReduxFramework::$_url . '../sample/patterns/';
-            $sample_patterns        = array();
-
-            if (is_dir($sample_patterns_path)) :
-
-                if ($sample_patterns_dir = opendir($sample_patterns_path)) :
-                    $sample_patterns = array();
-
-                    while (( $sample_patterns_file = readdir($sample_patterns_dir) ) !== false) {
-
-                        if (stristr($sample_patterns_file, '.png') !== false || stristr($sample_patterns_file, '.jpg') !== false) {
-                            $name = explode('.', $sample_patterns_file);
-                            $name = str_replace('.' . end($name), '', $sample_patterns_file);
-                            $sample_patterns[]  = array('alt' => $name, 'img' => $sample_patterns_url . $sample_patterns_file);
-                        }
-                    }
-                endif;
-            endif;
-
-            ob_start();
-
-            $ct             = wp_get_theme();
-            $this->theme    = $ct;
-            $item_name      = $this->theme->get('Name');
-            $tags           = $this->theme->Tags;
-            $screenshot     = $this->theme->get_screenshot();
-            $class          = $screenshot ? 'has-screenshot' : '';
-
-            $customize_title = sprintf(__('Customize &#8220;%s&#8221;', 'redux-framework-demo'), $this->theme->display('Name'));
             
-            ?>
-            <div id="current-theme" class="<?php echo esc_attr($class); ?>">
-            <?php if ($screenshot) : ?>
-                <?php if (current_user_can('edit_theme_options')) : ?>
-                        <a href="<?php echo wp_customize_url(); ?>" class="load-customize hide-if-no-customize" title="<?php echo esc_attr($customize_title); ?>">
-                            <img src="<?php echo esc_url($screenshot); ?>" alt="<?php esc_attr_e('Current theme preview'); ?>" />
-                        </a>
-                <?php endif; ?>
-                    <img class="hide-if-customize" src="<?php echo esc_url($screenshot); ?>" alt="<?php esc_attr_e('Current theme preview'); ?>" />
-                <?php endif; ?>
-
-                <h4><?php echo $this->theme->display('Name'); ?></h4>
-
-                <div>
-                    <ul class="theme-info">
-                        <li><?php printf(__('By %s', 'redux-framework-demo'), $this->theme->display('Author')); ?></li>
-                        <li><?php printf(__('Version %s', 'redux-framework-demo'), $this->theme->display('Version')); ?></li>
-                        <li><?php echo '<strong>' . __('Tags', 'redux-framework-demo') . ':</strong> '; ?><?php printf($this->theme->display('Tags')); ?></li>
-                    </ul>
-                    <p class="theme-description"><?php echo $this->theme->display('Description'); ?></p>
-            <?php
-            if ($this->theme->parent()) {
-                printf(' <p class="howto">' . __('This <a href="%1$s">child theme</a> requires its parent theme, %2$s.') . '</p>', __('http://codex.wordpress.org/Child_Themes', 'redux-framework-demo'), $this->theme->parent()->display('Name'));
-            }
-            ?>
-
-                </div>
-            </div>
-
-            <?php
-            $item_info = ob_get_contents();
-
-            ob_end_clean();
-
-            $sampleHTML = '';
-            if (file_exists(dirname(__FILE__) . '/info-html.html')) {
-                Redux_Functions::initWpFilesystem();
-                
-                global $wp_filesystem;
-
-                $sampleHTML = $wp_filesystem->get_contents(dirname(__FILE__) . '/info-html.html');
-            }
-*/
             // ACTUAL DECLARATION OF SECTIONS
-            
-                        
-           /* $this->sections[] = array(
-                'title'     => __('Import / Export', 'redux-framework-demo'),
-                'desc'      => __('Import and Export your Redux Framework settings from file, text or URL.', 'redux-framework-demo'),
-                'icon'      => 'el-icon-refresh',
-                'fields'    => array(
-                    array(
-                        'id'            => 'opt-import-export',
-                        'type'          => 'import_export',
-                        'title'         => 'Import Export',
-                        'subtitle'      => 'Save and restore your Redux options',
-                        'full_width'    => false,
-                    ),
-                ),
-            );  */
 
             $this->sections[] = array(
             	'icon' 		=> 'fa-cogs',
@@ -301,11 +137,11 @@ if (!class_exists('RPR_Settings')) {
                     array(
                         'id'        => 'recipe_slug_notebox',
                         'type'      => 'info',
-                        'notice'    => true,
+                        //'notice'    => true,
                         'style'     => 'info',
-                        'icon'      => 'fa-info',
+                        'icon'      => ' fa fa-exclamation-triangle',
                         'title'     => __('404 error/page not found?', $this->pluginName),
-                        'desc'      => __('Try', $this->pluginName) . ' <a href="http://rp-reloaded.net/documentation/404-error-page-found/" target="_blank">'.__('flushing your permalinks', $this->pluginName).'</a>.',
+                        'desc'      => __('Try', $this->pluginName) . ' <a href="https://tech.cbjck.de/wp-plugins/rpr/documentation/troubleshooting/404-page-not-found/" target="_blank">'.__('flushing your permalinks', $this->pluginName).'</a>.',
                     ),
                 )
             );
@@ -445,7 +281,7 @@ if (!class_exists('RPR_Settings')) {
     						
     		$this->sections[] = array(
 				'icon'		=> 'fa-tags',
-				'title' 	=> __( 'Recipe Metadata' , $this->pluginName ),
+				'title' 	=> __( 'Recipe meta data' , $this->pluginName ),
 				'fields' 	=> array(
             					array(
             						'type' => 'select',
@@ -519,9 +355,7 @@ if (!class_exists('RPR_Settings')) {
 									'content' => rpr_admin_manage_tags(),
 								),
             			)
-			);		
-				
-			//var_dump($rpr_option['recipe_instruction_image']);
+			);
                     
             $this->sections[] = array(
                 'type' => 'divide',
@@ -534,22 +368,38 @@ if (!class_exists('RPR_Settings')) {
                     array(
                         'id'        => 'changelog',
                         'type'      => 'raw',
-                    	//'content'   => rpr_admin_latest_news_changelog(),
                     	'content'   => replace_readme_parser_tag(trailingslashit(dirname(__FILE__)) . '../readme.txt'),
                     )
                 ),
             );
 			$this->sections[] = array(
-				'icon' => 'fa-question',
+				'icon' => 'fa-book',
 				'title' => __( 'Documentation', $this->pluginName),
 				'heading' => __( 'Documentation & Support', $this->pluginName),
 				'fields'	=> array(
+					/*array(
+						'id' => 'documentation',
+						'type' => 'info',
+						'style' => 'warning',
+						'icon' => 'fa fa-flag',
+						'title' => __( 'Please help translating RecipePress reloaded', $this->pluginName ),
+						'subtitle' => __('Are you using this plugin in a language other than English or German? Then please consider helping to translate!', $this->pluginName),
+					),*/
 					array(
 						'id' => 'documentation',
 						'type' => 'info',
-						'style' => 'info',
-						'title' => __( 'Need more help?', $this->pluginName ),
-						'subtitle' => __('Have a look at the <a href="http://rp-reloaded.net/documentation" target="_blank">Documentation</a> (currently being built up) or ask your questions at the <a href="http://wordpress.org/support/plugin/recipepress-reloaded" target="_blank">support forum</a>.', $this->pluginName),
+						//'style' => 'info',
+						'icon' => 'fa fa-book',
+						'title' => __( 'Documentation', $this->pluginName ),
+						'subtitle' => sprintf(__('Most of this plugin should work out of the box. However there\'s more to explore. Have a look at the %1susers\' documentation%2s.', $this->pluginName), '<a href="https://tech.cbjck.de/wp-plugins/rpr/documentation" target="_blank">', '</a>'),
+					),
+					array(
+						'id' => 'support',
+						'type' => 'info',
+						//'style' => 'info',
+						'icon' => 'fa fa-life-buoy',
+						'title' => __( 'Hit a bug or problem? Need help?', $this->pluginName ),
+						'subtitle' => sprintf(__('Please ask your questions at the %1ssupport forum%2s. I\'ll try to answer as soon as possible.', $this->pluginName), '<a href="http://wordpress.org/support/plugin/recipepress-reloaded" target="_blank">', '</a>'),
 					)
 				)
 			);
@@ -668,20 +518,12 @@ if (!class_exists('RPR_Settings')) {
                 'url'   => 'https://wordpress.org/plugins/recipepress-reloaded/',
                 'title' => 'Wordpress repository page',
                 'icon'  => 'fa-wordpress'
-                //'img'   => '', // You can use icon OR img. IMG needs to be a full URL.
             );
             $this->args['share_icons'][] = array(
-                'url'   => 'http://www.rp-reloaded.net',
+                'url'   => 'https://tech.cbjck.de/wp-plugins/rpr/',
                 'title' => 'Visit the plugins home page for documentation and demo',
                 'icon'  => 'fa-home'
             );
-            
-
-            // Panel Intro text -> before the form
-            //$this->args['intro_text'] = '';
-
-            // Add content after the form.
-            //$this->args['footer_text'] = __('<p>This settings panel was created using <a href="http://reduxframework.com/">ReduxFramework</a>.</p>', $this->pluginName );
         }
 
     }

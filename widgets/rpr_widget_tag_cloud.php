@@ -212,7 +212,7 @@ class RPR_Widget_Tag_Cloud extends WP_Widget {
 
 		<div class="rpr-widget-controls columns-2 column-first">
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'recipe-press-reloaded' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><code><?php _e( 'Title:', 'recipe-press-reloaded' ); ?></code></label>
 			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 		</p>
 		<p>

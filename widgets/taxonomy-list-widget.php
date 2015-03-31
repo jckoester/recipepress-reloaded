@@ -76,7 +76,7 @@ class RPR_Widget_Taxonomy_List extends WP_Widget {
 				echo '<li>';
 				//var_dump($term);
 				echo '<a href="' . get_term_link( $term, $instance['taxonomy'] ) . '">' . $term->name ;
-				var_dump($instance['show_count']);
+				//var_dump($instance['show_count']);
 				if( $instance['show_count'] == true ){
 					var_dump($term);
 				}
@@ -132,7 +132,7 @@ class RPR_Widget_Taxonomy_List extends WP_Widget {
           
            	$field_id = $this->get_field_id('title');
 			$field_name = $this->get_field_name('title');
-		    echo "\r\n".'<p><label for="'.$field_id.'">'.__('Title (optional)', 'recipe-press-reloaded').': </label><input type="text" class="widefat" id="'.$field_id.'" name="'.$field_name.'" value="'.esc_attr( $instance['title'] ).'" /></p>';
+		    echo "\r\n".'<p><label for="'.$field_id.'"><code>'.__('Title (optional)', 'recipe-press-reloaded').': </code></label><input type="text" class="widefat" id="'.$field_id.'" name="'.$field_name.'" value="'.esc_attr( $instance['title'] ).'" /></p>';
 		    
 		    $field_id = $this->get_field_id('taxonomy');
 			$field_name = $this->get_field_name('taxonomy');

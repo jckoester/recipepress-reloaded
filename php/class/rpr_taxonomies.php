@@ -119,6 +119,12 @@ if( class_exists( 'RPReloaded' ) ) {
 		                        <th scope="col" id="slug" class="manage-column">
 		                            '.__( 'Slug', $this->pluginName ).'
 		                        </th>
+		                        <th scope="col" id="hierarchical" class="manage-column">
+		                        	'.__( 'Hierarchical', $this->pluginName ).'
+		                        </th>
+		                        <th scope="col" id="hierarchical-value" class="manage-column hidden">
+		                        	'.__( 'True/False value, usually hidden', $this->pluginName) .'
+		                        </th>
 		                        <th scope="col" id="action" class="manage-column">
 		                            '.__( 'Actions', $this->pluginName ).'
 		                        </th>
@@ -131,11 +137,19 @@ if( class_exists( 'RPReloaded' ) ) {
 			if ( is_array($taxonomies) ) {
 				foreach ( $taxonomies as $taxonomy ) {	
 					if( !in_array( $taxonomy->name, $this->ignoreTaxonomies ) ) {
+						$hierarchy_string ='<i class="fa fa-times"/>';
+						$hierarchy_value = false;
+						if($taxonomy->hierarchical){
+							$hierarchy_string =  '<i class="fa fa-check"/>'; 
+							$hierarchy_value = true;
+						}
 						$out .= '<tr>
 		                            <td><strong>' . $taxonomy->name . '</strong></td>
 		                            <td class="singular-name">' . $taxonomy->labels->singular_name . '</td>
 		                            <td class="name">' . $taxonomy->labels->name . '</td>
 		                            <td class="slug">' . $taxonomy->rewrite['slug'] . '</td>
+		                            <td class="hierarchical">' . $hierarchy_string . '</td>
+		                            <td class="hierarchical-value hidden">' . $hierarchy_value . '</td>
 		                            <td>
 		                                <span class="rpr_adding">
 		                                <button type="button" id="rpr-edit-taxonomy" class="button rpr-edit-tag" data-tag="' . $taxonomy->name . '">'. __('Edit', $this->pluginName) .'</button>';
@@ -191,7 +205,14 @@ if( class_exists( 'RPReloaded' ) ) {
 		                    <label for="rpr_custom_taxonomy_slug"> '  . __('(e.g. http://www.yourwebsite.com/course/)', $this->pluginName ) . '</label>
 		                </td>
 		            </tr>';
-				
+			// Hierarchy, only for fully editable taxonomies:
+			$out .= '<tr valign="top" id="hierarchy_row">
+		            	<th scope="row">'.__( 'Hierarchical', $this->pluginName ).'</th>
+		                <td>
+		                	<input type="checkbox" value="true" id="rpr_custom_taxonomy_hierarchical" name="rpr_custom_taxonomy_hierarchical" />
+		                    <label for="rpr_custom_taxonomy_hierarchical"> '  . __('Set to yes for a category style taxonomy and to no for a tag like taxonomy.', $this->pluginName ) . '</label>
+		                </td>
+		            </tr>';
 			$out .= '</tbody></table><br/>';
 			$out .= '</form>';
 			$out .= '</div>';
@@ -207,20 +228,23 @@ if( class_exists( 'RPReloaded' ) ) {
 			$name = $_POST['rpr_custom_taxonomy_name'];
 			$singular = $_POST['rpr_custom_taxonomy_singular_name'];
 			$slug = strtolower($_POST['rpr_custom_taxonomy_slug']);
+			$hierarchical = $_POST['rpr_custom_taxonomy_hierarchical'];
 			
+			var_dump($hierarchical);
 			$edit_tag_name = $_POST['rpr_edit'];
 			
-			$this->add_taxonomy($name, $singular, $slug, $edit_tag_name);
+			$this->add_taxonomy($name, $singular, $slug, $hierarchical, $edit_tag_name);
 			
 			$this->rpr_taxonomies_init();
 			update_option( 'rpr_flush', '1' );
 			
-			wp_redirect( $_SERVER['HTTP_REFERER'] );
+			wp_redirect( $_SERVER['HTTP_REFERER'] ); 
+			die;
 			exit();
 			
 		}
 		
-		public function add_taxonomy($name, $singular, $slug, $edit_tag_name) {
+		public function add_taxonomy($name, $singular, $slug, $hierarchical, $edit_tag_name) {
 			$editing = false;
 		
 			if( strlen($edit_tag_name) > 0 ) {
@@ -266,10 +290,10 @@ if( class_exists( 'RPReloaded' ) ) {
 						'show_ui' => true,
 						'show_tagcloud' => true,
 						'query_var' => true,
-						'hierarchical' => true,
+						'hierarchical' => $hierarchical,
 						'rewrite' => array(
 								'slug' => $slug,
-								'hierarchical' => true
+								'hierarchical' => $hierarchical
 						)
 				);
 				update_option('rpr_taxonomies', $taxonomies);
@@ -336,9 +360,9 @@ if( class_exists( 'RPReloaded' ) ) {
 	    	if(count($taxonomies) == 0)
 	    	{
 	    
-	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_ingredient', __( 'Ingredients', $this->pluginName ), __( 'Ingredient', $this->pluginName ));
-	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_course', __( 'Courses', $this->pluginName ), __( 'Course', $this->pluginName ));
-	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_cuisine', __( 'Cuisines', $this->pluginName ), __( 'Cuisine', $this->pluginName ));
+	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_ingredient', __( 'Ingredients', $this->pluginName ), __( 'Ingredient', $this->pluginName ), true);
+	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_course', __( 'Courses', $this->pluginName ), __( 'Course', $this->pluginName ), true);
+	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_cuisine', __( 'Cuisines', $this->pluginName ), __( 'Cuisine', $this->pluginName ), true);
 				$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_season', __( 'Seasons', $this->pluginName ), __( 'Season', $this->pluginName ));
 				$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_difficulty', __( 'Difficulties', $this->pluginName ), __( 'Difficulty', $this->pluginName ));
 				
@@ -347,7 +371,7 @@ if( class_exists( 'RPReloaded' ) ) {
 	    	}
 	    }
     
-	    public function add_taxonomy_to_array($arr, $tag, $name, $singular)
+	    public function add_taxonomy_to_array($arr, $tag, $name, $singular, $hierarchical=false)
 	    {
 	    	$name_lower = strtolower($name);
 	    	$singular_lower = strtolower($singular);
@@ -372,7 +396,7 @@ if( class_exists( 'RPReloaded' ) ) {
 	    			),
 	    			'show_ui' => true,
 	    			'show_tagcloud' => true,
-	    			'hierarchical' => true,
+	    			'hierarchical' => $hierarchical,
 	    			'rewrite' => array(
 	    					'slug' => $singular_lower
 	    			)

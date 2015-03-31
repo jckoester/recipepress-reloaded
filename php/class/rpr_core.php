@@ -925,13 +925,13 @@ function rpr_mce_buttons_filter($buttons) {
                 if($title != '')
                 {
                     //if ($options['headers'] != 'false'){
-                        $first_letter = substr($title,0,1);
+                        $first_letter = $this->strip_accents($term->name);
 
                         if(!in_array($first_letter, $letters))
                         {
                             $letters[] = $first_letter;
                             $out .= '<h2><a name="'.$first_letter.'"></a>';
-                            $out .= $first_letter;
+                            $out .= strtoupper($first_letter);
                             $out .= '</h2>';
                         }
                     //}
@@ -975,13 +975,13 @@ function rpr_mce_buttons_filter($buttons) {
 		                if($title != '')
 		                {
 		                    //if ($options['headers'] != 'false'){
-		                        $first_letter = substr($title,0,1);
+		                        $first_letter = $this->strip_accents($term->name);
 		
 		                        if(!in_array($first_letter, $letters))
 		                        {
 		                            $letters[] = $first_letter;
 		                            $out .= '<h2><a name="'.$first_letter.'"></a>';
-		                            $out .= $first_letter;
+		                            $out .= strtoupper($first_letter);
 		                            $out .= '</h2>';
 		                        }
 		                    //}
@@ -1003,8 +1003,8 @@ function rpr_mce_buttons_filter($buttons) {
 	                        if(!in_array($first_letter, $letters))
 	                        {
 	                            $letters[] = $first_letter;
-	                            $out .= '<h2><a name="'.$first_letter.'"></a>';
-	                            $out .= $first_letter;
+	                            $out .= '<h2><a name="'.strtoupper($first_letter).'"></a>';
+	                            $out .= strtoupper($first_letter);
 	                            $out .= '</h2>';
 	                        }
 	                    //}
@@ -1029,12 +1029,56 @@ function rpr_mce_buttons_filter($buttons) {
     function letter_navigation($letters){
         $out = '<ul class="rpr_letter_nav">';
         foreach( $letters as $l ) {
-            $out .= '<li><a href="#'.$l.'">'.$l.'</a></li>';
+            $out .= '<li><a href="#'.$l.'">'.strtoupper($l).'</a></li>';
         }
         $out .= '</ul>';
         return $out;
     }
+	
+	private function strip_accents($string) {
+		//$string = preg_replace("/\"/", "", $string);
+		
+		$ret = "";
 
+		$trans = array(
+			'á' => 'a',
+			'à' => 'a',
+			'â' => 'a',
+			'ã' => 'a',
+			'Á' => 'A',
+			'À' => 'A',
+			'Â' => 'A',
+			'Ã' => 'A',
+			'ä' => 'a',
+			'Ä' => 'A',
+			'é' => 'e',
+			'è' => 'e',
+			'ê' => 'e',
+			'ë' => 'e',
+			'É' => 'E',
+			'È' => 'E',
+			'Ê' => 'E',
+			'Ë' => 'E',
+			'í' => 'i',
+			'ì' => 'i',
+			'î' => 'i',
+			'ï' => 'i',
+			'Í' => 'I',
+			'Ì' => 'I',
+			'Î' => 'I',
+			'Ï' => 'I',
+			'ö' => 'o',
+			'Ö' => 'O',
+			'ø' => 'o',
+			'Ø' => 'O',
+			'ü' => 'u',
+			'Ü' => 'U'
+		);
+		$ret = strtolower (substr (strtr ($string, $trans), 0,1)); 
+	
+		return $ret;
+	}
+	
 	/* 
 	 * Add recipes to the main RSS feed
     */
@@ -1049,6 +1093,7 @@ function rpr_mce_buttons_filter($buttons) {
 		}
 	    return $qv;
 	}
+	
 	
 	/*
      * ////////////////////////////////////////// RATINGS //////////////////////////////////////////////

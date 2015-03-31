@@ -78,7 +78,7 @@ if( $ingredients != '')
         <td class="sort-handle fa fa-arrows-v"></td>
         <td><input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][amount]"     class="ingredients_amount" id="ingredients_amount_<?php echo $i; ?>" value="<?php echo $ingredient['amount']; ?>" /></td>
         <td><input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][unit]"       class="ingredients_unit" id="ingredients_unit_<?php echo $i; ?>" value="<?php echo $ingredient['unit']; ?>" /></td>
-        <td><input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'rpr_ingredient');"  value="<?php echo $ingredient['ingredient']; ?>" /></td>
+        <td><input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'rpr_ingredient');"  value="<?php echo htmlspecialchars($ingredient['ingredient']); ?>" /></td>
         <td>
             <input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][notes]"      class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" value="<?php echo $ingredient['notes']; ?>" />
             <input type="hidden" name="rpr_recipe_ingredients[<?php echo $i; ?>][group]"      class="ingredients_group" id="ingredient_group_<?php echo $i; ?>" value="<?php echo $ingredient['group']; ?>" />

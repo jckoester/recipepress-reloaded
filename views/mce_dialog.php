@@ -32,13 +32,13 @@
 	 				</select>
 	 			</div>
 	 		</div>
-	 		<div id="embed-excerpt-div">
-	 			<input type="checkbox" id="rpr-embed-excerpt" name="embed-excerpt" value="embed-excerpt" />
-	 			<label for="rpr-embed-excerpt"><span><?php _e( 'Embed excerpt only', 'recipepress-reloaded' ); ?></span></label>
-	 		</div>
 	 		<div id="rpr-recipelist-panel" style="display:none;"></div>
-			<div id="rpr-recipe-panel">
-				
+				<div id="rpr-recipe-panel">
+					<div id="embed-excerpt-div">
+		 			<input type="checkbox" id="rpr-embed-excerpt" name="embed-excerpt" value="embed-excerpt" />
+		 			<label for="rpr-embed-excerpt"><span><?php _e( 'Embed excerpt only', 'recipepress-reloaded' ); ?></span></label>
+		 		</div>
+
 				<input id="recipe-id-field" type="hidden" name="recipeid" />
 				<input id="recipe-title-field" type="hidden" name="recipetitle" />
 				<p class="howto"><?php _e( 'Choose the recipe you want to include from the list below or search for it.', 'recipepress-reloaded' ); ?></p>

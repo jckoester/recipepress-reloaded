@@ -52,7 +52,7 @@ function rpr_admin_slug_preview( $slug )
 
 function rpr_admin_manage_tags()
 {
-    return '<a href="'.admin_url('edit.php?post_type=rpr_recipe&page=rpr_taxonomies').'" class="button button-primary" target="_blank">'.__('Manage custom recipe tags', 'recipe-press-reloaded').'</a>';
+    return '<a href="'.admin_url('edit.php?post_type=rpr_recipe&page=rpr_taxonomies').'" class="button button-primary" target="_blank">'.__('Manage recipe taxonomies', 'recipe-press-reloaded').'</a>';
 }
 
 function f_comment( $entry ){
