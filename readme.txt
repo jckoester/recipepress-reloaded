@@ -52,6 +52,8 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
+= 0.7.9 =
+* Fixed a bug on taxonomy creation/activation
 = 0.7.8 =
 * Recipes now also appear in your main RSS feed
 * Improved taxonomy management. You can now decide if a taxonomy should be category like (hierarchical) or term like.

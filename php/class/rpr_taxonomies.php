@@ -59,6 +59,31 @@ if( class_exists( 'RPReloaded' ) ) {
 			
 			$this->taxonomies = get_option('rpr_taxonomies', array());
 
+			//ar_dump($this->taxonomies);
+			// Restore taxonomies if active but deleted:
+			//var_dump($rpr_option['taxonomies']);
+			if( !isset($this->taxonomies['rpr_ingredient']) ){
+				$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_ingredient', __( 'Ingredients', $this->pluginName ), __( 'Ingredient', $this->pluginName ), true);
+			}
+			if( $rpr_option['taxonomies']['rpr_category'] == '1' && !isset($this->taxonomies['rpr_category']) ){
+				$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_category', __( 'RPR Categories', $this->pluginName ), __( 'RPR Category', $this->pluginName ), true);
+			}
+			if( $rpr_option['taxonomies']['rpr_tag'] == '1' && !isset($this->taxonomies['rpr_tag']) ){
+				$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_tag', __( 'RPR Tags', $this->pluginName ), __( 'RPR Tag', $this->pluginName ), false);
+			}
+			if( $rpr_option['taxonomies']['rpr_course'] == '1' && !isset($this->taxonomies['rpr_course']) ){
+				$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_course', __( 'Courses', $this->pluginName ), __( 'Course', $this->pluginName ), true);
+			}
+			if( $rpr_option['taxonomies']['rpr_cuisine'] == '1' && !isset($this->taxonomies['rpr_cuisine']) ){
+				$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_cuisine', __( 'Cuisines', $this->pluginName ), __( 'Cuisine', $this->pluginName ), true);
+			}
+			if( $rpr_option['taxonomies']['rpr_season'] == '1' && !isset($this->taxonomies['rpr_season']) ){
+				$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_season', __( 'Seasons', $this->pluginName ), __( 'Season', $this->pluginName ));
+			}
+			if( $rpr_option['taxonomies']['rpr_difficulty'] == '1' && !isset($this->taxonomies['rpr_difficulty']) ){
+				$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_difficulty', __( 'Difficulties', $this->pluginName ), __( 'Difficulty', $this->pluginName ));
+				}
+			
             // register taxonomies:
 			foreach($this->taxonomies as $name => $options) {
 				if( $name != 'rpr_ingredient' ){
@@ -91,6 +116,17 @@ if( class_exists( 'RPReloaded' ) ) {
 			if( $rpr_option['taxonomies']['post_tag'] == 1 ){
 				register_taxonomy_for_object_type( 'post_tag', 'rpr_recipe' );
 			}
+			/*// Register RPR Tags if necessary:
+			if( $rpr_option['taxonomies']['rpr_tag'] == 1 ){
+	    		//$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_tag', __( 'RPR Tags', $this->pluginName ), __( 'RPR Tag', $this->pluginName ), false);
+	    		
+	    		//update_option('rpr_taxonomies', $this->taxonomies);
+	    		//update_option( 'rpr_flush', '1' );
+				
+				register_taxonomy_for_object_type( 'rpr_tag', 'rpr_recipe' );
+			}*/
+			update_option('rpr_taxonomies', $this->taxonomies);
+	    	//update_option( 'rpr_flush', '1' );
 		}
 		
 		public function admin_menu_manage_taxonomies(){
@@ -359,7 +395,8 @@ if( class_exists( 'RPReloaded' ) ) {
 	
 	    	if(count($taxonomies) == 0)
 	    	{
-	    
+	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_category', __( 'RPR Categories', $this->pluginName ), __( 'RPR Category', $this->pluginName ), true);
+	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_tag', __( 'RPR Tags', $this->pluginName ), __( 'RPR Tag', $this->pluginName ), false);
 	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_ingredient', __( 'Ingredients', $this->pluginName ), __( 'Ingredient', $this->pluginName ), true);
 	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_course', __( 'Courses', $this->pluginName ), __( 'Course', $this->pluginName ), true);
 	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_cuisine', __( 'Cuisines', $this->pluginName ), __( 'Cuisine', $this->pluginName ), true);

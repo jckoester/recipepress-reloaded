@@ -28,6 +28,9 @@ if( class_exists( 'RPReloaded' ) ) {
 			if ( get_option( 'rpr_version_updated' ) === get_option( 'rpr_version' ) ) {
 				update_option( 'rpr_update_needed' , 0);
 			} else {
+				if ( version_compare(get_option( 'rpr_version_updated' ), '0.7.9', '<') ){
+					update_option( 'rpr_update_needed' , 1);
+				}
 				if ( version_compare(get_option( 'rpr_version_updated' ), '0.7.7', '<') ){
 					update_option( 'rpr_update_needed' , 1);
 				}
@@ -53,7 +56,7 @@ if( class_exists( 'RPReloaded' ) ) {
 			$version_updated=$this->get_version_updated();
 			
 			if( isset($_GET['rpr_do_migration']) && $_GET['rpr_do_migration'] == '1' ){
-
+				
 				if ( version_compare(get_option( 'rpr_version_updated' ), '0.7.7', '<') ){
 					$array = $rpr_option['taxonomies'];
 					$array['category'] = $rpr_option['recipe_tags_use_wp_categories'];
