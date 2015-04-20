@@ -354,6 +354,28 @@ if (!class_exists('RPR_Settings')) {
 									'subtitle' => __('Use this to change the name and/or slug of the predefined taxonomies. You can also create your own taxonomies.', $this->pluginName ),
 									'content' => rpr_admin_manage_tags(),
 								),
+								array(
+									'id' => 'recover_taxonomies_separator',
+									'type' => 'separator'
+								),
+								array(
+									'id' => 'recover_taxonomies_switch',
+									'type' => 'switch',
+									'title' => __('Recover Taxonomies', $this->pluginName ),
+									'subtitle' => __('Enable advanced options to recover lost taxonomies', $this->pluginName ),
+									'default' => false
+								),
+								array(
+									'id' => 'recover_taxonomies_warning',
+									'type' => 'info',
+									'class' => 'warning',
+									'icon' => 'fa-exclamation-triangle',
+									'title' => __('Be careful!', $this->pluginName ),
+									'subtitle' => __( 'Here all taxonomies appear that are currently not connected to RecipePress reloaded or are inactive. Please use this only to reactive taxonomies that got lost somehow.', $this->pluginName ),
+									'required' => array('recover_taxonomies_switch','!=','0')
+									
+								),
+								rpr_admin_recover_taxonomies_settings(),
             			)
 			);
                     

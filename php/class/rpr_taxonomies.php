@@ -53,13 +53,20 @@ if( class_exists( 'RPReloaded' ) ) {
 		
 		public function rpr_taxonomies_init() {
 			global $rpr_option;
-			
-			//				update_option( 'rpr_version_updated', '0.7.5' );
-			
+			global $rpr_reduxConfig;
 			
 			$this->taxonomies = get_option('rpr_taxonomies', array());
-
-			//ar_dump($this->taxonomies);
+			
+			// Check if there are any taxonomies to restore:
+			
+			if( count($rpr_option['restore_taxonomies']) > 0){
+				// merge existing taxonomies with taxonomies to restore
+			  	$this->taxonomies = array_merge( $this->taxomomies, $rpr_option['restore_taxonomies']);
+			  	update_option('rpr_taxonomies', $this->taxonomies);
+			 	// reset the restore list
+			  	$rpr_reduxConfig->ReduxFramework->set('restore_taxonomies', array() );
+			}
+			 
 			// Restore taxonomies if active but deleted:
 			//var_dump($rpr_option['taxonomies']);
 			if( !isset($this->taxonomies['rpr_ingredient']) ){

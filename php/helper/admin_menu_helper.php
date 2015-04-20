@@ -365,3 +365,27 @@ function rpr_shortcode_generator_authors()
     return $authors_list;
 }
 
+function rpr_admin_recover_taxonomies_settings(){
+	$output = array(
+		'id' => 'recover_taxonomies',
+		'type' => 'checkbox',
+		'title' => __( 'Recover taxonomies', 'recipe-press-reloaded' ),
+		'subtitle' => __( 'Activate taxonomies that should belong to RecipePress reloaded but got lost somehow.', 'recipe-press-reloaded'),
+		'options' => array(),
+		'required' => array('recover_taxonomies_switch','!=','0')
+	);
+	
+	global $wpdb;
+	$results = $wpdb->get_results( "SELECT DISTINCT taxonomy FROM $wpdb->term_taxonomy WHERE TRUE", OBJECT );
+	//var_dump( array_keys(get_option('rpr_taxonomies', array()) ));
+	foreach ($results as $res) {
+		if( !array_key_exists( $res->taxonomy, get_option('rpr_taxonomies', array()))){
+			$output['options'][] = $res->taxonomy;	
+		}
+		
+	}
+//	var_dump($results);
+	
+	return $output;
+}
+

@@ -16,6 +16,9 @@ if( class_exists( 'RPReloaded' ) ) {
 			add_action('admin_init', array(&$this, 'rpr_check_migration'));
 			add_action('admin_init', array(&$this, 'rpr_do_migration'));
 			add_action('admin_notices', array( $this, 'rpr_admin_notice_migrate' ));
+			
+			// migrate split_terms:
+			add_action('split_shared_terms', array($this, 'rpr_migrate_split_terms') );
 		}
 		
 		
@@ -528,5 +531,17 @@ if( class_exists( 'RPReloaded' ) ) {
 			return true;
 		}
 		
+	
+		public function migrate_split_terms($term_id, $new_term_id, $term_taxonomy_id, $taxonomy)
+		{
+			// We only need to care about ingredients as we store their id as post_meta.
+			if( $taxonomy == 'rpr_ingredient' ){
+				// Find all posts using this term:
+				
+				// Replace old ID by new ID:
+				
+				//Save post
+			}
+		}
 	}
 }
