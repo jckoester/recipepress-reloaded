@@ -3,7 +3,7 @@ Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 0.7.8
+Stable tag: 0.7.9
 License: GPLv2
 
 A simple recipe plugin. It does all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically.
@@ -53,11 +53,12 @@ If you want a translation of another language included please help translating!
 == Changelog ==
 
 = 0.7.9 =
-* Fixed a bug on taxonomy creation/activation
 * Added a feature to restore lost taxonomies
-* Added a feature to obtain compatibility with WP 4.2 (split_shred_terms)
+* Added a feature to obtain compatibility with WP 4.2 (split_shared_terms)
 * Added language files for Austrian and Swiss German
 * Fixed a bug concerning instruction images
+* Fixed a bug on taxonomy creation/activation
+
 = 0.7.8 =
 * Recipes now also appear in your main RSS feed
 * Improved taxonomy management. You can now decide if a taxonomy should be category like (hierarchical) or term like.
