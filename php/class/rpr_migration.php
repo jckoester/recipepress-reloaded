@@ -537,10 +537,35 @@ if( class_exists( 'RPReloaded' ) ) {
 			// We only need to care about ingredients as we store their id as post_meta.
 			if( $taxonomy == 'rpr_ingredient' ){
 				// Find all posts using this term:
+				$recipes = get_posts(
+					array(
+						'post_type' => 'rpr_recipe',
+						'numberposts' => -1,
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'rpr_ingredient',
+								'field' => 'id',
+								'terms' => $term_id,
+								'include_children' => false,
+							)
+						)
+					)
+				);
 				
-				// Replace old ID by new ID:
-				
-				//Save post
+				if( $recipes && count( $recipes ) > 0 ){
+					foreach( $recipes as $recipe ){
+						$ingredients = get_post_meta( $recipe->ID, 'rpr_recipe_ingredients', true );
+						
+	    				if ( isset($ingredients) && is_array($ingredients) && count( $ingredients) > 0 ) {
+	    					foreach($ingredients as $key=>$value ){
+	    						if( $ingredients[$key]['ingredient_id'] == $term_id ){
+									$ingredients[$key]['ingredient_id'] = $new_term_id;
+								}
+							}
+							wp_set_post_terms( $recipe->ID, $ingredients, 'rpr_ingredient' );
+	    				}
+					}
+				}
 			}
 		}
 	}
