@@ -367,7 +367,7 @@ function rpr_shortcode_generator_authors()
 
 function rpr_admin_recover_taxonomies_settings(){
 	$output = array(
-		'id' => 'recover_taxonomies',
+		'id' => 'restore_taxonomies',
 		'type' => 'checkbox',
 		'title' => __( 'Recover taxonomies', 'recipe-press-reloaded' ),
 		'subtitle' => __( 'Activate taxonomies that should belong to RecipePress reloaded but got lost somehow.', 'recipe-press-reloaded'),
@@ -380,11 +380,12 @@ function rpr_admin_recover_taxonomies_settings(){
 	//var_dump( array_keys(get_option('rpr_taxonomies', array()) ));
 	foreach ($results as $res) {
 		if( !array_key_exists( $res->taxonomy, get_option('rpr_taxonomies', array()))){
-			$output['options'][] = $res->taxonomy;	
+			$output['options'][$res->taxonomy] = $res->taxonomy;	
 		}
 		
 	}
-//	var_dump($results);
+	
+	//var_dump($output);
 	
 	return $output;
 }

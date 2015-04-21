@@ -56,19 +56,30 @@ if( class_exists( 'RPReloaded' ) ) {
 			global $rpr_reduxConfig;
 			
 			$this->taxonomies = get_option('rpr_taxonomies', array());
-			
+			$tax_opts = $rpr_option['taxonomies'];
 			// Check if there are any taxonomies to restore:
 			
 			if( count($rpr_option['restore_taxonomies']) > 0){
 				// merge existing taxonomies with taxonomies to restore
-			  	$this->taxonomies = array_merge( $this->taxomomies, $rpr_option['restore_taxonomies']);
+				$options = $rpr_option['restore_taxonomies'];
+				//var_dump($options);
+				foreach( $options as $tax=>$value){
+					//var_dump($tax);
+					if( $rpr_option['restore_taxonomies'][$tax]==1){
+						$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, $tax, $tax, $tax, false);
+						$options[$tax] = 0;	
+					}
+					
+				}
 			  	update_option('rpr_taxonomies', $this->taxonomies);
 			 	// reset the restore list
-			  	$rpr_reduxConfig->ReduxFramework->set('restore_taxonomies', array() );
+			  	$rpr_reduxConfig->ReduxFramework->set('restore_taxonomies', $options );
+				$rpr_reduxConfig->ReduxFramework->set('restore_taxonomies_switch', 0 );
 			}
-			 
+			
+			$this->taxonomies = get_option('rpr_taxonomies', array());
+			
 			// Restore taxonomies if active but deleted:
-			//var_dump($rpr_option['taxonomies']);
 			if( !isset($this->taxonomies['rpr_ingredient']) ){
 				$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_ingredient', __( 'Ingredients', $this->pluginName ), __( 'Ingredient', $this->pluginName ), true);
 			}
@@ -95,7 +106,7 @@ if( class_exists( 'RPReloaded' ) ) {
 			foreach($this->taxonomies as $name => $options) {
 				if( $name != 'rpr_ingredient' ){
 					// Check if taxonomy is enabled:
-					if( isset($rpr_option['taxonomies'][$name]) && $rpr_option['taxonomies'][$name] == 1 ){
+					if( (isset($rpr_option['taxonomies'][$name]) && $rpr_option['taxonomies'][$name] == 1) || !isset($rpr_option['taxonomies'][$name]) ){
 						register_taxonomy(
 							$name,
 							'rpr_recipe',
