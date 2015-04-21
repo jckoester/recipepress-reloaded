@@ -50,9 +50,9 @@ if( $instructions != '')
             $previous_group = $instruction['group'];
         }
 
-        if( isset($instruction['image']) )
+        if( isset($instruction['image']) && $instruction['image'] != "")
         {
-            $image = wp_get_attachment_image_src($instruction['image'], 'thumbnail');
+            $image = wp_get_attachment_image_src($instruction['image'], 'recipe-thumbnail');
             $image = $image[0];
             $has_image = true;
         }
@@ -61,6 +61,7 @@ if( $instructions != '')
             $image = $this->pluginUrl . '/img/image_placeholder.png';
             $has_image = false;
         }
+
         ?>
         <tr class="instruction">
             <td class="sort-handle fa fa-arrows-v"></td>

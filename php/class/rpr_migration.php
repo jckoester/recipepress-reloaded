@@ -59,7 +59,10 @@ if( class_exists( 'RPReloaded' ) ) {
 			$version_updated=$this->get_version_updated();
 			
 			if( isset($_GET['rpr_do_migration']) && $_GET['rpr_do_migration'] == '1' ){
-				
+					
+				if( $version_updated == '0.3.0' || $version_updated == 'RecipePress' ){
+					$this->migrate_recipepress_3();
+				}
 				if ( version_compare(get_option( 'rpr_version_updated' ), '0.7.7', '<') ){
 					$array = $rpr_option['taxonomies'];
 					$array['category'] = $rpr_option['recipe_tags_use_wp_categories'];
@@ -75,9 +78,11 @@ if( class_exists( 'RPReloaded' ) ) {
 					update_option('rpr_taxonomies', $taxonomies);
 					
 				}
-				if( $version_updated == '0.3.0' || $version_updated == 'RecipePress' ){
-					$this->migrate_recipepress_3();
+				if ( version_compare(get_option( 'rpr_version_updated' ), '0.7.9', '<') ){
+					$rpr_reduxConfig->ReduxFramework->set('restore_taxonomies', array());
+					
 				}
+				
 				
 				// Set version to current version
 				update_option( 'rpr_version_updated', get_option( 'rpr_version' ) );

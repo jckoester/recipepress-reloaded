@@ -48,7 +48,7 @@ if( $ingredients != '')
     foreach($ingredients as $ingredient) {
 
         if( isset( $ingredient['ingredient_id'] ) ) {
-            $term = get_term($ingredient['ingredient_id'], 'ingredient');
+            $term = get_term($ingredient['ingredient_id'], 'rpr_ingredient');
             if ( $term !== null && !is_wp_error( $term ) ) {
                 $ingredient['ingredient'] = $term->name;
             }

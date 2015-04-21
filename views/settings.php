@@ -137,7 +137,6 @@ if (!class_exists('RPR_Settings')) {
                     array(
                         'id'        => 'recipe_slug_notebox',
                         'type'      => 'info',
-                        //'notice'    => true,
                         'style'     => 'info',
                         'icon'      => ' fa fa-exclamation-triangle',
                         'title'     => __('404 error/page not found?', $this->pluginName),
@@ -194,7 +193,7 @@ if (!class_exists('RPR_Settings')) {
             					array(
 									'id' => 'widget_info',
 									'type' => 'info',
-									'icon' => 'fa-lightbulb-o',
+									'icon' => 'fa fa-lightbulb-o',
 									'class' => 'info',
 									'title' => __('Widgets', $this->pluginName), 
 									'subtitle' => __('Widgets can be really useful to display information in sidebars or other places.<br/> However, if you have a lot of widgets its hard to keep the overview. Here you can switch of widgets shipped with RecipePress reloaded if you don\'t need them.', $this->pluginName )
@@ -224,7 +223,7 @@ if (!class_exists('RPR_Settings')) {
     							array(
     						 		'type' => 'info',
     								'id' => 'recipe_note_item',
-    								'icon' => 'fa-lightbulb-o',
+    								'icon' => 'fa fa-lightbulb-o',
     								'class' => 'warning',
     								'title' => __( 'Please note:', $this->pluginName ) ,
     								'subtitle' => __( 'In this section you can make some adjustments on the look and feel of your recipes. Normally this should not be necessary and your theme should take care of all this. Some themes however might have limited capabilities and you might want RecipePress reloaded to display some information in it\'s part of the theme. Then however you might also consider to adjust your theme, i.e. by creating a child theme.' , $this->pluginName ) ,
@@ -368,10 +367,11 @@ if (!class_exists('RPR_Settings')) {
 								array(
 									'id' => 'recover_taxonomies_warning',
 									'type' => 'info',
-									'class' => 'warning',
-									'icon' => 'fa-exclamation-triangle',
+									//'class' => 'warning',
+                        			'style'     => 'warning',
+									'icon' => 'fa fa-exclamation-triangle',
 									'title' => __('Be careful!', $this->pluginName ),
-									'subtitle' => __( 'Here all taxonomies appear that are currently not connected to RecipePress reloaded or are inactive. Please use this only to reactive taxonomies that got lost somehow.', $this->pluginName ),
+									'subtitle' => __( 'Here appear all taxonomies that are currently not connected to RecipePress reloaded or are inactive. Please use this only to reactive taxonomies that got lost somehow. The list will also contain taxonomies by other plugins.', $this->pluginName ),
 									'required' => array('recover_taxonomies_switch','!=','0')
 									
 								),

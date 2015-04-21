@@ -308,7 +308,12 @@ if ( !function_exists('has_recipe_nutrition') ) {
 
 			// Get the recipe
 			$recipe = get_post_custom( $recipe_id );
-			if ( RPReloaded::get_option( 'recipe_use_nutritional_info', 0 ) == 1 && ( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) >= 0 ){
+			if ( RPReloaded::get_option( 'recipe_use_nutritional_info', 0 ) == 1 &&
+				isset($recipe['rpr_recipe_calorific_value'] ) &&
+				isset($recipe['rpr_recipe_fat'] ) && 
+				isset($recipe['rpr_recipe_protein'] ) &&
+				isset($recipe['rpr_recipe_carbohydrate']) &&
+				( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) >= 0 ){
 				return true;
 			}
 		return false;		
@@ -404,7 +409,7 @@ if ( ! function_exists('get_the_recipe_ingredient_list') ) {
 			foreach($ingredients as $ingredient) {
 			
 				if( isset( $ingredient['ingredient_id'] ) ) {
-					$term = get_term($ingredient['ingredient_id'], 'ingredient');
+					$term = get_term($ingredient['ingredient_id'], 'rpr_ingredient');
 					if ( $term !== null && !is_wp_error( $term ) ) {
 						$ingredient['ingredient'] = $term->name;
 					}

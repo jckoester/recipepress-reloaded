@@ -112,9 +112,11 @@ color:black!important;
 color:red!important;
 border-color:red!important;
 }
-.recipe_instructions_thumbnail {
-max-height: 50px;
+.rpr_recipe_instructions_thumbnail {
+max-height: 80px;
+max-width:80px;
 }
+
 #ingredients-add-group-box,
 #ingredients-add-box{
 float:left;
@@ -242,5 +244,6 @@ font-style:italic;
 }
 
 .redux-info-icon{
-	margin: 8px 8px 8px 0;
+	margin: 8px 8px 8px 0!important;
+	display:inline-block;
 }

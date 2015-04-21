@@ -36,7 +36,7 @@ The frontend is using schema.org's recipe microformat to allow search engines li
 This plugin includes the following translations:
 
 * English
-* German
+* German (Germany, Austria and Switzerland)
 * Italian (partly)
 * Hungarian (partly)
 
@@ -54,6 +54,10 @@ If you want a translation of another language included please help translating!
 
 = 0.7.9 =
 * Fixed a bug on taxonomy creation/activation
+* Added a feature to restore lost taxonomies
+* Added a feature to obtain compatibility with WP 4.2 (split_shred_terms)
+* Added language files for Austrian and Swiss German
+* Fixed a bug concerning instruction images
 = 0.7.8 =
 * Recipes now also appear in your main RSS feed
 * Improved taxonomy management. You can now decide if a taxonomy should be category like (hierarchical) or term like.
