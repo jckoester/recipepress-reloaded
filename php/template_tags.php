@@ -308,12 +308,12 @@ if ( !function_exists('has_recipe_nutrition') ) {
 
 			// Get the recipe
 			$recipe = get_post_custom( $recipe_id );
-			if ( RPReloaded::get_option( 'recipe_use_nutritional_info', 0 ) == 1 &&
-				isset($recipe['rpr_recipe_calorific_value'] ) &&
-				isset($recipe['rpr_recipe_fat'] ) && 
-				isset($recipe['rpr_recipe_protein'] ) &&
-				isset($recipe['rpr_recipe_carbohydrate']) &&
-				( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) >= 0 ){
+			if ( RPReloaded::get_option( 'recipe_use_nutritional_info', 0 ) == 1 && (
+				isset($recipe['rpr_recipe_calorific_value'] ) ||
+				isset($recipe['rpr_recipe_fat'] ) ||
+				isset($recipe['rpr_recipe_protein'] ) ||
+				isset($recipe['rpr_recipe_carbohydrate']) ||
+				( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) >= 0 )){
 				return true;
 			}
 		return false;		
@@ -334,10 +334,6 @@ if ( !function_exists('get_the_recipe_nutrition') ) {
 			// Get the recipe
 			$recipe = get_post_custom( $recipe_id );
 
-			//TODO: schema.org microformats!
-			//TODO: format as list (dictionary)
-			//TODO: display option for this template tag!
-			
 			if( isset( $recipe['rpr_recipe_nutrition_per'][0] ) ){
 				$out .= '<div class="recipe-nutrition entry-meta" itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation">';
 				$out .= '<span class="nutrition_per" itemprop="servingSize">';
@@ -390,6 +386,8 @@ if ( !function_exists('the_recipe_nutrition') ) {
 // ======= INGREDIENT LIST =========
 if ( ! function_exists('get_the_recipe_ingredient_list') ) {
 	function get_the_recipe_ingredient_list( $args ){
+		global $rpr_option;
+
 		$out='';
 		
 		// Get the ID of the recipe:
@@ -432,13 +430,13 @@ if ( ! function_exists('get_the_recipe_ingredient_list') ) {
 			
 				$out .= ' <span class="recipe-ingredient-name">';
 			
-				$ingredient_links = RPReloaded::get_option('recipe_ingredient_links', 'archive_custom');
+				//$ingredient_links = $rpr_option['recipe_ingredient_links'];
 			
 				$closing_tag = '';
-				if (!empty($taxonomy) && $ingredient_links != 'disabled') {
+				if (!empty($taxonomy) && $rpr_option['recipe_ingredient_links'] != 'disabled') {
 			
-					if( isset($ingredient['link']) && ( $ingredient_links == 'archive_custom' || $ingredient_links == 'custom' ) ) {
-						$custom_link = $ingredient['link'];//WPURP_Taxonomy_MetaData::get( 'ingredient', $taxonomy->slug, 'link' );
+					if( isset($ingredient['link']) && ( $rpr_option['recipe_ingredient_links'] == 'archive_custom' || $rpr_option['recipe_ingredient_links'] == 'custom' ) ) {
+						$custom_link = $ingredient['link'];
 					} else {
 						$custom_link = false;
 					}
@@ -446,7 +444,7 @@ if ( ! function_exists('get_the_recipe_ingredient_list') ) {
 					if($custom_link !== false && $custom_link !== '' && $custom_link !== NULL ) {
 						$out .= '<a href="'.$custom_link.'" class="custom-ingredient-link" target="'.RPReloaded::get_option('recipe_ingredient_custom_links_target', '_blank').'">';
 						$closing_tag = '</a>';
-					} elseif($ingredient_links != 'custom') {
+					} elseif($rpr_option['recipe_ingredient_links'] != 'custom') {
 						$out .= '<a href="'.get_term_link($taxonomy->slug, 'rpr_ingredient').'">';
 						$closing_tag = '</a>';
 					}
@@ -457,8 +455,16 @@ if ( ! function_exists('get_the_recipe_ingredient_list') ) {
 				$out .= '</span>';
 			
 				if($ingredient['notes'] != '') {
-					$out .= ' ';
+					$out.=' <span class="rpr_ing_note">';
+					
+					if( $rpr_option['ingredient_comment_sep'] == 'brackets') {$out.='(';}
+					elseif( $rpr_option['ingredient_comment_sep'] == 'comma') {$out.=',';}
+					
 					$out .= '<span class="recipe-ingredient-notes">'.$ingredient['notes'].'</span>';
+					
+					if( $rpr_option['ingredient_comment_sep'] == 'brackets') {$out.=')';}
+
+					$out.='</span>';
 				}
 			
 				$out .= '</li>';
@@ -561,6 +567,8 @@ if ( !function_exists('the_recipe_times') ) {
 // =============== RECIPE INSTRUCTIONS LIST ===============
 if ( ! function_exists('get_the_recipe_instruction_list') ) {
 	function get_the_recipe_instruction_list( $args ){
+		global $rpr_option;
+		
 		$out='';
 		
 		// Get the ID of the recipe:
@@ -586,15 +594,14 @@ if ( ! function_exists('get_the_recipe_instruction_list') ) {
 			
 				$out .= '<li itemprop="recipeInstructions">';
 				$instr_class="";
-				if( isset($instruction['image']) && $instruction['image'] != "" && RPReloaded::get_option('recipe_images_clickable', '0') == 1 ) { $instr_class = "has_thumbnail"; }
-				if( isset($instruction['image']) && $instruction['image'] != "" ) { $instr_class .= " " . RPReloaded::get_option('recipe_instruction_image_position', 'rpr_instrimage_right'); }
+				
+				if( $rpr_option['recipe_instruction_image'] == 1 && isset($instruction['image']) && $instruction['image'] != "" && RPReloaded::get_option('recipe_images_clickable', '0') == 1 ) { $instr_class = "has_thumbnail"; }
+				if( $rpr_option['recipe_instruction_image'] == 1 && isset($instruction['image']) && $instruction['image'] != "" ) { $instr_class .= " " . RPReloaded::get_option('recipe_instruction_image_position', 'rpr_instrimage_right'); }
 				
 				$out .= '<span class="recipe-instruction '.$instr_class.'">'.$instruction['description'].'</span>';
 			
-				if( isset($instruction['image']) ) {
-					//if(RPReloaded::get_option('recipe_images_clickable', '0') == 1) {
-					if( RPReloaded::get_option('recipe_instruction_image_position', 'rpr_instrimage_right') == 'rpr_instrimage_right' ) {
-						
+				if( isset($instruction['image']) && $rpr_option['recipe_instruction_image'] == 1 ) {
+					if( $rpr_option['recipe_instruction_image_position'] == 'rpr_instrimage_right' ) {
 						$thumb = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
 					} else{
 						$thumb = wp_get_attachment_image_src( $instruction['image'], 'large' );
@@ -603,13 +610,14 @@ if ( ! function_exists('get_the_recipe_instruction_list') ) {
 					$full_img = wp_get_attachment_image_src( $instruction['image'], 'full' );
 					$full_img_url = $full_img['0'];
 			
-					if(RPReloaded::get_option('recipe_images_clickable', '0') == 1 && $thumb_url != "" ) {
-						$out .= '<a href="' . $full_img_url . '" rel="lightbox" title="' . $instruction['description'] . '">';
-						$out .= '<img class="'. RPReloaded::get_option('recipe_instruction_image_position', 'rpr_instrimage_right') .'" src="' . $thumb_url . '" width="'. $thumb[1].'" />';
+					if($rpr_option['recipes_images_clickable'] == 1 && $thumb_url != "" ) {
+					//if(RPReloaded::get_option('recipes_images_clickable', '0') == 1 && $thumb_url != "" ) {
+						$out .= '<a class="rpr_img_link" href="' . $full_img_url . '" rel="lightbox" title="' . $instruction['description'] . '">';
+						$out .= '<img class="'. $rpr_option['recipe_instruction_image_position'] .'" src="' . $thumb_url . '" width="'. $thumb[1].'" />';
 						$out .= '</a>';
 					} else {
 						if( $thumb_url != "" ){
-							$out .= '<img src="' . $thumb_url . '" />';
+							$out .= '<img class="'. $rpr_option['recipe_instruction_image_position'] .'" src="' . $thumb_url . '" />';
 						}
 					}
 				}

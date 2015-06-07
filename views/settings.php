@@ -306,6 +306,18 @@ if (!class_exists('RPR_Settings')) {
 									'multi' => true,
 								),
 								array(
+									'id' => 'ingredient_comment_sep',
+									'type' => 'select',
+									'title' => __('Ingredient note separator', $this->pluginName),
+									'subtitle' => __('Decide how to display remarks or comments on your ingredients.', $this->pluginName),
+									'options' => array(
+										'brackets' => __('Brackets: 1 egg (preferrably free-range or organic)', $this->pluginName),
+										'comma' => __('Comma: 1 egg, referrably free-range or organic', $this->pluginName),
+										'none' => __('None: 1 egg preferrably free-range or organic', $this->pluginName),
+									),
+									'default' => 'none',
+								),
+								array(
                         			'id'    => 'ingredients-divide',
                         			'type'  => 'divide',
                     			),

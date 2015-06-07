@@ -1,0 +1,2572 @@
+# Loco Gettext template
+msgid ""
+msgstr ""
+"Project-Id-Version: RecipePress reloaded\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-26 18:20+0100\n"
+"POT-Revision-Date: Wed Jun 03 2015 17:59:52 GMT+0200 (CEST)\n"
+"PO-Revision-Date: 2015-06-03 21:10+0100\n"
+"Last-Translator: Gerhard Hoogterp <admin@funsite.eu>\n"
+"Language-Team:  <dasmaeh@cbjck.de>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.7.5\n"
+"Language: nl\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPathExcluded-0: ../lib\n"
+
+#: ../recipe-press-reloaded.php:112
+#: ../lib/tgm/class-tgm-plugin-activation.php:161
+msgid "Install Required Plugins"
+msgstr "Installeer Vereiste Plugins"
+
+#: ../recipe-press-reloaded.php:113
+#: ../lib/tgm/class-tgm-plugin-activation.php:162
+msgid "Install Plugins"
+msgstr "Installeer Plugins"
+
+#: ../recipe-press-reloaded.php:114
+#: ../lib/tgm/class-tgm-plugin-activation.php:163
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr "Installeren Plugin: %s"
+
+#: ../recipe-press-reloaded.php:115
+msgid "Something went wrong with the plugin API."
+msgstr "Er ging iets mis met de plugin API."
+
+#: ../recipe-press-reloaded.php:116
+#, php-format
+msgid "This plugin requires the following plugin: %1$s."
+msgid_plural "This plugin requires the following plugins: %1$s."
+msgstr[0] "Deze plugin vereist de volgende plugin: %1$s ."
+msgstr[1] "Deze plugin vereist de volgende plugin: %1$s ."
+
+#: ../recipe-press-reloaded.php:117
+#, php-format
+msgid "This plugin recommends the following plugin: %1$s."
+msgid_plural "This plugin recommends the following plugins: %1$s."
+msgstr[0] "Deze plugin beveelt de volgende plugin aan: %1$s ."
+msgstr[1] "Deze plugin beveelt de volgende plugin aan: %1$s ."
+
+#: ../recipe-press-reloaded.php:118
+#: ../lib/tgm/class-tgm-plugin-activation.php:167
+#, php-format
+msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
+msgstr[0] "Sorry, maar je hebt niet de juiste machtigingen voor de installatie van de %s plugin. Neem contact op met de beheerder van deze site voor hulp bij het installeren van de plugin."
+msgstr[1] "Sorry, maar je hebt niet de juiste machtigingen voor de installatie van %s plugin. Neem contact op met de beheerder van deze site voor hulp bij het installeren van de plugin."
+
+#: ../recipe-press-reloaded.php:119
+#: ../lib/tgm/class-tgm-plugin-activation.php:168
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] "De volgende benodigde plugin is momenteel inactief: %1$s ."
+msgstr[1] "De volgende benodigde plugin is momenteel inactief: %1$s ."
+
+#: ../recipe-press-reloaded.php:120
+#: ../lib/tgm/class-tgm-plugin-activation.php:169
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] "De volgende aanbevolen plugin is momenteel inactief: %1$s ."
+msgstr[1] "De volgende aanbevolen plugin is momenteel inactief: %1$s ."
+
+#: ../recipe-press-reloaded.php:121
+#: ../lib/tgm/class-tgm-plugin-activation.php:170
+#, php-format
+msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
+msgstr[0] "Sorry, maar je hoeft niet de juiste machtigingen om het te activeren %s plugin. Neem contact op met de beheerder van deze site voor hulp bij het activeren van de plugin."
+msgstr[1] "Sorry, maar je hoeft niet de juiste machtigingen om het te activeren %s plugin. Neem contact op met de beheerder van deze site voor hulp bij het activeren van de plugin."
+
+#: ../recipe-press-reloaded.php:122
+#, php-format
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this plugin: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this plugin: %1$s."
+msgstr[0] "De volgende plugin moet worden bijgewerkt naar de laatste versie om maximale compatibiliteit met deze plugin te verzekeren: %1$s ."
+msgstr[1] "De volgende plugin moet worden bijgewerkt naar de laatste versie om maximale compatibiliteit met deze plugin te verzekeren: %1$s ."
+
+#: ../recipe-press-reloaded.php:123
+#: ../lib/tgm/class-tgm-plugin-activation.php:172
+#, php-format
+msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
+msgstr[0] "Sorry, maar je hebt niet de juiste machtigingen om de plugin %s bij te werken. Neem contact op met de beheerder van deze site voor hulp bij het bijwerken van deze plugin."
+msgstr[1] "Sorry, maar je hebt niet de juiste machtigingen om de plugin %s bij te werken. Neem contact op met de beheerder van deze site voor hulp bij het bijwerken van deze plugin."
+
+#: ../recipe-press-reloaded.php:124
+#: ../lib/tgm/class-tgm-plugin-activation.php:173
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] "Beginnen met het installeren van de plugin"
+msgstr[1] "Beginnen met het installeren van de plugin"
+
+#: ../recipe-press-reloaded.php:125
+#: ../lib/tgm/class-tgm-plugin-activation.php:174
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] "Begin activeren plugin"
+msgstr[1] "Begin activeren plugin"
+
+#: ../recipe-press-reloaded.php:126
+#: ../lib/tgm/class-tgm-plugin-activation.php:175
+msgid "Return to Required Plugins Installer"
+msgstr "Terug naar Verplichte Plugins Installer"
+
+#: ../recipe-press-reloaded.php:127
+#: ../lib/tgm/class-tgm-plugin-activation.php:177
+#: ../lib/tgm/class-tgm-plugin-activation.php:1939
+msgid "Plugin activated successfully."
+msgstr "Plugin succesvol geactiveerd."
+
+#: ../recipe-press-reloaded.php:128
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr "Alle plugins geïnstalleerd en succesvol geactiveerd. %s"
+
+#: ../php/template_tags.php:104 ../php/template_tags.php:109
+#: ../php/template_tags. php:126 ../php/template_tags.php:145
+#: ../php/template_tags.php:162 .. /php/template_tags.php:179
+#: ../php/template_tags.php:196 php:217
+msgid "&nbsp;/&nbsp; "
+msgstr "&Nbsp; / &nbsp; "
+
+#: ../php/template_tags.php:282
+msgid "For: "
+msgstr "Voor: "
+
+#: ../php/template_tags.php:348 ../php/template_tags.php:357
+msgid "Per 100g"
+msgstr "Per 100g"
+
+#: ../php/template_tags.php:351
+msgid "Per portion"
+msgstr "Per portie"
+
+#: ../php/template_tags.php:354
+msgid "Per recipe"
+msgstr "Per recept"
+
+#: ../php/template_tags.php:365
+#, php-format
+msgid "<dt>Energy:</dt><dd itemprop=\"calories\"> %1s kcal / %2s kJ</dd>"
+msgstr "<dt>Energie:</dt><dd itemprop=\"calorieën\">%1s kcal / %2s kJ</dd>"
+
+#: ../php/template_tags.php:368
+#, php-format
+msgid "<dt>Fat:</dt><dd itemprop=\"fatContent\">%s g</dd>"
+msgstr "<dt>Vet:</dt><dd itemprop=\"fatContent\">%s g</dd>"
+
+#: ../php/template_tags.php:371
+#, php-format
+msgid "<dt>Protein:</dt><dd itemprop=\"proteinContent\">%s g</dd>"
+msgstr "<dt>Eiwit:</dt><dd itemprop =\"eiwitgehalte\">%s g</dd>"
+
+#: ../php/template_tags.php:374
+#, php-format
+msgid "<dt>Carbohydrate:</dt><dd itemprop=\"carbohydrateContent\">%s g</dd>"
+msgstr "<dt>Koolhydraten:</dt><dd itemprop=\"carbohydrateContent\">%s g</dd>"
+
+#: ../php/template_tags.php:469
+msgid "No ingredients could be found for this recipe."
+msgstr "Er konden geen ingrediënten  gevonden worden voor dit recept."
+
+#: ../php/template_tags.php:498
+msgid "Preparation Time"
+msgstr "Bereidingstijd"
+
+#: ../php/template_tags.php:498 ../php/template_tags.php:500
+msgid "Preparation"
+msgstr "Voorbereiding"
+
+#: ../php/template_tags.php:505 ../php/template_tags.php:519
+#: ../php/template_tags. php:546 ../views/metabox_details.php:41
+#: ../views/metabox_details.php:46 .. /views/metabox_details.php:51
+msgid "min."
+msgstr "min."
+
+#: ../php/template_tags.php:512 ../views/metabox_details.php:44
+msgid "Cook Time"
+msgstr "Kook Tijd"
+
+#: ../php/template_tags.php:512 ../php/template_tags.php:514
+msgid "Cooking"
+msgstr "Koken"
+
+#: ../php/template_tags.php:539
+msgid "Total Time"
+msgstr "Totale tijd"
+
+#: ../php/template_tags.php:539 ../php/template_tags.php:541
+msgid "Ready in"
+msgstr "Klaar in"
+
+#: ../php/template_tags.php:621
+msgid "No instructions could be found for this recipe."
+msgstr "Er konden geen instructies gevonden worden voor dit recept."
+
+#: ../php/class/rpr_taxonomies.php:33 ../php/class/rpr_taxonomies.php:43
+msgid "Custom Taxonomies"
+msgstr "Custom taxonomieën"
+
+#: ../php/class/rpr_taxonomies.php:33 ../php/class/rpr_taxonomies.php:43
+msgid "Manage Tags"
+msgstr "Beheer Tags"
+
+#: ../php/class/rpr_taxonomies.php:34
+msgid "Manage Recipe Taxonomies"
+msgstr "Beheer Recept taxonomieën"
+
+#: ../php/class/rpr_taxonomies.php:84 ../php/class/rpr_taxonomies.php:418 ..
+#: /php/class/rpr_migration.php:457 ../php/class/rpr_migration.php:461
+#: /php/class/rpr_core.php:412 ../layouts/rpr_2column/recipe.php:49
+#: /layouts/rpr_default/recipe.php:85 ../views/admin.php:319
+#: /views/rpr_recipe_public.php:64
+msgid "Ingredients"
+msgstr "Ingrediënten"
+
+#: ../php/class/rpr_taxonomies.php:84 ../php/class/rpr_taxonomies.php:418
+msgid "Ingredient"
+msgstr "Ingredient"
+
+#: ../php/class/rpr_taxonomies.php:87 ../php/class/rpr_taxonomies.php:416
+msgid "RPR Categories"
+msgstr "RPR Categorieën"
+
+#: ../php/class/rpr_taxonomies.php:87 ../php/class/rpr_taxonomies.php:416
+msgid "RPR Category"
+msgstr "RPR Categorie"
+
+#: ../php/class/rpr_taxonomies.php:90 ../php/class/rpr_taxonomies.php:417
+msgid "RPR Tags"
+msgstr "RPR Tags"
+
+#: ../php/class/rpr_taxonomies.php:90 ../php/class/rpr_taxonomies.php:417
+msgid "RPR Tag"
+msgstr "RPR Tag"
+
+#: ../php/class/rpr_taxonomies.php:93 ../php/class/rpr_taxonomies.php:419
+msgid "Courses"
+msgstr "Gangen"
+
+#: ../php/class/rpr_taxonomies.php:93 ../php/class/rpr_taxonomies.php:419 ..
+#: /views/settings.php:333
+msgid "Course"
+msgstr "Gang"
+
+#: ../php/class/rpr_taxonomies.php:96 ../php/class/rpr_taxonomies.php:420
+msgid "Cuisines"
+msgstr "Keukens"
+
+#: ../php/class/rpr_taxonomies.php:96 ../php/class/rpr_taxonomies.php:420 ..
+#: /views/settings.php:334
+msgid "Cuisine"
+msgstr "Keuken"
+
+#: ../php/class/rpr_taxonomies.php:99 ../php/class/rpr_taxonomies.php:421 ..
+#: /php/class/rpr_migration.php:75
+msgid "Seasons"
+msgstr "Seizoenen "
+
+#: ../php/class/rpr_taxonomies.php:99 ../php/class/rpr_taxonomies.php:421 ..
+#: /php/class/rpr_migration.php:75 ../views/settings.php:335
+msgid "Season"
+msgstr "Seizoen"
+
+#: ../php/class/rpr_taxonomies.php:102 ../php/class/rpr_taxonomies.php:422 ..
+#: /php/class/rpr_migration.php:76
+msgid "Difficulties"
+msgstr "Moeilijkheden"
+
+#: ../php/class/rpr_taxonomies.php:102 ../php/class/rpr_taxonomies.php:422 ..
+#: /php/class/rpr_migration.php:76 ../views/settings.php:336
+msgid "Difficulty"
+msgstr "Moeilijkheid"
+
+#: ../php/class/rpr_taxonomies.php:154
+msgid "Do you really want to delete this taxonomy?"
+msgstr "Wil je echt deze taxonomie verwijderen?"
+
+#: ../php/class/rpr_taxonomies.php:165
+msgid "Tag"
+msgstr "Tag"
+
+#: ../php/class/rpr_taxonomies.php:168 ../php/class/rpr_taxonomies.php:247
+msgid "Singular Name"
+msgstr "Enkelvouds Naam"
+
+#: ../php/class/rpr_taxonomies.php:171 ../php/class/rpr_taxonomies.php:238 ..
+#: /php/class/rpr_taxonomies.php:445 ../widgets/rpr_widget_tag_cloud.php:201
+#: /widgets/taxonomy-list-widget.php:152
+msgid "Name"
+msgstr "Naam"
+
+#: ../php/class/rpr_taxonomies.php:174 ../php/class/rpr_taxonomies.php:256 ..
+#: /views/admin.php:96 ../views/settings.php:128
+msgid "Slug"
+msgstr "Slug"
+
+#: ../php/class/rpr_taxonomies.php:177 ../php/class/rpr_taxonomies.php:264
+msgid "Hierarchical"
+msgstr "Hiërarchisch"
+
+#: ../php/class/rpr_taxonomies.php:180
+msgid "True/False value, usually hidden"
+msgstr "True / False waarde, meestal verborgen"
+
+#: ../php/class/rpr_taxonomies.php:183
+msgid "Actions"
+msgstr "Acties"
+
+#: ../php/class/rpr_taxonomies.php:209 ../php/class/rpr_taxonomies.php:442 ..
+#: /php/class/rpr_core.php:128 ../php/class/rpr_core.php:299
+msgid "Edit"
+msgstr "Wijzig"
+
+#: ../php/class/rpr_taxonomies.php:211 ../php/class/rpr_core.php:129 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:167
+#: /lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:220
+msgid "Delete"
+msgstr "Verwijder"
+
+#: ../php/class/rpr_taxonomies.php:223
+msgid "Add Taxonomy"
+msgstr "Voeg Taxonomie toe"
+
+#: ../php/class/rpr_taxonomies.php:226 ../php/class/rpr_core.php:130
+msgid "Edit Taxonomy"
+msgstr "Bewerken Taxonomie"
+
+#: ../php/class/rpr_taxonomies.php:233
+msgid "Currently editing tag: "
+msgstr "Huidige bewerkte tag: "
+
+#: ../php/class/rpr_taxonomies.php:241
+msgid "(e.g. Courses)"
+msgstr "(Bijvoorbeeld Gangen)"
+
+#: ../php/class/rpr_taxonomies.php:250
+msgid "(e.g. Course)"
+msgstr "(Bijvoorbeeld Gang)"
+
+#: ../php/class/rpr_taxonomies.php:259
+msgid "(e.g. http://www.yourwebsite.com/course/)"
+msgstr "(Bijv http://www.yourwebsite.com/gang/)"
+
+#: ../php/class/rpr_taxonomies.php:267
+msgid "Set to yes for a category style taxonomy and to no for a tag like taxonomy."
+msgstr "Kies ja voor een categorie stijl taxonomie en nee voor een tag stijl taxonomie."
+
+#: ../php/class/rpr_taxonomies.php:331
+#, php-format
+msgid "Search %s"
+msgstr "Zoeken %s"
+
+#: ../php/class/rpr_taxonomies.php:332
+#, php-format
+msgid "Popular %s"
+msgstr "Populaire %s"
+
+#: ../php/class/rpr_taxonomies.php:333
+#, php-format
+msgid "All %s"
+msgstr "Alle %s"
+
+#: ../php/class/rpr_taxonomies.php:334
+#, php-format
+msgid "Edit %s"
+msgstr "Wijzig %s"
+
+#: ../php/class/rpr_taxonomies.php:335
+#, php-format
+msgid "Update %s"
+msgstr "Werk %s bij"
+
+#: ../php/class/rpr_taxonomies.php:336
+#, php-format
+msgid "Add New %s"
+msgstr "Voeg Nieuwe %s toe"
+
+#: ../php/class/rpr_taxonomies.php:337
+#, php-format
+msgid "New %s Name"
+msgstr "Nieuw %s Naam"
+
+#: ../php/class/rpr_taxonomies.php:338
+#, php-format
+msgid "Separate %s with commas"
+msgstr "Aparte %s met komma's"
+
+#: ../php/class/rpr_taxonomies.php:339
+#, php-format
+msgid "Add or remove %s"
+msgstr "Toevoegen of verwijderen %s"
+
+#: ../php/class/rpr_taxonomies.php:340
+#, php-format
+msgid "Choose from the most used %s"
+msgstr "U kunt kiezen uit de meest gebruikte %s"
+
+#: ../php/class/rpr_taxonomies.php:341
+#, php-format
+msgid "No %s found."
+msgstr "Geen %s gevonden."
+
+#: ../php/class/rpr_taxonomies.php:439 ../views/mce_dialog.php:47
+msgid "Search"
+msgstr "Zoeken"
+
+#: ../php/class/rpr_taxonomies.php:440
+msgid "Popular"
+msgstr "Populair"
+
+#: ../php/class/rpr_taxonomies.php:441 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:191
+#: /lib/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:125
+msgid "All"
+msgstr "Alle"
+
+#: ../php/class/rpr_taxonomies.php:443
+msgid "Update"
+msgstr "Bijwerken"
+
+#: ../php/class/rpr_taxonomies.php:444
+msgid "Add New"
+msgstr "Nieuwe toevoegen"
+
+#: ../php/class/rpr_taxonomies.php:445
+msgid "New"
+msgstr "Nieuw"
+
+#: ../php/class/rpr_taxonomies.php:446
+msgid "Separate"
+msgstr "Scheid "
+
+#: ../php/class/rpr_taxonomies.php:446
+msgid "with commas"
+msgstr "met komma's"
+
+#: ../php/class/rpr_taxonomies.php:447
+msgid "Add or remove"
+msgstr "Toevoegen of verwijderen"
+
+#: ../php/class/rpr_taxonomies.php:448
+msgid "Choose from the most used"
+msgstr "U kunt kiezen uit de meest gebruikte"
+
+#: ../php/class/rpr_taxonomies.php:449 ../views/settings.php:112
+msgid "No"
+msgstr "Nee"
+
+#: ../php/class/rpr_taxonomies.php:449
+msgid "found."
+msgstr "gevonden."
+
+#: ../php/class/rpr_migration.php:50
+#, php-format
+msgid "The Recipe Press Reloaded database needs to upgraded. Make sure you have a backup before you proceed. | <a href=\"%1$s\">Proceed</a>"
+msgstr "The Recipe Press Reloaded databank moet bijgewerkt worden. Zorg ervoor dat u een back-up voordat u verder gaat. | <a Href=\" %1$s \"> Werk bij </a>"
+
+#: ../php/class/rpr_core.php:125
+msgid "Submit"
+msgstr "Bevestigen"
+
+#: ../php/class/rpr_core.php:126
+msgid "Save"
+msgstr "Opslaan"
+
+#: ../php/class/rpr_core.php:127 ../views/mce_dialog.php:72
+msgid "Cancel"
+msgstr "Afbreken"
+
+#: ../php/class/rpr_core.php:162
+msgid "RPR table thumbnail"
+msgstr "RPR tabel thumbnail"
+
+#: ../php/class/rpr_core.php:202
+msgid "No title"
+msgstr "Geen titel"
+
+#: ../php/class/rpr_core.php:203 ../php/class/rpr_core.php:281 ..
+#: /php/class/rpr_core.php:296
+msgid "Recipe"
+msgstr "Recept"
+
+#: ../php/class/rpr_core.php:204 ../php/class/rpr_core.php:205
+msgid "Insert"
+msgstr "Toevoegen"
+
+#: ../php/class/rpr_core.php:280 ../php/class/rpr_core.php:295
+msgid "Recipes"
+msgstr "Recepten"
+
+#: ../php/class/rpr_core.php:297
+msgid "Add new"
+msgstr "Voeg nieuwe"
+
+#: ../php/class/rpr_core.php:298
+msgid "Add new recipe"
+msgstr "Nieuw recept"
+
+#: ../php/class/rpr_core.php:300
+msgid "Edit recipe"
+msgstr "Recept bewerken"
+
+#: ../php/class/rpr_core.php:301
+msgid "New recipe"
+msgstr "Nieuw recept"
+
+#: ../php/class/rpr_core.php:302
+msgid "View"
+msgstr "Bekijk"
+
+#: ../php/class/rpr_core.php:303
+msgid "View recipe"
+msgstr "Recept bekijken"
+
+#: ../php/class/rpr_core.php:304
+msgid "Search recipes"
+msgstr "Recepten zoeken"
+
+#: ../php/class/rpr_core.php:305
+msgid "No recipes found."
+msgstr "Geen recepten gevonden."
+
+#: ../php/class/rpr_core.php:306
+msgid "No recipes found in trash."
+msgstr "Geen recepten gevonden in de prullenbak."
+
+#: ../php/class/rpr_core.php:307
+msgid "Parent recipe"
+msgstr "Parent recept"
+
+#: ../php/class/rpr_core.php:378
+msgid "Post image"
+msgstr "Uitgelichte afbeelding"
+
+#: ../php/class/rpr_core.php:383
+msgid "Details"
+msgstr "Details"
+
+#: ../php/class/rpr_core.php:393
+msgid "Nutritional information"
+msgstr "Voedingswaarde informatie"
+
+#: ../php/class/rpr_core.php:403 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:149
+#: /lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:204
+msgid "Description"
+msgstr "Beschrijving"
+
+#: ../php/class/rpr_core.php:421 ../layouts/rpr_2column/recipe.php:98 ..
+#: /layouts/rpr_default/recipe.php:93 ../views/rpr_recipe_public.php:72
+msgid "Instructions"
+msgstr "Instructies"
+
+#: ../php/class/rpr_core.php:430
+msgid "Notes"
+msgstr "Notities"
+
+#: ../php/class/rpr_core.php:618
+msgid "Image"
+msgstr "Afbeelding"
+
+#: ../php/class/rpr_core.php:619
+msgid "Recipe Title"
+msgstr "Recept Titel"
+
+#: ../php/class/rpr_core.php:620
+msgid "Author"
+msgstr "Auteur"
+
+#: ../php/class/rpr_core.php:621
+msgid "Category"
+msgstr "Categorie"
+
+#: ../php/class/rpr_core.php:622 ../layouts/rpr_2column/recipe.php:74
+msgid "Tags"
+msgstr "Tags"
+
+#: ../php/class/rpr_core.php:623
+msgid "Comments"
+msgstr "Commentaren"
+
+#: ../php/class/rpr_core.php:624
+msgid "Date"
+msgstr "Datum"
+
+#: ../php/class/rpr_core.php:792
+msgid "There was an error parsing the layout file. No content can be displayed"
+msgstr "Er is een fout opgetreden in het opmaak bestand. De inhoud kan niet worden weergegeven"
+
+#: ../php/class/rpr_core.php:947 ../php/class/rpr_core.php:1022
+msgid "You have to create a recipe first, check the 'Recipes' menu on the left."
+msgstr "Je moet eerst een recept te maken, controleer het menu 'Recepten' aan de linkerkant."
+
+#: ../php/class/rpr_core.php:1109 ../php/class/rpr_core.php:1122
+msgid "Ratings"
+msgstr "Scores"
+
+#: ../php/class/rpr_core.php:1110 ../views/metabox_details.php:21
+msgid "Rating"
+msgstr "Beoordelingen"
+
+#: ../php/class/rpr_core.php:1111
+msgid "Search Ratings"
+msgstr "Doorzoek beoordelingen"
+
+#: ../php/class/rpr_core.php:1112
+msgid "Popular Ratings"
+msgstr "Populaire beoordelingen"
+
+#: ../php/class/rpr_core.php:1113
+msgid "All Ratings"
+msgstr "Alle beoordelingen"
+
+#: ../php/class/rpr_core.php:1114
+msgid "Edit Rating"
+msgstr "Bewerken beoordeling"
+
+#: ../php/class/rpr_core.php:1115
+msgid "Update Rating"
+msgstr "Bijwerken beoordeling"
+
+#: ../php/class/rpr_core.php:1116
+msgid "Add New Rating"
+msgstr "Nieuwe beoordeling toevoegen"
+
+#: ../php/class/rpr_core.php:1117
+msgid "New Rating Name"
+msgstr "Nieuw beoordelings naam"
+
+#: ../php/class/rpr_core.php:1118
+msgid "Separate ratings with commas"
+msgstr "Scheid  beoordelingen met komma's"
+
+#: ../php/class/rpr_core.php:1119
+msgid "Add or remove ratings"
+msgstr "Toevoegen of verwijderen beoordelingen"
+
+#: ../php/class/rpr_core.php:1120
+msgid "Choose from the most used ratings"
+msgstr "U kunt kiezen uit de meest gebruikte beoordelingen"
+
+#: ../php/class/rpr_core.php:1121
+msgid "No ratings found."
+msgstr "Geen beoordelingen gevonden."
+
+#: ../php/helper/rpr_taxonomies_builder.php:5
+msgid "Manage Taxonomies"
+msgstr "Beheer taxonomieën"
+
+#: ../php/helper/admin_menu_helper.php:44
+#: ../php/helper/admin_menu_helper.php:50
+msgid "The recipe archive can be found at"
+msgstr "Het recept archief is te vinden op"
+
+#: ../php/helper/admin_menu_helper.php:55
+msgid "Manage recipe taxonomies"
+msgstr "Beheer recept taxonomieën"
+
+#: ../php/helper/admin_menu_helper.php:130
+#, php-format
+msgid "Version %s | "
+msgstr "Versie %s | "
+
+#: ../php/helper/admin_menu_helper.php:138
+#, php-format
+msgid "By <a href=\"%s\">%s</a> |  "
+msgstr "Door <a href=\" %s \"> %s </a> |  "
+
+#: ../php/helper/admin_menu_helper.php:140
+#, php-format
+msgid "By %s |  "
+msgstr "Door %s |  "
+
+#: ../php/helper/admin_menu_helper.php:145
+#, php-format
+msgid "<a href=\"mailto:%s\">Contact</a>"
+msgstr "<a href=\"mailto: %s \"> Contact </a>"
+
+#: ../php/helper/admin_menu_helper.php:156
+msgid "Local"
+msgstr "Lokaal"
+
+#: ../php/helper/admin_menu_helper.php:175 ../views/admin.php:288
+msgid "Use icons"
+msgstr "Gebruik iconen"
+
+#: ../php/helper/admin_menu_helper.php:176 ../views/admin.php:289
+msgid "Display icons in front of headlines."
+msgstr "Geef pictogrammen voor koppen."
+
+#: ../php/helper/admin_menu_helper.php:177
+msgid "Icons not only look nice. They also can save you space. With this setting activated most layouts <span class=\"admin_demo\"\"><i class=\"fa fa-clock-o\" title=\"ready in\" ></i> 35min</span> will display instead of <span class=\"admin_demo\"><span style=\"text-transform:uppercase; font-weight:bold;\">Ready in: </span>35min</span>."
+msgstr "Pictogrammen zijn niet alleen mooi. Zij kunnen u ook ruimte te besparen. Met deze instelling geactiveerd tonen de meeste layouts <span class = \"admin_demo \"\"> <i class =\" fa fa-clock-o\" title =\"klaar\"></i>35min</span>in plaats van<span class=\"admin_demo\"> <span style =\"text-transform:uppercase; font-weight: bold;\">Klaar in: </span>35min</span>."
+
+#: ../php/helper/admin_menu_helper.php:183 ../views/admin.php:209
+msgid "Display print link"
+msgstr "Display print link"
+
+#: ../php/helper/admin_menu_helper.php:184 ../views/admin.php:210
+msgid "Adds a print link to your recipes. It's recommended to use one of the numerous print plugins for wordpress to include a print link to ALL of your posts."
+msgstr "Hiermee wordt een afdruk link naar uw recepten toegevoegd. Het is aan te raden om een ​​van de vele afdrukken plugins te gebruiken voor wordpress om een een afdruk link naar AL uw berichten te tonen."
+
+#: ../php/helper/admin_menu_helper.php:190 ../views/admin.php:216
+msgid "Class of the print area"
+msgstr "Class van het afdrukgebied"
+
+#: ../php/helper/admin_menu_helper.php:191 ../views/admin.php:217
+msgid "Print links should only print an area of the page, usually a post. This is higly depending on wordpress theme you are using. Add here the class (prefixed by '.') or the id (prefixed by '#') of the printable area."
+msgstr "Print links moeten alleen  een gedeelte van de pagina afdrukken, meestal een bericht. Dit is  afhankelijk van het wordpress thema dat u gebruikt. Voeg hier de classname (voorafgegaan door '.') Of id (voorafgegaan door '#') van het afdrukbare gebied toe."
+
+#: ../php/helper/admin_menu_helper.php:199
+msgid "Choose a layout"
+msgstr "Kies een opmaak"
+
+#: ../php/helper/admin_menu_helper.php:200
+msgid "Layouts define how your recipes will look like. Choose one of the installed layouts."
+msgstr "Opmaak bepaalt hoe uw recepten eruit zal zien. Kies één van de geïnstalleerde opmaken."
+
+#: ../php/helper/admin_menu_helper.php:372
+msgid "Recover taxonomies"
+msgstr "Herstel taxonomieën"
+
+#: ../php/helper/admin_menu_helper.php:373
+msgid "Activate taxonomies that should belong to RecipePress reloaded but got lost somehow."
+msgstr "Activeert taxonomieën die  behoren bij RecipePress, maar die op de  een of andere manier verloren raakten."
+
+#: ../layouts/rpr_2column/recipe.php:27
+msgid "By:"
+msgstr "Door:"
+
+#: ../layouts/rpr_2column/recipe.php:59
+msgid "Time"
+msgstr "Tijd"
+
+#: ../layouts/rpr_2column/recipe.php:64 ../views/admin.php:305
+msgid "Nutritional Information"
+msgstr "Voedingswaarde Informatie"
+
+#: ../layouts/rpr_2column/recipe.php:69
+msgid "Categories"
+msgstr "Categorieën"
+
+#: ../layouts/rpr_2column/recipe.php:103 ../layouts/rpr_default/recipe.php:100
+#: .. /views/rpr_recipe_public.php:79
+msgid "Recipe notes"
+msgstr "Recept notitities"
+
+#: ../widgets/taxonomy-cloud-widget.php:11 ../views/settings.php:204
+msgid "Taxonomy Cloud"
+msgstr "Taxonomie Cloud"
+
+#: ../widgets/taxonomy-cloud-widget.php:11
+msgid "Allows you to create tag clouds not only from tags but from every taxonomy. Good to know: You can use this widget for any type of taxonomy, not only recipe related."
+msgstr "Hiermee kunt u een tag clouds  van niet alleen labels, maar van elke taxonomie creëren. Goed om te weten: U kunt deze widget gebruiken voor elk type taxonomie, Niet alleen recept gerelateerde."
+
+#: ../widgets/taxonomy-cloud-widget.php:83
+#: ../widgets/taxonomy-list-widget.php:135
+#: ../widgets/same-taxonomy-widget.php:102
+msgid "Title (optional)"
+msgstr "Titel (optioneel)"
+
+#: ../widgets/taxonomy-cloud-widget.php:86
+msgid "Taxonomy:"
+msgstr "Taxonomie:"
+
+#: ../widgets/taxonomy-cloud-widget.php:94
+msgid "Number auf items to display"
+msgstr "Aantal items om te tonen"
+
+#: ../widgets/rpr_widget_tag_cloud.php:32
+msgid "An advanced widget that gives you total control over the output of your tags. Ingredients on the exclude list are automatically removed."
+msgstr "Een geavanceerde widget die je totale controle geeft over de uitvoer van uw labels. Ingrediënten op de uitsluitingslijst worden automatisch verwijderd."
+
+#. $this->id_base
+#: ../widgets/rpr_widget_tag_cloud.php:44
+#: ../widgets/rpr_widget_tag_cloud.php:154
+msgid "Tag Cloud"
+msgstr "Tag Cloud"
+
+#: ../widgets/rpr_widget_tag_cloud.php:189
+msgid "Flat"
+msgstr "Plat"
+
+#: ../widgets/rpr_widget_tag_cloud.php:190
+msgid "List"
+msgstr "Lijst"
+
+#: ../widgets/rpr_widget_tag_cloud.php:194
+msgid "Ascending"
+msgstr "Oplopend"
+
+#: ../widgets/rpr_widget_tag_cloud.php:195
+msgid "Descending"
+msgstr "Oplopende"
+
+#: ../widgets/rpr_widget_tag_cloud.php:196
+msgid "Random"
+msgstr "Toevallig"
+
+#: ../widgets/rpr_widget_tag_cloud.php:200
+#: ../widgets/taxonomy-list-widget.php:153
+msgid "Count"
+msgstr "Aantal"
+
+#: ../widgets/rpr_widget_tag_cloud.php:215
+msgid "Title:"
+msgstr "Titel:"
+
+#: ../widgets/rpr_widget_tag_cloud.php:322
+msgid "Pad counts?"
+msgstr "Aantal pad?"
+
+#: ../widgets/rpr_widget_tag_cloud.php:326
+msgid "Hide empty?"
+msgstr "Verberg leeg?"
+
+#: ../widgets/taxonomy-list-widget.php:22 ../views/settings.php:211
+msgid "Taxonomy List"
+msgstr "Taxonomie Lijst"
+
+#: ../widgets/taxonomy-list-widget.php:24
+msgid "Allows you to create tag lists not only from tags but from every taxonomy. Good to know: You can use this widget for any type of taxonomy, not only recipe related."
+msgstr "Hiermee kunt u tag lijsten te maken, niet alleen van labels, maar van elke taxonomie. Goed om te weten: U kunt deze widget gebruiken voor elk type taxonomie, niet alleen recept gerelateerd."
+
+#: ../widgets/taxonomy-list-widget.php:88
+msgid "No terms found"
+msgstr "Geen termen gevonden"
+
+#: ../widgets/taxonomy-list-widget.php:139
+#: ../widgets/same-taxonomy-widget.php:106
+msgid "Taxonomy to display"
+msgstr "Taxonomie weergeven"
+
+#: ../widgets/taxonomy-list-widget.php:147
+msgid "How many items would you like to display?"
+msgstr "Hoeveel items wilt u weergeven?"
+
+#: ../widgets/taxonomy-list-widget.php:151
+msgid "Order items by"
+msgstr "Bestel artikelen door"
+
+#: ../widgets/taxonomy-list-widget.php:158
+msgid "ASC"
+msgstr "ASC"
+
+#: ../widgets/taxonomy-list-widget.php:159
+msgid "DESC"
+msgstr "DESC"
+
+#: ../widgets/taxonomy-list-widget.php:164
+msgid "Show count with"
+msgstr "Toon aantal met"
+
+#: ../widgets/taxonomy-list-widget.php:167
+msgid "before and"
+msgstr "vóór en"
+
+#: ../widgets/taxonomy-list-widget.php:170
+msgid "behind"
+msgstr "na"
+
+#: ../widgets/taxonomy-list-widget.php:174
+msgid "Hide empty terms?"
+msgstr "Verberg lege termen?"
+
+#: ../widgets/taxonomy-list-widget.php:178
+msgid "Exclude terms"
+msgstr "Uitgesloten termen"
+
+#: ../widgets/same-taxonomy-widget.php:26
+msgid "RPR :: Same Taxonomy"
+msgstr "RPR :: Zelfde Taxonomie"
+
+#: ../widgets/same-taxonomy-widget.php:26
+msgid "Lists posts from the same taxonomy on single-post view. Will not display elsewhere"
+msgstr "Geeft berichten van dezelfde taxonomie op één bericht weer. Zal niet elders weer getoond worden."
+
+#: ../widgets/same-taxonomy-widget.php:115
+msgid "Number of posts"
+msgstr "Aantal berichten"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:164
+msgid "Something went wrong."
+msgstr "Er is iets fout gegaan."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:165
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] "Dit thema vereist de volgende plugin: %1$s ."
+msgstr[1] "Dit thema vereist de volgende plugin: %1$s ."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:166
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] "Dit thema beveelt de volgende plugin %1$s aan."
+msgstr[1] "Dit thema beveelt de volgende plugin  %1$s aan."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:171
+#, php-format
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] "De volgende plugin moet worden bijgewerkt naar de laatste versie om maximale compatibiliteit met dit thema te verzekeren: %1$s ."
+msgstr[1] "De volgende plugin moet worden bijgewerkt naar de laatste versie om maximale compatibiliteit met dit thema te verzekeren: %1$s ."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:176
+msgid "Return to the dashboard"
+msgstr "Keer terug naar het dashboard"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:178 ../lib/tgm/class-tgm-plugin-
+#: activation.php:1630
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] "De volgende plugin is succesvol geactiveerd:"
+msgstr[1] "De volgende plugin is succesvol geactiveerd:"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:179
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "Alle plugins geïnstalleerd en succesvol geactiveerd. %1$s"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:180
+msgid "Dismiss this notice"
+msgstr "Verwijder deze mededeling"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:531 ../lib/tgm/class-tgm-plugin-
+#: activation.php:531 ../lib/tgm/class-tgm-plugin-activation.php:2156 ..
+#: /lib/tgm/class-tgm-plugin-activation.php:2156
+msgid "Return to the Dashboard"
+msgstr "Keer terug naar het Dashboard"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1166
+msgid "Private Repository"
+msgstr "Private Repository"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1169
+msgid "Pre-Packaged"
+msgstr "Voorverpakte"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1174
+msgid "WordPress Repository"
+msgstr "WordPress Repository"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1177
+msgid "Required"
+msgstr "Verplicht"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1177
+msgid "Recommended"
+msgstr "Aanbevolen"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1180
+msgid "Not Installed"
+msgstr "Niet Geïnstalleerd"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1182
+msgid "Installed But Not Activated"
+msgstr "Geïnstalleerd Maar Niet Geactiveerd"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1287
+#: ../lib/tgm/class-tgm-plugin- activation.php:1287
+#: ../lib/tgm/class-tgm-plugin-activation.php:1395
+msgid "Install"
+msgstr "Installeren"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1309
+#: ../lib/tgm/class-tgm-plugin- activation.php:1309
+#: ../lib/tgm/class-tgm-plugin-activation.php:1396
+msgid "Activate"
+msgstr "Activeren"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1358
+#, php-format
+msgid "No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the Dashboard\">Return to the Dashboard</a>"
+msgstr "Geen plugins te installeren of te activeren. <a href=\" %1$s \" title=\"Ga terug naar het Dashboard\"> terug naar het Dashboard </a>"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1374
+msgid "Plugin"
+msgstr "plugin"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1375
+msgid "Source"
+msgstr "Bron"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1376
+msgid "Type"
+msgstr "Type"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1377
+msgid "Status"
+msgstr "Status"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1922
+msgid "Install package not available."
+msgstr "Installatiepakket niet beschikbaar."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1923
+#, php-format
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr "Downloadenhet  installatiepakket van <span class=\"code\">%s</span>&#8230;"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1924
+msgid "Unpacking the package&#8230;"
+msgstr "Uitpakken van het pakket & # 8230;"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1925
+msgid "Installing the plugin&#8230;"
+msgstr "Het installeren van de plug-in & # 8230;"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1926
+msgid "Plugin install failed."
+msgstr "Installeren Plug-in mislukt."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1927
+msgid "Plugin installed successfully."
+msgstr "Plugin succes geïnstalleerd."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:1938
+msgid "Plugin activation failed."
+msgstr "Plugin activering mislukt."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2052
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr "De installatie en activering proces begint. Dit proces kan een tijdje duren op sommige hosts, dus wees geduldig."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2053
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr "%1$s geïnstalleerd en succesvol geactiveerd."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2053
+#: ../lib/tgm/class-tgm-plugin- activation.php:2062
+msgid "Show Details"
+msgstr "Toon Details"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2053
+#: ../lib/tgm/class-tgm-plugin- activation.php:2062
+msgid "Hide Details"
+msgstr "Verbergen Details"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2054
+msgid "All installations and activations have been completed."
+msgstr "Alle installaties en activeringen zijn afgerond."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2055
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "Het installeren en activeren plugin %1$s ( %2$d / %3$d )"
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2059
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr "Het installatieproces begint. Dit proces kan een tijdje duren op sommige hosts, dus wees geduldig."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2060
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr "Er is een fout opgetreden tijdens de installatie van %1$s : <strong> %2$s </ strong>."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2061
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr "De installatie van %1$s is mislukt."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2062
+#, php-format
+msgid "%1$s installed successfully."
+msgstr "%1$s succesvol geïnstalleerd."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2063
+msgid "All installations have been completed."
+msgstr "Alle installaties zijn voltooid."
+
+#: ../lib/tgm/class-tgm-plugin-activation.php:2064
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "Installeren Plugin %1$s ( %2$d / %3$d )"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:223
+#, php-format
+msgid "Options panel created using %1$s"
+msgstr "Panel opties gemaakt met behulp van %1$s"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:223
+msgid "Redux Framework"
+msgstr "Redux Framework"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:227 ..
+#: /lib/ReduxFramework/ReduxCore/framework.php:231
+msgid "Options"
+msgstr "Opties"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:1384 ..
+#: /lib/ReduxFramework/ReduxCore/framework.php:1385
+#: /lib/ReduxFramework/ReduxCore/framework.php:3255
+#: /lib/ReduxFramework/ReduxCore/framework.php:3334
+msgid "System Info"
+msgstr "System Info"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:1688
+msgid "Enable"
+msgstr "aanzetten"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:1693
+msgid "Disable"
+msgstr "Uitzetten"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:1699
+msgid "moving the mouse over"
+msgstr "beweeg de muis over"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:1701
+msgid "clicking"
+msgstr "klikken"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:1705
+#, php-format
+msgid "Hints are tooltips that popup when %d the hint icon, offering addition information about the field in which they appear.  They can be %d d by using the link below."
+msgstr "Hints zijn tooltips die op poppen wanneer %d het hint pictogram, offert informatie over het gebied waarin ze verschijnen. Ze kunnen %d d met behulp van de onderstaande link."
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:1710
+msgid "Hints"
+msgstr "Hints"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:1835
+msgid "Default"
+msgstr "Default"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:2999
+msgid "Warning- This options panel will not work properly without javascript!"
+msgstr "Waarschuwing- Dit panel opties zal niet goed werken zonder javascript!"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3050
+msgid "Developer Mode Enabled"
+msgstr "Developer Mode Enabled"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3079
+msgid "Expand"
+msgstr "Uitbreiden"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3081 ..
+#: /lib/ReduxFramework/ReduxCore/framework.php:3391
+msgid "Save Changes"
+msgstr "Wijzigingen Opslaan"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3085 ..
+#: /lib/ReduxFramework/ReduxCore/framework.php:3395
+msgid "Reset Section"
+msgstr "Reset Sectie"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3087 ..
+#: /lib/ReduxFramework/ReduxCore/framework.php:3397
+msgid "Reset All"
+msgstr "Reset Alles"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3092 ..
+#: /lib/ReduxFramework/ReduxCore/framework.php:3402
+msgid "Working..."
+msgstr "Aan het werk ..."
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3112
+msgid "Settings Imported!"
+msgstr "Instellingen Geïmporteerd!"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3127
+msgid "All Defaults Restored!"
+msgstr "Alle Defaults Hersteld!"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3141
+msgid "Section Defaults Restored!"
+msgstr "Sectie Defaults Hersteld!"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3155
+msgid "Settings Saved!"
+msgstr "Instellingen Opgeslagen!"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3175
+msgid "Settings have changed, you should save them!"
+msgstr "Instellingen zijn veranderd, Je moet ze opslaan!"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3183
+msgid "error(s) were found!"
+msgstr "error (s) werden gevonden!"
+
+#: ../lib/ReduxFramework/ReduxCore/framework.php:3191
+msgid "warning(s) were found!"
+msgstr "waarschuwingen (s) werden gevonden!"
+
+#: ../lib/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:530
+#: ../lib/ReduxFramework/ReduxCore/core/enqueue.php:346
+msgid "You have changes that are not saved. Would you like to save them now?"
+msgstr "Je hebt veranderingen die niet zijn opgeslagen. Wilt u ze nu op slaan?"
+
+#: ../lib/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:531
+#: ../lib/ReduxFramework/ReduxCore/core/enqueue.php:354
+msgid "Are you sure? Resetting will lose all custom values."
+msgstr "Weet je het zeker? Resetten zal alle aanpassingen vergeten."
+
+#: ../lib/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:532
+#: ../lib/ReduxFramework/ReduxCore/core/enqueue.php:370
+msgid "Your current options will be replaced with the values of this preset. Would you like to proceed?"
+msgstr "Uw huidige opties zullen worden vervangen door de waarden van deze preset. Wilt u doorgaan?"
+
+#: ../lib/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:565
+msgid "You have changes that are not saved.  Would you like to save them now?"
+msgstr "Je hebt veranderingen die niet worden opgeslagen. Wilt u ze nu opslaan?"
+
+#: ../lib/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:566
+msgid "Are you sure?  Resetting will lose all custom values."
+msgstr "Weet je het zeker? Resetten zal alle aanpassingen vergeten."
+
+#: ../lib/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:567
+msgid "Your current options will be replaced with the values of this preset.  Would you like to proceed?"
+msgstr "Uw huidige opties zullen worden vervangen door de waarden van deze preset. Wilt u doorgaan?"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/debug.php:41 ..
+#: /lib/ReduxFramework/ReduxCore/inc/debug.php:69
+#: /lib/ReduxFramework/ReduxCore/inc/debug.php:76
+#: /lib/ReduxFramework/ReduxCore/inc/debug.php:77
+msgid "Options Object"
+msgstr "Opties Object"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/debug.php:54
+msgid "Show Object in Javascript Console Object"
+msgstr "Toon object in Javascript Console Object"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:40 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:40
+msgid "Welcome to Redux Framework"
+msgstr "Welkom bij Redux Framework"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:48 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:48
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:295
+msgid "Redux Framework Changelog"
+msgstr "Redux Framework Changelog"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:56 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:56
+msgid "Getting started with Redux Framework"
+msgstr "Aan de slag met Redux Framework"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:64 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:64
+msgid "The people that develop Redux Framework"
+msgstr "De mensen die Redux Framework ontwikkelen"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:135
+msgid "What's New"
+msgstr "Wat is er nieuw"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:139 ..
+#: /lib/ReduxFramework/ReduxCore/inc/tracking.php:152
+msgid "Getting Started"
+msgstr "Beginnen"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:143 ../views/admin.php:18
+#: .. /views/settings.php:388
+msgid "Changelog"
+msgstr "Changelog"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:147
+msgid "Credits"
+msgstr "Credits"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:164 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:333
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:471
+#, php-format
+msgid "Welcome to Redux Framework %s"
+msgstr "Welkom op Redux Framework %s"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:167
+#, php-format
+msgid "Thank you for updating to the latest version! Redux Framework %s is ready to <add description>"
+msgstr "Dank u voor het updaten naar de nieuwste versie! Redux Framework %s is klaar om <add description>"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:169 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:300
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:338
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:476
+#, php-format
+msgid "Version %s"
+msgstr "Versie %s"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:174
+msgid "Some Feature"
+msgstr "Sommige eigenschappen"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:178 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:182
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:195
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:199
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:203
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:208
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:221
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:225
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:230
+msgid "Feature"
+msgstr "Kenmerken"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:190
+msgid "Some feature"
+msgstr "Sommige functies"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:217
+msgid "More Features"
+msgstr "Meer mogelijkheden"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:223 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:227
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:232
+msgid "description"
+msgstr "beschrijving"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:238
+msgid "Additional Updates"
+msgstr "Extra Updates"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:242 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:246
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:252
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:256
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:262
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:266
+msgid "Cool thing"
+msgstr "Koele ding"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:244 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:248
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:254
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:258
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:264
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:268
+msgid "cool thing description."
+msgstr "koele ding beschrijving."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:277 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:316
+msgid "Go to Redux Framework"
+msgstr "Ga naar Redux Framework"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:278
+msgid "View the Full Changelog"
+msgstr "Bekijk de volledige Changelog"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:298 ..
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:336
+#: /lib/ReduxFramework/ReduxCore/inc/welcome.php:474
+#, php-format
+msgid "Thank you for updating to the latest version! Redux Framework %s is ready to make your <description>"
+msgstr "Dank u voor het updaten naar de nieuwste versie! Redux Framework %s is klaar om uw <description> maken"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:305
+msgid "Full Changelog"
+msgstr "Volledige Changelog"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:342
+msgid "Use the tips below to get started using Redux Framework. You'll be up and running in no time!"
+msgstr "Gebruik de onderstaande tips om te beginnen met behulp van Redux Framework. U zult up and running in no time!"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:345
+msgid "Creating Your First Panel"
+msgstr "Het maken van uw eerste Panel"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:350
+#, php-format
+msgid "<a href=\"%s\">%s &rarr; Add New</a>"
+msgstr "<a href=\" %s \"> %s & rarr; Nieuwe toevoegen </a>"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:352
+#, php-format
+msgid "The %s menu is your access point for all aspects of your Easy Digital Downloads product creation and setup. To create your first product, simply click Add New and then fill out the product details."
+msgstr "De %s menu is uw toegangspunt voor alle aspecten van uw creatie en setup Eenvoudige digitale downloads product. Om uw eerste product te maken, klikt u op Nieuwe toevoegen en vervolgens vul het product details."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:354
+msgid "Product Price"
+msgstr "Artikel Prijs"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:356
+msgid "Products can have simple prices or variable prices if you wish to have more than one price point for a product. For a single price, simply enter the price. For multiple price points, click <em>Enable variable pricing</em> and enter the options."
+msgstr "Producten kunnen eenvoudig prijzen of variabele prijzen hebben als u meer dan één prijs voor een product te hebben. Voor een enkele prijs, voert u de prijs. Voor meerdere prijspunten, klikt u op <em> Inschakelen variabele prijzen </ em> en voer de opties."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:358
+msgid "Download Files"
+msgstr "Bestanden downloaden"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:360
+msgid "Uploading the downloadable files is simple. Click <em>Upload File</em> in the Download Files section and choose your download file. To add more than one file, simply click the <em>Add New</em> button."
+msgstr "Het uploaden van de bestanden te downloaden is eenvoudig. Klik op <em> Bestand uploaden </ em> in het Files Download sectie en kies uw downloadbestand. Om meer dan één bestand toe te voegen, klikt u op de <em> Nieuwe toevoegen </ em> knop."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:366
+msgid "Display a Product Grid"
+msgstr "Toon een product-grid"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:373
+msgid "Flexible Product Grids"
+msgstr "Flexibel product Grids"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:375
+msgid "The [downloads] shortcode will display a product grid that works with any theme, no matter the size. It is even responsive!"
+msgstr "De shortcode [downloads] wordt een product-grid die werkt met elk thema, ongeacht de grootte weer te geven. Het is zelfs reageert!"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:377
+msgid "Change the Number of Columns"
+msgstr "Wijzig het aantal kolommen"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:379
+msgid "You can easily change the number of columns by adding the columns=\"x\" parameter:"
+msgstr "U kunt het aantal kolommen gemakkelijk veranderen door de kolommen parameter =\"x\" toe te voegen:"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:385
+msgid "Additional Display Options"
+msgstr "Extra opties Weergave"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:387
+#, php-format
+msgid "The product grids can be customized in any way you wish and there is <a href=\"%s\">extensive documentation</a> to assist you."
+msgstr "Het product roosters kan worden aangepast op welke manier je wilt en er is <a href=\" %s \"> uitgebreide documentatie </a> om u te helpen."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:392
+msgid "Purchase Buttons Anywhere"
+msgstr "Aankoop Knoppen Anywhere"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:397
+msgid "The <em>[purchase_link]</em> Shortcode"
+msgstr "De <em> [purchase_link] </ em> Korte"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:399
+msgid "With easily accessible shortcodes to display purchase buttons, you can add a Buy Now or Add to Cart button for any product anywhere on your site in seconds."
+msgstr "Met gemakkelijk toegankelijk shortcodes tot aankoop knoppen weer te geven, kunt u een Koop nu toe te voegen of winkelwagen knop voor elk product overal op uw site in seconden."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:401
+msgid "Buy Now Buttons"
+msgstr "Nu kopen Knoppen"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:403
+msgid "Purchase buttons can behave as either Add to Cart or Buy Now buttons. With Buy Now buttons customers are taken straight to PayPal, giving them the most frictionless purchasing experience possible."
+msgstr "Aankoop knoppen kunnen gedragen als ofwel winkelwagen Of Nu Kopen knoppen. Met Koop nu knoppen klanten worden genomen rechtstreeks naar PayPal, waardoor ze de meest wrijvingsloze inkoop ervaring mogelijk."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:409
+msgid "Need Help?"
+msgstr "Hulp Nodig?"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:413
+msgid "Phenomenal Support"
+msgstr "Fenomenale Ondersteuning"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:417
+msgid "Need Even Faster Support?"
+msgstr "Nodig Zelfs Snellere Ondersteuning?"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:425
+msgid "Stay Up to Date"
+msgstr "Blijf op de hoogte"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:429
+msgid "Get Notified of Extension Releases"
+msgstr "Blijf op de hoogte van Extension Releases"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:433
+msgid "Get Alerted About New Tutorials"
+msgstr "Ontvang Gewaarschuwd Over New Tutorials"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:441
+msgid "Extensions for Everything"
+msgstr "Extensies voor alles"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:445
+msgid "Over 250 Extensions"
+msgstr "Meer dan 250 extensies"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:447
+msgid "Add-on plugins are available that greatly extend the default functionality of Easy Digital Downloads. There are extensions for payment processors, such as Stripe and PayPal, extensions for newsletter integrations, and many, many more."
+msgstr "Add-on plugins beschikbaar die de standaard functionaliteit van Easy digitale downloads aanzienlijk verlengen. Er zijn extensies voor payment processors, zoals de Stripe en PayPal, extensies voor nieuwsbrief integraties, en veel, veel meer."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:449
+msgid "Visit the Extension Store"
+msgstr "Bezoek de Extension Store"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:480
+msgid "Redux Framework is created by a worldwide team of developers who <something witty here>"
+msgstr "Redux Framework wordt gecreëerd door een wereldwijd team van ontwikkelaars die <iets geestige hier>"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:500
+msgid "No valid changlog was found."
+msgstr "Geen geldige changlog werd gevonden."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/welcome.php:539
+#, php-format
+msgid "View %s"
+msgstr "Bekijk %s"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/class.redux_themecheck.php:61
+#, php-format
+msgid "The theme you are testing has %s embedded. We invite you to read the %sTheme-Check Documentation%s to understand some warnings you will see because of Redux."
+msgstr "Het thema u wilt testen heeft %s ingebed. Wij nodigen u uit om het lezen %s Thema-Check Documentatie %s om enkele waarschuwingen u zult zien als gevolg van Redux begrijpen."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/class.redux_themecheck.php:109
+msgid "The following directories & files are still located in your <strong>Redux</strong>  directory. They may cause errors in Theme-Check."
+msgstr "De volgende mappen en bestanden zijn nog steeds gevestigd in de <strong> Redux </ strong> directory. Zij kunnen fouten in de Thema-Check veroorzaken."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/class.redux_functions.php:231
+msgid "Dismiss"
+msgstr "Ontslaan"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/class.redux_filesystem.php:23
+msgid "Unable to modify required files. Please ensure that"
+msgstr "Kan benodigde bestanden te wijzigen. Zorg ervoor dat"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/class.redux_filesystem.php:25
+msgid "has the proper read/write permissions or enter your FTP information below."
+msgstr "heeft de juiste lees / schrijf rechten of voer hieronder uw FTP gegevens."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:78
+msgid "Import / Export Options"
+msgstr "Import / Export Options"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:81
+msgid "Import Options"
+msgstr "Opties Import"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:82
+msgid "Import from file"
+msgstr "Importeren uit bestand"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:82
+msgid "Import from URL"
+msgstr "Import van URL"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:85
+msgid "Input your backup file below and hit Import to restore your sites options from a backup."
+msgstr "Voer uw back-upbestand in en sloeg Importeren om uw sites te herstellen opties uit een back-up."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:90
+msgid "Input the URL to another sites options set and hit Import to load the options from that site."
+msgstr "Voer de URL naar een andere plaatsen in te stellen en druk op Importeren om de opties van die site te laden."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:94
+msgid "Import"
+msgstr "Import"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:94
+msgid "WARNING! This will overwrite all existing option values, please proceed with caution!"
+msgstr "WAARSCHUWING! Dit zal alle bestaande optie waarden overschrijven, gaat u met de nodige voorzichtigheid!"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:97
+msgid "Export Options"
+msgstr "Export Options"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:100
+msgid "Here you can copy/download your current option settings. Keep this safe as you can use it as a backup should anything go wrong, or you can use it to restore your settings on this site (or any other site)."
+msgstr "Hier kunt u kopiëren / downloaden van uw huidige optie-instellingen. Bewaar deze veilig als je het kan gebruiken als een back-up moet er iets mis gaan, of u kunt het gebruiken om uw instellingen op deze site (of een andere site) te herstellen."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:104
+msgid "Copy"
+msgstr "Exemplaar"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:104
+msgid "Download"
+msgstr "Download"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:104
+msgid "Copy Link"
+msgstr "Copy Link"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/import_export.php:140 ..
+#: /lib/ReduxFramework/ReduxCore/inc/import_export.php:149
+#: /lib/ReduxFramework/ReduxCore/inc/import_export.php:150
+msgid "Import / Export"
+msgstr "Import Export"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:129
+msgid "Help improve Our Panel"
+msgstr "Helpen bij het verbeteren Onze Panel"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:130
+msgid "Please helps us improve our panel by allowing us to gather anonymous usage stats so we know which configurations, plugins and themes to test to ensure compatibility."
+msgstr "Gelieve helpt ons bij het verbeteren van onze panel door waardoor wij anonieme gebruiksstatistieken te verzamelen zodat we weten welke configuraties, plugins en thema's te testen op compatibiliteit te garanderen."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:135
+msgid "Allow tracking"
+msgstr "Laat bijhouden"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:140
+msgid "Do not allow tracking"
+msgstr "Laat bijhouden niet toestaan"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:151
+msgid "Welcome to the Redux Demo Panel"
+msgstr "Welkom op de Redux Demo Panel"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:152
+#, php-format
+msgid "This panel demonstrates the many features of Redux.  Before digging in, we suggest you get up to speed by reviewing %1$s."
+msgstr "Dit paneel toont de vele functies van Redux. Voordat graven in, raden we je op snelheid door de herziening van %1$s ."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:152
+msgid "our documentation"
+msgstr "onze documentatie"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:153 ..
+#: /lib/ReduxFramework/ReduxCore/inc/tracking.php:153
+msgid "Redux Generator"
+msgstr "Redux Generator"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:153
+#, php-format
+msgid "Want to get a head start? Use the %1$s. It will create a customized boilerplate theme or a standalone admin folder complete with all things Redux (with the help of Underscores and TGM). Save yourself a headache and try it today."
+msgstr "Wilt u een voorsprong? Gebruik de %1$s . Het zal een aangepaste boilerplate thema of een standalone admin map compleet met alle dingen Redux (met de hulp van Underscores en TGM) te creëren. Bespaar jezelf een hoofdpijn en probeer het vandaag nog."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:154
+msgid "Redux Extensions"
+msgstr "Redux Extensions"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:154
+#, php-format
+msgid "Did you know we have extensions, which greatly enhance the features of Redux?  Visit our %1$s to learn more!"
+msgstr "Wist je dat we uitbreidingen, die sterk verbeteren van de kenmerken van Redux? Bezoek onze %1$s om meer te leren!"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:154
+msgid "extensions directory"
+msgstr "extensies directory"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:155
+msgid "Like Redux?"
+msgstr "Net als Redux?"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:155
+#, php-format
+msgid "If so, please %1$s and consider making a %2$s to keep development of Redux moving forward."
+msgstr "Zo ja, dan kunt u %1$s en overwegen om een %2$s om de ontwikkeling van Redux vooruit."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:155
+msgid "leave us a favorable review on WordPress.org"
+msgstr "laat ons een gunstige beoordeling op WordPress.org"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:155
+msgid "donation"
+msgstr "schenking"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:156
+msgid "Newsletter"
+msgstr "Nieuwsbrief"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:156
+msgid "If you'd like to keep up to with all things Redux, please subscribe to our newsletter"
+msgstr "Als u wilt op de hoogte blijven met alle dingen Redux, dan kunt u zich abonneren op onze nieuwsbrief"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:157
+msgid "Email address"
+msgstr "E-mailadres"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:157
+msgid "Subscribe"
+msgstr "Abonneren"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/tracking.php:166
+#: ../views/mce_dialog.php:7
+msgid "Close"
+msgstr "Dicht"
+
+#: ..
+#: /lib/ReduxFramework/ReduxCore/inc/validation/comma_numeric/validation_comma_nume
+#: ric.php:16
+msgid "You must provide a comma separated list of numerical values for this option."
+msgstr "U moet een door komma's gescheiden lijst van numerieke waarden voor deze optie te bieden."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/validation/no_html/validation_no_html.php:15
+msgid "You must not enter any HTML in this field, all HTML tags have been removed."
+msgstr "U moet geen HTML niet invoeren in dit gebied, hebben alle HTML-tags zijn verwijderd."
+
+#: ..
+#: /lib/ReduxFramework/ReduxCore/inc/validation/no_special_chars/validation_no_spec
+#: ial_chars.php:16
+msgid "You must not enter any special characters in this field, all special characters have been removed."
+msgstr "Je moet geen speciale tekens in te voeren op dit gebied, hebben alle speciale tekens verwijderd."
+
+#: ..
+#: /lib/ReduxFramework/ReduxCore/inc/validation/email_not_empty/validation_email_no
+#: t_empty.php:16
+#: /lib/ReduxFramework/ReduxCore/inc/validation/email/validation_email.php:16
+msgid "You must provide a valid email for this option."
+msgstr "U moet een geldig e-mail voor deze optie te bieden."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/validation/colorrgba/validation_colorrgba.
+#: php:16
+#: ../lib/ReduxFramework/ReduxCore/inc/validation/color/validation_color.
+#: php:15 ..
+#: /lib/ReduxFramework/ReduxCore/inc/validation/color_rgba/validation_color_rgba.
+#: php:14
+msgid "This field must be a valid color value."
+msgstr "Dit veld moet een geldige kleur waarde."
+
+#: ..
+#: /lib/ReduxFramework/ReduxCore/inc/validation/numeric_not_empty/validation_numeri
+#: c_not_empty.php:16
+#: /lib/ReduxFramework/ReduxCore/inc/validation/numeric/validation_numeric.php:16
+msgid "You must provide a numerical value for this option."
+msgstr "U moet een numerieke waarde voor deze optie te bieden."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/validation/not_empty/validation_not_empty.
+#: php:16
+msgid "This field cannot be empty. Please provide a value."
+msgstr "Dit veld kan niet leeg zijn. Geef een waarde."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/validation/css/validation_css.php:71
+msgid "Unsafe strings were found in your CSS and have been filtered out."
+msgstr "Onveilige strings werden gevonden in uw CSS en zijn uitgefilterd."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/validation/url/validation_url.php:16
+msgid "You must provide a valid URL for this option."
+msgstr "U moet een geldige URL voor deze optie te bieden."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/validation/date/validation_date.php:16
+msgid "This field must be a valid date."
+msgstr "Dit veld moet een geldige datum zijn."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:227
+msgid "Font Family"
+msgstr "Font Family"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:228
+msgid "Font family"
+msgstr "Font familie"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:254
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:255
+msgid "Backup Font Family"
+msgstr "Backup Lettertypefamilie"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:269
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:276
+msgid "Font style"
+msgstr "Tekenstijl"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:270
+msgid "Font Weight &amp; Style"
+msgstr "Font Gewicht & amp; Stijl"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:276
+msgid "Style"
+msgstr "Stijl"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:316
+msgid "Font subsets"
+msgstr "Font subsets"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:318
+msgid "Font Subsets"
+msgstr "Font Subsets"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:319
+msgid "Subsets"
+msgstr "Subsets"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:319
+msgid "Font script"
+msgstr "Font script"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:336
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:337
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:338
+msgid "Text Align"
+msgstr "Tekst uitlijnen"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:359
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:360
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:361
+msgid "Text Transform"
+msgstr "Tekst Transform"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:382
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:383
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:384
+msgid "Font Variant"
+msgstr "Font Variant"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:402
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:403
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:404
+msgid "Text Decoration"
+msgstr "Tekst Decoratie"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:426
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:427
+msgid "Font Size"
+msgstr "Lettertypegrootte"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:427
+msgid "Size"
+msgstr "Grootte"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:435
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:436
+msgid "Line Height"
+msgstr "regelhoogte"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:436
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:177
+msgid "Height"
+msgstr "Hoogte"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:444
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:445
+msgid "Word Spacing"
+msgstr "Woordspatiëring"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:453
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:454
+msgid "Letter Spacing"
+msgstr "Letterspatiëring"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:472
+msgid "Font Color"
+msgstr "Font Color"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:474
+msgid "Font color"
+msgstr "Font kleur"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:871
+msgid "Standard Fonts"
+msgstr "Standard Fonts"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:972
+msgid "Google Webfonts"
+msgstr "Google webfonts"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:61
+msgid "Add More"
+msgstr "Meer toevoegen"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:69
+#: .
+#: lib/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:73
+#: ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:76
+#: /lib/ReduxFramework/ReduxCore/inc/fields/media/field_media.php:205
+#: /lib/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:321
+#: /lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:133
+#: /lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:190
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/select/field_select.php:83 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/select_image/field_select_image.php:63
+msgid "Select an item"
+msgstr "Selecteer een item"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/select/field_select.php:134 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/select_image/field_select_image.php:144
+msgid "No items of this type were found."
+msgstr "Geen items van dit type werden gevonden."
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:87
+msgid "Regular"
+msgstr "Regelmatig"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:91
+msgid "Hover"
+msgstr "Zweven"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:95
+msgid "Visited"
+msgstr "Bezocht"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:99
+msgid "Active"
+msgstr "Actief"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:161
+msgid "Width"
+msgstr "Breedte"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:188
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:189
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:245 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:246
+msgid "Units"
+msgstr "Eenheden"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/media/field_media.php:149 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:277
+msgid "No media selected"
+msgstr "Geselecteerd geen media"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/media/field_media.php:198 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:314
+#: /lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:126
+#: /lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:188
+msgid "Upload"
+msgstr "Uploaden"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/password/field_password.php:62
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/password/field_password.php:63
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/gallery/field_gallery.php:73
+msgid "Add/Edit Gallery"
+msgstr "Toevoegen / bewerken Gallery"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/gallery/field_gallery.php:74
+msgid "Clear Gallery"
+msgstr "Clear Gallery"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/switch/field_switch.php:41
+msgid "On"
+msgstr "Op"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/switch/field_switch.php:44
+msgid "Off"
+msgstr "Af"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/color/field_color.php:73 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:124
+#: /lib/ReduxFramework/ReduxCore/inc/fields/color_gradient/field_color_gradient.
+#: php:79 php:91
+msgid "Transparent"
+msgstr "Doorzichtig"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:141
+msgid "Background Repeat"
+msgstr "Achtergrond Repeat"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:157
+msgid "Background Clip"
+msgstr "Achtergrond Clip"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:173
+msgid "Background Origin"
+msgstr "Achtergrond Origin"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:188
+msgid "Background Size"
+msgstr "Achtergrond Size"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:203
+msgid "Background Attachment"
+msgstr "Achtergrond Attachment"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:223
+msgid "Background Position"
+msgstr "Achtergrond Positie"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/color_gradient/field_color_gradient.
+#: php:68
+msgid "From "
+msgstr "Van "
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/color_gradient/field_color_gradient.
+#: php:82
+msgid "To "
+msgstr "Naar "
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:215 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:138
+msgid "Top"
+msgstr "Top"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:222 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:145
+msgid "Right"
+msgstr "Rechts"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:229 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:152
+msgid "Bottom"
+msgstr "Bodem"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:236 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:159
+msgid "Left"
+msgstr "Links"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:68
+msgid "Slide"
+msgstr "Glijbaan"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:73 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:174
+#, php-format
+msgid "New %s"
+msgstr "Nieuw %s"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:145 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:200
+msgid "Title"
+msgstr "Titel"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:153 ..
+#: /lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:207
+msgid "URL"
+msgstr "URL"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:223
+#, php-format
+msgid "Add %s"
+msgstr "Voeg %s"
+
+#: ../lib/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:173
+msgid "Border style"
+msgstr "Border stijl"
+
+#: ../lib/ReduxFramework/ReduxCore/core/enqueue.php:362
+msgid "Are you sure? Resetting will lose all custom values in this section."
+msgstr "Weet je het zeker? Resetten zal alle aangepaste waarden in deze sectie verliezen."
+
+#: ../lib/ReduxFramework/ReduxCore/core/enqueue.php:377
+msgid "Please Wait"
+msgstr "Wacht Alstublieft"
+
+#: ../views/metabox_instructions.php:11 ../views/metabox_instructions.php:28
+#: .. /views/metabox_instructions.php:44 ../views/metabox_ingredients.php:20
+#: /views/metabox_ingredients.php:39 ../views/metabox_ingredients.php:60
+msgid "Group"
+msgstr "Groep"
+
+#: ../views/metabox_instructions.php:12
+msgid "Main Instructions"
+msgstr "Hoofd Instructions"
+
+#: ../views/metabox_instructions.php:12 ../views/metabox_ingredients.php:22
+msgid "(this label is not shown)"
+msgstr "(Dit label wordt niet getoond)"
+
+#: ../views/metabox_instructions.php:75 ../views/metabox_instructions.php:98
+#: .. /views/metabox_instructions.php:107
+msgid "Add Image"
+msgstr "Afbeelding toevoegen"
+
+#: ../views/metabox_instructions.php:76 ../views/metabox_instructions.php:108
+msgid "Remove Image"
+msgstr "Verwijder Afbeelding"
+
+#: ../views/metabox_instructions.php:118
+msgid "Add an instruction"
+msgstr "Voeg een instructie toe"
+
+#: ../views/metabox_instructions.php:119
+msgid "Add an instruction group"
+msgstr "Voeg een instructie groep toe"
+
+#: ../views/metabox_instructions.php:121 ../views/metabox_ingredients.php:129
+msgid "EasyType edit: <strong>Use the TAB key</strong> while adding ingredients. New fields will be created automatically. <strong>Don't worry about empty lines</strong>, these won't be saved."
+msgstr "EasyType bewerken: <strong>Gebruik de TAB-toets</strong> bij het toevoegen van ingrediënten. Nieuwe velden worden automatisch aangemaakt. <Strong>Maak je geen zorgen over lege regels </strong>, deze zullen niet worden opgeslagen."
+
+#: ../views/admin.php:7 ../views/settings.php:466 ../views/settings.php:467
+msgid "Settings"
+msgstr "Instellingen"
+
+#: ../views/admin.php:12
+msgid "Latest News"
+msgstr "Laatste Nieuws"
+
+#: ../views/admin.php:37 ../views/settings.php:102
+msgid "General Settings"
+msgstr "Algemene Instellingen"
+
+#: ../views/admin.php:43 ../views/settings.php:103
+msgid "Recipe Archive Pages"
+msgstr "Recept Archief Pages"
+
+#: ../views/admin.php:49
+msgid "Display"
+msgstr "Tonen"
+
+#: ../views/admin.php:53 ../views/settings.php:120
+msgid "Only the excerpt"
+msgstr "Alleen de samenvatting"
+
+#: ../views/admin.php:57 ../views/settings.php:121
+msgid "The entire recipe"
+msgstr "Het volledige recept"
+
+#: ../views/admin.php:111 ../views/settings.php:142
+msgid "404 error/page not found?"
+msgstr "404 / pagina niet gevonden?"
+
+#: ../views/admin.php:112 ../views/settings.php:143
+msgid "Try"
+msgstr "Proberen"
+
+#: ../views/admin.php:112 ../views/settings.php:143
+msgid "flushing your permalinks"
+msgstr "Vernieuw uw permalinks"
+
+#: ../views/admin.php:139 ../views/settings.php:150
+msgid "Appearance"
+msgstr "Verschijning"
+
+#: ../views/admin.php:145
+msgid "Template"
+msgstr "Sjabloon"
+
+#: ../views/admin.php:151
+msgid "Choose a template"
+msgstr "Kies een sjabloon"
+
+#: ../views/admin.php:152
+msgid "Templates define how your recipes will look like. Choose one of the installed templates."
+msgstr "Templates bepalen hoe uw recepten eruit zal zien. Kies één van de geïnstalleerde templates."
+
+#: ../views/admin.php:161 ../views/settings.php:156
+msgid "Images"
+msgstr "Afbeeldingen"
+
+#: ../views/admin.php:167 ../views/settings.php:162
+msgid "Clickable Images"
+msgstr "Klikbare plaatjes"
+
+#: ../views/admin.php:168 ../views/settings.php:163
+msgid "Best used in combination with a lightbox plugin."
+msgstr "Bij voorkeur te gebruiken in combinatie met een lichttafel plugin."
+
+#: ../views/admin.php:174 ../views/settings.php:169
+msgid "Instruction Images"
+msgstr "Instructie plaatjes"
+
+#: ../views/admin.php:175 ../views/settings.php:170
+msgid "Allow to attach images to instruction steps."
+msgstr "Laat foto's hechten aan instructie stappen."
+
+#: ../views/admin.php:181 ../views/settings.php:176
+msgid "Position of instruction images"
+msgstr "Positie van de instructie plaatjes"
+
+#: ../views/admin.php:182 ../views/settings.php:177
+msgid "Decide wether your instruction images should be display next to the instructions or below."
+msgstr "Beslis Of een instructieles afbeeldingen moeten display naast de instructies of onder zijn."
+
+#: ../views/admin.php:186 ../views/settings.php:179
+msgid "Right of instruction"
+msgstr "Recht van instructie"
+
+#: ../views/admin.php:190 ../views/settings.php:180
+msgid "Below the instruction"
+msgstr "Onder de instructie"
+
+#: ../views/admin.php:203
+msgid "Print Link"
+msgstr "Print Link"
+
+#: ../views/admin.php:227 ../views/settings.php:220
+msgid "Advanced theming options"
+msgstr "Geavanceerde thematisering opties"
+
+#: ../views/admin.php:234 ../views/settings.php:228
+msgid "Please note:"
+msgstr "Let op:"
+
+#: ../views/admin.php:235 ../views/settings.php:229
+msgid "In this section you can make some adjustments on the look and feel of your recipes. Normally this should not be necessary and your theme should take care of all this. Some themes however might have limited capabilities and you might want RecipePress reloaded to display some information in it's part of the theme. Then however you might also consider to adjust your theme, i.e. by creating a child theme."
+msgstr "In deze sectie kunt u een aantal aanpassingen aan de look en feel van uw recepten. Normaal gesproken moet dit niet nodig zijn en het thema moet zorgen van dit alles. Sommige thema's kunnen echter beperkte mogelijkheden hebben en u zou willen RecipePress reloaded wat informatie weer te geven in het kader van het thema. Dan echter misschien ook overwegen om uw thema, namelijk door het creëren van een kind thema passen."
+
+#: ../views/admin.php:240
+msgid "Display options"
+msgstr "Weergaveopties"
+
+#: ../views/admin.php:246 ../views/settings.php:241
+msgid "Display recipe image"
+msgstr "Beeldweergave recept"
+
+#: ../views/admin.php:247 ../views/settings.php:242
+msgid "Usually this is the job of your theme. Only use, if your theme does not support post images"
+msgstr "Meestal is dit de taak van uw thema. Alleen gebruiken wanneer uw thema geen  berichtenplaatjes ondersteunt."
+
+#: ../views/admin.php:253 ../views/settings.php:249
+msgid "Display the author in recipe"
+msgstr "Toon de auteur in recept"
+
+#: ../views/admin.php:254 ../views/settings.php:250
+msgid "Display the author in the recipe part of the theme. Ususally your theme will display the author."
+msgstr "Toon de auteur in het recept gedeelte van het thema. Ususally uw thema zal de auteur weergegeven."
+
+#: ../views/admin.php:260 ../views/settings.php:257
+msgid "Display date in recipe"
+msgstr "Datumweergave in recept"
+
+#: ../views/admin.php:261 ../views/settings.php:258
+msgid "Display date in the recipe part of the theme. Ususally your theme will display the date."
+msgstr "Datumweergave in het recept gedeelte van het thema. Ususally uw thema zal de datum weer te geven."
+
+#: ../views/admin.php:267 ../views/settings.php:265
+msgid "Display Categories in recipe"
+msgstr "Weergave categorieën recept"
+
+#: ../views/admin.php:268 ../views/settings.php:266
+msgid "Display WP Categories in the recipe part of the theme instead the default one."
+msgstr "Weergave WP Categorieën in het recept gedeelte van het thema in plaats van de standaard."
+
+#: ../views/admin.php:274 ../views/settings.php:273
+msgid "Display tags in recipe"
+msgstr "Weergave-tags in recept"
+
+#: ../views/admin.php:275 ../views/settings.php:274
+msgid "Display WP Tags in the recipe part of the theme instead the default one."
+msgstr "Toon WP Tags in het recept gedeelte van het thema in plaats van de standaard."
+
+#: ../views/admin.php:282
+msgid "Icons"
+msgstr "Icons"
+
+#: ../views/admin.php:299
+msgid "Recipe Metadata"
+msgstr "Recept Metadata"
+
+#: ../views/admin.php:311 ../views/settings.php:315
+msgid "Use nutritional information"
+msgstr "Gebruik voedingsinformatie"
+
+#: ../views/admin.php:312 ../views/settings.php:316
+msgid "Add nutritional information to your recipes."
+msgstr "Voeg voedingswaarde-informatie toe aan uw recepten."
+
+#: ../views/admin.php:325 ../views/settings.php:288
+msgid "Ingredient Links"
+msgstr "Ingrediënt verwijzing"
+
+#: ../views/admin.php:326 ../views/settings.php:289
+msgid "Links to be used in the ingredient list."
+msgstr "Koppelingen voor gebruik in de lijst van ingrediënten."
+
+#: ../views/admin.php:330 ../views/settings.php:291
+msgid "No ingredient links"
+msgstr "Geen ingrediënt koppelingen"
+
+#: ../views/admin.php:334 ../views/settings.php:292
+msgid "Only link to ingredient archive page"
+msgstr "Alleen verwijzen naar archiefpagina ingrediënt"
+
+#: ../views/admin.php:338 ../views/settings.php:293
+msgid "Custom link if provided, otherwise archive page"
+msgstr "Aangepaste koppeling indien aanwezig, anders archiefpagina"
+
+#: ../views/admin.php:342 ../views/settings.php:294
+msgid "Custom links if provided, otherwise no link"
+msgstr "Aangepaste koppelingen indien aanwezig, anders is er geen koppeling"
+
+#: ../views/admin.php:364
+msgid "Custom Recipe Tags"
+msgstr "Custom Recept Tags"
+
+#: ../views/admin.php:379
+msgid "WordPress Categories & Tags"
+msgstr "WordPress Categories & Tags"
+
+#: ../views/admin.php:385
+msgid "Use Categories"
+msgstr "Gebruik Categorieën"
+
+#: ../views/admin.php:386
+msgid "Use the default WP Categories to organize your recipes. If set to \"Off\", RPR will create own categories."
+msgstr "Gebruik de standaard WP categorieën om uw recepten te organiseren. Als ingesteld op \"Off \", zullen RPR eigen categorieën maken."
+
+#: ../views/admin.php:392
+msgid "Use Tags"
+msgstr "Met Tags"
+
+#: ../views/admin.php:393
+msgid "Use the default WP Tags to organize your recipes. If set to \"Off\", RPR will create own tags."
+msgstr "Gebruik de standaard WP Tags om uw recepten te organiseren. Als ingesteld op \"Off \", zullen RPR eigen tags te creëren."
+
+#: ../views/admin.php:403 ../views/settings.php:400
+msgid "Documentation & Support"
+msgstr "Documentatie & Ondersteuning"
+
+#: ../views/admin.php:410
+msgid "Need more help?"
+msgstr "Meer hulp nodig?"
+
+#: ../views/admin.php:411
+msgid "Have a look at the <a href=\"http://rp-reloaded.net/documentation\" target=\"_blank\">Documentation</a> (currently being built up) or ask your questions at the <a href=\"http://wordpress.org/support/plugin/recipepress-reloaded\" target=\"_blank\">support forum</a>."
+msgstr "Neem een ​​kijkje op de <a href=\"http://rp-reloaded.net/documentation\" target=\"_blank\"> Documentatie </a> (momenteel wordt opgebouwd) of stel uw vragen aan de <a href=\"http: //wordpress.org/support/plugin/recipepress-reloaded\" target =\"_ blank\">support forum </a>."
+
+#: ../views/metabox_ingredients.php:22
+msgid "Main Ingredients"
+msgstr "Belangrijkste ingrediënten"
+
+#: ../views/metabox_ingredients.php:106
+msgid "tbsp"
+msgstr "eetl"
+
+#: ../views/metabox_ingredients.php:107
+msgid "olive oil"
+msgstr "olijfolie"
+
+#: ../views/metabox_ingredients.php:109
+msgid "extra virgin"
+msgstr "extra vergine"
+
+#: ../views/metabox_ingredients.php:126
+msgid "Add an ingredient group"
+msgstr "Voeg een ingrediënt groep toe"
+
+#: ../views/metabox_ingredients.php:127
+msgid "Add an ingredient"
+msgstr "Voeg een ingrediënt toe"
+
+#: ../views/mce_dialog.php:6
+msgid "Insert RecipePress reloaded Shortcode"
+msgstr "Plaats RecipePress reloaded Shortcode"
+
+#: ../views/mce_dialog.php:12
+msgid "Select the type of shortcode to embed:"
+msgstr "Selecteer het type shortcode naar embed:"
+
+#: ../views/mce_dialog.php:14
+msgid "Embed recipe"
+msgstr "Sluiten recept in"
+
+#: ../views/mce_dialog.php:15
+msgid "Embed taxonomy index"
+msgstr "Sluit taxonomie index in"
+
+#: ../views/mce_dialog.php:16
+msgid "Embed recipe index"
+msgstr "Insluiten recept index"
+
+#: ../views/mce_dialog.php:22
+msgid "Taxonomy"
+msgstr "Taxonomie"
+
+#: ../views/mce_dialog.php:39
+msgid "Embed excerpt only"
+msgstr "Embed alleen uittreksel"
+
+#: ../views/mce_dialog.php:44
+msgid "Choose the recipe you want to include from the list below or search for it."
+msgstr "Kies het recept dat je wilt uit de onderstaande lijst op te nemen of zoeken er naar."
+
+#: ../views/mce_dialog.php:60
+msgid "No search term specified. Showing recent items."
+msgstr "Geen zoekterm gespecificeerd. Toont recente items."
+
+#: ../views/mce_dialog.php:61
+msgid "Search or use up and down arrow keys to select an item."
+msgstr "Zoek of gebruik omhoog en omlaag pijltjestoetsen om een ​​item te selecteren."
+
+#: ../views/mce_dialog.php:75
+msgid "Include Shortcut"
+msgstr "Inclusief Shortcut"
+
+#: ../views/settings.php:108
+msgid "Home Page"
+msgstr "Startpagina"
+
+#: ../views/settings.php:109
+msgid "Defines if recipes should be displayed on the homepage like 'normal' posts."
+msgstr "Definieert of recepten op de homepage als 'gewone' berichten moet worden weergegeven."
+
+#: ../views/settings.php:111
+msgid "Yes"
+msgstr "Ja"
+
+#: ../views/settings.php:117
+msgid "Archive Page"
+msgstr "Archief Pagina"
+
+#: ../views/settings.php:118
+msgid "Defines what to show of your recipes on the archive page"
+msgstr "Bepaalt wat er te zien moet zijn van uw recepten op de archiefpagina"
+
+#: ../views/settings.php:190 ../views/settings.php:198
+msgid "Widgets"
+msgstr "Widgets"
+
+#: ../views/settings.php:199
+msgid "Widgets can be really useful to display information in sidebars or other places.<br/> However, if you have a lot of widgets its hard to keep the overview. Here you can switch of widgets shipped with RecipePress reloaded if you don't need them."
+msgstr "Widgets kunnen echt nuttig zijn om informatie in sidebars of op andere plaatsen weer te geven. <br/> Echter, als je veel widgets hebt kan het moeilijk zijn om het overzicht te houden. Hier kunt u  widgets die  met RecipePress geleverd zijn uitschakelen als je ze niet nodig hebt."
+
+#: ../views/settings.php:205
+msgid "Allows you to create tag clouds not only from tags but from every taxonomy.<br/><b>Good to know:</b> You can use this widget for any type of taxonomy, not only recipe related. <br/>If used the standard tag cloud will be hidden."
+msgstr "Hiermee kunt u de tag clouds maken niet alleen van labels, maar van elke taxonomie <br/> <b> Goed om te weten:. </ B> U kunt deze widget gebruiken voor elk type van de taxonomie, niet alleen recept gerelateerd. <br/> Indien gebruikt de standaard tag cloud zal worden verborgen."
+
+#: ../views/settings.php:212
+msgid "Allows you to create tag lists not only from tags but from every taxonomy.<br/><b>Good to know:</b> You can use this widget for any type of taxonomy, not only recipe related."
+msgstr "Hiermee kunt u tag lijsten te maken, niet alleen van labels, maar van elke taxonomie <br/> <b> Goed om te weten:. </ B> U kunt deze widget gebruiken voor elk type van de taxonomie, niet alleen recept gerelateerd."
+
+#: ../views/settings.php:234
+msgid "Use advanced theming settings"
+msgstr "Gebruik geavanceerde thema instellingen"
+
+#: ../views/settings.php:235
+msgid "Activate additional settings"
+msgstr "Activeren extra instellingen"
+
+#: ../views/settings.php:283
+msgid "Recipe meta data"
+msgstr "Recept meta data"
+
+#: ../views/settings.php:301
+msgid "Exclude ingredients from listings"
+msgstr "Ingrediënten uit lijsten sluiten"
+
+#: ../views/settings.php:302
+msgid "Choose ingredients you don't want to appear on ingredeint listings like the ingredient index or the ingredient cloud"
+msgstr "Kies ingrediënten die je niet op ingrediënt lijsten wilt vermelden zoals de ingrediënt index of de ingrediënt cloud"
+
+#: ../views/settings.php:303
+msgid "Select multiple ingredients like \"salt\" or \"pepper\" you don't want to see on the listings"
+msgstr "Selecteer meerdere ingrediënten, zoals \"zout\" of \"pepper\"  die je niet wilt zien op de lijsten"
+
+#: ../views/settings.php:326
+msgid "Predefined Taxonomies"
+msgstr "Voorgedefinieerde taxonomieën"
+
+#: ../views/settings.php:327
+msgid "Decide which of the predefined taxonomies you want to use. Here you can disable unneeded taxonomies. Using the link below you can also delete unneeded taxonomies or create your own."
+msgstr "Beslis welke van de vooraf gedefinieerde taxonomieën u wilt gebruiken. Hier kunt u onnodige taxonomieën uitschakelen. Met behulp van de link hieronder kunt u ook  onnodige taxonomieën  verwijderen of  eigen taxonomieën aanmaken."
+
+#: ../views/settings.php:329
+msgid "Wordpress Category"
+msgstr "Wordpress Categorie"
+
+#: ../views/settings.php:330
+msgid "Wordpress Tag"
+msgstr "Wordpress Tag"
+
+#: ../views/settings.php:331
+msgid "RecipePress reloaded category"
+msgstr "RecipePress reloaded categorie"
+
+#: ../views/settings.php:332
+msgid "RecipePress reloaded tag"
+msgstr "RecipePress reloaded tag"
+
+#: ../views/settings.php:352
+msgid "Manage custom taxonomies"
+msgstr "Beheer aangepaste taxonomieën"
+
+#: ../views/settings.php:353
+msgid "Use this to change the name and/or slug of the predefined taxonomies. You can also create your own taxonomies."
+msgstr "Gebruik dit om de naam en / of slug van de vooraf gedefinieerde taxonomieën te veranderen. U kunt ook uw eigen taxonomieën  creëren."
+
+#: ../views/settings.php:363
+msgid "Recover Taxonomies"
+msgstr "Herstel taxonomieën"
+
+#: ../views/settings.php:364
+msgid "Enable advanced options to recover lost taxonomies"
+msgstr "Schakel geavanceerde opties in om verloren taxonomieën herstellen"
+
+#: ../views/settings.php:373
+msgid "Be careful!"
+msgstr "Wees voorzichtig!"
+
+#: ../views/settings.php:374
+msgid "Here appear all taxonomies that are currently not connected to RecipePress reloaded or are inactive. Please use this only to reactive taxonomies that got lost somehow. The list will also contain taxonomies by other plugins."
+msgstr "Hier verschijnen alle taxonomieën die op dit  moment niet zijn aangesloten op RecipePress. Gebruik dit alleen voor actieve taxonomieën die een of andere manier verloren zijn gegaan. De lijst zal ook taxonomieën van  andere plugins bevatten."
+
+#: ../views/settings.php:399 ../views/settings.php:415
+msgid "Documentation"
+msgstr "Documentatie"
+
+#: ../views/settings.php:416
+#, php-format
+msgid "Most of this plugin should work out of the box. However there's more to explore. Have a look at the %1susers' documentation%2s."
+msgstr "De meeste van deze plugin moeten direct uit de doos werken. Maar er is meer te ontdekken! Neem een ​​kijkje in  de %1sGebruikers documentatie%2s."
+
+#: ../views/settings.php:423
+msgid "Hit a bug or problem? Need help?"
+msgstr "Een bug of probleem? Hulp nodig?"
+
+#: ../views/settings.php:424
+#, php-format
+msgid "Please ask your questions at the %1ssupport forum%2s. I'll try to answer as soon as possible."
+msgstr "Stel uw vragen op het %1ssupport forum%2s. Ik zal proberen om zo snel mogelijk te reageren."
+
+#: ../views/settings.php:435
+msgid "Theme Information 1"
+msgstr "Thema Informatie 1"
+
+#: ../views/settings.php:436 ../views/settings.php:442
+msgid "<p>This is the tab content, HTML is allowed.</p>"
+msgstr "<P> Dit is het tabblad inhoud, HTML is toegestaan. </ P>"
+
+#: ../views/settings.php:441
+msgid "Theme Information 2"
+msgstr "Thema Informatie 2"
+
+#: ../views/settings.php:446
+msgid "<p>This is the sidebar content, HTML is allowed.</p>"
+msgstr "<P> Dit is de zijbalk inhoud, HTML is toegestaan. </ P>"
+
+#: ../views/settings.php:614
+msgid "<b>Readme Parser: readme.txt ot found!</b>"
+msgstr "<B> readme-parser: readme.txt niet gevonden </ b>!"
+
+#: ../views/metabox_nutrition.php:12
+msgid "Calorific value"
+msgstr "Calorische waarde"
+
+#: ../views/metabox_nutrition.php:23
+msgid "Protein"
+msgstr "Eiwit"
+
+#: ../views/metabox_nutrition.php:28
+msgid "Fat"
+msgstr "Vet"
+
+#: ../views/metabox_nutrition.php:33
+msgid "Carbohydrate"
+msgstr "Koolhydraat"
+
+#: ../views/metabox_nutrition.php:39
+msgid "Per"
+msgstr "Per"
+
+#: ../views/metabox_nutrition.php:41
+msgid "100g"
+msgstr "100g"
+
+#: ../views/metabox_nutrition.php:42
+msgid "portion"
+msgstr "deel"
+
+#: ../views/metabox_nutrition.php:43
+msgid "recipe"
+msgstr "recept"
+
+#: ../views/metabox_details.php:27
+msgid "star"
+msgstr "ster"
+
+#: ../views/metabox_details.php:27
+msgid "stars"
+msgstr "sterren"
+
+#: ../views/metabox_details.php:33
+msgid "Servings"
+msgstr "Porties"
+
+#: ../views/metabox_details.php:36
+msgid "(e.g. 2 people, 3 loafs, ...)"
+msgstr "(Bv 2 personen, 3 broden, ...)"
+
+#: ../views/metabox_details.php:39
+msgid "Prep Time"
+msgstr "Prep Tijd"
+
+#: ../views/metabox_details.php:49
+msgid "Passive Time"
+msgstr "Passieve Tijd"
+
+#: ../views/metabox_details.php:54
+msgid "Featured?"
+msgstr "Aanbevolen?"
+

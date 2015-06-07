@@ -84,16 +84,20 @@ ol.recipe-instructions li{
 ol.recipe-instructions span.rpr_instrimage_right{
 	display:block;
 	float:left;
-    width:60%;
-    width: calc( 100% - 165px );
+    width:55%;
+    width: calc( 55% - 10px );
 }
 
 ol.recipe-instructions img.rpr_instrimage_right{
 	margin-left:10px;
     display:inline-block;
     vertical-align:top;
+    width:45%;
 }
-
+ol.recipe-instructions  a.rpr_img_link{
+	text-decoration:none;
+	border:none!important;
+}
 span.print-link{
 	float:right;
 }

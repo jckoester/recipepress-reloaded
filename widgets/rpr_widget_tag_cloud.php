@@ -61,7 +61,7 @@ class RPR_Widget_Tag_Cloud extends WP_Widget {
 		$args = $instance;
 
 		/* Exclude ingredients if necessary */
-		if( in_array('rpr_ingredient', $instance['taxonomy'])){// } == 'rpr_ingredient' ){
+		if( is_array($$instance['taxonomy']) && in_array('rpr_ingredient', $instance['taxonomy'])){// } == 'rpr_ingredient' ){
 			$args['exclude'] = $rpr_option['ingredients_exclude_list'];
 		}
 		
@@ -282,50 +282,7 @@ class RPR_Widget_Tag_Cloud extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'separator' ); ?>"><code>separator</code></label>
 			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'separator' ); ?>" name="<?php echo $this->get_field_name( 'separator' ); ?>" value="<?php echo esc_attr( $instance['separator'] ); ?>" />
 		</p>
-		<!--<p>
-			<label for="<?php echo $this->get_field_id( 'child_of' ); ?>"><code>child_of</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'child_of' ); ?>" name="<?php echo $this->get_field_name( 'child_of' ); ?>" value="<?php echo esc_attr( $instance['child_of'] ); ?>" />
-		</p>-->
-		<!--<p>
-			<label for="<?php echo $this->get_field_id( 'parent' ); ?>"><code>parent</code></label>
-			<input type="text" class="smallfat code" id="<?php echo $this->get_field_id( 'parent' ); ?>" name="<?php echo $this->get_field_name( 'parent' ); ?>" value="<?php echo esc_attr( $instance['parent'] ); ?>" />
-		</p>-->
-		<!--<p>
-			<label for="<?php echo $this->get_field_id( 'link' ); ?>"><code>link</code></label> 
-			<select class="widefat" id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>">
-				<?php foreach ( $link as $option_value => $option_label ) { ?>
-					<option value="<?php echo $option_value; ?>" <?php selected( $instance['link'], $option_value ); ?>><?php echo $option_label; ?></option>
-				<?php } ?>
-			</select>
-		</p>-->
 		</div>
-
-		<!--<div class="hybrid-widget-controls columns-3 column-last">-->
-		<!--<p>
-			<label for="<?php echo $this->get_field_id( 'search' ); ?>"><code>search</code></label>
-			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'search' ); ?>" name="<?php echo $this->get_field_name( 'search' ); ?>" value="<?php echo esc_attr( $instance['search'] ); ?>" />
-		</p>-->
-		<!--<p>
-			<label for="<?php echo $this->get_field_id( 'name__like' ); ?>"><code>name__like</code></label>
-			<input type="text" class="widefat code" id="<?php echo $this->get_field_id( 'name__like' ); ?>" name="<?php echo $this->get_field_name( 'name__like' ); ?>" value="<?php echo esc_attr( $instance['name__like'] ); ?>" />
-		</p>-->
-		<!--<p>
-			<label for="<?php echo $this->get_field_id( 'topic_count_text_callback' ); ?>"><code>topic_count_text_callback</code></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'topic_count_text_callback' ); ?>" name="<?php echo $this->get_field_name( 'topic_count_text_callback' ); ?>" value="<?php echo esc_attr( $instance['topic_count_text_callback'] ); ?>" />
-		</p>-->
-		<!--<p>
-			<label for="<?php echo $this->get_field_id( 'topic_count_scale_callback' ); ?>"><code>topic_count_scale_callback</code></label>
-			<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'topic_count_scale_callback' ); ?>" name="<?php echo $this->get_field_name( 'topic_count_scale_callback' ); ?>" value="<?php echo esc_attr( $instance['topic_count_scale_callback'] ); ?>" />
-		</p>-->
-		<!--<p>
-			<label for="<?php echo $this->get_field_id( 'pad_counts' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['pad_counts'], true ); ?> id="<?php echo $this->get_field_id( 'pad_counts' ); ?>" name="<?php echo $this->get_field_name( 'pad_counts' ); ?>" /> <?php _e( 'Pad counts?', 'recipe-press-reloaded' ); ?> <code>pad_counts</code></label>
-		</p>-->
-		<!--<p>
-			<label for="<?php echo $this->get_field_id( 'hide_empty' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['hide_empty'], true ); ?> id="<?php echo $this->get_field_id( 'hide_empty' ); ?>" name="<?php echo $this->get_field_name( 'hide_empty' ); ?>" /> <?php _e( 'Hide empty?', 'recipe-press-reloaded' ); ?> <code>hide_empty</code></label>
-		</p>-->
-		<!--</div>-->
 		<div style="clear:both;">&nbsp;</div>
 	<?php
 	}

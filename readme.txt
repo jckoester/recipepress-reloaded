@@ -37,6 +37,7 @@ This plugin includes the following translations:
 
 * English
 * German (Germany, Austria and Switzerland)
+* Dutch
 * Italian (partly)
 * Hungarian (partly)
 
@@ -51,6 +52,13 @@ If you want a translation of another language included please help translating!
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
+
+= 0.7.10 =
+* Added Dutrch translation
+* Added an optional separator for ingredient notes 
+* Improved display of instruction images
+* Improved display of nutritional information
+* Bugfixes in widgets
 
 = 0.7.9 =
 * Added a feature to restore lost taxonomies
