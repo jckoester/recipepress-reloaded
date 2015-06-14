@@ -122,9 +122,8 @@ if( $ingredients != '')
     </tr>
     </tbody>
 </table>
-
-    <a href="#" id="ingredients-add-group" class="button button-primary"><?php _e( 'Add an ingredient group', $this->pluginName ); ?></a>
     <a href="#" id="ingredients-add" class="button button-primary"><?php _e( 'Add an ingredient', $this->pluginName ); ?></a>
+	<a href="#" id="ingredients-add-group" class="button button-primary"><?php _e( 'Add an ingredient group', $this->pluginName ); ?></a>
 <div class="recipe-form-notes">
     <?php _e( "EasyType edit: <strong>Use the TAB key</strong> while adding ingredients. New fields will be created automatically. <strong>Don't worry about empty lines</strong>, these won't be saved.", $this->pluginName ); ?>
 </div>

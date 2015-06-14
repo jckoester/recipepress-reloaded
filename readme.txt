@@ -1,7 +1,7 @@
 === RecipePress reloaded===
 Contributors: Jan Köster
 Tags: recipes, cooking, food, recipe share
-Requires at least: 3.8
+Requires at least: 4.0
 Tested up to: 4.2
 Stable tag: 0.7.10
 License: GPLv2
