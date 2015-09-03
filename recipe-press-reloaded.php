@@ -4,7 +4,7 @@
   Plugin Name: RecipePressReloaded
   Plugin URI: http://rp-reloaded.net 
   Description: A simple recipe plugin doing all you need for your food blog. Plus: there are these nifty recipe previews in Google's search - automagically. Yet to come: easily create indexes of any taxonomy like ingredient, category, course, cuisine, ...
-  Version: 0.7.11
+  Version: 0.7.12
   Author: Jan Köster
   Author URI: http://www.cbjck.de/author/jan
   License: GPL2
@@ -51,7 +51,7 @@ class RPReloaded{
 	
 		// Version
 		update_option( 'rpr_version', RPR_VERSION );
-	
+
 		// Textdomain
 		load_plugin_textdomain($this->pluginName, false, basename( dirname( __FILE__ ) ) . '/language/'  );
 	

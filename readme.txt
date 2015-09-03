@@ -53,6 +53,9 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
+= 0.7.12 =
+* Fixed a bug creating wrong slugs for RPR categories and tags
+
 = 0.7.11 =
 * Fixed some deprecated functions for the use with Wordpress 4.3
 

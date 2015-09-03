@@ -31,6 +31,9 @@ if( class_exists( 'RPReloaded' ) ) {
 			if ( get_option( 'rpr_version_updated' ) === get_option( 'rpr_version' ) ) {
 				update_option( 'rpr_update_needed' , 0);
 			} else {
+				if ( version_compare(get_option( 'rpr_version_updated' ), '0.7.12', '<') ){
+					update_option( 'rpr_update_needed' , 1);
+				}
 				if ( version_compare(get_option( 'rpr_version_updated' ), '0.7.9', '<') ){
 					update_option( 'rpr_update_needed' , 1);
 				}
@@ -83,7 +86,16 @@ if( class_exists( 'RPReloaded' ) ) {
 					
 				}
 				
-				
+				if ( version_compare(get_option( 'rpr_version_updated' ), '0.7.12', '<') ){
+					$array =  get_option('rpr_taxonomies', array());
+					if( $array['rpr_category']['rewrite']['slug'] == 'rpr category'){
+						$array['rpr_category']['rewrite']['slug'] = 'rpr-category';
+					}
+					if( $array['rpr_tag']['rewrite']['slug'] == 'rpr tag'){
+						$array['rpr_tag']['rewrite']['slug'] = 'rpr-tag';
+					}
+					update_option('rpr_taxonomies', $array);
+				}
 				// Set version to current version
 				update_option( 'rpr_version_updated', get_option( 'rpr_version' ) );
 				//var_dump(get_option('rpr_version_updated'));

@@ -123,7 +123,7 @@ if ( !function_exists('get_the_recipe_taxonomy_bar') ) {
                 $out .= sprintf(
                         '<span itemprop="recipeCategory" class="category-list">%1s%2s</span>',
                 		$icon,
-                         get_the_term_list( $recipe_post->ID, 'rpr_category', '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
+                         get_the_term_list( $recipe_id, 'rpr_category', '', __( '&nbsp;/&nbsp; ', 'recipepress-reloaded' ), '' )
                     );
             }
         }

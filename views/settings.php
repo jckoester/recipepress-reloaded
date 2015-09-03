@@ -504,17 +504,17 @@ if (!class_exists('RPR_Settings')) {
                 'default_show'      => false,                   // If true, shows the default value next to each field that is not the default value.
                 'default_mark'      => '',                      // What to print by the field's title if the value shown is default. Suggested: *
                 'show_import_export' => false,                   // Shows the Import/Export panel when not used as a field.
-                
+                'use_cdn'			=> 'false',					// Use CDNs to load js/css or use local ones
                 // CAREFUL -> These options are for advanced use only
                 'transient_time'    => 60 * MINUTE_IN_SECONDS,
-                'output'            => true,                    // Global shut-off for dynamic CSS output by the framework. Will also disable google fonts output
-                'output_tag'        => true,                    // Allows dynamic CSS to be generated for customizer and google fonts, but stops the dynamic CSS from going to the head
+                'output'            => false,                    // Global shut-off for dynamic CSS output by the framework. Will also disable google fonts output
+                'output_tag'        => false,                    // Allows dynamic CSS to be generated for customizer and google fonts, but stops the dynamic CSS from going to the head
                 // 'footer_credit'     => '',                   // Disable the footer credit of Redux. Please leave if you can help it.
                 
                 // FUTURE -> Not in use yet, but reserved or partially implemented. Use at your own risk.
                 'database'              => '', // possible: options, theme_mods, theme_mods_expanded, transient. Not fully functional, warning!
                 'system_info'           => false, // REMOVE
-
+		
                 // HINTS
                 'hints' => array(
                     'icon'          => 'icon-question-sign',

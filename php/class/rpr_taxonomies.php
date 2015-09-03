@@ -453,7 +453,7 @@ if( class_exists( 'RPReloaded' ) ) {
 	    			'show_tagcloud' => true,
 	    			'hierarchical' => $hierarchical,
 	    			'rewrite' => array(
-	    					'slug' => $singular_lower
+	    					'slug' => preg_replace('_', '-', $singular_lower)
 	    			)
 	    	);
 	    
