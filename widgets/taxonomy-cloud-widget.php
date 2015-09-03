@@ -6,9 +6,9 @@ if ( preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF']) ) {
 
 class RPR_Widget_Taxonomy_Cloud extends WP_Widget {
 	// constructor
-	function RPR_Widget_Taxonomy_Cloud() {
+	function __construct() {
 		// use parent constructor to re-write standard class properties
-		parent::WP_Widget('RPR_Widget_Taxonomy_Cloud_base', __('Taxonomy Cloud', 'recipe-press-reloaded'), array('description' => __('Allows you to create tag clouds not only from tags but from every taxonomy. Good to know: You can use this widget for any type of taxonomy, not only recipe related.', 'recipe-press-reloaded'), 'class' => 'rpr-widget-taxonomy-cloud'));	
+		parent::__construct('RPR_Widget_Taxonomy_Cloud_base', __('Taxonomy Cloud', 'recipe-press-reloaded'), array('description' => __('Allows you to create tag clouds not only from tags but from every taxonomy. Good to know: You can use this widget for any type of taxonomy, not only recipe related.', 'recipe-press-reloaded'), 'class' => 'rpr-widget-taxonomy-cloud'));	
 	}
 
 /**

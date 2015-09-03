@@ -21,9 +21,9 @@
  */
 class RPR_Same_Taxonomy_Widget extends WP_Widget {
 	// constructor
-	function RPR_Same_Taxonomy_Widget() {
+	function __construct() {
 		// use parent constructor to re-write standard class properties
-		parent::WP_Widget('SameTaxonomy_Widget_base', __('RPR :: Same Taxonomy', 'recipe-press-reloaded'), array('description' => __('Lists posts from the same taxonomy on single-post view. Will not display elsewhere', 'recipe-press-reloaded'), 'class' => 'rpr-same-taxonomy-widget'));	
+		parent::__construct('SameTaxonomy_Widget_base', __('RPR :: Same Taxonomy', 'recipe-press-reloaded'), array('description' => __('Lists posts from the same taxonomy on single-post view. Will not display elsewhere', 'recipe-press-reloaded'), 'class' => 'rpr-same-taxonomy-widget'));	
 	}
 
 /**

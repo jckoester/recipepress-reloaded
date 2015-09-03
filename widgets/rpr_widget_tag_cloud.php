@@ -39,12 +39,16 @@ class RPR_Widget_Tag_Cloud extends WP_Widget {
 		);
 
 		/* Create the widget. */
-		$this->WP_Widget(
+		parent::__construct(
+			'rpr-tag-cloud',               // $this->id_base
+			__( 'Tag Cloud', 'recipe-press-reloaded' ) // $this->name
+		);
+		/*$this->WP_Widget(
 			'rpr-tag-cloud',               // $this->id_base
 			__( 'Tag Cloud', 'recipe-press-reloaded' ), // $this->name
 			$widget_options,             // $this->widget_options
 			$control_options             // $this->control_options
-		);
+		);*/
 	}
 
 	/**

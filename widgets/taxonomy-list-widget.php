@@ -15,9 +15,9 @@ class RPR_Widget_Taxonomy_List extends WP_Widget {
      /**
       * Constructor
       */
-	function RPR_Widget_Taxonomy_List() {
+	function __construct() {
 		// use parent constructor to re-write standard class properties
-		parent::WP_Widget(
+		parent::__construct(
 			'RPR_Widget_Taxonomy_List_base', 
 			__('Taxonomy List', 'recipe-press-reloaded'), 
 			array(
