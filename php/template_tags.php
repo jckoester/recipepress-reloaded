@@ -458,7 +458,7 @@ if ( ! function_exists('get_the_recipe_ingredient_list') ) {
 					$out.=' <span class="rpr_ing_note">';
 					
 					if( $rpr_option['ingredient_comment_sep'] == 'brackets') {$out.='(';}
-					elseif( $rpr_option['ingredient_comment_sep'] == 'comma') {$out.=',';}
+					elseif( $rpr_option['ingredient_comment_sep'] == 'comma') {$out.=', ';}
 					
 					$out .= '<span class="recipe-ingredient-notes">'.$ingredient['notes'].'</span>';
 					
@@ -549,7 +549,7 @@ if ( !function_exists('get_the_recipe_times') ) {
 			//$out .= '<span class="recipe-times-name">' . __( 'Ready in', 'recipepress-reloaded' ) . '</span>';
 			$out .= '</dt>';
 			$out .= '<dd>';
-			$out .= '<meta itemprop="totalTime" content="PT'.$totaltime.'">'.$totaltime.' <span class="recipe-information-time-unit">'.__( 'min.', 'recipepress-reloaded' ).'</span>';
+			$out .= '<meta itemprop="totalTime" content="PT'.$totaltime.'M">'.$totaltime.' <span class="recipe-information-time-unit">'.__( 'min.', 'recipepress-reloaded' ).'</span>';
 			$out .= '</dd>';
 		}
 		if( $out != '') {

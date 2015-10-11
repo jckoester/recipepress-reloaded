@@ -504,7 +504,7 @@ if (!class_exists('RPR_Settings')) {
                 'default_show'      => false,                   // If true, shows the default value next to each field that is not the default value.
                 'default_mark'      => '',                      // What to print by the field's title if the value shown is default. Suggested: *
                 'show_import_export' => false,                   // Shows the Import/Export panel when not used as a field.
-                'use_cdn'			=> 'false',					// Use CDNs to load js/css or use local ones
+                'use_cdn'			=> false,					// Use CDNs to load js/css or use local ones
                 // CAREFUL -> These options are for advanced use only
                 'transient_time'    => 60 * MINUTE_IN_SECONDS,
                 'output'            => false,                    // Global shut-off for dynamic CSS output by the framework. Will also disable google fonts output

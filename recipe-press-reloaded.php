@@ -31,7 +31,7 @@
  */
  
 /*Set plugin version*/
-define( 'RPR_VERSION', '0.7.11' );
+define( 'RPR_VERSION', '0.7.12' );
 define( 'RPR_TITLE', 'RecipePress reloaded' );
 
 
