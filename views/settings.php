@@ -15,7 +15,7 @@ if (!class_exists('RPR_Settings')) {
     	private $pluginName = 'recipepress-reloaded';
     	private $pluginTitle = RPR_TITLE;
     	private $pluginVersion = RPR_VERSION;
-    	
+
         public $args        = array();
         public $sections    = array();
         public $theme;
@@ -53,7 +53,7 @@ if (!class_exists('RPR_Settings')) {
 
             // If Redux is running as a plugin, this will remove the demo notice and links
             add_action( 'redux/loaded', array( $this, 'remove_demo' ) );
-            
+
             $this->ReduxFramework = new ReduxFramework($this->sections, $this->args);
         }
 
@@ -94,7 +94,7 @@ if (!class_exists('RPR_Settings')) {
         public function setSections() {
 
             global $rpr_option;
-            
+
             // ACTUAL DECLARATION OF SECTIONS
 
             $this->sections[] = array(
@@ -144,13 +144,13 @@ if (!class_exists('RPR_Settings')) {
                     ),
                 )
             );
-			
+
 			$this->sections[] = array(
             	'icon' 		=> 'fa-newspaper-o',
             	'title'		=> __( 'Appearance', $this->pluginName ),
             	'fields'	=> rpr_admin_layout_settings(),
             );
-			
+
 			$this->sections[] = array(
             	'icon' 		=> 'fa-image',
             	'title'		=> __( 'Images', $this->pluginName ),
@@ -184,7 +184,7 @@ if (!class_exists('RPR_Settings')) {
    								),
 							)
             	);
-				
+
 			$this->sections[] = array(
             	'icon' 		=> 'fa-cog',
             	'title'		=> __( 'Widgets', $this->pluginName ),
@@ -195,7 +195,7 @@ if (!class_exists('RPR_Settings')) {
 									'type' => 'info',
 									'icon' => 'fa fa-lightbulb-o',
 									'class' => 'info',
-									'title' => __('Widgets', $this->pluginName), 
+									'title' => __('Widgets', $this->pluginName),
 									'subtitle' => __('Widgets can be really useful to display information in sidebars or other places.<br/> However, if you have a lot of widgets its hard to keep the overview. Here you can switch of widgets shipped with RecipePress reloaded if you don\'t need them.', $this->pluginName )
 								),
 								array(
@@ -214,7 +214,7 @@ if (!class_exists('RPR_Settings')) {
    								),
 							)
             	);
-				
+
 			$this->sections[] = array(
 				'icon'		=> 'fa-sliders',
 				'title' 	=> __('Advanced theming options', $this->pluginName),
@@ -277,7 +277,7 @@ if (!class_exists('RPR_Settings')) {
     								),
     					),
     		);
-    						
+
     		$this->sections[] = array(
 				'icon'		=> 'fa-tags',
 				'title' 	=> __( 'Recipe meta data' , $this->pluginName ),
@@ -385,12 +385,12 @@ if (!class_exists('RPR_Settings')) {
 									'title' => __('Be careful!', $this->pluginName ),
 									'subtitle' => __( 'Here appear all taxonomies that are currently not connected to RecipePress reloaded or are inactive. Please use this only to reactive taxonomies that got lost somehow. The list will also contain taxonomies by other plugins.', $this->pluginName ),
 									'required' => array('recover_taxonomies_switch','!=','0')
-									
+
 								),
 								rpr_admin_recover_taxonomies_settings(),
             			)
 			);
-                    
+
             $this->sections[] = array(
                 'type' => 'divide',
             );
@@ -477,11 +477,11 @@ if (!class_exists('RPR_Settings')) {
                 'allow_sub_menu'    => true,                    // Show the sections below the admin menu item or not
                 'menu_title'        => __('Settings', $this->pluginName ),
                 'page_title'        => __('Settings', $this->pluginName ),
-                
+
                 // You will need to generate a Google API key to use this feature.
                 // Please visit: https://developers.google.com/fonts/docs/developer_api#Auth
                 //'google_api_key' => '', // Must be defined to add google fonts to the typography module
-                
+
                 'async_typography'  => true,                    // Use a asynchronous font on the front end or font string
                 'disable_google_fonts_link' => true,                    // Disable this in case you want to create your own google fonts loader
                 'admin_bar'         => true,                    // Show the panel pages on the admin bar
@@ -504,17 +504,17 @@ if (!class_exists('RPR_Settings')) {
                 'default_show'      => false,                   // If true, shows the default value next to each field that is not the default value.
                 'default_mark'      => '',                      // What to print by the field's title if the value shown is default. Suggested: *
                 'show_import_export' => false,                   // Shows the Import/Export panel when not used as a field.
-                'use_cdn'			=> false,					// Use CDNs to load js/css or use local ones
+                //'use_cdn'			=> false,					// Use CDNs to load js/css or use local ones
                 // CAREFUL -> These options are for advanced use only
                 'transient_time'    => 60 * MINUTE_IN_SECONDS,
                 'output'            => false,                    // Global shut-off for dynamic CSS output by the framework. Will also disable google fonts output
                 'output_tag'        => false,                    // Allows dynamic CSS to be generated for customizer and google fonts, but stops the dynamic CSS from going to the head
                 // 'footer_credit'     => '',                   // Disable the footer credit of Redux. Please leave if you can help it.
-                
+
                 // FUTURE -> Not in use yet, but reserved or partially implemented. Use at your own risk.
                 'database'              => '', // possible: options, theme_mods, theme_mods_expanded, transient. Not fully functional, warning!
                 'system_info'           => false, // REMOVE
-		
+
                 // HINTS
                 'hints' => array(
                     'icon'          => 'icon-question-sign',
@@ -561,7 +561,7 @@ if (!class_exists('RPR_Settings')) {
         }
 
     }
-    
+
     global $rpr_reduxConfig;
     $rpr_reduxConfig = new RPR_Settings();
 }
@@ -619,70 +619,70 @@ if( ! function_exists( 'replace_readme_parser_tag' ) ){
 		// no/wrong url
 		if ( empty($url) or basename($url) != 'readme.txt')
 			return false;
-	
+
 		// read file
 		$file = @file_get_contents( $url );
 		if (empty($file))
 			return __( '<b>Readme Parser: readme.txt ot found!</b>' , 'recipepress-reloaded' );
-	
+
 		// Find the changelog part:
 		$start = strpos ( $file, '== Changelog ==' );
 		$end = strpos ( $file, '== Frequently Asked Questions ==' );
 		$file = substr( $file, $start, ( $end-$start ) );
-		
+
 		// line end to \n
 		$file = preg_replace("/(\n\r|\r\n|\r|\n)/", "\n", $file);
-	
+
 		// place version
 		$file = readme_parser_get_version( $file );
-	
+
 		// set screenshot links
 		//$file = readme_parser_get_screenshots( $url, $file );
-	
+
 		// urls
 		$file = str_replace('http://www.', 'www.', $file);
 		$file = str_replace('www.', 'http://www.', $file);
 		$file = preg_replace("/\[(.*?)\]\s?\((.*?)\)/i", '<a href="$2">$1</a>', $file);
 		$file = preg_replace('#(^|[^\"=]{1})(http://|ftp://|mailto:|https://)([^\s<>]+)([\s\n<>]|$)#', '$1<a href="$2$3">$3</a>$4', $file);
-		
-		
+
+
 		// headlines
 		$s = array('===','==','=' );
 		$r = array('h2' ,'h3','h4');
 		for ( $x = 0; $x < sizeof($s); $x++ )
 			$file = preg_replace('/(.*?)'.$s[$x].'(?!\")(.*?)'.$s[$x].'(.*?)/', '$1<'.$r[$x].'>$2</'.$r[$x].'>$3', $file);
-	
+
 		// inline
 		$s = array('\*\*','\''  );
 		$r = array('b'   ,'code');
 		for ( $x = 0; $x < sizeof($s); $x++ )
 			$file = preg_replace('/(.*?)'.$s[$x].'(?!\s)(.*?)(?!\s)'.$s[$x].'(.*?)/', '$1<'.$r[$x].'>$2</'.$r[$x].'>$3', $file);
-	
+
 		// ' _italic_ '
 		$file = preg_replace('/(\s)_(\S.*?\S)_(\s|$)/', ' <em>$2</em> ', $file);
-	
+
 		// ul lists
 		$s = array('\*','\+','\-');
 		for ( $x = 0; $x < sizeof($s); $x++ )
 		$file = preg_replace('/^['.$s[$x].'](\s)(.*?)(\n|$)/m', '<li>$2</li>', $file);
 		$file = preg_replace('/\n<li>(.*?)/', '<ul><li>$1', $file);
 		$file = preg_replace('/(<\/li>)(?!<li>)/', '$1</ul>', $file);
-	
+
 		// ol lists
 		$file = preg_replace('/(\d{1,2}\.)\s(.*?)(\n|$)/', '<li>$2</li>', $file);
 		$file = preg_replace('/\n<li>(.*?)/', '<ol><li>$1', $file);
 		$file = preg_replace('/(<\/li>)(?!(\<li\>|\<\/ul\>))/', '$1</ol>', $file);
-	
+
 		// ol screenshots style
 		$file = preg_replace('/(?=Screenshots)(.*?)<ol>/', '$1<ol class="readme-parser-screenshots">', $file);
-	
+
 		// line breaks
 		$file = preg_replace('/(.*?)(\n)/', "$1<br/>\n", $file);
 		$file = preg_replace('/(1|2|3|4)(><br\/>)/', '$1>', $file);
 		$file = str_replace('</ul><br/>', '</ul>', $file);
 		$file = str_replace('<br/><br/>', '<br/>', $file);
-	
-	
+
+
 		// divs
 		//$file = preg_replace('/(<h3> Description <\/h3>)/', "$1\n<div id=\"readme-description\" class=\"readme-div\">\n", $file);
 		//$file = preg_replace('/(<h3> Installation <\/h3>)/', "</div>\n$1\n<div id=\"readme-installation\" class=\"readme-div\">\n", $file);
@@ -691,10 +691,10 @@ if( ! function_exists( 'replace_readme_parser_tag' ) ){
 		//$file = preg_replace('/(<h3> Arbitrary section <\/h3>)/', "</div>\n$1\n<div id=\"readme-arbitrary\" class=\"readme-div\">\n", $file);
 		$file = preg_replace('/(<h3> Changelog <\/h3>)/', "", $file);
 		$file = $file.'</div>';
-	
+
 		// promotion ;)
 		//$promo = '<div style="text-align:right;"><small>created by <a href="http://www.tomsdimension.de/wp-plugins/readme-parser">Readme Parser</a></small></div>';
-	
+
 		return  '<div class="readme-parser">'.$file.'</div>';
 	}
 }
