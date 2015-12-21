@@ -4,20 +4,20 @@
 */
 
 if( class_exists( 'RPReloaded' ) ) {
-	
+
 	class RPR_Taxonomies extends RPR_Core {
-	
+
 		public function __construct( $pluginName = '', $pluginDir = '', $pluginUrl = '' ) {
 
 			$this->pluginName = $pluginName;
 			$this->pluginDir = $pluginDir;
 			$this->pluginUrl = $pluginUrl;
-	
+
 			// Recipe taxonomies that users should not be able to edit:
 			$this->ignoreTaxonomies = array('rpr_rating');
 			// Recipe taxonomies that users should not be able to delete:
 			$this->nodeleteTaxonomies = array('rpr_ingredient', 'post_tag', 'category');
-			
+
 			//Actions
 			add_action( 'init', array( $this, 'rpr_taxonomies_init' ) );
 			add_action( 'admin_init', array( $this, 'rpr_taxonomies_settings' ) );
@@ -25,7 +25,7 @@ if( class_exists( 'RPReloaded' ) ) {
 			add_action( 'admin_action_delete_taxonomy', array( $this, 'delete_taxonomy_form' ) );
 			add_action( 'admin_action_add_taxonomy', array( $this, 'save_taxonomy_form' ) );
 		}
-		
+
 
 
 		public function rpr_taxonomies_settings()
@@ -33,33 +33,33 @@ if( class_exists( 'RPReloaded' ) ) {
 			add_submenu_page( null, __( 'Custom Taxonomies', $this->pluginName ), __( 'Manage Tags', $this->pluginName ), 'manage_options', 'rpr_taxonomies', array( $this, 'rpr_taxonomies_page' ) );
 			add_settings_section( 'rpr_taxonomies_list_section', __('Manage Recipe Taxonomies', $this->pluginName ), array( $this, 'admin_menu_manage_taxonomies' ), 'rpr_taxonomies_settings' );
 			//add_settings_section( 'rpr_taxonomies_settings_section', __('Add new / edit Recipe Taxonomy', $this->pluginName ), array( $this, 'admin_menu_settings_taxonomies' ), 'rpr_taxonomies_settings' );
-		
+
 		}
-		
-	
+
+
 		public function rpr_taxonomies_menu()
 		{
 			// Custom taxonomies menu:
 			add_submenu_page( null, __( 'Custom Taxonomies', $this->pluginName ), __( 'Manage Tags', $this->pluginName ), 'manage_options', 'rpr_taxonomies', array( $this, 'rpr_taxonomies_page' ) );
 		}
-		
+
 		public function rpr_taxonomies_page() {
 			if (!current_user_can('manage_options')) {
 				wp_die('You do not have sufficient permissions to access this page.');
 			}
-		
+
 			include($this->pluginDir . '/php/helper/rpr_taxonomies_builder.php');
 		}
-		
+
 		public function rpr_taxonomies_init() {
 			global $rpr_option;
 			global $rpr_reduxConfig;
-			
+
 			$this->taxonomies = get_option('rpr_taxonomies', array());
 			$tax_opts = $rpr_option['taxonomies'];
 			// Check if there are any taxonomies to restore:
-			
-			if( count($rpr_option['restore_taxonomies']) > 0){
+
+			if( isset($rpr_option['restore_taxonomies']) && count($rpr_option['restore_taxonomies']) > 0){
 				// merge existing taxonomies with taxonomies to restore
 				$options = $rpr_option['restore_taxonomies'];
 				//var_dump($options);
@@ -67,18 +67,18 @@ if( class_exists( 'RPReloaded' ) ) {
 					//var_dump($tax);
 					if( $rpr_option['restore_taxonomies'][$tax]==1){
 						$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, $tax, $tax, $tax, false);
-						$options[$tax] = 0;	
+						$options[$tax] = 0;
 					}
-					
+
 				}
 			  	update_option('rpr_taxonomies', $this->taxonomies);
 			 	// reset the restore list
 			  	$rpr_reduxConfig->ReduxFramework->set('restore_taxonomies', $options );
 				$rpr_reduxConfig->ReduxFramework->set('restore_taxonomies_switch', 0 );
 			}
-			
+
 			$this->taxonomies = get_option('rpr_taxonomies', array());
-			
+
 			// Restore taxonomies if active but deleted:
 			if( !isset($this->taxonomies['rpr_ingredient']) ){
 				$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_ingredient', __( 'Ingredients', $this->pluginName ), __( 'Ingredient', $this->pluginName ), true);
@@ -101,7 +101,7 @@ if( class_exists( 'RPReloaded' ) ) {
 			if( $rpr_option['taxonomies']['rpr_difficulty'] == '1' && !isset($this->taxonomies['rpr_difficulty']) ){
 				$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_difficulty', __( 'Difficulties', $this->pluginName ), __( 'Difficulty', $this->pluginName ));
 				}
-			
+
             // register taxonomies:
 			foreach($this->taxonomies as $name => $options) {
 				if( $name != 'rpr_ingredient' ){
@@ -112,7 +112,7 @@ if( class_exists( 'RPReloaded' ) ) {
 							'rpr_recipe',
 							$options
 						);
-				
+
 						register_taxonomy_for_object_type( $name, 'rpr_recipe' );
 					}
 				} else {
@@ -121,7 +121,7 @@ if( class_exists( 'RPReloaded' ) ) {
 							'rpr_recipe',
 							$options
 					);
-				
+
 					register_taxonomy_for_object_type( $name, 'rpr_recipe' );
 				}
 			}
@@ -137,26 +137,26 @@ if( class_exists( 'RPReloaded' ) ) {
 			/*// Register RPR Tags if necessary:
 			if( $rpr_option['taxonomies']['rpr_tag'] == 1 ){
 	    		//$this->taxonomies = $this->add_taxonomy_to_array($this->taxonomies, 'rpr_tag', __( 'RPR Tags', $this->pluginName ), __( 'RPR Tag', $this->pluginName ), false);
-	    		
+
 	    		//update_option('rpr_taxonomies', $this->taxonomies);
 	    		//update_option( 'rpr_flush', '1' );
-				
+
 				register_taxonomy_for_object_type( 'rpr_tag', 'rpr_recipe' );
 			}*/
 			update_option('rpr_taxonomies', $this->taxonomies);
 	    	//update_option( 'rpr_flush', '1' );
 		}
-		
+
 		public function admin_menu_manage_taxonomies(){
 			$out = '';
-	
+
 			// Form for deleting taxonomies
 			$out .= '<form id="rpr_delete_taxonomy" method="POST" action="' . admin_url( 'admin.php' ) . '" onsubmit="return confirm(\''. __('Do you really want to delete this taxonomy?', $this->pluginName). '\');">';
 			$out .= '<input type="hidden" name="action" value="delete_taxonomy">';
 			$out .= wp_nonce_field( 'delete_taxonomy', 'delete_taxonomy_nonce', false );
 			$out .= '<input type="hidden" id="rpr_delete_taxonomy_name" name="rpr_delete_taxonomy_name" value="">';
 			$out .= '</form>';
-			
+
 			// Table with all existing recipe taxonomies
 			$out .=  '<table id="rpr-tags-table" class="wp-list-table widefat" cellspacing="0">
 		              	<thead>
@@ -185,16 +185,16 @@ if( class_exists( 'RPReloaded' ) ) {
 		                    </tr>
 		                </thead>
 		                <tbody id="the-list">';
-				
+
 			$taxonomies = get_object_taxonomies( 'rpr_recipe', 'objects' );
-			
+
 			if ( is_array($taxonomies) ) {
-				foreach ( $taxonomies as $taxonomy ) {	
+				foreach ( $taxonomies as $taxonomy ) {
 					if( !in_array( $taxonomy->name, $this->ignoreTaxonomies ) ) {
 						$hierarchy_string ='<i class="fa fa-times"/>';
 						$hierarchy_value = false;
 						if($taxonomy->hierarchical){
-							$hierarchy_string =  '<i class="fa fa-check"/>'; 
+							$hierarchy_string =  '<i class="fa fa-check"/>';
 							$hierarchy_value = true;
 						}
 						$out .= '<tr>
@@ -214,25 +214,25 @@ if( class_exists( 'RPReloaded' ) ) {
 		                	     	</td>
 		                    	 </tr>';
 					}
-				
+
 				}
 			}
-				
+
 			$out .= '</tbody>
 		             </table>';
 		    $out .= '<button type="button" id="rpr-add-taxonomy" class="button rpr-edit-tag button-primary" >'. __('Add Taxonomy', $this->pluginName) .'</button>';
-			
+
 			// Edit taxonomy dialog:
 			$out .= '<div class="wp-dialog" title="'. __('Edit Taxonomy', $this->pluginName ) .'" id="rpr_manage_taxonomies_dialog">';
-				
+
 			$out .= '<form method="POST" action="' . admin_url( 'admin.php' ) . '" id="rpr_manage_taxonomies_dialog_form">
 		            	<input type="hidden" name="action" value="add_taxonomy">
 		                <input type="hidden" id="rpr_edit_tag_name" name="rpr_edit" value="">';
 			$out .= wp_nonce_field( 'add_taxonomy', 'add_taxonomy_nonce', false );
-				
+
 			$out .= '<div id="rpr_editing" class="rpr_editing">'.__( 'Currently editing tag: ', $this->pluginName ).'<span id="rpr_editing_tag"></span></div>';
 			$out .= '<table class="form-table"><tbody>';
-				
+
 			// Name
 			$out .=	'<tr valign="top">
 		            	<th scope="row">'.__( 'Name', $this->pluginName ).'</th>
@@ -241,7 +241,7 @@ if( class_exists( 'RPReloaded' ) ) {
 		                    <label for="rpr_custom_taxonomy_name"> '  . __('(e.g. Courses)', $this->pluginName ) . '</label>
 		                </td>
 		             </tr>';
-				
+
 			// Singular name
 			$out .= '<tr valign="top">
 		            	<th scope="row">'.__( 'Singular Name', $this->pluginName ).'</th>
@@ -250,7 +250,7 @@ if( class_exists( 'RPReloaded' ) ) {
 		                    <label for="rpr_custom_taxonomy_singular_name"> '  . __('(e.g. Course)', $this->pluginName ) . '</label>
 		                </td>
 		            </tr>';
-				
+
 			// Slug
 			$out .= '<tr valign="top">
 		            	<th scope="row">'.__( 'Slug', $this->pluginName ).'</th>
@@ -270,37 +270,37 @@ if( class_exists( 'RPReloaded' ) ) {
 			$out .= '</tbody></table><br/>';
 			$out .= '</form>';
 			$out .= '</div>';
-			
+
 			echo $out;
 		}
-				
+
 		public function save_taxonomy_form() {
 			if ( !wp_verify_nonce( $_POST['add_taxonomy_nonce'], 'add_taxonomy' ) ) {
 				die( 'Invalid nonce.' . var_export( $_POST, true ) );
 			}
-			
+
 			$name = $_POST['rpr_custom_taxonomy_name'];
 			$singular = $_POST['rpr_custom_taxonomy_singular_name'];
 			$slug = strtolower($_POST['rpr_custom_taxonomy_slug']);
 			$hierarchical = $_POST['rpr_custom_taxonomy_hierarchical'];
-			
+
 			var_dump($hierarchical);
 			$edit_tag_name = $_POST['rpr_edit'];
-			
+
 			$this->add_taxonomy($name, $singular, $slug, $hierarchical, $edit_tag_name);
-			
+
 			$this->rpr_taxonomies_init();
 			update_option( 'rpr_flush', '1' );
-			
-			wp_redirect( $_SERVER['HTTP_REFERER'] ); 
+
+			wp_redirect( $_SERVER['HTTP_REFERER'] );
 			die;
 			exit();
-			
+
 		}
-		
+
 		public function add_taxonomy($name, $singular, $slug, $hierarchical, $edit_tag_name) {
 			$editing = false;
-		
+
 			if( strlen($edit_tag_name) > 0 ) {
 				$editing = true;
 			}
@@ -308,21 +308,21 @@ if( class_exists( 'RPReloaded' ) ) {
 			if( !$editing && taxonomy_exists( strtolower($singular) ) ) {
 				die( 'This taxonomy already exists.' );
 			}
-		
+
 			if( strlen($name) > 1 && strlen($singular) > 1 ) {
-		
+
 				$taxonomies = get_option('rpr_taxonomies', array());
-		
-		
+
+
 				$name_lower = strtolower($name);
 				$singular_lower = strtolower($singular);
-		
+
 				$tag_name = $singular_lower;
-		
+
 				if( $editing ) {
 					$tag_name = $edit_tag_name;
 				}
-		
+
 				$taxonomies[$tag_name] =
 				array(
 						'labels' => array(
@@ -355,62 +355,62 @@ if( class_exists( 'RPReloaded' ) ) {
 				return true;
 			}
 		}
-		
+
 		public function delete_taxonomy_form() {
 			if ( !wp_verify_nonce( $_POST['delete_taxonomy_nonce'], 'delete_taxonomy' ) ) {
 				die( 'Invalid nonce.' . var_export( $_POST, true ) );
 			}
-				
+
 			$tag_name = $_POST['rpr_delete_taxonomy_name'];
-				
+
 			$this->delete_taxonomy( $tag_name );
-				
+
 			$this->rpr_taxonomies_init();
 			update_option( 'rpr_flush', '1' );
-				
+
 			wp_redirect( $_SERVER['HTTP_REFERER'] );
 			exit();
 		}
-		
+
 		public function delete_taxonomy($tag_name) {
 			global $wp_taxonomies;
 			if( ! taxonomy_exists( $tag_name ) ) {
 				die( 'This taxonomy does not exist.' );
 			}
-		
+
 			// delete existing terms?
 			$terms = get_terms($tag_name);
-			
+
 			foreach($terms as $term ):
 				wp_delete_tag( $term->term_id, $tag_name);
 			endforeach;
-			
+
 			$taxonomies = get_option('rpr_taxonomies', array());
-			
+
 			unset( $taxonomies[$tag_name] );
 			update_option('rpr_taxonomies', $taxonomies);
 
-			
+
 			return true;
 		}
-		
+
 		/*
 	 	* ACTIVATE TAXONOMIES
 	 	* called in the register_activation_hook in recipe-press-reloaded.php
 	 	*/
-	 
+
 		public function activate_taxonomies()
     	{
     		$this->recipes_init();
     		$this->rpr_custom_taxonomies_init();
-    
+
    		 	update_option( 'rpr_flush', '1' );
     	}
 
 		function rpr_custom_taxonomies_init()
 	    {
 	    	$taxonomies = get_option('rpr_taxonomies', array() );
-	
+
 	    	if(count($taxonomies) == 0)
 	    	{
 	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_category', __( 'RPR Categories', $this->pluginName ), __( 'RPR Category', $this->pluginName ), true);
@@ -420,17 +420,17 @@ if( class_exists( 'RPReloaded' ) ) {
 	    		$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_cuisine', __( 'Cuisines', $this->pluginName ), __( 'Cuisine', $this->pluginName ), true);
 				$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_season', __( 'Seasons', $this->pluginName ), __( 'Season', $this->pluginName ));
 				$taxonomies = $this->add_taxonomy_to_array($taxonomies, 'rpr_difficulty', __( 'Difficulties', $this->pluginName ), __( 'Difficulty', $this->pluginName ));
-				
+
 	    		update_option('rpr_taxonomies', $taxonomies);
 	    		update_option( 'rpr_flush', '1' );
 	    	}
 	    }
-    
+
 	    public function add_taxonomy_to_array($arr, $tag, $name, $singular, $hierarchical=false)
 	    {
 	    	$name_lower = strtolower($name);
 	    	$singular_lower = strtolower($singular);
-	    
+
 	    	$arr[$tag] =
 	    	array(
 	    			'labels' => array(
@@ -456,9 +456,9 @@ if( class_exists( 'RPReloaded' ) ) {
 	    					'slug' => preg_replace('_', '-', $singular_lower)
 	    			)
 	    	);
-	    
+
 	    	return $arr;
 	    }
-		
+
 	}
 }

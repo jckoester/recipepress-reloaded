@@ -1,4 +1,4 @@
-<?php 
+<?php
 $ingredients = get_post_meta( $recipe->ID, "rpr_recipe_ingredients", true );
 
 
@@ -111,7 +111,7 @@ if( $ingredients != '')
         </td>
         <td>
         <?php if($ingredient_link == 'archive_custom' OR $ingredient_link == 'custom'): ?>
-        	<input name="rpr_recipe_ingredients[<?php echo $i; ?>][link]" class="rpr_recipe_ingredients_link" type="hidden" id="ingredient_link_<?php echo $i; ?>"value="" />
+        	<input name="rpr_recipe_ingredients[<?php echo $i; ?>][link]" class="rpr_recipe_ingredients_link" type="hidden" id="ingredient_link_<?php echo $i; ?>" value="" />
             <span class="rpr_recipe_ingredients_add_link button mce-ico mce-i-link">&nbsp;</span>
             <span class="rpr_recipe_ingredients_delete_link button mce-ico mce-i-unlink">&nbsp;</span>
         <?php else: ?>

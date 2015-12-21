@@ -2,7 +2,7 @@
 
 /*
   Plugin Name: RecipePressReloaded
-  Plugin URI: http://rp-reloaded.net 
+  Plugin URI: http://rp-reloaded.net
   Description: A simple recipe plugin doing all you need for your food blog. Plus: there are these nifty recipe previews in Google's search - automagically. Yet to come: easily create indexes of any taxonomy like ingredient, category, course, cuisine, ...
   Version: 0.7.12
   Author: Jan Köster
@@ -29,36 +29,36 @@
  * *************************************************************************
 
  */
- 
+
 /*Set plugin version*/
 define( 'RPR_VERSION', '0.7.12' );
 define( 'RPR_TITLE', 'RecipePress reloaded' );
 
 
 class RPReloaded{
-	
+
 	protected $pluginName;
 	protected $pluginDir;
 	protected $pluginUrl;
-	
+
 	protected $rpr_core;
-	
+
 	public function __construct()
 	{
 		$this->pluginName = 'recipepress-reloaded';
 		$this->pluginDir = WP_PLUGIN_DIR . '/' . $this->pluginName;
 		$this->pluginUrl = plugins_url() . '/' . $this->pluginName;
-	
+
 		// Version
 		update_option( 'rpr_version', RPR_VERSION );
 
 		// Textdomain
 		load_plugin_textdomain($this->pluginName, false, basename( dirname( __FILE__ ) ) . '/language/'  );
-	
+
 		//Include core
 		include_once( $this->pluginDir . '/php/class/rpr_core.php' );
 		$this->rpr_core = new RPR_Core( $this->pluginName, $this->pluginDir, $this->pluginUrl );
-//!!TBD>>	
+//!!TBD>>
 		// Hooks
 		register_activation_hook( __FILE__, array( $this->rpr_core->tax, 'activate_taxonomies' ) );
 		//register_activation_hook( __FILE__, array( $this, 'activation_notice' ) );
@@ -67,7 +67,7 @@ class RPReloaded{
 		// Add required plugins:
 		add_action( 'tgmpa_register', array($this, 'rpr_register_required_plugins') );
 
-//>>TBD	
+//>>TBD
 		// Other
 		if ( function_exists( 'add_image_size' ) ) {
 			add_image_size( 'recipe-thumbnail', 150, 9999 );
@@ -75,9 +75,9 @@ class RPReloaded{
 		}
 
 
-	
+
 	}
-	
+
 	////////////////////////////// FRAMEWORK & GENERAL STUFF ///////////////////////////////////
 	function init_rpr_redux() {
 		require_once( WP_PLUGIN_DIR . '/redux-framework/ReduxCore/framework.php');
@@ -91,7 +91,7 @@ class RPReloaded{
 	     * If the source is NOT from the .org repo, then source is also required.
 	     */
 	    $plugins = array(
-	 
+
 	        // Load Redux-Framework as plugin
 	        array(
 	            'name'               => 'Redux Framework Plugin', // The plugin name.
@@ -99,16 +99,18 @@ class RPReloaded{
 	            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
 	        ),
 		);
-		
+
 		$config = array(
+          'id'           => 'tgmpa',
 	        'default_path' => '',                      // Default absolute path to pre-packaged plugins.
 	        'menu'         => 'tgmpa-install-plugins', // Menu slug.
+          'parent_slug'  => 'edit.php?post_type=rpr_recipe',
 	        'has_notices'  => true,                    // Show admin notices or not.
 	        'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
 	        'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
 	        'is_automatic' => false,                   // Automatically activate plugins after installation or not.
 	        'message'      => '',                      // Message to output right before the plugins table.
-	        'strings'      => array(
+/*	        'strings'      => array(
 	            'page_title'                      => __( 'Install Required Plugins', 'recipe-press-reloaded' ),
 	            'menu_title'                      => __( 'Install Plugins', 'recipe-press-reloaded' ),
 	            'installing'                      => __( 'Installing Plugin: %s', 'recipe-press-reloaded' ), // %s = plugin name.
@@ -127,12 +129,12 @@ class RPReloaded{
 	            'plugin_activated'                => __( 'Plugin activated successfully.', 'recipe-press-reloaded' ),
 	            'complete'                        => __( 'All plugins installed and activated successfully. %s', 'recipe-press-reloaded' ), // %s = dashboard link.
 	            'nag_type'                        => 'updated' // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
-	        )
+	        )*/
 	    );
-	 
+
 	    tgmpa( $plugins, $config );
     }
-	
+
 	/*
 	 * Used in various places.
 	*/
@@ -160,29 +162,29 @@ class RPReloaded{
 		}
 		return $return;
 	}
-	
+
 	public function option( $name, $default = null )
 	{
 		global $rpr_option;
-		
+
 		if( !is_null($rpr_option) &&array_key_exists($name, $rpr_option ) ) {
-			return $rpr_option[$name];	
+			return $rpr_option[$name];
 		} else {
 			return false;
 		}
 	}
-	
+
 	static function get_option( $name, $default = null )
 	{
 		global $rpr_option;
-		
+
 		if( !is_null($rpr_option) &&array_key_exists($name, $rpr_option ) ) {
-			return $rpr_option[$name];	
+			return $rpr_option[$name];
 		} else {
 			return false;
 		}
 	}
-	
+
 }
 
 // Instantiate the Plugin

@@ -31,15 +31,15 @@ $recipe_title = get_the_title( $recipe_post );
 	<h2 class="rpr_title"><?php echo get_the_title( $recipe_post ); ?></h2>
 <?php } ?>
 <?php the_recipe_print_link(); ?>
- 
+
 <!-- displaying these data is the job of the theme. Therefore they're hidden! -->
 	<span class="rpr_title hidden" itemprop="name"><?php echo get_the_title( $recipe_post ); ?></span>
   	<span class="rpr_author hidden" itemprop="author"><?php  the_author(); ?></span>
   	<span class="rpr_date hidden" itemprop="datePublished" content="<?php the_time( 'Y-m-d' ); ?>"><?php the_time( get_option('date_format') ); ?></span>
-  
+
 <!--  displaying the post image should be the job of the theme! -->
 <?php
-$imgclass="hidden"; 
+$imgclass="hidden";
 if( $this->option('recipe_display_image', '0' ) || $mode=='shortcode' ) {$imgclass=""; }
 
 // Get the image URL:
@@ -62,46 +62,46 @@ if(!is_null($thumb_url)) {
                 <img class="<?php echo $imgclass; ?>" itemprop="image" src="<?php echo $thumb_url; ?>" title="<?php echo $recipe_title;?>" />
             <?php } ?>
         </div>
-<?php 
+<?php
 } else { ?>
     <div class="recipe-header">
 <?php } ?>
 
-    
+
     <!-- Taxonomies -->
     <?php the_recipe_taxonomy_bar( $recipe_post->ID ); ?>
-    
-    <!-- DESCRIPTION -->                  
-    <span class="rpr_description" itemprop="description"><?php echo $recipe['rpr_recipe_description'][0]; ?></span>
-    
-    
+
+    <!-- DESCRIPTION -->
+    <span class="rpr_description" itemprop="description"><?php echo apply_filters('the_content', $recipe['rpr_recipe_description'][0]); ?></span>
+
+
     <div class="rpr-clear"></div>
-    
+
     <!--  NUTROTIONAL INFORMATION -->
     <?php if( has_recipe_nutrition( $recipe_post->ID ) ) {
     	the_recipe_nutrition($recipe_post->ID );
     } ?>
     <!-- INGREDIENTS -->
     <h3 class="rpr_ingredients"><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-shopping-cart"></i> <?php }?><?php _e('Ingredients', $this->pluginName ); ?></h3>
-   
-	<?php the_recipe_servings_bar( $recipe_post->ID ); ?> 
+
+	<?php the_recipe_servings_bar( $recipe_post->ID ); ?>
     <?php the_recipe_ingredient_list( array( 'ID' => $recipe_post->ID) ); ?>
-    
-  
-    
+
+
+
     <!--- INSTRUCTIONS --->
     <h3 class="rpr_instructions"><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-cogs"></i> <?php } ?><?php _e( 'Instructions', $this->pluginName ); ?></h3>
     <!-- INFO LINE (Times) -->
     <?php the_recipe_times( $recipe_post->ID ); ?>
     <?php the_recipe_instruction_list( array( 'ID' => $recipe_post->ID ) ); ?>
-    
+
     <!--  NOTES -->
     <?php if( isset( $recipe['rpr_recipe_notes'][0] ) ) { ?>
     <h3 class="rpr_notes"><?php if( $this->get_option( 'recipe_icons_display', 0 ) == 1 ){?><i class="fa fa-paperclip"></i> <?php }?><?php _e( 'Recipe notes', $this->pluginName ); ?></h3>
 	<?php the_recipe_notes( array('ID' => $recipe_post->ID ) )?>
     <?php } ?>
-    
-    
+
+
     <!-- RECIPE FOOTER -->
     <?php the_recipe_footer(); ?>
 </div>

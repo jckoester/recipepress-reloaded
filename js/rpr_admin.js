@@ -1,11 +1,11 @@
 jQuery(document).ready(function() {
-    
+
     /*
      * Do not allow removal of first ingredient/instruction
      */
     jQuery('#recipe-ingredients tr.ingredient:first').find('span.ingredients-delete').hide();
     jQuery('#recipe-instructions tr.instruction:first').find('span.instructions-delete').hide();
-    
+
 
     /*
     * Recipe Star rating
@@ -283,56 +283,78 @@ jQuery(document).ready(function() {
                 });
         });
     }
-    
-    jQuery('.rpr_recipe_ingredients_add_link').on('click', function(e) {
-    	e.preventDefault();
-    	
-    	var button = jQuery(this);
-    	
-    	link=button.siblings('.rpr_recipe_ingredients_link');
+    /* Open Link dialog */
+    jQuery('body').on('click', '.rpr_recipe_ingredients_add_link', function(event){
+      /* hiding the text field in the dialog */
+      jQuery('.wp-link-text-field').hide();
+      jQuery('.link-target').hide();
+      jQuery('.howto').hide();
+      jQuery('#search-panel').hide();
+      var button = jQuery(this);
+      link=button.siblings('.rpr_recipe_ingredients_link');
 
-    	wpLink.setDefaultValues = function () { 
-            jQuery('#url-field').val(link.value);
+      wpActiveEditor = true;
+
+      wpLink.textarea = button.attr('id');
+      wpLink.setDefaultValues = function () {
+            jQuery('#wp-link-url').val(link.val());
         };
-    	//jQuery('#url-field').val(link.value);
+      wpLink.open(); //open the link popup
 
-    	
-    	wpActiveEditor = true;
-    	wpLink.open();
-    	
-    	jQuery('#wp-link-submit').on('click', function(event) {
-            var linkAtts = wpLink.getAttrs();//the links attributes (href, target) are stored in an object, which can be access via  wpLink.getAttrs()
-            link.val(linkAtts.href);//get the href attribute and add to a textfield, or use as you see fit
-            wpLink.textarea = jQuery('body'); //to close the link dialogue, it is again expecting an wp_editor instance, so you need to give it something to set focus back to. In this case, I'm using body, but the textfield with the URL would be fine
-            wpLink.close();//close the dialogue
-            button.addClass('rpr-has-link');
-            //trap any events
-            event.preventDefault ? event.preventDefault() : event.returnValue = false;
-            event.stopPropagation();
-            /*return false;*/
-        });
-    	
-    	jQuery('#wp-link-cancel').on('click', function(e) {
-            wpLink.textarea = jQuery('#recipe_ingredients_meta_box'); //to close the link dialogue, it is again expecting an wp_editor instance, so you need to give it something to set focus back to. In this case, I'm using body, but the textfield with the URL would be fine
-            wpLink.close();
-            event.preventDefault ? event.preventDefault() : event.returnValue = false;
-            event.stopPropagation();
-            //return false;
-        });
-    	  return false;
+
+      return false;
     });
-    
+
+    /* Insert Link and close dialog */
+    jQuery('body').on('click', '#wp-link-submit', function(event) {
+      event.preventDefault();
+      var linkAtts = wpLink.getAttrs();//the links attributes (href, target) are stored in an object, which can be access via  wpLink.getAttrs()
+      link.val(linkAtts.href);//get the href attribute and add to a textfield, or use as you see fit
+      wpActiveEditor = undefined;
+      wpLink.textarea = jQuery('body'); //to close the link dialogue, it is again expecting an wp_editor instance, so you need to give it something to set focus back to. In this case, I'm using body, but the textfield with the URL would be fine
+
+      wpLink.close();//close the dialogue
+      // Workaround: reset the dialog
+      jQuery('.wp-link-text-field').show();
+      jQuery('.wp-link-text-field').show();
+      jQuery('.link-target').show();
+      jQuery('.howto').show();
+      jQuery('#search-panel').show();
+        jQuery('#wp-link-url').val('');
+      //button.addClass('rpr-has-link');
+      //trap any events
+      event.preventDefault ? event.preventDefault() : event.returnValue = false;
+      event.stopPropagation();
+      return false;
+    });
+
+    /* Cancel and close dialog */
+    jQuery('body').on('click', '#wp-link-cancel, #wp-link-close', function(event) {
+      wpActiveEditor = true;
+      wpLink.textarea = jQuery('body');
+      wpLink.close();
+      // Workaround: reset the dialog
+      jQuery('.wp-link-text-field').show();
+      jQuery('.wp-link-text-field').show();
+      jQuery('.link-target').show();
+      jQuery('.howto').show();
+      jQuery('#search-panel').show();
+      event.preventDefault ? event.preventDefault() : event.returnValue = false;
+      event.stopPropagation();
+      return false;
+    });
+
     jQuery('.rpr_recipe_ingredients_delete_link').on('click', function(e) {
     	e.preventDefault();
-    	
+
     	var button = jQuery(this);
-    	
+
     	link=button.siblings('.rpr_recipe_ingredients_link');
     	link.val('');
     	button.siblings('.rpr_recipe_ingredients_add_link').removeClass('rpr-has-link');
     	return false;
     });
-    
+
     /* Automatically convert calories to joulke and vice versa*/
     jQuery('#rpr_recipe_calorific_value').on('change', function(e) {
     	var kilojoule = Math.round(jQuery('#rpr_recipe_calorific_value').val() * 4.18);
@@ -343,22 +365,22 @@ jQuery(document).ready(function() {
     	jQuery('#rpr_recipe_calorific_value').val( kcal );
     });
 
-/* jQuery('.recipe_thumbnail_add_image').on('click', function(e) {  
+/* jQuery('.recipe_thumbnail_add_image').on('click', function(e) {
 
         e.preventDefault();
-        
+
         var button = jQuery(this);
 
         image = button.siblings('.rpr_recipe_thumbnail_image');
         preview = button.siblings('.recipe_thumbnail');
-        
+
         if(typeof wp.media == 'function') {
             var custom_uploader = wp.media({
                 title: 'Insert Media',
                 button: {
                     text: 'Add featured image'
                 },
-                multiple: false  
+                multiple: false
             })
             .on('select', function() {
                 var attachment = custom_uploader.state().get('selection').first().toJSON();
@@ -368,7 +390,7 @@ jQuery(document).ready(function() {
             .open();
         } else { //fallback
             post_id = button.attr('rel');
-            
+
             tb_show(button.attr('value'), 'wp-admin/media-upload.php?post_id='+post_id+'&type=image&TB_iframe=1');
 
             window.send_to_editor = function(html) {
@@ -379,9 +401,9 @@ jQuery(document).ready(function() {
                 image.val(id).trigger('change');
                 preview.attr('src', imgurl);
                 tb_remove();
-            } 
+            }
         }
-        
+
     });*/
     /*
      * Recipe instructions
@@ -413,7 +435,7 @@ jQuery(document).ready(function() {
     {
         var nbr_instructions = jQuery('#recipe-instructions tr.instruction').length;
         var new_instruction = jQuery('#recipe-instructions tr.instruction:last').clone(true);
-            
+
         new_instruction
             .insertAfter('#recipe-instructions tr:last')
             .find('textarea').val('')
@@ -422,7 +444,7 @@ jQuery(document).ready(function() {
             })
             .attr('id', function(index, id) {
                 return id.replace(/(\d+)/, nbr_instructions);
-            }); 
+            });
 
         new_instruction
             .find('.rpr_recipe_instructions_remove_image').addClass('rpr-hide')
@@ -435,7 +457,7 @@ jQuery(document).ready(function() {
 
         new_instruction
             .find('.rpr_recipe_instructions_thumbnail').attr('src', plugin_url + '/img/image_placeholder.png')
-            
+
         new_instruction
             .find('.rpr_recipe_instructions_image')
             .attr('name', function(index, name) {
@@ -471,7 +493,7 @@ jQuery(document).ready(function() {
 
                 if (keyCode == 9 && e.shiftKey == false) {
                     var last_focused = jQuery('#recipe-instructions tr:last').find('textarea').is(':focus')
-                    
+
                     if(last_focused == true) {
                         e.preventDefault();
                         addRecipeInstruction();
@@ -509,23 +531,23 @@ jQuery(document).ready(function() {
                 });
         });
     }
-    
-    jQuery('.recipe_thumbnail_add_image').on('click', function(e) {  
+
+    jQuery('.recipe_thumbnail_add_image').on('click', function(e) {
 
         e.preventDefault();
-        
+
         var button = jQuery(this);
 
         image = button.siblings('.rpr_recipe_thumbnail_image');
         preview = button.siblings('.recipe_thumbnail');
-        
+
         if(typeof wp.media == 'function') {
             var custom_uploader = wp.media({
                 title: 'Insert Media',
                 button: {
                     text: 'Add featured image'
                 },
-                multiple: false  
+                multiple: false
             })
             .on('select', function() {
                 var attachment = custom_uploader.state().get('selection').first().toJSON();
@@ -535,7 +557,7 @@ jQuery(document).ready(function() {
             .open();
         } else { //fallback
             post_id = button.attr('rel');
-            
+
             tb_show(button.attr('value'), 'wp-admin/media-upload.php?post_id='+post_id+'&type=image&TB_iframe=1');
 
             window.send_to_editor = function(html) {
@@ -546,11 +568,11 @@ jQuery(document).ready(function() {
                 image.val(id).trigger('change');
                 preview.attr('src', imgurl);
                 tb_remove();
-            } 
+            }
         }
-        
+
     });
-    
+
     jQuery('.recipe_thumbnail_remove_image').on('click', function(e) {
         e.preventDefault();
 
@@ -571,10 +593,10 @@ jQuery(document).ready(function() {
         }
     });
 
-    jQuery('.rpr_recipe_instructions_add_image').on('click', function(e) {  
+    jQuery('.rpr_recipe_instructions_add_image').on('click', function(e) {
 
         e.preventDefault();
-        
+
         var button = jQuery(this);
 
         image = button.siblings('.rpr_recipe_instructions_image');
@@ -586,7 +608,7 @@ jQuery(document).ready(function() {
                 button: {
                     text: 'Add instruction image'
                 },
-                multiple: false  
+                multiple: false
             })
             .on('select', function() {
                 var attachment = custom_uploader.state().get('selection').first().toJSON();
@@ -596,7 +618,7 @@ jQuery(document).ready(function() {
             .open();
         } else { //fallback
             post_id = button.attr('rel');
-            
+
             tb_show(button.attr('value'), 'wp-admin/media-upload.php?post_id='+post_id+'&type=image&TB_iframe=1');
 
             window.send_to_editor = function(html) {
@@ -607,9 +629,9 @@ jQuery(document).ready(function() {
                 image.val(id).trigger('change');
                 preview.attr('src', imgurl);
                 tb_remove();
-            } 
+            }
         }
-        
+
     });
 
     jQuery('.rpr_recipe_instructions_remove_image').on('click', function(e) {
@@ -641,57 +663,57 @@ jQuery(document).ready(function() {
         tinyMCE.activeEditor.execCommand('mceInsertContent', 0, shortcode);
         tinyMCE.activeEditor.windowManager.close();
     });
-    
-    /* 
+
+    /*
      * Image preview settings fields
      */
     jQuery('.rpr-preview-select').on('change', function() {
         var prefix = jQuery(this).siblings('.rpr-preview-img').children('img').attr('alt');
-        
+
         if( prefix.split('-').length > 1 ) {
             prefix = prefix.split('-')[0] + '-';
-        } 
-        
+        }
+
         var old_img = jQuery(this).siblings('.rpr-preview-img').children('img').attr('src');
         var new_img = prefix + jQuery(this).val() + '.jpg';
         var old_img_file = old_img.split('/');
-        
+
         old_img_file = old_img_file[old_img_file.length - 1];
-        
+
         new_img = old_img.replace(old_img_file, new_img);
-        
+
         jQuery(this).siblings('.rpr-preview-img').children('img').attr('src', new_img)
 
     });
-    
+
     /*
      * Colorpicker settings fields
      */
     if (jQuery('.rpr-colorpicker').length != 0) {
         jQuery('.rpr-colorpicker').wpColorPicker();
     }
-    
+
     /*
      * Image upload settings fields
      * TODO: This pretty much repeats the instruction image code, we should combine them
      */
-    jQuery('.rpr-file-upload').on('click', function(e) {  
+    jQuery('.rpr-file-upload').on('click', function(e) {
 
         e.preventDefault();
-        
+
         var button = jQuery(this);
-        
+
         preview = button.siblings('img');
         fieldname = preview.attr('class');
         image = button.siblings('.' + fieldname + '_image');
-        
+
         if(typeof wp.media == 'function') {
             var custom_uploader = wp.media({
                 title: 'Insert Media',
                 button: {
                     text: 'Add image'
                 },
-                multiple: false  
+                multiple: false
             })
             .on('select', function() {
                 var attachment = custom_uploader.state().get('selection').first().toJSON();
@@ -701,7 +723,7 @@ jQuery(document).ready(function() {
             .open();
         } else { //fallback
             post_id = button.attr('rel');
-            
+
             tb_show(button.attr('value'), 'wp-admin/media-upload.php?post_id='+post_id+'&type=image&TB_iframe=1');
 
             window.send_to_editor = function(html) {
@@ -712,39 +734,39 @@ jQuery(document).ready(function() {
                 image.val(id).trigger('change');
                 preview.attr('src', imgurl);
                 tb_remove();
-            } 
+            }
         }
-        
+
         button.addClass('rpr-hide');
         button.siblings('.rpr-file-remove').removeClass('rpr-hide');
-        
+
     });
-    
+
     jQuery('.rpr-file-remove').on('click', function(e) {
         e.preventDefault();
 
         var button = jQuery(this);
-        
+
         preview = button.siblings('img');
         fieldname = preview.attr('class');
 
         button.siblings('.' + fieldname + '_image').val('');
         button.siblings('.' + fieldname).attr('src', '');
-        
+
         button.siblings('.rpr-file-upload').removeClass('rpr-hide');
         button.addClass('rpr-hide');
     });
-    
+
     /* PopUp for editing taxonomies */
     jQuery(function($) {
         var $info = $("#rpr_manage_taxonomies_dialog");
         $info.dialog({
         	'title' : objectL10n.rpr_taxdialog_title,
-            'dialogClass'   : 'wp-dialog',           
+            'dialogClass'   : 'wp-dialog',
             'modal'         : true,
-            'autoOpen'      : false, 
+            'autoOpen'      : false,
             'minWidth'		: 400,
-            'closeOnEscape' : true,      
+            'closeOnEscape' : true,
             'buttons'       : [
                                {	'text' : 'Save',
                                		'class' : 'button-primary',
@@ -765,12 +787,12 @@ jQuery(document).ready(function() {
                                    }
                                }
                               ]
-        		
+
             });
-    }); 
+    });
     jQuery('.rpr-edit-tag').on('click', function(event) {
     	jQuery('#hierarchy_row').show();
-    	
+
         var tag = jQuery(this).data('tag');
 
         var singular = jQuery(this).parents('tr').find('.singular-name').text();
@@ -788,14 +810,14 @@ jQuery(document).ready(function() {
         	jQuery('input#rpr_custom_taxonomy_hierarchical').attr('checked', false);
     	}
         jQuery('#rpr_editing_tag').text(tag);
-        
+
         if( tag == 'rpr_ingredient' || tag == 'category' || tag == 'post_tag' ){
         	jQuery('#hierarchy_row').hide();
         }
 
         event.preventDefault();
         jQuery("#rpr_manage_taxonomies_dialog").dialog('open');
-        
+
         /*jQuery('.rpr_adding').hide();
         jQuery('.rpr_editing').show();*/
     });
@@ -803,12 +825,11 @@ jQuery(document).ready(function() {
         var tag = jQuery(this).data('tag');
 
         jQuery('input#rpr_delete_taxonomy_name').val(tag);
-        
+
         jQuery('form#rpr_delete_taxonomy').submit();
     });
-    
-    
-    
+
+
+
 
 });
-
