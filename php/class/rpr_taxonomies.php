@@ -24,6 +24,14 @@ if( class_exists( 'RPReloaded' ) ) {
 			add_action( 'admin_menu', array( $this, 'rpr_taxonomies_menu' ) );
 			add_action( 'admin_action_delete_taxonomy', array( $this, 'delete_taxonomy_form' ) );
 			add_action( 'admin_action_add_taxonomy', array( $this, 'save_taxonomy_form' ) );
+
+			// Adding termmeta for ingredients (eg to add irregular plurals)
+			add_action( 'rpr_ingredient_add_form_fields', array( $this, 'ingredient_add_plural_field') );
+			add_action( 'created_rpr_ingredient', array( $this, 'save_ingredient_meta' ) );
+			add_action( 'rpr_ingredient_edit_form_fields' , array( $this, 'edit_ingredient_plural_field' ) );
+			add_action( 'edited_rpr_ingredient', array( $this, 'update_ingredient_meta' ) );
+			add_filter('manage_edit-rpr_ingredient_columns', array( $this, 'add_ingredient_plural_column' ) );
+			add_filter('manage_rpr_ingredient_custom_column', array( $this, 'add_ingredient_plural_column_content') , 10, 3);
 		}
 
 
@@ -460,5 +468,69 @@ if( class_exists( 'RPReloaded' ) ) {
 	    	return $arr;
 	    }
 
+			// Function to serve termmeta for ingredients
+			// Create form field
+			function ingredient_add_plural_field( $taxonomy ) {
+				?><div class="form-field term-plural-wrap">
+						<label for="ingredient-plural"><?php _e('Plural', $this->pluginName); ?></label>
+						<input type="text" id="ingredient-plural" name="ingredient-plural" size="40" value=""></input>
+						<p><?php _e('Use this to store irregular plural forms. Regular plurals will be generated automatically', $this->pluginName); ?></p>
+					</div><?php
+			}
+			// Save
+			function save_ingredient_meta( $term_id, $tt_id ){
+    		if( isset( $_POST['ingredient-plural'] ) && '' !== $_POST['ingredient-plural'] ){
+        	$plural = sanitize_text_field( $_POST['ingredient-plural'] );
+        	add_term_meta( $term_id, 'ingredient-plural', $plural, true );
+    		}
+			}
+			// Update
+			function edit_ingredient_plural_field( $term ){
+				// Get current plural
+				$ingredient_plural = get_term_meta( $term->term_id, 'ingredient-plural', true );
+
+				?><tr class="form-field term-plural-wrap">
+        	<th scope="row"><label for="ingredient-plural"><?php _e( 'Plural', $this->pluginName ); ?></label></th>
+        	<td>
+							<input type="text" id="ingredient-plural" name="ingredient-plural" size="40" value="<?php echo $ingredient_plural; ?>"></input>
+          </td>
+    		</tr><?php
+			}
+			function update_ingredient_meta( $term_id, $tt_id ){
+
+				if( isset( $_POST['ingredient-plural'] ) && '' !== $_POST['ingredient-plural'] ){
+					$plural = sanitize_text_field( $_POST['ingredient-plural'] );
+        	update_term_meta( $term_id, 'ingredient-plural', $plural );
+    		}
+			}
+
+			// Display plural in ingredient list:
+			function add_ingredient_plural_column( $columns ){
+				$columns = array(
+					'cb' => '<input type="checkbox" />',
+					'name' => __('Name', $this->pluginName),
+					'ingredient_plural' => __( 'Plural', $this->pluginName ),
+					'description' => __('Description', $this->pluginName),
+					'slug' => __('Slug', $this->pluginName),
+					'posts' => __('Count', $this->pluginName),
+				);
+
+    		//$columns['ingredient_plural'] = __( 'Plural', $this->pluginName );
+				return $columns;
+			}
+			function add_ingredient_plural_column_content( $content, $column_name, $term_id ){
+    		if( $column_name !== 'ingredient_plural' ){
+        	return $content;
+    		}
+
+    		$term_id = absint( $term_id );
+    		$plural = get_term_meta( $term_id, 'ingredient-plural', true );
+
+    		if( !empty( $plural ) ){
+        	$content .= esc_attr( $plural );
+    		}
+
+    		return $content;
+			}
 	}
 }

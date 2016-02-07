@@ -67,6 +67,8 @@ class RPReloaded{
 		// Add required plugins:
 		add_action( 'tgmpa_register', array($this, 'rpr_register_required_plugins') );
 
+		// Initialze TitanFramework for options
+		add_action( 'tf_create_options', array( $this, 'rpr_create_options' ) );
 //>>TBD
 		// Other
 		if ( function_exists( 'add_image_size' ) ) {
@@ -98,6 +100,12 @@ class RPReloaded{
 	            'slug'               => 'redux-framework', // The plugin slug (typically the folder name).
 	            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
 	        ),
+					// Load Titan-Framework as plugin
+	        array(
+	            'name'               => 'Titan Framework Plugin', // The plugin name.
+	            'slug'               => 'titan-framework', // The plugin slug (typically the folder name).
+	            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+	        ),
 		);
 
 		$config = array(
@@ -110,7 +118,7 @@ class RPReloaded{
 	        'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
 	        'is_automatic' => false,                   // Automatically activate plugins after installation or not.
 	        'message'      => '',                      // Message to output right before the plugins table.
-/*	        'strings'      => array(
+	        'strings'      => array(
 	            'page_title'                      => __( 'Install Required Plugins', 'recipe-press-reloaded' ),
 	            'menu_title'                      => __( 'Install Plugins', 'recipe-press-reloaded' ),
 	            'installing'                      => __( 'Installing Plugin: %s', 'recipe-press-reloaded' ), // %s = plugin name.
@@ -129,12 +137,38 @@ class RPReloaded{
 	            'plugin_activated'                => __( 'Plugin activated successfully.', 'recipe-press-reloaded' ),
 	            'complete'                        => __( 'All plugins installed and activated successfully. %s', 'recipe-press-reloaded' ), // %s = dashboard link.
 	            'nag_type'                        => 'updated' // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
-	        )*/
+	        )
 	    );
 
 	    tgmpa( $plugins, $config );
     }
 
+		function rpr_create_options() {
+			// Initialze Titan-Framework and options here
+			$titan = TitanFramework::getInstance( 'rpr' );
+
+			// Create an options page
+			$panel = $titan->createAdminPanel( array(
+			    'name' 		=> __( 'Options', 'recipe-press-reloaded' ),
+					'parent' 	=> 'edit.php?post_type=rpr_recipe'
+			) );
+
+			// A firts option for testing:
+
+$panel->createOption( array(
+    'name' => 'My Text Option',
+    'id' => 'rpr_text_option',
+    'type' => 'text',
+    'desc' => 'This is our first option. More to come soon. Even in tabs!'
+) );
+
+/*
+$postMetaBox = $titan->createMetaBox( array(
+    'name' => 'Additional Post Options',
+    'post_type' => 'rpr_recipe',
+) );
+*/
+		}
 	/*
 	 * Used in various places.
 	*/
@@ -196,6 +230,8 @@ include_once('php/template_tags.php');
 // Required Script for plugin dependencies
 require_once(dirname( __FILE__ ) . '/lib/tgm/class-tgm-plugin-activation.php');
 
+// Require Titan Framework for options and metaboxes
+require_once( dirname(__FILE__) . '/lib/titan-framework-checker.php' );
 // Required script for settings page
 if ( !class_exists( 'ReduxFramework' ) && file_exists( WP_PLUGIN_DIR . '/redux-framework/ReduxCore/framework.php' ) ) {
 	require_once( WP_PLUGIN_DIR . '/redux-framework/ReduxCore/framework.php');
