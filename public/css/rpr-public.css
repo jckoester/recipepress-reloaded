@@ -1,0 +1,59 @@
+.hidden{
+    display:none;
+}
+
+.rpr_description{
+    display:block;
+    margin-top:16px;
+}
+
+/* Nutritional information */
+.rpr_nutritional_data{
+    font-size: 80%;
+}
+.rpr_nutritional_data .nutrition_per{
+    float:left;
+    margin-right:12px;
+}
+.rpr_nutritional_data dl dt{
+    float:left;
+    margin-right:12px;
+}
+.rpr_nutritional_data dl dd{
+    float:left;
+    margin-right: 12px;
+}
+
+/* times */
+.rpr_times dl{
+    font-size: 80%;
+}
+.rpr_times dt{
+    float:left;
+    margin-right:12px;
+}
+.rpr_times dd{
+    float:left;
+    margin-right: 12px;
+}
+
+/* alphabet navigation */
+ul.rpr_alphabet_navigation{
+    list-style: none;
+}
+ul.rpr_alphabet_navigation li{
+    float:left;
+    width: calc(100% / 26);
+    text-align:center;
+}
+
+a.rpr_toplink{
+    color:#ccc;
+    text-decoration:none;
+    border-bottom:none!important;
+}
+
+/* taxonomy term list */
+ul.rpr_taxlist{
+    margin-left:32px;
+}

@@ -1,0 +1,276 @@
+.hidden{
+    visibility: hidden;
+}
+
+/**
+* Ingredient Meta box styles
+* Instructions Meta box styles
+*/
+/* Table layout*/
+#recipe_ingredients_meta_box .inside,
+#recipe_instructions_meta_box .inside{
+    padding-left:0;
+    padding-right:0;
+}
+#recipe_ingredients_meta_box .rpr-metabox-table,
+#recipe_instructions_meta_box .rpr-metabox-table{
+    width:100%;
+}
+.rpr-metabox-table,
+.rpr-metabox-table th,
+.rpr-metabox-table td{
+    border-collapse: collapse;
+}
+.rpr-metabox-table th{
+    border-bottom: solid 1px #eee;
+    padding-bottom: 6px;
+    text-align: left;
+}
+.rpr-metabox-table tbody tr:nth-child(even){
+    /*background: #efefef;*/
+}
+
+.rpr-metabox-table th.rpr-ing-sort,
+.rpr-ing-sort, 
+.rpr-ing-sort div,
+.rpr-metabox-table th.rpr-ins-sort,
+.rpr-ins-sort, 
+.rpr-ins-sort div{
+    width:32px;
+    text-align:center!important;
+}
+.rpr-ing-amount,
+.rpr-ing-unit{
+    width: 10%;
+    min-width: 64px;
+}
+.rpr-ing-name{
+    width: 25%;
+    min-width: 128px;
+}
+.rpr-ing-amount input,
+.rpr-ing-unit select,
+.rpr-ing-name input,
+.rpr-ing-note input{
+    width:80%;
+    width: calc(100% - 4px);
+}
+.rpr-ing-link{
+    width:58px;
+    text-align: left;
+}
+.rpr-ing-del,
+.rpr-ins-del{
+    width:48px;
+    text-align: center;
+    color: #444;
+}
+.rpr-ing-group label,
+.rpr-ins-group label{
+    display:block;
+    float:left;
+    width:10%;
+    min-width:64px;
+    padding: 4px 1px;
+    line-height: 19px;
+    font-weight: bold;
+}
+.rpr-ing-group input{
+    width:80%;
+    width:calc(90% - 24px);
+}
+.rpr-ins-group input{
+    width:80%;
+    width:calc(90% - 28px);
+}
+/* Link buttons */
+.rpr-ing-add-link,
+.rpr-ing-del-link{
+    width:19px;
+    height: 19px;
+    line-height: 19px!important;
+    padding: 4px;
+    margin: 1px;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+}
+th.rpr-ing-link div{
+    width:19px;
+    padding: 0 4px;
+    margin: 0 1px;
+    text-align: center;
+
+}
+.rpr-ing-add-link:hover,
+.rpr-ing-del-link:hover{
+    cursor:pointer;
+}
+
+.has-link{
+    color:green;
+}
+
+/* Ingredient meta box buttons*/
+.rpr-metabox-table tfoot tr td{
+    padding: 4px 4px 0 4px;
+}
+tfoot .rpr-ing-add-row,
+tfoot .rpr-ins-add-row{
+    float:right;
+    padding-left: 2px!important;
+    margin: 0 4px!important;
+}
+tfoot .rpr-ing-add-row span,
+tfoot .rpr-ins-add-row span{
+    padding: 4px 0;
+}
+
+/* Instruction meta box specific: */
+.rpr-ins-instruction{
+    width:60%;
+    min-width:128px;
+    vertical-align:top;
+}
+.rpr-ins-instruction textarea{
+    width:80%;
+    width:calc(100% - 4px);
+    min-height:96px;
+}
+.rpr-ins-image{
+    vertical-align: bottom;
+}
+.rpr-ins-image div{
+    width:80%;
+    width:calc(100% - 16px);
+}
+.rpr-ins-image div a{
+    text-decoration: none;
+}
+/*.rpr-ins-image a.rpr-ins-image-set{
+    float:left;
+}
+.rpr-ins-image a.rpr-ins-image-del{
+    float:right;
+}*/
+.rpr-ins-image img{
+    max-width: 80%;
+    max-width: calc(100% - 16px);
+    min-height: 82px;
+    max-height: 240px;
+}
+
+/* details meta box */
+.detailsbox{
+    min-height:64px;
+}
+.recipe-general-form-notes{
+    clear:both;
+    margin-top: 1px; 
+}
+/*.detailsbox .recipe_details_row{
+    float:left;
+    display:block;
+    width: 20%;
+}*/
+.detailsbox .rpr_servings{
+    margin-bottom: 8px;
+    /*width:40%;*/
+}
+.detailsbox label{
+    font-weight: bold;
+    /*clear:right;*/
+    display: block;
+}
+.detailsbox #rpr_recipe_servings{
+    width: 64px;
+    float: left;
+}
+
+
+.detailsbox .rpr_time{
+    width:64px;
+}
+
+/* Nutritions meta box specific */
+.nutritionsbox{
+    min-height:76px;
+}
+.nutritionsbox .recipe_details_row{
+    float:left;
+    display:block;
+    width: 20%;
+}
+.nutritionsbox label{
+    font-weight: bold;
+    /*clear:right;*/
+    display: block;
+}
+.nutritionsbox input{
+    width: calc( 80% - 32px );
+}
+.nutritionsbox .recipe-general-form-notes{
+    width:24px;
+}
+
+/* Shortcode buttons */
+#rpr-add-recipe-button{
+    background-image:url('../../img/icon_16_gray.png');
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    padding-left: 23px;
+}
+#rpr-add-listings-button{
+    background-image:url('../../img/icon_16_gray_scl.png');
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    padding-left: 29px;
+}
+
+/* Options page adjustments */
+#poststuff{
+    background: #f1f1f1;
+    border-left: solid 1px #ccc;
+    border-right: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    padding:0 16px;
+}
+a.nav-tab{
+    padding: 5px 8px;
+}
+#section_table-section-tax_builtin__ td,
+#section_table-section-layout__ td{
+    padding:0;
+    margin:0;
+}
+#section-layout__  h3{
+    margin-bottom: 0 !important;
+    margin-top: 0.5em !important;
+}
+#section-layout_general__{
+    margin:0;
+}
+/* Layout description in options panel */
+.layout_screenshot{
+    float:right;
+    margin-left: 12px;
+    max-width: 150px;
+    max-height:200px;
+}
+.layout_description{
+    float:left;
+    width: 80%;
+    width: calc(100% - 162px);
+    margin-bottom: 12px;
+}
+.layout_desc_label{
+    width:8em;
+    display: inline-block;
+}
+.admin_demo{
+    border:solid 1px #aaa;
+    background:#eee; 
+    padding:2px;
+    margin: 0 2px;
+    border-radius:3px;
+}

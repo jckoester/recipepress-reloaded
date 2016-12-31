@@ -1,0 +1,30 @@
+UNINSTALL HOOK, tidy up when uninstalled!
+
+php/class/rpr_migration.php:                                     * @@todo enable only when options migration is working!
+php/class/rpr_migration.php:                                     * @@todo Don't do this unless all undisplayed advanced option have not been replaced
+includes/class-rpr-activator.php:             * @todo REMOVE THIS
+public/rpr_template_tags.php:			 * @todo: Create an option for instructions icon
+public/rpr_template_tags.php:			 * @todo: Create an option for notes icon
+public/rpr_template_tags.php:			 * @todo: add option for icon class
+public/rpr_template_tags.php:	 * @todo: Add icons if desired by option
+public/rpr_template_tags.php:				 * @todo: make the rel="lightbox" optional ???
+public/rpr_template_tags.php:	 * @todo: prefix, icons
+public/rpr_template_tags.php:	 * @todo: prefix, icons
+public/rpr_template_tags.php: * @todo: Maybe better replace Umlaute like Ö => Oe instead of O
+public/layouts/rpr_default/taxonomy.php: * @todo: create a multicolumn layout
+public/layouts/rpr_default/recipe_index.php: * @todo: create a multicolumn layout
+public/layouts/rpr_default/recipe.php:	 * @todo: What is this needed for?
+public/class-rpr-public.php:		 * @todo: Is this the right place?
+admin/class-rpr-admin.php:         * @todo minify the JavaScript! Or at least put all in one file
+admin/views/rpr-metabox-ingredients.php: * @todo create and check nonce in core!
+admin/views/rpr-metabox-ingredients.php: * @todo move to admin.js
+admin/views/rpr-metabox-nutrition.php: * @todo create and check nonce in core!
+admin/views/rpr-metabox-instructions.php: * @todo create and check nonce in core!
+admin/views/rpr-metabox-details.php: * @todo create and check nonce in core!
+admin/views/rpr-metabox-details.php: * @todo: use separate fields for servings and yield?
+admin/class-rpr-admin-migration.php:         * @todo Remove this line
+admin/class-rpr-admin-migration.php:     * @todo TEST with data from 0.7.11 or older
+admin/class-rpr-admin-migration.php:// @todo: remove this line!
+admin/class-rpr-admin-migration.php:     * @todo TEST with data from 0.7.11 or older
+admin/class-rpr-admin-migration.php:     * @todo TEST with data from 0.5 or 0.6
+admin/class-rpr-admin-migration.php:     * @todo TEST with data from RP or RPR 0.3

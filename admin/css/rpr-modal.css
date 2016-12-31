@@ -1,0 +1,327 @@
+#rpr-modal-wrap-scr,
+#rpr-modal-wrap-scl{
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    display: none;
+    height: 266px;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -125px;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    transition: height 0.2s ease 0s, margin-top 0.2s ease 0s;
+    width: 500px;
+    z-index: 100105;
+}
+
+#rpr-modal-backdrop-scr,
+#rpr-modal-backdrop-scl{
+    background: none repeat scroll 0 0 #000;
+    bottom: 0;
+    display: none;
+    left: 0;
+    min-height: 360px;
+    opacity: 0.7;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100100;
+}
+#rpr-modal-form-scr,
+#rpr-modal-form-scl{
+    height: 100%;
+    position: relative;
+}
+#rpr-modal-wrap-scr.search-panel-visible,
+#rpr-modal-wrap-scl.search-panel-visible{
+    height: 400px;
+    margin-top: -250px;
+}
+#rpr-modal-title-scr,
+#rpr-modal-title-scl{
+    background: none repeat scroll 0 0 #fcfcfc;
+    border-bottom: 1px solid #dfdfdf;
+    font-size: 18px;
+    font-weight: 600;
+    height: 36px;
+    left: 0;
+    line-height: 36px;
+    padding: 0 36px 0 16px;
+    right: 0;
+    top: 0;
+}
+#rpr-modal-close-scr,
+#rpr-modal-close-scl{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    color: #666;
+    cursor: pointer;
+    height: 36px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 36px;
+}
+#rpr-modal-close-scr:before,
+#rpr-modal-close-scl:before{
+    content: "";
+    font: 400 20px/36px dashicons;
+    height: 36px;
+    vertical-align: top;
+    width: 36px;
+}
+#rpr-modal-close-scr:focus,
+#rpr-modal-close-scr:hover,
+#rpr-modal-close-scl:focus,
+#rpr-modal-close-scl:hover{
+    color: #2ea2cc;
+}
+#rpr-modal-close-scr:focus,
+#rpr-modal-close-scl:focus{
+    box-shadow: 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);
+    outline: 0 none;
+}
+
+#rpr-modal-panel-scr,
+#rpr-modal-panel-scl{
+    margin: 4px 16px;
+}
+
+/* Submit box styles, for cancel and submit bputtons on the bottom */
+#rpr-modal-form-scr .submitbox,
+#rpr-modal-form-scl .submitbox{
+    background: none repeat scroll 0 0 #fcfcfc;
+    border-top: 1px solid #dfdfdf;
+    bottom: 0;
+    left: 0;
+    padding: 8px 16px;
+    position: absolute;
+    right: 0;
+}
+#rpr-modal-cancel-scr,
+#rpr-modal-cancel-scl{
+    float: left;
+    line-height: 25px;
+}
+#rpr-modal-update-scr,
+#rpr-modal-update-scl{
+    float: right;
+    line-height: 23px;
+}
+#rpr-modal-submit-scr,
+#rpr-modal-submit-scl{
+    float: right;
+    margin-bottom: 0;
+}
+
+/* Panels sytels for recipe shortcode dialog */
+#rpr-modal-wrap-scr.search-panel-visible{
+    height:540px;
+}
+#rpr-modal-panel-scr p.howto {
+    margin: 3px 0;
+}
+#rpr-modal-panel-scr p.howto a {
+    color: inherit;
+    text-decoration: none;
+}
+#rpr-modal-panel-scr input[type="text"] {
+    margin-top: 5px;
+    width: 70%;
+}
+#rpr-modal-panel-scr label span.search-label {
+    display: inline-block;
+    padding-right: 5px;
+}
+#rpr-modal-panel-scr .link-search-field {
+    float: left;
+    max-width: 70%;
+    width: 250px;
+}
+#rpr-modal-panel-scr .link-search-wrapper {
+    display: block;
+    margin: 5px 0 9px;
+    overflow: hidden;
+}
+#rpr-modal-panel-scr .link-search-wrapper span {
+    float: left;
+    margin-top: 4px;
+}
+#rpr-modal-panel-scr .link-search-wrapper .spinner {
+    display: none;
+    vertical-align: text-bottom;
+}
+#rpr-modal-panel-scr .link-target {
+    overflow: hidden;
+    padding: 3px 0 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#rpr-modal-panel-scr .link-target label {
+    max-width: 70%;
+}
+#rpr-modal-panel-scr .query-results {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #dfdfdf;
+    bottom: 148px;
+    left: 16px;
+    margin: 0;
+    overflow: auto;
+    position: absolute;
+    right: 16px;
+    top: 128px;
+}
+#rpr-modal-panel-scr li {
+    border-bottom: 1px solid #f1f1f1;
+    clear: both;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 0;
+    padding: 4px 6px 4px 10px;
+    position: relative;
+}
+#rpr-modal-panel-scr .query-notice {
+    background-color: #f7fcfe;
+    border-bottom: 1px solid #dfdfdf;
+    color: #000;
+    padding: 0;
+}
+#rpr-modal-panel-scr .query-notice .query-notice-default, #rpr-modal-panel-scr .query-notice .query-notice-hint {
+    border-left: 4px solid #2ea2cc;
+    display: block;
+    padding: 6px;
+}
+#rpr-modal-panel-scr .unselectable.no-matches-found {
+    background-color: #fef7f1;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 0;
+}
+#rpr-modal-panel-scr .no-matches-found .item-title {
+    border-left: 4px solid #d54e21;
+    display: block;
+    padding: 6px;
+}
+#rpr-modal-panel-scr .query-results em {
+    font-style: normal;
+}
+#rpr-modal-panel-scr li:hover {
+    background: none repeat scroll 0 0 #eaf2fa;
+    color: #151515;
+}
+#rpr-modal-panel-scr li.unselectable {
+    border-bottom: 1px solid #dfdfdf;
+}
+#rpr-modal-panel-scr li.unselectable:hover {
+    background: none repeat scroll 0 0 #fff;
+    color: #333;
+    cursor: auto;
+}
+#rpr-modal-panel-scr li.selected {
+    background: none repeat scroll 0 0 #ddd;
+    color: #333;
+}
+#rpr-modal-panel-scr li.selected .item-title {
+    font-weight: 700;
+}
+#rpr-modal-panel-scr li:last-child {
+    border: medium none;
+}
+#rpr-modal-panel-scr .item-title {
+    display: inline-block;
+    width: calc(100% - 68px);
+}
+#rpr-modal-panel-scr .item-info {
+    color: #666;
+    font-size: 11px;
+    position: absolute;
+    right: 5px;
+    text-transform: uppercase;
+    top: 5px;
+}
+#rpr-modal-panel-scr #search-panel, #rpr-modal-panel-scr #search-results {
+    display: none;
+}
+#rpr-modal-panel-scr-wrap.search-panel-visible #search-panel {
+    display: block;
+}
+#rpr-modal-panel-scr .river-waiting {
+    display: none;
+    padding: 10px 0;
+}
+#rpr-modal-panel-scr .river-waiting .spinner {
+    display: block;
+    float: none;
+    margin: 0 auto;
+}
+#rpr-modal-panel-scr ol, #rpr-modal-panel-scr ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+#rpr-modal-panel-scr-search-toggle:after {
+    content: "";
+    display: inline-block;
+    font: 400 20px/1 dashicons;
+    vertical-align: top;
+}
+.search-panel-visible #rpr-modal-panel-scr-search-toggle:after {
+    content: "";
+}
+#rpr-modal-panel-scr input[type="text"] {
+    box-sizing: border-box;
+}
+#rpr-modal-panel-scr #link-options {
+    padding: 8px 0 12px;
+}
+
+#rpr-modal-scr-options-panel{
+    position: absolute;
+    bottom:40px;
+    left:0px;
+    right:0px;
+    height:96px;
+    border-top: solid 1px #dfdfdf;
+    padding: 4px 16px 0px 16px;
+}
+
+#rpr-modal-scr-options-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#rpr-modal-panel-scr #rpr-modal-scr-options-list li{
+    float:left;
+    clear: none;
+    padding: 0;
+    border:none;
+    padding: 2px;
+    width:46%;
+    width:calc(50% - 8px);
+}
+#rpr-modal-scr-options-list li:odd{
+    margin-right:8px;
+}
+#rpr-modal-scr-options-list li:even{
+    margin-left:8px;
+}
+#rpr-modal-scr-new-recipe-panel{
+    position: absolute;
+    bottom:16px;
+    left:0px;
+    right:0px;
+    height:68px;
+    border-top: solid 1px #dfdfdf;
+    padding: 4px 16px 0px 16px;
+}
+
+
+/* Panel styles for listings shortcode dialog */
+#rpr-taxonomy-panel{
+    margin-left: 24px
+}
+#rpr-modal-wrap-scl.search-panel-visible{
+    height:200px;
+}

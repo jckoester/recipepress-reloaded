@@ -1,14 +1,16 @@
 === RecipePress reloaded===
 Contributors: Jan Köster
-Tags: recipes, cooking, food, recipe share
+Tags: recipe, recipes, cooking, baking, food, food blog, recipe sharing, 
 Requires at least: 4.0
-Tested up to: 4.3
-Stable tag: 0.7.12
-License: GPLv2
+Tested up to: 4.7
+Stable tag: trunk
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A simple recipe plugin. It does all you need for your food blog. Plus: there these nifty recipe previews in Google's search - automagically.
+The swiss army knife for your food blog. A tool not only to add nicely and seo friendly formatted  recipes to your posts. But also to manage present your recipe collection.
 
 == Description ==
+
 
 It basically adds a post type for recipes to your site. You can publish recipes as standalone posts or include in your normal posts and pages.
 Organize your recipes in categories, cuisines, courses, seasons, ... It's up to your choice how many taxonomies you are creating. Of course there are post images and all the normal wordpress post goodies for your recipes as well.
