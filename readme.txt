@@ -6,46 +6,53 @@ Tested up to: 4.7
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Donate link: https://paypal.me/dasmaeh
 
-The swiss army knife for your food blog. A tool not only to add nicely and seo friendly formatted  recipes to your posts. But also to manage present your recipe collection.
+The swiss army knife for your food blog. A tool to add nicely and seo friendly formatted  recipes to your blog and to manage your recipe collection.
 
 == Description ==
 
+RecipePress reloaded is a powerful and very flexible tool to manage your blog's recipe collection. It was designed with the editor in mind and created for easy and fast usage.
+The basically adds a post type for recipes to your site. You can publish recipes as standalone posts or include in your normal posts and pages.
+Organize your recipes in any way you like. Predefined come categories, cuisines, courses, seasons and difficulties. As creating taxonomies is easy it's up to you which and how many taxonomies you are creating. Use listings embedded in pages to make your recipes accessible by title or taxonomy terms. Or use one of the widgets to create tag clouds or top ten lists.
+Of course you can use all the wordpress goodies you know from posts on recipes as well: images, videos and comments.
+Despite it's simplicity it's giving editors, administrators, designers and developers all the freedom to adapt the plugin to their needs. Features you don't need can be deactivated and are hidden from the ui then. You can even create your own layout files to complete control the looks of recipes. The default ones are SEO friendly, of course.
 
-It basically adds a post type for recipes to your site. You can publish recipes as standalone posts or include in your normal posts and pages.
-Organize your recipes in categories, cuisines, courses, seasons, ... It's up to your choice how many taxonomies you are creating. Of course there are post images and all the normal wordpress post goodies for your recipes as well.
-The backend is designed to allow fast, keyboard-based input and not to bother you with to many clicks and choices.
-The frontend is using schema.org's recipe microformat to allow search engines like google to display our recipes nicely.
 
 = Features =
 
+* custom post type for recipes
+* backend to enter recipes fast
+* group ingredients and instructions to sets, eg for cake and topping
+* add an image to each step of instruction if you like
+* all the metadata you need for recipes:
+    * serving size
+    * preparation and cooking times
+    * nutritional information
+* all taxonomies you need. Categories, cuisines, courses, seasons and difficulties come predefined, but you can create whatever taxonomy you like.
+* use post categories and terms on recipes as well, but only if you want to
+* ingredients are a taxonomy as well, so you can easily find all recipes using 'carrots' for example.
+* access recipes by alphabetical indices of title or any taxonomy term
+* include recipes to your normal posts or pages using shortcodes
+* search engine friendly recipe output using [schema.org](http://schema.org/Recipe)'s recipe microdata, RFDa or JSON-LD
+* choose between different layouts to determine how your recipes should look like or create a layout yourself
 
-* custom post type "recipe", made to be used alongside with other recipe plugins
-* a bunch of taxonomies like cateogories, cuisines, seasons, course. You can add as many custom taxonomies as you like
-* display nutritional information alongside your recipes
-* options to also include categories and tags used from standard posts.
-* easily include recipes into posts and pages
-* shortcodes for displaying an alphabetic index of recipes, ingredients
-* user comments and pingbacks
-* recipe photo using featured thumbnail tools.
-* easy-type backend
-* schema.org's recipe microformat
-* choose between templates to determine how your recipes should look like or create e template yourself
-* update from the famous but discontinued plugin "RecipePress" by grandslambert
 
 = Languages =
 
-This plugin includes the following translations:
+RecipePress reloaded currently is available in:
 
 * English
-* German (Germany, Austria and Switzerland)
+* German
+
+For the following languages translations are partly available:
+
+* German (Austria and Switzerland)
 * Dutch
-* Italian (partly)
-* Hungarian (partly)
+* Italian
+* Hungarian
 
-If you want a translation of another language included please help translating!
-
-
+Please help [translating](https://translate.wordpress.org/projects/wp-plugins/recipepress-reloaded) the plugin. It's now easier than ever before on [translate.wordpress.org](https://translate.wordpress.org)
 
 == Installation ==
 
@@ -55,121 +62,41 @@ If you want a translation of another language included please help translating!
 
 == Changelog ==
 
-= 0.7.12 =
-* Fixed a bug creating wrong slugs for RPR categories and tags
-* Fixed several minor bugs
+= 0.8.0 =
 
-= 0.7.11 =
-* Fixed some deprecated functions for the use with Wordpress 4.3
+ * Complete recoding of the entire plugin. The code is now modular, easier to maintain and easier to contribute to.
+ * Extended and improved support of [schema.org](http://schema.org/Recipe)'s recipe microdata. Now supporting Microdata, RFDa and JSON-LD.
+ * New options backend, now very clearly laid out
+ * Very easy handling for taxonomies
+ * Improved recipe editor
 
-= 0.7.10 =
-* Added Dutrch translation
-* Added an optional separator for ingredient notes
-* Improved display of instruction images
-* Improved display of nutritional information
-* Bugfixes in widgets
-
-= 0.7.9 =
-* Added a feature to restore lost taxonomies
-* Added a feature to obtain compatibility with WP 4.2 (split_shared_terms)
-* Added language files for Austrian and Swiss German
-* Fixed a bug concerning instruction images
-* Fixed a bug on taxonomy creation/activation
-
-= 0.7.8 =
-* Recipes now also appear in your main RSS feed
-* Improved taxonomy management. You can now decide if a taxonomy should be category like (hierarchical) or term like.
-* Improved recipe index, now dealing well with special characters
-* Several bug fixes
-= 0.7.7 =
-* New taxonomy 'Season'
-* New taxonomy 'Difficulty' (still to be improved)
-* Easier management of taxonomies
-* Taxonomy initialisation improved. Now faster.
-= 0.7.6 =
-* Taxonomy cloud widget
-* Redux-Framework is now pulled in as a dependency. Keeping it up to date is much easier this way.
-* Fixed a bug in excerpt view.
-= 0.7.5 =
-* improved layout engine
-* several bugfixes
-= 0.7.4 =
-* added an option to hide recipes from homepage
-* fixed a problem of RPR interfering with other plugins
-= 0.7.3 =
-* button for the editor to include shortcodes
-* exclude ingredients like 'salt' and 'pepper' from ingredient listings
-* completely refurbished settings page
-* media buttons for description and notes sections
-* fixing a bug affecting attachment pages
-= 0.7.2 =
-* fixed a bug affecting foreign post types
-= 0.7.1 =
-* completly recoded function for querying recipes
-= 0.7.0 =
-* proper excerpts for recipes
-* templates can define the look & feel of excerpts
-* option for placement of instruction images
-* several bugfixes
-
-= 0.6.1 =
-* Bugfix release
-= 0.6.0 July 19th, 2014 =
-* added support for nutritional information
-* choose between two templates
-* rearranged settings for a better overview
-* added Italian translation, thanks to [link](https://wordpress.org/support/profile/bonecruncher"Bonecruncher")
-
-= 0.5.6 May 17th, 2014 =
-* bugfix release, fixing several bugs introduced with 0.5.5
-
-= 0.5.5 May 15th. 2014 =
-* bugfix release
-
-= 0.5.4 May 11th. 2014 =
-* fixed a bug in display of times
-* improved template tags
-* improved display of embedded recipes
-
-= 0.5.3 May 4th, 2014 =
-* Bugfix release
-
-= 0.5.2 April 30th, 2014 =
-* improved the migration scripts
-
-= 0.5.1 April 29th, 2014 =
-* Bugfix release
-
-= 0.5.0 April 18th, 2014 =
-* completely remade the codebase, backend and frontend for better maintenance
-* lighter backend for easy writing
-* simpler options page
-* added support for schema.org's recipe microformat
-* relabeled the post-type to avoid interference with other recipe-plugins (now RPR creates posts of type "rpr-recipe" instead of "recipe")
-
-= 0.2 - November 18th, 2012 =
-* Fixed issues #1 and #2 on the RPR bugtracker (http://www.rp-reloaded.net/report-a-bug/)
-
-= 0.1 - November 12th, 2012 =
-* Initial release
-
+== Upgrade Notice ==
+= 0.8.0 =
+Complete recoding of the entire plugin. The code is now modular, easier to maintain and easier to contribute to. As the options backend has changed, a database update is necessary. Please make sure you have a backup of your data!
 
 == Frequently Asked Questions ==
 
-= I've been using RecipePress by grandslambert. How can I migrate?
-Just install RecipePress Reloaded. Deactivate RecipePress and activate RecipePress Reloaded. RecipePress Reloaded will have to upgrade youre database. Pleas MAKE A BACKUP before you proceed.
+= I hit a problem. What to do? =
+Please open a thread in the [support forum](https://wordpress.org/support/plugin/recipepress-reloaded "support forum") or file an issue at [GitHub](https://github.com/dasmaeh/recipepress-reloaded/issues "GitHub").
 
-= I found a bug. What's next? =
-Please open a thread in trhe wordpress.org support area.
+= I need a special feature. Can I pay you to get it? =
+No. I'm not a full or part time developer. I'm working on RecipePress reloaded in my (rare) spare time. It is one of my hobbies. If you need a special feature please write a post at the [support forum](https://wordpress.org/support/plugin/recipepress-reloaded "support forum") or file an issue at [GitHub](https://github.com/dasmaeh/recipepress-reloaded/issues "GitHub").
+As RecipePress reloaded is open source software you are very welcome to fork the project on [GitHub](https://github.com/dasmaeh/recipepress-reloaded GitHub), implement the feature yourself and create a pull request to have it included in the next release.
 
-= Where can I get support? =
-I'm currently building up http://www.rp-reloaded.net/ as the home of RecipePress reloaded. Please be aware that I'm working on this plugin only in my rare spare time and I do it mainly for my own website. I'll do what I can to help you out but it might take some time.
+= I'm not a developer. How can I contribute to the development? =
+Open source software is living from user contributions. Fortunately you don't have to be a developer to help. You can
+ * Help [translating](https://translate.wordpress.org/projects/wp-plugins/recipepress-reloaded) the plugin. It's now easier than ever before on [translate.wordpress.org](https://translate.wordpress.org)
+ * Give [feedback](https://wordpress.org/support/plugin/recipepress-reloaded). This helps me and others a lot to further improve RecipePress reloaded.
+ * Help creating a [user documentation](https://github.com/dasmaeh/recipepress-reloaded/wiki) for RecipePress reloaded.
+ * Spread the word! Tell others about your experiences.
+ * Fork the project on [GitHub](https://github.com/dasmaeh/recipepress-reloaded GitHub) and implement new feature (of course ;) )
 
 == Screenshots ==
 
 1. Simple and clean interface to type your recipes easily.
-2. Sample recipe output. Find more at <a href="http://www.rp-reloaded.net/demo">http://www.rp-reloaded.net/demo</a>
-3. Output is using Schema.org's microformat for recipes to allow Google to create RichSnippets
+2. Sample recipe output. Find more at [http://tech.cbjck.de/category/rp-reloaded/rpr-demo/] (http://tech.cbjck.de/category/rp-reloaded/rpr-demo/) or [http://www.cbjck.de/kochen-de/](http://www.cbjck.de/kochen-de/) (German).
+3. Output is using [schema.org](http://schema.org/Recipe)'s microformat for recipes to allow google and other search engines to create RichSnippets. Decide yourself if you want to use Microdata, RFDa or JSON-LD.
 4. Details of the backend interface (ingredients). Easily add number, unit, ingredient name, comment and link. Ingredients will automatically be created as taxonomy items. You can also group ingredients.
 5. Details of the backend interface (instructions). Add instructions step by step. You can even illustrate each step with a picture. Of course istructions can be grouped as well.
 6. Easily embed recipes into posts or pages using the shortcode button in the editor
+7. Add as many taxonomies as you like through the options page.
