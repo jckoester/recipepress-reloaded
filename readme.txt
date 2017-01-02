@@ -12,11 +12,16 @@ The swiss army knife for your food blog. A tool to add nicely and seo friendly f
 
 == Description ==
 
-RecipePress reloaded is a powerful and very flexible tool to manage your blog's recipe collection. It was designed with the editor in mind and created for easy and fast usage.
+RecipePress reloaded is a powerful and very flexible tool to manage your blog's recipe collection. It was designed with the editor in mind and created for easy 
+and fast usage.
 The basically adds a post type for recipes to your site. You can publish recipes as standalone posts or include in your normal posts and pages.
-Organize your recipes in any way you like. Predefined come categories, cuisines, courses, seasons and difficulties. As creating taxonomies is easy it's up to you which and how many taxonomies you are creating. Use listings embedded in pages to make your recipes accessible by title or taxonomy terms. Or use one of the widgets to create tag clouds or top ten lists.
+Organize your recipes in any way you like. Predefined come categories, cuisines, courses, seasons and difficulties. As creating taxonomies is easy it's up to 
+you which and how many taxonomies you are creating. Use listings embedded in pages to make your recipes accessible by title or taxonomy terms. Or use one of 
+the widgets to create tag clouds or top ten lists.
 Of course you can use all the wordpress goodies you know from posts on recipes as well: images, videos and comments.
-Despite it's simplicity it's giving editors, administrators, designers and developers all the freedom to adapt the plugin to their needs. Features you don't need can be deactivated and are hidden from the ui then. You can even create your own layout files to complete control the looks of recipes. The default ones are SEO friendly, of course.
+Despite it's simplicity it's giving editors, administrators, designers and developers all the freedom to adapt the plugin to their needs. Features you don't 
+need can be deactivated and are hidden from the ui then. You can even create your own layout files to complete control the looks of recipes. The default ones 
+are SEO friendly, of course.
 
 
 = Features =
@@ -52,7 +57,8 @@ For the following languages translations are partly available:
 * Italian
 * Hungarian
 
-Please help [translating](https://translate.wordpress.org/projects/wp-plugins/recipepress-reloaded) the plugin. It's now easier than ever before on [translate.wordpress.org](https://translate.wordpress.org)
+Please help [translating](https://translate.wordpress.org/projects/wp-plugins/recipepress-reloaded) the plugin. It's now easier than ever before on 
+[translate.wordpress.org](https://translate.wordpress.org)
 
 == Installation ==
 
@@ -72,20 +78,26 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
 
 == Upgrade Notice ==
 = 0.8.0 =
-Complete recoding of the entire plugin. The code is now modular, easier to maintain and easier to contribute to. As the options backend has changed, a database update is necessary. Please make sure you have a backup of your data!
+Complete recoding of the entire plugin. The code is now modular, easier to maintain and easier to contribute to. As the options backend has changed, a database 
+update is necessary. Please make sure you have a backup of your data!
 
 == Frequently Asked Questions ==
 
 = I hit a problem. What to do? =
-Please open a thread in the [support forum](https://wordpress.org/support/plugin/recipepress-reloaded "support forum") or file an issue at [GitHub](https://github.com/dasmaeh/recipepress-reloaded/issues "GitHub").
+Please open a thread in the [support forum](https://wordpress.org/support/plugin/recipepress-reloaded "support forum") or file an issue at 
+[GitHub](https://github.com/dasmaeh/recipepress-reloaded/issues "GitHub").
 
 = I need a special feature. Can I pay you to get it? =
-No. I'm not a full or part time developer. I'm working on RecipePress reloaded in my (rare) spare time. It is one of my hobbies. If you need a special feature please write a post at the [support forum](https://wordpress.org/support/plugin/recipepress-reloaded "support forum") or file an issue at [GitHub](https://github.com/dasmaeh/recipepress-reloaded/issues "GitHub").
-As RecipePress reloaded is open source software you are very welcome to fork the project on [GitHub](https://github.com/dasmaeh/recipepress-reloaded GitHub), implement the feature yourself and create a pull request to have it included in the next release.
+No. I'm not a full or part time developer. I'm working on RecipePress reloaded in my (rare) spare time. It is one of my hobbies. If you need a special feature 
+please write a post at the [support forum](https://wordpress.org/support/plugin/recipepress-reloaded "support forum") or file an issue at 
+[GitHub](https://github.com/dasmaeh/recipepress-reloaded/issues "GitHub").
+As RecipePress reloaded is open source software you are very welcome to fork the project on [GitHub](https://github.com/dasmaeh/recipepress-reloaded GitHub), 
+implement the feature yourself and create a pull request to have it included in the next release.
 
 = I'm not a developer. How can I contribute to the development? =
 Open source software is living from user contributions. Fortunately you don't have to be a developer to help. You can
- * Help [translating](https://translate.wordpress.org/projects/wp-plugins/recipepress-reloaded) the plugin. It's now easier than ever before on [translate.wordpress.org](https://translate.wordpress.org)
+ * Help [translating](https://translate.wordpress.org/projects/wp-plugins/recipepress-reloaded) the plugin. It's now easier than ever before on 
+[translate.wordpress.org](https://translate.wordpress.org)
  * Give [feedback](https://wordpress.org/support/plugin/recipepress-reloaded). This helps me and others a lot to further improve RecipePress reloaded.
  * Help creating a [user documentation](https://github.com/dasmaeh/recipepress-reloaded/wiki) for RecipePress reloaded.
  * Spread the word! Tell others about your experiences.
@@ -94,9 +106,13 @@ Open source software is living from user contributions. Fortunately you don't ha
 == Screenshots ==
 
 1. Simple and clean interface to type your recipes easily.
-2. Sample recipe output. Find more at [http://tech.cbjck.de/category/rp-reloaded/rpr-demo/] (http://tech.cbjck.de/category/rp-reloaded/rpr-demo/) or [http://www.cbjck.de/kochen-de/](http://www.cbjck.de/kochen-de/) (German).
-3. Output is using [schema.org](http://schema.org/Recipe)'s microformat for recipes to allow google and other search engines to create RichSnippets. Decide yourself if you want to use Microdata, RFDa or JSON-LD.
-4. Details of the backend interface (ingredients). Easily add number, unit, ingredient name, comment and link. Ingredients will automatically be created as taxonomy items. You can also group ingredients.
-5. Details of the backend interface (instructions). Add instructions step by step. You can even illustrate each step with a picture. Of course istructions can be grouped as well.
+2. Sample recipe output. Find more at [http://tech.cbjck.de/category/rp-reloaded/rpr-demo/] (http://tech.cbjck.de/category/rp-reloaded/rpr-demo/) or 
+[http://www.cbjck.de/kochen-de/](http://www.cbjck.de/kochen-de/) (German).
+3. Output is using [schema.org](http://schema.org/Recipe)'s microformat for recipes to allow google and other search engines to create RichSnippets. Decide 
+yourself if you want to use Microdata, RFDa or JSON-LD.
+4. Details of the backend interface (ingredients). Easily add number, unit, ingredient name, comment and link. Ingredients will automatically be created as 
+taxonomy items. You can also group ingredients.
+5. Details of the backend interface (instructions). Add instructions step by step. You can even illustrate each step with a picture. Of course istructions can 
+be grouped as well.
 6. Easily embed recipes into posts or pages using the shortcode button in the editor
 7. Add as many taxonomies as you like through the options page.
