@@ -377,9 +377,9 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			$out .= '{';
 			$out .= '"@context": "http://schema.org",';
 			$out .= '"@type": "Recipe",';
-			$out .= 'name: "' . get_the_title( $recipe_id ) . '",';
-			$out .= 'author: "' . get_the_author() . '",';
-			$out .= 'datePublished: "' . get_the_time( 'Y-m-d' ) . '",';
+			$out .= '"name": "' . get_the_title( $recipe_id ) . '",';
+			$out .= '"author": "' . get_the_author() . '",';
+			$out .= '"datePublished": "' . get_the_time( 'Y-m-d' ) . '",';
 			// Number of comments
 			if( get_comments_number() > 0 ){
 				$out .= '"interactionStatistic": {';
@@ -398,7 +398,9 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			}
 			// Description
 			if( isset( $recipe['rpr_recipe_description'][0] ) ){
-				$out .= '"description": "' . esc_html( $recipe['rpr_recipe_description'][0] ) . '",';
+				$description = strip_tags($recipe['rpr_recipe_description'][0]);
+				$description = preg_replace("/\s+/", " ", $description);
+				$out .= '"description": "' . esc_html( $description ) . '",';
 			}
 			// Ingredients
 			if( isset( $recipe['rpr_recipe_ingredients'][0] ) && count( $recipe['rpr_recipe_ingredients'][0] ) > 0 ) {
@@ -413,14 +415,15 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 							$term = get_term_by( 'name', $ingredient['ingredient'], 'rpr_ingredient' );
 						}
 
-						$out.= '"' . esc_html( $ingredient['amount'] ) . ' ' . esc_html( $ingredient['unit'] ) . ' ' . $term->name;
+						$out .= '"' . esc_html( $ingredient['amount'] ) . ' ' . esc_html( $ingredient['unit'] ) . ' ' . $term->name;
 						if( isset( $ingredient['notes'] ) && $ingredient['notes'] != '' ){
-							$out.= ', ' . esc_html( $ingredient['notes'] );
+							$out .= ', ' . esc_html( $ingredient['notes'] );
 						}
 						$out .= '",';
 					}
 				}
-				$out .='],';
+				$out = rtrim($out, ",");
+				$out .='], ';
 			}
 			// Instructions
 			if( isset( $recipe['rpr_recipe_instructions'][0] ) && count( $recipe['rpr_recipe_instructions'][0] ) > 0 ) {
@@ -498,6 +501,7 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			if(  $recipe['rpr_recipe_prep_time'][0] + $recipe['rpr_recipe_cook_time'][0] +  $recipe['rpr_recipe_passive_time'][0]  > 0 ) {
 				$out .= '"totalTime": "' . rpr_format_time_xml( $recipe['rpr_recipe_prep_time'][0] + $recipe['rpr_recipe_cook_time'][0] + $recipe['rpr_recipe_passive_time'][0] ) . '",';
 			}
+			$out = rtrim($out, ",");
 			$out .= '}';
 			$out .= '</script>';
 		}
