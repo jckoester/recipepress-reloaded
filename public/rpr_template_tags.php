@@ -862,25 +862,24 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			/**
 			 * Set no link
 			 */
-			$closing_tag = '&nbsp;';
+			$closing_tag = ' ';
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'link_target' ), 2 ) == 1 ){
 			/**
 			 * Set link to archive
 			 */
-			$out .= '<a href="' . get_term_link( $term->slug, 'rpr_ingredient' ) . '">';
-			$closing_tag = '</a>&nbsp;';
+			$out .= '<a Bar href="' . get_term_link( $term->slug, 'rpr_ingredient' ) . '">';
+			$closing_tag = '</a>';
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'link_target' ), 2 ) == 2 ){
 			/**
 			 * Set custom link if available, link to archive if not
 			 */
 			if( isset( $ingredient['link'] ) ){
-				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
+				$out .= '<a Foo href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
 				$closing_tag = '</a>';
 			} else {
-				$out .= '<a href="' . get_term_link( $term->slug, 'rpr_ingredient' ) . '">';
+				$out .= '<a Baz href="' . get_term_link( $term->slug, 'rpr_ingredient' ) . '">';
 			}
-			
-			$closing_tag ='</a>&nbsp;';
+			$closing_tag ='</a>';
 		} else{ 
 			/**
 			 * Set custom link if available, no link if not
@@ -889,10 +888,10 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
 				$closing_tag = '</a>';
 			} else {
-				$closing_tag = '&nbsp;';
+				$closing_tag = ' ';
 			}
 		}
-		
+
 		/**
 		 * Render the ingredient name
 		 */
@@ -913,8 +912,8 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 //		}
 
 		$out .= '<span name="rpr-ingredient-name" >' . $term->name . '</span>';
-		
-		$out .= "";
+
+		$out .= $closing_tag;
 	
 		/**
 		 * Render the ingredient note
