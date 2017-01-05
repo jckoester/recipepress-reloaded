@@ -142,6 +142,13 @@ class RPR_Options_Page_Taxonomies_Builtin {
                         1 => __('Brackets: 1 egg (preferrably free-range or organic)', 'recipepress-reloaded'),
                         2 => __('Comma: 1 egg, referrably free-range or organic', 'recipepress-reloaded'),
                     )
+                ),
+                array(
+                    'field_id'          => 'auto_plural',
+                    'type'              => 'checkbox',
+                    'default'           => 0,
+                    'title'             => __( 'Automatic pluralization', 'recipepress-reloaded' ),
+                    'tip'               => __( 'Automatically create ingredient plurals if more than one is used. If active entering "2 onion" will be rendered as "2 onion<b>s</></br>This only can handle regular plurals. For irregular plurals please enter the correct plural on the ingredients page.', 'recipepress-reloaded' ),
                 )
             );      
         
