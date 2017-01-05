@@ -190,7 +190,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
 		/*
 		 *  Only display the term list if we have terms assigned to the recipe:
 		 */
-		if( $terms) {
+		if( $terms && ! is_wp_error( $terms) ) {
 				$out .= sprintf(
                     '<span %1s class="term-list">%2s%3s</span>',
 					$struct,
