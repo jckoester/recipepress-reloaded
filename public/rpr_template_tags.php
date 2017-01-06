@@ -439,12 +439,12 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			}
 			// Metadata like servings, nutrtion, ...
 			if( isset( $recipe['rpr_recipe_servings'][0] ) ){
-				$out .= '"recipeYield": "' . esc_html( $recipe['rpr_recipe_servings'][0] ) . '&nbsp;' . esc_html( $recipe['rpr_recipe_servings_type'][0] ) . '",';
+				$out .= '"recipeYield": "' . esc_html( $recipe['rpr_recipe_servings'][0] ) . ' ' . esc_html( $recipe['rpr_recipe_servings_type'][0] ) . '",';
 			}
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data' ), false ) === true &&
+			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data' ), false ) == true &&
 			( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) >= 0 ) {
 				$out .= '"nutrition": {';
-				$out .= '"@type": "NutritionInformation"';
+				$out .= '"@type": "NutritionInformation",';
 				
 				if( isset( $recipe['rpr_recipe_calorific_value'][0] ) ){
 					$out .= '"calories": "' . esc_html( $recipe['rpr_recipe_calorific_value'][0] ) . '",';
@@ -479,6 +479,7 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 				if( isset( $recipe['rpr_recipe_unsaturatedFat'][0] ) ){
 					$out .= '"unsaturatedFatContent": "' . esc_html( $recipe['rpr_recipe_unsaturatedFat'][0] ) . '",';
 				}
+				$out = rtrim($out, ",");
 				$out .= '},';
 			}
 			// Times
@@ -885,7 +886,7 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			 * Set custom link if available, no link if not
 			 */
 			if( isset( $ingredient['link'] ) ){
-				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
+				$out .= '<a Rar href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
 				$closing_tag = '</a>';
 			} else {
 				$closing_tag = ' ';
