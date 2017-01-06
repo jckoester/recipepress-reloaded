@@ -869,7 +869,7 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			/**
 			 * Set custom link if available, link to archive if not
 			 */
-			if( isset( $ingredient['link'] ) ){
+			if( isset( $ingredient['link'] ) && $ingredient['link'] != '' ){
 				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
 				$closing_tag = '</a>';
 			} else {
@@ -881,7 +881,7 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			/**
 			 * Set custom link if available, no link if not
 			 */
-			if( isset( $ingredient['link'] ) ){
+			if( isset( $ingredient['link'] ) && $ingredient['link'] != '' ){
 				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
 				$closing_tag = '</a>';
 			} else {
