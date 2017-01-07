@@ -849,12 +849,12 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 		/**
 		 * Render amount
 		 */
-		$out .= '<span class="recipe-ingredient-quantity">' . esc_html( $ingredient['amount'] ) . '</span>&nbsp;';
+		$out .= '<span class="recipe-ingredient-quantity">' . esc_html( $ingredient['amount'] ) . ' </span>';
 		
 		/**
 		 * Render the unit
 		 */
-		$out .= '<span class="recipe-ingredient-unit">' . esc_html( $ingredient['unit'] ) . '</span>&nbsp;';
+		$out .= '<span class="recipe-ingredient-unit">' . esc_html( $ingredient['unit'] ) . ' </span>';
 	
 		/**
 		 * Render the ingredient link according to the settings
@@ -863,56 +863,57 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			/**
 			 * Set no link
 			 */
-			$closing_tag = '&nbsp;';
+			$closing_tag = ' ';
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'link_target' ), 2 ) == 1 ){
 			/**
 			 * Set link to archive
 			 */
 			$out .= '<a href="' . get_term_link( $term->slug, 'rpr_ingredient' ) . '">';
-			$closing_tag = '</a>&nbsp;';
+			$closing_tag = '</a>';
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'link_target' ), 2 ) == 2 ){
 			/**
 			 * Set custom link if available, link to archive if not
 			 */
-			if( isset( $ingredient['link'] ) ){
+			if( isset( $ingredient['link'] ) && $ingredient['link'] != '' ){
 				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
 				$closing_tag = '</a>';
 			} else {
 				$out .= '<a href="' . get_term_link( $term->slug, 'rpr_ingredient' ) . '">';
 			}
-			
-			$closing_tag ='</a>&nbsp;';
+			$closing_tag ='</a>';
 		} else{ 
 			/**
 			 * Set custom link if available, no link if not
 			 */
-			if( isset( $ingredient['link'] ) ){
-				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
+			if( isset( $ingredient['link'] ) && $ingredient['link'] != '' ){
+				$out .= '<a Rar href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
 				$closing_tag = '</a>';
 			} else {
-				$closing_tag = '&nbsp;';
+				$closing_tag = ' ';
 			}
 		}
-		
+
 		/**
 		 * Render the ingredient name
 		 */
-		if( isset( $ingredient['amount'] ) && $ingredient['amount'] > 1 ){
-			/**
-			 * Use plural if amount > 1
-			 */
-			if( get_term_meta( $term->term_id, 'plural', true ) != '' ){
-				$out .= '<span name="rpr-ingredient-name" >' . esc_html( get_term_meta( $term->term_id, 'plural', true ) ) . '</span>';
-			} else {
-				$out .= '<span name="rpr-ingredient-name" >' . $term->name . __( 's', 'recipepress-reloaded' ) . '</span>';
-			}
-		} else {
-			/**
-			 * Use singular
-			 */
-			$out .= '<span name="rpr-ingredient-name" >' . $term->name . '</span>';
-		}
-		
+//		if( isset( $ingredient['amount'] ) && $ingredient['amount'] > 1 ){
+//			/**
+//			 * Use plural if amount > 1
+//			 */
+//			if( get_term_meta( $term->term_id, 'plural', true ) != '' ){
+//				$out .= '<span name="rpr-ingredient-name" >' . esc_html( get_term_meta( $term->term_id, 'plural', true ) ) . '</span>';
+//			} else {
+//				$out .= '<span name="rpr-ingredient-name" >' . $term->name . __( 's', 'recipepress-reloaded' ) . '</span>';
+//			}
+//		} else {
+//			/**
+//			 * Use singular
+//			 */
+//			$out .= '<span name="rpr-ingredient-name" >' . $term->name . '</span>';
+//		}
+
+		$out .= '<span name="rpr-ingredient-name" >' . $term->name . '</span>';
+
 		$out .= $closing_tag;
 	
 		/**
@@ -927,21 +928,22 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 				/**
 				 * No separator
 				 */
+				$out .= ' ';
 				$closing_tag = '';
 			} elseif (AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'comment_sep' ), 0 ) == 1 ) {
 				/**
 				 * Brackets
 				 */
-				$out .= __( '(', 'reciperess-reloaded' );
+				$out .= __( ' (', 'reciperess-reloaded' );
 				$closing_tag = __( ')', 'recipepress-reloaded' );
 			} else {
 				/**
 				 * comma
 				 */
-				$out .= __( ',', 'recipepress-reloaded' );
+				$out .= __( ', ', 'recipepress-reloaded' );
 				$closing_tag = '';
 			}
-			$out .= '&nbsp;' .  esc_html( $ingredient['notes'] ) . $closing_tag . '</span>';
+			$out .= esc_html( $ingredient['notes'] ) . $closing_tag . '</span>';
 			
 		}
 		
