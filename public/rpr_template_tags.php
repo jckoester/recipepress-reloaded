@@ -190,7 +190,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
 		/*
 		 *  Only display the term list if we have terms assigned to the recipe:
 		 */
-		if( $terms) {
+		if( $terms && ! is_wp_error( $terms) ) {
 				$out .= sprintf(
                     '<span %1s class="term-list">%2s%3s</span>',
 					$struct,
@@ -874,7 +874,7 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			/**
 			 * Set custom link if available, link to archive if not
 			 */
-			if( isset( $ingredient['link'] ) ){
+			if( isset( $ingredient['link'] ) && $ingredient['link'] != '' ){
 				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
 				$closing_tag = '</a>';
 			} else {
@@ -886,7 +886,7 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			/**
 			 * Set custom link if available, no link if not
 			 */
-			if( isset( $ingredient['link'] ) ){
+			if( isset( $ingredient['link'] ) && $ingredient['link'] != '' ){
 				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
 				$closing_tag = '</a>';
 			} else {
@@ -897,7 +897,7 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 		/**
 		 * Render the ingredient name
 		 */
-		if( isset( $ingredient['amount'] ) && $ingredient['amount'] > 1 ){
+		if( isset( $ingredient['amount'] ) && $ingredient['amount'] > 1  && $ingredient['unit'] === '' && AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'auto_plural' ), 1 )){
 			/**
 			 * Use plural if amount > 1
 			 */
