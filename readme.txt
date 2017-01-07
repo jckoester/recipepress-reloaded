@@ -68,6 +68,9 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
 
 == Changelog ==
 
+= 0.8.1 =
+ * Fixing several bugs.
+
 = 0.8.0 =
 
  * Complete recoding of the entire plugin. The code is now modular, easier to maintain and easier to contribute to.
@@ -77,6 +80,8 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
  * Improved recipe editor
 
 == Upgrade Notice ==
+= 0.8.1 =
+Bugfix release
 = 0.8.0 =
 Complete recoding of the entire plugin. The code is now modular, easier to maintain and easier to contribute to. As the options backend has changed, a database 
 update is necessary. Please make sure you have a backup of your data!
