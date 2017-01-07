@@ -897,7 +897,7 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 		/**
 		 * Render the ingredient name
 		 */
-		if( isset( $ingredient['amount'] ) && $ingredient['amount'] > 1  && $ingredient['unit'] === '' && AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'auto_plural' ), 1 )){
+		if( isset( $ingredient['amount'] ) && $ingredient['amount'] > 1  && $ingredient['unit'] === '' && AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'auto_plural' ), 0 )){
 			/**
 			 * Use plural if amount > 1
 			 */
