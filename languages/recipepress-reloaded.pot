@@ -1,8 +1,9 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: RecipePress reloaded\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-31 10:56+0100\n"
+"POT-Creation-Date: 2017-01-07 17:38+0100\n"
 "PO-Revision-Date: 2016-12-31 10:57+0100\n"
 "Last-Translator: Jan Köster <jan.koester@cbjck.de>\n"
 "Language-Team: dasmaeh@cbjck.de\n"
@@ -19,7 +20,7 @@ msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:66
 msgid "Welcome to RecipePress reloaded."
-msgstr "Willkommen bei RecipePress reloaded."
+msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:68
 #, php-format
@@ -30,169 +31,163 @@ msgid ""
 "don't hesitate to ask for help at the <a href=\"%2$s\" target=\"_blank"
 "\">support forum.</a>"
 msgstr ""
-"Es scheint das erste Mal zu sein, dass Sie dieses Plugin verwenden. Werfen "
-"Sie einen Blick in die <a href=\"%1$s\" target=\"_blank\">Dokumentation</a> "
-"(derzeit noch im Aufbau) um einige Anregungen zu erhalten, wie Sie dieses "
-"Plugin verwenden können. Wenn SIe auf ein Problem stoßen, zögern Sie bitte "
-"nicht, im <a href=\"%2$s\" target=\"_blank\">Supportforum</a> um Hilfe zu "
-"bitten."
 
 #: ../admin/class-rpr-admin-demo.php:69
 msgid "Dismiss"
-msgstr "Ausblenden"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:118
+#: ../admin/class-rpr-admin-demo.php:124
 #: ../admin/views/rpr-metabox-nutrition.php:54
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:66
 msgid "recipe"
-msgstr "Rezept"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:122 ../admin/class-rpr-admin-demo.php:123
+#: ../admin/class-rpr-admin-demo.php:128 ../admin/class-rpr-admin-demo.php:129
 msgid "Course"
-msgstr "Gang"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:124
+#: ../admin/class-rpr-admin-demo.php:130
 msgid "Courses"
-msgstr "Gänge"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:128
+#: ../admin/class-rpr-admin-demo.php:134
 msgid "course"
-msgstr "Gang"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:131 ../admin/class-rpr-admin-demo.php:132
+#: ../admin/class-rpr-admin-demo.php:137 ../admin/class-rpr-admin-demo.php:138
 msgid "Cuisine"
-msgstr "Küche"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:133
+#: ../admin/class-rpr-admin-demo.php:139
 msgid "Cuisines"
-msgstr "Küchen"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:137
+#: ../admin/class-rpr-admin-demo.php:143
 msgid "cuisine"
-msgstr "Landesküche"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:140 ../admin/class-rpr-admin-demo.php:141
-#: ../admin/class-rpr-admin-migration.php:347
+#: ../admin/class-rpr-admin-demo.php:146 ../admin/class-rpr-admin-demo.php:147
+#: ../admin/class-rpr-admin-migration.php:358
 msgid "Season"
-msgstr "Saison"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:142
-#: ../admin/class-rpr-admin-migration.php:347
+#: ../admin/class-rpr-admin-demo.php:148
+#: ../admin/class-rpr-admin-migration.php:358
 msgid "Seasons"
-msgstr "Saisons"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:146
+#: ../admin/class-rpr-admin-demo.php:152
 msgid "season"
-msgstr "Saison"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:149 ../admin/class-rpr-admin-demo.php:150
-#: ../admin/class-rpr-admin-migration.php:348
+#: ../admin/class-rpr-admin-demo.php:155 ../admin/class-rpr-admin-demo.php:156
+#: ../admin/class-rpr-admin-migration.php:359
 msgid "Difficulty"
-msgstr "Schwierigkeit"
+msgstr ""
 
-#: ../admin/class-rpr-admin-demo.php:151
-#: ../admin/class-rpr-admin-migration.php:348
+#: ../admin/class-rpr-admin-demo.php:157
+#: ../admin/class-rpr-admin-migration.php:359
 msgid "Difficulties"
-msgstr "Schwierigkeitsstufen"
-
-#: ../admin/class-rpr-admin-demo.php:155
-msgid "difficulty"
-msgstr "Schwierigkeit"
-
-#: ../admin/class-rpr-admin-demo.php:160
-msgid "cup"
-msgstr "Tasse"
+msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:161
-msgid "bottle"
-msgstr "Flasche"
-
-#: ../admin/class-rpr-admin-demo.php:162
-msgid "can"
-msgstr "Dose"
-
-#: ../admin/class-rpr-admin-demo.php:163
-msgid "jar"
-msgstr "Glas"
-
-#: ../admin/class-rpr-admin-demo.php:164
-msgid "mL"
-msgstr "mL"
-
-#: ../admin/class-rpr-admin-demo.php:165
-msgid "L"
-msgstr "L"
+msgid "difficulty"
+msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:166
-msgid "g"
-msgstr "g"
+msgid "cup"
+msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:167
-msgid "kg"
-msgstr "kg"
+msgid "bottle"
+msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:168
-msgid "dash"
-msgstr "Prise"
+msgid "can"
+msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:169
-msgid "tsp."
-msgstr "TL"
+msgid "jar"
+msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:170
-msgid "tbsp."
-msgstr "EL"
+msgid "mL"
+msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:171
-msgid "some"
-msgstr "etwas"
+msgid "L"
+msgstr ""
+
+#: ../admin/class-rpr-admin-demo.php:172
+msgid "g"
+msgstr ""
+
+#: ../admin/class-rpr-admin-demo.php:173
+msgid "kg"
+msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:174
-msgid "servings"
-msgstr "Portionen"
+msgid "dash"
+msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:175
-msgid "liter"
-msgstr "Liter"
+msgid "tsp."
+msgstr ""
 
 #: ../admin/class-rpr-admin-demo.php:176
+msgid "tbsp."
+msgstr ""
+
+#: ../admin/class-rpr-admin-demo.php:177
+msgid "some"
+msgstr ""
+
+#: ../admin/class-rpr-admin-demo.php:180
+msgid "servings"
+msgstr ""
+
+#: ../admin/class-rpr-admin-demo.php:181
+msgid "liter"
+msgstr ""
+
+#: ../admin/class-rpr-admin-demo.php:182
 msgid "pieces"
-msgstr "Stück"
+msgstr ""
 
 #: ../admin/class-rpr-admin-generalmeta.php:49
 msgid "Post image"
-msgstr "Beitragsbild"
+msgstr ""
 
 #: ../admin/class-rpr-admin-generalmeta.php:63
 msgid "General information"
-msgstr "Allgemeine Informationen"
+msgstr ""
 
 #: ../admin/class-rpr-admin-generalmeta.php:84
 #: ../admin/views/rpr-metabox-instructions.php:24
 msgid "Description"
-msgstr "Beschreibung"
+msgstr ""
 
 #: ../admin/class-rpr-admin-generalmeta.php:111
 #: ../public/rpr_template_tags.php:1313
 msgid "Notes"
-msgstr "Notizen"
+msgstr ""
 
 #: ../admin/class-rpr-admin-ingredients.php:54
-#: ../admin/class-rpr-admin-migration.php:589
-#: ../admin/class-rpr-admin-migration.php:593
+#: ../admin/class-rpr-admin-migration.php:600
+#: ../admin/class-rpr-admin-migration.php:604
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:56
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:105
-#: ../public/class-rpr-recipeposttype.php:110
+#: ../public/class-rpr-recipeposttype.php:111
 #: ../public/rpr_template_tags.php:655
 msgid "Ingredients"
-msgstr "Zutaten"
+msgstr ""
 
 #: ../admin/class-rpr-admin-instructions.php:51
 #: ../public/rpr_template_tags.php:1010
 msgid "Instructions"
-msgstr "Zubereitung"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:84
+#: ../admin/class-rpr-admin-migration.php:89
 #, php-format
 msgid ""
 "%1s You are upgrading from an old version of RecipePress reloaded. A "
@@ -202,169 +197,159 @@ msgid ""
 "forum</a> or file an issue at <a href=\"%3s\" target=\"_blank\">github</a>."
 "<br/>"
 msgstr ""
-"%1s Sie aktualisieren von einer alten Version von RecipePress reloaded. Es "
-"gibt zwar eine Aktualisierungfunktion für Ihre Daten, allerdings können wir "
-"nicht garantieren, dass alles klappt. Stellen Sie bitte sicher, dass Sie "
-"über ein Backup ihrer Daten verfügen, das Sie im Notfall wiederherstellen "
-"können.<br/>\n"
-"Sollte es Probleme geben, erstellen Sie bitte eine Fehlermeldung im <a href="
-"\"%2s\" target=\"_blank\">Support-Forum</a> oder auf <a href=\"%3s\" target="
-"\"_blank\">github</a>.<br/>"
 
-#: ../admin/class-rpr-admin-migration.php:86
+#: ../admin/class-rpr-admin-migration.php:91
 #, php-format
 msgid ""
 "The Recipe Press Reloaded database needs to upgraded. Make sure you have a "
 "backup before you proceed. | <a href=\"%1$s\">Proceed</a>"
 msgstr ""
-"Die RecipePress Reloaded Datenbank muss aktualisiert werden. Machen Sie ein "
-"Backup Ihrer Daten, bevor Sie fortfahren | <a href=\"%1$s\">Aktualisieren</a>"
 
-#: ../admin/class-rpr-admin-migration.php:361
+#: ../admin/class-rpr-admin-migration.php:372
 #: ../admin/views/rpr-modal-recipe.php:28
 msgid "Search"
-msgstr "Suchen"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:362
+#: ../admin/class-rpr-admin-migration.php:373
 msgid "Popular"
-msgstr "Beliebt"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:363
+#: ../admin/class-rpr-admin-migration.php:374
 msgid "All"
-msgstr "Alle"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:364
+#: ../admin/class-rpr-admin-migration.php:375
 #: ../public/class-rpr-recipeposttype.php:78
 msgid "Edit"
-msgstr "Bearbeiten"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:365
+#: ../admin/class-rpr-admin-migration.php:376
 msgid "Update"
-msgstr "Aktualisierung"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:366
+#: ../admin/class-rpr-admin-migration.php:377
 msgid "Add New"
-msgstr "Erstellen"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:367
+#: ../admin/class-rpr-admin-migration.php:378
 msgid "New"
-msgstr "Erstellen"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:367
+#: ../admin/class-rpr-admin-migration.php:378
 #: ../widgets/class-rpr-widget-taxonomy-list.php:203
 msgid "Name"
-msgstr "Name"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:368
+#: ../admin/class-rpr-admin-migration.php:379
 msgid "Separate"
-msgstr "Trenne"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:368
+#: ../admin/class-rpr-admin-migration.php:379
 msgid "with commas"
-msgstr "mit Kommata"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:369
+#: ../admin/class-rpr-admin-migration.php:380
 msgid "Add or remove"
-msgstr "hinzufügen oder löschen"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:370
+#: ../admin/class-rpr-admin-migration.php:381
 msgid "Choose from the most used"
-msgstr "Wähle aus den häufig genutzten"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:371
+#: ../admin/class-rpr-admin-migration.php:382
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:120
 msgid "No"
-msgstr "Nein"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:371
+#: ../admin/class-rpr-admin-migration.php:382
 msgid "found."
-msgstr "gefunden."
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:567
+#: ../admin/class-rpr-admin-migration.php:578
 msgid "recipes"
-msgstr "Rezepte"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:611
-#: ../admin/class-rpr-admin-migration.php:620
+#: ../admin/class-rpr-admin-migration.php:622
+#: ../admin/class-rpr-admin-migration.php:631
 msgid "size"
-msgstr "Größe"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:612
-#: ../admin/class-rpr-admin-migration.php:621
+#: ../admin/class-rpr-admin-migration.php:623
+#: ../admin/class-rpr-admin-migration.php:632
 msgid "sizes"
-msgstr "Größen"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:839
+#: ../admin/class-rpr-admin-migration.php:850
 #, php-format
 msgid "Search %s"
-msgstr "Suche %s"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:840
+#: ../admin/class-rpr-admin-migration.php:851
 #, php-format
 msgid "Popular %s"
-msgstr "Beliebte %s"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:841
+#: ../admin/class-rpr-admin-migration.php:852
 #, php-format
 msgid "All %s"
-msgstr "Alle %s"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:842
+#: ../admin/class-rpr-admin-migration.php:853
 #, php-format
 msgid "Edit %s"
-msgstr "%s bearbeiten"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:843
+#: ../admin/class-rpr-admin-migration.php:854
 #, php-format
 msgid "Update %s"
-msgstr "%s aktualisieren"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:844
-#: ../public/class-rpr-recipeposttype.php:112
-#: ../public/class-rpr-recipeposttype.php:162
+#: ../admin/class-rpr-admin-migration.php:855
+#: ../public/class-rpr-recipeposttype.php:113
+#: ../public/class-rpr-recipeposttype.php:163
 #, php-format
 msgid "Add New %s"
-msgstr "Neue %s hinzufügen"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:845
+#: ../admin/class-rpr-admin-migration.php:856
 #, php-format
 msgid "New %s Name"
-msgstr "Neue/r/s %s Name"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:846
+#: ../admin/class-rpr-admin-migration.php:857
 #, php-format
 msgid "Separate %s with commas"
-msgstr "Trenne %s mit Kommata"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:847
+#: ../admin/class-rpr-admin-migration.php:858
 #, php-format
 msgid "Add or remove %s"
-msgstr "%s hinzufügen oder löschen"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:848
+#: ../admin/class-rpr-admin-migration.php:859
 #, php-format
 msgid "Choose from the most used %s"
-msgstr "Wähle aus den häufig genutzten %s"
+msgstr ""
 
-#: ../admin/class-rpr-admin-migration.php:849
+#: ../admin/class-rpr-admin-migration.php:860
 #, php-format
 msgid "No %s found."
-msgstr "Keine %s gefunden"
+msgstr ""
 
 #: ../admin/class-rpr-admin-nutrition.php:52
 msgid "Nutritional information"
-msgstr "Nährwerte"
+msgstr ""
 
 #: ../admin/class-rpr-admin-shortcodes.php:94
 #: ../admin/class-rpr-admin-shortcodes.php:185
 msgid "No title"
-msgstr "Kein Titel"
+msgstr ""
 
 #: ../admin/class-rpr-admin-shortcodes.php:95
 #: ../admin/class-rpr-admin-shortcodes.php:186
 #: ../public/class-rpr-recipeposttype.php:75
 msgid "Recipe"
-msgstr "Rezept"
+msgstr ""
 
 #: ../admin/class-rpr-admin-shortcodes.php:96
 #: ../admin/class-rpr-admin-shortcodes.php:97
@@ -372,69 +357,69 @@ msgstr "Rezept"
 #: ../admin/class-rpr-admin-shortcodes.php:188
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:101
 msgid "Insert"
-msgstr "Einfügen"
+msgstr ""
 
 #: ../admin/class-rpr-admin.php:164
 msgid "Insert instruction image"
-msgstr "Zubereitungs-Bild einfügen"
+msgstr ""
 
 #: ../admin/class-rpr-admin.php:165
 msgid "Insert image"
-msgstr "Bild einfügen"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-details.php:34
 msgid "Servings / yield"
-msgstr "Portionsgröße"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-details.php:43
 msgid "Portions"
-msgstr "Portionen"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-details.php:46
 msgid "(e.g. 2 people, 3 loafs, ...)"
-msgstr "(z.B: 2 Personen, 3 Laibe, 26 cm Springform)"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-details.php:50
 msgid "Prep Time"
-msgstr "Vorbereitungszeit"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-details.php:52
 #: ../admin/views/rpr-metabox-details.php:57
 #: ../admin/views/rpr-metabox-details.php:62
 msgid "min."
-msgstr "min."
+msgstr ""
 
 #: ../admin/views/rpr-metabox-details.php:55
 msgid "Cook Time"
-msgstr "Kochzeit"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-details.php:60
 msgid "Passive Time"
-msgstr "Wartezeit"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:38
 msgid "Amount"
-msgstr "Menge"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:39
 msgid "Unit"
-msgstr "Einheit"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:40
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:98
 msgid "Ingredient"
-msgstr "Zutat"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:41
 msgid "Note"
-msgstr "Notiz"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:58
 #: ../admin/views/rpr-metabox-ingredients.php:91
 #: ../admin/views/rpr-metabox-instructions.php:37
 #: ../admin/views/rpr-metabox-instructions.php:67
 msgid "Group"
-msgstr "Gruppe"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:64
 #: ../admin/views/rpr-metabox-ingredients.php:97
@@ -445,7 +430,7 @@ msgstr "Gruppe"
 #: ../admin/views/rpr-metabox-instructions.php:104
 #: ../admin/views/rpr-metabox-instructions.php:132
 msgid "Remove row"
-msgstr "Zeile entfernen"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:65
 #: ../admin/views/rpr-metabox-ingredients.php:98
@@ -456,137 +441,135 @@ msgstr "Zeile entfernen"
 #: ../admin/views/rpr-metabox-instructions.php:105
 #: ../admin/views/rpr-metabox-instructions.php:133
 msgid "Add row"
-msgstr "Zeilen hinzufügen"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:142
 #: ../admin/views/rpr-metabox-ingredients.php:143
 #: ../admin/views/rpr-metabox-ingredients.php:186
 #: ../admin/views/rpr-metabox-ingredients.php:187
 msgid "Add custom link"
-msgstr "Benutzerdefinierten Link hinzufügen"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:175
 msgid "1 tsp"
-msgstr "1 TL"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:179
 msgid "olive oil"
-msgstr "Olivenöl"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:182
 msgid "extra virgin"
-msgstr "extra virgine"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:198
 #: ../admin/views/rpr-metabox-instructions.php:141
 msgid "+ Add in Bulk"
-msgstr "+ Stapel hinzufügen"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:201
 msgid "Add an ingredient"
-msgstr "Zutat hinzufügen"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-ingredients.php:205
 #: ../admin/views/rpr-metabox-instructions.php:148
 msgid "Add a group"
-msgstr "Gruppe hinzufügen"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-instructions.php:25
 msgid "Image"
-msgstr "Bild"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-instructions.php:144
 msgid "Add an instruction"
-msgstr "Zubereitungsschritt hinzufügen"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-nutrition.php:26
 msgid "Calorific value"
-msgstr "Brennwert"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-nutrition.php:34
 msgid "Protein"
-msgstr "Eiweiß"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-nutrition.php:39
 msgid "Fat"
-msgstr "Fett"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-nutrition.php:44
 msgid "Carbohydrate"
-msgstr "Kohlenhydrate"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-nutrition.php:50
 msgid "Per"
-msgstr "Pro"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-nutrition.php:52
 msgid "100g"
-msgstr "100g"
+msgstr ""
 
 #: ../admin/views/rpr-metabox-nutrition.php:53
 msgid "portion"
-msgstr "Portion"
+msgstr ""
 
 #: ../admin/views/rpr-modal-listings.php:17
 msgid "Insert recipe listing"
-msgstr "Rezept-Liste einfügen"
+msgstr ""
 
 #: ../admin/views/rpr-modal-listings.php:18
 #: ../admin/views/rpr-modal-recipe.php:18
 msgid "Close"
-msgstr "Schließen"
+msgstr ""
 
 #: ../admin/views/rpr-modal-listings.php:24
 msgid "Embed taxonomy index"
-msgstr "Taxonomie-Index einbetten"
+msgstr ""
 
 #: ../admin/views/rpr-modal-listings.php:26
 msgid "Taxonomy"
-msgstr "Taxonomie"
+msgstr ""
 
 #: ../admin/views/rpr-modal-listings.php:62
 msgid "Embed recipe index"
-msgstr "Rezept-Index einbetten"
+msgstr ""
 
 #: ../admin/views/rpr-modal-listings.php:68
 #: ../admin/views/rpr-modal-recipe.php:78
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr ""
 
 #: ../admin/views/rpr-modal-recipe.php:17
 msgid "Insert recipe"
-msgstr "Rezept einfügen"
+msgstr ""
 
 #: ../admin/views/rpr-modal-recipe.php:24
 msgid ""
 "Choose the recipe you want to include from the list below or search for it."
 msgstr ""
-"Wählen Sie das einzubettende Rezept aus der Liste unten aus oder suchen Sie "
-"danach."
 
 #: ../admin/views/rpr-modal-recipe.php:42
 msgid "No search term specified. Showing recent items."
-msgstr "Kein Suchbegriff angegeben. Zeige die aktuellesten EInträge."
+msgstr ""
 
 #: ../admin/views/rpr-modal-recipe.php:43
 msgid "Search or use up and down arrow keys to select an item."
-msgstr "Suchen oder die Pfeiltasten verwenden um einen Eintrag auszuwählen."
+msgstr ""
 
 #: ../admin/views/rpr-modal-recipe.php:50
 msgid "Display options"
-msgstr "Anzeige-Optionen"
+msgstr ""
 
 #: ../admin/views/rpr-modal-recipe.php:52
 msgid "Display options:"
-msgstr "Anzeige-Optionen:"
+msgstr ""
 
 #: ../admin/views/rpr-modal-recipe.php:56
 msgid "Embed excerpt only"
-msgstr "Nur Auszug einbetten"
+msgstr ""
 
 #: ../admin/views/rpr-modal-recipe.php:60
 msgid "Embed <b>without</b> description"
-msgstr "<b>Ohne</b> Beschreibung einbetten"
+msgstr ""
 
 #: ../admin/views/rpr-modal-recipe.php:68
 #, php-format
@@ -594,16 +577,14 @@ msgid ""
 "%1sCreate a new recipe.%2s (This will open a new tab and you will need to "
 "return here for including the recipe"
 msgstr ""
-"%1sLege ein neues Rezept an.%2s (Dazu wird ein neuer Tab geöffnet. Sie "
-"werden hierher zurückkehren müssen um das Rezept einzubetten.)"
 
 #: ../admin/views/rpr-options-page/class-rpr-options-page.php:67
 msgid "Options"
-msgstr "Optionen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:55
 msgid "Advanced Options"
-msgstr "Erweiterte Optionen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:56
 msgid ""
@@ -614,114 +595,97 @@ msgid ""
 "of the theme. Then however you might also consider to adjust your theme, i."
 "e. by creating a child theme."
 msgstr ""
-"In diesem Abschnitt kannst du das Aussehen deiner Rezepte weiter "
-"beeinflussen. Normalerweise sollte das nicht nötig sein und dein Theme "
-"sollte sich um all das hier kümmern. Manche Themes haben allerdings "
-"eingeschränkte Unterstzützung für manche Features und hier kannst du dann "
-"RecipePress reloaded bestimmte Informationen in seinem Teil des Themes "
-"darstellen lass. Vielleicht ist es aber sinnvoller dein Theme entsprechend "
-"anzupassen, etwa durch das Erstellen eines \"Child Themes\"."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:65
 msgid "Display recipe image"
-msgstr "Zeige Rezept-Bild"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:66
 msgid ""
 "Usually this is the job of your theme. Only use, if your theme does not "
 "support post images"
 msgstr ""
-"Normalerweise sollte dein Theme dies übernehmen. Benutze diese Einstellung "
-"nur, wenn dein Theme keine Beitragsbilder unterstützt."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:72
 msgid "Display recipe author"
-msgstr "Rezept-Autor anziegen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:73
 msgid ""
 "Display the author in the recipe part of the theme. Ususally your theme will "
 "display the author."
 msgstr ""
-"Zeige den Autor im Rezept-Teil des Themes an. Normalerweise sollte dein "
-"Theme den Autor anzeigen."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:79
 msgid "Display date"
-msgstr "Datum anzeigen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:80
 msgid ""
 "Display date in the recipe part of the theme. Ususally your theme will "
 "display the date."
 msgstr ""
-"Zeige das Datum im Rezept-Teil des Themes an. Normalerweise sollte das Theme "
-"das Datum anzeigen."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:86
 msgid "Display categories"
-msgstr "Kategorien anzeigen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:87
 msgid ""
 "Display WP Categories in the recipe part of the theme instead the default "
 "one."
 msgstr ""
-"Zeige WP-Kategorien im Rezept-Teil des Themes an anstelle im Hauptteil."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:93
 msgid "Display tags"
-msgstr "Schlagworte anzeigen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced-advanced.php:94
 msgid ""
 "Display WP Tags in the recipe part of the theme instead the default one."
 msgstr ""
-"Zeige WP-Schlagworte im Rezept-Teil des Themes an anstelle im Hauptteil."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-advanced/class-rpr-options-page-advanced.php:49
 msgid "Advanced"
-msgstr "Erweitert"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:62
 msgid "Layout"
-msgstr "Layout"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:67
 msgid "Available Layouts"
-msgstr "Verfügbare Layouts"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:80
 msgid "Clickable Images"
-msgstr "Anklickbare Bilder"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:81
 msgid "Best used in combination with a lightbox plugin."
-msgstr "Am sinnvollsten in Kombination mit einem Lightbox-Plugin."
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:94
 msgid "Position of instruction images"
-msgstr "Position des Zubereitungs-Bild"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:95
 msgid ""
 "Decide wether your instruction images should be display next to the "
 "instructions or below."
 msgstr ""
-"Entscheiden Sie ob Bilder jeweils neben oder unterhalb der Zubereitsschritte "
-"angezeigt werden sollen."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:97
 msgid "Right of instruction"
-msgstr "Rechts neben der Beschreibung"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:98
 msgid "Below the instruction"
-msgstr "Unterhalb der Beschreibung"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:105
 msgid "Select a layout"
-msgstr "Layout auswählen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:106
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:107
@@ -729,112 +693,98 @@ msgid ""
 "Select a layout from the list. More information is provided in the tabs "
 "below. There you can also customize the layout chosen."
 msgstr ""
-"Wählen Sie ein Layout aus der Liste aus. <br/>Weitere Informationen finden "
-"Sie in den Tabs unten. Dort können Sie das ausgewählte Layout Ihren "
-"Bedürfnissen anpassen."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:193
 msgid "Local"
-msgstr "Lokal"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:195
 msgid "RPR"
-msgstr "RPR"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:280
 msgid "This is a local layout provided by your theme."
 msgstr ""
-"Die ist ein lokales Layout, das von Ihrem Theme zur Verfügung gestellt wird."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:294
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Version"
-msgstr "Version"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:302
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:81
 msgid "Author"
-msgstr "Autor"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance-layout.php:316
 msgid "Homepage"
-msgstr "Homepage"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-appearance/class-rpr-options-page-appearance.php:49
 msgid "Appearance"
-msgstr "Erscheinungsbild"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-debug/class-rpr-options-page-debug-saved.php:52
 msgid "Debugging information"
-msgstr "Informationen zur Fehlersuche"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-debug/class-rpr-options-page-debug-saved.php:82
 msgid "Reset Options"
-msgstr "Optionen zurücksetzen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-debug/class-rpr-options-page-debug-saved.php:84
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:118
 msgid "Reset"
-msgstr "Zurücksetzen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-debug/class-rpr-options-page-debug-saved.php:89
 msgid ""
 "If you press this button, a confirmation message will appear and then if you "
 "press it again, it resets all options."
 msgstr ""
-"Wenn Sie diesen Knopf drücken wird ein Bestätigungsdialog erscheinen. Wenn "
-"Sie dann bestätigen, werden alle Optionen auf Fabrikeinstellungen "
-"zurückgesetzt."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-debug/class-rpr-options-page-debug.php:47
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:138
 msgid "Debug"
-msgstr "Fehlersuche"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-debug/class-rpr-options-page-debug.php:85
 msgid "Saved Data"
-msgstr "Gespeicherte Daten"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-debug/class-rpr-options-page-debug.php:88
 msgid ""
 "These are all the options you've set. </br>Please provide these information "
 "in a bug report when asked to do so. They might help do hunt down nasty bugs."
 msgstr ""
-"Dies sind all die Optionen, die Sie gespeichert haben.<br/> Bitte stellen "
-"Sie diese Informationen in einem Bug-Report zur Verfügung, sofern Sie dazu "
-"aufgefordert wurden. Diese Informationen können dabei helfen, lästige Fehler "
-"zu finden."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:51
 msgid "General Options"
-msgstr "Allgemeine Optionen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:63
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:88
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:77
 msgid "Slug"
-msgstr "Slug"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:64
 msgid ""
 "The slug is the url part of the taxonomy name. It should only contain "
 "letters, numbers und hyphens."
 msgstr ""
-"Der Slug ist der Name der Taxonomie wie er in der URL verwendet wird. Er "
-"sollte nur Kleinbuchstaben, Ziffern und Bindestriche enthalten."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:65
 #, php-format
 msgid "Recipe archives will be accessible at <u>%s<b>slug</b>/a-recipe</u>"
 msgstr ""
-"Das Rezept-Archiv wird unter <u>%s<b>slug</b>/ein-rezept</u> verfügbar sein."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:71
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:110
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:98
 msgid " Error 404?"
-msgstr "Fehler 404?"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:72
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:111
@@ -845,55 +795,45 @@ msgid ""
 "br>Visit <i>Settings</i> -> <i>Permalinks</i> and just save without changing "
 "anything."
 msgstr ""
-"Sie haben alles richtig eingestellt, aber Wordpress gibt einen <b>Fehler "
-"404</b> (nicht gefunden) zurück? Versuchen Sie die Permalink-Einstellungen "
-"zurückzusetzen. <br/> Gehen Sie zu <i>Einstellungen</i> -> <i>Permalinks</i> "
-"und speichern Sie die Einstellungen ohne etwas zu verändern."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:77
 msgid "Recipes on home page"
-msgstr "Rezepte auf Homepage"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:78
 msgid ""
 "Defines if recipes should be displayed on the homepage like 'normal' posts."
 msgstr ""
-"Bestimmt, ob Rezepte wie 'normale' Posts auf der Startseite angezeigt werden "
-"sollen."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:84
 msgid "Archive Page"
-msgstr "Archiv-Seite"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:85
 msgid "Defines what to show of your recipes on the archive page"
 msgstr ""
-"Gibt an, was von Ihren Rezepten auf den Archivseiten angezeigt werden soll."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:87
 msgid "Only the excerpt"
-msgstr "Nur den Auszug"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:88
 msgid "The entire recipe"
-msgstr "ganzes Rezept"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:95
 msgid "Taxonomy cloud widget"
-msgstr "Widget Taxonomie-Wolke"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:97
 msgid ""
 "The taxonomy cloud widget replaces the default tag cloud widget. It allows "
 "you to display a tag cloud for terms of any taxonomy and any post type. "
 msgstr ""
-"Das Widget <i>Taxonomie-Wolke</i> ersetzt das standardmäßige Widget "
-"Schlagwort-Wolke. Es erlaubt Ihnen eine Schlagwort-Wolke für jede beliebige "
-"Taxonomie (und alle Post-Typen) anzuzeigen."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:103
 msgid "Taxonomy list widget"
-msgstr "Widget Taxononie-Liste"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:105
 msgid ""
@@ -901,46 +841,41 @@ msgid ""
 "post type. Use it to create lists of for example your top ten categories, "
 "terms, ..."
 msgstr ""
-"Das Widget <i>Taxonomie-Liste</i> kann eine Liste von Begriffen aus jeder "
-"beliebigen Taxonomie (und zu allen Post-Typen) anzeigen. Verwenden Sie es um "
-"z.B. Listen Ihrer 10 häufigsten Schlagworte, Kategorien, ... zu erzeugen."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:131
 msgid "The slug must not be empty!"
-msgstr "Der Slug darf nicht leer sein!"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general-general.php:141
 msgid "There was an error in a form field."
-msgstr "In einem Feld des Formulars trat ein Fehler auf."
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-general/class-rpr-options-page-general.php:49
 msgid "General"
-msgstr "Allgemein"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-i18n/class-rpr-options-page-i18n.php:50
 msgid "i18n"
-msgstr "i18n"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-metadata/class-rpr-options-page-metadata-metadata.php:51
 #: ../admin/views/rpr-options-page/rpr-options-page-metadata/class-rpr-options-page-metadata.php:49
 msgid "Metadata"
-msgstr "Meta-Daten"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-metadata/class-rpr-options-page-metadata-metadata.php:63
 msgid "Use nutritional meta data"
-msgstr "Nährwert-Informationen verwenden"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-metadata/class-rpr-options-page-metadata-metadata.php:64
 msgid ""
 "Check this to enable the use of nutritional information like calorific "
 "value, protein, fat and carbohydrates."
 msgstr ""
-"Wählen Sie diese Option um Nährwertinformationen wie Brennwert, Eiweiß-, "
-"Fett- oder Kohlenhydrathegehalt speichern und anzeigen zu können."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-metadata/class-rpr-options-page-metadata-metadata.php:70
 msgid "Structured data format"
-msgstr "Format für strukturierte Daten"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-metadata/class-rpr-options-page-metadata-metadata.php:71
 #, php-format
@@ -949,65 +884,52 @@ msgid ""
 "information on structured data formats at <a href=\"%1s\" target=\"_blank"
 "\">schema.org</a>"
 msgstr ""
-"Strukturierte Daten helfen Suchmaschinen Ihre Inhalte zu verstehen. Mehr "
-"Informationen über strukturierte Daten finden Sie unter <a href=\"%1s\" "
-"target=\"_blank\">schema.org</a>."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-metadata/class-rpr-options-page-metadata-metadata.php:72
 msgid ""
 "Structured data help search engines understand your content. Find more "
 "information on structured data formats at schema.org."
 msgstr ""
-"Strukturierte Daten helfen Suchmaschinen Ihre Inhalte zu verstehen. Mehr "
-"Informationen über strukturierte Daten finden Sie unter schema.org."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-metadata/class-rpr-options-page-metadata-metadata.php:74
 msgid "Microdata"
-msgstr "Microdata"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-metadata/class-rpr-options-page-metadata-metadata.php:75
 msgid "RDFa"
-msgstr "RDFa"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-metadata/class-rpr-options-page-metadata-metadata.php:76
 msgid "JSON-LD"
-msgstr "JSON-LD"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:57
 msgid ""
 "Ingredients are vital for your recipes. Use these options to set slug and "
 "name in case the translation for your language didn't do this correctly"
 msgstr ""
-"Zutat sind entscheidend für Ihre Rezepte. Nutzen Sie diese "
-"Einstellungsmöglichkeiten um Slug und Name für Ihre Zutaten einzustellen."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:62
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:82
 msgid "Categories"
-msgstr "Kategorien"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:63
 msgid ""
 "Categories are a built-in taxonomy of wordpress core. You can use them to "
 "organize your recipes as well."
 msgstr ""
-"Kategorien sind eine eingebaute Taxonomien aus den Kernfunktionen von "
-"Wordpress. Sie können Sie natürlich ebenfalls verwenden, um Ihre Rezepte zu "
-"organisieren."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:68
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:83
 msgid "Tags"
-msgstr "Schlagworte"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:69
 msgid ""
 "Tags are a built-in taxonomy of wordpress core. You can use them to organize "
 "your recipes as well."
 msgstr ""
-"Schlagworte sind eine eingebaute Taxonomie aus den Kernfunktionen von "
-"Wordpress. Sie können Sie natürlich ebenfalls verwenden, um Ihre Rezepte zu "
-"organisieren."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:89
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:78
@@ -1016,9 +938,6 @@ msgid ""
 "case letters, numbers and hyphens. The slug is the name of the taxonomy as "
 "used in the url ."
 msgstr ""
-"Setzen Sie hier den Namen Ihrer Taxonomie in maschinenlesbarer Schreibweise "
-"ein. Nutzen Sie dazu nur Kleinbuchstaben, Ziffern und Bindestriche. Der Slug "
-"ist der Name der Taxonomie, wie er in der URL verwendet wird."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:90
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:79
@@ -1026,130 +945,134 @@ msgstr ""
 msgid ""
 "Ingredient archives will be accessible at <u>%s<b>slug</b>/an-ingredient</u>"
 msgstr ""
-"Das Zutaten-Archiv wird unter <u>%s<b>slug</b>/eine-zutat</u> verfügbar sein."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:91
-#: ../public/class-rpr-recipeposttype.php:105
+#: ../public/class-rpr-recipeposttype.php:106
 msgid "ingredient"
-msgstr "zutat"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:96
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:84
 msgid "Singular name"
-msgstr "Name (Einzahl)"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:97
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:85
 msgid "Put in the name of the taxonomy."
-msgstr "Setzen Sie den Namen der Taxonomie ein."
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:103
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:91
 #: ../public/class-rpr-ingredientmeta.php:39
 #: ../public/class-rpr-ingredientmeta.php:96
 msgid "Plural name"
-msgstr "Name (Mehrzahl)"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:104
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:92
 msgid "Put in the name of the ingredient in plural."
-msgstr "Setzen Sie hier den Namen der Taxonomie in der Mehrzahl ein."
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:116
-#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:162
-#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:183
+#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:169
+#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:190
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:104
 msgid "Icon class"
-msgstr "CSS-Klasse des Icons"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:118
-#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:164
-#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:185
+#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:171
+#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:192
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:106
 msgid ""
 "Define a css selector class here, to display an icon in front of or instead "
 "of the taxonomy title."
 msgstr ""
-"Geben Sie hier eine CSS-Klasse an, die bestimmt, welches Icon vor dem "
-"Taxonomie-Titel angezeigt werden soll."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:124
 msgid "Link target"
-msgstr "Link-Ziel"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:125
 msgid "Target of links in the ingredient list"
-msgstr "Ziel der Links in der Zutaten-Liste"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:128
 msgid "No ingredient links"
-msgstr "keine Zutaten-Links"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:129
 msgid "Only link to ingredient archive page"
-msgstr "Verlinke nur auf das Zutaten-Archiv."
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:130
 msgid "Custom link if provided, otherwise archive page"
-msgstr "Benutzerdefinierter Link falls angegeben, sonst Archiv."
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:131
 msgid "Custom links if provided, otherwise no link"
-msgstr "Benutzerdefinierter Link falls angegeben, sonst kein Link."
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:137
 msgid "Ingredient note separator"
-msgstr "Trennzeichen für Zutatenhinweise"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:138
 msgid "Decide how to display remarks or comments on your ingredients."
 msgstr ""
-"Entscheiden Sie, wie Hinweise oder Bemerkungen  zu Ihren Zutaten angezeigt "
-"werden sollen."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:141
 msgid "None: 1 egg preferrably free-range or organic"
-msgstr "Keines: 1 Ei vorzugsweise aus Freiland-Haltung oder Bio"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:142
 msgid "Brackets: 1 egg (preferrably free-range or organic)"
-msgstr "Klammern: 1 Ei (vorzugsweise aus Freiland-Haltung oder Bio)"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:143
 msgid "Comma: 1 egg, referrably free-range or organic"
-msgstr "Komma: 1 Ei, vorzugsweise aus Freiland-Haltung oder Bio"
+msgstr ""
 
-#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:156
+#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:150
+msgid "Automatic pluralization"
+msgstr ""
+
+#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:151
+msgid ""
+"Automatically create ingredient plurals if more than one is used. If active "
+"entering \"2 onion\" will be rendered as \"2 onion<b>s</></br>This only can "
+"handle regular plurals. For irregular plurals please enter the correct "
+"plural on the ingredients page."
+msgstr ""
+
+#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:163
 msgid "Use categories"
-msgstr "Kategorien verwenden"
+msgstr ""
 
-#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:177
+#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:184
 msgid "Use tags"
-msgstr "Schlagworte verwenden"
+msgstr ""
 
-#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:220
+#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:227
 msgid "Please set at least a singular name for the taxonomy."
-msgstr "Bitte setzen Sie wenigstens einen Namen für die Taxonomie."
-
-# Default plural ending
-#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:226
-#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:186
-#: ../public/class-rpr-ingredientmeta.php:40
-#: ../public/class-rpr-recipeposttype.php:153
-#: ../public/rpr_template_tags.php:902
-msgid "s"
-msgstr "s"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:233
+#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:186
+#: ../public/class-rpr-ingredientmeta.php:40
+#: ../public/class-rpr-recipeposttype.php:154
+#: ../public/rpr_template_tags.php:902
+msgid "s"
+msgstr ""
+
+#: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-builtin.php:240
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:195
 msgid "There was an error setting an option in a form section."
 msgstr ""
-"Es gab einen Fehler beim Speichern einer Option in einem Abschnitt des "
-"Formulars."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:51
 msgid "Custom Taxonomies"
-msgstr "Eigene Taxonomien"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:52
 #, php-format
@@ -1158,72 +1081,61 @@ msgid ""
 "the right to add more taxonomies.<br/>Have a look at the <a href=\"%s\" "
 "target=\"_blank\">documentation</a> for some inspiration."
 msgstr ""
-"Verwenden Sie diesen Dialog um ihre eigene Taxonomie-Struktur anzulegen. "
-"Verwenden Sie das <b>+</b>-Zeichen rechts um mehr Taxonomien anzulegen.<br/"
-">Für Anregungen werfen Sie einen Blick in die <a href=\"%s\" target=\"_blank"
-"\">Dokumentation</a> "
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:112
 msgid "Structured data property"
-msgstr "Eigenschftswert für strukturierte Daten"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:113
 msgid "Property id for the recipe schema according to schema.org"
-msgstr "Eigenschafts-Id für das Rezept-Schema nach schema.org"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:114
 msgid ""
 "Structured data property id for the recipe schema according to <a href="
 "\"http://1.schemaorgae.appspot.com/Recipe\" target=\"_blank\">schema.org</a>."
 msgstr ""
-"Eigenschafts-Id für das Rezept-Schema nach <a href=\"http://1.schemaorgae."
-"appspot.com/Recipe\" target=\"_blank\">schema.org</a>."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:120
 msgid "Hierarchical"
-msgstr "Hierarchisch"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:121
 msgid "Check to allow terms of this taxonomy to be nested (like categories)."
 msgstr ""
-"Anhaken, damit Terme diese Taxonomie verschachtelt sein dürfen (wie "
-"Kategorien)."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:127
 msgid "Show filter"
-msgstr "Filter anzeigen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:128
 msgid "Check to allow filtering recipes for this taxonomy in admin view."
 msgstr ""
-"Anhaken, damit Sie Rezepte nach dieser Taxonomie in der Admin-Ansicht "
-"filtern können."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:134
 msgid "Show in table"
-msgstr "In Tabelle anzeigen"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:135
 msgid "Check to show this taxonomy in the recipes table in admin view."
 msgstr ""
-"Anhaken, damit diese Taxonomie in der Tabelle in der Admin-Ansicht erscheint."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies-custom.php:172
 msgid "Please set at least a title and a name for the taxonomy."
-msgstr "Bitte setzen Sie wenigstens Titel und Name der Taxonomie."
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-taxonomies/class-rpr-options-page-taxonomies.php:50
 msgid "Taxonomies"
-msgstr "Taxonomien"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-units/class-rpr-options-page-units-units.php:50
 #: ../admin/views/rpr-options-page/rpr-options-page-units/class-rpr-options-page-units.php:49
 msgid "Units"
-msgstr "Einheiten"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-units/class-rpr-options-page-units-units.php:62
 msgid "Use ingredient unit list?"
-msgstr "Liste von Einheiten für Zutaten verwenden?"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-units/class-rpr-options-page-units-units.php:63
 msgid ""
@@ -1231,27 +1143,21 @@ msgid ""
 "the list below. I recommend using a well defined list of units as this will "
 "make your recipes more consistent and readable."
 msgstr ""
-"Anhaken um eine Liste von Einheiten für die Eingabe von Zutaten zu "
-"verwenden. Sie können die Liste unten verwalten. Ich empfehle die Verwendung "
-"einer wohldefinierten Liste von Zutaten, da dadurch Ihre Rezepte "
-"konsistenter und lesbarer werden."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-units/class-rpr-options-page-units-units.php:69
 #: ../admin/views/rpr-options-page/rpr-options-page-units/class-rpr-options-page-units-units.php:84
 msgid "Unit list"
-msgstr "Einheitenliste"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-units/class-rpr-options-page-units-units.php:70
 msgid ""
 "Unit list for ingredients.<br/> I recommend using a well defined list of "
 "units as this will make your recipes more consistent and readable."
 msgstr ""
-"Liste der Einheiten für Zutaten.<br/>  Ich empfehle die Verwendung einer "
-"wohldefinierten Liste von Einheiten"
 
 #: ../admin/views/rpr-options-page/rpr-options-page-units/class-rpr-options-page-units-units.php:77
 msgid "Use servings size unit list?"
-msgstr "Liste von Einheiten für Portionsgrößen?"
+msgstr ""
 
 #: ../admin/views/rpr-options-page/rpr-options-page-units/class-rpr-options-page-units-units.php:78
 msgid ""
@@ -1259,109 +1165,99 @@ msgid ""
 "the list below. I recommend using a well defined list of units as this will "
 "make your recipes more consistent and readable."
 msgstr ""
-"Anhaken um eine Liste von Einheiten für Portionsgrößen zu verwenden. Sie "
-"können die Liste unten verwalten. Ich empfehle die Verwendung einer "
-"wohldefinierten Liste von Zutaten, da dadurch Ihre Rezepte konsistenter und "
-"lesbarer werden."
 
 #: ../admin/views/rpr-options-page/rpr-options-page-units/class-rpr-options-page-units-units.php:85
 msgid ""
 "Unit list for serving sizes.<br/> I recommend using a well defined list of "
 "units as this will make your recipes more consistent and readable."
 msgstr ""
-"Liste von Einheiten für Portionsgrößen.</br> Ich empfehle die Verwendung "
-"einer wohldefinierten Liste von Zutaten, da dadurch Ihre Rezepte "
-"konsistenter und lesbarer werden."
 
 #: ../libraries/apf/admin-page-framework.php:46
 #, php-format
 msgid "The method is called too early. Perform <code>%2$s</code> earlier."
 msgstr ""
-"Die Methode wird zu früh aufgerufen. Führen Sie <code>%2$s</code> früher aus."
 
 #: ../libraries/apf/factory/_common/_abstract/AdminPageFramework_Factory.php:144
 #, php-format
 msgid "The method is not defined: %1$s"
-msgstr "Die Methode ist nicht definiert: %1$s"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:56
 msgid "The options have been updated."
-msgstr "Die Optionen wurden aktualisiert."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:57
 msgid "The options have been cleared."
-msgstr "Die Optionen wurden geleert."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:58
 msgid "Export"
-msgstr "Export"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:59
 msgid "Export Options"
-msgstr "Export Optionen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:60
 msgid "Import"
-msgstr "Import"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:61
 msgid "Import Options"
-msgstr "Import Optionen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:62
 msgid "Submit"
-msgstr "Absenden"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:63
 msgid "An error occurred while uploading the import file."
-msgstr "Beim Importieren der Datei trat ein Fehler auf."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:64
 #, php-format
 msgid "The uploaded file type is not supported: %1$s"
-msgstr "Der Dateityp der hochgeladenen Datei wird nicht unterstützt: %1$s"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:65
 msgid "Could not load the importing data."
-msgstr "Konnte die importierten Daten nicht laden."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:66
 msgid "The uploaded file has been imported."
-msgstr "Die hochgeladene Datei wurde importiert."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:67
 msgid "No data could be imported."
-msgstr "Es konnten keine Daten importiert werden."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:68
 msgid "Upload Image"
-msgstr "Bild hochladen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:69
 msgid "Use This Image"
-msgstr "Dieses Bild verwenden"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:70
 msgid "Insert from URL"
-msgstr "Von URL einfügen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:71
 msgid "Are you sure you want to reset the options?"
-msgstr "Sind Sie sicher, dass Sie die Optionen zurücksetzen wollen?"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:72
 msgid "Please confirm your action."
-msgstr "Bitte bestätigen Sie Ihre Aktion."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:73
 msgid "The specified options have been deleted."
-msgstr "Die angegebenen Optionen wurden gelöscht."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:74
 msgid "A problem occurred while processing the form data. Please try again."
 msgstr ""
-"Beim Verarbeiten der Daten ist ein Problem aufgetreten. Bitte versuchen Sie "
-"es später erneut."
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:75
 #, php-format
@@ -1371,438 +1267,431 @@ msgid ""
 "increase the value. <code>max input vars</code>: %1$s. <code>$_POST</code> "
 "count: %2$s"
 msgstr ""
-"Nicht alle Felder des Formulars konnten abeschickt werden. Bitte überprüfen "
-"Sie die PHO-Server_Einstellungenfür <code>max_input_vars</code> und "
-"konsultieren Sie den Administrator des Servers zum den Wert zu erhöhen. "
-"<code>max input vars</code>: %1$s. <code>$_POST</code> count: %2$s"
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:76
 msgid "Is it okay to send the email?"
-msgstr "Ist es in Ordnung diese E-Mail zu senden?"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:77
 msgid "The email has been sent."
-msgstr "Die E-Mail wurde verschickt."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:78
 msgid "The email has been scheduled."
-msgstr "Die E-Mail wurde geplant."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:79
 msgid "There was a problem sending the email"
-msgstr "Es gab ein Problem beim Versenden der E-Mail."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:80
 msgid "Title"
-msgstr "Titel"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:84
 msgid "Comments"
-msgstr "Kommentare"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:85
 msgid "Date"
-msgstr "Datum"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:86
 msgid "Show All"
-msgstr "Alle anzeigen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:87
 msgid "Show All Authors"
-msgstr "Alle Autoren anzeigen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:88
 msgid "Thank you for creating with"
-msgstr "Danke für die Verwendung von"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:89
 msgid "and"
-msgstr "and"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:90
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:91
 msgid "Manage"
-msgstr "Verwalte"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:92
 msgid "Select Image"
-msgstr "Bild auswählen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:93
 msgid "Upload File"
-msgstr "Datei hochladen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:94
 msgid "Use This File"
-msgstr "Verwende diese Datei"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:95
 msgid "Select File"
-msgstr "Datei hochladen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:96
 msgid "Remove Value"
-msgstr "Wert entfernen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:97
 msgid "Select All"
-msgstr "Alle auswählen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:98
 msgid "Select None"
-msgstr "Keins auswählen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:99
 msgid "No term found."
-msgstr "Kein Term gefunden"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:100
 msgid "Select"
-msgstr "Auswählen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:102
 msgid "Use This"
-msgstr "Verwenden"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:103
 msgid "Return to Library"
-msgstr "Zurück zur Bibliothek"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:104
 #, php-format
 msgid "%1$s queries in %2$s seconds."
-msgstr "%1$s Anfragen in %2$s Sekunden."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:105
 #, php-format
 msgid "%1$s out of %2$s MB (%3$s) memory used."
-msgstr "%1$s von %2$s MB (%3$s) Speicher verwendet."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:106
 #, php-format
 msgid "Peak memory usage %1$s MB."
-msgstr "Spitzennutzung des Speichers: %1$s MB."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:107
 #, php-format
 msgid "Initial memory usage  %1$s MB."
-msgstr "Anfängliche Speicher-Nutzung: %1$s MB."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:108
 msgid "The allowed maximum number of fields is {0}."
-msgstr "Die erlaubte Maximalzahl an Feldern ist {0}."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:109
 msgid "The allowed minimum number of fields is {0}."
-msgstr "Die erlaubte Minimalzahl an Feldern ist {0}."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:110
 msgid "Add"
-msgstr "Hinzufügen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:111
 msgid "Remove"
-msgstr "Entfernen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:112
 msgid "The allowed maximum number of sections is {0}"
-msgstr "Die erlaubte Maximalzahl an Abschnitten ist {0}."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:113
 msgid "The allowed minimum number of sections is {0}"
-msgstr "Die erlaubte Minimalzahl an Abschnitten ist {0}."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:114
 msgid "Add Section"
-msgstr "Abschnitt hinzufügen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:115
 msgid "Remove Section"
-msgstr "Abschnitt entfrenen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:116
 msgid "Toggle All"
-msgstr "Alle umschalten"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:117
 msgid "Toggle all collapsible sections"
-msgstr "Alle einklappbaren Abschnitte umschalten"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:119
 msgid "Yes"
-msgstr "Ja"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:121
 msgid "On"
-msgstr "An"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:122
 msgid "Off"
-msgstr "Aus"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:123
 msgid "Enabled"
-msgstr "Akitivieren"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:124
 msgid "Disabled"
-msgstr "Deaktivieren"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:125
 msgid "Supported"
-msgstr "Unterstützt"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:126
 msgid "Not Supported"
-msgstr "Nicht unterstützt"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:127
 msgid "Functional"
-msgstr "Funktional"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:128
 msgid "Not Functional"
-msgstr "Nicht funktional"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:129
 msgid "Too Long"
-msgstr "Zu lang"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:130
 msgid "Acceptable"
-msgstr "Annehmbar"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:131
 msgid "No log found."
-msgstr "Keine Logdatei gefunden."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:132
 #, php-format
 msgid "The method is called too early: %1$s"
-msgstr "Die Methode wird zu früh aufgerufen: %1$s"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:133
 msgid "Debug Info"
-msgstr "Informationen zur Fehlersuche"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:134
 msgid "Click here to expand to view the contents."
-msgstr "Hier klicken um den Inhalt auszuklappen."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:135
 msgid "Click here to collapse the contents."
-msgstr "Hier klicken um den Inhalt einzuklappen."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:136
 msgid "Loading..."
-msgstr "Lade ..."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:137
 msgid "Please enable JavaScript for better user experience."
 msgstr ""
-"Bitte aktivieren Sie JavaScript für eine höhere Benutzerfreundlichkeit."
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:139
 msgid "Field Arguments"
-msgstr "Argumente des Felds"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:140
 msgid ""
 "This information will be disabled when <code>WP_DEBUG</code> is set to "
 "<code>false</code> in <code>wp-config.php</code>."
 msgstr ""
-"Diese Informationen werden deaktiviert, wenn in <code>wp-config.php</code> "
-"die Konstante <code>WP_DEBUG</code> auf <code>false</code> gesetzt wird."
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:141
 msgid "Section Arguments"
-msgstr "Argumente des Abschnitts"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:142
 msgid "The ability to repeat sections is disabled."
-msgstr "Die Fähigkeit Abschnitte zu wiederholen ist deaktiviert."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:143
 msgid "The ability to repeat fields is disabled."
-msgstr "Die Fähigkeit Felder zu wiederholen ist deaktiviert."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/_abstract/_model/AdminPageFramework_Message.php:144
 msgid "Warning."
-msgstr "Warnung."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_color.php:196
 msgid "Clear"
-msgstr "Leeren"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_color.php:196
 msgid "Default"
-msgstr "Standard"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_color.php:196
 msgid "Select Color"
-msgstr "Farbe wählen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_color.php:196
 msgid "Current Color"
-msgstr "Aktuelle Farbe"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:65
 msgid "No browser information found."
-msgstr "Keine Browser-Informationen gefunden."
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "Language"
-msgstr "Sprache"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Memory Limit"
-msgstr "Speicher-Limit"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "Multi-site"
-msgstr "Multi-site"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "Permalink Structure"
-msgstr "Permalink-Struktur"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "Active Theme"
-msgstr "Aktives Theme"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "Registered Post Statuses"
-msgstr "Registrierte Post-Statusse"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "Table Prefix"
-msgstr "Tabellen-Präfix"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "Table Prefix Length"
-msgstr "Länge des Tabellen-Präfix"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "Table Prefix Status"
-msgstr "Status des Tabellen-Präfix"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "Multibite String Extension"
-msgstr "Multibyte String Extension"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "WP_CONTENT_DIR Writeable"
-msgstr "WP_CONTENT_DIR beschreibbar"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "Active Plugins"
-msgstr "Aktive Plugins"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 msgid "Network Active Plugins"
-msgstr "Aktive Plugins (Netzwerk)"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:92
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Constants"
-msgstr "Konstanten"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Safe Mode"
-msgstr "Safe Mode"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Upload Max Size"
-msgstr "Upload Max Size"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Post Max Size"
-msgstr "Post Max Size"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Upload Max File Size"
-msgstr "Upload Max File Size"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Max Execution Time"
-msgstr "Max Execution Time"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Max Input Vars"
-msgstr "Max Input Vars"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Argument Separator"
-msgstr "Argument Trenner"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Allow URL File Open"
-msgstr "Datei von URL öffnen erlaubt"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Display Errors"
-msgstr "Anzeigefehler"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Log Errors"
-msgstr "Fehler loggen"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Error log location"
-msgstr "Ort des Fehler-Logs"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "Error Reporting Level"
-msgstr "Fehler-Log-Level"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "FSOCKOPEN"
-msgstr "FSOCKOPEN"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "cURL"
-msgstr "cURL"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "SOAP"
-msgstr "SOAP"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:168
 msgid "SUHOSIN"
-msgstr "SUHOSIN"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:172
 msgid "Web Server"
-msgstr "Webserver"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:172
 msgid "Session"
-msgstr "Session"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:172
 msgid "Session Name"
-msgstr "Session-Name"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:172
 msgid "Session Cookie Path"
-msgstr "Pfad des Session-Cookie"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:172
 msgid "Session Save Path"
-msgstr "Pfad zur Session"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:172
 msgid "Session Use Cookies"
-msgstr "Cookies mit Session"
+msgstr ""
 
 #: ../libraries/apf/factory/_common/form/field_type/AdminPageFramework_FieldType_system.php:172
 msgid "Session Use Only Cookies"
-msgstr "Session nur mit Cookies"
+msgstr ""
 
 #: ../public/class-rpr-ingredientmeta.php:40
 #, php-format
@@ -1810,16 +1699,14 @@ msgid ""
 "The plural name of the ingredient. If empty the default pluralization \"<b>"
 "%s</b>\" will be used."
 msgstr ""
-"Der Name der Zutat im Plural. Falls leer wird die Standard-Plural-Endung <b>"
-"%s</b> angehängt."
 
 #: ../public/class-rpr-ingredientmeta.php:50
 msgid "Image Upload"
-msgstr "Bild hochladen"
+msgstr ""
 
 #: ../public/class-rpr-ingredientmeta.php:60
 msgid "Use in listings"
-msgstr "In Listen verwenden"
+msgstr ""
 
 #: ../public/class-rpr-ingredientmeta.php:61
 msgid ""
@@ -1827,68 +1714,65 @@ msgid ""
 "You probably don't want to have a list of all recipes using salt, sugar, "
 "etc. "
 msgstr ""
-"Abhaken, wenn Sie diese Zutat außerhalb des Rezept nicht in Zutaten-Listen "
-"sehen möchten. Wahrscheinlich möchten Sie keine Listen von Rezepten mit "
-"Salz, Zucker, usw."
 
 #: ../public/class-rpr-ingredientmeta.php:92
 msgid "Thumbnail"
-msgstr "Thumbnail"
+msgstr ""
 
 #: ../public/class-rpr-recipeposttype.php:74
 msgid "Recipes"
-msgstr "Rezepte"
+msgstr ""
 
 #: ../public/class-rpr-recipeposttype.php:76
 msgid "Add new"
-msgstr "Erstellen"
+msgstr ""
 
 #: ../public/class-rpr-recipeposttype.php:77
 msgid "Add new recipe"
-msgstr "Rezept erstellen"
+msgstr ""
 
 #: ../public/class-rpr-recipeposttype.php:79
 msgid "Edit recipe"
-msgstr "Rezept bearbeiten"
+msgstr ""
 
 #: ../public/class-rpr-recipeposttype.php:80
 msgid "New recipe"
-msgstr "Neues Rezept"
+msgstr ""
 
 #: ../public/class-rpr-recipeposttype.php:81
 msgid "View"
-msgstr "Betrachten"
+msgstr ""
 
 #: ../public/class-rpr-recipeposttype.php:82
 msgid "View recipe"
-msgstr "Rezept betrachten"
+msgstr ""
 
 #: ../public/class-rpr-recipeposttype.php:83
 msgid "Search recipes"
-msgstr "Rezepte suchen"
+msgstr ""
 
 #: ../public/class-rpr-recipeposttype.php:84
 msgid "No recipes found."
-msgstr "Keine Rezepte gefunden."
+msgstr ""
 
 #: ../public/class-rpr-recipeposttype.php:85
 msgid "No recipes found in trash."
-msgstr "Keine Rezepte im Papierkorb gefunden."
+msgstr ""
 
 #: ../public/class-rpr-recipeposttype.php:86
 msgid "RPR recipe post type"
-msgstr "RPR Rezept-Post-Typ"
+msgstr ""
 
-#: ../public/class-rpr-recipeposttype.php:113
-#: ../public/class-rpr-recipeposttype.php:163
+#: ../public/class-rpr-recipeposttype.php:114
+#: ../public/class-rpr-recipeposttype.php:164
 #, php-format
 msgid "New %s"
-msgstr "Neues %s"
+msgstr ""
 
 #: ../public/layouts/rpr_2column/settings.php:17
 #: ../public/layouts/rpr_default/settings.php:11
 msgid "Use icons"
-msgstr "Icons verwenden"
+msgstr ""
 
 #: ../public/layouts/rpr_2column/settings.php:18
 #: ../public/layouts/rpr_default/settings.php:12
@@ -1899,16 +1783,11 @@ msgid ""
 "class=\"admin_demo\"><span style=\"text-transform:uppercase; font-weight:"
 "bold;\">Ready in: </span>35min</span>."
 msgstr ""
-"Icons sehen nicht nur gut aus, sie können auch eine Menge Platz sparen. Wenn "
-"Sie diese Option aktivieren, wird das Layout <span class=\"admin_demo\"\"><i "
-"class=\"fa fa-clock-o\" title=\"ready in\" ></i> 35min</span> anstelle von "
-"<span class=\"admin_demo\"><span style=\"text-transform:uppercase; font-"
-"weight:bold;\">Fertig in: </span>35min</span> anzeigen."
 
 #: ../public/layouts/rpr_2column/settings.php:23
 #: ../public/layouts/rpr_default/settings.php:17
 msgid "Display print link"
-msgstr "Zeige Drucken-Link"
+msgstr ""
 
 #: ../public/layouts/rpr_2column/settings.php:24
 #: ../public/layouts/rpr_default/settings.php:18
@@ -1917,14 +1796,11 @@ msgid ""
 "numerous print plugins for wordpress to include a print link to ALL of your "
 "posts."
 msgstr ""
-"Fügt einen 'Drucken'-Link zu deinen Rezepten hinzu. Es wird empfohlen eines "
-"der zahlreichen Druck-Plugins für Wordpress zu verwenden um einen 'Drucken'-"
-"Link zu <b>allen</b> Beiträgen hinzuzufügen."
 
 #: ../public/layouts/rpr_2column/settings.php:30
 #: ../public/layouts/rpr_default/settings.php:24
 msgid "Print area class"
-msgstr "CSS-Klasse des Druckbereichs"
+msgstr ""
 
 #: ../public/layouts/rpr_2column/settings.php:31
 #: ../public/layouts/rpr_default/settings.php:25
@@ -1933,191 +1809,186 @@ msgid ""
 "higly depending on wordpress theme you are using. Add here the class "
 "(prefixed by '.') or the id (prefixed by '#') of the printable area."
 msgstr ""
-"Der 'Drucken'-Link sollte nur einen Teil der Seite drucken, normalerweise "
-"den Inhalt des Beitrags. Das hängt jedoch stark davon ab, welches Wordpress-"
-"Theme du verwendest. Gib hier die CSS_Klasse (mit vorangestelltem Punkt '.') "
-"oder die CSS_Id (mit vorangestellter Raute '#') des zu druckenden Bereichs "
-"an."
 
 #: ../public/layouts/rpr_default/recipe_index.php:74
 msgid "There are no recipes to display."
-msgstr "Es können keine Rezepte angezeigt werden."
+msgstr ""
 
 #: ../public/layouts/rpr_default/taxonomy.php:84
 msgid "There are no terms in this taxonomy."
-msgstr "Es gibt keine Einträge in dieser Taxonomie."
+msgstr ""
 
 #: ../public/layouts/rpr_default/taxonomy.php:88
 msgid "<b>Error:</b> No taxonomy set for this list!"
-msgstr "<b>Fehler:</b> Keine Taxonomie für diese Liste gesetzt!"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:747
 msgid "No ingredients could be found for this recipe."
-msgstr "Für dieses Rezept konnten keine Zutaten gefunden werden."
+msgstr ""
 
 #: ../public/rpr_template_tags.php:930
 msgid "("
-msgstr "("
+msgstr ""
 
 #: ../public/rpr_template_tags.php:931
 msgid ")"
-msgstr ")"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:936
 msgid ","
-msgstr ","
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1115
 msgid "No instructions could be found for this recipe."
-msgstr "Für dieses Rezepte konnte keine Zubereitung gefunden werden."
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1444
 msgid "For:"
-msgstr "Für:"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1499 ../public/rpr_template_tags.php:1502
 msgid "Nutritional data"
-msgstr "Nährwerte"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1612 ../public/rpr_template_tags.php:1621
 msgid "Per 100g"
-msgstr "Pro 100g"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1615
 msgid "Per portion"
-msgstr "Pro Portion"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1618
 msgid "Per recipe"
-msgstr "Für das ganze Rezept"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1634
 msgid "Energy:"
-msgstr "Energie:"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1637
 msgid "Fat:"
-msgstr "Fett:"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1640
 msgid "Protein:"
-msgstr "Eiweiß:"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1643
 msgid "Carbohydrate:"
-msgstr "Kohlenhydrate:"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1695 ../public/rpr_template_tags.php:1698
 msgid "Time"
-msgstr "Zeit"
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1788 ../public/rpr_template_tags.php:1790
 msgid "Preparation: "
-msgstr "Vorbereitung "
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1798 ../public/rpr_template_tags.php:1800
 msgid "Cooking: "
-msgstr "Kochzeit: "
+msgstr ""
 
 #: ../public/rpr_template_tags.php:1807 ../public/rpr_template_tags.php:1809
 msgid "Ready in: "
-msgstr "Fertig in: "
+msgstr ""
 
 #: ../widgets/class-rpr-widget-tag-cloud.php:43
 msgid "Tag Cloud"
-msgstr "Tag-Wolke"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-tag-cloud.php:202
 msgid "Title:"
-msgstr "Titel:"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-tag-cloud.php:208
 msgid "Taxonomy:"
-msgstr "Taxonomie:"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-tag-cloud.php:218
 msgid "Format:"
-msgstr "Format:"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-tag-cloud.php:228
 msgid "Order:"
-msgstr "Reihenfolge: "
+msgstr ""
 
 #: ../widgets/class-rpr-widget-tag-cloud.php:238
 msgid "Order by:"
-msgstr "Sortiere nach: "
+msgstr ""
 
 #: ../widgets/class-rpr-widget-tag-cloud.php:259
 msgid "Number:"
-msgstr "Anzahl: "
+msgstr ""
 
 #: ../widgets/class-rpr-widget-tag-cloud.php:265
 msgid "Largest:"
-msgstr "Größte:"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-tag-cloud.php:271
 msgid "Smallest:"
-msgstr "Kleinste:"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-tag-cloud.php:277
 msgid "Unit:"
-msgstr "Einheit:"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-tag-cloud.php:287
 msgid "Separator:"
-msgstr "Trenner:"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:41
 msgid "Taxonomy List"
-msgstr "Taxonomie-Liste"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:101
 msgid "No terms found"
-msgstr "Keine Terme gefunden"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:176
 msgid "Title (optional)"
-msgstr "Titel (optional)"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:183
 msgid "Taxonomy to display"
-msgstr "Anzuzeigende Taxonomie"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:193
 msgid "How many items would you like to display?"
-msgstr "Wie viele Einträge sollen angezeigt werden"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:199
 msgid "Order items by"
-msgstr "Einträge ordnen nach"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:206
 msgid "Count"
-msgstr "Anzahl"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:213
 msgid "ASC"
-msgstr "Ansteigend"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:216
 msgid "DESC"
-msgstr "Absteigend"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:223
 msgid "Show count with"
-msgstr "Zeige Anzahl mit"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:227
 msgid "before and"
-msgstr "davor und"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:231
 msgid "behind"
-msgstr "danach"
+msgstr ""
 
 #: ../widgets/class-rpr-widget-taxonomy-list.php:237
 msgid "Hide empty terms?"
-msgstr "Leere Begriffe verstecken?"
+msgstr ""
 
 #~ msgid ""
 #~ "Disable, if you don't want this ingredient to appear in ingredeient "

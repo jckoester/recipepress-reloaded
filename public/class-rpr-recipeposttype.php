@@ -91,6 +91,7 @@ class RPR_RecipePostType extends AdminPageFramework_PostType{
                 'menu_icon'     => plugins_url( 'img/logo_16x16.png', dirname( __FILE__ ) ),
                 'screen_icon'   => dirname( __FILE__  ) . '/img/logo_32x32.png', // a file path can be passed instead of a url, plugins_url( 'asset/image/wp-logo_32x32.png', APFDEMO_FILE )
                 'menu_position' => 5, 
+                'has_archive'   => true, 
                 'taxonomies'    => $taxonomies,
                 'rewrite'       => array(
                     'slug' => sanitize_title( AdminPageFramework::getOption( 'rpr_options', array( 'general', 'slug') , 'recipe' ) )
