@@ -232,8 +232,9 @@ class RPR_Public {
 			$content = $this->render_recipe_excerpt( $recipe_post );
 
           	add_filter('get_the_excerpt', array( $this, 'get_recipe_excerpt' ), 10);
+        } else {
+            return $content;
         }
-        return $content;
     }
 	
 	/**
