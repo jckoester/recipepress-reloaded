@@ -264,7 +264,7 @@ class RPR_Public {
     		{
     			$content = $this->render_recipe_content( $recipe_post );
     		} else {
-    			$content = $this->render_recipe_excerpt( $recipe_post );
+    		//	$content = $this->render_recipe_excerpt( $recipe_post );
     		}
 			
 			// Add the filter again
@@ -286,6 +286,7 @@ class RPR_Public {
 	 * @return string $content
 	 */
 	private function render_recipe_excerpt( $recipe_post ) {
+            
             // Return if we are on a single post page:
             if( is_single() ) {return;}
 		// Get the layot's includepath
