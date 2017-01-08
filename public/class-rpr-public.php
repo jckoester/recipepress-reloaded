@@ -285,6 +285,8 @@ class RPR_Public {
 	 * @return string $content
 	 */
 	private function render_recipe_excerpt( $recipe_post ) {
+            // Return if we are on a single post page:
+            if( is_single() ) {return;}
 		// Get the layot's includepath
 		$includepath = $this->get_the_layout() . 'excerpt.php';
 		

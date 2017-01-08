@@ -603,7 +603,8 @@ if( !  function_exists( 'get_the_rpr_recipe_description' ) ){
 			} else {
 				$out .= '>';
 			}
-			$out .= apply_filters('the_content', $recipe['rpr_recipe_description'][0] );
+                        $out .= sanitize_post_field( 'rpr_recipe_description', $recipe['rpr_recipe_description'][0], $recipe_id);
+	//		$out .= apply_filters('the_content', $recipe['rpr_recipe_description'][0] );
 			$out .= '</span>';
 		}
 		
