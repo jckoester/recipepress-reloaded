@@ -822,12 +822,12 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 		/**
 		 * Get the term object for the ingredient
 		 */
-		if( isset( $ingredient['ingredient_id'] ) ){
+		if( isset( $ingredient['ingredient_id'] ) && get_term_by( 'id', $ingredient['ingredient_id'], 'rpr_ingredient' ) ){
 			$term = get_term_by( 'id', $ingredient['ingredient_id'], 'rpr_ingredient' );
 		} else {
 			$term = get_term_by( 'name', $ingredient['ingredient'], 'rpr_ingredient' );
 		}
-		
+                		
 		/**
 		 *  Create an empty output string
 		 */
