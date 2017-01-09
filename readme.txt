@@ -67,6 +67,8 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
+= 0.8.2 =
+ * Fixing several bugs.
 
 = 0.8.1 =
  * Fixing several bugs.
@@ -80,6 +82,8 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
  * Improved recipe editor
 
 == Upgrade Notice ==
+= 0.8.2 =
+Bugfix release
 = 0.8.1 =
 Bugfix release
 = 0.8.0 =
