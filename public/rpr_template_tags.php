@@ -358,8 +358,8 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			$out .= '<div vocab="http://schema.org/" typeof="Recipe">';
 			$out .= '<span class="rpr_title hidden" property="name">' . get_the_title( $recipe_id ) . '</span>';
 			$out .= '<span class="rpr_author hidden" property="author">' . get_the_author() . '</span>';
-			$out .= '<meta class="rpr_date hidden" property="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
-				get_the_time( get_option('date_format') ) . '</meta>';
+			$out .= '<span class="rpr_date hidden" property="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' .
+				get_the_time( get_option('date_format') ) . '</span>';
 			// Number of comments
 			if( get_comments_number() > 0 ){
 				$out .= '<div property="interactionStatistic" typeof="InteractionCounter">';
