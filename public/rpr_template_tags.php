@@ -159,7 +159,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
 			}
             $prefix = '<i class="fa ' . $icon_class . '" title=' . esc_html( $tax->labels->name ) . '></i> ';
         } elseif( $label ) {
-        	$prefix = $tax->labels->name . $label . ': ';
+        	$prefix = $tax->labels->name . ': ';
 		} else {
 			$prefix = ""; 
 		}
@@ -208,16 +208,16 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
 }
 
 if ( !function_exists( 'the_rpr_taxonomy_terms' ) ) {
-	/**
-	 * Outputs the rendered taxonomy bar
-	 * 
-	 * @since 0.8.0
-	 * 
-	 * @param string $taxonomy
-	 * @param boolean $icons
-	 * @param string $sep
-	 */
-	function the_rpr_taxonomy_terms( $taxonomy, $icons=false, $label=false, $sep='&nbsp;/&nbsp;' ){
+    /**
+     * Outputs the rendered taxonomy bar
+     * 
+     * @since 0.8.0
+     * 
+     * @param string $taxonomy
+     * @param boolean $icons
+     * @param string $sep
+     */
+    function the_rpr_taxonomy_terms( $taxonomy, $icons=false, $label=false, $sep='&nbsp;/&nbsp;' ){
         echo get_the_rpr_taxonomy_terms( $taxonomy, $icons, $label, $sep );
     }
 }
@@ -297,7 +297,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 	 * @param string $sep
 	 * @param boolean $term set to true to enforce inclusion of terms (if active) 
 	 */
-	function the_rpr_taxonomy_list( $icons=false, $label=false, $sep='&nbsp;/&nbsp;', $tags=false ){
+    function the_rpr_taxonomy_list( $icons=false, $label=false, $sep='&nbsp;/&nbsp;', $tags=false ){
         echo get_the_rpr_taxonomy_list( $icons, $label, $sep, $tags );
     }
 }

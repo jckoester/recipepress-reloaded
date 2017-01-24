@@ -23,8 +23,9 @@
 	the_rpr_recipe_image();
 
 	$icons = (boolean) AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'icon_display' ), false);
-    the_rpr_taxonomy_list( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'icon_display' ), false), true ,'&nbsp;/&nbsp;', true );
+        the_rpr_taxonomy_list( $icons, true ,'&nbsp;/&nbsp;', true );
 	?>
+                
     <div class="rpr-clear"></div>
 	<?php
 		the_rpr_recipe_description();

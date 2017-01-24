@@ -224,59 +224,55 @@ class RPR_Public {
             return $content;
         }
 		
-		/* Only render specifically if we have a recipe */
+	/* Only render specifically if we have a recipe */
         if ( get_post_type() == 'rpr_recipe' ) {
             remove_filter('get_the_excerpt', array( $this, 'get_recipe_excerpt' ), 10);
             $recipe_post = get_post();
 
-			$content = $this->render_recipe_excerpt( $recipe_post );
+            $content = $this->render_recipe_excerpt( $recipe_post );
 
-          	add_filter('get_the_excerpt', array( $this, 'get_recipe_excerpt' ), 10);
+            add_filter('get_the_excerpt', array( $this, 'get_recipe_excerpt' ), 10);
         } else {
             return $content;
         }
     }
 	
-	/**
-	 * Get the rendered content of a recipe and forward it to the theme as the_content()
-	 * 
-	 * @since 0.8.0
-	 * @param string $content
-	 * @return string $content
-	 */
-	public function get_recipe_content( $content ) {
-		if ( !in_the_loop () || !is_main_query () ) {
-    		return $content;
-    	}
+    /**
+     * Get the rendered content of a recipe and forward it to the theme as the_content()
+     * 
+     * @since 0.8.0
+     * @param string $content
+     * @return string $content
+     */
+    public function get_recipe_content( $content ) {
+	if ( !in_the_loop () || !is_main_query () ) {
+            return $content;
+        }
 
-		/* Only render specifically if we have a recipe */
-    	if ( get_post_type() == 'rpr_recipe' ) {
-			
-			
-			// Remove the filter
-			remove_filter( 'the_content', array( $this, 'get_recipe_content' ) );
+        /* Only render specifically if we have a recipe */
+        if ( get_post_type() == 'rpr_recipe' ) {
+            // Remove the filter
+            remove_filter( 'the_content', array( $this, 'get_recipe_content' ) );
 
-			// Do the stuff
-    		$recipe_post = get_post();
-    		$recipe = get_post_custom($recipe_post->ID);
+            // Do the stuff
+            $recipe_post = get_post();
+            $recipe = get_post_custom($recipe_post->ID);
 
-			if (is_single() || AdminPageFramework::getOption( 'rpr_options', array( 'general', 'archive_display' ) , true ) === 'full')
-    		{
-    			$content = $this->render_recipe_content( $recipe_post );
-    		} else {
-    		//	$content = $this->render_recipe_excerpt( $recipe_post );
-    		}
-			
-			// Add the filter again
-			add_filter('the_content', array( $this, 'get_recipe_content' ), 10);
-			
-			// return the rendered content
-			return $content;
-		} else {
-			return $content;
-		}
+            if (is_single() || AdminPageFramework::getOption( 'rpr_options', array( 'general', 'archive_display' ) , true ) === 'full') {
+                $content = $this->render_recipe_content( $recipe_post );
+            } else {
+                $content = $this->render_recipe_excerpt( $recipe_post );
+            }
+
+            // Add the filter again
+            add_filter('the_content', array( $this, 'get_recipe_content' ), 10);
 		
-	}
+            // return the rendered content
+            return $content;
+        } else {
+            return $content;
+        }
+    }
 	
 	/**
 	 * Do the actual rendering using the excerpt.php file provided by the layout
