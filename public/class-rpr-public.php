@@ -529,6 +529,7 @@ class RPR_Public {
 			
 			if(!is_null( $recipe_post ) && $recipe_post->post_type === 'rpr_recipe' ) {
 				$recipe = get_post_custom($recipe_post->ID);
+                                $GLOBALS['recipe_id'] = $recipe_post->ID;
 
             //$taxonomies = get_option('rpr_taxonomies', array());
 			
