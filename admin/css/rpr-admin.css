@@ -1,5 +1,4 @@
-#recipe_ingredients_meta_box .hidden,
-#recipe_instructions_meta_box .hidden{
+.hidden{
     visibility: hidden;
 }
 
