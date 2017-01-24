@@ -257,10 +257,12 @@ class RPR_Public {
             // Do the stuff
             $recipe_post = get_post();
             $recipe = get_post_custom($recipe_post->ID);
+            $GLOBALS['recipe_id'] = $recipe_post->ID;
 
             if (is_single() || AdminPageFramework::getOption( 'rpr_options', array( 'general', 'archive_display' ) , true ) === 'full') {
                 $content = $this->render_recipe_content( $recipe_post );
             } else {
+                
                 $content = $this->render_recipe_excerpt( $recipe_post );
             }
 
