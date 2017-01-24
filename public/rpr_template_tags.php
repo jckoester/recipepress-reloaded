@@ -1040,223 +1040,226 @@ if( !  function_exists( 'the_rpr_recipe_instructions_headline' ) ){
 }
 
 if( !  function_exists( 'get_the_rpr_recipe_instructions' ) ){
-	/**
-	 * Render the instructions list
-	 * 
-	 * @since 0.8.0
-	 * @return string
-	 */
-	function get_the_rpr_recipe_instructions(){
-		/**
-		 *  Get the recipe id
-		 */
-		if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
-			$recipe_id = $GLOBALS['recipe_id'];
-		} else {
-			$recipe_id = get_post()->ID;
-		}
+    /**
+     * Render the instructions list
+     * 
+     * @since 0.8.0
+     * @return string
+     */
+    function get_the_rpr_recipe_instructions(){
+        /**
+         *  Get the recipe id
+         */
+        if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
+            $recipe_id = $GLOBALS['recipe_id'];
+        } else {
+            $recipe_id = get_post()->ID;
+        }
         $recipe = get_post_custom( $recipe_id );
 
-		/**
-		 *  Create an empty output string
-		 */
-		$out = '';
-		
-		/**
-		 *  Get the instructions:
-		 */
-		$instructions = unserialize( $recipe['rpr_recipe_instructions'][0] );
-		
-		if( count( $instructions ) > 0 ) {
-			/**
-			 * Add the structured data tag
-			 */
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
-				$out .= '<span itemprop="recipeInstructions" >';
-			} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
-				$out .= '<span property="recipeInstructions" >';
-			}
-			/**
-			* Loop over all the ingredients
-			*/
-		   foreach ( $instructions as $instruction ){
-			   /**
-			    * Check if the ingredient is a grouptitle
-			    */
-			   if( isset( $instruction['grouptitle'] ) ){
-				   
-				   /**
-				    * Render the grouptitle
-				    */
-				   $out .= rpr_render_instruction_grouptitle( $instruction );
-			   } else {
-				   /**
-				    * Start the list on the first item
-				    */
-				   if( isset( $instruction['sort'] ) && $instruction['sort'] == 0 ){
-					   $out .= '<ul class="rpr-instruction-list" >';
-				   }
-				   /**
-				    * Render the instrcution block
-				    */
-				   $out .= rpr_render_instruction_block( $instruction );
-			   }
-			}
-			/**
-			 * Close the list on the last item
-			 */	
-			$out .= '</ul>';
-		   
-		   /**
-		    * Close the structured data tag
-		    */
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) != 'json-ld' ){
-				$out .= '</span>';
-			}
-		   
-		} else {
-			/**
-			 * Issue a warning, if there are no instructions for the recipe
-			 */
-			$out .= '<p class="warning">' . __( 'No instructions could be found for this recipe.', 'recipepress-reloaded' ) . '</p>';
-		}
-		
-		/**
-		 * Return the rendered instructions list
-		 */
-		return $out;
-	}
-	
-	/**
-	 * Render the grouptitle for a instruction group
-	 * 
-	 * @since 0.8.0
-	 * @param array $instruction
-	 * @return string
-	 */
-	function rpr_render_instruction_grouptitle( $instruction ){
-		/**
-		 *  Create an empty output string
-		 */
-		$out = '';
-		
-		if( $instruction['sort'] == 0 ){
-			/**
-			 * Do not close the instruction list of the previous group if this is 
-			 * the first group
-			*/
-		} else {
-			/**
-			 * Close the instruction list of the previous group
-			 */
-			$out .= '</ul>';
-		}
-		
-		/**
-		 * Create the headline for the instruction group
-		 */
-		if( recipe_is_embedded() ){
-			/**
-			 * Fourth level headline for embedded recipe
-			 */
-			$out .= '<h4 class="rpr-instruction-group-title">' . esc_html( $instruction['grouptitle'] ) . '</h4>';
-		} else {
-			/**
-			 * Third level headline for standalone recipes
-			 */
-			$out .= '<h3 class="rpr-instruction-group-title">' . esc_html( $instruction['grouptitle'] ) . '</h3>';
-		}
-		
-		/** 
-		 * Start the list for this ingredient group
-		 */
-		$out .= '<ul class="rpr-instruction-list">';
-		
-		/**
-		 * Return the rendered output
-		 */
-		return $out;
-	}
-	
-	/**
-	 * Render an instruction block
-	 * 
-	 * @since 0.8.0
-	 * @param type $instruction
-	 * @return string
-	 */
-	function rpr_render_instruction_block( $instruction ){
-		/**
-		 *  Create an empty output string
-		 */
-		$out = '';
-		
-		/**
-		 * Start the line
-		 */
-		$out .= '<li class="rpr-instruction">';
-		
-		/** 
-		 * Determine the class for the instruction text depending on image options
-		 */
-		if( isset( $instruction['image'] ) && $instruction['image'] != '' ){
-			$instr_class = " has_thumbnail";
-			$instr_class .= ' ' . esc_attr( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_instr_pos' ), 'right' ) ); 
-		} else {
-			$instr_class = "";
-		}
-		
-		/**
-		 * Render the instruction text
-		 */
-		$out .= '<span class="rpr-recipe-instruction-text' . $instr_class . '">' . esc_html( $instruction['description'] ) . '</span>' ;
-		
-		/**
-		 * Render the instruction step image
-		 */
-		if( isset( $instruction['image'] ) && $instruction['image'] != '' ){
-			/**
-			 * Get the image data
-			 */
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_instr_pos' ), 'right' ) === 'right' ){
-				$img = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
-			} else {
-				$img = wp_get_attachment_image_src( $instruction['image'], 'large' );
-			}
+        /**
+         *  Create an empty output string
+         */
+        $out = '';
 
-			/**
-			 * Get link target for clickable images:
-			 */
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_link' ), true ) && is_array( $img ) && $img[0] != '' ){
-				$img_full = wp_get_attachment_image_src( $instruction['image'], 'full' );
-				$out .= '<a class="rpr_img_link" href="' . esc_url( $img_full[0] ) . '" rel="lightbox" title="' . esc_html( substr( $instruction['description'], 150) ) . '">';
-			}
-			
-			/**
-			 * Render the image
-			 */
-			$out .= '<img class="';
-			$out .= esc_attr( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_instr_pos' ), 'right' ) );
-			$out .= '" src="' . esc_url( $img[0] ) . '" width="'. esc_attr( $img[1] ) .'" height="'. esc_attr( $img[2] ) .'" />';
-			
-			/**
-			 * Close the link for clickable images
-			 */
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_link' ), true ) && is_array( $img ) && $img[0] != '' ){
-				$out .= '</a>';
-			}
-		}
+        /**
+         *  Get the instructions:
+         */
+        $instructions = unserialize( $recipe['rpr_recipe_instructions'][0] );
 		
-		/**
-		 * End the line
-		 */
-		$out .= '</li>';
+        if( count( $instructions ) > 0 ) {
+            /**
+             * Add the structured data tag
+             */
+            if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
+                $out .= '<span itemprop="recipeInstructions" >';
+            } elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
+                $out .= '<span property="recipeInstructions" >';
+            }
+            
+            /**
+             * Loop over all the ingredients
+            */
+            $i =0;
+            foreach ( $instructions as $instruction ){
+                /**
+                 * Check if the ingredient is a grouptitle
+                 */
+                if( isset( $instruction['grouptitle'] ) ){		   
+                    /**
+                     * Render the grouptitle
+                     */
+                    $out .= rpr_render_instruction_grouptitle( $instruction );
+                } else {
+                    
+                    if( $i == 0 ) {
+                            //isset( $instruction['sort'] ) && $instruction['sort'] == 0 ){
+                        /**
+                         * Start the list on the first item
+                         */
+                        $out .= '<ol class="rpr-instruction-list" >';
+                    }
+                    /**
+                     * Render the instrcution block
+                     */
+                    $out .= rpr_render_instruction_block( $instruction );
+                }
+                $i++;
+            }
+            /**
+             * Close the list on the last item
+             */	
+            $out .= '</ol>';
+		   
+            /**
+             * Close the structured data tag
+             */
+            if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) != 'json-ld' ){
+                $out .= '</span>';
+            }	   
+        } else {
+            /**
+             * Issue a warning, if there are no instructions for the recipe
+             */
+            $out .= '<p class="warning">' . __( 'No instructions could be found for this recipe.', 'recipepress-reloaded' ) . '</p>';
+        }
 		
-		/**
-		 * Return the rendered output
-		 */
-		return $out;
-	}
+        /**
+        * Return the rendered instructions list
+        */
+        return $out;
+    }
+	
+    /**
+     * Render the grouptitle for a instruction group
+     * 
+     * @since 0.8.0
+     * @param array $instruction
+     * @return string
+     */
+    function rpr_render_instruction_grouptitle( $instruction ){
+        /**
+         *  Create an empty output string
+         */
+        $out = '';
+		
+        if( $instruction['sort'] == 0 ){
+            /**
+            * Do not close the instruction list of the previous group if this is 
+            * the first group
+            */
+        } else {
+            /**
+             * Close the instruction list of the previous group
+             */
+            $out .= '</ol>';
+        }
+	
+        /**
+         * Create the headline for the instruction group
+         */
+        if( recipe_is_embedded() ){
+            /**
+             * Fourth level headline for embedded recipe
+             */
+            $out .= '<h4 class="rpr-instruction-group-title">' . esc_html( $instruction['grouptitle'] ) . '</h4>';
+        } else {
+            /**
+             * Third level headline for standalone recipes
+             */
+            $out .= '<h3 class="rpr-instruction-group-title">' . esc_html( $instruction['grouptitle'] ) . '</h3>';
+        }
+		
+        /** 
+         * Start the list for this ingredient group
+         */
+        $out .= '<ol class="rpr-instruction-list">';
+		
+        /**
+         * Return the rendered output
+         */
+        return $out;
+    }
+	
+    /**
+     * Render an instruction block
+     * 
+     * @since 0.8.0
+     * @param type $instruction
+     * @return string
+     */
+    function rpr_render_instruction_block( $instruction ){
+        /**
+         *  Create an empty output string
+         */
+        $out = '';
+		
+        /**
+         * Start the line
+         */
+        $out .= '<li class="rpr-instruction">';
+		
+        /** 
+         * Determine the class for the instruction text depending on image options
+         */
+        if( isset( $instruction['image'] ) && $instruction['image'] != '' ){
+            $instr_class = " has_thumbnail";
+            $instr_class .= ' ' . esc_attr( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_instr_pos' ), 'right' ) ); 
+        } else {
+            $instr_class = "";
+        }
+		
+        /**
+         * Render the instruction text
+         */
+        $out .= '<span class="rpr-recipe-instruction-text' . $instr_class . '">' . esc_html( $instruction['description'] ) . '</span>' ;
+		
+        /**
+         * Render the instruction step image
+         */
+        if( isset( $instruction['image'] ) && $instruction['image'] != '' ){
+            /**
+             * Get the image data
+             */
+            if( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_instr_pos' ), 'right' ) === 'right' ){
+                $img = wp_get_attachment_image_src( $instruction['image'], 'thumbnail' );
+            } else {
+                $img = wp_get_attachment_image_src( $instruction['image'], 'large' );
+            }
+
+            /**
+             * Get link target for clickable images:
+             */
+            if( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_link' ), true ) && is_array( $img ) && $img[0] != '' ){
+                $img_full = wp_get_attachment_image_src( $instruction['image'], 'full' );
+                $out .= '<a class="rpr_img_link" href="' . esc_url( $img_full[0] ) . '" rel="lightbox" title="' . esc_html( substr( $instruction['description'], 150) ) . '">';
+            }
+
+            /**
+             * Render the image
+             */
+            $out .= '<img class="';
+            $out .= esc_attr( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_instr_pos' ), 'right' ) );
+            $out .= '" src="' . esc_url( $img[0] ) . '" width="'. esc_attr( $img[1] ) .'" height="'. esc_attr( $img[2] ) .'" />';
+			
+            /**
+             * Close the link for clickable images
+             */
+            if( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_link' ), true ) && is_array( $img ) && $img[0] != '' ){
+                $out .= '</a>';
+            }
+        }
+		
+        /**
+         * End the line
+         */
+        $out .= '</li>';
+		
+        /**
+         * Return the rendered output
+         */
+        return $out;
+    }
 }
 if( ! function_exists( 'the_rpr_recipe_instructions' ) ){
 	function the_rpr_recipe_instructions(){
