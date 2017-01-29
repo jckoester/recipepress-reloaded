@@ -139,7 +139,7 @@ class RPR_Admin_GeneralMeta {
                 if( $unit == $selected ) { $outp .= ' selected="selected" '; }
                 $outp .= '>' . $unit . '</option>' . "\n";
             }
-            if( ! in_array( $units, $selected )){
+            if( ! in_array( $selected, $units )){
                 $outp .= '<option value="' . $selected . '"  selected="selected" >' . $selected . '</option>\n';
             }
             return $outp;
