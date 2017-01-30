@@ -111,7 +111,8 @@ class RPR_Public {
          * between the defined hooks and the functions defined in this
          * class.
          */
-        wp_enqueue_script( 'recipepress-reloaded', plugin_dir_url( __FILE__ ) . 'js/rpr-public.js', array ( 'jquery' ), $this->version, false );
+        wp_enqueue_script( 'recipepress-reloaded', plugin_dir_url( __FILE__ ) . 'js/rpr-public.js', array ( 'jquery' ), $this->version, true );
+        wp_enqueue_script( 'recipepress-reloaded-print', plugin_dir_url( __FILE__ ) . 'js/rpr-print.js', array ( 'jquery' ), '1.5.1', true );
     }
 
     // Add Widgets
