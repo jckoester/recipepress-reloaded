@@ -3,9 +3,12 @@
  * @param {type} param
  */
 jQuery(document).ready(function() {
-	jQuery('span.print-link').prepend('<a class="fa fa-print" href="#print"> Print</a>');
 	jQuery('span.print-link a').click(function() {
-		jQuery(rpr_printarea).print();
-	return false;
+			jQuery(print_options.print_area).print({
+					globalStyles: false,
+					noPrintSelector: print_options.no_print_area,
+					stylesheet: print_options.print_css
+			});
+			return false;
 	});
 });
