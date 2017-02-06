@@ -3,7 +3,6 @@
  * @param {type} param
  */
 jQuery(document).ready(function() {
-	console.log('Ping!');
 	jQuery('span.print-link a').click(function() {
 			jQuery(print_options.print_area).print({
 					globalStyles: false,
