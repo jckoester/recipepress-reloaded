@@ -12,7 +12,7 @@ add_action( 'wp_enqueue_scripts', 'rpr_default_scripts'  );
 function rpr_default_styles( ){
 	wp_enqueue_style( 'rpr_default',  plugin_dir_url( __FILE__ ) . '/public.css', array (), '0.0.1', 'all' );
 
-	if(AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'print_button_link' ) )){
+	if( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'print_button_link' ) ) ){
 		wp_enqueue_style( 'rpr_default_prn',  plugin_dir_url( __FILE__ ) . '/print.css', array (), '0.0.1', 'print' );
 	}
 }
@@ -24,7 +24,7 @@ function rpr_default_scripts( ){
         'print_css' => plugin_dir_url( __FILE__ ) . 'print.css'
 	);
 
-	if(AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'print_button_link' ) )){
+	if( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'print_button_link' ) ) ){
 		wp_enqueue_script( 'rpr-print-js', plugin_dir_url(dirname(__FILE__)) . '../js/rpr-print.js', array ( 'jquery' ), '1.5.1', true );
 		wp_enqueue_script( 'rpr-print-opt',  plugin_dir_url( __FILE__ ) . 'print.js', array (), '0.0.1', true );
 		wp_localize_script('rpr-print-opt', 'print_options', $print_data);
