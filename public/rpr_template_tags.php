@@ -1975,7 +1975,7 @@ if( !function_exists( 'get_the_rpr_recipe_author' ) ) {
 		 * Recipe author only needs to be included if settings tell so
 		 */
 		if( AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_author' ), false ) ){
-			$out .= '<span class="rpr_author">' . get_the_author_link() . '</span>';
+			$out .= '<span class="rpr_author">' . get_the_author_link() . '</span>&nbsp;';
 		}
 		/**
 		 * return the renderd output
