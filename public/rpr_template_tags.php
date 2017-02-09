@@ -717,6 +717,7 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			/**
 			* Loop over all the ingredients
 			*/
+			$i =0;
 		   foreach ( $ingredients as $ingredient ){
 			   /**
 			    * Check if the ingredient is a grouptitle
@@ -731,7 +732,8 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 				   /**
 				    * Start the list on the first item
 				    */
-				   if( isset( $ingredient['sort'] ) && $ingredient['sort'] == 1 ){
+					if( $i == 0 ) {
+				   //if( isset( $ingredient['sort'] ) && $ingredient['sort'] == 1 ){
 					   $out .= '<ul class="rpr-ingredient-list" >';
 				   }
 				   /**
@@ -745,7 +747,12 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 					   $out .= '</ul>';
 				   }
 			   }
+			   $i++;
 		   }
+		   /**
+             * Close the list on the last item
+             */	
+            $out .= '</ul>';
 		} else {
 			/**
 			 * Issue a warning, if there are no ingredients for the recipe

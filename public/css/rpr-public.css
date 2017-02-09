@@ -25,12 +25,17 @@
 }
 
 /* times */
+div.rpr_times{
+    margin-bottom:1.5ex;
+}
 .rpr_times dl{
     font-size: 80%;
 }
 .rpr_times dt{
     float:left;
     margin-right:12px;
+    clear:none!important;
+    width:auto!important;
 }
 .rpr_times dd{
     float:left;
