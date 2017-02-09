@@ -259,7 +259,6 @@ class RPR_Admin {
 				if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
 					$this->nutrition->save_nutritionalmeta($recipe_id, $data, $recipe);
 				}
-				echo "</pre>";
 				//die;
 				add_action('save_post', array($this, 'save_recipe'));
 			}
