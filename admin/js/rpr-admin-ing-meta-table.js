@@ -134,7 +134,10 @@ var ing_table = (function($){
             $( this ).find( 'input, select, textarea' ).each( function() {
         	var name = $( this ).attr( 'name' );
         	name = name.replace( /\[(\d+)\]/, '[' + (rowIndex +1 ) + ']');
-        	$( this ).attr( 'name', name ).attr( 'id', name );
+		var id = $( this ).attr( 'id' );
+		id = id.replace( /\_(\d+)/, '_' + (rowIndex + 1) );
+        	$( this ).attr( 'name', name );
+		$( this ).attr( 'id', id );
                 if( $(this).attr('onfocus') ){
                     var onf = $(this).attr('onfocus');
                     onf = onf.replace( /\_(\d+)/, '_' + (rowIndex + 1) );

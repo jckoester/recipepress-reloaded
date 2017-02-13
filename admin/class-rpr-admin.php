@@ -161,6 +161,8 @@ class RPR_Admin {
                 wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-table.js', array ( 'jquery' ), $this->version, false );
                 wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_link', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-link.js', array ( 'jquery' ), $this->version, false );
                 wp_enqueue_script( 'recipepress-reloaded' . '_meta_ins_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ins-meta-table.js', array ( 'jquery' ), $this->version, false );
+				// Load jQuery suggest script to add autocomplete to ingredients
+				wp_enqueue_script( 'suggest' );
             }
         }
 
@@ -177,6 +179,8 @@ class RPR_Admin {
 		
         // Load jQuery Link script to add links to ingredients
         wp_enqueue_script( 'wp-link' );
+		
+
 		
     }
 
