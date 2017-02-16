@@ -21,12 +21,29 @@ wp_nonce_field( 'rpr_save_recipe_meta', 'rpr_nonce' );
  * @todo move to admin.js
  */
 ?>
-<script>
-    function autoSuggestTag(id, type) {
-        jQuery('#' + id).suggest("<?php echo get_bloginfo( 'wpurl' ); ?>/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=" + type);
-        window.console.log(id);
-    }
-    var plugin_url = "<?php echo plugins_url(); //$this->pluginUrl;  ?>";
+
+<script type="text/javascript">
+<?php
+	$ingredients = get_terms( 'rpr_ingredient', array( 'orderby'=> 'name', 'order' => 'ASC' ) );
+	$inglist = array();
+	foreach( $ingredients as $ing ){
+		array_push( $inglist, $ing->name );
+	}
+?>
+    /*var ingredients = ;	*/
+	var haystack = <?php echo json_encode( $inglist ); ?>;
+jQuery(document).on("focusin", ".rpr-ing-name-input", function(){
+	window.console.log(this.name);
+	jQuery(this).autocomplete({
+        source: haystack,
+        minLength: 2,
+		autoFocus: true
+    });
+});
+jQuery(document).on("focusout", ".rpr-ing-name-input", function(){
+		jQuery(this).autocomplete("destroy");
+
+});
 </script>
 
 <table width="100%" cellspacing="5" class="rpr-metabox-table ingredients" id="recipe-ingredients">
@@ -132,7 +149,7 @@ if( is_array($ingredients) ){
                 <?php } ?>
             </td>
             <td class="rpr-ing-name">
-                <input type="text" name="rpr_recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'rpr_ingredient');"  value="<?php echo $ing['ingredient']; ?>" />
+                <input type="text" class="rpr-ing-name-input" name="rpr_recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" value="<?php echo $ing['ingredient']; ?>" />
             </td>
             <td class="rpr-ing-note">
                 <input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][notes]"      class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>"  value="<?php echo $ing['notes']; ?>"  />
@@ -176,7 +193,7 @@ if( is_array($ingredients) ){
                 <?php } ?>
             </td>
             <td class="rpr-ing-name">
-                <input type="text" name="rpr_recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" onfocus="autoSuggestTag('ingredients_<?php echo $i; ?>', 'rpr_ingredient');" placeholder="<?php _e( 'olive oil', 'recipepress-reloaded' ); ?>" />
+                <input type="text" class="rpr-ing-name-input" name="rpr_recipe_ingredients[<?php echo $i; ?>][ingredient]" class="ingredients_name" id="ingredients_<?php echo $i; ?>" />
             </td>
             <td class="rpr-ing-note">
                 <input type="text"   name="rpr_recipe_ingredients[<?php echo $i; ?>][notes]"      class="ingredients_notes" id="ingredient_notes_<?php echo $i; ?>" placeholder="<?php _e( 'extra virgin', 'recipepress-reloaded' ); ?>" />

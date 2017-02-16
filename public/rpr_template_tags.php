@@ -277,7 +277,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_list' ) ) {
 		/*
 		 *  Add the custom taxonomies
 		 */
-		foreach( AdminPageFramework::getOption( 'rpr_options', array( 'tax_custom' ) ) as $taxonomy ){
+		foreach( AdminPageFramework::getOption( 'rpr_options', array( 'tax_custom' ), array() ) as $taxonomy ){
 			$out .= get_the_rpr_taxonomy_terms($taxonomy['slug'], $icons, $label, $sep);
 		}
 		
@@ -717,6 +717,7 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			/**
 			* Loop over all the ingredients
 			*/
+			$i =0;
 		   foreach ( $ingredients as $ingredient ){
 			   /**
 			    * Check if the ingredient is a grouptitle
@@ -731,7 +732,8 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 				   /**
 				    * Start the list on the first item
 				    */
-				   if( isset( $ingredient['sort'] ) && $ingredient['sort'] == 1 ){
+					if( $i == 0 ) {
+				   //if( isset( $ingredient['sort'] ) && $ingredient['sort'] == 1 ){
 					   $out .= '<ul class="rpr-ingredient-list" >';
 				   }
 				   /**
@@ -745,7 +747,12 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 					   $out .= '</ul>';
 				   }
 			   }
+			   $i++;
 		   }
+		   /**
+             * Close the list on the last item
+             */	
+            $out .= '</ul>';
 		} else {
 			/**
 			 * Issue a warning, if there are no ingredients for the recipe
@@ -1968,7 +1975,7 @@ if( !function_exists( 'get_the_rpr_recipe_author' ) ) {
 		 * Recipe author only needs to be included if settings tell so
 		 */
 		if( AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_author' ), false ) ){
-			$out .= '<span class="rpr_author">' . get_the_author_link() . '</span>';
+			$out .= '<span class="rpr_author">' . get_the_author_link() . '</span>&nbsp;';
 		}
 		/**
 		 * return the renderd output

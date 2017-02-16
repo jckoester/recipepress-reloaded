@@ -139,10 +139,15 @@ class RPR_Admin_Migration {
      * @since 0.8.0
      */
     private function rpr_update_from_4(){
-        
+
+		
         $new_options = get_option( 'rpr_options' ); 
         $old_options = get_option( 'rpr_option' );
-        // Move options to new scheme:
+
+		// create a backup of the old options:
+        update_option( 'rpr_options_backup', $old_options );
+
+		// Move options to new scheme:
        
         // General options
         if( $old_options['recipe_slug'] ){
@@ -302,7 +307,7 @@ class RPR_Admin_Migration {
         $new_options['advanced']['display_time'] = $old_options['recipe_time_display_in_recipe'];
         $new_options['advanced']['display_categories'] = $old_options['recipe_display_categories_in_recipe'];
         $new_options['advanced']['display_tags'] = $old_options['recipe_display_tags_in_recipe'];
-                
+		                
         // Save the new options
         update_option( 'rpr_options', $new_options );
         update_option( 'rpr_dbversion', 5);
