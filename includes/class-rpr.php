@@ -66,21 +66,31 @@ class RPR {
      */
     protected $dbversion;
 
-    /**
+	/**
+	 * A list of all activated modules
+	 * @since: 1.0.0
+	 * @todo: The list should be generated in a procedure during contruction from the options set.
+	 * For testing the list is defined fixed here
+	 */
+	protected $modules = array();
+	
+	/**
      * Define the core functionality of the plugin.
      *
      * Set the plugin name and the plugin version that can be used throughout the plugin.
-     * Load the dependencies, define the locale, and set the hooks for the admin area and
+	 * Load the modules, load the dependencies, define the locale
+	 * and set the hooks for the admin area and
      * the public-facing side of the site.
      *
-     * @since    1.0.0
+     * @since    0.8.0
      */
     public function __construct() {
 
         $this->plugin_name = 'recipepress-reloaded';
-        $this->version = '0.8.0';
+        $this->version = RPR_VERSION;
         $this->dbversion = 5;
 
+		$this->load_modules();
         $this->load_dependencies();
         $this->set_locale();
         $this->define_admin_hooks();
@@ -88,6 +98,42 @@ class RPR {
         
     }
 
+	/**
+	 * Load all enabled modules and instantiate objects
+	 * 
+	 * @since 1.0.0
+	 * @todo Generate the list of modules from options
+	 */
+	private function load_modules() {
+		/**
+		 * Load the abstract class for RPR_Modules
+		 */
+		require_once  plugin_dir_path( dirname( __FILE__ ) ) . 'includes/abstract-class-rpr-module.php';
+		
+		/**
+		 * For development we use a static list of modules.
+		 * Needs to be generated from optiosn later!
+		 */
+		$active_modules = array( 'Demo' );
+
+		foreach ( $active_modules as $active_module ){
+			/**
+			 * Load the module file
+			 */
+			$filename = plugin_dir_path( dirname( __FILE__ ) ) . 'modules/' . strtolower( $active_module ) . '/class-rpr-module-' . strtolower( $active_module ) . '.php';
+
+			if( file_exists( $filename ) ) {
+				require_once $filename;
+				
+				/**
+				 * Create the module object and store it in $this->modules
+				 */
+				$classname = 'RPR_Module_' . $active_module;
+				$this->modules[ $active_module ] = new $classname();
+			}
+			
+		}
+	}
     /**
      * Load the required dependencies for this plugin.
      *
@@ -145,6 +191,14 @@ class RPR {
          */
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libraries/apf/admin-page-framework.php';
 
+		/**
+		 * Load dependencies for all modules:
+		 */
+		foreach( $this-> modules as $module ){
+			if( is_a( $module, 'RPR_Module' ) ){
+				$module->load_dependencies();
+			}
+		}
              
         $this->loader = new RPR_Loader();
         
@@ -223,6 +277,15 @@ class RPR {
         $this->loader->add_action( 'media_buttons', $plugin_admin->shortcodes, 'add_button_scl' );
         $this->loader->add_action( 'in_admin_footer', $plugin_admin->shortcodes, 'load_in_admin_footer_scl' );
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin->shortcodes, 'load_ajax_scripts_scl' );
+		
+		/**
+		 * Define the admin hooks for all modules
+		 */
+		foreach( $this-> modules as $module ){
+			if( is_a( $module, 'RPR_Module' ) ){
+				$module->define_admin_hooks( $this->loader );
+			}
+		}
     }
 
     /**
