@@ -46,7 +46,7 @@ class RPR_Public {
 		 * @todo: Is this the right place?
 		 */
 		// Include Template Tags
-//		include_once( dirname( __FILE__ ) . '/rpr_template_tags.php' );
+		// include_once( dirname( __FILE__ ) . '/rpr_template_tags.php' );
 		
 		// Include the layout's functions.php
 		// Get the layout chosen:
@@ -145,28 +145,27 @@ class RPR_Public {
     		return;
     	}
 		
-	// Check on all public pages
-	if ( ! is_admin() && $query->is_main_query() ) {
-            // Post archive page:
-            if ( is_post_type_archive( 'rpr_recipe' ) ) {
-                // set post type to only recipes
-      		$query->set('post_type', 'rpr_recipe' );
-		return;
-            }
-            // Homepage
-            if( AdminPageFramework::getOption( 'rpr_options', array( 'general', 'homepage_display' ) , true ) ){
-                if( is_home() || $query->is_home() || $query->is_front_page() ){
-                    $this->add_recipe_to_query($query);
+		// Check on all public pages
+		if ( ! is_admin() && $query->is_main_query() ) {
+			// Post archive page:
+			if ( is_post_type_archive( 'rpr_recipe' ) ) {
+				// set post type to only recipes
+				$query->set('post_type', 'rpr_recipe' );
+				return;
+			}
+			// Homepage
+			if( AdminPageFramework::getOption( 'rpr_options', array( 'general', 'homepage_display' ) , true ) ){
+				if( is_home() || $query->is_home() || $query->is_front_page() ){
+					$this->add_recipe_to_query($query);
+				}
+			}
+			// All other pages:
+			if( is_category() || is_tag() || is_author() ){
+				$this->add_recipe_to_query($query);
+				return;
+			}
 		}
-            }
-            // All other pages:
-            if( is_category() || is_tag() || is_author() ){
-                $this->add_recipe_to_query($query);
 		return;
-            }
-  	}
-
-	return;
     }
 	
 	/**
@@ -177,8 +176,7 @@ class RPR_Public {
 	 * @param type $query
 	 * @return type none
 	 */
-	private function add_recipe_to_query($query)
-	{
+	private function add_recipe_to_query($query){
 		// add post type to query
 		$post_type = $query->get('post_type');
 
@@ -594,4 +592,41 @@ class RPR_Public {
 		
 		return do_shortcode($output);
 	}
+
+	/**
+	 * Adds recipes to the 'Recent Activity' Dashboard widget
+	 * 
+	 * @since 0.8.3
+	 * @param array $query_args
+	 */
+	public function add_to_dashboard_recent_posts_widget( $query_args ) {
+		$query_args =  array_merge( $query_args, array( 'post_type' => array( 'post', 'rpr_recipe' ) ));
+		return $query_args;
+	}
+
+	/**
+	 * Adds recipes to the 'At a Glance' Dashboard widget
+	 * 
+	 * @since 0.8.3
+	 * @param array $items
+	 */
+	public function add_recipes_glance_items( $items = array() ) {
+			$num_recipes = wp_count_posts( 'rpr_recipe' );
+			
+			if( $num_recipes ) {
+				$published = intval( $num_recipes->publish );
+				$post_type = get_post_type_object( 'rpr_recipe' );
+				
+				$text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, 'recipepress-reloaded' );
+				$text = sprintf( $text, number_format_i18n( $published ) );
+				
+				if ( current_user_can( $post_type->cap->edit_posts ) ) {
+					$items[] = sprintf( '<a class="%1$s-count" href="edit.php?post_type=%1$s">%2$s</a>', 'rpr_recipe', $text ) . "\n";
+				} else {
+					$items[] = sprintf( '<span class="%1$s-count">%2$s</span>', 'rpr_recipe', $text ) . "\n";
+				}
+			}
+    
+		return $items;
+	}		
 }

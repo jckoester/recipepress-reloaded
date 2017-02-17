@@ -250,11 +250,17 @@ class RPR {
 		
         // Do the recipe shortcodes
         add_shortcode( 'rpr-recipe', array( $plugin_public, 'do_recipe_shortcode' ) );
-        add_shortcode("rpr-recipe-index", array( $plugin_public, 'do_recipe_index_shortcode' ));
-        add_shortcode( "rpr-tax-list", array( $plugin_public, 'do_taxlist_shortcode' ));
+        add_shortcode( 'rpr-recipe-index', array( $plugin_public, 'do_recipe_index_shortcode' ));
+        add_shortcode( 'rpr-tax-list', array( $plugin_public, 'do_taxlist_shortcode' ));
 
         // register the widgets
         $this->loader->add_action( 'widgets_init', $plugin_public, 'register_widgets' );
+
+        // Add recipes to Recent Activity widget
+        $this->loader->add_filter( 'dashboard_recent_posts_query_args', $plugin_public,  'add_to_dashboard_recent_posts_widget' );
+
+        // Add recipes to 'At a Glance' widget
+        $this->loader->add_filter( 'dashboard_glance_items', $plugin_public,  'add_recipes_glance_items' );
     }
 
     /**
