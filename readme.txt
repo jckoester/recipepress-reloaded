@@ -67,6 +67,9 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
+= 0.8.4 =
+ * Fixing several display bugs
+ 
 = 0.8.3 =
  * Fixing a bug on activation (file name was wrong)
 
@@ -85,9 +88,14 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
  * Improved recipe editor
 
 == Upgrade Notice ==
+= 0.8.4 =
+Fixing several bugs in displaying recipes.
+If you get a 'File not found' error on recipepress-reloaded.php please just reactivate.
+
 = 0.8.3 =
 Fixing mor bugs after the complete recode 0.8.0
 If you get a 'File not found' error on recipepress-reloaded.php please just reactivate.
+This is an error in 0.8.0-0.8.2 only. Updating form 0.7.x is not affected.
 = 0.8.2 =
 Bugfix release
 = 0.8.1 =
