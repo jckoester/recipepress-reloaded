@@ -274,3 +274,9 @@ a.nav-tab{
     margin: 0 2px;
     border-radius:3px;
 }
+
+#dashboard_right_now a.rpr_recipe-count:before,
+#dashboard_right_now span.rpr_recipe-count:before {
+    content: url('../../img/icon_16_gray.png');
+    margin: -2px 0px 0px 0px;
+}

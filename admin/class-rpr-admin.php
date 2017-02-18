@@ -285,4 +285,41 @@ class RPR_Admin {
 		// Reset the error option for the next error
 		update_option('rpr_admin_errors', false);
 	}
+
+	/**
+	 * Adds recipes to the 'Recent Activity' Dashboard widget
+	 * 
+	 * @since 0.8.3
+	 * @param array $query_args
+	 */
+	public function add_to_dashboard_recent_posts_widget( $query_args ) {
+		$query_args =  array_merge( $query_args, array( 'post_type' => array( 'post', 'rpr_recipe' ) ));
+		return $query_args;
+	}
+
+	/**
+	 * Adds recipes to the 'At a Glance' Dashboard widget
+	 * 
+	 * @since 0.8.3
+	 * @param array $items
+	 */
+	public function add_recipes_glance_items( $items = array() ) {
+			$num_recipes = wp_count_posts( 'rpr_recipe' );
+			
+			if( $num_recipes ) {
+				$published = intval( $num_recipes->publish );
+				$post_type = get_post_type_object( 'rpr_recipe' );
+				
+				$text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, 'recipepress-reloaded' );
+				$text = sprintf( $text, number_format_i18n( $published ) );
+				
+				if ( current_user_can( $post_type->cap->edit_posts ) ) {
+					$items[] = sprintf( '<a class="%1$s-count" href="edit.php?post_type=%1$s">%2$s</a>', 'rpr_recipe', $text ) . "\n";
+				} else {
+					$items[] = sprintf( '<span class="%1$s-count">%2$s</span>', 'rpr_recipe', $text ) . "\n";
+				}
+			}
+    
+		return $items;
+	}
 }
