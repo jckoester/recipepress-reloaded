@@ -59,14 +59,18 @@ class RPR_Admin_Demo {
      * @since 0.8.0
      */
     public function notice_demo() {
+
+        if ( ! PAnD::is_admin_notice_active( 'disable-done-notice-forever' ) ) 
+            return;    
+
         if ( get_option( 'rpr_install_sample_data' ) ) {
-            echo '<div class="updated is_dismissable"><p>';
+            echo '<div data-dismissible="disable-done-notice-forever" class="notice updated notice-success is-dismissible"><p>';
             echo '<img src="' . plugins_url() . '/' . 'recipepress-reloaded/img/logo.png' . ' " width=48px" style="float:left; margin-right:8px;" />';
             echo '<b>';
             _e( 'Welcome to RecipePress reloaded.' ,'recipepress-reloaded') ;
             echo '</b><br/>';
             printf( __( 'It seems to be the first time you\'re using this plugin. Have a look at the <a href="%1$s" target="_blank">documentation</a> (currently being built up) to get some inspiration how to use this plugin. If you hit a problem don\'t hesitate to ask for help at the <a href="%2$s" target="_blank">support forum.</a>' , 'recipepress-reloaded' ), 'https://github.com/dasmaeh/recipepress-reloaded/wiki', 'https://wordpress.org/support/plugin/recipepress-reloaded' );            echo '<br/>';
-            printf ( '<a href="%1$s">' . __( 'Dismiss', 'recipepress-reloaded') . '</a>', '?post_type=rpr_recipe&rpr_do_install_samples=0' );
+            //printf ( '<a href="%1$s">' . __( 'Dismiss', 'recipepress-reloaded') . '</a>', '?post_type=rpr_recipe&rpr_do_install_samples=0' );
             /**
              * Temporary solution to disable the dialog again
              */

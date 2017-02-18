@@ -96,6 +96,14 @@ class RPR_Admin {
      * @access public
      */
     public $demo;
+
+    /**
+     * instance of the PAnD class use to dismiss admin notices
+     * 
+     * @since 0.8.0
+     * @access public
+     */
+    public $dismiss;    
     
     /**
      * Initialize the class and set its properties.
@@ -128,6 +136,9 @@ class RPR_Admin {
         
         require_once 'class-rpr-admin-demo.php';
         $this->demo = new RPR_Admin_Demo( $this->version, $this->dbversion );
+
+        require_once 'class-persist-admin-notices-dismissal.php';
+        $this->dismiss = new PAnD();
     }
 
     /**
