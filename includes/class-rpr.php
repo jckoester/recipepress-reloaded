@@ -108,7 +108,7 @@ class RPR {
         $this->load_modules();
         $this->load_dependencies();
         
-        $this->admin = new RPR_Admin( $this->version );
+        $this->admin = new RPR_Admin( $this->version, $this->dbversion );
         $this->public = new RPR_Public( $this->version );
         
         $this->set_locale();
