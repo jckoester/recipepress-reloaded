@@ -16,7 +16,7 @@
  * Plugin Name:       RecipePress reloaded
  * Plugin URI:        http://tech.cbjck.de/wp-plugins/rpr/
  * Description:       The swiss army knife for your food blog. A tool not only to add nicely and seo friendly formatted  recipes to your posts. But also to manage present your recipe collection.
- * Version:           0.8.3
+ * Version:           1.0.0
  * Author:            Jan Köster
  * Author URI:        http://tech.cbjck.de/author/jan
  * License:           GPL-2.0+
@@ -33,8 +33,8 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Define constants
  */
-const RPR_VERSION = '0.8.3';
-const RPR_DBVER = '';
+const RPR_VERSION = '1.0.0';
+const RPR_DBVER = '5';
 
 /**
  * The code that runs during plugin activation.
