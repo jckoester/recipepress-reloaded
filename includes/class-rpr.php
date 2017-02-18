@@ -187,7 +187,7 @@ class RPR {
         
         // Install demo data / sample recipes
         $this->loader->add_action( 'admin_init', $plugin_admin->demo, 'do_install_base_options' );
-        //$this->loader->add_action( 'admin_init', $plugin_admin->demo, 'rpr_do_install_samples' );
+        $this->loader->add_action( 'admin_init', $plugin_admin->demo, 'rpr_do_install_samples' );
         $this->loader->add_action( 'admin_notices', $plugin_admin->demo, 'notice_demo' );
 
 
