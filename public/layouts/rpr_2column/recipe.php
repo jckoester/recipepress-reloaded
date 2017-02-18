@@ -9,7 +9,7 @@ Description: A basic layoutin two columns. This layout provides all the bits you
 */
 ?>
 
-<div class="<?php esc_attr( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'printlink_class' ), '.rpr_recipe') ); ?>">
+<div class="<?php echo sanitize_html_class( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'printlink_class' ), '.rpr_recipe') ); ?>">
 <?php
 /** 
  * Displaying the recipe title is normally done by the theme as post_title().
