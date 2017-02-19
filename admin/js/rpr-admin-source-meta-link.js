@@ -6,7 +6,7 @@
  * @since 0.8.0
  */
 
-var link_btn_ing = (function($){
+var link_btn_src = (function($){
     'use strict';
     var _link_sideload = true; //used to track whether or not the link dialogue actually existed on this page, ie was wp_editor invoked.
 
@@ -15,11 +15,9 @@ var link_btn_ing = (function($){
 //add event listeners
 
 function _init() {
-    $('body').on('click', '.rpr-ing-add-link', function(event) {
+    $('.sourcebox').on('click', '.rpr-source-add-link', function(event) {
         var button = $(this);
-        window.console.log( button);
-        var link_val_container=button.siblings('.rpr_recipe_ingredients_link');
-        //var link_val_container = $('#recipe_ingredient_0');
+        var link_val_container=button.siblings('.rpr_recipe_source_link');
         
         _addLinkListeners( link_val_container );
         _link_sideload = false;
@@ -41,10 +39,10 @@ function _init() {
         return false;
     });
     
-    $('body').on('click', '.rpr-ing-del-link', function(event) {
+    $('body').on('click', '.rpr-source-del-link', function(event) {
         var delbutton = $(this);
-        var addbutton = delbutton.siblings('.rpr-ing-add-link');
-        var link_val_container=delbutton.siblings('.rpr_recipe_ingredients_link');
+        var addbutton = delbutton.siblings('.rpr-source-add-link');
+        var link_val_container=delbutton.siblings('.rpr_recipe_source_link');
         
         link_val_container.val('');
         addbutton.removeClass('has-link');
@@ -62,17 +60,20 @@ function _addLinkListeners( link_val_container ) {
         link_val_container.val(linkAtts.href);
         
         // change icon color and make delete link button visible
-        var addbutton = link_val_container.siblings('.rpr-ing-add-link');
-        var delbutton = link_val_container.siblings('.rpr-ing-del-link');
+        var addbutton = link_val_container.siblings('.rpr-source-add-link');
+        var delbutton = link_val_container.siblings('.rpr-source-del-link');
         delbutton.removeClass("hidden");
         addbutton.addClass("has-link");
         /**
          * Prevent the link from being added to an editor field
          * @link http://stackoverflow.com/questions/33156478/how-to-prevent-wordpress-built-in-browse-link-entering-the-data-in-wp-editor
          */ 
-        var $frame = $('#content_ifr'),
-        $added_links = $frame.contents().find("a[data-mce-href]");
-
+        //var $frame = $('#content_ifr'),
+        //$added_links = $frame.contents().find("a[data-mce-href]");
+        
+        var $frame = $('#rpr_recipe_description_ifr'),
+        $added_links = $frame.contents().find("a");
+        
         $added_links.each(function(){
             if ($(this).attr('href') === linkAtts.href) {
                 $(this).remove();
@@ -97,7 +98,7 @@ function _removeLinkListeners() {
     }
 
     wpLink.close();
-    wpLink.textarea = $('html');//focus on document
+    wpLink.textarea = $('#rpr_recipe_source');//focus on document
 
     $('body').off('click', '#wp-link-submit');
     $('body').off('click', '#wp-link-cancel');
@@ -115,5 +116,5 @@ return {
 // Initialise
 jQuery(document).ready(function($){
  'use strict';
- link_btn_ing.init();
+ link_btn_src.init();
 });

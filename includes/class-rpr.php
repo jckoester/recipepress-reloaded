@@ -197,10 +197,15 @@ class RPR {
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_postimage' );
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_description' );
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_details' );
-		
+	
+        
+        if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+            $this->loader->add_action( 'do_meta_boxes', $plugin_admin->source, 'metabox_source' );
+        }
         if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
             $this->loader->add_action( 'do_meta_boxes', $plugin_admin->nutrition, 'metabox_nutrition' );	
         }
+        
         
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->ingredients, 'metabox_ingredients' );
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->instructions, 'metabox_instructions' );

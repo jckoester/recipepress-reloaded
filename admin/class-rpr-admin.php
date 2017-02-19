@@ -98,6 +98,14 @@ class RPR_Admin {
     public $demo;
     
     /**
+     * instance of class source to save recipe source
+     * 
+     * @since 0.9.0
+     * @access public
+     */
+    public $source;
+    
+    /**
      * Initialize the class and set its properties.
      *
      * @since    0.8.0
@@ -128,6 +136,9 @@ class RPR_Admin {
         
         require_once 'class-rpr-admin-demo.php';
         $this->demo = new RPR_Admin_Demo( $this->version, $this->dbversion );
+        
+        require_once 'class-rpr-admin-source.php';
+        $this->source = new RPR_Admin_Source( $this->version );
     }
 
     /**
@@ -158,11 +169,12 @@ class RPR_Admin {
 
         if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
             if ( 'rpr_recipe' === $post->post_type ) {
+                
                 wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-table.js', array ( 'jquery' ), $this->version, false );
                 wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_link', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-link.js', array ( 'jquery' ), $this->version, false );
                 wp_enqueue_script( 'recipepress-reloaded' . '_meta_ins_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ins-meta-table.js', array ( 'jquery' ), $this->version, false );
 				// Load jQuery suggest script to add autocomplete to ingredients
-				wp_enqueue_script( 'suggest' );
+				//wp_enqueue_script( 'suggest' );
             }
         }
 
@@ -176,6 +188,10 @@ class RPR_Admin {
 		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
 			wp_enqueue_script( 'recipepress-reloaded' . '_meta_nutrition', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-nutrition.js', array ( 'jquery' ), $this->version, false );
 		}
+                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+			wp_enqueue_script( 'recipepress-reloaded' . '_meta_source', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-source-meta-link.js', array ( 'jquery' ), $this->version, false );
+		}
+                
 		
         // Load jQuery Link script to add links to ingredients
         wp_enqueue_script( 'wp-link' );
@@ -262,6 +278,9 @@ class RPR_Admin {
 
 				if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
 					$this->nutrition->save_nutritionalmeta($recipe_id, $data, $recipe);
+				}
+                                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+					$this->source->save_sourcemeta($recipe_id, $data, $recipe);
 				}
 				//die;
 				add_action('save_post', array($this, 'save_recipe'));

@@ -65,7 +65,12 @@ the_rpr_taxonomy_list( AdminPageFramework::getOption( 'rpr_options', array( 'lay
  */
 the_rpr_recipe_description();
 ?>
-
+<?php
+/**
+ * display source / citation information if available
+ */
+the_rpr_recipe_source();
+?>
 <?php
 /**
  * display nutritional information if available:

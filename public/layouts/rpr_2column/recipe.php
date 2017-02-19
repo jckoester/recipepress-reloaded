@@ -59,6 +59,12 @@ the_rpr_recipe_description();
 ?>
 <?php
 /**
+ * display source / citation information if available
+ */
+the_rpr_recipe_source();
+?>
+<?php
+/**
  * Start the first column
  */
 ?>

@@ -62,3 +62,8 @@ a.rpr_toplink{
 ul.rpr_taxlist{
     margin-left:32px;
 }
+
+label[for=rpr_source]{
+    float:left;
+    margin-right: 6px;
+}

@@ -482,6 +482,10 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 				$out = rtrim($out, ",");
 				$out .= '},';
 			}
+                        // Source
+                        if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+                            $out .= '"citation": "' . esc_html( $recipe['source'][0] ) . '",';
+                        }
 			// Times
 			// fix missing times:
 			if( !isset( $recipe['rpr_recipe_prep_time'][0] ) ){
@@ -2042,6 +2046,79 @@ if( !function_exists( 'the_rpr_recipe_date' ) ) {
 		echo get_the_rpr_recipe_date();
 	}
 }
+
+/* *****************************************************************************
+ * Recipe source
+ */
+if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
+
+    /**
+     * Renders the source of a recipe if meta data is saved
+     * @since 0.9.0
+     */
+    function get_the_rpr_recipe_source() {
+        /**
+         *  Get the recipe id
+         */
+        if ( isset( $GLOBALS[ 'recipe_id' ] ) && $GLOBALS[ 'recipe_id' ] != '' ) {
+            $recipe_id = $GLOBALS[ 'recipe_id' ];
+        } else {
+            $recipe_id = get_post()->ID;
+        }
+        
+        $out = '';
+        
+        /**
+         * Only render the source if option is set so
+         */
+        if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+            
+            $out .= '<label for="rpr_source">' . __( 'Source', 'recipepress-reloaded' ) .':</label>';
+            /**
+             * Get the data
+             */
+            $source = get_post_meta( $recipe_id, "rpr_recipe_source", true );
+            $source_link = get_post_meta( $recipe_id, "rpr_recipe_source_link", true );
+            
+            /**
+             * Render the structured data
+             */
+            $out .= '<div>';
+            $out .= '<span id="rpr_source" class="rpr_source" ';
+            if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
+                $out .= ' itemprop="citation" >';
+            } elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
+                $out .= ' property="citation" >';
+            } else {
+                $out .= '>';
+            }
+            
+            if( $source_link != '' ) {
+                $out .= '<a href="' . esc_url( $source_link ) . '" target="_blank" >';
+            }
+            $out .= sanitize_text_field( $source );
+            if( $source_link != '' ) {
+                $out.='</a>';
+            }
+            $out .= '</span>';
+            $out .= '</div>';
+        }
+        
+        return $out;
+    }
+
+}
+
+if( !function_exists( 'the_rpr_recipe_source') ){
+    /**
+     * Outputs the rendered data
+     * @since 0.9.0
+     */
+    function the_rpr_recipe_source() {
+        echo get_the_rpr_recipe_source();
+    }
+}
+
 
 /** ****************************************************************************
  * Alphabet navigation bar for listings

@@ -57,6 +57,13 @@ class RPR_Options_Page_Metadata_Metadata {
         */
         $oFactory->addSettingFields(
             $this->sSectionID, 
+                array(
+                'field_id'          => 'use_source',
+                'type'              => 'checkbox',
+                'title'             => __( 'Use source field', 'recipepress-reloaded' ),
+                'tip'               => __( 'Check this to enable the use of a source field allowing you to enter restaurants, books or websites as source of your recipe.', 'recipepress-reloaded'),
+                'default'			=> false,
+            ),
             array(
                 'field_id'          => 'use_nutritional_data',
                 'type'              => 'checkbox',
