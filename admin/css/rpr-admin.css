@@ -1,7 +1,10 @@
 .hidden{
     visibility: hidden;
 }
-
+/* Show edit permalink box */
+#edit-slug-box{
+    display:block!important;
+}
 /**
 * Ingredient Meta box styles
 * Instructions Meta box styles

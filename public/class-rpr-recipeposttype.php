@@ -85,7 +85,7 @@ class RPR_RecipePostType extends AdminPageFramework_PostType{
                     'not_found_in_trash'    => __( 'No recipes found in trash.', 'recipepress-reloaded' ),
                     'plugin_listing_table_title_cell_link' => __( 'RPR recipe post type', 'recipepress-reloaded' ), // (framework specific key). [3.0.6+]
                 ),
-                'supports'      => array( 'title', 'comments', 'thumbnail', 'excerpt', 'featured', 'author' ),
+                'supports'      => array( 'title', 'comments', 'thumbnail', 'excerpt', 'featured', 'author', 'revisions' ),
                 //'supports'      => array( 'title', 'editor', 'comments', 'thumbnail', 'excerpt' ),
                 'public'        => true,
                 'menu_icon'     => plugins_url( 'img/logo_16x16.png', dirname( __FILE__ ) ),
