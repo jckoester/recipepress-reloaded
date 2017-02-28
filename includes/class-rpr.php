@@ -234,6 +234,9 @@ class RPR {
 
         // Add recipes to 'At a Glance' widget
         $this->loader->add_filter( 'dashboard_glance_items', $plugin_admin,  'add_recipes_glance_items' );
+
+        // Add messages on the recipe editor screen
+        $this->loader->add_filter( 'post_updated_messages', $plugin_admin,  'updated_rpr_messages' );
     }
 
     /**
