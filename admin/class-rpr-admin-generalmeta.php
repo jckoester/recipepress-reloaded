@@ -46,7 +46,7 @@ class RPR_Admin_GeneralMeta {
      */
     public function metabox_postimage() {
         remove_meta_box( 'postimagediv', 'rpr_recipe', 'side' );
-        add_meta_box( 'postimagediv', __( 'Post image', 'recipepress-reloaded' ), 'post_thumbnail_meta_box', 'rpr_recipe', 'side', 'high' );
+        add_meta_box( 'postimagediv', __( 'Recipe photo', 'recipepress-reloaded' ), 'post_thumbnail_meta_box', 'rpr_recipe', 'side', 'high' );
     }
 	
     /**
