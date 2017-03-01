@@ -1071,7 +1071,7 @@ if( !  function_exists( 'get_the_rpr_recipe_instructions' ) ){
         /**
          *  Create an empty output string
          */
-        $out = '';
+        $out = '<div class="rpr_instruction">';
 
         /**
          *  Get the instructions:
@@ -1134,6 +1134,8 @@ if( !  function_exists( 'get_the_rpr_recipe_instructions' ) ){
              */
             $out .= '<p class="warning">' . __( 'No instructions could be found for this recipe.', 'recipepress-reloaded' ) . '</p>';
         }
+        
+        $out .= '</div>';
 		
         /**
         * Return the rendered instructions list
