@@ -341,4 +341,50 @@ class RPR_Admin {
     
 		return $items;
 	}
+
+    /**
+    * Recipe update messages.
+    * See /wp-admin/edit-form-advanced.php
+    * @param array $messages Existing post update messages.
+    * @return array Amended post update messages with new recipe update messages.
+    */
+    function updated_rpr_messages( $messages ) {
+    $post             = get_post();
+    $post_type        = get_post_type( $post );
+    $post_type_object = get_post_type_object( $post_type );
+
+    $messages['rpr_recipe'] = array(
+        0  => '', // Unused. Messages start at index 1.
+        1  => __( 'Recipe updated.', 'recipepress-reloaded' ),
+        2  => __( 'Custom field updated.', 'recipepress-reloaded' ),
+        3  => __( 'Custom field deleted.', 'recipepress-reloaded' ),
+        4  => __( 'Recipe updated.', 'recipepress-reloaded' ),
+        /* translators: %s: date and time of the revision */
+        5  => isset( $_GET['revision'] ) ? sprintf( __( 'Recipe restored to revision from %s', 'recipepress-reloaded' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+        6  => __( 'Recipe published.', 'recipepress-reloaded' ),
+        7  => __( 'Recipe saved.', 'recipepress-reloaded' ),
+        8  => __( 'Recipe submitted.', 'recipepress-reloaded' ),
+        9  => sprintf(
+            __( 'Recipe scheduled for: <strong>%1$s</strong>.', 'recipepress-reloaded' ),
+            // translators: Publish box date format, see http://php.net/date
+            date_i18n( __( 'M j, Y @ G:i', 'recipepress-reloaded' ), strtotime( $post->post_date ) )
+        ),
+        10 => __( 'Recipe draft updated.', 'recipepress-reloaded' )
+    );
+
+    if ( $post_type_object->publicly_queryable && 'rpr_recipe' === $post_type ) {
+        $permalink = get_permalink( $post->ID );
+
+        $view_link = sprintf( ' <a href="%s">%s</a>', esc_url( $permalink ), __( 'View recipe', 'recipepress-reloaded' ) );
+        $messages[ $post_type ][1] .= $view_link;
+        $messages[ $post_type ][6] .= $view_link;
+        $messages[ $post_type ][9] .= $view_link;
+
+        $preview_permalink = add_query_arg( 'preview', 'true', $permalink );
+        $preview_link = sprintf( ' <a target="_blank" href="%s">%s</a>', esc_url( $preview_permalink ), __( 'Preview recipe', 'recipepress-reloaded' ) );
+        $messages[ $post_type ][8]  .= $preview_link;
+        $messages[ $post_type ][10] .= $preview_link;
+    }
+        return $messages;
+    }
 }
