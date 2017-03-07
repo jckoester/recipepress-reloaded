@@ -88,34 +88,34 @@ class RPR_Admin_Migration {
 				// Remove old version string 'rpr_version_updated'
 				delete_option( 'rpr_version_updated' );
 			}
-		}
-		
-		/*
-		 * Check for older versions
-		 */
-		if ( get_option( 'rpr_version_updated' ) ) {
-			// Fix the dbversion option for old versions of recipepress reloaded
-			if ( version_compare( get_option( 'rpr_version_updated' ), '0.8.0', '<' ) ) {
-				update_option( 'rpr_dbversion', '4' );
-			}
-			if ( version_compare( get_option( 'rpr_version_updated' ), '0.7.12', '<' ) ) {
-				update_option( 'rpr_dbversion', '3' );
-			}
-			if ( version_compare( get_option( 'rpr_version_updated' ), '0.7.9', '<' ) ) {
-				update_option( 'rpr_dbversion', '2' );
-			}
-			if ( version_compare( get_option( 'rpr_version_updated' ), '0.7.7', '<' ) ) {
-				update_option( 'rpr_dbversion', '1' );
-			}
-			if ( get_option( 'rpr_version_updated' ) == "0.3.0" || get_option( 'rpr_version_updated' ) == 'RecipePress' ) {
-				update_option( 'rpr_dbversion', '0' );
-			}
+		} else {
 
+			/*
+			 * Check for older versions
+			 */
+			if ( get_option( 'rpr_version_updated' ) ) {
+				// Fix the dbversion option for old versions of recipepress reloaded
+				if ( version_compare( get_option( 'rpr_version_updated' ), '0.8.0', '<' ) ) {
+					update_option( 'rpr_dbversion', '4' );
+				}
+				if ( version_compare( get_option( 'rpr_version_updated' ), '0.7.12', '<' ) ) {
+					update_option( 'rpr_dbversion', '3' );
+				}
+				if ( version_compare( get_option( 'rpr_version_updated' ), '0.7.9', '<' ) ) {
+					update_option( 'rpr_dbversion', '2' );
+				}
+				if ( version_compare( get_option( 'rpr_version_updated' ), '0.7.7', '<' ) ) {
+					update_option( 'rpr_dbversion', '1' );
+				}
+				if ( get_option( 'rpr_version_updated' ) == "0.3.0" || get_option( 'rpr_version_updated' ) == 'RecipePress' ) {
+					update_option( 'rpr_dbversion', '0' );
+				}
+			}
+		}
 			// Remove old version string 'rpr_version_updated'
 			delete_option( 'rpr_version_updated' );
-		}
-		
 	}
+		
 
 	/**
 	 * Check if the database needs an update by comparing the dbversion of 
@@ -159,6 +159,8 @@ class RPR_Admin_Migration {
 	 * @since 0.8.0
 	 */
 	public function rpr_do_migration() {
+		// Just to be sure, run the fix_dbversion()
+		$this->fix_dbversion();
 		$dbver = get_option( 'rpr_dbversion' );
 
 		// Check if the user has actively allowed the update:
@@ -240,23 +242,25 @@ class RPR_Admin_Migration {
 		// All other taxonomies:
 		unset( $old_tax['rpr_ingredient'] );
 
-		foreach ( $old_tax as $key => $value ) {
-			$taxarray = array(
-				'tab_title'		 => $value['labels']['singular_name'],
-				'singular'		 => $value['labels']['singular_name'],
-				'plural'		 => $value['labels']['name'],
-				'hierarchical'	 => $value['hierarchical'],
-				'filter'		 => '0',
-				'table'			 => '0'
-			);
-			if ( $value['rewrite']['slug'] ) {
-				$taxarray['slug'] = $value['rewrite']['slug'];
-			} else {
-				$taxarray['slug'] = $key;
+		if( is_array( $old_tax ) ) {
+			foreach ( $old_tax as $key => $value ) {
+				$taxarray = array(
+					'tab_title'		 => $value['labels']['singular_name'],
+					'singular'		 => $value['labels']['singular_name'],
+					'plural'		 => $value['labels']['name'],
+					'hierarchical'	 => $value['hierarchical'],
+					'filter'		 => '0',
+					'table'			 => '0'
+				);
+				if ( $value['rewrite']['slug'] ) {
+					$taxarray['slug'] = $value['rewrite']['slug'];
+				} else {
+					$taxarray['slug'] = $key;
+				}
+				$new_options['tax_custom'][] = $taxarray;
 			}
-			$new_options['tax_custom'][] = $taxarray;
 		}
-
+		
 		// Get a list of all units used for ingredients
 		$units	 = array();
 		global $wpdb;
@@ -634,6 +638,7 @@ class RPR_Admin_Migration {
 		delete_option( 'recipe-press-options' );
 		// Write new dbver
 		update_option( 'rpr_dbversion', '1' );
+		//var_dump( get_option( 'rpr_dbversion' ) ); die;
 		return true;
 	}
 

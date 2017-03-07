@@ -41,6 +41,8 @@ const RPR_DBVER = '';
  * This action is documented in includes/class-rpr-activator.php
  * 
  * @since 0.8.0
+ * @todo move this completely to admin_init as activation_hook does not catch 
+ * on multisite installations
  */
 function activate_rpr() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-rpr-activator.php';
