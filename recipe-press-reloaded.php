@@ -68,7 +68,10 @@ function uninstall_rpr() {
     RPR_Uninstaller::uninstall();
 }
 
-
+/*
+ * @TODO: activation hook does not work for multisite networks
+ * Move the upgrade procedures to admin_init !
+ */
 register_activation_hook( __FILE__, 'activate_rpr' );
 register_deactivation_hook( __FILE__, 'deactivate_rpr' );
 register_uninstall_hook( __FILE__, 'uninstall_rpr' );

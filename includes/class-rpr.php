@@ -181,6 +181,7 @@ class RPR {
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
         
         // Migration from older versions
+		$this->loader->add_action( 'admin_init', $plugin_admin->migration, 'fix_dbversion' );
         $this->loader->add_action( 'admin_init', $plugin_admin->migration, 'check_migration' );
         $this->loader->add_action( 'admin_init', $plugin_admin->migration, 'rpr_do_migration' );
         $this->loader->add_action( 'admin_notices', $plugin_admin->migration, 'notice_migration' );
