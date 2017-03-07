@@ -350,7 +350,7 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			}
 			// Recipe image
 			if( has_post_thumbnail() ) {
-				$out .= get_the_post_thumbnail( $recipe_id, 'medium', array( 'class' => 'hidden', 'itemprop' => 'image' ) );
+				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" itemprop="image" class="hidden" />';
 				$out .= '<link itemprop="thumbnailUrl" href="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '" />';
 			}
 			
@@ -369,7 +369,7 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			}
 			// Recipe image
 			if( has_post_thumbnail() ) {
-				$out .= get_the_post_thumbnail( $recipe_id, 'medium', array( 'class' => 'hidden', 'property' => 'image' ) );
+				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" property="image" class="hidden" />';
 				$out .= '<link property="thumbnailUrl" href="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '" />';
 			}
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'json-ld' ) {
