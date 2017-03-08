@@ -40,7 +40,7 @@ if ( !function_exists('get_the_recipe_print_link') ) {
 		$out = '';
 		if ( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'print_button_link' ) ) ){
 			$out .= '<span class="print-link">';
-			$out .= '<a class="fa fa-print" href="#print"> ';
+			$out .= '<a href="#print"><i class="fa fa-print"></i> ';
 			$out .= __('Print', 'recipepress_reloaded');
 			$out .= '</a>';
 			$out .= '</span>';
