@@ -484,7 +484,7 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			}
                         // Source
                         if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
-                            $out .= '"citation": "' . esc_html( $recipe['source'][0] ) . '",';
+                            $out .= '"citation": "' . esc_html( $recipe['rpr_recipe_source'][0] ) . '",';
                         }
 			// Times
 			// fix missing times:
