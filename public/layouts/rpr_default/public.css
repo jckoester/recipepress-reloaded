@@ -1,42 +1,134 @@
 @CHARSET "UTF-8";
 
-/* Nutritional data */
-.rpr_nutritional_data,
-.rpr_times{
-    border-top: solid 1px gray;
-    border-bottom: solid 1px gray;
+
+/* Main recipe container */
+.rpr-recipe-container {
+    position: relative;
 }
 
+.rpr-terms-container,
+.rpr-source-container,
+.rpr-nutrition-container,
+.rpr-ingredients-container,
+.rpr-times-container,
+.rpr-instruction-container {
+    margin: 0 0 2em 0;
+}
+
+.rpr-terms-container,
+.rpr-nutrition-container,
+.rpr-times-container {
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid;
+}
+
+.rpr-description-container {
+    position: relative;
+}
+
+.rpr-source-container {
+    text-align: right;
+}
+
+/* Recipe nutrition */
+.rpr-nutrition-container {
+    
+}
+
+.rpr-nutrition-container .rpr_nutritional_data dl {
+    margin: 0;
+    display: inline;
+}
+
+.rpr-nutrition-container .rpr_nutritional_data dt {
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.rpr-nutrition-container .rpr_nutritional_data dd {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+
+.rpr-nutrition-container .rpr_nutritional_data .nutrition_per {
+    margin: 0 20px 0 0;
+}
 
 /* Ingredient list */
-ul.rpr-ingredient-list{
-    margin-left: 32px;
-    clear:both;
+.rpr-ingredients-container {
+
 }
+
+.rpr-ingredients-container h2,
+.rpr-ingredients-container h3 {
+    margin: 0 0 .5em 0 !important; /* Because themes have weird h tag margins. */
+}
+
+.rpr-ingredients-container .rpr_servings {
+    text-align: right;
+}
+
+.rpr-ingredients-container ul.rpr-ingredient-list{
+    margin: 0 0 .5em 1.5em;
+}
+
+/* Preparation times */
+.rpr-times-container {
+
+}
+
+.rpr-times-container .rpr_times dl {
+    display: inline-block;
+    margin: 0;
+}
+
+.rpr-times-container .rpr_times dt {
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.rpr-times-container .rpr_times dd {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+
 
 /* Instructions */
-ul.rpr-instruction-list{
-    list-style: none;
-}
-ul.rpr-instruction-list li{
-    margin-bottom:16px;
-    clear:both;
+.rpr-instruction-container {
+
 }
 
-ul.rpr-instruction-list .has_thumbnail.right{
-    display:block;
-    float:left;
-    width:70%;
+.rpr-instruction-container h2,
+.rpr-instruction-container h3 {
+    margin: 0 0 .5em 0 !important; /* Because themes have weird h tag margins. */
+}
+
+.rpr-instruction-container ol.rpr-instruction-list{
+    margin: 0 0 .5em 1.5em;
+    counter-reset: item;
+}
+
+.rpr-instruction-container ol.rpr-instruction-list li{
+    margin-bottom: 1em;
+    clear: right;
+}
+
+.rpr-instruction-container ol.rpr-instruction-list .has_thumbnail.right{
+    display: inline-block;
+    width: 70%;
     width: calc( 70% - 10px );
 }
-ul.rpr-instruction-list img.right{
+
+.rpr-instruction-container ol.rpr-instruction-list img.right{
     margin: 0 0 8px 8px;
-    float:right;
+    float: right;
 }
-ul.rpr-instruction-list img.below{
-    clear:both;
-    margin-left:auto;
-    margin-right:auto;
+
+.rpr-instruction-container ol.rpr-instruction-list img.below{
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 

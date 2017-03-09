@@ -2,45 +2,6 @@
     display:none;
 }
 
-.rpr_description{
-    display:block;
-    margin-top:16px;
-}
-
-/* Nutritional information */
-.rpr_nutritional_data{
-    font-size: 80%;
-}
-.rpr_nutritional_data .nutrition_per{
-    float:left;
-    margin-right:12px;
-}
-.rpr_nutritional_data dl dt{
-    float:left;
-    margin-right:12px;
-}
-.rpr_nutritional_data dl dd{
-    float:left;
-    margin-right: 12px;
-}
-
-/* times */
-div.rpr_times{
-    margin-bottom:1.5ex;
-}
-.rpr_times dl{
-    font-size: 80%;
-}
-.rpr_times dt{
-    float:left;
-    margin-right:12px;
-    clear:none!important;
-    width:auto!important;
-}
-.rpr_times dd{
-    float:left;
-    margin-right: 12px;
-}
 
 /* alphabet navigation */
 ul.rpr_alphabet_navigation{
@@ -61,9 +22,4 @@ a.rpr_toplink{
 /* taxonomy term list */
 ul.rpr_taxlist{
     margin-left:32px;
-}
-
-label[for=rpr_source]{
-    float:left;
-    margin-right: 6px;
 }

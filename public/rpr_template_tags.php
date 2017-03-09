@@ -2074,8 +2074,10 @@ if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
          * Only render the source if option is set so
          */
         if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
-            
-            $out .= '<label for="rpr_source">' . __( 'Source', 'recipepress-reloaded' ) .':</label>';
+
+						$out .= '<cite class="rpr_source">';
+            $out .= '<label for="rpr_source">' . __( 'Source', 'recipepress-reloaded' ) . ': </label>';
+
             /**
              * Get the data
              */
@@ -2084,8 +2086,7 @@ if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
             
             /**
              * Render the structured data
-             */
-            $out .= '<div>';
+						 */
             $out .= '<span id="rpr_source" class="rpr_source" ';
             if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
                 $out .= ' itemprop="citation" >';
@@ -2095,7 +2096,7 @@ if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
                 $out .= '>';
             }
             
-            if( $source_link != '' ) {
+            if( $source_link !== '' ) {
                 $out .= '<a href="' . esc_url( $source_link ) . '" target="_blank" >';
             }
             $out .= sanitize_text_field( $source );
@@ -2103,7 +2104,7 @@ if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
                 $out.='</a>';
             }
             $out .= '</span>';
-            $out .= '</div>';
+            $out .= '</cite>';
         }
         
         return $out;
