@@ -11,7 +11,8 @@
 .rpr-nutrition-container,
 .rpr-ingredients-container,
 .rpr-times-container,
-.rpr-instruction-container {
+.rpr-instruction-container,
+.rpr-notes-container {
     margin: 0 0 2em 0;
 }
 
@@ -20,7 +21,8 @@
 .rpr-times-container {
     position: relative;
     text-align: center;
-    border-bottom: 1px solid;
+    color: #696969;
+    border-bottom: 1px solid #dadada;
 }
 
 .rpr-description-container {
@@ -52,7 +54,7 @@
 }
 
 .rpr-nutrition-container .rpr_nutritional_data .nutrition_per {
-    margin: 0 20px 0 0;
+    margin: 0 10px 0 0;
 }
 
 /* Ingredient list */
@@ -107,17 +109,26 @@
 .rpr-instruction-container ol.rpr-instruction-list{
     margin: 0 0 .5em 1.5em;
     counter-reset: item;
+    list-style: none;
 }
 
 .rpr-instruction-container ol.rpr-instruction-list li{
     margin-bottom: 1em;
     clear: right;
+    position: relative;
+    counter-increment: item;
+}
+
+.rpr-instruction-container ol.rpr-instruction-list li:before{
+    content: counter(item);
+    position: absolute;
+    left: -1em;
 }
 
 .rpr-instruction-container ol.rpr-instruction-list .has_thumbnail.right{
     display: inline-block;
-    width: 70%;
-    width: calc( 70% - 10px );
+    width: 60%;
+    width: calc( 60% - 10px );
 }
 
 .rpr-instruction-container ol.rpr-instruction-list img.right{
@@ -131,12 +142,21 @@
     margin-right: auto;
 }
 
+/* Notes */
+.rpr-notes-container {
+
+}
+
+.rpr-notes-container h2,
+.rpr-notes-container h3 {
+    margin: 0 0 .5em 0 !important; /* Because themes have weird h tag margins. */
+}
 
 /* print link */
-.entry-content .print-link a{
+.entry-content .print-link a {
     text-decoration:none;
     border-bottom: none;
 }
-span.print-link{
+span.print-link {
     float:right;
 }

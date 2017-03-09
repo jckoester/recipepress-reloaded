@@ -61,7 +61,7 @@ the_rpr_recipe_date();
   * I think it's always nice to have an overview of the taxonomies a recipe is 
   * filed under at the top:
   */
-  the_rpr_taxonomy_list( $icon_display, true );
+  the_rpr_taxonomy_list( $icon_display, true, '/' );
   ?>
 </div>
 
@@ -134,19 +134,20 @@ the_rpr_recipe_date();
   ?>
 </div>
 
+<div class="rpr-notes-container">
+  <?php
+  /**
+  * Notes section of the recipe
+  * First: the headline
+  */
+  the_rpr_recipe_notes_headline( $icon_display );
+  /**
+  * Second: the actual notes
+  */
+  the_rpr_recipe_notes( $icon_display );
+  ?>
+</div>
 
-  
-<?php
-/**
- * Notes section of the recipe
- * First: the headline
- */
-the_rpr_recipe_notes_headline( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'icon_display' ), false ) );
-/**
- * Second: the actual notes
- */
-the_rpr_recipe_notes( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'icon_display' ), false ) );
-?>
 
 <?php
 /**
