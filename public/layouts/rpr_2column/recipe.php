@@ -15,6 +15,18 @@ $display_cats    = AdminPageFramework::getOption( 'rpr_options', array( 'advance
 $use_tags        = AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'post_tag', 'use' ), false );
 $display_tags    = AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_tags' ), false );
 $custom_tax      = AdminPageFramework::getOption( 'rpr_options', array( 'tax_custom' ) );
+
+/** 
+ * Checking to see.if we are using and displaying default WP taxonomies.
+ */
+if ( $use_categories && $display_cats ) {
+	$categories = get_the_category();
+}
+
+if ( $use_tags && $display_tags ) {
+	$post_tags = get_the_tags();
+}
+
 ?>
 
 <div class="<?php echo sanitize_html_class( $printlink_class ); ?> rpr-recipe-container">
@@ -107,18 +119,18 @@ the_rpr_recipe_date();
 		</div>
 	<?php	}	?>
 
-	<?php if ( $use_categories ) { ?>
+	<?php if ( $use_categories && $categories ) { ?>
 		<div class="rpr-category-container">
 			<?php
 				if ( $display_cats ) {
-					the_rpr_taxonomy_headline( 'category', $icon_display );
-					the_rpr_taxonomy_terms( 'category', $icon_display );
+				the_rpr_taxonomy_headline( 'category', $icon_display );
+				the_rpr_taxonomy_terms( 'category', $icon_display );
 				}
 			?>
 		</div>
 	<?php	}	?>
 
-	<?php if ( $use_tags && $tags ) { ?>
+	<?php if ( $use_tags && $post_tags ) { ?>
 		<div class="rpr-tags-container">
 			<?php
 				if( $display_tags ) {

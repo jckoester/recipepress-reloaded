@@ -24,7 +24,8 @@
 .rpr-taxonomy-container,
 .rpr-ingredients-container,
 .rpr-instructions-container,
-.rpr-notes-container {
+.rpr-notes-container,
+.rpr-tags-container {
 	margin: 0 0 2em 0;
 }
 
@@ -36,7 +37,8 @@
 .rpr-ingredients-container h3,
 .rpr-instructions-container h2,
 .rpr-instructions-container h3,
-.rpr-notes-container h2 {
+.rpr-notes-container h2,
+.rpr-tags-container h2 {
 	margin: 0 0 .5em 0 !important;
 }
 
