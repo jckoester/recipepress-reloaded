@@ -9,7 +9,12 @@ Description: A basic layoutin two columns. This layout provides all the bits you
 */
 
 $printlink_class = AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'printlink_class' ), '.rpr_recipe' );
-$icon_display    = AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false )
+$icon_display    = AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false );
+$use_categories  = AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'category', 'use' ), false );
+$display_cats    = AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_categories' ), false );
+$use_tags        = AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'post_tag', 'use' ), false );
+$display_tags    = AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_tags' ), false );
+$custom_tax      = AdminPageFramework::getOption( 'rpr_options', array( 'tax_custom' ) );
 ?>
 
 <div class="<?php echo sanitize_html_class( $printlink_class ); ?> rpr-recipe-container">
@@ -102,30 +107,33 @@ the_rpr_recipe_date();
 		</div>
 	<?php	}	?>
 
-	<?php if ( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'categories', 'use' ), false ) ) { ?>
+	<?php if ( $use_categories ) { ?>
 		<div class="rpr-category-container">
 			<?php
-				if ( AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_categories' ), false ) ) {
+				if ( $display_cats ) {
 					the_rpr_taxonomy_headline( 'category', $icon_display );
-					the_rpr_taxonomy_terms( 'category', AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false, false ) );
+					the_rpr_taxonomy_terms( 'category', $icon_display );
 				}
 			?>
 		</div>
 	<?php	}	?>
 
-	<?php
-		if( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'post_tag', 'use' ), false ) && $tags ){
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_tags' ), false ) ){
-				the_rpr_taxonomy_headline( 'post_tag', $icon_display );
-				the_rpr_taxonomy_terms( 'post_tag', $icon_display );
-			}
-		}
-	?>
-	<?php foreach ( AdminPageFramework::getOption( 'rpr_options', array( 'tax_custom' ) ) as $tax ) { ?>
+	<?php if ( $use_tags && $tags ) { ?>
+		<div class="rpr-tags-container">
+			<?php
+				if( $display_tags ) {
+					the_rpr_taxonomy_headline( 'post_tag', $icon_display );
+					the_rpr_taxonomy_terms( 'post_tag', $icon_display );
+				}
+			?>
+		</div>
+	<?php	} ?>
+
+	<?php foreach ( $custom_tax as $tax ) { ?>
 		<div class="rpr-taxonomy-container">
 			<?php if( $tax[ 'slug' ] !== 'rpr_ingredient' && get_the_rpr_taxonomy_terms( $tax[ 'slug' ] ) !== '' ) {
 					the_rpr_taxonomy_headline( $tax[ 'slug' ], $icon_display );
-					the_rpr_taxonomy_terms( $tax[ 'slug' ], $icon_display, true, '/' );
+					the_rpr_taxonomy_terms( $tax[ 'slug' ], $icon_display, false, '/' );
 				}
 			?>
 		</div>
