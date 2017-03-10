@@ -124,7 +124,7 @@ the_rpr_recipe_date();
 			<?php
 				if ( $display_cats ) {
 				the_rpr_taxonomy_headline( 'category', $icon_display );
-				the_rpr_taxonomy_terms( 'category', $icon_display );
+				the_rpr_taxonomy_terms( 'category', $icon_display, false, '/' );
 				}
 			?>
 		</div>
@@ -135,7 +135,7 @@ the_rpr_recipe_date();
 			<?php
 				if( $display_tags ) {
 					the_rpr_taxonomy_headline( 'post_tag', $icon_display );
-					the_rpr_taxonomy_terms( 'post_tag', $icon_display );
+					the_rpr_taxonomy_terms( 'post_tag', $icon_display, false, '/' );
 				}
 			?>
 		</div>
