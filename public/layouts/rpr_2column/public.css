@@ -1,13 +1,49 @@
 @CHARSET "UTF-8";
 
+.rpr-recipe-container {
+    position: relative;
+}
+
+.rpr-source-container {
+	margin: 0 0 2em 0;
+	text-align: right;
+}
+
 .rpr_col1{
-	width:50%;
-	float:left;
+	width: 48%;
+	float: left;
 }
 .rpr_col2{
-	width:50%;
-	float:right;
+	width: 50%;
+	float: right;
 }
+
+.rpr-times-container,
+.rpr-nutrition-container,
+.rpr-category-container,
+.rpr-taxonomy-container,
+.rpr-ingredients-container,
+.rpr-instructions-container,
+.rpr-notes-container {
+	margin: 0 0 2em 0;
+}
+
+.rpr-times-container h2,
+.rpr-nutrition-container h2,
+.rpr-category-container h2,
+.rpr-taxonomy-container h2,
+.rpr-ingredients-container h2,
+.rpr-ingredients-container h3,
+.rpr-instructions-container h2,
+.rpr-instructions-container h3,
+.rpr-notes-container h2 {
+	margin: 0 0 .5em 0 !important;
+}
+
+.rpr-ingredients-container ul.rpr-ingredient-list {
+    margin: 0 0 1em 0;
+}
+
 /* definiton-lists */
 .rpr_times,
 .rpr_nutritional_data{

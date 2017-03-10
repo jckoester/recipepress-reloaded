@@ -482,10 +482,12 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 				$out = rtrim($out, ",");
 				$out .= '},';
 			}
-                        // Source
-                        if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
-                            $out .= '"citation": "' . esc_html( $recipe['rpr_recipe_source'][0] ) . '",';
-                        }
+			// Source
+			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+				if( isset( $recipe['rpr_recipe_source'] ) ) {
+					$out .= '"citation": "' . esc_html( $recipe['rpr_recipe_source'][0] ) . '",';
+				}
+			}
 			// Times
 			// fix missing times:
 			if( !isset( $recipe['rpr_recipe_prep_time'][0] ) ){

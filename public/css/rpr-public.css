@@ -2,24 +2,3 @@
     display:none;
 }
 
-
-/* alphabet navigation */
-ul.rpr_alphabet_navigation{
-    list-style: none;
-}
-ul.rpr_alphabet_navigation li{
-    float:left;
-    width: calc(100% / 26);
-    text-align:center;
-}
-
-a.rpr_toplink{
-    color:#ccc;
-    text-decoration:none;
-    border-bottom:none!important;
-}
-
-/* taxonomy term list */
-ul.rpr_taxlist{
-    margin-left:32px;
-}

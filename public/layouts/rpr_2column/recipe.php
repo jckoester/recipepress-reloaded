@@ -7,9 +7,12 @@ Layout Name: RPR 2column
 Version: 0.2
 Description: A basic layoutin two columns. This layout provides all the bits you need to display proper recipes. Structured meta data for search engine come standard. </br> Use the options below to finetune the look and feel of your recipes.
 */
+
+$printlink_class = AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'printlink_class' ), '.rpr_recipe' );
+$icon_display    = AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false )
 ?>
 
-<div class="<?php echo sanitize_html_class( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'printlink_class' ), '.rpr_recipe') ); ?>">
+<div class="<?php echo sanitize_html_class( $printlink_class ); ?> rpr-recipe-container">
 <?php
 /** 
  * Displaying the recipe title is normally done by the theme as post_title().
@@ -25,6 +28,7 @@ if( recipe_is_embedded() ){ ?>
  */
 the_recipe_print_link();
 ?>
+
 <?php
 /**
  * First thing we 'display' is the structured data header, so search engines
@@ -48,89 +52,107 @@ the_rpr_recipe_image();
  */
 the_rpr_recipe_author();
 the_rpr_recipe_date();
-?>	
-	<span class="rpr-clear">&nbsp;</span>
-<?php
-/**
- * Display a description / excerpt /summary / abstract of the recipe 
- * if there is one
- */
-the_rpr_recipe_description();
 ?>
-<?php
-/**
- * display source / citation information if available
- */
-the_rpr_recipe_source();
-?>
-<?php
-/**
- * Start the first column
- */
-?>
-	<div class="rpr_col1">
+
+<div class="rpr-description-container">
+	<?php
+	/**
+	* Display a description / excerpt /summary / abstract of the recipe 
+	* if there is one
+	*/
+	the_rpr_recipe_description();
+	?>
+</div>
+
+<div class="rpr-source-container">
+	<?php
+	/**
+	* display source / citation information if available
+	*/
+	the_rpr_recipe_source();
+	?>
+</div>
+
+<div class="rpr_col1"> <!--- Start the first column -->
+	<div class="rpr-ingredients-container">
 		<?php
-		the_rpr_recipe_ingredients_headline( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false ) ); 
-		the_rpr_recipe_servings( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false ) );
-		the_rpr_recipe_ingredients();
+			the_rpr_recipe_ingredients_headline( $icon_display );
+			the_rpr_recipe_servings( $icon_display );
+			the_rpr_recipe_ingredients();
 		?>
 	</div>
-<?php 
-/**
- * Start the second column
- */
-?>
-	<div class="rpr_col2">
-		<?php
-			if( get_the_rpr_recipe_times() != '' ) {
-				the_rpr_recipe_times_headline( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false ) );
-				the_rpr_recipe_times( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false ) );
-			}
-		?>
-		
-		<?php
-			if( get_the_rpr_recipe_nutrition() != '' ) {
-				the_rpr_recipe_nutrition_headline( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false ) );
-				the_rpr_recipe_nutrition( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false ) );
-			}
-		?>
-	
-		<?php
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'categories', 'use' ), false ) ){
-				if( AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_categories' ), false ) ){
-					the_rpr_taxonomy_headline( 'category', AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false ) );
+</div>
+
+<div class="rpr_col2"> <!--- Start the second column -->
+	<?php if ( get_the_rpr_recipe_times() !== '' ) { ?>
+		<div class="rpr-times-container">
+			<?php
+				the_rpr_recipe_times_headline( $icon_display );
+				the_rpr_recipe_times( $icon_display );
+			?>
+		</div>
+	<?php	} ?>
+
+	<?php if ( get_the_rpr_recipe_nutrition() !== '' ) { ?>
+		<div class="rpr-nutrition-container">
+			<?php 
+				the_rpr_recipe_nutrition_headline( $icon_display );
+				the_rpr_recipe_nutrition( $icon_display );
+			?>
+		</div>
+	<?php	}	?>
+
+	<?php if ( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'categories', 'use' ), false ) ) { ?>
+		<div class="rpr-category-container">
+			<?php
+				if ( AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_categories' ), false ) ) {
+					the_rpr_taxonomy_headline( 'category', $icon_display );
 					the_rpr_taxonomy_terms( 'category', AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false, false ) );
 				}
-			}
-		?>
-		<?php
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'post_tag', 'use' ), false ) && $tags ){
-				if( AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_tags' ), false ) ){
-					the_rpr_taxonomy_headline( 'post_tag', AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false ) );
-					the_rpr_taxonomy_terms( 'post_tag', AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false, false ) );
-				}
-			}
-		?>
-		<?php foreach( AdminPageFramework::getOption( 'rpr_options', array( 'tax_custom' ) ) as $tax ){
-			if( $tax['slug'] != 'rpr_ingredient' && get_the_rpr_taxonomy_terms( $tax['slug'] ) != '' ){
-				the_rpr_taxonomy_headline( $tax['slug'], AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false ) );
-				the_rpr_taxonomy_terms( $tax['slug'], AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false, false ) );
+			?>
+		</div>
+	<?php	}	?>
+
+	<?php
+		if( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'post_tag', 'use' ), false ) && $tags ){
+			if( AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_tags' ), false ) ){
+				the_rpr_taxonomy_headline( 'post_tag', $icon_display );
+				the_rpr_taxonomy_terms( 'post_tag', $icon_display );
 			}
 		}
-		?>
-	</div>
-	<div class="rpr-clear"></div>
+	?>
+	<?php foreach ( AdminPageFramework::getOption( 'rpr_options', array( 'tax_custom' ) ) as $tax ) { ?>
+		<div class="rpr-taxonomy-container">
+			<?php if( $tax[ 'slug' ] !== 'rpr_ingredient' && get_the_rpr_taxonomy_terms( $tax[ 'slug' ] ) !== '' ) {
+					the_rpr_taxonomy_headline( $tax[ 'slug' ], $icon_display );
+					the_rpr_taxonomy_terms( $tax[ 'slug' ], $icon_display, true, '/' );
+				}
+			?>
+		</div>
+	<?php	}	?>
+</div>
+
+<div class="rpr-instructions-container">
+	<?php
+	/**
+	* Instructions go below the columns.
+	*/
+	the_rpr_recipe_instructions_headline( $icon_display );
+	the_rpr_recipe_instructions();
+	?>
+</div>
+
+<div class="rpr-notes-container">
+	<?php
+		/**
+		* Instructions notes.
+		*/
+	the_rpr_recipe_notes_headline( $icon_display );
+	the_rpr_recipe_notes();
+	?>
+</div>
+
 <?php
-/**
- * Instructions go below the columns
- */
-
-the_rpr_recipe_instructions_headline( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false ) );
-the_rpr_recipe_instructions();
-
-the_rpr_recipe_notes_headline( AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_2column', 'icon_display' ), false ) );
-the_rpr_recipe_notes();
-
 /**
  * Close the structurted data container
  */
