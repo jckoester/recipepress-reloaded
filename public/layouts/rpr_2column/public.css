@@ -44,15 +44,18 @@
 
 .rpr-ingredients-container ul.rpr-ingredient-list {
     margin: 0 0 1em 0;
+		list-style: none;
+}
+
+
+.rpr_servings {
+    margin: 0 0 1em 0;
 }
 
 /* definiton-lists */
 .rpr_times,
 .rpr_nutritional_data{
     display: inline-table;
-}
-.rpr_times dl{
-   /* font-size: 100%!important;*/
 }
 
 .rpr_times dt,
@@ -110,12 +113,11 @@ ol.recipe-instructions li{
    }
    
 /* Nutrition */
-
 ol.recipe-instructions span.rpr_instrimage_right{
 	display:block;
 	float:left;
-    width:55%;
-    width: calc( 55% - 10px );
+  width:55%;
+  width: calc( 55% - 10px );
 }
 
 ol.recipe-instructions img.rpr_instrimage_right{
@@ -135,3 +137,29 @@ span.print-link{
 i.rpr_cuisine:before{
 	content:"\f024";
 }
+
+/* Recipe index page styling */
+
+ul.rpr_alphabet_navigation {
+	margin: 0 0 1em 0;
+}
+
+ul.rpr_alphabet_navigation:last-of-type {
+	margin: 1em 0 0 0;
+}
+
+ul.rpr_alphabet_navigation li {
+    display: inline-block;
+    margin: 0 .3em;
+		clear: left;
+}
+
+ul.rpr_taxlist {
+    list-style: none;
+    margin: 0;
+}
+
+.index-info {
+    margin: 2em 0;
+}
+
