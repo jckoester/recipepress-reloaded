@@ -92,66 +92,68 @@ the_rpr_recipe_date();
 </div>
 <?php } ?>
 
-<div class="rpr_col1"> <!--- Start the first column -->
-	<div class="rpr-ingredients-container">
-		<?php
-			the_rpr_recipe_ingredients_headline( $icon_display );
-			the_rpr_recipe_servings( $icon_display );
-			the_rpr_recipe_ingredients();
-		?>
+<div class="columns-container">
+	<div class="rpr_col1"> <!--- Start the first column -->
+		<div class="rpr-ingredients-container">
+			<?php
+				the_rpr_recipe_ingredients_headline( $icon_display );
+				the_rpr_recipe_servings( $icon_display );
+				the_rpr_recipe_ingredients();
+			?>
+		</div>
 	</div>
-</div>
 
-<div class="rpr_col2"> <!--- Start the second column -->
-	<?php if ( get_the_rpr_recipe_times() !== null ) { ?>
-		<div class="rpr-times-container">
-			<?php
-				the_rpr_recipe_times_headline( $icon_display );
-				the_rpr_recipe_times( $icon_display );
-			?>
-		</div>
-	<?php	} ?>
+	<div class="rpr_col2"> <!--- Start the second column -->
+		<?php if ( get_the_rpr_recipe_times() !== null ) { ?>
+			<div class="rpr-times-container">
+				<?php
+					the_rpr_recipe_times_headline( $icon_display );
+					the_rpr_recipe_times( $icon_display );
+				?>
+			</div>
+		<?php	} ?>
 
-	<?php if ( get_the_rpr_recipe_nutrition() !== null ) { ?>
-		<div class="rpr-nutrition-container">
-			<?php 
-				the_rpr_recipe_nutrition_headline( $icon_display );
-				the_rpr_recipe_nutrition( $icon_display );
-			?>
-		</div>
-	<?php	}	?>
+		<?php if ( get_the_rpr_recipe_nutrition() !== null ) { ?>
+			<div class="rpr-nutrition-container">
+				<?php 
+					the_rpr_recipe_nutrition_headline( $icon_display );
+					the_rpr_recipe_nutrition( $icon_display );
+				?>
+			</div>
+		<?php	}	?>
 
-	<?php if ( $use_categories && $categories ) { ?>
-		<div class="rpr-category-container">
-			<?php
-				if ( $display_cats ) {
-				the_rpr_taxonomy_headline( 'category', $icon_display );
-				the_rpr_taxonomy_terms( 'category', $icon_display, false, '/' );
-				}
-			?>
-		</div>
-	<?php	}	?>
+		<?php if ( $use_categories && $categories ) { ?>
+			<div class="rpr-category-container">
+				<?php
+					if ( $display_cats ) {
+					the_rpr_taxonomy_headline( 'category', $icon_display );
+					the_rpr_taxonomy_terms( 'category', $icon_display, false, '/' );
+					}
+				?>
+			</div>
+		<?php	}	?>
 
-	<?php if ( $use_tags && $post_tags ) { ?>
-		<div class="rpr-tags-container">
-			<?php
-				if( $display_tags ) {
-					the_rpr_taxonomy_headline( 'post_tag', $icon_display );
-					the_rpr_taxonomy_terms( 'post_tag', $icon_display, false, '/' );
-				}
-			?>
-		</div>
-	<?php	} ?>
+		<?php if ( $use_tags && $post_tags ) { ?>
+			<div class="rpr-tags-container">
+				<?php
+					if( $display_tags ) {
+						the_rpr_taxonomy_headline( 'post_tag', $icon_display );
+						the_rpr_taxonomy_terms( 'post_tag', $icon_display, false, '/' );
+					}
+				?>
+			</div>
+		<?php	} ?>
 
-	<?php foreach ( $custom_tax as $tax ) { ?>
-		<div class="rpr-taxonomy-container">
-			<?php if( $tax[ 'slug' ] !== 'rpr_ingredient' && get_the_rpr_taxonomy_terms( $tax[ 'slug' ] ) !== '' ) {
-					the_rpr_taxonomy_headline( $tax[ 'slug' ], $icon_display );
-					the_rpr_taxonomy_terms( $tax[ 'slug' ], $icon_display, false, '/' );
-				}
-			?>
-		</div>
-	<?php	}	?>
+		<?php foreach ( $custom_tax as $tax ) { ?>
+			<div class="rpr-taxonomy-container">
+				<?php if( $tax[ 'slug' ] !== 'rpr_ingredient' && get_the_rpr_taxonomy_terms( $tax[ 'slug' ] ) !== '' ) {
+						the_rpr_taxonomy_headline( $tax[ 'slug' ], $icon_display );
+						the_rpr_taxonomy_terms( $tax[ 'slug' ], $icon_display, false, '/' );
+					}
+				?>
+			</div>
+		<?php	}	?>
+	</div>
 </div>
 
 <div class="rpr-instructions-container">

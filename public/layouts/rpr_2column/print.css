@@ -26,6 +26,13 @@ img {
 	display: none !important;
 }
 
+/* Fixes float clearing in all browsers, even when printing */
+.columns-container:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
 /* We are also using 2 columns when printing */
 .rpr_col1{
 	width: 48%;
@@ -36,6 +43,7 @@ img {
 	float: right;
 	border-left: 1px solid #e3e3e3;
 	padding-left: .3cm;
+	clear: right;
 }
 
 /* definiton-lists */

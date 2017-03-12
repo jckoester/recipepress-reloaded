@@ -9,6 +9,12 @@
 	text-align: right;
 }
 
+.columns-container:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
 .rpr_col1{
 	width: 48%;
 	float: left;
