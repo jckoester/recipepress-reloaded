@@ -13,8 +13,11 @@
 
 // Create an empty output variable.
 $out = '';
+?>
 
-if ( $posts && count( $posts ) > 0 ) {
+<?php if ( $posts && count( $posts ) > 0 ) : ?>
+    <?php
+
 		// Create an index i to compare the number in the list and check for first and last item.
 		$i = 0;
 
@@ -38,7 +41,7 @@ if ( $posts && count( $posts ) > 0 ) {
 					}
 
 					// Checking if our counter is on even or odd number.
-					$even_odd = ( $i % 2 == 0 ) ? 'even' : 'odd';
+					$even_odd = ( $i % 2 === 0 ) ? 'even' : 'odd';
 
 					// Create a headline.
 					$out .= '<div class="index-info ' . $even_odd . '">';
@@ -50,7 +53,7 @@ if ( $posts && count( $posts ) > 0 ) {
 					$out .= '<ul class="rpr_taxlist">';
 
 					// Add the letter to the list.
-					array_push( $letters, $first_letter );
+					$letters[] = $first_letter;
 				}
 			} else {
 				// Start list before first item.
@@ -74,10 +77,15 @@ if ( $posts && count( $posts ) > 0 ) {
 
     // Output the rendered list
     the_alphabet_nav_bar( $letters );
-    echo $out;
-    the_alphabet_nav_bar( $letters );
-} else {
-    // No recipes
-    _e( 'There are no recipes to display.', 'recipepress-reloaded' );
-}
+?>
 
+<div class="index-container">
+    <?php echo $out; ?>
+</div>
+
+<?php the_alphabet_nav_bar( $letters ); ?>
+
+<?php else : ?>
+    // No recipes.
+ <?php _e( 'There are no recipes to display.', 'recipepress-reloaded' ); ?>
+<?php endif; ?>

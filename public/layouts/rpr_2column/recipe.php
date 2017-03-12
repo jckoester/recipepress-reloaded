@@ -81,6 +81,7 @@ the_rpr_recipe_date();
 	?>
 </div>
 
+<?php if ( get_the_rpr_recipe_source() !== null ) { ?>
 <div class="rpr-source-container">
 	<?php
 	/**
@@ -89,6 +90,7 @@ the_rpr_recipe_date();
 	the_rpr_recipe_source();
 	?>
 </div>
+<?php } ?>
 
 <div class="rpr_col1"> <!--- Start the first column -->
 	<div class="rpr-ingredients-container">
@@ -101,7 +103,7 @@ the_rpr_recipe_date();
 </div>
 
 <div class="rpr_col2"> <!--- Start the second column -->
-	<?php if ( get_the_rpr_recipe_times() !== '' ) { ?>
+	<?php if ( get_the_rpr_recipe_times() !== null ) { ?>
 		<div class="rpr-times-container">
 			<?php
 				the_rpr_recipe_times_headline( $icon_display );
@@ -110,7 +112,7 @@ the_rpr_recipe_date();
 		</div>
 	<?php	} ?>
 
-	<?php if ( get_the_rpr_recipe_nutrition() !== '' ) { ?>
+	<?php if ( get_the_rpr_recipe_nutrition() !== null ) { ?>
 		<div class="rpr-nutrition-container">
 			<?php 
 				the_rpr_recipe_nutrition_headline( $icon_display );

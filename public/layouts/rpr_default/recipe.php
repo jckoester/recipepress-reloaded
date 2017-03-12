@@ -75,23 +75,31 @@ the_rpr_recipe_date();
   ?>
 </div>
 
-<div class="rpr-source-container">
-  <?php
-  /**
-  * Display source / citation information if available
-  */
-  the_rpr_recipe_source();
-  ?>
-</div>
+<?php if ( get_the_rpr_recipe_source() !== null ) { ?>
+  <div class="rpr-source-container">
+    <?php
+    /**
+    * Display source / citation information if available
+    */
+    the_rpr_recipe_source(); 
+    ?>
+  </div>
+<?php } ?>
 
-<div class="rpr-nutrition-container">
-  <?php
-  /**
-  * display nutritional information if available:
-  */
-  the_rpr_recipe_nutrition();
-  ?>
-</div>
+<?php var_dump(get_the_rpr_recipe_source()); ?>
+
+<?php if ( get_the_rpr_recipe_nutrition() !== null ) { ?>
+  <div class="rpr-nutrition-container">
+    <?php
+    /**
+    * display nutritional information if available:
+    */
+    the_rpr_recipe_nutrition();
+    ?>
+  </div>
+  
+<?php } ?>
+
 
 <div class="rpr-ingredients-container">
   <?php
@@ -110,6 +118,7 @@ the_rpr_recipe_date();
   ?>
 </div>
 
+<?php if ( get_the_rpr_recipe_times() !== null ) { ?>
 <div class="rpr-times-container">
   <?php
   /**
@@ -118,6 +127,7 @@ the_rpr_recipe_date();
   the_rpr_recipe_times( $icon_display );
   ?>
 </div>
+<?php } ?>
 
 <div class="rpr-instruction-container">
   <?php

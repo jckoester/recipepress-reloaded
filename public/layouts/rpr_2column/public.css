@@ -5,7 +5,7 @@
 }
 
 .rpr-source-container {
-	margin: 0 0 2em 0;
+	margin: -2em 0 2em 0;
 	text-align: right;
 }
 
@@ -25,7 +25,8 @@
 .rpr-ingredients-container,
 .rpr-instructions-container,
 .rpr-notes-container,
-.rpr-tags-container {
+.rpr-tags-container,
+.rpr-description-container {
 	margin: 0 0 2em 0;
 }
 
@@ -116,8 +117,8 @@ ol.recipe-instructions li{
 ol.recipe-instructions span.rpr_instrimage_right{
 	display:block;
 	float:left;
-  width:55%;
-  width: calc( 55% - 10px );
+  	width:55%;
+  	width: calc( 55% - 10px );
 }
 
 ol.recipe-instructions img.rpr_instrimage_right{
@@ -160,6 +161,22 @@ ul.rpr_taxlist {
 }
 
 .index-info {
-    margin: 2em 0;
+    margin: 1em 0;
+}
+
+.index-info.even {
+	width: 48%;
+	float: left;
+}
+
+.index-info.odd {
+	width: 48%;
+	float: right;
+}
+
+.index-container:after {
+	content: "";
+	display: block;
+	clear: both;
 }
 

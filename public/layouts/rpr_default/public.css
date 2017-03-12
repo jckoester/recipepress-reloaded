@@ -7,12 +7,12 @@
 }
 
 .rpr-terms-container,
-.rpr-source-container,
 .rpr-nutrition-container,
 .rpr-ingredients-container,
 .rpr-times-container,
 .rpr-instruction-container,
-.rpr-notes-container {
+.rpr-notes-container,
+.rpr-description-container {
     margin: 0 0 2em 0;
 }
 
@@ -30,6 +30,7 @@
 }
 
 .rpr-source-container {
+    margin: -2em 0 2em 0;
     text-align: right;
 }
 

@@ -2069,6 +2069,10 @@ if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
         } else {
             $recipe_id = get_post()->ID;
         }
+
+				if ( get_post_meta( $recipe_id, "rpr_recipe_source", true ) == '' ) {
+					return; // Return early if no recipe source data is stored
+				}
         
         $out = '';
         
