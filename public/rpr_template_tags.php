@@ -1303,8 +1303,9 @@ if( !  function_exists( 'get_the_rpr_recipe_notes_headline' ) ){
 		
 		/**
 		 * Exit if recipe has no notes:
+		 * isset returns true with empty strings, also check if notes is empty
 		 */
-		if( !isset( $recipe['rpr_recipe_notes'][0] ) ) {
+		if( isset( $recipe['rpr_recipe_notes'][0] ) && empty( $recipe['rpr_recipe_notes'][0] ) ) {
 			return;
 		}
 		

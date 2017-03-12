@@ -10,7 +10,6 @@ Description: The default layout. Despite being default this layout provides all 
 
 $printlink_class  = AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'printlink_class' ), '.rpr_recipe' );
 $icon_display     = AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'icon_display' ), false );
-
 ?>
 
 <div class="<?php echo sanitize_html_class( $printlink_class ); ?> rpr-recipe-container">
@@ -23,12 +22,6 @@ if( recipe_is_embedded() ){ ?>
   <h2 class="rpr_title"><?php echo get_the_title( $recipe_post ); ?></h2>
 <?php } ?>
 
-<?php
-/**
- * Display the printlink if set to do so
- */
-the_recipe_print_link();
-?>
 <?php
 /**
  * First thing we 'display' is the structured data header, so search engines
@@ -57,6 +50,8 @@ the_rpr_recipe_date();
 
 <div class="rpr-terms-container">
   <?php
+  the_recipe_print_link(); // Display the printlink if set to do so.
+
   /**
   * I think it's always nice to have an overview of the taxonomies a recipe is 
   * filed under at the top:
@@ -85,8 +80,6 @@ the_rpr_recipe_date();
     ?>
   </div>
 <?php } ?>
-
-<?php var_dump(get_the_rpr_recipe_source()); ?>
 
 <?php if ( get_the_rpr_recipe_nutrition() !== null ) { ?>
   <div class="rpr-nutrition-container">
@@ -144,19 +137,21 @@ the_rpr_recipe_date();
   ?>
 </div>
 
-<div class="rpr-notes-container">
-  <?php
-  /**
-  * Notes section of the recipe
-  * First: the headline
-  */
-  the_rpr_recipe_notes_headline( $icon_display );
-  /**
-  * Second: the actual notes
-  */
-  the_rpr_recipe_notes( $icon_display );
-  ?>
-</div>
+<?php if ( the_rpr_recipe_notes_headline() !== null ) { ?>
+  <div class="rpr-notes-container">
+    <?php
+    /**
+    * Notes section of the recipe
+    * First: the headline
+    */
+    the_rpr_recipe_notes_headline( $icon_display );
+    /**
+    * Second: the actual notes
+    */
+    the_rpr_recipe_notes( $icon_display );
+    ?>
+  </div>
+<?php } ?>
 
 
 <?php

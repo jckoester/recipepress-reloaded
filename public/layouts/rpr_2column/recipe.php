@@ -53,6 +53,7 @@ the_recipe_print_link();
  */
 the_rpr_structured_data_header();
 ?>
+
 <?php
 /**
  * Usually the theme will display the recipe image. If it doesn't we should do 
@@ -166,15 +167,17 @@ the_rpr_recipe_date();
 	?>
 </div>
 
-<div class="rpr-notes-container">
-	<?php
-		/**
-		* Instructions notes.
-		*/
-	the_rpr_recipe_notes_headline( $icon_display );
-	the_rpr_recipe_notes();
-	?>
-</div>
+<?php if ( the_rpr_recipe_notes_headline() !== null ) { ?>
+	<div class="rpr-notes-container">
+		<?php
+			/**
+			* Instructions notes.
+			*/
+		the_rpr_recipe_notes_headline( $icon_display );
+		the_rpr_recipe_notes();
+		?>
+	</div>
+<?php } ?>
 
 <?php
 /**

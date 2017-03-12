@@ -50,19 +50,19 @@
 
 /* definiton-lists */
 .rpr_times,
-.rpr_nutritional_data{
+.rpr_nutritional_data {
 	display: inline-table;
 }
 
 .rpr_times dt,
-.rpr_nutritional_data dt{
+.rpr_nutritional_data dt {
 	float:left;
 	display:table-cell;
 	margin:0;
 	clear: left;
 }
 .rpr_times dd,
-.rpr_nutritional_data dd{
+.rpr_nutritional_data dd {
 	display:table-cell;
 	text-align:right;
 	text-transform: none;
@@ -71,63 +71,46 @@
 	clear: right;
 }
 
-.rpr-container li{
+.rpr-container li {
 	list-style: none;
 }
 
 /* ingredients */
-ul.recipe-ingredients{
-	list-style:none;
-	display:table;
-	margin-left:0;
-	padding-left:0;
-}
-ul.recipe-ingredients li{
-	/*border-bottom:#ccc 1px solid;*/
-	padding:0.25ex 0;
-}
-li.ingredient-in-group{
-	margin-left:32px; 
-}
+
 /* Times */
-.recipe-times-icon{
-	display:none;
+.recipe-times-icon {
+	display: none;
 }
-.recipe-times-text{
-	display:inline!important;
+.recipe-times-text {
+	display: inline!important ;
 }
 
 /* recipe instructions */
-ol.recipe-instructions{
-	vertical-align:top!important;
-	}
-ol.recipe-instructions li{
-	list-style:decimal;
-	margin:0 0 0.5em 0;
-	vertical-align:top!important;
-	clear:both;
-   }
-   
-/* Nutrition */
-ol.recipe-instructions span.rpr_instrimage_right{
-	display:block;
-	float:left;
-  	width:55%;
-  	width: calc( 55% - 10px );
+ol.rpr-instruction-list {
+	margin: 0 0 .5em 1em;
 }
 
-ol.recipe-instructions img.rpr_instrimage_right{
-	margin-left:10px;
-	display:inline-block;
-	vertical-align:top;
-	width:45%;
+ol.rpr-instruction-list span.rpr-recipe-instruction-text.has_thumbnail.right{
+	display: block;
+	float: left;
+  	width: 70%;
+  	width: calc( 70% - 10px );
 }
-ol.recipe-instructions  a.rpr_img_link{
-	text-decoration:none;
-	border:none!important;
+
+ol.rpr-instruction-list img.right{
+	margin-left: 10px;
+	display: inline-block;
+	vertical-align: top;
+	width: 30%;
 }
+
+ol.rpr-instruction-list  a.rpr_img_link{
+	text-decoration: none;
+	border: none!important;
+}
+
 span.print-link{
-	float:right;
+	float: right;
 }
 
 i.rpr_cuisine:before{
@@ -135,7 +118,6 @@ i.rpr_cuisine:before{
 }
 
 /* Recipe index page styling */
-
 ul.rpr_alphabet_navigation {
 	margin: 0 0 1em 0;
 }
@@ -147,7 +129,7 @@ ul.rpr_alphabet_navigation:last-of-type {
 ul.rpr_alphabet_navigation li {
 	display: inline-block;
 	margin: 0 .3em;
-		clear: left;
+	clear: left;
 }
 
 ul.rpr_taxlist {
@@ -155,8 +137,14 @@ ul.rpr_taxlist {
 	margin: 0;
 }
 
+/* Recipe index page */
 .index-info {
 	margin: 1em 0;
+}
+
+.index-info h2,
+.index-info h3 {
+	margin: 0 !important; /* H tags in default themes are weird */
 }
 
 .index-info.even {
@@ -191,6 +179,11 @@ ul.rpr_taxlist {
 @media screen and ( min-width: 320px ) and ( max-width: 640px ) {
 	.columns-container .rpr_col1, 
 	.columns-container .rpr_col2 {
+		width: 100%;
+	}
+
+	.index-info.odd,
+	.index-info.even {
 		width: 100%;
 	}
 }
