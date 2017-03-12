@@ -1299,7 +1299,8 @@ if( !  function_exists( 'get_the_rpr_recipe_notes_headline' ) ){
 		} else {
 			$recipe_id = get_post()->ID;
 		}
-        $recipe = get_post_custom( $recipe_id );
+
+		$recipe = get_post_custom( $recipe_id );
 		
 		/**
 		 * Exit if recipe has no notes:
@@ -1377,7 +1378,16 @@ if( !  function_exists( 'get_the_rpr_recipe_notes' ) ){
 		} else {
 			$recipe_id = get_post()->ID;
 		}
-        $recipe = get_post_custom( $recipe_id );
+
+		$recipe = get_post_custom( $recipe_id );
+
+		/**
+		 * Exit if recipe has no notes:
+		 * isset returns true with empty strings, also check if notes is empty
+		 */
+		if( isset( $recipe['rpr_recipe_notes'][0] ) && empty( $recipe['rpr_recipe_notes'][0] ) ) {
+			return;
+		}
 
 		/**
 		 *  Create an empty output string

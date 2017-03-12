@@ -167,7 +167,7 @@ the_rpr_recipe_date();
 	?>
 </div>
 
-<?php if ( the_rpr_recipe_notes_headline() !== null ) { ?>
+<?php if ( get_the_rpr_recipe_notes() !== null ) { ?>
 	<div class="rpr-notes-container">
 		<?php
 			/**
