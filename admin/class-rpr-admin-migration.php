@@ -81,8 +81,8 @@ class RPR_Admin_Migration {
 		 * Check if site was affected by the 0.8.x multisite update bug
 		 */
 		if ( get_option( 'rpr_version_updated' ) && get_option( 'rpr_dbversion' ) ) {
-			// If db version 5 is set but rpr_version_updated still is there, migration did not trigger on previous update 
-			if( version_compare( get_option( 'rpr_dbversion' ), '5', '=' ) && get_option( 'rpr_version_updated' ) ) {
+			// If db version 5 is set but rpr_option still is there, migration did not trigger on previous update 
+			if( version_compare( get_option( 'rpr_dbversion' ), '5', '=' ) && get_option( 'rpr_option' ) ) {
 				// Reset the dbversion to 4 (as it hasn't been updated to 5)
 				update_option( 'rpr_dbversion', '4' );
 				// Remove old version string 'rpr_version_updated'
