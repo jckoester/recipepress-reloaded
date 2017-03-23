@@ -482,10 +482,12 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 				$out = rtrim($out, ",");
 				$out .= '},';
 			}
-                        // Source
-                        if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
-                            $out .= '"citation": "' . esc_html( $recipe['source'][0] ) . '",';
-                        }
+			// Source
+			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+				if( isset( $recipe['rpr_recipe_source'] ) ) {
+					$out .= '"citation": "' . esc_html( $recipe['rpr_recipe_source'][0] ) . '",';
+				}
+			}
 			// Times
 			// fix missing times:
 			if( !isset( $recipe['rpr_recipe_prep_time'][0] ) ){
@@ -1297,12 +1299,14 @@ if( !  function_exists( 'get_the_rpr_recipe_notes_headline' ) ){
 		} else {
 			$recipe_id = get_post()->ID;
 		}
-        $recipe = get_post_custom( $recipe_id );
+
+		$recipe = get_post_custom( $recipe_id );
 		
 		/**
 		 * Exit if recipe has no notes:
+		 * isset returns true with empty strings, also check if notes is empty
 		 */
-		if( !isset( $recipe['rpr_recipe_notes'][0] ) ) {
+		if( isset( $recipe['rpr_recipe_notes'][0] ) && empty( $recipe['rpr_recipe_notes'][0] ) ) {
 			return;
 		}
 		
@@ -1374,7 +1378,16 @@ if( !  function_exists( 'get_the_rpr_recipe_notes' ) ){
 		} else {
 			$recipe_id = get_post()->ID;
 		}
-        $recipe = get_post_custom( $recipe_id );
+
+		$recipe = get_post_custom( $recipe_id );
+
+		/**
+		 * Exit if recipe has no notes:
+		 * isset returns true with empty strings, also check if notes is empty
+		 */
+		if( isset( $recipe['rpr_recipe_notes'][0] ) && empty( $recipe['rpr_recipe_notes'][0] ) ) {
+			return;
+		}
 
 		/**
 		 *  Create an empty output string
@@ -2067,6 +2080,10 @@ if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
         } else {
             $recipe_id = get_post()->ID;
         }
+
+				if ( get_post_meta( $recipe_id, "rpr_recipe_source", true ) == '' ) {
+					return; // Return early if no recipe source data is stored
+				}
         
         $out = '';
         
@@ -2074,8 +2091,10 @@ if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
          * Only render the source if option is set so
          */
         if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
-            
-            $out .= '<label for="rpr_source">' . __( 'Source', 'recipepress-reloaded' ) .':</label>';
+
+						$out .= '<cite class="rpr_source">';
+            $out .= '<label for="rpr_source">' . __( 'Source', 'recipepress-reloaded' ) . ': </label>';
+
             /**
              * Get the data
              */
@@ -2084,8 +2103,7 @@ if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
             
             /**
              * Render the structured data
-             */
-            $out .= '<div>';
+						 */
             $out .= '<span id="rpr_source" class="rpr_source" ';
             if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
                 $out .= ' itemprop="citation" >';
@@ -2095,7 +2113,7 @@ if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
                 $out .= '>';
             }
             
-            if( $source_link != '' ) {
+            if( $source_link !== '' ) {
                 $out .= '<a href="' . esc_url( $source_link ) . '" target="_blank" >';
             }
             $out .= sanitize_text_field( $source );
@@ -2103,7 +2121,7 @@ if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
                 $out.='</a>';
             }
             $out .= '</span>';
-            $out .= '</div>';
+            $out .= '</cite>';
         }
         
         return $out;

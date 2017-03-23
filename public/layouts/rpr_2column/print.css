@@ -1,14 +1,80 @@
 @CHARSET "UTF-8";
 
-img{
-	display:none!important;
+body {
+	color: #000;
+	background: #fff;
+	font: 12pt Georgia, "Times New Roman", Times, serif;
+	line-height: 1.6;
 }
 
-.print-link{
-	display:none;
+h2, h3 {
+	font-weight: bold;
+  page-break-after: avoid;
+	margin-bottom: .2cm !important;
 }
 
-a{
-	color:black!important;
-	text-decoration:none!important;
+a {
+	color: #000 !important;
+	text-decoration: none !important;
+}
+
+ul, ol {
+   page-break-inside: avoid;
+}
+
+img {
+	display: none !important;
+}
+
+/* Fixes float clearing in all browsers, even when printing */
+.columns-container:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* We are also using 2 columns when printing */
+.rpr_col1{
+	width: 48%;
+	float: left;	
+}
+.rpr_col2{
+	width: 50%;
+	float: right;
+	border-left: 1px solid #e3e3e3;
+	padding-left: .3cm;
+	clear: right;
+}
+
+/* definiton-lists */
+.rpr_times,
+.rpr_nutritional_data{
+    display: inline-table;
+}
+
+.rpr_times dt,
+.rpr_nutritional_data dt{
+	float: left;
+	display: table-cell;
+	margin: 0;
+	clear: left;
+}
+.rpr_times dd,
+.rpr_nutritional_data dd{
+	display: table-cell;
+	text-align: right;
+	text-transform: none;
+	float: right!important;
+	margin: 0;
+	clear: right;
+}
+
+/* Right align cite source */
+.rpr-source-container {
+    text-align: right;
+}
+
+/* Don't print the "Print" button */
+.print-link {
+	display: none;
 }
