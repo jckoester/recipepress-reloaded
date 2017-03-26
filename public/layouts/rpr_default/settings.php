@@ -22,7 +22,7 @@ $oFactory->addSettingFields(
         'field_id'	=> 'no_printlink_class',
         'type'          => 'text',
         'title'		=> __( 'Do not print area class', 'recipepress-reloaded' ),
-        'tip'           => __( 'Enter the class or ID of areas or elements that should not be printed. This is higly depending on wordpress theme you are using. Add here the class (prefixed by \'.\') or the id (prefixed by \'#\') of the printable area. Separate multiple entries with commas (\',\').', 'recipepress-reloaded' ),
+        'tip'           => __( 'Enter the class or ID of areas or elements that should not be printed. This is highly depending on the wordpress theme you are using. Add here the class (prefixed by \'.\') or the id (prefixed by \'#\') of the printable area. Separate multiple entries with commas (\',\').', 'recipepress-reloaded' ),
         'default'       => '.no-print'
     )
 );
