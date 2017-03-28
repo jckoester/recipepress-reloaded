@@ -78,7 +78,7 @@ class RPR {
     public function __construct() {
 
         $this->plugin_name = 'recipepress-reloaded';
-        $this->version = '0.8.0';
+        $this->version = '0.9.0';
         $this->dbversion = 5;
 
         $this->load_dependencies();

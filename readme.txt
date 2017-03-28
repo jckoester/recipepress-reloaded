@@ -3,7 +3,7 @@ Contributors: Jan Köster
 Tags: recipe, recipes, cooking, baking, food, food blog, recipe sharing, 
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: trunk
+Stable tag: 0.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://paypal.me/dasmaeh
@@ -49,6 +49,7 @@ RecipePress reloaded currently is available in:
 
 * English
 * German
+* Russian
 
 For the following languages translations are partly available:
 
@@ -67,6 +68,14 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
+
+= 0.9.0 =
+
+ * Completely remodeled printing function (thanks to [w33zy](https://wordpress.org/support/users/w33zy/))
+ * Cite source for recipes
+ * Compatibility with WP Multisite installations
+ * Fixing several display bugs
+
 = 0.8.4 =
  * Fixing several display bugs
  
