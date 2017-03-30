@@ -25,5 +25,5 @@ if( $source_link != '' ){ $has_link='has-link'; }
     <input type="text" name="rpr_recipe_source" id="rpr_recipe_source" value="<?php echo $source; ?>" />
     <input name="rpr_recipe_source_link" class="rpr_recipe_source_link" type="hidden" id="rpr_recipe_source_link"  value="<?php echo $source_link; ?>"  />           
     <span href="#" class="rpr-source-add-link fa fa-link <?php echo $has_link ?>" title="<?php _e( 'Add link', 'recipepress-reloaded' ) ?>"></span>
-    <span href="#" class="rpr-source-del-link fa fa-unlink <?php if($has_link === ""){ echo 'hidden'; }?> " title="<?php _e( 'Remove link', 'recipepress-reloaded' ) ?>"></span>
+    <span href="#" class="rpr-source-del-link fa fa-unlink <?php if($has_link === ""){ echo 'rpr-hidden'; }?> " title="<?php _e( 'Remove link', 'recipepress-reloaded' ) ?>"></span>
 </div>

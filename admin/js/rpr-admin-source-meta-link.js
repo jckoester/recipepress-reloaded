@@ -46,7 +46,7 @@ function _init() {
         
         link_val_container.val('');
         addbutton.removeClass('has-link');
-        delbutton.addClass('hidden');
+        delbutton.addClass('rpr-hidden');
     });
 
 }
@@ -62,7 +62,7 @@ function _addLinkListeners( link_val_container ) {
         // change icon color and make delete link button visible
         var addbutton = link_val_container.siblings('.rpr-source-add-link');
         var delbutton = link_val_container.siblings('.rpr-source-del-link');
-        delbutton.removeClass("hidden");
+        delbutton.removeClass("rpr-hidden");
         addbutton.addClass("has-link");
         /**
          * Prevent the link from being added to an editor field
