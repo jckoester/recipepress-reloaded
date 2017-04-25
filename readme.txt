@@ -3,7 +3,7 @@ Contributors: Jan Köster
 Tags: recipe, recipes, cooking, baking, food, food blog, recipe sharing, 
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 0.8.4
+Stable tag: 0.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://paypal.me/dasmaeh
@@ -69,6 +69,9 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
 
 == Changelog ==
 
+= 0.9.1 =
+  * Fixing several display bugs such as double numerated items, double post images or hidden elements at the backend
+
 = 0.9.0 =
 
  * Completely remodeled printing function (thanks to [w33zy](https://wordpress.org/support/users/w33zy/))
@@ -97,6 +100,9 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
  * Improved recipe editor
 
 == Upgrade Notice ==
+= 0.9.1 = 
+0.9.1 Bugfix release: Fixing several display bugs. | 0.9.0 New printing system, enhanced compatibilyt for multisite, ...
+
 = 0.8.4 =
 Fixing several bugs in displaying recipes.
 If you get a 'File not found' error on recipepress-reloaded.php please just reactivate.
