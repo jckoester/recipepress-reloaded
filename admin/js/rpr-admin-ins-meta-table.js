@@ -134,7 +134,7 @@ var ins_table = (function($){
         clone_group
             .insertAfter(last_row)
             .removeClass('instruction-group-stub')
-            .removeClass('hidden')
+            .removeClass('rpr-hidden')
             .addClass('instruction-group')
             .find('input').val('').focus();
     }
@@ -144,7 +144,7 @@ var ins_table = (function($){
      * @returns {none}
      */
     function _update_instruction_index(){
-        var rows = $( '#recipe-instructions tbody').find( 'tr' ).not( '.hidden' );
+        var rows = $( '#recipe-instructions tbody').find( 'tr' ).not( '.rpr-hidden' );
 
         $( rows ).each( function( rowIndex ) {
             $( this ).find( 'input, select, textarea' ).each( function() {

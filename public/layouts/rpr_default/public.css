@@ -118,6 +118,7 @@
     clear: right;
     position: relative;
     counter-increment: item;
+    list-style:none;
 }
 
 .rpr-instruction-container ol.rpr-instruction-list li:before{

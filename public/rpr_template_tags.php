@@ -251,7 +251,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_list' ) ) {
 				$out .= get_the_rpr_taxonomy_terms('category', $icons, $label, $sep);
 				$out .= '&nbsp;';
 			} else{
-				$out .= '<div class="hidden">';
+				$out .= '<div class="rpr-hidden">';
 				$out .= get_the_rpr_taxonomy_terms('category', $icons, $label, $sep);
 				$out .= '</div>';
 			}
@@ -268,7 +268,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_list' ) ) {
 				$out .= get_the_rpr_taxonomy_terms('post_tag', $icons, $label, $sep);
 				$out .= '&nbsp;';
 			} else{
-				$out .= '<div class="hidden">';
+				$out .= '<div class="rpr-hidden">';
 				$out .= get_the_rpr_taxonomy_terms('post_tag', $icons, $label, $sep);
 				$out .= '</div>';
 			}
@@ -337,9 +337,9 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 		 */
 		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ) {
 			$out .= '<div itemscope itemtype="http://schema.org/Recipe">';
-			$out .= '<span class="rpr_title hidden" itemprop="name">' . get_the_title( $recipe_id ) . '</span>';
-			$out .= '<span class="rpr_author hidden" itemprop="author">' . get_the_author() . '</span>';
-			$out .= '<span class="rpr_date hidden" itemprop="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
+			$out .= '<span class="rpr_title rpr-hidden" itemprop="name">' . get_the_title( $recipe_id ) . '</span>';
+			$out .= '<span class="rpr_author rpr-hidden" itemprop="author">' . get_the_author() . '</span>';
+			$out .= '<span class="rpr_date rpr-hidden" itemprop="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
 				get_the_time( get_option('date_format') ) . '</span>';
 			// Number of comments
 			if( get_comments_number() > 0 ){
@@ -350,15 +350,15 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			}
 			// Recipe image
 			if( has_post_thumbnail() ) {
-				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" itemprop="image" class="hidden" />';
+				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" itemprop="image" class="rpr-hidden" />';
 				$out .= '<link itemprop="thumbnailUrl" href="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '" />';
 			}
 			
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ) {
 			$out .= '<div vocab="http://schema.org/" typeof="Recipe">';
-			$out .= '<span class="rpr_title hidden" property="name">' . get_the_title( $recipe_id ) . '</span>';
-			$out .= '<span class="rpr_author hidden" property="author">' . get_the_author() . '</span>';
-			$out .= '<meta class="rpr_date hidden" property="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
+			$out .= '<span class="rpr_title rpr-hidden" property="name">' . get_the_title( $recipe_id ) . '</span>';
+			$out .= '<span class="rpr_author rpr-hidden" property="author">' . get_the_author() . '</span>';
+			$out .= '<meta class="rpr_date rpr-hidden" property="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
 				get_the_time( get_option('date_format') ) . '</meta>';
 			// Number of comments
 			if( get_comments_number() > 0 ){
@@ -369,7 +369,7 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			}
 			// Recipe image
 			if( has_post_thumbnail() ) {
-				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" property="image" class="hidden" />';
+				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" property="image" class="rpr-hidden" />';
 				$out .= '<link property="thumbnailUrl" href="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '" />';
 			}
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'json-ld' ) {
