@@ -158,7 +158,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
 				$icon_class = esc_html( AdminPageFramework::getOption( 'rpr_options', array( 'tax_custom', $optkey, 'icon_class' ), 'fa-list-ul' ) );
 			}
             $prefix = '<i class="fa ' . $icon_class . '" title=' . esc_html( $tax->labels->name ) . '></i> ';
-        } elseif( $label ) {
+        } elseif( $label && $tax ) {
         	$prefix = $tax->labels->name . ': ';
 		} else {
 			$prefix = ""; 
@@ -724,37 +724,39 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			* Loop over all the ingredients
 			*/
 			$i =0;
-		   foreach ( $ingredients as $ingredient ){
-			   /**
-			    * Check if the ingredient is a grouptitle
-			    */
-			   if( isset( $ingredient['grouptitle'] ) ){
-				   
-				   /**
-				    * Render the grouptitle
-				    */
-				   $out .= rpr_render_ingredient_grouptitle( $ingredient );
-			   } else {
-				   /**
-				    * Start the list on the first item
-				    */
-					if( $i == 0 ) {
-				   //if( isset( $ingredient['sort'] ) && $ingredient['sort'] == 1 ){
-					   $out .= '<ul class="rpr-ingredient-list" >';
-				   }
-				   /**
-				    * Render the ingredient line
-				    */
-				   $out .= rpr_render_ingredient_line( $ingredient );
-				   /**
-				    * Close the list on the last item
-				    */
-				   if( isset( $ingredient['sort'] ) && $ingredient['sort'] == count( $ingredients ) ){
-					   $out .= '</ul>';
-				   }
-			   }
-			   $i++;
-		   }
+			if( is_array( $ingredients ) ){
+				foreach ( $ingredients as $ingredient ){
+					/**
+					 * Check if the ingredient is a grouptitle
+					 */
+					if( isset( $ingredient['grouptitle'] ) ){
+
+						/**
+						 * Render the grouptitle
+						 */
+						$out .= rpr_render_ingredient_grouptitle( $ingredient );
+					} else {
+						/**
+						 * Start the list on the first item
+						 */
+						 if( $i == 0 ) {
+						//if( isset( $ingredient['sort'] ) && $ingredient['sort'] == 1 ){
+							$out .= '<ul class="rpr-ingredient-list" >';
+						}
+						/**
+						 * Render the ingredient line
+						 */
+						$out .= rpr_render_ingredient_line( $ingredient );
+						/**
+						 * Close the list on the last item
+						 */
+						if( isset( $ingredient['sort'] ) && $ingredient['sort'] == count( $ingredients ) ){
+							$out .= '</ul>';
+						}
+					}
+					$i++;
+				}
+			}
 		   /**
              * Close the list on the last item
              */	
@@ -1093,32 +1095,34 @@ if( !  function_exists( 'get_the_rpr_recipe_instructions' ) ){
             /**
              * Loop over all the ingredients
             */
-            $i =0;
-            foreach ( $instructions as $instruction ){
-                /**
-                 * Check if the ingredient is a grouptitle
-                 */
-                if( isset( $instruction['grouptitle'] ) ){		   
-                    /**
-                     * Render the grouptitle
-                     */
-                    $out .= rpr_render_instruction_grouptitle( $instruction );
-                } else {
-                    
-                    if( $i == 0 ) {
-                            //isset( $instruction['sort'] ) && $instruction['sort'] == 0 ){
-                        /**
-                         * Start the list on the first item
-                         */
-                        $out .= '<ol class="rpr-instruction-list" >';
-                    }
-                    /**
-                     * Render the instrcution block
-                     */
-                    $out .= rpr_render_instruction_block( $instruction );
-                }
-                $i++;
-            }
+			if( is_array( $instructions ) ){
+				$i =0;
+				foreach ( $instructions as $instruction ){
+					/**
+					 * Check if the ingredient is a grouptitle
+					 */
+					if( isset( $instruction['grouptitle'] ) ){		   
+						/**
+						 * Render the grouptitle
+						 */
+						$out .= rpr_render_instruction_grouptitle( $instruction );
+					} else {
+
+						if( $i == 0 ) {
+								//isset( $instruction['sort'] ) && $instruction['sort'] == 0 ){
+							/**
+							 * Start the list on the first item
+							 */
+							$out .= '<ol class="rpr-instruction-list" >';
+						}
+						/**
+						 * Render the instrcution block
+						 */
+						$out .= rpr_render_instruction_block( $instruction );
+					}
+					$i++;
+				}
+			}
             /**
              * Close the list on the last item
              */	
