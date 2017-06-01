@@ -187,6 +187,7 @@ class RPR_Admin_GeneralMeta {
 			$recipe->post_content = $data['rpr_recipe_description'];
 			$recipe->post_excerpt = $data['rpr_recipe_description'];
 			wp_update_post($recipe);
+			//die;
 		}
     }
 }

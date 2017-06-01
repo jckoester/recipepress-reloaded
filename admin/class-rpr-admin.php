@@ -230,9 +230,11 @@ class RPR_Admin {
 
         /**
          *  This is done for testing! REMOVE WHEN DONE!
-        var_dump( $_POST);
+		 */
+        //var_dump( $_POST);
         //die;
-         */
+        //var_dump( $recipe );
+			//die;
 		if( $recipe !== NULL && $recipe->post_type == 'rpr_recipe' ) {
     		$errors = false;
     		// verify if this is an auto save routine.
@@ -279,7 +281,7 @@ class RPR_Admin {
 				if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
 					$this->nutrition->save_nutritionalmeta($recipe_id, $data, $recipe);
 				}
-                                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
 					$this->source->save_sourcemeta($recipe_id, $data, $recipe);
 				}
 				//die;
