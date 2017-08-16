@@ -23,6 +23,8 @@ class RPR_Module_Demo extends RPR_Module {
     public function define_admin_hooks( $loader ){
         if( is_a( $loader, 'RPR_Loader' ) ){
             echo "Got a valid loader";
+            $loader->add_action( 'do_meta_boxes', $this, 'metabox_demo' );
+
         }
     }
 	
@@ -36,5 +38,24 @@ class RPR_Module_Demo extends RPR_Module {
         if( is_a( $loader, 'RPR_Loader' ) ){
             echo "Got a valid loader";
         }
+    }
+    
+    public function metabox_demo(){
+        // Add advanced metabox for nutritional information
+        add_meta_box(
+    		'recipe_demo_meta_box',
+    		__( 'Demo box', 'recipepress-reloaded' ),
+    		array( $this, 'do_metabox_demo' ),
+    		'rpr_recipe',
+    		'normal',
+    		'high'
+    	);
+    }
+    
+    public function do_metabox_demo(){
+        // Get post:
+        $recipe = get_post();
+        // render view:
+        include( 'view_rpr-metabox-demo.php');
     }
 }

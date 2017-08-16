@@ -28,7 +28,7 @@ abstract class RPR_Module{
 	
 	/**
 	 * Register all of the hooks related to the public area functionality
-     * of the module.
+         * of the module.
 	 * @since 1.0.0
 	 * @param RPR_Loader $loader
 	 */
