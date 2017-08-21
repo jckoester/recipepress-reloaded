@@ -12,7 +12,7 @@
 /**
  * @todo create and check nonce in core!
  */
-wp_nonce_field( 'rpr_save_recipe_demo', 'rpr_nonce' );
+wp_nonce_field( 'rpr_save_recipe_demo', 'rpr_nonce_demo' );
 
 $demo_value = get_post_meta( $recipe->ID, "rpr_recipe_demo_value", true );
 ?>
