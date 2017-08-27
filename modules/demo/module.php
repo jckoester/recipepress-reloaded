@@ -5,6 +5,7 @@ Category: Metadata
 Author: Jan Köster
 Author Mail: dasmaeh@cbjck.de
 Author URL: https://dasmaeh.de
+Documentation URL: https://rpr.dasmaeh.de/modules/demo
 Version: 0.1
 Description: This is a test module to develop the modules API and demonstrate it's functionality.
 */

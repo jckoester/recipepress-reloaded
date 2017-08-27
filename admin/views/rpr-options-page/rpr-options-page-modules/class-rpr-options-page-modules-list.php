@@ -200,7 +200,7 @@ class RPR_Options_Page_Modules_List {
          * Include link to documentation if available
          */
         if( isset( $this->modules[$module_id]['doc_url'] ) ){
-            $description .= '<a href="' . esc_url( $this->modules[$module_id]['doc_url'] ) . '">' . __e( 'Documentation', 'recipepress-reloaded' ) . '</a>';
+            $description .= '<a href="' . esc_url( $this->modules[$module_id]['doc_url'] ) . '">' . __( 'Documentation', 'recipepress-reloaded' ) . '</a>&nbsp;|&nbsp;';
         }
         /** 
          * Include version information as far as available
