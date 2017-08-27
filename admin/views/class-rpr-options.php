@@ -31,16 +31,25 @@ class RPR_Options extends AdminPageFramework {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+        
+        /**
+         *
+         * @since 1.0.0
+         * @var type array  $modules    A list of all active modules
+         */
+        private $modules;
 
-	/**
+        /**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.8.0
-	 * @param      string    $version    The version of this plugin.
+	 * @param    string     $version    The version of this plugin.
+         * @param    array      $modules    List of active modules.
 	 */
-	public function __construct( $version ) {
+	public function __construct( $version="", $modules=array() ) {
 
 		$this->version		 = $version;
+                $this->modules = $modules;
 		
 		/**
 		 * Load dependcies:
@@ -51,6 +60,7 @@ class RPR_Options extends AdminPageFramework {
 		 * Call constructor of the parent class
 		 */
 		parent::__construct();
+                //var_dump('loaded');
 	}
 
 	/**
@@ -64,6 +74,6 @@ class RPR_Options extends AdminPageFramework {
             $this->setRootMenuPageBySlug( 'edit.php?post_type=rpr_recipe' );
 
             // Add the pages -  below classes do not extend the framework factory class but uses the framework hooks to add pages.
-            new RPR_Options_Page( $this->version );
+            new RPR_Options_Page( $this->version, $this->modules );
 	}
 }

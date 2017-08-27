@@ -182,7 +182,6 @@ class RPR {
      * @access   private
      */
     private function load_dependencies() {
-
         /**
          * The class responsible for orchestrating the actions and filters of the
          * core plugin.
@@ -254,8 +253,8 @@ class RPR {
      */
     private function define_admin_hooks() {
 
-        $plugin_admin = new RPR_Admin( $this->version, $this->dbversion );
-
+        $plugin_admin = new RPR_Admin( $this->version, $this->dbversion, $this->modules );
+   
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
@@ -271,7 +270,7 @@ class RPR {
 
 
         // Options page
-        $this->loader->add_action( 'init', $plugin_admin, 'create_options' );
+        $this->loader->add_action( 'init', $plugin_admin, 'create_options');
         // Meta boxes:
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_postimage' );
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_description' );

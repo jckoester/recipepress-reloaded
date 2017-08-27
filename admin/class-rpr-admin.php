@@ -201,7 +201,7 @@ class RPR_Admin {
         require_once plugin_dir_path(dirname(__FILE__)) . 'admin/views/class-rpr-options.php';
 
         // Instantiate Admin Page Framework
-        new RPR_Options('recipepress-reloaded', $this->version);
+        new RPR_Options('recipepress-reloaded', $this->version, $this->modules );
     }
 
     /**
@@ -290,4 +290,25 @@ class RPR_Admin {
         update_option('rpr_admin_errors', false);
     }
 
+    public function test_titan() {
+        $titan = TitanFramework::getInstance( 'rpr' );
+        
+        $panel = $titan->createAdminPanel( array(
+'name' => 'Theme Options', 'parent'=> 'edit.php?post_type=rpr_recipe'
+) );
+        // Create an admin tab inside the admin page above
+$tab_general = $panel->createTab( array(
+    'name' => 'General Options',
+) );
+        $panel->createOption( array(
+'name' => 'My Text Option',
+'id' => 'my_text_option',
+'type' => 'text',
+'desc' => 'This is our option'
+) );
+        
+        // dynamic option loading could work, if all panels and containers get assigned to variables and stay adressable.
+        // include all modules' options here:
+require_once dirname( __FILE__ ) . '/../modules/demo/options.php';
+    }
 }

@@ -27,12 +27,12 @@ class RPR_Options_Page {
     private $_sPageSlug  = 'rpr_options';
 		
     private $version;
+    private $modules;
 
-
-	/**
+    /**
      * Adds a page item and sets up hooks.
      */
-    public function __construct( $version, $sClassName='' ) {
+    public function __construct( $version, $modules, $sClassName='' ) {
         /**
          * Load dependcies:
          */
@@ -41,12 +41,17 @@ class RPR_Options_Page {
         require_once 'rpr-options-page-debug/class-rpr-options-page-debug.php';
         require_once 'rpr-options-page-general/class-rpr-options-page-general.php';
         // require_once 'rpr-options-page-i18n/class-rpr-options-page-i18n.php';
+        require_once 'rpr-options-page-modules/class-rpr-options-page-modules.php';
         require_once 'rpr-options-page-metadata/class-rpr-options-page-metadata.php';
         require_once 'rpr-options-page-taxonomies/class-rpr-options-page-taxonomies.php';
         require_once 'rpr-options-page-units/class-rpr-options-page-units.php';
 
 		
         $this->version = $version;
+        $this->modules = $modules;
+        
+        //var_dump($modules);
+        //require_once '../../modules/demo/class-rpr-demo-option.php';
         
         $this->_sClassName = $sClassName ? $sClassName : $this->_sClassName;
         
@@ -88,6 +93,7 @@ class RPR_Options_Page {
 			'RPR_Options_Page_Metadata',
                         'RPR_Options_Page_Units',
 			'RPR_Options_Page_Appearance',
+                        'RPR_Options_Page_Modules',
 			// 'RPR_Options_Page_I18n',
 			'RPR_Options_Page_Advanced',
 			'RPR_Options_Page_Debug',
@@ -99,6 +105,10 @@ class RPR_Options_Page {
             new $_sTabClassName( $oFactory );
         }
     
+        // Loading options for modules here
+        // Modules can create own options, own tabs or add options to existing sections
+        require_once dirname( __FILE__) . '/../../../modules/demo/options.php';
+        new RPR_Options_Page_Metadata_Demo( $oFactory );
     }     
     
     /*

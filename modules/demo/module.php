@@ -1,4 +1,13 @@
 <?php
+/*
+Title: Demo Module
+Category: Metadata
+Author: Jan Köster
+Author Mail: dasmaeh@cbjck.de
+Author URL: https://dasmaeh.de
+Version: 0.1
+Description: This is a test module to develop the modules API and demonstrate it's functionality.
+*/
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -91,8 +100,5 @@ class RPR_Module_Demo extends RPR_Module {
         add_action('save_post', array( $this, 'save_recipe_demo' ) );
 
     }
-    
-    public function add_module_options(){
-        
-    }
+
 }
