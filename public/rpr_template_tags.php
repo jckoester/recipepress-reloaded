@@ -601,7 +601,7 @@ if( !  function_exists( 'get_the_rpr_recipe_description' ) ){
 		 * Render the description only if it is not empty
 		 */
 		if( strlen( $recipe['rpr_recipe_description'][0] ) > 0 ) {
-			$out .= '<span class="rpr_description" ';
+			$out .= '<div class="rpr_description" ';
 			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
 				$out .= ' itemprop="description" >';
 			} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
@@ -611,7 +611,7 @@ if( !  function_exists( 'get_the_rpr_recipe_description' ) ){
 			}
                         $out .= sanitize_post_field( 'rpr_recipe_description', $recipe['rpr_recipe_description'][0], $recipe_id);
 	//		$out .= apply_filters('the_content', $recipe['rpr_recipe_description'][0] );
-			$out .= '</span>';
+			$out .= '</div>';
 		}
 		
 		/**
@@ -865,12 +865,12 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 		/**
 		 * Render amount
 		 */
-		$out .= '<span class="recipe-ingredient-quantity">' . esc_html( $ingredient['amount'] ) . '</span>&nbsp;';
+		$out .= '<span class="recipe-ingredient-quantity">' . esc_html( $ingredient['amount'] ) . '</span> ';
 		
 		/**
 		 * Render the unit
 		 */
-		$out .= '<span class="recipe-ingredient-unit">' . esc_html( $ingredient['unit'] ) . '</span>&nbsp;';
+		$out .= '<span class="recipe-ingredient-unit">' . esc_html( $ingredient['unit'] ) . '</span> ';
 	
 		/**
 		 * Render the ingredient link according to the settings
@@ -879,25 +879,25 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			/**
 			 * Set no link
 			 */
-			$closing_tag = '&nbsp;';
+			$closing_tag = '';
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'link_target' ), 2 ) == 1 ){
 			/**
 			 * Set link to archive
 			 */
 			$out .= '<a href="' . get_term_link( $term->slug, 'rpr_ingredient' ) . '">';
-			$closing_tag = '</a>&nbsp;';
+			$closing_tag = '</a>';
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'link_target' ), 2 ) == 2 ){
 			/**
 			 * Set custom link if available, link to archive if not
 			 */
 			if( isset( $ingredient['link'] ) && $ingredient['link'] != '' ){
-				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
+				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank">';
 				$closing_tag = '</a>';
 			} else {
 				$out .= '<a href="' . get_term_link( $term->slug, 'rpr_ingredient' ) . '">';
 			}
 			
-			$closing_tag ='</a>&nbsp;';
+			$closing_tag ='</a>';
 		} else{ 
 			/**
 			 * Set custom link if available, no link if not
@@ -906,7 +906,7 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
 				$closing_tag = '</a>';
 			} else {
-				$closing_tag = '&nbsp;';
+				$closing_tag = '';
 			}
 		}
 		
@@ -943,21 +943,21 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 				/**
 				 * No separator
 				 */
-				$closing_tag = '';
+				$out .= ' ';
 			} elseif (AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'comment_sep' ), 0 ) == 1 ) {
 				/**
 				 * Brackets
 				 */
-				$out .= __( '(', 'reciperess-reloaded' );
+				$out .= __( ' (', 'reciperess-reloaded' );
 				$closing_tag = __( ')', 'recipepress-reloaded' );
 			} else {
 				/**
 				 * comma
 				 */
-				$out .= __( ',', 'recipepress-reloaded' );
+				$out .= __( ', ', 'recipepress-reloaded' );
 				$closing_tag = '';
 			}
-			$out .= '&nbsp;' .  esc_html( $ingredient['notes'] ) . $closing_tag . '</span>';
+			$out .= esc_html( $ingredient['notes'] ) . $closing_tag . '</span>';
 			
 		}
 		
