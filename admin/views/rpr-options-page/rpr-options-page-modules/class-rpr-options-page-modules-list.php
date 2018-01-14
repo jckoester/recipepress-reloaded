@@ -56,7 +56,7 @@ class RPR_Options_Page_Modules_List {
         $oFactory->addSettingSections(    
             $this->sPageSlug, // the target page slug   
             array(
-                'section_id'    => 'layout_general',
+                'section_id'    => $this->sSectionID,
                 'tab_slug'      => $this->sTabSlug,
                 'title'         => '<i class="fa fa-puzzle-piece"></i>&nbsp;' . __( 'Available modules', 'recipepress-reloaded' )
             )
@@ -74,16 +74,17 @@ class RPR_Options_Page_Modules_List {
                 $checkbox['field_id'] = 'module_' . $module['id'] . '_active';
                 $checkbox['title'] = '<i class="fa ' . $this->modules[$module['id']]['icon'] . '"></i>&nbsp;' . $module['title'];
                 $checkbox['description'] = $this->get_module_description( $module['id'] );
-                $checkbox['tip'] = __( 'Check to activate the module and enable ist functionality', 'recipepress-reloaded' );
+                $checkbox['tip'] = __( 'Check to activate the module and enable its functionality', 'recipepress-reloaded' );
                 // Add to setting:
                 $oFactory->addSettingFields(
-                    array( 'layout_general'),
+                    array( $this->sSectionID ),
                     $checkbox
                 );
             }
         }
     }
     
+    // @todo: Move this to a helper class and use it here and in class-rpr
     /**
      * Create a list of available layouts loacally and globally.
      */

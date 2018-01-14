@@ -142,11 +142,27 @@ class RPR {
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/abstract-class-rpr-module.php';
 
         /**
-         * For development we use a static list of modules.
-         * Needs to be generated from optiosn later!
+         *  Get modules list from options
          */
-        $active_modules = array ( 'Demo' );
+        $modules = AdminPageFramework::getOption( 'rpr_options', array( 'modules' ));
+        
+        /**
+         *  Create a list of active modules:
+         */
+        $active_modules = array();
+        if( is_array( $modules ) and count( $modules ) > 0 ){
+            foreach ( $modules as $mod =>$active){
+                if( $active == "1" ){
+                    $mod = preg_replace( "/module_/", "", $mod);
+                    $mod = preg_replace( "/_active/", "", $mod);
+                    array_push( $active_modules,  $mod);
+                }
+            }
+        }
 
+        /**
+         * Load the active modules:
+         */
         foreach ( $active_modules as $active_module ) {
             /**
              * Load the module file
