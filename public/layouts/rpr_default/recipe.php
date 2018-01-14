@@ -71,9 +71,9 @@ the_rpr_recipe_description();
  */
     if( array_key_exists('demo', $this->modules )){
         echo "Demo module active";
-        //if( function_exists( 'demo_template_tag' ) ) {
+        if( function_exists( 'demo_template_tag' ) ) {
             demo_template_tag();
-        //}
+        }
     }
 ?>
 <?php

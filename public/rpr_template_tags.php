@@ -17,11 +17,29 @@
  */
 
 /**
+ * GLOBAL HELPER FUNCTIONS FOR ALL TEMPLATE TAGS AND MODULES
+ */
+/**
  * Save the recipe id to a global variable so the template tags can access it
  * This is necessary to get the correct id especially for embedded recipes
  */
 if( $recipe_post && $recipe_post->ID ){
 	$GLOBALS['recipe_id'] = $recipe_post->ID;
+}
+
+/**
+ * Get the id of the current recipe id
+ * @since 1.0.0
+ */
+if( !function_exists( 'get_recipe_id' ) ){
+    function get_recipe_id() {
+        if (isset($GLOBALS['recipe_id']) && $GLOBALS['recipe_id'] != '') {
+            $recipe_id = $GLOBALS['recipe_id'];
+        } else {
+            $recipe_id = get_post()->ID;
+        }
+        return $recipe_id;
+    }
 }
 
 /** ****************************************************************************

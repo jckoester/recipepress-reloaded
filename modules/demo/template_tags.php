@@ -1,20 +1,19 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-if( !function_exists( 'demo_template_tag' ) ) {
+if (!function_exists('demo_template_tag')) {
 
-    function demo_template_tag(){
-        if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
-			$recipe_id = $GLOBALS['recipe_id'];
-		} else {
-			$recipe_id = get_post()->ID;
-		}
-                $recipe = get_post_custom( );
+    function demo_template_tag() {
+        /**
+         * @todo: This should be a common helper function avaiable to all modules!
+         */
+        $recipe_id = get_recipe_id();
+        $recipe = get_post_custom();
 
         $out = '<div class="rpr_module_demo">';
         $out .= '<h2>';
@@ -25,4 +24,5 @@ if( !function_exists( 'demo_template_tag' ) ) {
         $out .= '</div>';
         echo $out;
     }
+
 }
