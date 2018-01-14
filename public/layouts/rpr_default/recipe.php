@@ -65,7 +65,17 @@ the_rpr_taxonomy_list( AdminPageFramework::getOption( 'rpr_options', array( 'lay
  */
 the_rpr_recipe_description();
 ?>
-
+<?php
+/**
+ * Testing the demo module here:
+ */
+    if( array_key_exists('demo', $this->modules )){
+        echo "Demo module active";
+        //if( function_exists( 'demo_template_tag' ) ) {
+            demo_template_tag();
+        //}
+    }
+?>
 <?php
 /**
  * display nutritional information if available:

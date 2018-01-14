@@ -32,15 +32,19 @@ class RPR_Public {
      */
     private $version;
 
+    
+    private $modules;
     /**
      * Initialize the class and set its properties.
      *
      * @since    0.8.0
      * @param      string    $version    The version of this plugin.
      */
-    public function __construct( $version ) {
+    public function __construct( $version, $modules ) {
 
         $this->version = $version;
+        
+        $this->modules = $modules;
 		
 		/**
 		 * @todo: Is this the right place?
@@ -303,8 +307,16 @@ class RPR_Public {
 		// Start rendering
 		ob_start();
 		
+                // Include the common template tags:
 		include_once( dirname( __FILE__ ) . '/rpr_template_tags.php' );
-		// Include the excerpt file:
+                // include the module's template tags:
+                foreach(  $this->modules as $module_id => $module ){
+                    $mod_includepath = plugin_dir_path( __FILE__ ) . '../modules/' . $module_id . '/template_tags.php';
+                    if(file_exists( $mod_includepath ) ){
+                        include_once $mod_includepath;
+                    }
+                }
+                // Include the excerpt file:
 		include( $includepath);
 		// and render the content using that file:
 		$content = ob_get_contents();
@@ -340,10 +352,17 @@ class RPR_Public {
 		
 		// Start rendering
 		ob_start();
-		
-		// Include the recipe file:
+		// Include the common template tags:
 		include_once( dirname( __FILE__ ) . '/rpr_template_tags.php' );
-		include( $includepath );
+                // include the module's template tags:
+                foreach(  $this->modules as $module_id => $module ){
+                    $mod_includepath = plugin_dir_path( __FILE__ ) . '../modules/' . $module_id . '/template_tags.php';
+                    if(file_exists( $mod_includepath ) ){
+                        include_once $mod_includepath;
+                    }
+                }
+		// Include the recipe template file:
+                include( $includepath );
 		// and render the content using that file:
 		$content = ob_get_contents();
 		
@@ -393,8 +412,16 @@ class RPR_Public {
 			$terms = false;
 		}
 		
-		// Include the taxonomy file:
+                // Include the common template tags:
 		include_once( dirname( __FILE__ ) . '/rpr_template_tags.php' );
+                // include the module's template tags:
+                foreach(  $this->modules as $module_id => $module ){
+                    $mod_includepath = plugin_dir_path( __FILE__ ) . '../modules/' . $module_id . '/template_tags.php';
+                    if(file_exists( $mod_includepath ) ){
+                        include_once $mod_includepath;
+                    }
+                }
+		// Include the taxonomy file:
 		include( $includepath );
 		// and render the content using that file:
 		$content = ob_get_contents();

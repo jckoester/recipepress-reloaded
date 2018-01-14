@@ -109,7 +109,7 @@ class RPR {
         $this->load_dependencies();
         
         $this->admin = new RPR_Admin( $this->version, $this->dbversion, $this->modules );
-        $this->public = new RPR_Public( $this->version );
+        $this->public = new RPR_Public( $this->version, $this->modules );
         
         $this->set_locale();
         $this->define_admin_hooks();
@@ -141,25 +141,7 @@ class RPR {
          */
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/abstract-class-rpr-module.php';
 
-        /**
-         *  Get modules list from options
-         */
-        $modules = AdminPageFramework::getOption( 'rpr_options', array( 'modules' ));
-        
-        /**
-         *  Create a list of active modules:
-         */
-        $active_modules = array();
-        if( is_array( $modules ) and count( $modules ) > 0 ){
-            foreach ( $modules as $mod =>$active){
-                if( $active == "1" ){
-                    $mod = preg_replace( "/module_/", "", $mod);
-                    $mod = preg_replace( "/_active/", "", $mod);
-                    array_push( $active_modules,  $mod);
-                }
-            }
-        }
-
+        $active_modules = $this->get_active_modules();
         /**
          * Load the active modules:
          */
@@ -179,6 +161,34 @@ class RPR {
                 $this->modules[ $active_module ] = new $classname();
             }
         }
+    }
+
+    /**
+     * Testing this here
+     * @TODO: a Lot ;)
+     * @todo Move to a proper place
+     * @todo Add documentation
+     */
+    public function get_active_modules(){
+        /**
+         *  Get modules list from options
+         */
+        $modules = AdminPageFramework::getOption( 'rpr_options', array( 'modules' ));
+        
+        /**
+         *  Create a list of active modules:
+         */
+        $active_modules = array();
+        if( is_array( $modules ) and count( $modules ) > 0 ){
+            foreach ( $modules as $mod =>$active){
+                if( $active == "1" ){
+                    $mod = preg_replace( "/module_/", "", $mod);
+                    $mod = preg_replace( "/_active/", "", $mod);
+                    array_push( $active_modules,  $mod);
+                }
+            }
+        }
+        return $active_modules;
     }
 
     /**
@@ -337,7 +347,7 @@ class RPR {
      */
     private function define_public_hooks() {
 
-        $plugin_public = new RPR_Public( $this->plugin_name, $this->version );
+        $plugin_public = new RPR_Public( $this->version, $this->modules );
 
         $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
         $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
