@@ -774,7 +774,8 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 		 */
 		return $out;
 	}
-	
+}
+if( !  function_exists( 'rpr_render_ingredient_grouptitle' ) ){
 	/**
 	 * Renders the ingredient group headline
 	 * 
@@ -825,7 +826,9 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 		 */
 		return $out;
 	}
-	
+}
+
+if( !  function_exists( 'rpr_render_ingredient_line' ) ){
 	/**
 	 * Render the actual ingredient line
 	 * 
@@ -1148,7 +1151,9 @@ if( !  function_exists( 'get_the_rpr_recipe_instructions' ) ){
         */
         return $out;
     }
-	
+}
+
+if( !  function_exists( 'rpr_render_instruction_grouptitle' ) ){
     /**
      * Render the grouptitle for a instruction group
      * 
@@ -1199,7 +1204,9 @@ if( !  function_exists( 'get_the_rpr_recipe_instructions' ) ){
          */
         return $out;
     }
-	
+}
+
+if( !  function_exists( 'rpr_render_instruction_block' ) ){
     /**
      * Render an instruction block
      * 
