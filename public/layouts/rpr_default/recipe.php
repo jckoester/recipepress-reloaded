@@ -24,12 +24,6 @@ if( recipe_is_embedded() ){ ?>
 
 <?php
 /**
- * Display the printlink if set to do so
- */
-the_recipe_print_link();
-?>
-<?php
-/**
  * First thing we 'display' is the structured data header, so search engines
  * know this is a recipe:
  */

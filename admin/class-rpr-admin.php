@@ -113,6 +113,14 @@ class RPR_Admin {
     public $source;
     
     /**
+     * instance of class source to save recipe source
+     * 
+     * @since 0.9.0
+     * @access public
+     */
+    public $source;
+    
+    /**
      * Initialize the class and set its properties.
      *
      * @since    0.8.0
@@ -175,13 +183,14 @@ class RPR_Admin {
         //wp_enqueue_script( 'recipepress-reloaded', plugin_dir_url( __FILE__ ) . 'js/rpr-admin.js', array ( 'jquery' ), $this->version, false );
         global $post;
 
-        if ($hook == 'post-new.php' || $hook == 'post.php') {
-            if ('rpr_recipe' === $post->post_type) {
-                wp_enqueue_script('recipepress-reloaded' . '_meta_ing_table', plugin_dir_url(__FILE__) . 'js/rpr-admin-ing-meta-table.js', array('jquery'), $this->version, false);
-                wp_enqueue_script('recipepress-reloaded' . '_meta_ing_link', plugin_dir_url(__FILE__) . 'js/rpr-admin-ing-meta-link.js', array('jquery'), $this->version, false);
-                wp_enqueue_script('recipepress-reloaded' . '_meta_ins_table', plugin_dir_url(__FILE__) . 'js/rpr-admin-ins-meta-table.js', array('jquery'), $this->version, false);
-                // Load jQuery suggest script to add autocomplete to ingredients
-                wp_enqueue_script('suggest');
+        if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
+            if ( 'rpr_recipe' === $post->post_type ) {
+                
+                wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-table.js', array ( 'jquery' ), $this->version, false );
+                wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_link', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-link.js', array ( 'jquery' ), $this->version, false );
+                wp_enqueue_script( 'recipepress-reloaded' . '_meta_ins_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ins-meta-table.js', array ( 'jquery' ), $this->version, false );
+				// Load jQuery suggest script to add autocomplete to ingredients
+				//wp_enqueue_script( 'suggest' );
             }
         }
 
@@ -239,7 +248,8 @@ class RPR_Admin {
 		 */
         //var_dump( $_POST);
         //die;
-         */
+        //var_dump( $recipe );
+			//die;
 		if( $recipe !== NULL && $recipe->post_type == 'rpr_recipe' ) {
     		$errors = false;
     		// verify if this is an auto save routine.
@@ -283,32 +293,16 @@ class RPR_Admin {
 					$this->instructions->save_instructions( $recipe_id, $data['rpr_recipe_instructions']);
 				}
 
-            //if(!isset($data)||$data==""){$data=$_POST;}
-            if ($recipe !== NULL && $recipe->post_type == 'rpr_recipe') {
-                /**
-                 * This is for testing! REMOVE WHEN DONE!
-                  echo "<pre>";
-                  foreach( $data as $key => $value){
-                  echo $key . "</br>";
-                  }
-                  //die;
-                 */
-                $this->generalmeta->save_generalmeta($recipe_id, $data, $recipe);
-
-                if (isset($data['rpr_recipe_ingredients'])) {
-                    $this->ingredients->save_ingredients($recipe_id, $data['rpr_recipe_ingredients']);
-                }
-                if (isset($data['rpr_recipe_instructions'])) {
-                    $this->instructions->save_instructions($recipe_id, $data['rpr_recipe_instructions']);
-                }
-
-                if (AdminPageFramework::getOption('rpr_options', array('metadata', 'use_nutritional_data'), false)) {
-                    $this->nutrition->save_nutritionalmeta($recipe_id, $data, $recipe);
-                }
-                //die;
-                add_action('save_post', array($this, 'save_recipe'));
-            }
-        }
+				if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
+					$this->nutrition->save_nutritionalmeta($recipe_id, $data, $recipe);
+				}
+                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+					$this->source->save_sourcemeta($recipe_id, $data, $recipe);
+				}
+				//die;
+				add_action('save_post', array($this, 'save_recipe'));
+			}
+		}
     }
 	
 	/**
