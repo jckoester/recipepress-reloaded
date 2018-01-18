@@ -58,10 +58,10 @@ class RPR_RecipePostType extends AdminPageFramework_PostType{
          * Check which of wp core's taxonomies to use;
          */
         $taxonomies = array();
-        if( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'categories', 'use') , false ) ){
+        if( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'category', 'use' ) , false ) ){
             array_push($taxonomies, 'category' );
         }
-        if( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'tags', 'use') , false ) ){
+        if( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'post_tag', 'use' ) , false ) ){
             array_push($taxonomies, 'post_tag' );
         }
         

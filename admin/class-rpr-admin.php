@@ -105,6 +105,14 @@ class RPR_Admin {
     public $demo;
 
     /**
+     * instance of class source to save recipe source
+     * 
+     * @since 0.9.0
+     * @access public
+     */
+    public $source;
+    
+    /**
      * Initialize the class and set its properties.
      *
      * @since    0.8.0
@@ -135,7 +143,10 @@ class RPR_Admin {
         $this->migration = new RPR_Admin_Migration($this->version, $this->dbversion);
 
         require_once 'class-rpr-admin-demo.php';
-        $this->demo = new RPR_Admin_Demo($this->version, $this->dbversion);
+        $this->demo = new RPR_Admin_Demo( $this->version, $this->dbversion );
+        
+        require_once 'class-rpr-admin-source.php';
+        $this->source = new RPR_Admin_Source( $this->version );
     }
 
     /**
@@ -179,14 +190,20 @@ class RPR_Admin {
             'ins_img_upload_text' => __('Insert image', 'recipepress-reloaded')
         );
 
-        wp_localize_script('recipepress-reloaded' . '_meta_ins_table', 'ins_trnsl', $translations);
-
-        if (AdminPageFramework::getOption('rpr_options', array('metadata', 'use_nutritional_data'), false)) {
-            wp_enqueue_script('recipepress-reloaded' . '_meta_nutrition', plugin_dir_url(__FILE__) . 'js/rpr-admin-nutrition.js', array('jquery'), $this->version, false);
-        }
-
+        wp_localize_script( 'recipepress-reloaded' . '_meta_ins_table', 'ins_trnsl', $translations);
+		
+		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
+			wp_enqueue_script( 'recipepress-reloaded' . '_meta_nutrition', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-nutrition.js', array ( 'jquery' ), $this->version, false );
+		}
+                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+			wp_enqueue_script( 'recipepress-reloaded' . '_meta_source', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-source-meta-link.js', array ( 'jquery' ), $this->version, false );
+		}
+                
+		
         // Load jQuery Link script to add links to ingredients
-        wp_enqueue_script('wp-link');
+        wp_enqueue_script( 'wp-link' );
+		
+
     }
 
     /**
@@ -219,31 +236,52 @@ class RPR_Admin {
 
         /**
          *  This is done for testing! REMOVE WHEN DONE!
-          var_dump( $_POST);
-          //die;
+		 */
+        //var_dump( $_POST);
+        //die;
          */
-        if ($recipe !== NULL && $recipe->post_type == 'rpr_recipe') {
-            $errors = false;
-            // verify if this is an auto save routine.
-            // If it is our form has not been submitted, so we dont want to do anything
-            if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
-                $errors = "There was an error doing autosave";
+		if( $recipe !== NULL && $recipe->post_type == 'rpr_recipe' ) {
+    		$errors = false;
+    		// verify if this is an auto save routine.
+    		// If it is our form has not been submitted, so we dont want to do anything
+    		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+    			$errors = "There was an error doing autosave";
 
-            //Verify the nonces for the metaboxes
-            if (isset($data['rpr_save_recipe_meta_field']) && !wp_verify_nonce($data['rpr_save_recipe_meta_field'], 'rpr_save_recipe_meta')) {
-                $errors = "There was an error saving the recipe. Description nonce not verified";
-            }
+    		//Verify the nonces for the metaboxes
+    		if ( isset( $data['rpr_save_recipe_meta_field'] ) &&  !wp_verify_nonce( $data['rpr_save_recipe_meta_field'], 'rpr_save_recipe_meta' ) ){
+    			$errors = "There was an error saving the recipe. Description nonce not verified";
+    		}
+			
+			// Check permissions
+    		if ( !current_user_can( 'edit_post', $recipe_id ) ){
+    			$errors = "There was an error saving the recipe. No sufficient rights.";
+    		}
 
-            // Check permissions
-            if (!current_user_can('edit_post', $recipe_id)) {
-                $errors = "There was an error saving the recipe. No sufficient rights.";
-            }
+    		//If we have an error update the error_option and return
+    		if( $errors ) {
+    			update_option('rpr_admin_errors', $errors);
+    			return $recipe_id;
+    		}
+			
+			//if(!isset($data)||$data==""){$data=$_POST;}
+			if( $recipe !== NULL && $recipe->post_type == 'rpr_recipe' )
+			{
+                            /**
+                             * This is for testing! REMOVE WHEN DONE!
+				echo "<pre>";
+				foreach( $data as $key => $value){
+					echo $key . "</br>";
+				}
+				//die;
+                             */
+				$this->generalmeta->save_generalmeta( $recipe_id, $data, $recipe );
 
-            //If we have an error update the error_option and return
-            if ($errors) {
-                update_option('rpr_admin_errors', $errors);
-                return $recipe_id;
-            }
+				if( isset( $data['rpr_recipe_ingredients'] ) ) {
+					$this->ingredients->save_ingredients( $recipe_id, $data['rpr_recipe_ingredients'] );
+				}
+				if( isset( $data['rpr_recipe_instructions'] ) ) {
+					$this->instructions->save_instructions( $recipe_id, $data['rpr_recipe_instructions']);
+				}
 
             //if(!isset($data)||$data==""){$data=$_POST;}
             if ($recipe !== NULL && $recipe->post_type == 'rpr_recipe') {
@@ -272,43 +310,104 @@ class RPR_Admin {
             }
         }
     }
+	
+	/**
+	 * Function to display any errors in the backend
+	 * @since 0.8.0
+	 */
+	// Display any errors
+	public function admin_notice_handler() {
+
+		$errors = get_option('rpr_admin_errors');
+
+		if($errors) {
+			echo '<div class="error"><p>' . $errors . '</p></div>';
+		}
+		
+		// Reset the error option for the next error
+		update_option('rpr_admin_errors', false);
+	}
+
+	/**
+	 * Adds recipes to the 'Recent Activity' Dashboard widget
+	 * 
+	 * @since 0.8.3
+	 * @param array $query_args
+	 */
+	public function add_to_dashboard_recent_posts_widget( $query_args ) {
+		$query_args =  array_merge( $query_args, array( 'post_type' => array( 'post', 'rpr_recipe' ) ));
+		return $query_args;
+	}
+
+	/**
+	 * Adds recipes to the 'At a Glance' Dashboard widget
+	 * 
+	 * @since 0.8.3
+	 * @param array $items
+	 */
+	public function add_recipes_glance_items( $items = array() ) {
+			$num_recipes = wp_count_posts( 'rpr_recipe' );
+			
+			if( $num_recipes ) {
+				$published = intval( $num_recipes->publish );
+				$post_type = get_post_type_object( 'rpr_recipe' );
+				
+				$text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, 'recipepress-reloaded' );
+				$text = sprintf( $text, number_format_i18n( $published ) );
+				
+				if ( current_user_can( $post_type->cap->edit_posts ) ) {
+					$items[] = sprintf( '<a class="%1$s-count" href="edit.php?post_type=%1$s">%2$s</a>', 'rpr_recipe', $text ) . "\n";
+				} else {
+					$items[] = sprintf( '<span class="%1$s-count">%2$s</span>', 'rpr_recipe', $text ) . "\n";
+				}
+			}
+    
+		return $items;
+	}
 
     /**
-     * Function to display any errors in the backend
-     * @since 0.8.0
-     */
-    // Display any errors
-    public function admin_notice_handler() {
+    * Recipe update messages.
+    * See /wp-admin/edit-form-advanced.php
+    * @param array $messages Existing post update messages.
+    * @return array Amended post update messages with new recipe update messages.
+    */
+    function updated_rpr_messages( $messages ) {
+    $post             = get_post();
+    $post_type        = get_post_type( $post );
+    $post_type_object = get_post_type_object( $post_type );
 
-        $errors = get_option('rpr_admin_errors');
+    $messages['rpr_recipe'] = array(
+        0  => '', // Unused. Messages start at index 1.
+        1  => __( 'Recipe updated.', 'recipepress-reloaded' ),
+        2  => __( 'Custom field updated.', 'recipepress-reloaded' ),
+        3  => __( 'Custom field deleted.', 'recipepress-reloaded' ),
+        4  => __( 'Recipe updated.', 'recipepress-reloaded' ),
+        /* translators: %s: date and time of the revision */
+        5  => isset( $_GET['revision'] ) ? sprintf( __( 'Recipe restored to revision from %s', 'recipepress-reloaded' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+        6  => __( 'Recipe published.', 'recipepress-reloaded' ),
+        7  => __( 'Recipe saved.', 'recipepress-reloaded' ),
+        8  => __( 'Recipe submitted.', 'recipepress-reloaded' ),
+        9  => sprintf(
+            __( 'Recipe scheduled for: <strong>%1$s</strong>.', 'recipepress-reloaded' ),
+            // translators: Publish box date format, see http://php.net/date
+            date_i18n( __( 'M j, Y @ G:i', 'recipepress-reloaded' ), strtotime( $post->post_date ) )
+        ),
+        10 => __( 'Recipe draft updated.', 'recipepress-reloaded' )
+    );
 
-        if ($errors) {
-            echo '<div class="error"><p>' . $errors . '</p></div>';
-        }
+    if ( $post_type_object->publicly_queryable && 'rpr_recipe' === $post_type ) {
+        $permalink = get_permalink( $post->ID );
 
-        // Reset the error option for the next error
-        update_option('rpr_admin_errors', false);
+        $view_link = sprintf( ' <a href="%s">%s</a>', esc_url( $permalink ), __( 'View recipe', 'recipepress-reloaded' ) );
+        $messages[ $post_type ][1] .= $view_link;
+        $messages[ $post_type ][6] .= $view_link;
+        $messages[ $post_type ][9] .= $view_link;
+
+        $preview_permalink = add_query_arg( 'preview', 'true', $permalink );
+        $preview_link = sprintf( ' <a target="_blank" href="%s">%s</a>', esc_url( $preview_permalink ), __( 'Preview recipe', 'recipepress-reloaded' ) );
+        $messages[ $post_type ][8]  .= $preview_link;
+        $messages[ $post_type ][10] .= $preview_link;
     }
-
-    public function test_titan() {
-        $titan = TitanFramework::getInstance( 'rpr' );
-        
-        $panel = $titan->createAdminPanel( array(
-'name' => 'Theme Options', 'parent'=> 'edit.php?post_type=rpr_recipe'
-) );
-        // Create an admin tab inside the admin page above
-$tab_general = $panel->createTab( array(
-    'name' => 'General Options',
-) );
-        $panel->createOption( array(
-'name' => 'My Text Option',
-'id' => 'my_text_option',
-'type' => 'text',
-'desc' => 'This is our option'
-) );
-        
-        // dynamic option loading could work, if all panels and containers get assigned to variables and stay adressable.
-        // include all modules' options here:
-require_once dirname( __FILE__ ) . '/../modules/demo/options.php';
+        return $messages;
     }
 }

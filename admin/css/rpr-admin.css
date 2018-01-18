@@ -1,7 +1,10 @@
-.hidden{
+.rpr-hidden{
     visibility: hidden;
 }
-
+/* Show edit permalink box */
+#edit-slug-box{
+    display:block!important;
+}
 /**
 * Ingredient Meta box styles
 * Instructions Meta box styles
@@ -273,4 +276,37 @@ a.nav-tab{
     padding:2px;
     margin: 0 2px;
     border-radius:3px;
+}
+
+/* recipe source field */
+.sourcebox{
+    height:32px;
+}
+#rpr_recipe_source{
+    width:90%;
+    width:calc( 100% - 66px );
+    margin-right:6px;
+    float:left;
+}
+.rpr-source-add-link,
+.rpr-source-del-link{
+    width:19px;
+    height: 19px;
+    line-height: 19px!important;
+    padding: 4px;
+    margin: 1px;
+    text-align: center;
+    vertical-align: middle;
+    float:left;
+}
+.rpr-source-add-link:hover,
+.rpr-ing-source-link:hover{
+    cursor:pointer;
+}
+
+/* Dashboard widget */
+#dashboard_right_now li a.rpr_recipe-count:before,
+#dashboard_right_now span.rpr_recipe-count:before {
+    content: url('../../img/icon_16_gray.png');
+    margin: -2px 0px 0px 0px;
 }

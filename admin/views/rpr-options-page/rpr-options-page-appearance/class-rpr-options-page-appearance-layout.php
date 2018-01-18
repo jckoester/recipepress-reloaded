@@ -81,6 +81,13 @@ class RPR_Options_Page_Appearance_Layout {
                 'tip'           => __( 'Best used in combination with a lightbox plugin.', 'recipepress-reloaded' ),
                 'default'       => true
             ),
+            array(
+                'field_id'	=> 'print_button_link',
+                'type'          => 'checkbox',
+                'title'		=> __('Display print button', 'recipepress-reloaded'),
+                'tip'           => __( 'Adds a print link to your recipes. It\'s recommended to use one of the numerous print plugins for wordpress to include a print link to ALL of your posts.', 'recipepress-reloaded' ),
+                'default'       => true
+            ),
             /*array(
                 'field_id'	=> 'images_instruction',
                 'type'          => 'checkbox',

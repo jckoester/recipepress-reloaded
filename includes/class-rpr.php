@@ -285,13 +285,14 @@ class RPR {
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
         // Migration from older versions
+		$this->loader->add_action( 'admin_init', $plugin_admin->migration, 'fix_dbversion' );
         $this->loader->add_action( 'admin_init', $plugin_admin->migration, 'check_migration' );
         $this->loader->add_action( 'admin_init', $plugin_admin->migration, 'rpr_do_migration' );
         $this->loader->add_action( 'admin_notices', $plugin_admin->migration, 'notice_migration' );
 
         // Install demo data / sample recipes
         $this->loader->add_action( 'admin_init', $plugin_admin->demo, 'do_install_base_options' );
-        //$this->loader->add_action( 'admin_init', $plugin_admin->demo, 'rpr_do_install_samples' );
+        $this->loader->add_action( 'admin_init', $plugin_admin->demo, 'rpr_do_install_samples' );
         $this->loader->add_action( 'admin_notices', $plugin_admin->demo, 'notice_demo' );
 
 
@@ -301,11 +302,16 @@ class RPR {
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_postimage' );
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_description' );
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_details' );
-
-        if ( AdminPageFramework::getOption( 'rpr_options', array ( 'metadata', 'use_nutritional_data' ), false ) ) {
-            $this->loader->add_action( 'do_meta_boxes', $plugin_admin->nutrition, 'metabox_nutrition' );
+	
+        
+        if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+            $this->loader->add_action( 'do_meta_boxes', $plugin_admin->source, 'metabox_source' );
         }
-
+        if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
+            $this->loader->add_action( 'do_meta_boxes', $plugin_admin->nutrition, 'metabox_nutrition' );	
+        }
+        
+        
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->ingredients, 'metabox_ingredients' );
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->instructions, 'metabox_instructions' );
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_notes' );
@@ -327,6 +333,15 @@ class RPR {
         $this->loader->add_action( 'media_buttons', $plugin_admin->shortcodes, 'add_button_scl' );
         $this->loader->add_action( 'in_admin_footer', $plugin_admin->shortcodes, 'load_in_admin_footer_scl' );
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin->shortcodes, 'load_ajax_scripts_scl' );
+
+// Add recipes to Recent Activity widget
+        $this->loader->add_filter( 'dashboard_recent_posts_query_args', $plugin_admin,  'add_to_dashboard_recent_posts_widget' );
+
+        // Add recipes to 'At a Glance' widget
+        $this->loader->add_filter( 'dashboard_glance_items', $plugin_admin,  'add_recipes_glance_items' );
+
+        // Add messages on the recipe editor screen
+        $this->loader->add_filter( 'post_updated_messages', $plugin_admin,  'updated_rpr_messages' );
 
         /**
          * Define the admin hooks for all modules
@@ -362,9 +377,9 @@ class RPR {
         $this->loader->add_filter( 'the_content', $plugin_public, 'get_recipe_content' );
 
         // Do the recipe shortcodes
-        add_shortcode( 'rpr-recipe', array ( $plugin_public, 'do_recipe_shortcode' ) );
-        add_shortcode( "rpr-recipe-index", array ( $plugin_public, 'do_recipe_index_shortcode' ) );
-        add_shortcode( "rpr-tax-list", array ( $plugin_public, 'do_taxlist_shortcode' ) );
+        add_shortcode( 'rpr-recipe', array( $plugin_public, 'do_recipe_shortcode' ) );
+        add_shortcode( 'rpr-recipe-index', array( $plugin_public, 'do_recipe_index_shortcode' ));
+        add_shortcode( 'rpr-tax-list', array( $plugin_public, 'do_taxlist_shortcode' ));
 
         // register the widgets
         $this->loader->add_action( 'widgets_init', $plugin_public, 'register_widgets' );
@@ -378,4 +393,46 @@ class RPR {
     public function run() {
         $this->loader->run();
     }
+
+    /**
+     * The name of the plugin used to uniquely identify it within the context of
+     * WordPress and to define internationalization functionality.
+     *
+     * @since     0.8.0
+     * @return    string    The name of the plugin.
+     */
+    public function get_plugin_name() {
+        return $this->plugin_name;
+    }
+
+    /**
+     * The reference to the class that orchestrates the hooks with the plugin.
+     *
+     * @since     0.8.0
+     * @return    RPR_Loader    Orchestrates the hooks of the plugin.
+     */
+    public function get_loader() {
+        return $this->loader;
+    }
+
+    /**
+     * Retrieve the version number of the plugin.
+     *
+     * @since     0.8.0
+     * @return    string    The version number of the plugin.
+     */
+    public function get_version() {
+        return $this->version;
+    }
+    
+    /**
+     * Retrieve the version number of the database of the plugin.
+     *
+     * @since     0.8.0
+     * @return    string    The version number of the database of the plugin.
+     */
+    public function get_dbversion() {
+        return $this->dbversion;
+    }
+
 }

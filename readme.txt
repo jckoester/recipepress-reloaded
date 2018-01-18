@@ -2,13 +2,14 @@
 Contributors: Jan Köster
 Tags: recipe, recipes, cooking, baking, food, food blog, recipe sharing, 
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: trunk
+Tested up to: 4.8
+Stable tag: 0.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://paypal.me/dasmaeh
 
-The swiss army knife for your food blog. A tool to add nicely and seo friendly formatted  recipes to your blog and to manage your recipe collection.
+The swiss army knife for your food blog. A tool to add nicely and seo friendly formatted  recipes to your blog and to manage your recipe collection. 		
+	
 
 == Description ==
 
@@ -49,6 +50,7 @@ RecipePress reloaded currently is available in:
 
 * English
 * German
+* Russian
 
 For the following languages translations are partly available:
 
@@ -67,6 +69,23 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
 3. Configure the plugin on the Recipes menu screen.
 
 == Changelog ==
+
+= 0.9.2 =
+  * Fixing a bug while saving recipes
+
+= 0.9.1 =
+  * Fixing several display bugs such as double numerated items, double post images or hidden elements at the backend
+
+= 0.9.0 =
+
+ * Completely remodeled printing function (thanks to [w33zy](https://wordpress.org/support/users/w33zy/))
+ * Cite source for recipes
+ * Compatibility with WP Multisite installations
+ * Fixing several display bugs
+
+= 0.8.4 =
+ * Fixing several display bugs
+ 
 = 0.8.3 =
  * Fixing a bug on activation (file name was wrong)
 
@@ -85,9 +104,20 @@ Please help [translating](https://translate.wordpress.org/projects/wp-plugins/re
  * Improved recipe editor
 
 == Upgrade Notice ==
+= 0.9.2 =
+0.9.2 Bugfix release: Fixing a bug while saving recipes the first time
+
+= 0.9.1 = 
+0.9.1 Bugfix release: Fixing several display bugs. | 0.9.0 New printing system, enhanced compatibilyt for multisite, ...
+
+= 0.8.4 =
+Fixing several bugs in displaying recipes.
+If you get a 'File not found' error on recipepress-reloaded.php please just reactivate.
+
 = 0.8.3 =
 Fixing mor bugs after the complete recode 0.8.0
 If you get a 'File not found' error on recipepress-reloaded.php please just reactivate.
+This is an error in 0.8.0-0.8.2 only. Updating form 0.7.x is not affected.
 = 0.8.2 =
 Bugfix release
 = 0.8.1 =

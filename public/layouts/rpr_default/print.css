@@ -1,14 +1,81 @@
 @CHARSET "UTF-8";
 
-img{
-	display:none!important;
+body {
+	color: #000;
+	background: #fff;
+	font: 12pt Georgia, "Times New Roman", Times, serif;
+	line-height: 1.6;
 }
 
-.print-link{
-	display:none;
+h2, h3 {
+	font-weight: bold;
+   page-break-after: avoid;
 }
 
-a{
-	color:black!important;
-	text-decoration:none!important;
+a {
+	color: #000 !important;
+	text-decoration: none !important;
+}
+
+ul, ol {
+   page-break-inside: avoid;
+}
+
+img {
+	display: none !important;
+}
+
+/* Add space between containers */
+.rpr-terms-container,
+.rpr-source-container,
+.rpr-nutrition-container,
+.rpr-ingredients-container,
+.rpr-times-container,
+.rpr-instruction-container {
+	margin-bottom: .6cm;
+}
+
+.rpr-source-container {
+    text-align: right;
+}
+
+/* Nutritional info container */
+.rpr-nutrition-container .rpr_nutritional_data .nutrition_per {
+    margin: 0 10px 0 0;
+}
+
+.rpr-nutrition-container .rpr_nutritional_data dt {
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.rpr-nutrition-container .rpr_nutritional_data dd {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+
+.rpr-nutrition-container .rpr_nutritional_data dl {
+    margin: 0;
+    display: inline;
+}
+
+/* Cook time container */
+.rpr-times-container .rpr_times dl {
+    display: inline-block;
+    margin: 0;
+}
+
+.rpr-times-container .rpr_times dt {
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.rpr-times-container .rpr_times dd {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+
+/* Don't print the "Print" button */
+.print-link {
+	display: none;
 }

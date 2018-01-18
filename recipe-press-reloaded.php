@@ -41,6 +41,8 @@ const RPR_DBVER = '5';
  * This action is documented in includes/class-rpr-activator.php
  * 
  * @since 0.8.0
+ * @todo move this completely to admin_init as activation_hook does not catch 
+ * on multisite installations
  */
 function activate_rpr() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-rpr-activator.php';
@@ -68,7 +70,10 @@ function uninstall_rpr() {
     RPR_Uninstaller::uninstall();
 }
 
-
+/*
+ * @TODO: activation hook does not work for multisite networks
+ * Move the upgrade procedures to admin_init !
+ */
 register_activation_hook( __FILE__, 'activate_rpr' );
 register_deactivation_hook( __FILE__, 'deactivate_rpr' );
 register_uninstall_hook( __FILE__, 'uninstall_rpr' );

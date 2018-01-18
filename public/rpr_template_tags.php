@@ -176,7 +176,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
 				$icon_class = esc_html( AdminPageFramework::getOption( 'rpr_options', array( 'tax_custom', $optkey, 'icon_class' ), 'fa-list-ul' ) );
 			}
             $prefix = '<i class="fa ' . $icon_class . '" title=' . esc_html( $tax->labels->name ) . '></i> ';
-        } elseif( $label ) {
+        } elseif( $label && $tax ) {
         	$prefix = $tax->labels->name . ': ';
 		} else {
 			$prefix = ""; 
@@ -269,7 +269,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_list' ) ) {
 				$out .= get_the_rpr_taxonomy_terms('category', $icons, $label, $sep);
 				$out .= '&nbsp;';
 			} else{
-				$out .= '<div class="hidden">';
+				$out .= '<div class="rpr-hidden">';
 				$out .= get_the_rpr_taxonomy_terms('category', $icons, $label, $sep);
 				$out .= '</div>';
 			}
@@ -286,7 +286,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_list' ) ) {
 				$out .= get_the_rpr_taxonomy_terms('post_tag', $icons, $label, $sep);
 				$out .= '&nbsp;';
 			} else{
-				$out .= '<div class="hidden">';
+				$out .= '<div class="rpr-hidden">';
 				$out .= get_the_rpr_taxonomy_terms('post_tag', $icons, $label, $sep);
 				$out .= '</div>';
 			}
@@ -355,9 +355,9 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 		 */
 		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ) {
 			$out .= '<div itemscope itemtype="http://schema.org/Recipe">';
-			$out .= '<span class="rpr_title hidden" itemprop="name">' . get_the_title( $recipe_id ) . '</span>';
-			$out .= '<span class="rpr_author hidden" itemprop="author">' . get_the_author() . '</span>';
-			$out .= '<span class="rpr_date hidden" itemprop="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
+			$out .= '<span class="rpr_title rpr-hidden" itemprop="name">' . get_the_title( $recipe_id ) . '</span>';
+			$out .= '<span class="rpr_author rpr-hidden" itemprop="author">' . get_the_author() . '</span>';
+			$out .= '<span class="rpr_date rpr-hidden" itemprop="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
 				get_the_time( get_option('date_format') ) . '</span>';
 			// Number of comments
 			if( get_comments_number() > 0 ){
@@ -368,15 +368,15 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			}
 			// Recipe image
 			if( has_post_thumbnail() ) {
-				$out .= get_the_post_thumbnail( $recipe_id, 'medium', array( 'class' => 'hidden', 'itemprop' => 'image' ) );
+				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" itemprop="image" class="rpr-hidden" />';
 				$out .= '<link itemprop="thumbnailUrl" href="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '" />';
 			}
 			
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ) {
 			$out .= '<div vocab="http://schema.org/" typeof="Recipe">';
-			$out .= '<span class="rpr_title hidden" property="name">' . get_the_title( $recipe_id ) . '</span>';
-			$out .= '<span class="rpr_author hidden" property="author">' . get_the_author() . '</span>';
-			$out .= '<meta class="rpr_date hidden" property="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
+			$out .= '<span class="rpr_title rpr-hidden" property="name">' . get_the_title( $recipe_id ) . '</span>';
+			$out .= '<span class="rpr_author rpr-hidden" property="author">' . get_the_author() . '</span>';
+			$out .= '<meta class="rpr_date rpr-hidden" property="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
 				get_the_time( get_option('date_format') ) . '</meta>';
 			// Number of comments
 			if( get_comments_number() > 0 ){
@@ -387,7 +387,7 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 			}
 			// Recipe image
 			if( has_post_thumbnail() ) {
-				$out .= get_the_post_thumbnail( $recipe_id, 'medium', array( 'class' => 'hidden', 'property' => 'image' ) );
+				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" property="image" class="rpr-hidden" />';
 				$out .= '<link property="thumbnailUrl" href="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '" />';
 			}
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'json-ld' ) {
@@ -499,6 +499,12 @@ if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 				}
 				$out = rtrim($out, ",");
 				$out .= '},';
+			}
+			// Source
+			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+				if( isset( $recipe['rpr_recipe_source'] ) ) {
+					$out .= '"citation": "' . esc_html( $recipe['rpr_recipe_source'][0] ) . '",';
+				}
 			}
 			// Times
 			// fix missing times:
@@ -613,7 +619,7 @@ if( !  function_exists( 'get_the_rpr_recipe_description' ) ){
 		 * Render the description only if it is not empty
 		 */
 		if( strlen( $recipe['rpr_recipe_description'][0] ) > 0 ) {
-			$out .= '<span class="rpr_description" ';
+			$out .= '<div class="rpr_description" ';
 			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
 				$out .= ' itemprop="description" >';
 			} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
@@ -623,7 +629,7 @@ if( !  function_exists( 'get_the_rpr_recipe_description' ) ){
 			}
                         $out .= sanitize_post_field( 'rpr_recipe_description', $recipe['rpr_recipe_description'][0], $recipe_id);
 	//		$out .= apply_filters('the_content', $recipe['rpr_recipe_description'][0] );
-			$out .= '</span>';
+			$out .= '</div>';
 		}
 		
 		/**
@@ -736,37 +742,39 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			* Loop over all the ingredients
 			*/
 			$i =0;
-		   foreach ( $ingredients as $ingredient ){
-			   /**
-			    * Check if the ingredient is a grouptitle
-			    */
-			   if( isset( $ingredient['grouptitle'] ) ){
-				   
-				   /**
-				    * Render the grouptitle
-				    */
-				   $out .= rpr_render_ingredient_grouptitle( $ingredient );
-			   } else {
-				   /**
-				    * Start the list on the first item
-				    */
-					if( $i == 0 ) {
-				   //if( isset( $ingredient['sort'] ) && $ingredient['sort'] == 1 ){
-					   $out .= '<ul class="rpr-ingredient-list" >';
-				   }
-				   /**
-				    * Render the ingredient line
-				    */
-				   $out .= rpr_render_ingredient_line( $ingredient );
-				   /**
-				    * Close the list on the last item
-				    */
-				   if( isset( $ingredient['sort'] ) && $ingredient['sort'] == count( $ingredients ) ){
-					   $out .= '</ul>';
-				   }
-			   }
-			   $i++;
-		   }
+			if( is_array( $ingredients ) ){
+				foreach ( $ingredients as $ingredient ){
+					/**
+					 * Check if the ingredient is a grouptitle
+					 */
+					if( isset( $ingredient['grouptitle'] ) ){
+
+						/**
+						 * Render the grouptitle
+						 */
+						$out .= rpr_render_ingredient_grouptitle( $ingredient );
+					} else {
+						/**
+						 * Start the list on the first item
+						 */
+						 if( $i == 0 ) {
+						//if( isset( $ingredient['sort'] ) && $ingredient['sort'] == 1 ){
+							$out .= '<ul class="rpr-ingredient-list" >';
+						}
+						/**
+						 * Render the ingredient line
+						 */
+						$out .= rpr_render_ingredient_line( $ingredient );
+						/**
+						 * Close the list on the last item
+						 */
+						if( isset( $ingredient['sort'] ) && $ingredient['sort'] == count( $ingredients ) ){
+							$out .= '</ul>';
+						}
+					}
+					$i++;
+				}
+			}
 		   /**
              * Close the list on the last item
              */	
@@ -875,12 +883,12 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 		/**
 		 * Render amount
 		 */
-		$out .= '<span class="recipe-ingredient-quantity">' . esc_html( $ingredient['amount'] ) . '</span>&nbsp;';
+		$out .= '<span class="recipe-ingredient-quantity">' . esc_html( $ingredient['amount'] ) . '</span> ';
 		
 		/**
 		 * Render the unit
 		 */
-		$out .= '<span class="recipe-ingredient-unit">' . esc_html( $ingredient['unit'] ) . '</span>&nbsp;';
+		$out .= '<span class="recipe-ingredient-unit">' . esc_html( $ingredient['unit'] ) . '</span> ';
 	
 		/**
 		 * Render the ingredient link according to the settings
@@ -889,25 +897,25 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 			/**
 			 * Set no link
 			 */
-			$closing_tag = '&nbsp;';
+			$closing_tag = '';
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'link_target' ), 2 ) == 1 ){
 			/**
 			 * Set link to archive
 			 */
 			$out .= '<a href="' . get_term_link( $term->slug, 'rpr_ingredient' ) . '">';
-			$closing_tag = '</a>&nbsp;';
+			$closing_tag = '</a>';
 		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'link_target' ), 2 ) == 2 ){
 			/**
 			 * Set custom link if available, link to archive if not
 			 */
 			if( isset( $ingredient['link'] ) && $ingredient['link'] != '' ){
-				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
+				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank">';
 				$closing_tag = '</a>';
 			} else {
 				$out .= '<a href="' . get_term_link( $term->slug, 'rpr_ingredient' ) . '">';
 			}
 			
-			$closing_tag ='</a>&nbsp;';
+			$closing_tag ='</a>';
 		} else{ 
 			/**
 			 * Set custom link if available, no link if not
@@ -916,7 +924,7 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 				$out .= '<a href="' . esc_url( $ingredient['link'] ) . '" target="_blank" >';
 				$closing_tag = '</a>';
 			} else {
-				$closing_tag = '&nbsp;';
+				$closing_tag = '';
 			}
 		}
 		
@@ -953,21 +961,21 @@ if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 				/**
 				 * No separator
 				 */
-				$closing_tag = '';
+				$out .= ' ';
 			} elseif (AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'comment_sep' ), 0 ) == 1 ) {
 				/**
 				 * Brackets
 				 */
-				$out .= __( '(', 'reciperess-reloaded' );
+				$out .= __( ' (', 'reciperess-reloaded' );
 				$closing_tag = __( ')', 'recipepress-reloaded' );
 			} else {
 				/**
 				 * comma
 				 */
-				$out .= __( ',', 'recipepress-reloaded' );
+				$out .= __( ', ', 'recipepress-reloaded' );
 				$closing_tag = '';
 			}
-			$out .= '&nbsp;' .  esc_html( $ingredient['notes'] ) . $closing_tag . '</span>';
+			$out .= esc_html( $ingredient['notes'] ) . $closing_tag . '</span>';
 			
 		}
 		
@@ -1085,7 +1093,7 @@ if( !  function_exists( 'get_the_rpr_recipe_instructions' ) ){
         /**
          *  Create an empty output string
          */
-        $out = '';
+        $out = '<div class="rpr_instruction">';
 
         /**
          *  Get the instructions:
@@ -1105,32 +1113,34 @@ if( !  function_exists( 'get_the_rpr_recipe_instructions' ) ){
             /**
              * Loop over all the ingredients
             */
-            $i =0;
-            foreach ( $instructions as $instruction ){
-                /**
-                 * Check if the ingredient is a grouptitle
-                 */
-                if( isset( $instruction['grouptitle'] ) ){		   
-                    /**
-                     * Render the grouptitle
-                     */
-                    $out .= rpr_render_instruction_grouptitle( $instruction );
-                } else {
-                    
-                    if( $i == 0 ) {
-                            //isset( $instruction['sort'] ) && $instruction['sort'] == 0 ){
-                        /**
-                         * Start the list on the first item
-                         */
-                        $out .= '<ol class="rpr-instruction-list" >';
-                    }
-                    /**
-                     * Render the instrcution block
-                     */
-                    $out .= rpr_render_instruction_block( $instruction );
-                }
-                $i++;
-            }
+			if( is_array( $instructions ) ){
+				$i =0;
+				foreach ( $instructions as $instruction ){
+					/**
+					 * Check if the ingredient is a grouptitle
+					 */
+					if( isset( $instruction['grouptitle'] ) ){		   
+						/**
+						 * Render the grouptitle
+						 */
+						$out .= rpr_render_instruction_grouptitle( $instruction );
+					} else {
+
+						if( $i == 0 ) {
+								//isset( $instruction['sort'] ) && $instruction['sort'] == 0 ){
+							/**
+							 * Start the list on the first item
+							 */
+							$out .= '<ol class="rpr-instruction-list" >';
+						}
+						/**
+						 * Render the instrcution block
+						 */
+						$out .= rpr_render_instruction_block( $instruction );
+					}
+					$i++;
+				}
+			}
             /**
              * Close the list on the last item
              */	
@@ -1148,6 +1158,8 @@ if( !  function_exists( 'get_the_rpr_recipe_instructions' ) ){
              */
             $out .= '<p class="warning">' . __( 'No instructions could be found for this recipe.', 'recipepress-reloaded' ) . '</p>';
         }
+        
+        $out .= '</div>';
 		
         /**
         * Return the rendered instructions list
@@ -1309,12 +1321,14 @@ if( !  function_exists( 'get_the_rpr_recipe_notes_headline' ) ){
 		} else {
 			$recipe_id = get_post()->ID;
 		}
-        $recipe = get_post_custom( $recipe_id );
+
+		$recipe = get_post_custom( $recipe_id );
 		
 		/**
 		 * Exit if recipe has no notes:
+		 * isset returns true with empty strings, also check if notes is empty
 		 */
-		if( !isset( $recipe['rpr_recipe_notes'][0] ) ) {
+		if( isset( $recipe['rpr_recipe_notes'][0] ) && empty( $recipe['rpr_recipe_notes'][0] ) ) {
 			return;
 		}
 		
@@ -1386,7 +1400,16 @@ if( !  function_exists( 'get_the_rpr_recipe_notes' ) ){
 		} else {
 			$recipe_id = get_post()->ID;
 		}
-        $recipe = get_post_custom( $recipe_id );
+
+		$recipe = get_post_custom( $recipe_id );
+
+		/**
+		 * Exit if recipe has no notes:
+		 * isset returns true with empty strings, also check if notes is empty
+		 */
+		if( isset( $recipe['rpr_recipe_notes'][0] ) && empty( $recipe['rpr_recipe_notes'][0] ) ) {
+			return;
+		}
 
 		/**
 		 *  Create an empty output string
@@ -2060,6 +2083,84 @@ if( !function_exists( 'the_rpr_recipe_date' ) ) {
 		echo get_the_rpr_recipe_date();
 	}
 }
+
+/* *****************************************************************************
+ * Recipe source
+ */
+if ( !function_exists( 'get_the_rpr_recipe_source' ) ) {
+
+    /**
+     * Renders the source of a recipe if meta data is saved
+     * @since 0.9.0
+     */
+    function get_the_rpr_recipe_source() {
+        /**
+         *  Get the recipe id
+         */
+        if ( isset( $GLOBALS[ 'recipe_id' ] ) && $GLOBALS[ 'recipe_id' ] != '' ) {
+            $recipe_id = $GLOBALS[ 'recipe_id' ];
+        } else {
+            $recipe_id = get_post()->ID;
+        }
+
+				if ( get_post_meta( $recipe_id, "rpr_recipe_source", true ) == '' ) {
+					return; // Return early if no recipe source data is stored
+				}
+        
+        $out = '';
+        
+        /**
+         * Only render the source if option is set so
+         */
+        if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+
+						$out .= '<cite class="rpr_source">';
+            $out .= '<label for="rpr_source">' . __( 'Source', 'recipepress-reloaded' ) . ': </label>';
+
+            /**
+             * Get the data
+             */
+            $source = get_post_meta( $recipe_id, "rpr_recipe_source", true );
+            $source_link = get_post_meta( $recipe_id, "rpr_recipe_source_link", true );
+            
+            /**
+             * Render the structured data
+						 */
+            $out .= '<span id="rpr_source" class="rpr_source" ';
+            if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
+                $out .= ' itemprop="citation" >';
+            } elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
+                $out .= ' property="citation" >';
+            } else {
+                $out .= '>';
+            }
+            
+            if( $source_link !== '' ) {
+                $out .= '<a href="' . esc_url( $source_link ) . '" target="_blank" >';
+            }
+            $out .= sanitize_text_field( $source );
+            if( $source_link != '' ) {
+                $out.='</a>';
+            }
+            $out .= '</span>';
+            $out .= '</cite>';
+        }
+        
+        return $out;
+    }
+
+}
+
+if( !function_exists( 'the_rpr_recipe_source') ){
+    /**
+     * Outputs the rendered data
+     * @since 0.9.0
+     */
+    function the_rpr_recipe_source() {
+        echo get_the_rpr_recipe_source();
+    }
+}
+
 
 /** ****************************************************************************
  * Alphabet navigation bar for listings
