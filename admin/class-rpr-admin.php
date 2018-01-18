@@ -111,15 +111,7 @@ class RPR_Admin {
      * @access public
      */
     public $source;
-    
-    /**
-     * instance of class source to save recipe source
-     * 
-     * @since 0.9.0
-     * @access public
-     */
-    public $source;
-    
+        
     /**
      * Initialize the class and set its properties.
      *
