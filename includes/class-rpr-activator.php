@@ -31,9 +31,11 @@ class RPR_Activator {
 	 * @since    0.8.0
 	 */
 	public static function activate() {
-            // Fix version string for older versions of RPR
-            self::fix_dbver();
-            
+           
+           /**
+		    * @todo: Move this to admin_init hook as activation_hook does not
+		    * catch on multisite installations
+		    */ 
             if( ! get_option( 'rpr_dbversion' ) ){
                 // Install sample content
                 self::install_sample_content();
@@ -43,48 +45,7 @@ class RPR_Activator {
              */
 	}
 	
-        /**
-         * Move old version scheme to new dbversion scheme to make updates
-         * easier.
-         * @since 0.8.0
-         */
-        private static function fix_dbver() {
-            // check for very old versions:
-            if( ! get_option( 'rpr_version_updated' ) ){
-                // Check, if RPR < 0.5:
-		if( is_array( get_option( 'rpr_options' ) ) ) {
-                    update_option( 'rpr_version_updated', '0.3.0' );
-                //Check if RecipePress
-		} elseif( is_array( get_option( 'recipe-press-options' ) ) ) {
-                    update_option( 'rpr_version_updated', 'RecipePress' );
-		} else {
-                    // RPR hasn't been installed previously.
-                    return;
-                }
-            }
-            
-            if( get_option( 'rpr_version_updated') ) {
-                // Fix the dbversion option for old versions of recipepress reloaded
-                if( version_compare(get_option( 'rpr_version_updated' ), '0.8.0', '<' ) ) {
-                    update_option( 'rpr_dbversion', '4' );
-                }
-                if( version_compare(get_option( 'rpr_version_updated' ), '0.7.12', '<' ) ) {
-                    update_option( 'rpr_dbversion', '3' );
-                }
-                if( version_compare(get_option( 'rpr_version_updated' ), '0.7.9', '<' ) ) {
-                    update_option( 'rpr_dbversion', '2' );
-                }
-                if( version_compare(get_option( 'rpr_version_updated' ), '0.7.7', '<' ) ) {
-                    update_option( 'rpr_dbversion', '1' );
-                }
-                if( get_option( 'rpr_version_updated' ) == "0.3.0" || get_option( 'rpr_version_updated' ) == 'RecipePress' ){
-                    update_option( 'rpr_dbversion', '0' );
-                }
-            
-                // Remove old version string 'rpr_version_updated'
-                delete_option( 'rpr_version_updated' );
-            }
-        }
+
 
         /**
          * Install sample recipes and taxonomies to provide an easy start

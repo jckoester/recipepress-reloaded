@@ -1,31 +1,68 @@
 @CHARSET "UTF-8";
 
-.rpr_col1{
-	width:50%;
-	float:left;
+.rpr-recipe-container {
+	position: relative;
 }
-.rpr_col2{
-	width:50%;
-	float:right;
+
+.rpr-source-container {
+	margin: -2em 0 2em 0;
+	text-align: right;
 }
+
+.columns-container:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.rpr-times-container,
+.rpr-nutrition-container,
+.rpr-category-container,
+.rpr-taxonomy-container,
+.rpr-ingredients-container,
+.rpr-instructions-container,
+.rpr-notes-container,
+.rpr-tags-container,
+.rpr-description-container {
+	margin: 0 0 2em 0;
+}
+
+.rpr-times-container h2,
+.rpr-nutrition-container h2,
+.rpr-category-container h2,
+.rpr-taxonomy-container h2,
+.rpr-ingredients-container h2,
+.rpr-ingredients-container h3,
+.rpr-instructions-container h2,
+.rpr-instructions-container h3,
+.rpr-notes-container h2,
+.rpr-tags-container h2 {
+	margin: 0 0 .5em 0 !important;
+}
+
+.rpr-ingredients-container ul.rpr-ingredient-list {
+	margin: 0 0 1em 1em;
+}
+
+.rpr_servings {
+	margin: 0 0 1em 0;
+}
+
 /* definiton-lists */
 .rpr_times,
-.rpr_nutritional_data{
-    display: inline-table;
-}
-.rpr_times dl{
-   /* font-size: 100%!important;*/
+.rpr_nutritional_data {
+	display: inline-table;
 }
 
 .rpr_times dt,
-.rpr_nutritional_data dt{
+.rpr_nutritional_data dt {
 	float:left;
 	display:table-cell;
 	margin:0;
 	clear: left;
 }
 .rpr_times dd,
-.rpr_nutritional_data dd{
+.rpr_nutritional_data dd {
 	display:table-cell;
 	text-align:right;
 	text-transform: none;
@@ -34,66 +71,119 @@
 	clear: right;
 }
 
-.rpr-container li{
-	list-style:none;
+.rpr-container li {
+	list-style: none;
 }
 
 /* ingredients */
-ul.recipe-ingredients{
-	list-style:none;
-	display:table;
-	margin-left:0;
-	padding-left:0;
-}
-ul.recipe-ingredients li{
-	/*border-bottom:#ccc 1px solid;*/
-	padding:0.25ex 0;
-}
-li.ingredient-in-group{
-	margin-left:32px; 
-}
+
 /* Times */
-.recipe-times-icon{
-	display:none;
+.recipe-times-icon {
+	display: none;
 }
-.recipe-times-text{
-	display:inline!important;
+.recipe-times-text {
+	display: inline!important ;
 }
 
 /* recipe instructions */
-ol.recipe-instructions{
-    vertical-align:top!important;
-    }
-ol.recipe-instructions li{
-	list-style:decimal;
-	margin:0 0 0.5em 0;
-    vertical-align:top!important;
-    clear:both;
-   }
-   
-/* Nutrition */
-
-ol.recipe-instructions span.rpr_instrimage_right{
-	display:block;
-	float:left;
-    width:55%;
-    width: calc( 55% - 10px );
+ol.rpr-instruction-list {
+	margin: 0 0 .5em 1em;
 }
 
-ol.recipe-instructions img.rpr_instrimage_right{
-	margin-left:10px;
-    display:inline-block;
-    vertical-align:top;
-    width:45%;
+ol.rpr-instruction-list span.rpr-recipe-instruction-text.has_thumbnail.right{
+	display: block;
+	float: left;
+  	width: 70%;
+  	width: calc( 70% - 10px );
 }
-ol.recipe-instructions  a.rpr_img_link{
-	text-decoration:none;
-	border:none!important;
+
+ol.rpr-instruction-list img.right{
+	margin-left: 10px;
+	display: inline-block;
+	vertical-align: top;
+	width: 30%;
 }
+
+ol.rpr-instruction-list  a.rpr_img_link{
+	text-decoration: none;
+	border: none!important;
+}
+
 span.print-link{
-	float:right;
+	float: right;
 }
 
 i.rpr_cuisine:before{
 	content:"\f024";
+}
+
+/* Recipe index page styling */
+ul.rpr_alphabet_navigation {
+	margin: 0 0 1em 0;
+}
+
+ul.rpr_alphabet_navigation:last-of-type {
+	margin: 1em 0 0 0;
+}
+
+ul.rpr_alphabet_navigation li {
+	display: inline-block;
+	margin: 0 .3em;
+	clear: left;
+}
+
+ul.rpr_taxlist {
+	list-style: none;
+	margin: 0;
+}
+
+/* Recipe index page */
+.index-info {
+	margin: 1em 0;
+}
+
+.index-info h2,
+.index-info h3 {
+	margin: 0 !important; /* H tags in default themes are weird */
+}
+
+.index-info.even {
+	width: 48%;
+	float: left;
+}
+
+.index-info.odd {
+	width: 48%;
+	float: right;
+}
+
+.index-container:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+/* 2 columns on screensize above 641px */
+@media screen and ( min-width: 641px ) {
+	.columns-container .rpr_col1{
+		width: 48%;
+		float: left;
+	}
+	.columns-container .rpr_col2{
+		width: 50%;
+		float: right;
+	}
+}
+
+/* 1 column on screensize between 320px and 640px */
+@media screen and ( min-width: 320px ) and ( max-width: 640px ) {
+	.columns-container .rpr_col1, 
+	.columns-container .rpr_col2 {
+		width: 100%;
+	}
+
+	.index-info.odd,
+	.index-info.even {
+		width: 100%;
+	}
 }

@@ -28,7 +28,7 @@ wp_nonce_field( 'rpr_save_recipe_meta', 'rpr_nonce' );
     </thead>
     <tbody>
         <!-- hidden row to copy heading lines from -->
-        <tr class="instruction-group-stub hidden">
+        <tr class="instruction-group-stub rpr-hidden">
             <td class="rpr-ins-sort">
                 <div class="sort-handle fa fa-sort"></div>
                 <input type="hidden" name="rpr_recipe_instructions[0][sort]" class="instructions_sort" id="instructions_sort_0" />

@@ -50,7 +50,7 @@ class RPR_Public {
 		 * @todo: Is this the right place?
 		 */
 		// Include Template Tags
-//		include_once( dirname( __FILE__ ) . '/rpr_template_tags.php' );
+		// include_once( dirname( __FILE__ ) . '/rpr_template_tags.php' );
 		
 		// Include the layout's functions.php
 		// Get the layout chosen:
@@ -115,7 +115,7 @@ class RPR_Public {
          * between the defined hooks and the functions defined in this
          * class.
          */
-        wp_enqueue_script( 'recipepress-reloaded', plugin_dir_url( __FILE__ ) . 'js/rpr-public.js', array ( 'jquery' ), $this->version, false );
+        wp_enqueue_script( 'recipepress-reloaded', plugin_dir_url( __FILE__ ) . 'js/rpr-public.js', array ( 'jquery' ), $this->version, true );        
     }
 
     // Add Widgets
@@ -149,28 +149,27 @@ class RPR_Public {
     		return;
     	}
 		
-	// Check on all public pages
-	if ( ! is_admin() && $query->is_main_query() ) {
-            // Post archive page:
-            if ( is_post_type_archive( 'rpr_recipe' ) ) {
-                // set post type to only recipes
-      		$query->set('post_type', 'rpr_recipe' );
-		return;
-            }
-            // Homepage
-            if( AdminPageFramework::getOption( 'rpr_options', array( 'general', 'homepage_display' ) , true ) ){
-                if( is_home() || $query->is_home() || $query->is_front_page() ){
-                    $this->add_recipe_to_query($query);
+		// Check on all public pages
+		if ( ! is_admin() && $query->is_main_query() ) {
+			// Post archive page:
+			if ( is_post_type_archive( 'rpr_recipe' ) ) {
+				// set post type to only recipes
+				$query->set('post_type', 'rpr_recipe' );
+				return;
+			}
+			// Homepage
+			if( AdminPageFramework::getOption( 'rpr_options', array( 'general', 'homepage_display' ) , true ) ){
+				if( is_home() || $query->is_home() || $query->is_front_page() ){
+					$this->add_recipe_to_query($query);
+				}
+			}
+			// All other pages:
+			if( is_category() || is_tag() || is_author() ){
+				$this->add_recipe_to_query($query);
+				return;
+			}
 		}
-            }
-            // All other pages:
-            if( is_category() || is_tag() || is_author() ){
-                $this->add_recipe_to_query($query);
 		return;
-            }
-  	}
-
-	return;
     }
 	
 	/**
@@ -181,8 +180,7 @@ class RPR_Public {
 	 * @param type $query
 	 * @return type none
 	 */
-	private function add_recipe_to_query($query)
-	{
+	private function add_recipe_to_query($query){
 		// add post type to query
 		$post_type = $query->get('post_type');
 
@@ -234,7 +232,7 @@ class RPR_Public {
             $recipe_post = get_post();
 
             $content = $this->render_recipe_excerpt( $recipe_post );
-
+            return $content;
             add_filter('get_the_excerpt', array( $this, 'get_recipe_excerpt' ), 10);
         } else {
             return $content;
@@ -621,4 +619,5 @@ class RPR_Public {
 		
 		return do_shortcode($output);
 	}
+	
 }

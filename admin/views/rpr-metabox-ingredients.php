@@ -65,7 +65,7 @@ jQuery(document).on("focusout", ".rpr-ing-name-input", function(){
 
     <tbody>
         <!-- hidden row to copy heading lines from -->
-        <tr class="ingredient-group-stub hidden">
+        <tr class="ingredient-group-stub rpr-hidden">
             <td class="rpr-ing-sort">
                 <div class="sort-handle fa fa-sort"></div>
                 <input type="hidden" name="rpr_recipe_ingredients[0][sort]" class="ingredients_sort" id="ingredients_sort_0" />
@@ -157,7 +157,7 @@ if( is_array($ingredients) ){
             <td class="rpr-ing-link">
                 <input name="rpr_recipe_ingredients[<?php echo $i; ?>][link]" class="rpr_recipe_ingredients_link" type="hidden" id="ingredient_link_<?php echo $i; ?>"  value="<?php echo $ing['link']; ?>"  />
                 <span href="#" class="rpr-ing-add-link fa fa-link <?php echo $has_link ?>" data-type="rpr_ingredient" title="<?php _e( 'Add custom link', 'recipepress-reloaded' ) ?>"></span>
-                <span href="#" class="rpr-ing-del-link fa fa-unlink <?php if($has_link === ""){ echo 'hidden'; }?> " data-type="rpr_ingredient" title="<?php _e( 'Remove custom link', 'recipepress-reloaded' ) ?>"></span>
+                <span href="#" class="rpr-ing-del-link fa fa-unlink <?php if($has_link === ""){ echo 'rpr-hidden'; }?> " data-type="rpr_ingredient" title="<?php _e( 'Remove custom link', 'recipepress-reloaded' ) ?>"></span>
             </td>
             <td class="rpr-ing-del">
                 <a href="#" class="rpr-ing-remove-row dashicons dashicons-no" data-type="rpr_ingredient" title="<?php _e( 'Remove row', 'recipepress-reloaded' ) ?>"></a>
@@ -201,7 +201,7 @@ if( is_array($ingredients) ){
             <td class="rpr-ing-link">
                 <input name="rpr_recipe_ingredients[<?php echo $i; ?>][link]" class="rpr_recipe_ingredients_link" type="hidden" id="ingredient_link_<?php echo $i; ?>" value="" />
                 <span href="#" class="rpr-ing-add-link fa fa-link" data-type="rpr_ingredient" title="<?php _e( 'Add custom link', 'recipepress-reloaded' ) ?>"></span>
-                <span href="#" class="rpr-ing-del-link fa fa-unlink hidden" data-type="rpr_ingredient" title="<?php _e( 'Remove custom link', 'recipepress-reloaded' ) ?>"></span>
+                <span href="#" class="rpr-ing-del-link fa fa-unlink rpr-hidden" data-type="rpr_ingredient" title="<?php _e( 'Remove custom link', 'recipepress-reloaded' ) ?>"></span>
             </td>
             <td class="rpr-ing-del">
                 <a href="#" class="rpr-ing-remove-row dashicons dashicons-no" data-type="rpr_ingredient" title="<?php _e( 'Remove row', 'recipepress-reloaded' ) ?>"></a>
