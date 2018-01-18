@@ -196,7 +196,7 @@ tfoot .rpr-ins-add-row span{
 }
 
 /* Nutritions meta box specific */
-.nutritionsbox{
+/*.nutritionsbox{
     min-height:76px;
 }
 .nutritionsbox .recipe_details_row{
@@ -206,7 +206,7 @@ tfoot .rpr-ins-add-row span{
 }
 .nutritionsbox label{
     font-weight: bold;
-    /*clear:right;*/
+    clear:right;
     display: block;
 }
 .nutritionsbox input{
@@ -214,7 +214,7 @@ tfoot .rpr-ins-add-row span{
 }
 .nutritionsbox .recipe-general-form-notes{
     width:24px;
-}
+}*/
 
 /* Shortcode buttons */
 #rpr-add-recipe-button{

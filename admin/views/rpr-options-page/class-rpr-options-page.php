@@ -50,7 +50,7 @@ class RPR_Options_Page {
         $this->version = $version;
         $this->modules = $modules;
         
-        //var_dump($modules);
+//        var_dump($modules);
         //require_once '../../modules/demo/class-rpr-demo-option.php';
         
         $this->_sClassName = $sClassName ? $sClassName : $this->_sClassName;
@@ -107,8 +107,20 @@ class RPR_Options_Page {
     
         // Loading options for modules here
         // Modules can create own options, own tabs or add options to existing sections
-        require_once dirname( __FILE__) . '/../../../modules/demo/options.php';
+        foreach ( $this->modules as $module=>$modobject ){
+            
+            $filename = $modobject->get_path().'/options.php';
+            if (file_exists( $filename )){
+                require_once $filename;
+                $classname = 'RPR_Options_Module_' . ucfirst($module);
+                new $classname( $oFactory );
+            }
+            //$module->load_options( $oFactory );
+        }
+     /*   require_once dirname( __FILE__) . '/../../../modules/demo/options.php';
         new RPR_Options_Page_Metadata_Demo( $oFactory );
+      * 
+      */
     }     
     
     /*

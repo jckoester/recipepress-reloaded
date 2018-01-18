@@ -19,7 +19,7 @@
  * @subpackage  	recipepress-reloaded/admin/views
  * @author		Jan Köster <rpr@cbjck.de>
  */
-class RPR_Options_Page_Metadata_Demo {
+class RPR_Options_Module_Demo {
     
     /**
      * The page slug to add the tab and form elements.

@@ -219,7 +219,7 @@ class RPR_Admin {
         require_once plugin_dir_path(dirname(__FILE__)) . 'admin/views/class-rpr-options.php';
 
         // Instantiate Admin Page Framework
-        new RPR_Options('recipepress-reloaded', $this->version, $this->modules );
+        new RPR_Options( $this->version, $this->modules );
     }
 
     /**

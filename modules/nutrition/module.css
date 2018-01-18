@@ -1,0 +1,35 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18.01.2018, 20:36:19
+    Author     : jan
+*/
+
+/* Nutritions meta box specific */
+/*.nutritionsbox{
+    min-height:76px;
+}
+.nutritionsbox .recipe_details_row{
+    float:left;
+    display:block;
+    width: 20%;
+}*/
+.nutritionsbox label{
+    font-weight: bold;
+    clear:right;
+    display: block;
+}
+.nutritionsbox input{
+    width: calc( 80% - 16px );
+}
+.nutritionsbox #rpr_recipe_calorific_value,
+.nutritionsbox #rpr_recipe_calorific_value_kj{
+    width: 72px;
+}
+
+.nutritionsbox .recipe-general-form-notes{
+    width:24px;
+}

@@ -125,4 +125,10 @@ abstract class RPR_Module {
             update_option('rpr_admin_errors', $errors);
         }
     }
+    
+    /**
+     * Returns the path of the module file
+     * @return string
+     */
+    abstract public function get_path();
 }

@@ -149,7 +149,7 @@ class RPR {
             /**
              * Load the module file
              */
-            $filename = plugin_dir_path( dirname( __FILE__ ) ) . 'modules/' . strtolower( $active_module ) . '/class-rpr-module-' . strtolower( $active_module ) . '.php';
+            $filename = plugin_dir_path( dirname( __FILE__ ) ) . 'modules/' . strtolower( $active_module ) . '/module.php';
 
             if ( file_exists( $filename ) ) {
                 require_once $filename;
@@ -307,9 +307,9 @@ class RPR {
         if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
             $this->loader->add_action( 'do_meta_boxes', $plugin_admin->source, 'metabox_source' );
         }
-        if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
+       /* if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
             $this->loader->add_action( 'do_meta_boxes', $plugin_admin->nutrition, 'metabox_nutrition' );	
-        }
+        }*/
         
         
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->ingredients, 'metabox_ingredients' );
