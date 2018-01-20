@@ -35,8 +35,6 @@ class RPR_Module_Nutrition extends RPR_Module {
             $loader->add_action( 'do_meta_boxes', $this, 'metabox_nutrition' );
             // Save this modules recipe data:
             $loader->add_action( 'save_post', $this, 'save_recipe_nutrition', 10, 2 );
-            // Add option fields for this module
-            //$loader->add_action( 'init', $this, 'add_module_options' );
         }
     }
 	
@@ -47,17 +45,15 @@ class RPR_Module_Nutrition extends RPR_Module {
      * @param RPR_Loader $loader
      */
     public function define_public_hooks( $loader ){
-        /*if( is_a( $loader, 'RPR_Loader' ) ){
-            echo "Got a valid loader";
-        }*/
     }
     
     /**
      * Load module specific CSS styles and scripts
      */
     public function enqueue_scripts() {
-        /* General styles */
+        /* Admin styles */
         wp_enqueue_style( 'rpr_module_nutrition', plugin_dir_url(__FILE__) . 'nutrition_admin.css', array(), '1.0', 'all');
+        /* Admin script */
         wp_enqueue_script( 'rprp_module_nutrition', plugin_dir_url( __FILE__ ) . 'nutrition_admin.js', array ( 'jquery' ), '1.0', false );
     }
     
@@ -120,12 +116,52 @@ class RPR_Module_Nutrition extends RPR_Module {
 
     }
     
+    /**
+     * Return the path to module's directory
+     * @return string
+     */
     public function get_path(){
         return dirname(__FILE__);
     }
-//    public function load_options( $oFactory ){
-//        require_once 'options.php';
-//        new RPR_Options_Page_Metadata_Nutrition( $oFactory );
-//    }
-
+    
+    /**
+     * Return the structured data related to this module encoded as an array
+     * Core function will create JSON-LD schmema from this and other module's
+     * data
+     * For more infomration on structured data see: 
+     * http://1.schemaorgae.appspot.com/NutritionInformation
+     */
+    public function get_structured_data( $recipe_id, $recipe ){
+        $data = array();
+        
+        $data['@type'] = "NutritionInformation";
+        
+        switch ($recipe['rpr_recipe_nutrition_per'][0]) {
+            case 'per_100g':
+                $data['servingSite'] = '100 grams';
+                break;
+            case 'per_portion':
+                $data['servingSite'] = '1 portion';
+                break;
+            case 'per_recipe':
+                $data['servingSite'] = '1 recipe';
+                break;
+            default:
+                $data['servingSite'] = '100 grams';
+        }
+        
+        // Get all the fields:
+        require_once 'nutrition_data.php';
+        $nutridata = get_the_rpr_recipe_nutrition_fields();
+        
+        // Get the saved data as well:
+        foreach ( $nutridata as $key => $value ){
+            $dbkey = $value['dbkey'];
+            if( isset( $recipe[$dbkey][0] ) && $recipe[$dbkey][0] !=''){// && $recipe[$value][0] != 0){
+                $data[$value['json_ld_id']] = $recipe[$dbkey][0] .' ' . $value['json_ld_unit'];
+            }
+        }
+        
+        return $data;
+    }
 }

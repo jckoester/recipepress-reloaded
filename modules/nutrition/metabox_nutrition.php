@@ -14,7 +14,7 @@ wp_nonce_field('rpr_save_recipe_nutrition', 'rpr_nonce_nutrition');
 /**
  * Get all availble fields (defined in templat_tags.php
  */
-require_once 'template_tags.php';
+require_once 'nutrition_data.php';
 $nutridata = get_the_rpr_recipe_nutrition_fields();
 
 // Load metadata already saved in post:
@@ -26,7 +26,7 @@ foreach ($nutridata as $key => $value ){
 
 /**
  * Create the meta box
- */
+ */return
 ?>
 
 <div class="nutritionsbox">

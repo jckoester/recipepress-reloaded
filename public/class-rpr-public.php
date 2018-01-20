@@ -347,7 +347,8 @@ class RPR_Public {
 		// Get the recipe data:
 		$recipe = get_post_custom($recipe_post->ID);
 		//$content = $this->get_recipes_content($recipe_post);
-		
+		var_dump($this->modules);
+                var_dump($this->modules['nutrition']->get_structured_data($recipe_post->ID, $recipe));
 		// Start rendering
 		ob_start();
 		// Include the common template tags:

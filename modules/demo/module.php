@@ -106,4 +106,5 @@ class RPR_Module_Demo extends RPR_Module {
         return dirname(__FILE__);
     }
 
+    public function get_structured_data( $recipe_id, $recipe ){}
 }

@@ -131,4 +131,11 @@ abstract class RPR_Module {
      * @return string
      */
     abstract public function get_path();
+    
+    /**
+     * Return an array of structured data
+     * In core we eill create a JSON-LD encoded set f structured data according 
+     * to: http://1.schemaorgae.appspot.com/Recipe
+     */
+    abstract public function get_structured_data( $recipe_id, $recipe );
 }
