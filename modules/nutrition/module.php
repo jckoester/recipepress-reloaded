@@ -30,7 +30,7 @@ class RPR_Module_Nutrition extends RPR_Module {
     public function define_admin_hooks( $loader ){
         if( is_a( $loader, 'RPR_Loader' ) ){
             // Load CSS
-            $loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_styles' );
+            $loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_scripts' );
             // Add metabox for this module
             $loader->add_action( 'do_meta_boxes', $this, 'metabox_nutrition' );
             // Save this modules recipe data:
@@ -53,11 +53,12 @@ class RPR_Module_Nutrition extends RPR_Module {
     }
     
     /**
-     * Load module specific CSS styles
+     * Load module specific CSS styles and scripts
      */
-    public function enqueue_styles() {
+    public function enqueue_scripts() {
         /* General styles */
-        wp_enqueue_style('rpr_module_nutrition', plugin_dir_url(__FILE__) . 'module.css', array(), '1.0', 'all');
+        wp_enqueue_style( 'rpr_module_nutrition', plugin_dir_url(__FILE__) . 'nutrition_admin.css', array(), '1.0', 'all');
+        wp_enqueue_script( 'rprp_module_nutrition', plugin_dir_url( __FILE__ ) . 'nutrition/nutrition_admin.js', array ( 'jquery' ), $this->version, false );
     }
     
     public function metabox_nutrition(){
