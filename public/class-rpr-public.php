@@ -347,8 +347,12 @@ class RPR_Public {
 		// Get the recipe data:
 		$recipe = get_post_custom($recipe_post->ID);
 		//$content = $this->get_recipes_content($recipe_post);
+                // TODO: Add structured data as JSON_LD here
+                // See https://gist.github.com/w33zy/bae18d16409f80746b5acc9701b23b28
+                // for a possible way
 		var_dump($this->modules);
                 var_dump($this->modules['nutrition']->get_structured_data($recipe_post->ID, $recipe));
+                var_dump($this->modules['credit']->get_structured_data($recipe_post->ID, $recipe));
 		// Start rendering
 		ob_start();
 		// Include the common template tags:

@@ -134,22 +134,6 @@ class RPR_Module_Nutrition extends RPR_Module {
     public function get_structured_data( $recipe_id, $recipe ){
         $data = array();
         
-        $data['@type'] = "NutritionInformation";
-        
-        switch ($recipe['rpr_recipe_nutrition_per'][0]) {
-            case 'per_100g':
-                $data['servingSite'] = '100 grams';
-                break;
-            case 'per_portion':
-                $data['servingSite'] = '1 portion';
-                break;
-            case 'per_recipe':
-                $data['servingSite'] = '1 recipe';
-                break;
-            default:
-                $data['servingSite'] = '100 grams';
-        }
-        
         // Get all the fields:
         require_once 'nutrition_data.php';
         $nutridata = get_the_rpr_recipe_nutrition_fields();
@@ -162,6 +146,25 @@ class RPR_Module_Nutrition extends RPR_Module {
             }
         }
         
-        return $data;
+        if( count( $data > 0 ) ){
+            $data['@type'] = "NutritionInformation";
+        
+            switch ($recipe['rpr_recipe_nutrition_per'][0]) {
+                case 'per_100g':
+                    $data['servingSize'] = '100 grams';
+                    break;
+                case 'per_portion':
+                    $data['servingSize'] = '1 portion';
+                    break;
+                case 'per_recipe':
+                    $data['servingSize'] = '1 recipe';
+                    break;
+                default:
+                    $data['servingSize'] = '100 grams';
+            }
+        }
+        
+        $json['nutrition'] = $data;
+        return $json;
     }
 }

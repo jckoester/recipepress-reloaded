@@ -26,7 +26,7 @@ foreach ($nutridata as $key => $value ){
 
 /**
  * Create the meta box
- */return
+ */
 ?>
 
 <div class="nutritionsbox">
