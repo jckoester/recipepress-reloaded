@@ -34,7 +34,7 @@ class RPR_Options_Module_Nutrition {
     /**
      * The section slug to add to the tab.
      */
-    public $sSectionID  = 'nutrition';
+    public $sSectionID  = 'metadata_nutrition';
 	
         
     /**
@@ -46,7 +46,7 @@ class RPR_Options_Module_Nutrition {
         $oFactory->addSettingSections(    
             $this->sPageSlug, // the target page slug   
             array(
-                'section_id'    => 'metadata_nutrition',
+                'section_id'    => $this->sSectionID,
                 'tab_slug'      => 'metadata',
                 'title'         => '<i class="fa fa-tags"></i> ' . __( 'Nutritional information' , 'recipepress-reloaded' ),
                 'description'   => '<i style="float:left; margin-right:6px; color:green;" class="fa fa-exclamation-circle fa-3x"></i> ' . __( 'Decide here which nutritional information you want to provide. <br/>If you leave a field empty in the recipe, it won\'t be displayed in the front end.' , 'recipepress-reloaded' )
@@ -68,7 +68,7 @@ class RPR_Options_Module_Nutrition {
             array(
                 'field_id'          => 'nutrition_use_carbohydrates',
                 'type'              => 'checkbox',
-                'title'             => __( 'Use carbohydrates', 'recipepress-reloaded' ),
+                'title'             => __( 'Use carbohydrate', 'recipepress-reloaded' ),
                 'default'           => true,
             ),
             array(

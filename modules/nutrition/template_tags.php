@@ -6,28 +6,13 @@
  * and open the template in the editor.
  */
 
-if (!function_exists('get_the_rpr_recipe_nutrition')) {
-
+if (!function_exists('get_the_rpr_recipe_nutrition_fields')) {
     /**
-     * Renders the nutritional information
-     * 
-     * @since 0.8.0
-     * @todo: Add icons if desired by option
-     * 
-     * @param boolean $icons
-     * @return string
+     * Returns a list of all available nutrtional data fields
+     * @return array
      */
-    function get_the_rpr_recipe_nutrition($icons = false) {
-        /**
-         *  Get the recipe id
-         */
-        $recipe_id = get_recipe_id();
-        $recipe = get_post_custom($recipe_id);
-
-        /**
-         * Get all the saved values
-         */
-        $nutridata= array(
+    function get_the_rpr_recipe_nutrition_fields(){
+        return array(
             'calories' => array(
                         'dbkey' => 'rpr_recipe_calorific_value',
                         'label' => __('Calorific value:', 'recipepress-reloaded'),
@@ -95,7 +80,31 @@ if (!function_exists('get_the_rpr_recipe_nutrition')) {
                         'value' => NULL
             ),
         );
-        
+    }
+}
+
+if (!function_exists('get_the_rpr_recipe_nutrition')) {
+
+    /**
+     * Renders the nutritional information
+     * 
+     * @since 0.8.0
+     * @todo: Add icons if desired by option
+     * 
+     * @param boolean $icons
+     * @return string
+     */
+    function get_the_rpr_recipe_nutrition($icons = false) {
+        /**
+         *  Get the recipe id
+         */
+        $recipe_id = get_recipe_id();
+        $recipe = get_post_custom($recipe_id);
+
+        /**
+         * Get all the saved values
+         */
+        $nutridata= get_the_rpr_recipe_nutrition_fields();
         
         foreach ( $nutridata as $key => $value ){
             $dbkey = $value['dbkey'];
@@ -114,10 +123,9 @@ if (!function_exists('get_the_rpr_recipe_nutrition')) {
         }
         
         /**
-         * Return if no nutritional data are saved or nutritional data is not 
-         * enabled
+         * Return if no nutritional data are saved
          */
-        if ( AdminPageFramework::getOption('rpr_options', array('metadata', 'use_nutritional_data'), false) === false || count( $nutridata ) === 0 ) {
+        if ( count( $nutridata ) === 0 ) {
             return;
         }
        
