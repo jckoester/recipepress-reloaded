@@ -58,7 +58,7 @@ class RPR_Module_Nutrition extends RPR_Module {
     public function enqueue_scripts() {
         /* General styles */
         wp_enqueue_style( 'rpr_module_nutrition', plugin_dir_url(__FILE__) . 'nutrition_admin.css', array(), '1.0', 'all');
-        wp_enqueue_script( 'rprp_module_nutrition', plugin_dir_url( __FILE__ ) . 'nutrition/nutrition_admin.js', array ( 'jquery' ), $this->version, false );
+        wp_enqueue_script( 'rprp_module_nutrition', plugin_dir_url( __FILE__ ) . 'nutrition_admin.js', array ( 'jquery' ), '1.0', false );
     }
     
     public function metabox_nutrition(){
@@ -77,7 +77,7 @@ class RPR_Module_Nutrition extends RPR_Module {
         // Get post:
         $recipe = get_post();
         // render view:
-        include( 'view_rpr-metabox-nutrition.php');
+        include( 'metabox_nutrition.php');
     }
     
     

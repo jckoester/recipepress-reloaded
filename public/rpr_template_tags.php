@@ -1588,145 +1588,146 @@ if( !function_exists( 'the_rpr_recipe_nutrition_headline' ) ) {
 	}
 }
 
-if( !function_exists( 'get_the_rpr_recipe_nutrition' ) ){
-	/**
-	 * Renders the nutritional information
-	 * 
-	 * @since 0.8.0
-	 * @todo: Add icons if desired by option
-	 * 
-	 * @param boolean $icons
-	 * @return string
-	 */
-	function get_the_rpr_recipe_nutrition( $icons=false ) {
-		/**
-		 *  Get the recipe id
-		 */
-		if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
-			$recipe_id = $GLOBALS['recipe_id'];
-		} else {
-			$recipe_id = get_post()->ID;
-		}
-        $recipe = get_post_custom( $recipe_id );
-
-		/**
-		 * Return if no nutritional data are saved or nutritional data is not 
-		 * enabled
-		 */
-		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data' ), false ) === false ||
-			( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) <= 0 ) {
-			return;
-		}
-		
-		/**
-		 *  Create an empty output string
-		 */
-		$out = '';
-		
-				
-		/**
-		 * Add nutritional data in the correct structured data format
-		 */
-		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
-			$out .= '<div itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation" class="rpr_nutritional_data">';
-			$out .= '<span class="nutrition_per" itemprop="servingSize">';
-			$struct_calo = 'itemprop="calories" ';
-			$struct_carb = 'itemprop="carbohydrateContent"';
-			$struct_chol = 'itemprop="cholesterolContent"';
-			$struct_fat  = 'itemprop="fatContent"';
-			$struct_fibe = 'itemprop="fibreContent"';
-			$struct_prot = 'itemprop="proteinContent"';
-			$struct_satu = 'itemprop="saturatedFatContent"';
-			$struct_sodi = 'itemprop="sodiumContent"';
-			$struct_suga = 'itemprop="sugarContent"';
-			$struct_tran = 'itemprop="transFatContent"';
-			$struct_unsa = 'itemprop="unsaturatedFatContent"';
-		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
-			$out .= '<div property="nutrition" typeof="NutritionInformation" class="rpr_nutritional_data">';
-			$out .= '<span class="nutrition_per" property="servingSize">';
-			$struct_calo = 'property="calories" ';
-			$struct_carb = 'property="carbohydrateContent"';
-			$struct_chol = 'property="cholesterolContent"';
-			$struct_fat  = 'property="fatContent"';
-			$struct_fibe = 'property="fibreContent"';
-			$struct_prot = 'property="proteinContent"';
-			$struct_satu = 'property="saturatedFatContent"';
-			$struct_sodi = 'property="sodiumContent"';
-			$struct_suga = 'property="sugarContent"';
-			$struct_tran = 'property="transFatContent"';
-			$struct_unsa = 'property="unsaturatedFatContent"';
-		} else {
-			$out .= '<div class="rpr_nutritional_data" >';
-			$out .= '<span class="nutrition_per">';
-			$struct_calo = '';
-			$struct_carb = '';
-			$struct_chol = '';
-			$struct_fat  = '';
-			$struct_fibe = '';
-			$struct_prot = '';
-			$struct_satu = '';
-			$struct_sodi = '';
-			$struct_suga = '';
-			$struct_tran = '';
-			$struct_unsa = '';
-		}
-		
-		switch( $recipe['rpr_recipe_nutrition_per'][0] ) {
-			case 'per_100g':
-				$out .= __('Per 100g', 'recipepress-reloaded' );
-				break;
-			case 'per_portion':
-				$out .= __('Per portion', 'recipepress-reloaded' );
-				break;
-			case 'per_recipe':
-				$out .= __('Per recipe', 'recipepress-reloaded' );
-				break;
-			default:
-				$out .= __('Per 100g', 'recipepress-reloaded' );
-		}
-		
-		$out .= '</span>';
-		
-		$out .= '<dl>';
-		
-		/**
-		 * These are only the basic nutritional data as of rpr v0.8
-		 * to be extended in the future to acomplete set of nutritional data
-		 * as described here: http://1.schemaorgae.appspot.com/NutritionInformation
-		 */
-		if( isset( $recipe['rpr_recipe_calorific_value'][0] ) ){
-			$out .= sprintf(  '<dt>' . __( 'Energy:', 'recipepress-reloaded') . '</dt><dd ' . $struct_calo . '> %1s kcal / %2s kJ</dd>', esc_html( $recipe['rpr_recipe_calorific_value'][0] ), esc_html( round( 4.18*$recipe['rpr_recipe_calorific_value'][0] ) ) );
-		}
-		if( isset( $recipe['rpr_recipe_fat'][0] ) ){
-			$out .= sprintf( '<dt>' . __(  'Fat:', 'recipress-reloaded' ) . '</dt><dd ' . $struct_fat . '>%s g</dd>', esc_html( $recipe['rpr_recipe_fat'][0] ) );
-		}
-		if( isset( $recipe['rpr_recipe_protein'][0] ) ){
-			$out .= sprintf( '<dt>' . __( 'Protein:' , 'recipepress-reloaded' ) . '</dt><dd ' . $struct_prot . '>%s g</dd>', esc_html( $recipe['rpr_recipe_protein'][0] ) );
-		}
-		if( isset( $recipe['rpr_recipe_carbohydrate'][0] ) ){
-			$out .= sprintf( '<dt>' . __( 'Carbohydrate:', 'recipepress-reloaded' ) . '</dt><dd ' . $struct_carb . '>%s g</dd>', esc_html( $recipe['rpr_recipe_carbohydrate'][0] ) );
-		}
-		
-		$out .= '</dl>';
-		$out .= '</div>';
-		
-		/**
-		 * Return the rendered servings data
-		 */
-		return $out;
-	}
-}
-if( !function_exists( 'the_rpr_recipe_nutrition' ) ){
-	/**
-	 * Outputs the nutritional data rendered above
-	 * 
-	 * @since 0.8.0
-	 * @param boolean $icons
-	 */
-	function the_rpr_recipe_nutrition( $icons=false ) {
-		echo get_the_rpr_recipe_nutrition( $icons );
-	}
-}
+// MOVED TO MODULE!
+//if( !function_exists( 'get_the_rpr_recipe_nutrition' ) ){
+//	/**
+//	 * Renders the nutritional information
+//	 * 
+//	 * @since 0.8.0
+//	 * @todo: Add icons if desired by option
+//	 * 
+//	 * @param boolean $icons
+//	 * @return string
+//	 */
+//	function get_the_rpr_recipe_nutrition( $icons=false ) {
+//		/**
+//		 *  Get the recipe id
+//		 */
+//		if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
+//			$recipe_id = $GLOBALS['recipe_id'];
+//		} else {
+//			$recipe_id = get_post()->ID;
+//		}
+//        $recipe = get_post_custom( $recipe_id );
+//
+//		/**
+//		 * Return if no nutritional data are saved or nutritional data is not 
+//		 * enabled
+//		 */
+//		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data' ), false ) === false ||
+//			( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) <= 0 ) {
+//			return;
+//		}
+//		
+//		/**
+//		 *  Create an empty output string
+//		 */
+//		$out = '';
+//		
+//				
+//		/**
+//		 * Add nutritional data in the correct structured data format
+//		 */
+//		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
+//			$out .= '<div itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation" class="rpr_nutritional_data">';
+//			$out .= '<span class="nutrition_per" itemprop="servingSize">';
+//			$struct_calo = 'itemprop="calories" ';
+//			$struct_carb = 'itemprop="carbohydrateContent"';
+//			$struct_chol = 'itemprop="cholesterolContent"';
+//			$struct_fat  = 'itemprop="fatContent"';
+//			$struct_fibe = 'itemprop="fibreContent"';
+//			$struct_prot = 'itemprop="proteinContent"';
+//			$struct_satu = 'itemprop="saturatedFatContent"';
+//			$struct_sodi = 'itemprop="sodiumContent"';
+//			$struct_suga = 'itemprop="sugarContent"';
+//			$struct_tran = 'itemprop="transFatContent"';
+//			$struct_unsa = 'itemprop="unsaturatedFatContent"';
+//		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
+//			$out .= '<div property="nutrition" typeof="NutritionInformation" class="rpr_nutritional_data">';
+//			$out .= '<span class="nutrition_per" property="servingSize">';
+//			$struct_calo = 'property="calories" ';
+//			$struct_carb = 'property="carbohydrateContent"';
+//			$struct_chol = 'property="cholesterolContent"';
+//			$struct_fat  = 'property="fatContent"';
+//			$struct_fibe = 'property="fibreContent"';
+//			$struct_prot = 'property="proteinContent"';
+//			$struct_satu = 'property="saturatedFatContent"';
+//			$struct_sodi = 'property="sodiumContent"';
+//			$struct_suga = 'property="sugarContent"';
+//			$struct_tran = 'property="transFatContent"';
+//			$struct_unsa = 'property="unsaturatedFatContent"';
+//		} else {
+//			$out .= '<div class="rpr_nutritional_data" >';
+//			$out .= '<span class="nutrition_per">';
+//			$struct_calo = '';
+//			$struct_carb = '';
+//			$struct_chol = '';
+//			$struct_fat  = '';
+//			$struct_fibe = '';
+//			$struct_prot = '';
+//			$struct_satu = '';
+//			$struct_sodi = '';
+//			$struct_suga = '';
+//			$struct_tran = '';
+//			$struct_unsa = '';
+//		}
+//		
+//		switch( $recipe['rpr_recipe_nutrition_per'][0] ) {
+//			case 'per_100g':
+//				$out .= __('Per 100g', 'recipepress-reloaded' );
+//				break;
+//			case 'per_portion':
+//				$out .= __('Per portion', 'recipepress-reloaded' );
+//				break;
+//			case 'per_recipe':
+//				$out .= __('Per recipe', 'recipepress-reloaded' );
+//				break;
+//			default:
+//				$out .= __('Per 100g', 'recipepress-reloaded' );
+//		}
+//		
+//		$out .= '</span>';
+//		
+//		$out .= '<dl>';
+//		
+//		/**
+//		 * These are only the basic nutritional data as of rpr v0.8
+//		 * to be extended in the future to acomplete set of nutritional data
+//		 * as described here: http://1.schemaorgae.appspot.com/NutritionInformation
+//		 */
+//		if( isset( $recipe['rpr_recipe_calorific_value'][0] ) ){
+//			$out .= sprintf(  '<dt>' . __( 'Energy:', 'recipepress-reloaded') . '</dt><dd ' . $struct_calo . '> %1s kcal / %2s kJ</dd>', esc_html( $recipe['rpr_recipe_calorific_value'][0] ), esc_html( round( 4.18*$recipe['rpr_recipe_calorific_value'][0] ) ) );
+//		}
+//		if( isset( $recipe['rpr_recipe_fat'][0] ) ){
+//			$out .= sprintf( '<dt>' . __(  'Fat:', 'recipress-reloaded' ) . '</dt><dd ' . $struct_fat . '>%s g</dd>', esc_html( $recipe['rpr_recipe_fat'][0] ) );
+//		}
+//		if( isset( $recipe['rpr_recipe_protein'][0] ) ){
+//			$out .= sprintf( '<dt>' . __( 'Protein:' , 'recipepress-reloaded' ) . '</dt><dd ' . $struct_prot . '>%s g</dd>', esc_html( $recipe['rpr_recipe_protein'][0] ) );
+//		}
+//		if( isset( $recipe['rpr_recipe_carbohydrate'][0] ) ){
+//			$out .= sprintf( '<dt>' . __( 'Carbohydrate:', 'recipepress-reloaded' ) . '</dt><dd ' . $struct_carb . '>%s g</dd>', esc_html( $recipe['rpr_recipe_carbohydrate'][0] ) );
+//		}
+//		
+//		$out .= '</dl>';
+//		$out .= '</div>';
+//		
+//		/**
+//		 * Return the rendered servings data
+//		 */
+//		return $out;
+//	}
+//}
+//if( !function_exists( 'the_rpr_recipe_nutrition' ) ){
+//	/**
+//	 * Outputs the nutritional data rendered above
+//	 * 
+//	 * @since 0.8.0
+//	 * @param boolean $icons
+//	 */
+//	function the_rpr_recipe_nutrition( $icons=false ) {
+//		echo get_the_rpr_recipe_nutrition( $icons );
+//	}
+//}
 
 if( !function_exists( 'get_the_rpr_recipe_times_headline' ) ) {
 	/**
