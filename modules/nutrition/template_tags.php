@@ -196,3 +196,60 @@ if (!function_exists('the_rpr_recipe_nutrition')) {
     }
 
 }
+
+
+if( !function_exists( 'get_the_rpr_recipe_nutrition_headline' ) ) {
+	/**
+	 * Render the headline for the recipe times
+	 * 
+	 * @since 0.8.0
+	 * @param boolean $icons
+	 * @return string
+	 */
+	function get_the_rpr_recipe_nutrition_headline( $icons=false ){
+		/**
+		 *  Create an empty output string
+		 */
+		$out = '';
+		
+		/**
+		 * Add a third level heading for embedded recipes or a second level 
+		 * heading for a standalone recipe
+		 */
+		if( recipe_is_embedded() ){
+			$out .= '<h3>';
+		}else{
+			$out .= '<h2>';
+		}
+		
+		/**
+		 * Add icon if desired
+		 */
+		if( $icons ){
+            $out .= '<i class="fa fa-fire" title=' . __( 'Nutritional data', 'recipepress-reloaded' ) . '></i> ';
+		}
+		
+		$out .= __( 'Nutritional data', 'recipepress-reloaded' );
+		
+		if( recipe_is_embedded() ){
+			$out .= '</h3>';
+		}else{
+			$out .= '</h2>';
+		}
+		/**
+		 * Return the rendered headline
+		 */
+		return $out;
+	}
+}
+if( !function_exists( 'the_rpr_recipe_nutrition_headline' ) ) {
+	/**
+	 * Outputs the headline rendered above
+	 * 
+	 * @since 0.8.0
+	 * @param boolean $icons
+	 */
+	function the_rpr_recipe_nutrition_headline( $icons = false ){
+		echo get_the_rpr_recipe_nutrition_headline( $icons );
+	}
+}
