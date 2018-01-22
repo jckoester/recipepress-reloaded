@@ -174,7 +174,6 @@ class RPR {
          *  Get modules list from options
          */
         $modules = AdminPageFramework::getOption( 'rpr_options', array( 'modules' ));
-        
         /**
          *  Create a list of active modules:
          */

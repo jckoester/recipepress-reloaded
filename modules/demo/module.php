@@ -34,7 +34,7 @@ class RPR_Module_Demo extends RPR_Module {
         if( is_a( $loader, 'RPR_Loader' ) ){
             //echo "Got a valid loader";
             // Add metabox for this module
-            $loader->add_action( 'do_meta_boxes', $this, 'metabox_demo' );
+            $loader->add_action( 'do_meta_boxes', $this, 'metabox_demo', 10 );
             // Save this modules recipe data:
             $loader->add_action( 'save_post', $this, 'save_recipe_demo', 10, 2 );
             // Add option fields for this module

@@ -161,9 +161,9 @@ class RPR_Admin_GeneralMeta {
 		$fields = array(
 			'rpr_recipe_servings',
 			'rpr_recipe_servings_type',
-			'rpr_recipe_prep_time',
+			/*'rpr_recipe_prep_time',
 			'rpr_recipe_cook_time',
-			'rpr_recipe_passive_time',
+			'rpr_recipe_passive_time',*/
 			'rpr_recipe_notes'
 		);
 		
