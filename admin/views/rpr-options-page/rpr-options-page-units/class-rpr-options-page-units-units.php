@@ -70,22 +70,23 @@ class RPR_Options_Page_Units_Units {
                 'description'       => __( 'Unit list for ingredients.<br/> I recommend using a well defined list of units as this will make your recipes more consistent and readable.', 'recipepress-reloaded' ),
                 'repeatable'        => true,
                 'sortable'          => true,
-            ),
-            array(
-                'field_id'          => 'use_serving_units',
-                'type'              => 'checkbox',
-                'title'             => __( 'Use servings size unit list?', 'recipepress-reloaded' ),
-                'tip'               => __( 'Check this to use a list of units for entering serving sizes. You can define the list below. I recommend using a well defined list of units as this will make your recipes more consistent and readable.', 'recipepress-reloaded'),
-                'default'           => true,
-            ),
-            array(
-                'field_id'          => 'serving_units',
-                'type'              => 'text',
-                'title'             => __( 'Unit list', 'recipepress-reloaded' ),
-                'description'       => __( 'Unit list for serving sizes.<br/> I recommend using a well defined list of units as this will make your recipes more consistent and readable.', 'recipepress-reloaded' ),
-                'repeatable'        => true,
-                'sortable'          => true,
             )
+                //,
+//            array(
+//                'field_id'          => 'use_serving_units',
+//                'type'              => 'checkbox',
+//                'title'             => __( 'Use servings size unit list?', 'recipepress-reloaded' ),
+//                'tip'               => __( 'Check this to use a list of units for entering serving sizes. You can define the list below. I recommend using a well defined list of units as this will make your recipes more consistent and readable.', 'recipepress-reloaded'),
+//                'default'           => true,
+//            ),
+//            array(
+//                'field_id'          => 'serving_units',
+//                'type'              => 'text',
+//                'title'             => __( 'Unit list', 'recipepress-reloaded' ),
+//                'description'       => __( 'Unit list for serving sizes.<br/> I recommend using a well defined list of units as this will make your recipes more consistent and readable.', 'recipepress-reloaded' ),
+//                'repeatable'        => true,
+//                'sortable'          => true,
+//            )
         );
     }
 

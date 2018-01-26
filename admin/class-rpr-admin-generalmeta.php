@@ -159,8 +159,8 @@ class RPR_Admin_GeneralMeta {
      */
     public function save_generalmeta( $recipe_id, $data, $recipe = NULL ){
 		$fields = array(
-			'rpr_recipe_servings',
-			'rpr_recipe_servings_type',
+//			'rpr_recipe_servings',
+//			'rpr_recipe_servings_type',
 			/*'rpr_recipe_prep_time',
 			'rpr_recipe_cook_time',
 			'rpr_recipe_passive_time',*/

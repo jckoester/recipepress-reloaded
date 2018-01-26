@@ -1453,83 +1453,85 @@ if( !  function_exists( 'the_rpr_recipe_notes' ) ){
 /** ****************************************************************************
  * META DATA TEMPLATE TAGS
  */
-if( !function_exists( 'get_the_rpr_recipe_servings' ) ){
-	/**
-	 * Renders the serving size information
-	 * 
-	 * @since 0.8.0
-	 * @param boolean $icons
-	 * @return string
-	 */
-	function get_the_rpr_recipe_servings( $icons ) {
-		/**
-		 *  Get the recipe id
-		 */
-		if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
-			$recipe_id = $GLOBALS['recipe_id'];
-		} else {
-			$recipe_id = get_post()->ID;
-		}
-        $recipe = get_post_custom( $recipe_id );
+// MOVED TO MODULE
 
-		/**
-		 * Return if no servings are saved
-		 */
-		if( !isset( $recipe['rpr_recipe_servings'][0] ) ){
-			return;
-		}
-
-		/**
-		 *  Create an empty output string
-		 */
-		$out = '';
-		
-				
-		/**
-		 * Add servings in the correct structured data format
-		 */
-		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
-			$out .= '<div itemprop="recipeYield" class="rpr_servings" >';
-		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
-			$out .= '<div property="recipeYield" class="rpr_servings" >';
-		} else {
-			$out .= '<div class="rpr_servings">';
-		}
-		
-		/** 
-		 * Add icon if set to do so:
-		 */
-		if( $icons ) {
-			/**
-			 * @todo: add option for icon class
-			 */
-			$out .= '<i class="fa fa-pie-chart"></i>&nbsp;';
-		} else {
-			$out .= __( 'For:' , 'recipepress-reloaded' );
-			$out .= '&nbsp;';
-		}
-		
-		$out .= '<span class="rpr_servings" >' . esc_html( $recipe['rpr_recipe_servings'][0] ) . '</span>&nbsp;';
-		$out .= '<span class="rpr_servings_type" >' . esc_html( $recipe['rpr_recipe_servings_type'][0] ) . '</span>';
-		
-		$out .= '</div>';
-		/**
-		 * Return the rendered servings data
-		 */
-		return $out;
-	}
-}
-if( !function_exists( 'the_rpr_recipe_servings' ) ){
-	/**
-	 * Outputs the servings rendered above
-	 * 
-	 * @since 0.8.0
-	 * @param boolean $icons
-	 */
-	function the_rpr_recipe_servings( $icons=false ) {
-		echo get_the_rpr_recipe_servings( $icons );
-	}
-}
+//if( !function_exists( 'get_the_rpr_recipe_servings' ) ){
+//	/**
+//	 * Renders the serving size information
+//	 * 
+//	 * @since 0.8.0
+//	 * @param boolean $icons
+//	 * @return string
+//	 */
+//	function get_the_rpr_recipe_servings( $icons ) {
+//		/**
+//		 *  Get the recipe id
+//		 */
+//		if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
+//			$recipe_id = $GLOBALS['recipe_id'];
+//		} else {
+//			$recipe_id = get_post()->ID;
+//		}
+//        $recipe = get_post_custom( $recipe_id );
+//
+//		/**
+//		 * Return if no servings are saved
+//		 */
+//		if( !isset( $recipe['rpr_recipe_servings'][0] ) ){
+//			return;
+//		}
+//
+//		/**
+//		 *  Create an empty output string
+//		 */
+//		$out = '';
+//		
+//				
+//		/**
+//		 * Add servings in the correct structured data format
+//		 */
+//		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
+//			$out .= '<div itemprop="recipeYield" class="rpr_servings" >';
+//		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
+//			$out .= '<div property="recipeYield" class="rpr_servings" >';
+//		} else {
+//			$out .= '<div class="rpr_servings">';
+//		}
+//		
+//		/** 
+//		 * Add icon if set to do so:
+//		 */
+//		if( $icons ) {
+//			/**
+//			 * @todo: add option for icon class
+//			 */
+//			$out .= '<i class="fa fa-pie-chart"></i>&nbsp;';
+//		} else {
+//			$out .= __( 'For:' , 'recipepress-reloaded' );
+//			$out .= '&nbsp;';
+//		}
+//		
+//		$out .= '<span class="rpr_servings" >' . esc_html( $recipe['rpr_recipe_servings'][0] ) . '</span>&nbsp;';
+//		$out .= '<span class="rpr_servings_type" >' . esc_html( $recipe['rpr_recipe_servings_type'][0] ) . '</span>';
+//		
+//		$out .= '</div>';
+//		/**
+//		 * Return the rendered servings data
+//		 */
+//		return $out;
+//	}
+//}
+//if( !function_exists( 'the_rpr_recipe_servings' ) ){
+//	/**
+//	 * Outputs the servings rendered above
+//	 * 
+//	 * @since 0.8.0
+//	 * @param boolean $icons
+//	 */
+//	function the_rpr_recipe_servings( $icons=false ) {
+//		echo get_the_rpr_recipe_servings( $icons );
+//	}
+//}
 
 // MOVED TO MODULE
 
