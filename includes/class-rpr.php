@@ -303,9 +303,9 @@ class RPR {
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_details' );
 	
         
-        if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+        /*if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
             $this->loader->add_action( 'do_meta_boxes', $plugin_admin->source, 'metabox_source' );
-        }
+        }*/
        /* if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
             $this->loader->add_action( 'do_meta_boxes', $plugin_admin->nutrition, 'metabox_nutrition' );	
         }*/
@@ -313,7 +313,7 @@ class RPR {
         
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->ingredients, 'metabox_ingredients' );
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->instructions, 'metabox_instructions' );
-        $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_notes' );
+        //$this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_notes' );
 
         // Save recipe
         $this->loader->add_action( 'save_post', $plugin_admin, 'save_recipe', 10, 2 );

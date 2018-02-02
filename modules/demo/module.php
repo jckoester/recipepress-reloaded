@@ -106,5 +106,12 @@ class RPR_Module_Demo extends RPR_Module {
         return dirname(__FILE__);
     }
 
+     /**
+     * Return the structured data related to this module encoded as an array
+     * Core function will create JSON-LD schmema from this and other module's
+     * data
+     * For more infomration on structured data see: 
+     * http://1.schemaorgae.appspot.com/NutritionInformation
+     */
     public function get_structured_data( $recipe_id, $recipe ){}
 }

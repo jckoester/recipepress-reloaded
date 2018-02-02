@@ -164,7 +164,7 @@ class RPR_Admin_GeneralMeta {
 			/*'rpr_recipe_prep_time',
 			'rpr_recipe_cook_time',
 			'rpr_recipe_passive_time',*/
-			'rpr_recipe_notes'
+//			'rpr_recipe_notes'
 		);
 		
 		foreach( $fields as $key ){
