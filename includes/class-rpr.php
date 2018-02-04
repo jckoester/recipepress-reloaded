@@ -146,10 +146,13 @@ class RPR {
          * Load the active modules:
          */
         foreach ( $active_modules as $active_module ) {
+            var_dump($active_module);
+            $module_id = preg_split("/_/", $active_module)[1];
+            
             /**
              * Load the module file
              */
-            $filename = plugin_dir_path( dirname( __FILE__ ) ) . 'modules/' . strtolower( $active_module ) . '/module.php';
+            $filename = plugin_dir_path( dirname( __FILE__ ) ) . 'modules/' . strtolower( $module_id ) . '/module.php';
 
             if ( file_exists( $filename ) ) {
                 require_once $filename;
@@ -157,10 +160,11 @@ class RPR {
                 /**
                  * Create the module object and store it in $this->modules
                  */
-                $classname = 'RPR_Module_' . $active_module;
+                $classname = 'RPR_Module_' . $module_id;
                 $this->modules[ $active_module ] = new $classname();
             }
         }
+//        asort( $this->modules );
     }
 
     /**
@@ -180,13 +184,16 @@ class RPR {
         $active_modules = array();
         if( is_array( $modules ) and count( $modules ) > 0 ){
             foreach ( $modules as $mod =>$active){
-                if( $active == "1" ){
+                if( preg_match("/_active/", $mod) && $active == "1" ){
                     $mod = preg_replace( "/module_/", "", $mod);
                     $mod = preg_replace( "/_active/", "", $mod);
-                    array_push( $active_modules,  $mod);
+                    $prio = AdminPageFramework::getOption( 'rpr_options', array( 'modules', 'module_' . $mod . '_priority' ));
+                    array_push( $active_modules,  $prio . '_' . $mod);
                 }
             }
         }
+        asort($active_modules);
+        //var_dump($active_modules);
         return $active_modules;
     }
 

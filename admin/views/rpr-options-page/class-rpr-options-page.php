@@ -112,7 +112,7 @@ class RPR_Options_Page {
             $filename = $modobject->get_path().'/options.php';
             if (file_exists( $filename )){
                 require_once $filename;
-                $classname = 'RPR_Options_Module_' . ucfirst($module);
+                $classname = 'RPR_Options_Module_' . ucfirst( preg_split("/_/", $module)[1] );
                 new $classname( $oFactory );
             }
             //$module->load_options( $oFactory );

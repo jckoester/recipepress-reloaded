@@ -68,17 +68,34 @@ class RPR_Options_Page_Modules_List {
         
         // TODO: Move this to a function!
         if( is_array( $this->modules ) && count( $this->modules ) > 0 ){
+            asort( $this->modules );
             foreach ( $this->modules as $module ){
-                $checkbox = array();
-                $checkbox['type'] = 'checkbox';
-                $checkbox['field_id'] = 'module_' . $module['id'] . '_active';
-                $checkbox['title'] = '<i class="fa ' . $this->modules[$module['id']]['icon'] . '"></i>&nbsp;' . $module['title'];
-                $checkbox['description'] = $this->get_module_description( $module['id'] );
-                $checkbox['tip'] = __( 'Check to activate the module and enable its functionality', 'recipepress-reloaded' );
+                if( $module['selectable'] == true ){
+                    $checkbox = array();
+                    $checkbox['type'] = 'checkbox';
+                    $checkbox['field_id'] = 'module_' . $module['id'] . '_active';
+                    $checkbox['title'] = '<i class="fa ' . $this->modules[$module['id']]['icon'] . '"></i>&nbsp;' . $module['title'];
+                    $checkbox['description'] = $this->get_module_description( $module['id'] );
+                    $checkbox['tip'] = __( 'Check to activate the module and enable its functionality', 'recipepress-reloaded' );
+                } else {
+                    $checkbox = array();
+                    $checkbox['type'] = 'hidden';
+                    $checkbox['field_id'] = 'module_' . $module['id'] . '_active';
+                    $checkbox['default'] = true;
+                }
                 // Add to setting:
                 $oFactory->addSettingFields(
                     array( $this->sSectionID ),
                     $checkbox
+                );
+                // Add a hidden option containing the priority
+                $prio = array();
+                $prio['type'] = 'hidden';
+                $prio['field_id'] = 'module_' . $module['id'] . '_priority';
+                $prio['value'] = $module['priority'];
+                $oFactory->addSettingFields(
+                    array( $this->sSectionID ),
+                    $prio
                 );
             }
         }
@@ -115,7 +132,6 @@ class RPR_Options_Page_Modules_List {
                         $this->modules[$file] = array(
                             'path' => $dirname . $file,
                             'url' => $baseurl,
-//                            'local' => $local
                             'id'    => $file
                         );
                         $this->get_modules_meta( $dirname, $file );
@@ -127,51 +143,31 @@ class RPR_Options_Page_Modules_List {
 
     
     private function get_modules_meta( $dirname, $file ) {
-        // Param parsing inspired by http://stackoverflow.com/questions/11504541/get-comments-in-a-php-file
-	$params=array();
-	$filename = $dirname . $file . '/module.php';
-			
-        // Read comments in the file module.php
-        // f_comment is a filter function currently defined at class-rpr-options-page-appearance_layouts.php
-	$docComments = array_filter(
-		token_get_all( file_get_contents( $filename ) ), 
-			"f_comment"
-	);
-	
-	$fileDocComment = array_shift( $docComments );
-					
-	$regexp = "/.*\:.*\n/";
-	preg_match_all($regexp, $fileDocComment[1], $matches);
-	
-        foreach( $matches[0] as $match ){
-		$param = explode(": ", $match);
-		$params[ trim( $param[0] ) ] = trim( $param[1] );
-	}
-
-        if( isset( $params['Description'] ) ){
-            $this->modules[$file]['description'] = sanitize_text_field( $params['Description'] );
+        include $dirname . $file . '/module.conf.php';
+        
+        if( isset( $module_config['title'] ) ){
+            $this->modules[$file]['title'] = sanitize_text_field( $module_config['title'] );
         }
-        if( isset( $params['Title'] ) ){
-            $this->modules[$file]['title'] = sanitize_text_field( $params['Title'] );
+        
+        if( isset( $module_config['description'] ) ){
+            $this->modules[$file]['description'] = sanitize_text_field( $module_config['description'] );
         }
-        if( isset( $params['Author'] ) ){
-            $this->modules[$file]['author'] = sanitize_text_field( $params['Author'] );
+        if( isset( $module_config['version'] ) ){
+            $this->modules[$file]['version'] = sanitize_text_field( $module_config['version'] );
         }
-        if( isset( $params['Author Mail'] ) ){
-            $this->modules[$file]['author_mail'] = sanitize_email( $params['Author Mail'] );
+        if( isset( $module_config['priority'] ) ){
+            $this->modules[$file]['priority'] = sanitize_text_field( $module_config['priority'] );
+        } else {
+            $this->modules[$file]['priority'] = 0;
         }
-        if( isset( $params['Author URL'] ) ){
-            $this->modules[$file]['author_url'] = sanitize_text_field( $params['Author URL'] );
+        if( isset( $module_config['selectable'] ) ){
+            $this->modules[$file]['selectable'] = sanitize_text_field( $module_config['selectable'] );
+        } else {
+            $this->modules[$file]['selectable'] = true;
         }
-        if( isset( $params['Version'] ) ){
-            $this->modules[$file]['version'] = sanitize_text_field( $params['Version'] );
-        }
-        if( isset( $params['Documentation URL'] ) ){
-            $this->modules[$file]['doc_url'] = sanitize_text_field( $params['Documentation URL'] );
-        }
-        if( isset( $params['Category'] ) ){
-            $this->modules[$file]['category'] = strtolower( sanitize_text_field( $params['Category'] ) );
-            switch ( $params['Category'] ){
+        if( isset( $module_config['category'] ) ){
+            $this->modules[$file]['category'] = strtolower( sanitize_text_field( $module_config['category'] ) );
+            switch ( $module_config['category'] ){
                 case 'Metadata':
                     $this->modules[$file]['icon'] = 'fa-tags';
                     break;
@@ -180,6 +176,74 @@ class RPR_Options_Page_Modules_List {
                     break;
             }
         }
+        if( isset( $module_config['author'] ) ){
+            $this->modules[$file]['author'] = sanitize_text_field( $module_config['author'] );
+        }
+        if( isset( $module_config['author_mail'] ) ){
+            $this->modules[$file]['author_mail'] = sanitize_email( $module_config['author_mail'] );
+        }
+        if( isset( $module_config['author_url'] ) ){
+            $this->modules[$file]['author_url'] = sanitize_text_field( $module_config['author_url'] );
+        }
+        if( isset( $module_config['doc_url'] ) ){
+            $this->modules[$file]['doc_url'] = sanitize_text_field( $module_config['doc_url'] );
+        }
+
+//        var_dump( $module_config );
+//        
+//        // Param parsing inspired by http://stackoverflow.com/questions/11504541/get-comments-in-a-php-file
+//	$params=array();
+//	$filename = $dirname . $file . '/module.php';
+//			
+//        // Read comments in the file module.php
+//        // f_comment is a filter function currently defined at class-rpr-options-page-appearance_layouts.php
+//	$docComments = array_filter(
+//		token_get_all( file_get_contents( $filename ) ), 
+//			"f_comment"
+//	);
+//	
+//	$fileDocComment = array_shift( $docComments );
+//					
+//	$regexp = "/.*\:.*\n/";
+//	preg_match_all($regexp, $fileDocComment[1], $matches);
+//	
+//        foreach( $matches[0] as $match ){
+//		$param = explode(": ", $match);
+//		$params[ trim( $param[0] ) ] = trim( $param[1] );
+//	}
+
+//        if( isset( $params['Description'] ) ){
+//            $this->modules[$file]['description'] = sanitize_text_field( $params['Description'] );
+//        }
+//        if( isset( $params['Title'] ) ){
+//            $this->modules[$file]['title'] = sanitize_text_field( $params['Title'] );
+//        }
+//        if( isset( $params['Author'] ) ){
+//            $this->modules[$file]['author'] = sanitize_text_field( $params['Author'] );
+//        }
+//        if( isset( $params['Author Mail'] ) ){
+//            $this->modules[$file]['author_mail'] = sanitize_email( $params['Author Mail'] );
+//        }
+//        if( isset( $params['Author URL'] ) ){
+//            $this->modules[$file]['author_url'] = sanitize_text_field( $params['Author URL'] );
+//        }
+//        if( isset( $params['Version'] ) ){
+//            $this->modules[$file]['version'] = sanitize_text_field( $params['Version'] );
+//        }
+//        if( isset( $params['Documentation URL'] ) ){
+//            $this->modules[$file]['doc_url'] = sanitize_text_field( $params['Documentation URL'] );
+//        }
+//        if( isset( $params['Category'] ) ){
+//            $this->modules[$file]['category'] = strtolower( sanitize_text_field( $params['Category'] ) );
+//            switch ( $params['Category'] ){
+//                case 'Metadata':
+//                    $this->modules[$file]['icon'] = 'fa-tags';
+//                    break;
+//                default :
+//                    $this->modules[$file]['icon'] = 'fa-cogs';
+//                    break;
+//            }
+//        }
     }
     
     /**
