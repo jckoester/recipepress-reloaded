@@ -318,7 +318,7 @@ class RPR {
         }*/
         
         
-        $this->loader->add_action( 'do_meta_boxes', $plugin_admin->ingredients, 'metabox_ingredients' );
+        //$this->loader->add_action( 'do_meta_boxes', $plugin_admin->ingredients, 'metabox_ingredients' );
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->instructions, 'metabox_instructions' );
         //$this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_notes' );
 

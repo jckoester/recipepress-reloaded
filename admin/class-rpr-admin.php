@@ -278,9 +278,9 @@ class RPR_Admin {
                              */
 				$this->generalmeta->save_generalmeta( $recipe_id, $data, $recipe );
 
-				if( isset( $data['rpr_recipe_ingredients'] ) ) {
+				/*if( isset( $data['rpr_recipe_ingredients'] ) ) {
 					$this->ingredients->save_ingredients( $recipe_id, $data['rpr_recipe_ingredients'] );
-				}
+				}*/
 				if( isset( $data['rpr_recipe_instructions'] ) ) {
 					$this->instructions->save_instructions( $recipe_id, $data['rpr_recipe_instructions']);
 				}
