@@ -9,7 +9,7 @@
  * @subpackage recipepress-reloaded/admin/views
  */
 
-wp_nonce_field( 'rpr_save_recipe_yield', 'rpr_nonce' );
+wp_nonce_field( 'rpr_save_recipe_yield', 'rpr_nonce_yield' );
 
 $servings = get_post_meta( $recipe->ID, "rpr_recipe_servings", true );
 $servings_type = get_post_meta( $recipe->ID, "rpr_recipe_servings_type", true );

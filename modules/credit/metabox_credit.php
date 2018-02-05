@@ -9,7 +9,7 @@
  * @subpackage recipepress-reloaded/admin/views
  */
 
-wp_nonce_field( 'rpr_save_recipe_credit', 'rpr_nonce' );
+wp_nonce_field( 'rpr_save_recipe_credit', 'rpr_nonce_credit' );
 
 $source = get_post_meta( $recipe->ID, "rpr_recipe_source", true );
 $source_link = get_post_meta( $recipe->ID, "rpr_recipe_source_link", true );

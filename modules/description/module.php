@@ -65,6 +65,8 @@ class RPR_Module_Description extends RPR_Module {
         $options['media_buttons'] = true;
 
         wp_editor($description, 'rpr_recipe_description', $options);
+        wp_nonce_field( 'rpr_save_recipe_description', 'rpr_nonce_description' );
+
     }
 
     /**

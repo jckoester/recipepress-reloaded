@@ -9,7 +9,7 @@
  * @subpackage recipepress-reloaded/admin/views
  */
 
-wp_nonce_field( 'rpr_save_recipe_durations', 'rpr_nonce' );
+wp_nonce_field( 'rpr_save_recipe_durations', 'rpr_nonce_durations' );
 
 $prep_time = get_post_meta( $recipe->ID, "rpr_recipe_prep_time", true );
 $performance_time = get_post_meta( $recipe->ID, "rpr_recipe_perform_time", true );

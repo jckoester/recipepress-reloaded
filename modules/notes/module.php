@@ -65,6 +65,7 @@ class RPR_Module_Notes extends RPR_Module {
         $options['media_buttons'] = true;
 
         wp_editor($notes, 'rpr_recipe_notes', $options);
+        wp_nonce_field( 'rpr_save_recipe_notes', 'rpr_nonce_notes' );
     }
 
     /**
