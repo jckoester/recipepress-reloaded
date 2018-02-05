@@ -46,7 +46,12 @@ class RPR_Options_Page_Modules_List {
      * Sets up a form section.
      */
     public function __construct( $oFactory ) {
-    
+        
+        /**
+         * Can't all this go to update?
+         * It'll only change when new modules are being installed => update
+         * Probably only possible for the hidden options as chexboxes won't be displayed...
+         */
         /**
          * Get a list of all available modules
          */

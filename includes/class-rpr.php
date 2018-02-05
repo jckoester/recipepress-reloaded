@@ -306,8 +306,8 @@ class RPR {
         $this->loader->add_action( 'init', $plugin_admin, 'create_options');
         // Meta boxes:
         $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_postimage' );
-        $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_description' );
-        $this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_details' );
+        //$this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_description' );
+        //$this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_details' );
 	
         
         /*if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
