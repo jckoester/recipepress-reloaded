@@ -164,6 +164,7 @@ class RPR {
                 $this->modules[ $active_module ] = new $classname();
             }
         }
+        //var_dump($this->modules);
 //        asort( $this->modules );
     }
 

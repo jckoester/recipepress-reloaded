@@ -59,15 +59,24 @@ class RPR_Module_Ingredients extends RPR_Module {
     /**
      * Load module specific CSS styles and scripts
      */
-    public function enqueue_scripts() {
+    public function enqueue_scripts( $hook ) {
+        global $post;
         /* Admin styles */
        // wp_enqueue_style( 'rpr_module_ingredients', plugin_dir_url(__FILE__) . 'nutrition_admin.css', array(), '1.0', 'all');
         /* Admin script */
-        wp_enqueue_script( 'rprp_module_ingredients', plugin_dir_url( __FILE__ ) . 'admin-ing-meta-table.js', array ( 'jquery' ), '1.0', false );
-        wp_enqueue_script( 'rprp_module_ingredients', plugin_dir_url( __FILE__ ) . 'admin-ing-meta-link.js', array ( 'jquery' ), '1.0', false );
+        if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
+            if ( 'rpr_recipe' === $post->post_type ) {
+                wp_enqueue_script( 'rpr_module_ingredients', plugin_dir_url( __FILE__ ) . 'admin-ing-meta-table.js', array ( 'jquery' ), '1.0', false );
+                wp_enqueue_script( 'rpr_module_ingredients_link', plugin_dir_url( __FILE__ ) . 'admin-ing-meta-link.js', array ( 'jquery' ), '1.0', false );
+                // Load jQuery Link script to add links to ingredients
+                wp_enqueue_script( 'wp-link' );
+            }
+        }
     }
     
     public function metabox_ingredients(){
+        // Remove default meta box from side
+        remove_meta_box( 'tagsdiv-rpr_ingredient', 'rpr_recipe', 'side' );
         // Add advanced metabox for nutritional information
         add_meta_box(
     		'recipe_ingredients_meta_box',

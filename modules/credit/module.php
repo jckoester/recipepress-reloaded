@@ -30,8 +30,10 @@ class RPR_Module_Credit extends RPR_Module {
      */
     public function define_admin_hooks($loader) {
         if (is_a($loader, 'RPR_Loader')) {
+            // Load Styles and scripts
+            $loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_scripts' );
             // Add metabox for this module
-            $loader->add_action('do_meta_boxes', $this, 'metabox_credit');
+            $loader->add_action('do_meta_boxes', $this, 'metabox_credit', 10);
             // Save this modules recipe data:
             $loader->add_action('save_post', $this, 'save_recipe_credit', 10, 2);
         }
@@ -47,19 +49,33 @@ class RPR_Module_Credit extends RPR_Module {
         
     }
 
+     /**
+     * Load module specific CSS styles and scripts
+     */
+    public function enqueue_scripts( $hook ) {
+        global $post;
+        /* Admin styles */
+       // wp_enqueue_style( 'rpr_module_ingredients', plugin_dir_url(__FILE__) . 'nutrition_admin.css', array(), '1.0', 'all');
+        /* Admin script */
+        if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
+            if ( 'rpr_recipe' === $post->post_type ) {
+                wp_enqueue_script( 'rpr_module_credit', plugin_dir_url( __FILE__ ) . 'source-meta-link.js', array ( 'jquery' ), '1.0', false );
+                // Load jQuery Link script to add links to ingredients
+                //wp_enqueue_script( 'wp-link' );
+            }
+        }
+    }
+    
     public function metabox_credit() {
-        // Add advanced metabox for nutritional information
+        // Add advanced metabox for credit information
         add_meta_box(
-                'recipe_credit_meta_box', 
-                __('Credit', 'recipepress-reloaded'), 
-                array(
-                    $this,
-                    'do_metabox_credit'
-                ),
-                'rpr_recipe',
-                'normal',
-                'high'
-        );
+    		'recipe_source_meta_box',
+    		__( 'Credit', 'recipepress-reloaded' ),
+    		array( $this, 'do_metabox_credit' ),
+    		'rpr_recipe',
+    		'normal',
+    		'high'
+    	);
     }
 
     public function do_metabox_credit() {

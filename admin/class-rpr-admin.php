@@ -47,39 +47,6 @@ class RPR_Admin {
      */
     private $modules = array();
 
-
-    /**
-     * instance of the general meta class handling all general information related functions
-     * 
-     * @since 0.8.0
-     * @access public
-     */
-    public $generalmeta;
-
-    /**
-     * instance of the ingredients class handling all ingredient related functions
-     * 
-     * @since 0.8.0
-     * @access public
-     */
-    public $ingredients;
-
-    /**
-     * instance of the instructions class handling all instruction related functions
-     * 
-     * @since 0.8.0
-     * @access public
-     */
-    public $instructions;
-
-    /**
-     * instance of the nutritional meta class handling all nutritional information related functions
-     * 
-     * @since 0.8.0
-     * @access public
-     */
-    public $nutrition;
-
     /**
      * instance of the shortcode class handling all shortcode insertion related functions and scripts
      * 
@@ -105,14 +72,6 @@ class RPR_Admin {
     public $demo;
 
     /**
-     * instance of class source to save recipe source
-     * 
-     * @since 0.9.0
-     * @access public
-     */
-    public $source;
-        
-    /**
      * Initialize the class and set its properties.
      *
      * @since    0.8.0
@@ -123,18 +82,6 @@ class RPR_Admin {
         $this->version = $version;
         $this->dbversion = $dbversion;
         $this->modules = $modules;
-        
-//        require_once 'class-rpr-admin-generalmeta.php';
-//        $this->generalmeta = new RPR_Admin_GeneralMeta($this->version);
-
-//        require_once 'class-rpr-admin-ingredients.php';
-//        $this->ingredients = new RPR_Admin_Ingredients($this->version);
-//
-//        require_once 'class-rpr-admin-instructions.php';
-//        $this->instructions = new RPR_Admin_Instructions($this->version);
-//
-//        require_once 'class-rpr-admin-nutrition.php';
-//        $this->nutrition = new RPR_Admin_NutritionMeta($this->version);
 
         require_once 'class-rpr-admin-shortcodes.php';
         $this->shortcodes = new RPR_Admin_Shortcodes($this->version);
@@ -144,9 +91,6 @@ class RPR_Admin {
 
         require_once 'class-rpr-admin-demo.php';
         $this->demo = new RPR_Admin_Demo( $this->version, $this->dbversion );
-        
-//        require_once 'class-rpr-admin-source.php';
-//        $this->source = new RPR_Admin_Source( $this->version );
     }
 
     /**
@@ -169,41 +113,9 @@ class RPR_Admin {
      * @since    0.8.0
      */
     public function enqueue_scripts($hook) {
-        /**
-         * @todo minify the JavaScript! Or at least put all in one file
-         */
-        //wp_enqueue_script( 'recipepress-reloaded', plugin_dir_url( __FILE__ ) . 'js/rpr-admin.js', array ( 'jquery' ), $this->version, false );
-        global $post;
-
-        if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
-            if ( 'rpr_recipe' === $post->post_type ) {
-                
-                //wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-table.js', array ( 'jquery' ), $this->version, false );
-                //wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_link', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-link.js', array ( 'jquery' ), $this->version, false );
-                //wp_enqueue_script( 'recipepress-reloaded' . '_meta_ins_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ins-meta-table.js', array ( 'jquery' ), $this->version, false );
-				// Load jQuery suggest script to add autocomplete to ingredients
-				//wp_enqueue_script( 'suggest' );
-            }
-        }
-
-//        $translations = array(
-//            'ins_img_upload_title' => __('Insert instruction image', 'recipepress-reloaded'),
-//            'ins_img_upload_text' => __('Insert image', 'recipepress-reloaded')
-//        );
-//
-//        wp_localize_script( 'recipepress-reloaded' . '_meta_ins_table', 'ins_trnsl', $translations);
-		// MOVED TO MODULE
-		//if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
-		//	wp_enqueue_script( 'recipepress-reloaded' . '_meta_nutrition', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-nutrition.js', array ( 'jquery' ), $this->version, false );
-		//}
-//                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
-//			wp_enqueue_script( 'recipepress-reloaded' . '_meta_source', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-source-meta-link.js', array ( 'jquery' ), $this->version, false );
-//		}
-                
-		
+	
         // Load jQuery Link script to add links to ingredients
-        wp_enqueue_script( 'wp-link' );
-		
+        //wp_enqueue_script( 'wp-link' );
 
     }
 
@@ -268,30 +180,6 @@ class RPR_Admin {
 			//if(!isset($data)||$data==""){$data=$_POST;}
 			if( $recipe !== NULL && $recipe->post_type == 'rpr_recipe' )
 			{
-                            /**
-                             * This is for testing! REMOVE WHEN DONE!
-				echo "<pre>";
-				foreach( $data as $key => $value){
-					echo $key . "</br>";
-				}
-				//die;
-                             */
-				//$this->generalmeta->save_generalmeta( $recipe_id, $data, $recipe );
-
-				/*if( isset( $data['rpr_recipe_ingredients'] ) ) {
-					$this->ingredients->save_ingredients( $recipe_id, $data['rpr_recipe_ingredients'] );
-				}*/
-//				if( isset( $data['rpr_recipe_instructions'] ) ) {
-//					$this->instructions->save_instructions( $recipe_id, $data['rpr_recipe_instructions']);
-//				}
-//
-//				if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
-//					$this->nutrition->save_nutritionalmeta($recipe_id, $data, $recipe);
-//				}
-//                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
-//					$this->source->save_sourcemeta($recipe_id, $data, $recipe);
-//				}
-				//die;
 				add_action('save_post', array($this, 'save_recipe'));
 			}
 		}

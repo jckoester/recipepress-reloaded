@@ -57,18 +57,23 @@ class RPR_Module_Instructions extends RPR_Module {
     /**
      * Load module specific CSS styles and scripts
      */
-    public function enqueue_scripts() {
+    public function enqueue_scripts( $hook ) {
+        global $post;
         /* Admin styles */
        // wp_enqueue_style( 'rpr_module_ingredients', plugin_dir_url(__FILE__) . 'nutrition_admin.css', array(), '1.0', 'all');
         /* Admin script */
-        wp_enqueue_script( 'rpr_module_instructions', plugin_dir_url( __FILE__ ) . 'admin-ins-meta-table.js', array ( 'jquery' ), '1.0', false );
-        
-        $translations = array(
-            'ins_img_upload_title' => __('Insert instruction image', 'recipepress-reloaded'),
-            'ins_img_upload_text' => __('Insert image', 'recipepress-reloaded')
-        );
+        if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
+            if ( 'rpr_recipe' === $post->post_type ) {
+                wp_enqueue_script( 'rpr_module_instructions', plugin_dir_url( __FILE__ ) . 'admin-ins-meta-table.js', array ( 'jquery' ), '1.0', false );
 
-        wp_localize_script( 'rpr_module_instructions', 'ins_trnsl', $translations);
+                $translations = array(
+                    'ins_img_upload_title' => __('Insert instruction image', 'recipepress-reloaded'),
+                    'ins_img_upload_text' => __('Insert image', 'recipepress-reloaded')
+                );
+
+                wp_localize_script( 'rpr_module_instructions', 'ins_trnsl', $translations);
+            }
+        }
     }
     
     public function metabox_instructions(){
