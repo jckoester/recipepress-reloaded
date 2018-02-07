@@ -124,17 +124,17 @@ class RPR_Admin {
         $this->dbversion = $dbversion;
         $this->modules = $modules;
         
-        require_once 'class-rpr-admin-generalmeta.php';
-        $this->generalmeta = new RPR_Admin_GeneralMeta($this->version);
+//        require_once 'class-rpr-admin-generalmeta.php';
+//        $this->generalmeta = new RPR_Admin_GeneralMeta($this->version);
 
-        require_once 'class-rpr-admin-ingredients.php';
-        $this->ingredients = new RPR_Admin_Ingredients($this->version);
-
-        require_once 'class-rpr-admin-instructions.php';
-        $this->instructions = new RPR_Admin_Instructions($this->version);
-
-        require_once 'class-rpr-admin-nutrition.php';
-        $this->nutrition = new RPR_Admin_NutritionMeta($this->version);
+//        require_once 'class-rpr-admin-ingredients.php';
+//        $this->ingredients = new RPR_Admin_Ingredients($this->version);
+//
+//        require_once 'class-rpr-admin-instructions.php';
+//        $this->instructions = new RPR_Admin_Instructions($this->version);
+//
+//        require_once 'class-rpr-admin-nutrition.php';
+//        $this->nutrition = new RPR_Admin_NutritionMeta($this->version);
 
         require_once 'class-rpr-admin-shortcodes.php';
         $this->shortcodes = new RPR_Admin_Shortcodes($this->version);
@@ -145,8 +145,8 @@ class RPR_Admin {
         require_once 'class-rpr-admin-demo.php';
         $this->demo = new RPR_Admin_Demo( $this->version, $this->dbversion );
         
-        require_once 'class-rpr-admin-source.php';
-        $this->source = new RPR_Admin_Source( $this->version );
+//        require_once 'class-rpr-admin-source.php';
+//        $this->source = new RPR_Admin_Source( $this->version );
     }
 
     /**
@@ -196,9 +196,9 @@ class RPR_Admin {
 		//if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
 		//	wp_enqueue_script( 'recipepress-reloaded' . '_meta_nutrition', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-nutrition.js', array ( 'jquery' ), $this->version, false );
 		//}
-                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
-			wp_enqueue_script( 'recipepress-reloaded' . '_meta_source', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-source-meta-link.js', array ( 'jquery' ), $this->version, false );
-		}
+//                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+//			wp_enqueue_script( 'recipepress-reloaded' . '_meta_source', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-source-meta-link.js', array ( 'jquery' ), $this->version, false );
+//		}
                 
 		
         // Load jQuery Link script to add links to ingredients
@@ -276,21 +276,21 @@ class RPR_Admin {
 				}
 				//die;
                              */
-				$this->generalmeta->save_generalmeta( $recipe_id, $data, $recipe );
+				//$this->generalmeta->save_generalmeta( $recipe_id, $data, $recipe );
 
 				/*if( isset( $data['rpr_recipe_ingredients'] ) ) {
 					$this->ingredients->save_ingredients( $recipe_id, $data['rpr_recipe_ingredients'] );
 				}*/
-				if( isset( $data['rpr_recipe_instructions'] ) ) {
-					$this->instructions->save_instructions( $recipe_id, $data['rpr_recipe_instructions']);
-				}
-
-				if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
-					$this->nutrition->save_nutritionalmeta($recipe_id, $data, $recipe);
-				}
-                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
-					$this->source->save_sourcemeta($recipe_id, $data, $recipe);
-				}
+//				if( isset( $data['rpr_recipe_instructions'] ) ) {
+//					$this->instructions->save_instructions( $recipe_id, $data['rpr_recipe_instructions']);
+//				}
+//
+//				if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
+//					$this->nutrition->save_nutritionalmeta($recipe_id, $data, $recipe);
+//				}
+//                if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+//					$this->source->save_sourcemeta($recipe_id, $data, $recipe);
+//				}
 				//die;
 				add_action('save_post', array($this, 'save_recipe'));
 			}

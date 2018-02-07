@@ -107,6 +107,7 @@ class RPR_Options_Page {
     
         // Loading options for modules here
         // Modules can create own options, own tabs or add options to existing sections
+        //var_dump($this->modules);
         foreach ( $this->modules as $module=>$modobject ){
             
             $filename = $modobject->get_path().'/options.php';
