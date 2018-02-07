@@ -54,23 +54,23 @@ class RPR_Options_Page_Units_Units {
         /**
         * Add settings fields for nutritional metadata
         */
-        $oFactory->addSettingFields(
-            $this->sSectionID, 
-            array(
-                'field_id'          => 'use_ingredient_units',
-                'type'              => 'checkbox',
-                'title'             => __( 'Use ingredient unit list?', 'recipepress-reloaded' ),
-                'tip'               => __( 'Check this to use a list of units for entering ingredients. You can define the list below. I recommend using a well defined list of units as this will make your recipes more consistent and readable.', 'recipepress-reloaded'),
-                'default'			=> true,
-            ),
-            array(
-                'field_id'          => 'ingredient_units',
-                'type'              => 'text',
-                'title'             => __( 'Unit list', 'recipepress-reloaded' ),
-                'description'       => __( 'Unit list for ingredients.<br/> I recommend using a well defined list of units as this will make your recipes more consistent and readable.', 'recipepress-reloaded' ),
-                'repeatable'        => true,
-                'sortable'          => true,
-            )
+//        $oFactory->addSettingFields(
+//            $this->sSectionID, 
+//            array(
+//                'field_id'          => 'use_ingredient_units',
+//                'type'              => 'checkbox',
+//                'title'             => __( 'Use ingredient unit list?', 'recipepress-reloaded' ),
+//                'tip'               => __( 'Check this to use a list of units for entering ingredients. You can define the list below. I recommend using a well defined list of units as this will make your recipes more consistent and readable.', 'recipepress-reloaded'),
+//                'default'			=> true,
+//            ),
+//            array(
+//                'field_id'          => 'ingredient_units',
+//                'type'              => 'text',
+//                'title'             => __( 'Unit list', 'recipepress-reloaded' ),
+//                'description'       => __( 'Unit list for ingredients.<br/> I recommend using a well defined list of units as this will make your recipes more consistent and readable.', 'recipepress-reloaded' ),
+//                'repeatable'        => true,
+//                'sortable'          => true,
+//            )
                 //,
 //            array(
 //                'field_id'          => 'use_serving_units',
@@ -87,7 +87,7 @@ class RPR_Options_Page_Units_Units {
 //                'repeatable'        => true,
 //                'sortable'          => true,
 //            )
-        );
+//        );
     }
 
 }
