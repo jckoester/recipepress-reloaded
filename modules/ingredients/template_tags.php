@@ -33,7 +33,7 @@ if (!function_exists('get_the_rpr_recipe_ingredients_headline')) {
             $out .= '<i class="' . esc_attr(AdminPageFramework::getOption('rpr_options', array('tax_builtin', 'ingredients', 'icon_class'), 'fa fa-shopping-cart')) . '"></i>&nbsp;';
         }
 
-        $out .= __('Ingredients', 'recipepress-reloaded');
+        $out .= $headline = AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'ingredients_headline' ), __('Ingredients', 'recipepress-reloaded') );
 
         if (recipe_is_embedded()) {
             $out .= '</h3>';

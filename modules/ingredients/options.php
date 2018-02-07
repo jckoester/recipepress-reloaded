@@ -44,6 +44,18 @@ class RPR_Options_Module_Ingredients {
                 'sortable'          => true,
             )
         );
+        // Add settings to existing section:
+        $oFactory->addSettingFields(
+            'advanced', 
+            array(
+                'field_id'          => 'ingredients_headline',
+                'type'              => 'text',
+                'title'             => __( 'Ingredients headline', 'recipepress-reloaded' ),
+                'description'       => __( 'Use this to change the headline of the ingredients section in the frontend', 'recipepress-reloaded'),
+                'tip'               => __( 'If this works, dynamic loading of module option does work!', 'recipepress-reloaded'),
+                'default'           => __( 'Ingredients', 'recipepress-reloaded' ),
+            )
+        );
     }
 
 }

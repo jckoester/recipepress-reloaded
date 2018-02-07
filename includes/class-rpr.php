@@ -146,7 +146,7 @@ class RPR {
          * Load the active modules:
          */
         foreach ( $active_modules as $active_module ) {
-            var_dump($active_module);
+            //var_dump($active_module);
             $module_id = preg_split("/_/", $active_module)[1];
             
             /**

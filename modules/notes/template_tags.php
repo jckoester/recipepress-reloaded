@@ -57,7 +57,6 @@ if (!function_exists('get_the_rpr_recipe_notes_headline')) {
         }
         
         $headline = AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'notes_headline' ), __('Notes', 'recipepress-reloaded') );
-        var_dump($headline);
         $out .= $headline;
         
 

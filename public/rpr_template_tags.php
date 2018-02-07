@@ -296,7 +296,9 @@ if( !function_exists( 'get_the_rpr_taxonomy_list' ) ) {
 		 *  Add the custom taxonomies
 		 */
 		foreach( AdminPageFramework::getOption( 'rpr_options', array( 'tax_custom' ), array() ) as $taxonomy ){
+                    if( is_array($taxonomy) && $taxonomy['slug'] ){
 			$out .= get_the_rpr_taxonomy_terms($taxonomy['slug'], $icons, $label, $sep);
+                    }
 		}
 		
 		/*

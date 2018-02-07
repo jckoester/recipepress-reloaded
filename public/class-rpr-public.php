@@ -353,7 +353,7 @@ class RPR_Public {
 		/*var_dump($this->modules);
                 var_dump($this->modules['nutrition']->get_structured_data($recipe_post->ID, $recipe));
                 var_dump($this->modules['credit']->get_structured_data($recipe_post->ID, $recipe));*/
-                var_dump($this->modules['90_ingredients']->get_structured_data($recipe_post->ID, $recipe));
+                //var_dump($this->modules['90_ingredients']->get_structured_data($recipe_post->ID, $recipe));
 		// Start rendering
 		ob_start();
 		// Include the common template tags:
@@ -361,7 +361,7 @@ class RPR_Public {
                 // include the module's template tags:
                 foreach(  $this->modules as $module_id => $module ){
                     $module_id = preg_split("/_/", $module_id)[1];
-                    var_dump($module_id);
+                    //var_dump($module_id);
                     $mod_includepath = plugin_dir_path( __FILE__ ) . '../modules/' . $module_id . '/template_tags.php';
                     if(file_exists( $mod_includepath ) ){
                         include_once $mod_includepath;

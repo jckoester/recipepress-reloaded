@@ -39,9 +39,9 @@ class RPR_Options_Module_Notes {
                 'field_id'          => 'notes_headline',
                 'type'              => 'text',
                 'title'             => __( 'Notes headline', 'recipepress-reloaded' ),
-                'description'       => __( 'Use this to change the headline of the notes section in te frontend', 'recipepress-reloaded'),
+                'description'       => __( 'Use this to change the headline of the notes section in the frontend', 'recipepress-reloaded'),
                 'tip'               => __( 'If this works, dynamic loading of module option does work!', 'recipepress-reloaded'),
-                'default'           => __( "Notes", 'recipepress-reloaded' ),
+                'default'           => __( 'Notes', 'recipepress-reloaded' ),
             )
         );
     }

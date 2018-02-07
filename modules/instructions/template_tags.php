@@ -34,10 +34,9 @@ if (!function_exists('get_the_rpr_recipe_instructions_headline')) {
              * @todo: Create an option for instructions icon
              */
             $out .= '<i class="fa fa-cogs"></i>&nbsp;';
-            //$out .= '<i class="' . AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'icon_class' ), 'fa fa-shoppingcart' ) . '"></i>&nbsp;';
         }
 
-        $out .= __('Instructions', 'recipepress-reloaded');
+        $out .= $headline = AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'instructions_headline' ), __('Instructions', 'recipepress-reloaded') );
 
         if (recipe_is_embedded()) {
             $out .= '</h3>';
