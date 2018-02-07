@@ -178,20 +178,20 @@ class RPR_Admin {
         if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
             if ( 'rpr_recipe' === $post->post_type ) {
                 
-                wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-table.js', array ( 'jquery' ), $this->version, false );
-                wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_link', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-link.js', array ( 'jquery' ), $this->version, false );
-                wp_enqueue_script( 'recipepress-reloaded' . '_meta_ins_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ins-meta-table.js', array ( 'jquery' ), $this->version, false );
+                //wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-table.js', array ( 'jquery' ), $this->version, false );
+                //wp_enqueue_script( 'recipepress-reloaded' . '_meta_ing_link', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ing-meta-link.js', array ( 'jquery' ), $this->version, false );
+                //wp_enqueue_script( 'recipepress-reloaded' . '_meta_ins_table', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-ins-meta-table.js', array ( 'jquery' ), $this->version, false );
 				// Load jQuery suggest script to add autocomplete to ingredients
 				//wp_enqueue_script( 'suggest' );
             }
         }
 
-        $translations = array(
-            'ins_img_upload_title' => __('Insert instruction image', 'recipepress-reloaded'),
-            'ins_img_upload_text' => __('Insert image', 'recipepress-reloaded')
-        );
-
-        wp_localize_script( 'recipepress-reloaded' . '_meta_ins_table', 'ins_trnsl', $translations);
+//        $translations = array(
+//            'ins_img_upload_title' => __('Insert instruction image', 'recipepress-reloaded'),
+//            'ins_img_upload_text' => __('Insert image', 'recipepress-reloaded')
+//        );
+//
+//        wp_localize_script( 'recipepress-reloaded' . '_meta_ins_table', 'ins_trnsl', $translations);
 		// MOVED TO MODULE
 		//if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
 		//	wp_enqueue_script( 'recipepress-reloaded' . '_meta_nutrition', plugin_dir_url( __FILE__ ) . 'js/rpr-admin-nutrition.js', array ( 'jquery' ), $this->version, false );
