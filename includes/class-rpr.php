@@ -140,7 +140,9 @@ class RPR {
          * Load the abstract class for RPR_Modules
          */
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/abstract-class-rpr-module.php';
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/abstract-class-rpr-module-metabox.php';
 
+        
         $active_modules = $this->get_active_modules();
         /**
          * Load the active modules:

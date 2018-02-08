@@ -16,7 +16,7 @@ Description: This is a test module to develop the modules API and demonstrate it
  * and open the template in the editor.
  */
 
-class RPR_Module_Demo extends RPR_Module {
+class RPR_Module_Demo extends RPR_Module_Metabox {
 
     /**
      * Load all files required for the module

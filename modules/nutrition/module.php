@@ -13,7 +13,7 @@ Description: Adds fields for nutritional information to your recipes
 /**
  * @since 1.0.0
  */
-class RPR_Module_Nutrition extends RPR_Module {
+class RPR_Module_Nutrition extends RPR_Module_Metabox {
 
     /**
      * Load all files required for the module

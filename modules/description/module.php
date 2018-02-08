@@ -11,7 +11,7 @@
   Description: This module adds a description ection to your recipes
  */
 
-class RPR_Module_Description extends RPR_Module {
+class RPR_Module_Description extends RPR_Module_Metabox {
 
     /**
      * Load all files required for the module
@@ -89,7 +89,7 @@ class RPR_Module_Description extends RPR_Module {
             $fields = array(
                 'rpr_recipe_description'
             );
-            $this->save_fields($fields, $data, $recipe);
+            $this->save_fields($fields, $data, $recipe, 'editor' );
         }
 
         // Re-enable this action so it can be called again:

@@ -13,7 +13,7 @@
 /**
  * @since 1.0.0
  */
-class RPR_Module_Durations extends RPR_Module {
+class RPR_Module_Durations extends RPR_Module_Metabox {
 
     /**
      * Load all files required for the module
