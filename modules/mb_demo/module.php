@@ -16,7 +16,12 @@ Description: This is a test module to develop the modules API and demonstrate it
  * and open the template in the editor.
  */
 
-class RPR_Module_Demo extends RPR_Module_Metabox {
+class RPR_Module_MB_Demo extends RPR_Module_Metabox {
+
+    public function get_config(){
+        include dirname(__FILE__) . '/module.conf.php';
+        return $module_config;
+    }
 
     /**
      * Load all files required for the module

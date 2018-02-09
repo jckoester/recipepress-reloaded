@@ -144,12 +144,13 @@ class RPR {
 
         
         $active_modules = $this->get_active_modules();
+        var_dump( $active_modules );
         /**
          * Load the active modules:
          */
-        foreach ( $active_modules as $active_module ) {
+        foreach ( $active_modules as $active_module => $module_id ) {
             //var_dump($active_module);
-            $module_id = preg_split("/_/", $active_module)[1];
+//            $module_id = preg_split("/_/", $active_module)[1];
             
             /**
              * Load the module file
@@ -166,7 +167,7 @@ class RPR {
                 $this->modules[ $active_module ] = new $classname();
             }
         }
-        //var_dump($this->modules);
+//        var_dump($this->modules);
 //        asort( $this->modules );
     }
 
@@ -191,7 +192,8 @@ class RPR {
                     $mod = preg_replace( "/module_/", "", $mod);
                     $mod = preg_replace( "/_active/", "", $mod);
                     $prio = AdminPageFramework::getOption( 'rpr_options', array( 'modules', 'module_' . $mod . '_priority' ));
-                    array_push( $active_modules,  $prio . '_' . $mod);
+                    //array_push( $active_modules,  $prio . '_' . $mod);
+                    $active_modules[$prio . '_'. $mod] = $mod;
                 }
             }
         }
