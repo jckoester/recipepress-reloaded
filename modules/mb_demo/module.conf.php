@@ -18,7 +18,7 @@ $module_config = array(
     // REQUIRED: the priority at which the module should be loaded
     // higher values mean later loading
     // not to be translated
-    'priority'      => 90,
+    'priority'      => 10,
     // REQUIRED: define the module to be optional or always active
     'selectable'    => true,
     // OPTIONAL: the category this module belongs to, select from 'Metadata', 'Core' (currently, more to come), defaulkts to 'None'

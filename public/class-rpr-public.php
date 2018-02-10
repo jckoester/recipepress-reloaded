@@ -308,12 +308,7 @@ class RPR_Public {
                 // Include the common template tags:
 		include_once( dirname( __FILE__ ) . '/rpr_template_tags.php' );
                 // include the module's template tags:
-                foreach(  $this->modules as $module_id => $module ){
-                    $mod_includepath = plugin_dir_path( __FILE__ ) . '../modules/' . $module_id . '/template_tags.php';
-                    if(file_exists( $mod_includepath ) ){
-                        include_once $mod_includepath;
-                    }
-                }
+                $this->include_module_template_tags();
                 // Include the excerpt file:
 		include( $includepath);
 		// and render the content using that file:
@@ -359,14 +354,7 @@ class RPR_Public {
 		// Include the common template tags:
 		include_once( dirname( __FILE__ ) . '/rpr_template_tags.php' );
                 // include the module's template tags:
-                foreach(  $this->modules as $module_id => $module ){
-                    $module_id = preg_split("/_/", $module_id)[1];
-                    //var_dump($module_id);
-                    $mod_includepath = plugin_dir_path( __FILE__ ) . '../modules/' . $module_id . '/template_tags.php';
-                    if(file_exists( $mod_includepath ) ){
-                        include_once $mod_includepath;
-                    }
-                }
+                $this->include_module_template_tags();
 		// Include the recipe template file:
                 include( $includepath );
 		// and render the content using that file:
@@ -379,7 +367,22 @@ class RPR_Public {
 		return $content;
 	}
 	
-	/**
+        /**
+         * Include the template tags files from alle the modules
+         * @since 1.0.0
+         */
+        private function include_module_template_tags() {
+            foreach(  $this->modules as $module_id => $module ){
+                    if(is_a($module, 'RPR_Module_Metabox' ) ){
+                        $mod_includepath = plugin_dir_path( __FILE__ ) . '../modules/' . $module_id . '/template_tags.php';
+                        if(file_exists( $mod_includepath ) ){
+                            include_once $mod_includepath;
+                        }
+                    }
+                }
+        }
+
+        /**
 	 * Render a list of all terms of a taxonomy using the layout's taxonomy.php file
 	 * 
 	 * @since 0.8.0

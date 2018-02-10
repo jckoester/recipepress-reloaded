@@ -8,7 +8,11 @@
  *
  * @package    recipepress-reloaded
  */
-abstract class RPR_Module {
+abstract class RPR_Module extends RPR {
+
+    public function __construct() {
+        //parent::__construct();
+    }
 
     /**
      * Include required files
@@ -16,7 +20,7 @@ abstract class RPR_Module {
      * It's here as a fallback
      * @since 1.0.0
      */
-    abstract public function load_dependencies();
+    abstract public function load_module_dependencies();
 
     /**
      * Register all of the hooks related to the admin area functionality
@@ -24,7 +28,7 @@ abstract class RPR_Module {
      * @since 1.0.0
      * @param RPR_Loader $loader
      */
-    abstract public function define_admin_hooks($loader);
+    abstract public function define_module_admin_hooks($loader);
 
     /**
      * Register all of the hooks related to the public area functionality
@@ -32,7 +36,7 @@ abstract class RPR_Module {
      * @since 1.0.0
      * @param RPR_Loader $loader
      */
-    abstract public function define_public_hooks($loader);
+    abstract public function define_module_public_hooks($loader);
 
 
     

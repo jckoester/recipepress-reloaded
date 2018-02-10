@@ -135,7 +135,7 @@ class RPR {
      * @since 1.0.0
      * @todo Generate the list of modules from options
      */
-    private function load_modules() {
+    protected function load_modules() {
         /**
          * Load the abstract class for RPR_Modules
          */
@@ -144,7 +144,7 @@ class RPR {
 
         
         $active_modules = $this->get_active_modules();
-        var_dump( $active_modules );
+        //var_dump( $active_modules );
         /**
          * Load the active modules:
          */
@@ -164,10 +164,12 @@ class RPR {
                  * Create the module object and store it in $this->modules
                  */
                 $classname = 'RPR_Module_' . $module_id;
-                $this->modules[ $active_module ] = new $classname();
+                $this->modules[ $module_id ] = new $classname();
             }
         }
-//        var_dump($this->modules);
+       // var_dump($this->modules);
+
+        return $this->modules;
 //        asort( $this->modules );
     }
 
@@ -197,7 +199,7 @@ class RPR {
                 }
             }
         }
-        asort($active_modules);
+        ksort($active_modules);
         //var_dump($active_modules);
         return $active_modules;
     }
@@ -258,7 +260,7 @@ class RPR {
          */
         foreach ( $this->modules as $module ) {
             if ( is_a( $module, 'RPR_Module' ) ) {
-                $module->load_dependencies();
+                $module->load_module_dependencies( $this->modules );
             }
         }
 
@@ -359,7 +361,7 @@ class RPR {
          */
         foreach ( $this->modules as $module ) {
             if ( is_a( $module, 'RPR_Module' ) ) {
-                $module->define_admin_hooks( $this->loader );
+                $module->define_module_admin_hooks( $this->loader );
             }
         }
     }
@@ -394,6 +396,15 @@ class RPR {
 
         // register the widgets
         $this->loader->add_action( 'widgets_init', $plugin_public, 'register_widgets' );
+        
+        /**
+         * Define the admin hooks for all modules
+         */
+        foreach ( $this->modules as $module ) {
+            if ( is_a( $module, 'RPR_Module' ) ) {
+                $module->define_module_public_hooks( $this->loader );
+            }
+        }
     }
 
     /**
@@ -426,6 +437,10 @@ class RPR {
         return $this->loader;
     }
 
+    public function get_modules() {
+        return $this->modules;
+    }
+    
     /**
      * Retrieve the version number of the plugin.
      *

@@ -18,7 +18,7 @@ $module_config = array(
     // REQUIRED: the priority at which the module should be loaded
     // higher values mean later loading
     // not to be translated
-    'priority'      => 90,
+    'priority'      => 30,
     // OPTIONAL: the category this module belongs to, select from 'Metadata', 'Core' (currently, more to come), defaulkts to 'None'
     // not to betranslated!
     'category'      => 'Metadata',

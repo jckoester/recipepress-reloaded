@@ -13,12 +13,12 @@ Description: Adds fields for nutritional information to your recipes
 /**
  * @since 1.0.0
  */
-class RPR_Module_Nutrition extends RPR_Module_Metabox {
+class RPR_Module_MB_Nutrition extends RPR_Module_Metabox {
 
     /**
      * Load all files required for the module
      */
-    public function load_dependencies() {
+    public function load_module_dependencies() {
     }
 	
     /**
@@ -27,7 +27,7 @@ class RPR_Module_Nutrition extends RPR_Module_Metabox {
      * @since 1.0.0
      * @param RPR_Loader $loader
      */
-    public function define_admin_hooks( $loader ){
+    public function define_module_admin_hooks( $loader ){
         if( is_a( $loader, 'RPR_Loader' ) ){
             // Load CSS
             $loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_scripts' );
@@ -44,7 +44,7 @@ class RPR_Module_Nutrition extends RPR_Module_Metabox {
      * @since 1.0.0
      * @param RPR_Loader $loader
      */
-    public function define_public_hooks( $loader ){
+    public function define_module_public_hooks( $loader ){
     }
     
     /**

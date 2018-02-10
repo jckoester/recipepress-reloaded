@@ -19,7 +19,7 @@
  * @subpackage  	recipepress-reloaded/admin/views
  * @author		Jan Köster <rpr@cbjck.de>
  */
-class RPR_Options_Module_Ingredients {
+class RPR_Module_Options_MB_Ingredients {
     
     /**
      * Sets up a form section.

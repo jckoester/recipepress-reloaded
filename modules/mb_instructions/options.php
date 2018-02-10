@@ -19,29 +19,23 @@
  * @subpackage  	recipepress-reloaded/admin/views
  * @author		Jan Köster <rpr@cbjck.de>
  */
-class RPR_Options_Module_Description {
+class RPR_Module_Options_MB_Instructions {
     
-    /**
-     * The page slug to add the tab and form elements.
-     */
-    public $sPageSlug   = 'rpr_options';
-	
-        
     /**
      * Sets up a form section.
      */
     public function __construct( $oFactory ) {
-    
+
         // Add settings to existing section:
         $oFactory->addSettingFields(
             'advanced', 
             array(
-                'field_id'          => 'description_headline',
+                'field_id'          => 'instructions_headline',
                 'type'              => 'text',
-                'title'             => __( 'Description headline', 'recipepress-reloaded' ),
-                'description'       => __( 'Use this to change the headline of the description section in te frontend', 'recipepress-reloaded'),
-                //'tip'               => __( 'If this works, dynamic loading of module option does work!', 'recipepress-reloaded'),
-                'default'           => __( "Description", 'recipepress-reloaded' ),
+                'title'             => __( 'Instructions headline', 'recipepress-reloaded' ),
+                'description'       => __( 'Use this to change the headline of the instructions section in the frontend', 'recipepress-reloaded'),
+                'tip'               => __( 'If this works, dynamic loading of module option does work!', 'recipepress-reloaded'),
+                'default'           => __( 'Instructions', 'recipepress-reloaded' ),
             )
         );
     }

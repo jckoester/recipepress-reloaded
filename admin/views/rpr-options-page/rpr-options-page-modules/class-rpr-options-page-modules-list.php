@@ -129,7 +129,7 @@ class RPR_Options_Page_Modules_List {
             if ($handle = opendir( $dirname )) {
                 // Walk through all folders in that directory:
                 while (false !== ($file = readdir($handle))) {
-                    if( $file !='.' && $file !='..' && $file != '.svn' ) {
+                    if( $file !='.' && $file !='..' && $file != '.svn' && $file != 'README.md' ) {
                         if( preg_match( "/plugin/", $dirname ) ){
                             $baseurl = plugins_url() . '/' . 'recipepress-reloaded' . '/modules/' . $file ;
                             $local = false;

@@ -19,7 +19,7 @@
  * @subpackage  	recipepress-reloaded/admin/views
  * @author		Jan Köster <rpr@cbjck.de>
  */
-class RPR_Options_Module_Notes {
+class RPR_Module_Options_MB_Description {
     
     /**
      * The page slug to add the tab and form elements.
@@ -36,12 +36,12 @@ class RPR_Options_Module_Notes {
         $oFactory->addSettingFields(
             'advanced', 
             array(
-                'field_id'          => 'notes_headline',
+                'field_id'          => 'description_headline',
                 'type'              => 'text',
-                'title'             => __( 'Notes headline', 'recipepress-reloaded' ),
-                'description'       => __( 'Use this to change the headline of the notes section in the frontend', 'recipepress-reloaded'),
-                'tip'               => __( 'If this works, dynamic loading of module option does work!', 'recipepress-reloaded'),
-                'default'           => __( 'Notes', 'recipepress-reloaded' ),
+                'title'             => __( 'Description headline', 'recipepress-reloaded' ),
+                'description'       => __( 'Use this to change the headline of the description section in te frontend', 'recipepress-reloaded'),
+                //'tip'               => __( 'If this works, dynamic loading of module option does work!', 'recipepress-reloaded'),
+                'default'           => __( "Description", 'recipepress-reloaded' ),
             )
         );
     }

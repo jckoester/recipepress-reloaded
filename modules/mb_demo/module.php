@@ -18,15 +18,15 @@ Description: This is a test module to develop the modules API and demonstrate it
 
 class RPR_Module_MB_Demo extends RPR_Module_Metabox {
 
-    public function get_config(){
+    /*public function get_config(){
         include dirname(__FILE__) . '/module.conf.php';
         return $module_config;
-    }
+    }*/
 
     /**
      * Load all files required for the module
      */
-    public function load_dependencies() {
+    public function load_module_dependencies() {
     }
 	
     /**
@@ -35,7 +35,7 @@ class RPR_Module_MB_Demo extends RPR_Module_Metabox {
      * @since 1.0.0
      * @param RPR_Loader $loader
      */
-    public function define_admin_hooks( $loader ){
+    public function define_module_admin_hooks( $loader ){
         if( is_a( $loader, 'RPR_Loader' ) ){
             //echo "Got a valid loader";
             // Add metabox for this module
@@ -53,13 +53,15 @@ class RPR_Module_MB_Demo extends RPR_Module_Metabox {
      * @since 1.0.0
      * @param RPR_Loader $loader
      */
-    public function define_public_hooks( $loader ){
+    public function define_module_public_hooks( $loader ){
         if( is_a( $loader, 'RPR_Loader' ) ){
             //echo "Got a valid loader";
         }
     }
     
     public function metabox_demo(){
+        // This way we can eccess the active modules from within a module_
+        //var_dump(RPR::load_modules());
         // Add advanced metabox for nutritional information
         add_meta_box(
     		'recipe_demo_meta_box',
