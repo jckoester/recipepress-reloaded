@@ -110,7 +110,7 @@ class RPR_Module_MB_Notes extends RPR_Module_Metabox {
         $json = array();
         
         if( isset( $recipe['rpr_recipe_notes'] ) &&  $recipe['rpr_recipe_notes'] != '' ){
-            $json['comment'] = strip_tags( $recipe['rpr_recipe_notes'] );
+            $json['comment'] = strip_tags( $recipe['rpr_recipe_notes'][0] );
         }
         
         return $json;

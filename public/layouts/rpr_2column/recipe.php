@@ -43,15 +43,9 @@ if( recipe_is_embedded() ){ ?>
 /**
  * Display the printlink if set to do so
  */
-the_recipe_print_link();
-?>
-
-<?php
-/**
- * First thing we 'display' is the structured data header, so search engines
- * know this is a recipe:
- */
-the_rpr_structured_data_header();
+if(function_exists( 'the_recipe_print_link' ) ){
+    the_recipe_print_link();
+}
 ?>
 
 <?php
@@ -60,18 +54,11 @@ the_rpr_structured_data_header();
  * it here, either set by option, or because we have a recipe embedded 
  * somewhere else
  */
-the_rpr_recipe_image();
-?>
-	
-<?php
-/**
- * Also the author and the date should be displayed by the theme. But we can 
- * also do it here if necessary and if we want to. After all this is design!
- */
-the_rpr_recipe_author();
-the_rpr_recipe_date();
-?>
+if(function_exists( 'the_rpr_recipe_image' ) ){
+    the_rpr_recipe_image();
+}
 
+if( function_exists( 'the_rpr_recipe_description' ) && get_the_rpr_recipe_description() != null ){ ?>
 <div class="rpr-description-container">
 	<?php
 	/**
@@ -81,8 +68,9 @@ the_rpr_recipe_date();
 	the_rpr_recipe_description();
 	?>
 </div>
+<?php } ?>
 
-<?php if ( get_the_rpr_recipe_source() !== null ) { ?>
+<?php if( function_exists( 'the_rpr_recipe_source' ) && get_the_rpr_recipe_source() !== null ) { ?>
 <div class="rpr-source-container">
 	<?php
 	/**
@@ -98,14 +86,16 @@ the_rpr_recipe_date();
 		<div class="rpr-ingredients-container">
 			<?php
 				the_rpr_recipe_ingredients_headline( $icon_display );
-				the_rpr_recipe_servings( $icon_display );
+                                if(function_exists( 'the_rpr_recipe_servings' ) ){
+                                    the_rpr_recipe_servings( $icon_display );
+                                }
 				the_rpr_recipe_ingredients();
 			?>
 		</div>
 	</div>
 
 	<div class="rpr_col2"> <!--- Start the second column -->
-		<?php if ( get_the_rpr_recipe_times() !== null ) { ?>
+		<?php if( function_exists( 'the_rpr_recipe_times' ) && get_the_rpr_recipe_times() !== null ) { ?>
 			<div class="rpr-times-container">
 				<?php
 					the_rpr_recipe_times_headline( $icon_display );
@@ -114,7 +104,7 @@ the_rpr_recipe_date();
 			</div>
 		<?php	} ?>
 
-		<?php if ( get_the_rpr_recipe_nutrition() !== null ) { ?>
+		<?php if( function_exists( 'the_rpr_recipe_nutrition' ) && get_the_rpr_recipe_nutrition() !== null ) { ?>
 			<div class="rpr-nutrition-container">
 				<?php 
 					the_rpr_recipe_nutrition_headline( $icon_display );
@@ -167,7 +157,7 @@ the_rpr_recipe_date();
 	?>
 </div>
 
-<?php if ( get_the_rpr_recipe_notes() !== null ) { ?>
+<?php if( function_exists( 'the_rpr_recipe_notes' ) && get_the_rpr_recipe_notes() !== null ) { ?>
 	<div class="rpr-notes-container">
 		<?php
 			/**
@@ -179,21 +169,15 @@ the_rpr_recipe_date();
 	</div>
 <?php } ?>
 
-<?php
-/**
- * Close the structurted data container
- */
-the_rpr_structured_data_footer();
-?>
 </div>
 <!-- 
 ________________________________________________________________________________
 THIS IS OLD STUFF															  || 
 																			  \/
 -->
-		
+<!--		
 <script>
 var rpr_pluginUrl = '<?php //echo $this->pluginUrl; ?>';
 var rpr_template = '<?php //echo $this->option( 'rpr_template', 'rpr_default' ); ?>';
 </script>
-
+-->

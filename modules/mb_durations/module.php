@@ -112,19 +112,19 @@ class RPR_Module_MB_Durations extends RPR_Module_Metabox {
         $json = array();
 
         // Get the data
-        $prep_time = get_post_meta($recipe->ID, "rpr_recipe_prep_time", true);
-        $cook_time = get_post_meta($recipe->ID, "rpr_recipe_cook_time", true);
-        $passive_time = get_post_meta($recipe->ID, "rpr_recipe_passive_time", true);
+        $prep_time = get_post_meta($recipe_id, "rpr_recipe_prep_time", true);
+        $cook_time = get_post_meta($recipe_id, "rpr_recipe_cook_time", true);
+        $passive_time = get_post_meta($recipe_id, "rpr_recipe_passive_time", true);
 
         if ($prep_time != '' && $prep_time > 0) {
-            $json['prepTime'] = rpr_format_time_xml($prep_time);
+            $json['prepTime'] = $this->rpr_format_time_xml($prep_time);
         }
         if ($cook_time != '' && $cook_time > 0) {
-            $json['cookTime'] = rpr_format_time_xml($cook_time);
+            $json['cookTime'] = $this->rpr_format_time_xml($cook_time);
         }
-        $total_time = + $perform_time + $cook_time + $passive_time;
+        $total_time = + $passive_time + $cook_time + $passive_time;
         if ( $total_time != '' && $total_time > 0) {
-            $json['totalTime'] = rpr_format_time_xml($total_time);
+            $json['totalTime'] = $this->rpr_format_time_xml($total_time);
         }
 
         return $json;

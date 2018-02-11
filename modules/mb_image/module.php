@@ -75,5 +75,11 @@ class RPR_Module_MB_Image extends RPR_Module_Metabox {
      * For more infomration on structured data see: 
      * http://1.schemaorgae.appspot.com/NutritionInformation
      */
-    public function get_structured_data( $recipe_id, $recipe ){}
+    public function get_structured_data( $recipe_id, $recipe ){
+        if( has_post_thumbnail( $recipe_id ) ) {
+            $json = array();
+            $json['image'] = get_the_post_thumbnail_url( $recipe_id, 'full' );
+            return $json;
+        }
+    }
 }

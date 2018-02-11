@@ -9,7 +9,7 @@ if (!function_exists('get_the_rpr_recipe_servings')) {
      * @param boolean $icons
      * @return string
      */
-    function get_the_rpr_recipe_servings($icons) {
+    function get_the_rpr_recipe_servings($icons = false) {
         /**
          *  Get the recipe id
          */

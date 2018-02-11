@@ -24,34 +24,20 @@ if( recipe_is_embedded() ){ ?>
 
 <?php
 /**
- * First thing we 'display' is the structured data header, so search engines
- * know this is a recipe:
+ * Usually the theme will display the recipe image. We only do it here, when
+ * the recipe is embedded  into something else
  */
-the_rpr_structured_data_header();
-?>
-
-<?php
-/**
- * Usually the theme will display the recipe image. If it doesn't we should do 
- * it here, either set by option, or because we have a recipe embedded 
- * somewhere else
- */
-the_rpr_recipe_image();
-?>
-  
-<?php
-/**
- * Also the author and the date should be displayed by the theme. But we can 
- * also do it here if necessary and if we want to. After all this is design!
- */
-the_rpr_recipe_author();
-the_rpr_recipe_date();
+if (recipe_is_embedded() ){
+ the_rpr_recipe_image();
+}
 ?>
 
 <div class="rpr-terms-container">
   <?php
-  the_recipe_print_link(); // Display the printlink if set to do so.
-
+  if( function_exists( 'the_recipe_print_link' ) ){
+    the_recipe_print_link(); // Display the printlink if set to do so.
+  }
+  
   /**
   * I think it's always nice to have an overview of the taxonomies a recipe is 
   * filed under at the top:
@@ -64,24 +50,27 @@ the_rpr_recipe_date();
   <?php
   /**
   * Display a description / excerpt /summary / abstract of the recipe 
-  * if there is one
+  * if there is one 
+  * (this template tag should always be accessible)
   */
-  the_rpr_recipe_description();
+  if(function_exists( 'the_recipe_description' ) && get_the_rpr_recipe_description() != null ){
+    the_rpr_recipe_description();
+  }
   ?>
 </div>
 
-<?php if ( get_the_rpr_recipe_source() !== null ) { ?>
+<?php if (function_exists( 'the_rpr_recipe_credit' ) && get_the_rpr_recipe_credit() != null ) { ?>
   <div class="rpr-source-container">
     <?php
     /**
     * Display source / citation information if available
     */
-    the_rpr_recipe_source(); 
+    the_rpr_recipe_credit(); 
     ?>
   </div>
 <?php } ?>
 
-<?php if ( get_the_rpr_recipe_nutrition() !== null ) { ?>
+<?php if ( function_exists( 'the_rpr_recipe_nutrition' ) && get_the_rpr_recipe_nutrition() != null ) { ?>
   <div class="rpr-nutrition-container">
     <?php
     /**
@@ -98,12 +87,16 @@ the_rpr_recipe_date();
   <?php
   /**
   * Ingredients section of the recipe
+   * we do rely on the ingredients module being active as there can't be
+   * recipes without ingredients
   * First: The headline
   */
   the_rpr_recipe_ingredients_headline( $icon_display );
   /* Second: Serving size / yield
   */
-  the_rpr_recipe_servings( $icon_display );
+  if(function_exists( 'the_rpr_recipe_servings' ) && get_the_rpr_recipe_servings() != null ){
+    the_rpr_recipe_servings( $icon_display );
+  }
   /*
   * Third: The ingredient list
   */
@@ -111,7 +104,7 @@ the_rpr_recipe_date();
   ?>
 </div>
 
-<?php if ( get_the_rpr_recipe_times() !== null ) { ?>
+<?php if ( function_exists( 'the_rpr_recipe_times' ) && get_the_rpr_recipe_times() != null ) { ?>
 <div class="rpr-times-container">
   <?php
   /**
@@ -126,6 +119,8 @@ the_rpr_recipe_date();
   <?php
   /**
   * Instructions section of the recipe
+   *we do rely on the instructions module being active as there can't be
+   * recipes without instructions
   * First: the headline
   */
   the_rpr_recipe_instructions_headline( $icon_display );
@@ -137,7 +132,7 @@ the_rpr_recipe_date();
   ?>
 </div>
 
-<?php if ( get_the_rpr_recipe_notes() !== null ) { ?>
+<?php if( function_exists( 'the_rpr_recipe_notes' ) && get_the_rpr_recipe_notes() != null ) { ?>
   <div class="rpr-notes-container">
     <?php
     /**
@@ -153,16 +148,6 @@ the_rpr_recipe_date();
   </div>
 <?php } ?>
 
-<?php //the_rpr_recipe_notes( $icon_display ); ?>
-
-<?php
-/**
- * Last thing to render is the structured data footer, the end of the recipe
- * not only for search engines:
- */
-the_rpr_structured_data_footer();
-?>
-
 </div>	
 <!-- 
 ________________________________________________________________________________
@@ -170,7 +155,7 @@ THIS IS OLD STUFF															  ||
                                         \/
 -->
   
-<script>
+<!--<script>
   /**
    * 
    * @todo: What is this needed for?
@@ -178,4 +163,4 @@ THIS IS OLD STUFF															  ||
 var rpr_pluginUrl = '<?php //echo $this->pluginUrl; ?>';
 var rpr_template = '<?php echo AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'layout' ), 'rpr_default' );  ?>';
 </script>
-
+-->

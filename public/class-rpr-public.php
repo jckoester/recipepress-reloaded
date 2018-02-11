@@ -341,14 +341,30 @@ class RPR_Public {
 		
 		// Get the recipe data:
 		$recipe = get_post_custom($recipe_post->ID);
-		//$content = $this->get_recipes_content($recipe_post);
-                // TODO: Add structured data as JSON_LD here
-                // See https://gist.github.com/w33zy/bae18d16409f80746b5acc9701b23b28
-                // for a possible way
-		/*var_dump($this->modules);
-                var_dump($this->modules['nutrition']->get_structured_data($recipe_post->ID, $recipe));
-                var_dump($this->modules['credit']->get_structured_data($recipe_post->ID, $recipe));*/
-                //var_dump($this->modules['90_ingredients']->get_structured_data($recipe_post->ID, $recipe));
+		
+                // Create structured data as json-LD
+                // TODO: Comments are missing!
+                $json = array(
+                    '@context' => 'http://schema.org',
+                    '@type' => 'Recipe',
+                    'name' => get_the_title( $recipe_post ),
+                    'author' => get_the_author()
+                );
+                foreach ($this->modules as $module ){
+                    if( is_a( $module, 'RPR_Module_Metabox' ) ){
+                        $modjson = $module->get_structured_data( $recipe_post->ID, $recipe );
+                        if( is_array($modjson) && count($modjson) > 0 ){
+                            $json = array_merge($json, $modjson);
+                        }
+                    }
+                }
+                echo '<script type="application/ld+json">' . wp_json_encode($json) . '</script>';
+//                
+//                echo "<pre>";
+//                //var_dump($json);  
+//                echo wp_json_encode($json);
+//                echo "</pre>";
+		
 		// Start rendering
 		ob_start();
 		// Include the common template tags:

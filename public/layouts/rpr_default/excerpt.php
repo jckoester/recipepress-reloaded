@@ -17,19 +17,22 @@
 	 * However, if the recipe is embedded, we need to do it here.
 	 */
 	if( recipe_is_embedded() ){ ?>
-		<h2 class="rpr_title"><?php echo get_the_title( $recipe_post ); ?></h2>
-	<?php } ?>
+            <h2 class="rpr_title"><?php echo get_the_title( $recipe_post ); ?></h2>
 	<?php
-	the_rpr_recipe_image();
-
+            if(function_exists( 'the_rpr_recipe_image' ) ){
+                the_rpr_recipe_image();
+            }
+        }
+        
 	$icons = (boolean) AdminPageFramework::getOption( 'rpr_options', array( 'layout', 'rpr_default', 'icon_display' ), false);
         the_rpr_taxonomy_list( $icons, true ,'&nbsp;/&nbsp;', true );
 	?>
                 
     <div class="rpr-clear"></div>
 	<?php
+            if(function_exists( 'the_rpr_recipe_description' ) && get_the_rpr_recipe_description() != null ){
 		the_rpr_recipe_description();
-		
+            }
 	?>
         
     <div class="rpr-clear"></div>
