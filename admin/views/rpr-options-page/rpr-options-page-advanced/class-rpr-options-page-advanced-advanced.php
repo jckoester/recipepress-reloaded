@@ -53,33 +53,15 @@ class RPR_Options_Page_Advanced_Advanced {
                 'section_id'    => $this->sSectionID,
                 'tab_slug'      => $this->sTabSlug,
                 'title'         => '<i class="fa fa-cogs"></i>&nbsp;' . __( 'Advanced Options', 'recipepress-reloaded' ),
-                'description'   => '<i style="float:left; margin-right:6px; color:orange;" class="fa fa-exclamation-triangle fa-3x"></i>&nbsp;' . __( 'In this section you can make some adjustments on the look and feel of your recipes. Normally this should not be necessary and your theme should take care of all this. Some themes however might have limited capabilities and you might want RecipePress reloaded to display some information in it\'s part of the theme. Then however you might also consider to adjust your theme, i.e. by creating a child theme.' , 'recipepress-reloaded' )
+                'description'   => '<i style="float:left; margin-right:6px; color:orange;" class="fa fa-exclamation-triangle fa-3x"></i>&nbsp;' . __( 'In this section you can make some advanced settings on the look and feel of your recipes. For the standard food blog it should not be necessary to change any of these.' , 'recipepress-reloaded' )
             )   
         );
         
+        /**
+         * This should be moved to a module for taxonomies ... 
+         */
         $oFactory->addSettingFields(
             'advanced',
-            array(
-                'field_id'      => 'display_image',
-                'type'          => 'checkbox',
-                'title'         => __('Display recipe image', 'recipepress-reloaded'),
-                'tip'           => __('Usually this is the job of your theme. Only use, if your theme does not support post images', 'recipepress-reloaded'),
-                'default'       => 0
-            ),
-            array(
-                'field_id'      => 'display_author',
-                'type'          => 'checkbox',
-                'title'         => __('Display recipe author', 'recipepress-reloaded'),
-                'tip'           => __('Display the author in the recipe part of the theme. Ususally your theme will display the author.', 'recipepress-reloaded' ),
-                'default'       => 0
-            ),
-            array(
-                'field_id'      => 'display_date',
-                'type'          => 'checkbox',
-                'title'         => __('Display date', 'recipepress-reloaded'),
-                'tip'           => __('Display date in the recipe part of the theme. Ususally your theme will display the date.', 'recipepress-reloaded' ),
-                'default'       => 0
-            ),
             array(
                 'field_id'      => 'display_categories',
                 'type'          => 'checkbox',

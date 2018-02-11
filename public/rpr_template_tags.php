@@ -321,336 +321,336 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
         echo get_the_rpr_taxonomy_list( $icons, $label, $sep, $tags );
     }
 }
-
-/** ****************************************************************************
- * STRUCTURED DATA RELATED TEMPLATE TAGS
- */
-if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
-	/**
-	 * Structured data help search engines to recognize the type and content
-	 * of posts. This tag inserts the appropriate header depending which of the 
-	 * three strcutured data types by http://schema.org is set in the options
-	 * 
-	 * @since 0.8.0
-	 * @return string
-	 */
-	function get_the_rpr_structured_data_header() {
-		/**
-		 *  Get the recipe id
-		 */
-		if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
-			$recipe_id = $GLOBALS['recipe_id'];
-		} else {
-			$recipe_id = get_post()->ID;
-		}
-		$recipe = get_post_custom( $recipe_id );
-    	
-		/**
-		 *  Create an empty output string
-		 */
-		$out = '';
-		
-		/**
-		 * Start the recipe output according to the structured data model
-		 * Some data as Title, image, ... are rendered by the theme but need
-		 * to be included here as well for SEO. Here they are hidden!
-		 */
-		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ) {
-			$out .= '<div itemscope itemtype="http://schema.org/Recipe">';
-			$out .= '<span class="rpr_title rpr-hidden" itemprop="name">' . get_the_title( $recipe_id ) . '</span>';
-			$out .= '<span class="rpr_author rpr-hidden" itemprop="author">' . get_the_author() . '</span>';
-			$out .= '<span class="rpr_date rpr-hidden" itemprop="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
-				get_the_time( get_option('date_format') ) . '</span>';
-			// Number of comments
-			if( get_comments_number() > 0 ){
-				$out .= '<div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">';
-				$out .= '<meta itemprop="interactionType" content="http://schema.org/CommentAction" />';
-				$out .= '<meta itemprop="userInteractionCount" content="' . get_comments_number() . '" />';
-				$out .= '</div>';
-			}
-			// Recipe image
-			if( has_post_thumbnail() ) {
-				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" itemprop="image" class="rpr-hidden" />';
-				$out .= '<link itemprop="thumbnailUrl" href="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '" />';
-			}
-			
-		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ) {
-			$out .= '<div vocab="http://schema.org/" typeof="Recipe">';
-			$out .= '<span class="rpr_title rpr-hidden" property="name">' . get_the_title( $recipe_id ) . '</span>';
-			$out .= '<span class="rpr_author rpr-hidden" property="author">' . get_the_author() . '</span>';
-			$out .= '<meta class="rpr_date rpr-hidden" property="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
-				get_the_time( get_option('date_format') ) . '</meta>';
-			// Number of comments
-			if( get_comments_number() > 0 ){
-				$out .= '<div property="interactionStatistic" typeof="InteractionCounter">';
-				$out .= '<meta property="interactionType" content="http://schema.org/CommentAction" />';
-				$out .= '<meta property="userInteractionCount" content="' . get_comments_number() . '" />';
-				$out .= '</div>';
-			}
-			// Recipe image
-			if( has_post_thumbnail() ) {
-				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" property="image" class="rpr-hidden" />';
-				$out .= '<link property="thumbnailUrl" href="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '" />';
-			}
-		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'json-ld' ) {
-			$out .= '<script type="application/ld+json">';
-			$out .= '{';
-			$out .= '"@context": "http://schema.org",';
-			$out .= '"@type": "Recipe",';
-			$out .= '"name": "' . get_the_title( $recipe_id ) . '",';
-			$out .= '"author": "' . get_the_author() . '",';
-			$out .= '"datePublished": "' . get_the_time( 'Y-m-d' ) . '",';
-			// Number of comments
-			if( get_comments_number() > 0 ){
-				$out .= '"interactionStatistic": {';
-				$out .= '"@type": "InteractionCounter",';
-				$out .= '"interactionType": "http://schema.org/Comment",';
-				$out .= '"userInteractionCount": "' . get_comments_number() . '"';
-				$out .= '},';
-			}
-			// Recipe Image
-			if( has_post_thumbnail() ) {
-				$thumb_id = get_post_thumbnail_id();
-				$img_url = wp_get_attachment_image_src( $thumb_id, 'thumbnail', true );
-				$thumb_url = wp_get_attachment_image_src( $thumb_id, 'full', true );
-				$out .= '"image": "' . $img_url[0] . '",'; //get_post_thumbnail( $recipe_id, 'medium' ) . '",';
-				$out .= '"thumbnailUrl": "' . $thumb_url[0] . '",'; //get_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '",';
-			}
-			// Description
-			if( isset( $recipe['rpr_recipe_description'][0] ) ){
-				$description = strip_tags($recipe['rpr_recipe_description'][0]);
-				$description = preg_replace("/\s+/", " ", $description);
-				$out .= '"description": "' . esc_html( $description ) . '",';
-			}
-			// Ingredients
-			if( isset( $recipe['rpr_recipe_ingredients'][0] ) && count( $recipe['rpr_recipe_ingredients'][0] ) > 0 ) {
-				$out .= '"recipeIngredient": [';
-				$ingredients = unserialize( $recipe['rpr_recipe_ingredients'][0] );
-				
-				foreach( $ingredients as $ingredient ){
-					if( !isset( $ingredient['grouptitle'] ) ){
-						if( isset( $ingredient['ingredient_id'] ) ){
-							$term = get_term_by( 'id', $ingredient['ingredient_id'], 'rpr_ingredient' );
-						} else {
-							$term = get_term_by( 'name', $ingredient['ingredient'], 'rpr_ingredient' );
-						}
-
-						$out .= '"' . esc_html( $ingredient['amount'] ) . ' ' . esc_html( $ingredient['unit'] ) . ' ' . $term->name;
-						if( isset( $ingredient['notes'] ) && $ingredient['notes'] != '' ){
-							$out .= ', ' . esc_html( $ingredient['notes'] );
-						}
-						$out .= '",';
-					}
-				}
-				$out = rtrim($out, ",");
-				$out .='], ';
-			}
-			// Instructions
-			if( isset( $recipe['rpr_recipe_instructions'][0] ) && count( $recipe['rpr_recipe_instructions'][0] ) > 0 ) {
-				$instructions = unserialize( $recipe['rpr_recipe_instructions'][0] );
-				
-				$out .= '"recipeInstructions": "';
-				foreach( $instructions as $instruction ){
-					if( !isset( $instruction['grouptitle'] ) ){
-						$out .= $instruction['description'];
-					}
-				}
-				$out .= '",';
-			}
-			// Metadata like servings, nutrtion, ...
-			if( isset( $recipe['rpr_recipe_servings'][0] ) ){
-				$out .= '"recipeYield": "' . esc_html( $recipe['rpr_recipe_servings'][0] ) . ' ' . esc_html( $recipe['rpr_recipe_servings_type'][0] ) . '",';
-			}
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data' ), false ) == true &&
-			( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) >= 0 ) {
-				$out .= '"nutrition": {';
-				$out .= '"@type": "NutritionInformation",';
-				
-				if( isset( $recipe['rpr_recipe_calorific_value'][0] ) ){
-					$out .= '"calories": "' . esc_html( $recipe['rpr_recipe_calorific_value'][0] ) . '",';
-				}
-				if( isset( $recipe['rpr_recipe_carbohydrate'][0] ) ){
-					$out .= '"carbohydrateContent": "' . esc_html( $recipe['rpr_recipe_carbohydrate'][0] ) . '",';
-				}
-				if( isset( $recipe['rpr_recipe_cholesterol'][0] ) ){
-					$out .= '"cholesterolContent": "' . esc_html( $recipe['rpr_recipe_cholesterol'][0] ) . '",';
-				}
-				if( isset( $recipe['rpr_recipe_fat'][0] ) ){
-					$out .= '"fatContent": "' . esc_html( $recipe['rpr_recipe_fat'][0] ) . '",';
-				}
-				if( isset( $recipe['rpr_recipe_fibre'][0] ) ){
-					$out .= '"fibreContent": "' . esc_html( $recipe['rpr_recipe_fibre'][0] ) . '",';
-				}
-				if( isset( $recipe['rpr_recipe_protein'][0] ) ){
-					$out .= '"proteinContent": "' . esc_html( $recipe['rpr_recipe_protein'][0] ) . '",';
-				}
-				if( isset( $recipe['rpr_recipe_saturatedFat'][0] ) ){
-					$out .= '"saturatedFatContent": "' . esc_html( $recipe['rpr_recipe_saturatedFat'][0] ) . '",';
-				}
-				if( isset( $recipe['rpr_recipe_sodium'][0] ) ){
-					$out .= '"sodiumContent": "' . esc_html( $recipe['rpr_recipe_sodium'][0] ) . '",';
-				}
-				if( isset( $recipe['rpr_recipe_sugar'][0] ) ){
-					$out .= '"sugarContent": "' . esc_html( $recipe['rpr_recipe_sugar'][0] ) . '",';
-				}
-				if( isset( $recipe['rpr_recipe_transFat'][0] ) ){
-					$out .= '"transFatContent": "' . esc_html( $recipe['rpr_recipe_transFat'][0] ) . '",';
-				}
-				if( isset( $recipe['rpr_recipe_unsaturatedFat'][0] ) ){
-					$out .= '"unsaturatedFatContent": "' . esc_html( $recipe['rpr_recipe_unsaturatedFat'][0] ) . '",';
-				}
-				$out = rtrim($out, ",");
-				$out .= '},';
-			}
-			// Source
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
-				if( isset( $recipe['rpr_recipe_source'] ) ) {
-					$out .= '"citation": "' . esc_html( $recipe['rpr_recipe_source'][0] ) . '",';
-				}
-			}
-			// Times
-			// fix missing times:
-			if( !isset( $recipe['rpr_recipe_prep_time'][0] ) ){
-				$recipe['rpr_recipe_prep_time'][0] = 0;
-			}
-			if( !isset( $recipe['rpr_recipe_cook_time'][0] ) ){
-				$recipe['rpr_recipe_cook_time'][0] = 0;
-			}
-			if( !isset( $recipe['rpr_recipe_passive_time'][0] ) ){
-				$recipe['rpr_recipe_passive_time'][0] = 0;
-			}
-			if( $recipe['rpr_recipe_prep_time'][0] != 0 ) {
-				$out .= '"prepTime": "' . rpr_format_time_xml( $recipe['rpr_recipe_prep_time'][0] ) . '",';
-			}
-			if( $recipe['rpr_recipe_cook_time'][0] != 0 ) {
-				$out .= '"cookTime": "' . rpr_format_time_xml( $recipe['rpr_recipe_cook_time'][0] ) . '",';
-			}
-			if(  $recipe['rpr_recipe_prep_time'][0] + $recipe['rpr_recipe_cook_time'][0] +  $recipe['rpr_recipe_passive_time'][0]  > 0 ) {
-				$out .= '"totalTime": "' . rpr_format_time_xml( $recipe['rpr_recipe_prep_time'][0] + $recipe['rpr_recipe_cook_time'][0] + $recipe['rpr_recipe_passive_time'][0] ) . '",';
-			}
-			$out = rtrim($out, ",");
-			$out .= '}';
-			$out .= '</script>';
-		}
-		/**
-		 * return the renderd output
-		 */
-		return $out;
-	}
-}
-
-if( !function_exists( 'the_rpr_structured_data_header') ) {
-	/**
-	 * Outputs the structured data header from above
-	 * 
-	 * @since 0.8.0
-	 */
-	function the_rpr_structured_data_header() {
-		echo get_the_rpr_structured_data_header();
-	}
-}
-
-if( !function_exists( 'get_the_rpr_structured_data_footer' ) ){
-	/**
-	 * Defines a proper closing for the structured data header defined above
-	 * telling search engines the end of the recipe.
-	 * 
-	 * @since 0.8.0
-	 * @return string
-	 */
-	function get_the_rpr_structured_data_footer() {
-		/**
-		 *  Create an empty output string
-		 */
-		$out = '';
-		
-		
-		/**
-		 * Close the recipe structure properly according to the structured 
-		 * data format
-		 */
-		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
-			$out .= '</div>';
-		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
-			$out .= '</div>';
-		}
-		/**
-		 * return the renderd output
-		 */
-		return $out;
-	}
-}
-
-if( !function_exists( 'the_rpr_structured_data_footer') ) {
-	/**
-	 * Outputs the structured data footer from above
-	 * 
-	 * @sonce 0.8.0
-	 */
-	function the_rpr_structured_data_footer() {
-		echo get_the_rpr_structured_data_footer();
-	}
-}
+//
+///** ****************************************************************************
+// * STRUCTURED DATA RELATED TEMPLATE TAGS
+// */
+//if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
+//	/**
+//	 * Structured data help search engines to recognize the type and content
+//	 * of posts. This tag inserts the appropriate header depending which of the 
+//	 * three strcutured data types by http://schema.org is set in the options
+//	 * 
+//	 * @since 0.8.0
+//	 * @return string
+//	 */
+//	function get_the_rpr_structured_data_header() {
+//		/**
+//		 *  Get the recipe id
+//		 */
+//		if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
+//			$recipe_id = $GLOBALS['recipe_id'];
+//		} else {
+//			$recipe_id = get_post()->ID;
+//		}
+//		$recipe = get_post_custom( $recipe_id );
+//    	
+//		/**
+//		 *  Create an empty output string
+//		 */
+//		$out = '';
+//		
+//		/**
+//		 * Start the recipe output according to the structured data model
+//		 * Some data as Title, image, ... are rendered by the theme but need
+//		 * to be included here as well for SEO. Here they are hidden!
+//		 */
+//		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ) {
+//			$out .= '<div itemscope itemtype="http://schema.org/Recipe">';
+//			$out .= '<span class="rpr_title rpr-hidden" itemprop="name">' . get_the_title( $recipe_id ) . '</span>';
+//			$out .= '<span class="rpr_author rpr-hidden" itemprop="author">' . get_the_author() . '</span>';
+//			$out .= '<span class="rpr_date rpr-hidden" itemprop="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
+//				get_the_time( get_option('date_format') ) . '</span>';
+//			// Number of comments
+//			if( get_comments_number() > 0 ){
+//				$out .= '<div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">';
+//				$out .= '<meta itemprop="interactionType" content="http://schema.org/CommentAction" />';
+//				$out .= '<meta itemprop="userInteractionCount" content="' . get_comments_number() . '" />';
+//				$out .= '</div>';
+//			}
+//			// Recipe image
+//			if( has_post_thumbnail() ) {
+//				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" itemprop="image" class="rpr-hidden" />';
+//				$out .= '<link itemprop="thumbnailUrl" href="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '" />';
+//			}
+//			
+//		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ) {
+//			$out .= '<div vocab="http://schema.org/" typeof="Recipe">';
+//			$out .= '<span class="rpr_title rpr-hidden" property="name">' . get_the_title( $recipe_id ) . '</span>';
+//			$out .= '<span class="rpr_author rpr-hidden" property="author">' . get_the_author() . '</span>';
+//			$out .= '<meta class="rpr_date rpr-hidden" property="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
+//				get_the_time( get_option('date_format') ) . '</meta>';
+//			// Number of comments
+//			if( get_comments_number() > 0 ){
+//				$out .= '<div property="interactionStatistic" typeof="InteractionCounter">';
+//				$out .= '<meta property="interactionType" content="http://schema.org/CommentAction" />';
+//				$out .= '<meta property="userInteractionCount" content="' . get_comments_number() . '" />';
+//				$out .= '</div>';
+//			}
+//			// Recipe image
+//			if( has_post_thumbnail() ) {
+//				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" property="image" class="rpr-hidden" />';
+//				$out .= '<link property="thumbnailUrl" href="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '" />';
+//			}
+//		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'json-ld' ) {
+//			$out .= '<script type="application/ld+json">';
+//			$out .= '{';
+//			$out .= '"@context": "http://schema.org",';
+//			$out .= '"@type": "Recipe",';
+//			$out .= '"name": "' . get_the_title( $recipe_id ) . '",';
+//			$out .= '"author": "' . get_the_author() . '",';
+//			$out .= '"datePublished": "' . get_the_time( 'Y-m-d' ) . '",';
+//			// Number of comments
+//			if( get_comments_number() > 0 ){
+//				$out .= '"interactionStatistic": {';
+//				$out .= '"@type": "InteractionCounter",';
+//				$out .= '"interactionType": "http://schema.org/Comment",';
+//				$out .= '"userInteractionCount": "' . get_comments_number() . '"';
+//				$out .= '},';
+//			}
+//			// Recipe Image
+//			if( has_post_thumbnail() ) {
+//				$thumb_id = get_post_thumbnail_id();
+//				$img_url = wp_get_attachment_image_src( $thumb_id, 'thumbnail', true );
+//				$thumb_url = wp_get_attachment_image_src( $thumb_id, 'full', true );
+//				$out .= '"image": "' . $img_url[0] . '",'; //get_post_thumbnail( $recipe_id, 'medium' ) . '",';
+//				$out .= '"thumbnailUrl": "' . $thumb_url[0] . '",'; //get_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '",';
+//			}
+//			// Description
+//			if( isset( $recipe['rpr_recipe_description'][0] ) ){
+//				$description = strip_tags($recipe['rpr_recipe_description'][0]);
+//				$description = preg_replace("/\s+/", " ", $description);
+//				$out .= '"description": "' . esc_html( $description ) . '",';
+//			}
+//			// Ingredients
+//			if( isset( $recipe['rpr_recipe_ingredients'][0] ) && count( $recipe['rpr_recipe_ingredients'][0] ) > 0 ) {
+//				$out .= '"recipeIngredient": [';
+//				$ingredients = unserialize( $recipe['rpr_recipe_ingredients'][0] );
+//				
+//				foreach( $ingredients as $ingredient ){
+//					if( !isset( $ingredient['grouptitle'] ) ){
+//						if( isset( $ingredient['ingredient_id'] ) ){
+//							$term = get_term_by( 'id', $ingredient['ingredient_id'], 'rpr_ingredient' );
+//						} else {
+//							$term = get_term_by( 'name', $ingredient['ingredient'], 'rpr_ingredient' );
+//						}
+//
+//						$out .= '"' . esc_html( $ingredient['amount'] ) . ' ' . esc_html( $ingredient['unit'] ) . ' ' . $term->name;
+//						if( isset( $ingredient['notes'] ) && $ingredient['notes'] != '' ){
+//							$out .= ', ' . esc_html( $ingredient['notes'] );
+//						}
+//						$out .= '",';
+//					}
+//				}
+//				$out = rtrim($out, ",");
+//				$out .='], ';
+//			}
+//			// Instructions
+//			if( isset( $recipe['rpr_recipe_instructions'][0] ) && count( $recipe['rpr_recipe_instructions'][0] ) > 0 ) {
+//				$instructions = unserialize( $recipe['rpr_recipe_instructions'][0] );
+//				
+//				$out .= '"recipeInstructions": "';
+//				foreach( $instructions as $instruction ){
+//					if( !isset( $instruction['grouptitle'] ) ){
+//						$out .= $instruction['description'];
+//					}
+//				}
+//				$out .= '",';
+//			}
+//			// Metadata like servings, nutrtion, ...
+//			if( isset( $recipe['rpr_recipe_servings'][0] ) ){
+//				$out .= '"recipeYield": "' . esc_html( $recipe['rpr_recipe_servings'][0] ) . ' ' . esc_html( $recipe['rpr_recipe_servings_type'][0] ) . '",';
+//			}
+//			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data' ), false ) == true &&
+//			( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) >= 0 ) {
+//				$out .= '"nutrition": {';
+//				$out .= '"@type": "NutritionInformation",';
+//				
+//				if( isset( $recipe['rpr_recipe_calorific_value'][0] ) ){
+//					$out .= '"calories": "' . esc_html( $recipe['rpr_recipe_calorific_value'][0] ) . '",';
+//				}
+//				if( isset( $recipe['rpr_recipe_carbohydrate'][0] ) ){
+//					$out .= '"carbohydrateContent": "' . esc_html( $recipe['rpr_recipe_carbohydrate'][0] ) . '",';
+//				}
+//				if( isset( $recipe['rpr_recipe_cholesterol'][0] ) ){
+//					$out .= '"cholesterolContent": "' . esc_html( $recipe['rpr_recipe_cholesterol'][0] ) . '",';
+//				}
+//				if( isset( $recipe['rpr_recipe_fat'][0] ) ){
+//					$out .= '"fatContent": "' . esc_html( $recipe['rpr_recipe_fat'][0] ) . '",';
+//				}
+//				if( isset( $recipe['rpr_recipe_fibre'][0] ) ){
+//					$out .= '"fibreContent": "' . esc_html( $recipe['rpr_recipe_fibre'][0] ) . '",';
+//				}
+//				if( isset( $recipe['rpr_recipe_protein'][0] ) ){
+//					$out .= '"proteinContent": "' . esc_html( $recipe['rpr_recipe_protein'][0] ) . '",';
+//				}
+//				if( isset( $recipe['rpr_recipe_saturatedFat'][0] ) ){
+//					$out .= '"saturatedFatContent": "' . esc_html( $recipe['rpr_recipe_saturatedFat'][0] ) . '",';
+//				}
+//				if( isset( $recipe['rpr_recipe_sodium'][0] ) ){
+//					$out .= '"sodiumContent": "' . esc_html( $recipe['rpr_recipe_sodium'][0] ) . '",';
+//				}
+//				if( isset( $recipe['rpr_recipe_sugar'][0] ) ){
+//					$out .= '"sugarContent": "' . esc_html( $recipe['rpr_recipe_sugar'][0] ) . '",';
+//				}
+//				if( isset( $recipe['rpr_recipe_transFat'][0] ) ){
+//					$out .= '"transFatContent": "' . esc_html( $recipe['rpr_recipe_transFat'][0] ) . '",';
+//				}
+//				if( isset( $recipe['rpr_recipe_unsaturatedFat'][0] ) ){
+//					$out .= '"unsaturatedFatContent": "' . esc_html( $recipe['rpr_recipe_unsaturatedFat'][0] ) . '",';
+//				}
+//				$out = rtrim($out, ",");
+//				$out .= '},';
+//			}
+//			// Source
+//			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
+//				if( isset( $recipe['rpr_recipe_source'] ) ) {
+//					$out .= '"citation": "' . esc_html( $recipe['rpr_recipe_source'][0] ) . '",';
+//				}
+//			}
+//			// Times
+//			// fix missing times:
+//			if( !isset( $recipe['rpr_recipe_prep_time'][0] ) ){
+//				$recipe['rpr_recipe_prep_time'][0] = 0;
+//			}
+//			if( !isset( $recipe['rpr_recipe_cook_time'][0] ) ){
+//				$recipe['rpr_recipe_cook_time'][0] = 0;
+//			}
+//			if( !isset( $recipe['rpr_recipe_passive_time'][0] ) ){
+//				$recipe['rpr_recipe_passive_time'][0] = 0;
+//			}
+//			if( $recipe['rpr_recipe_prep_time'][0] != 0 ) {
+//				$out .= '"prepTime": "' . rpr_format_time_xml( $recipe['rpr_recipe_prep_time'][0] ) . '",';
+//			}
+//			if( $recipe['rpr_recipe_cook_time'][0] != 0 ) {
+//				$out .= '"cookTime": "' . rpr_format_time_xml( $recipe['rpr_recipe_cook_time'][0] ) . '",';
+//			}
+//			if(  $recipe['rpr_recipe_prep_time'][0] + $recipe['rpr_recipe_cook_time'][0] +  $recipe['rpr_recipe_passive_time'][0]  > 0 ) {
+//				$out .= '"totalTime": "' . rpr_format_time_xml( $recipe['rpr_recipe_prep_time'][0] + $recipe['rpr_recipe_cook_time'][0] + $recipe['rpr_recipe_passive_time'][0] ) . '",';
+//			}
+//			$out = rtrim($out, ",");
+//			$out .= '}';
+//			$out .= '</script>';
+//		}
+//		/**
+//		 * return the renderd output
+//		 */
+//		return $out;
+//	}
+//}
+//
+//if( !function_exists( 'the_rpr_structured_data_header') ) {
+//	/**
+//	 * Outputs the structured data header from above
+//	 * 
+//	 * @since 0.8.0
+//	 */
+//	function the_rpr_structured_data_header() {
+//		echo get_the_rpr_structured_data_header();
+//	}
+//}
+//
+//if( !function_exists( 'get_the_rpr_structured_data_footer' ) ){
+//	/**
+//	 * Defines a proper closing for the structured data header defined above
+//	 * telling search engines the end of the recipe.
+//	 * 
+//	 * @since 0.8.0
+//	 * @return string
+//	 */
+//	function get_the_rpr_structured_data_footer() {
+//		/**
+//		 *  Create an empty output string
+//		 */
+//		$out = '';
+//		
+//		
+//		/**
+//		 * Close the recipe structure properly according to the structured 
+//		 * data format
+//		 */
+//		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
+//			$out .= '</div>';
+//		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
+//			$out .= '</div>';
+//		}
+//		/**
+//		 * return the renderd output
+//		 */
+//		return $out;
+//	}
+//}
+//
+//if( !function_exists( 'the_rpr_structured_data_footer') ) {
+//	/**
+//	 * Outputs the structured data footer from above
+//	 * 
+//	 * @sonce 0.8.0
+//	 */
+//	function the_rpr_structured_data_footer() {
+//		echo get_the_rpr_structured_data_footer();
+//	}
+//}
 
 /** ***************************************************************************
  * RECIPE MAIN DATA TEMPLATE TAGS
  */
-if( !  function_exists( 'get_the_rpr_recipe_description' ) ){
-	/**
-	 * Renders the description. No output if description is empty.
-	 * 
-	 * @since 0.8.0
-	 * @return string
-	 */
-	function get_the_rpr_recipe_description() {
-		/**
-		 *  Get the recipe id
-		 */
-		if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
-			$recipe_id = $GLOBALS['recipe_id'];
-		} else {
-			$recipe_id = get_post()->ID;
-		}
-        $recipe = get_post_custom( $recipe_id );
-		/**
-		 *  Create an empty output string
-		 */
-		$out = '';
-		
-		/**
-		 * Render the description only if it is not empty
-		 */
-		if( strlen( $recipe['rpr_recipe_description'][0] ) > 0 ) {
-			$out .= '<div class="rpr_description" ';
-			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
-				$out .= ' itemprop="description" >';
-			} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
-				$out .= ' property="description" >';
-			} else {
-				$out .= '>';
-			}
-                        $out .= sanitize_post_field( 'rpr_recipe_description', $recipe['rpr_recipe_description'][0], $recipe_id);
-	//		$out .= apply_filters('the_content', $recipe['rpr_recipe_description'][0] );
-			$out .= '</div>';
-		}
-		
-		/**
-		 * Return the rendered description
-		 */
-		return $out;
-	}
-}
-
-if( !  function_exists( 'the_rpr_recipe_description' ) ){
-	/**
-	 * Outputs the rendered description
-	 * 
-	 * @since 0.8.0
-	 */
-	function the_rpr_recipe_description() {
-		echo get_the_rpr_recipe_description();
-	}
-}
+//if( !  function_exists( 'get_the_rpr_recipe_description' ) ){
+//	/**
+//	 * Renders the description. No output if description is empty.
+//	 * 
+//	 * @since 0.8.0
+//	 * @return string
+//	 */
+//	function get_the_rpr_recipe_description() {
+//		/**
+//		 *  Get the recipe id
+//		 */
+//		if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
+//			$recipe_id = $GLOBALS['recipe_id'];
+//		} else {
+//			$recipe_id = get_post()->ID;
+//		}
+//        $recipe = get_post_custom( $recipe_id );
+//		/**
+//		 *  Create an empty output string
+//		 */
+//		$out = '';
+//		
+//		/**
+//		 * Render the description only if it is not empty
+//		 */
+//		if( strlen( $recipe['rpr_recipe_description'][0] ) > 0 ) {
+//			$out .= '<div class="rpr_description" ';
+//			if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
+//				$out .= ' itemprop="description" >';
+//			} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
+//				$out .= ' property="description" >';
+//			} else {
+//				$out .= '>';
+//			}
+//                        $out .= sanitize_post_field( 'rpr_recipe_description', $recipe['rpr_recipe_description'][0], $recipe_id);
+//	//		$out .= apply_filters('the_content', $recipe['rpr_recipe_description'][0] );
+//			$out .= '</div>';
+//		}
+//		
+//		/**
+//		 * Return the rendered description
+//		 */
+//		return $out;
+//	}
+//}
+//
+//if( !  function_exists( 'the_rpr_recipe_description' ) ){
+//	/**
+//	 * Outputs the rendered description
+//	 * 
+//	 * @since 0.8.0
+//	 */
+//	function the_rpr_recipe_description() {
+//		echo get_the_rpr_recipe_description();
+//	}
+//}
 
 //if( !  function_exists( 'get_the_rpr_recipe_ingredients_headline' ) ){
 //	/**
@@ -2004,102 +2004,6 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //		echo get_the_rpr_recipe_image();
 //	}
 //}
-
-if( !function_exists( 'get_the_rpr_recipe_author' ) ) {
-	/**
-	 * Renders a link to the author. Only displays if set in the advanced 
-	 * options to fix the shortcomings of some themes.
-	 * 
-	 * @since 0.8.0
-	 * @todo: prefix, icons
-	 * @return string
-	 */
-	function get_the_rpr_recipe_author() {
-		/**
-		 *  Get the recipe id
-		 */
-		if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
-			$recipe_id = $GLOBALS['recipe_id'];
-		} else {
-			$recipe_id = get_post()->ID;
-		}
-		
-		/**
-		 *  Create an empty output string
-		 */
-		$out = '';
-		
-		/**
-		 * Recipe author only needs to be included if settings tell so
-		 */
-		if( AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_author' ), false ) ){
-			$out .= '<span class="rpr_author">' . get_the_author_link() . '</span>&nbsp;';
-		}
-		/**
-		 * return the renderd output
-		 */
-		return $out;
-	}
-}
-
-if( !function_exists( 'the_rpr_recipe_author' ) ) {
-	/**
-	 * Outputs the rendered author link
-	 * 
-	 * @since 0.8.0
-	 */
-	function the_rpr_recipe_author() {
-		echo get_the_rpr_recipe_author();
-	}
-}
-
-if( !function_exists( 'get_the_rpr_recipe_date' ) ) {
-	/**
-	 * Renders the published date. Only displays if set in the advanced 
-	 * options to fix the shortcomings of some themes.
-	 * 
-	 * @since 0.8.0
-	 * @todo: prefix, icons
-	 * @return string
-	 */
-	function get_the_rpr_recipe_date() {
-		/**
-		 *  Get the recipe id
-		 */
-		if( isset( $GLOBALS['recipe_id'] ) && $GLOBALS['recipe_id'] != '' ){
-			$recipe_id = $GLOBALS['recipe_id'];
-		} else {
-			$recipe_id = get_post()->ID;
-		}
-		
-		/**
-		 *  Create an empty output string
-		 */
-		$out = '';
-		
-		/**
-		 * Recipe date only needs to be included if settings tell so
-		 */
-		if( AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'display_date' ), false ) ){
-			$out .= '<span class="rpr_date">' . get_the_date( get_option( 'date_format') ) . '</span>';
-		}
-		/**
-		 * return the rendered output
-		 */
-		return $out;
-	}
-}
-
-if( !function_exists( 'the_rpr_recipe_date' ) ) {
-	/**
-	 * Outputs the rendered date
-	 * 
-	 * @since 0.8.0
-	 */
-	function the_rpr_recipe_date() {
-		echo get_the_rpr_recipe_date();
-	}
-}
 
 /* *****************************************************************************
  * Recipe source
