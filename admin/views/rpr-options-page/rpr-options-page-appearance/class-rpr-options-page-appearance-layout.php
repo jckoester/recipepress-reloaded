@@ -190,6 +190,7 @@ class RPR_Options_Page_Appearance_Layout {
         foreach( $this->layouts as $id => $meta ){
             
             if( $meta['local'] ){
+		$id = 'local_'.$id;    
                 $select[$id] = '[' . __( 'Local', 'recipepress-reloaded' ) . ']&nbsp;';
             } else {
                 $select[$id] = '[' . __( 'RPR', 'recipepress-reloaded' ) . ']&nbsp;';
