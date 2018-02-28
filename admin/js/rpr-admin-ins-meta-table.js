@@ -209,7 +209,7 @@ var ins_table = (function($){
      * @returns {undefined}
      */
     function _remove_instruction_image( button) {
-        var image = button.parent().siblings().find('.rpr_recipe_instructions_image');
+        var image = button.parent().siblings('.rpr_recipe_instructions_image');
         var preview = button.parent().siblings('.rpr_recipe_instructions_thumbnail');
         
         image.val('');
