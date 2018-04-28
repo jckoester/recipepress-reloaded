@@ -14,7 +14,7 @@ $icon_display     = AdminPageFramework::getOption( 'rpr_options', array( 'layout
 
 <div class="<?php echo sanitize_html_class( $printlink_class ); ?> rpr-recipe-container">
 <?php
-/** 
+/**
  * Displaying the recipe title is normally done by the theme as post_title().
  * However, if the recipe is embedded, we need to do it here.
  */
@@ -37,9 +37,9 @@ if (recipe_is_embedded() ){
   if( function_exists( 'the_recipe_print_link' ) ){
     the_recipe_print_link(); // Display the printlink if set to do so.
   }
-  
+
   /**
-  * I think it's always nice to have an overview of the taxonomies a recipe is 
+  * I think it's always nice to have an overview of the taxonomies a recipe is
   * filed under at the top:
   */
   the_rpr_taxonomy_list( $icon_display, true, '/' );
@@ -49,11 +49,11 @@ if (recipe_is_embedded() ){
 <div class="rpr-description-container">
   <?php
   /**
-  * Display a description / excerpt /summary / abstract of the recipe 
-  * if there is one 
+  * Display a description / excerpt /summary / abstract of the recipe
+  * if there is one
   * (this template tag should always be accessible)
   */
-  if(function_exists( 'the_recipe_description' ) && get_the_rpr_recipe_description() != null ){
+  if(function_exists( 'the_rpr_recipe_description' ) && get_the_rpr_recipe_description() != null ){
     the_rpr_recipe_description();
   }
   ?>
@@ -65,7 +65,7 @@ if (recipe_is_embedded() ){
     /**
     * Display source / citation information if available
     */
-    the_rpr_recipe_credit(); 
+    the_rpr_recipe_credit();
     ?>
   </div>
 <?php } ?>
@@ -79,7 +79,7 @@ if (recipe_is_embedded() ){
     the_rpr_recipe_nutrition();
     ?>
   </div>
-  
+
 <?php } ?>
 
 
@@ -148,16 +148,16 @@ if (recipe_is_embedded() ){
   </div>
 <?php } ?>
 
-</div>	
-<!-- 
+</div>
+<!--
 ________________________________________________________________________________
-THIS IS OLD STUFF															  || 
+THIS IS OLD STUFF															  ||
                                         \/
 -->
-  
+
 <!--<script>
   /**
-   * 
+   *
    * @todo: What is this needed for?
    */
 var rpr_pluginUrl = '<?php //echo $this->pluginUrl; ?>';

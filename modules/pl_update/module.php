@@ -8,7 +8,7 @@ class RPR_Module_PL_Update extends RPR_Module {
      * Load all files required for the module
      */
     public function load_module_dependencies() {
-      require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/helper-module-list.php';
+      require_once plugin_dir_path( dirname( dirname( __FILE__ ) ) ) . 'includes/helper-module-list.php';
       require_once dirname( __FILE__ ) . '/helper-update.php';
 
     }
@@ -75,7 +75,7 @@ class RPR_Module_PL_Update extends RPR_Module {
   		$new_options = get_option( 'rpr_options' );
 
   		// Get a list of modules and loop over them
-  		$modules = $this->get_modules_list();
+  		$modules = rpr_get_modules_list();
 
   		foreach( $modules as $module ){
   			// Add priority settingg

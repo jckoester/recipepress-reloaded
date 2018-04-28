@@ -11,6 +11,7 @@ class RPR_Module_SC_Include_Recipe extends RPR_Module {
      * Load all files required for the module
      */
     public function load_module_dependencies() {
+      require_once plugin_dir_path( dirname( dirname( __FILE__ ) ) ) . 'includes/helper-layout.php';
     }
 
     /**
@@ -36,7 +37,7 @@ class RPR_Module_SC_Include_Recipe extends RPR_Module {
      */
     public function define_module_public_hooks( $loader ){
         if( is_a( $loader, 'RPR_Loader' ) ){
-            //echo "Got a valid loader";
+            add_shortcode( 'rpr-recipe', array( $this, 'do_recipe_shortcode' ) );
         }
     }
 
@@ -129,6 +130,70 @@ class RPR_Module_SC_Include_Recipe extends RPR_Module {
 
   		wp_send_json($json);
   		die();
+  	}
+
+    /**
+  	 * Render an embedded recipe by evaluating the rpr-recipe shortcode
+  	 *
+  	 * @since 0.8.0
+  	 * @param mixed $options
+  	 * @return string
+  	 */
+  	public function do_recipe_shortcode( $options ) {
+  		/**
+  		 * Set default values for options not set explicityly
+  		 */
+  		$options = shortcode_atts(array(
+              'id' => 'n/a',
+              'excerpt' => 0,
+          ), $options);
+
+  		/**
+  		 * Define variable for the post object
+  		 */
+          $recipe_post = null;
+
+
+          if ($options['id'] != 'n/a') {
+  			/**
+  			 * Get random post
+  			 */
+              if( $options['id'] == 'random' ) {
+
+                  $posts = get_posts(array(
+                      'post_type' => 'rpr_recipe',
+                      'nopaging' => true
+                  ));
+
+                  $recipe_post = $posts[array_rand($posts)];
+  			/**
+  			 * Get post by id
+  			 */
+              } else {
+                  $recipe_post = get_post( intval($options['id'] ) );
+              }
+
+
+  			if(!is_null( $recipe_post ) && $recipe_post->post_type === 'rpr_recipe' ) {
+  				$recipe = get_post_custom($recipe_post->ID);
+                                  $GLOBALS['recipe_id'] = $recipe_post->ID;
+
+              //$taxonomies = get_option('rpr_taxonomies', array());
+
+
+  			if( $options['excerpt'] == 0 ){
+  				// Embed complete recipe
+  				$output = rpr_render_recipe_content( $recipe_post );
+  			} elseif( $options['excerpt']== 1 ){
+  				// Embed excerpt only
+  				$output =  rpr_render_recipe_excerpt( $recipe_post );
+  			}
+          } else {
+              $output = '';
+          }
+
+          return do_shortcode($output);
+          }
   	}
 
 }

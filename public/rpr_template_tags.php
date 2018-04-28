@@ -2,15 +2,15 @@
 
 /**
  * The template tags for recipepress-reloaded
- * 
+ *
  * @link       http://tech.cbjck.de/wp/rpr
  * @since      0.8.0
  *
  * @package    recipepress-reloaded
  * @subpackage recipepress-reloaded/public
  *
- * Template tags are building blogs for templates and layouts. 
- * Small snippets that layout a specific piece of information like date, author, 
+ * Template tags are building blogs for templates and layouts.
+ * Small snippets that layout a specific piece of information like date, author,
  * categories, ingredient list and so on.
  * These template tags can be used to make layouting easier. However it's always
  * possible to do the rendering of informatopn from scratch in any layout file.
@@ -23,9 +23,9 @@
  * Save the recipe id to a global variable so the template tags can access it
  * This is necessary to get the correct id especially for embedded recipes
  */
-if( $recipe_post && $recipe_post->ID ){
+/*if( $recipe_post && $recipe_post->ID ){
 	$GLOBALS['recipe_id'] = $recipe_post->ID;
-}
+}*/
 
 /**
  * Get the id of the current recipe id
@@ -49,7 +49,7 @@ if( !function_exists( 'get_recipe_id' ) ){
 if( !function_exists( 'get_the_rpr_taxonomy_headline' ) ) {
 	/**
 	 * Render the headline for a given taxonomy
-	 * 
+	 *
 	 * @since 0.8.0
 	 * @param string $taxonomy
 	 * @param string $icons
@@ -64,19 +64,19 @@ if( !function_exists( 'get_the_rpr_taxonomy_headline' ) ) {
 		} else {
 			$recipe_id = get_post()->ID;
 		}
-        
+
 		/**
 		 * Get the taxonomy
 		 */
 		$tax = get_taxonomy( $taxonomy );
-				
+
 		/**
 		 *  Create an empty output string
 		 */
 		$out = '';
-		
+
 		/**
-		 * Add a third level heading for embedded recipes or a second level 
+		 * Add a third level heading for embedded recipes or a second level
 		 * heading for a standalone recipe
 		 */
 		if( recipe_is_embedded() ){
@@ -84,7 +84,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_headline' ) ) {
 		}else{
 			$out .= '<h2>';
 		}
-		
+
 		/**
 		 * Add icon if desired
 		 */
@@ -101,9 +101,9 @@ if( !function_exists( 'get_the_rpr_taxonomy_headline' ) ) {
         } else {
         	$prefix = $tax->labels->name . ': ';
 		}
-		
+
 		$out .= $tax->labels->name;
-		
+
 		if( recipe_is_embedded() ){
 			$out .= '</h3>';
 		}else{
@@ -118,7 +118,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_headline' ) ) {
 if( !function_exists( 'the_rpr_taxonomy_headline' ) ) {
 	/**
 	 * Outputs the headline rendered above
-	 * 
+	 *
 	 * @since 0.8.0
 	 * @param type $taxonomy
 	 * @param type $icons
@@ -132,9 +132,9 @@ if( !function_exists( 'the_rpr_taxonomy_headline' ) ) {
 if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
 	/**
 	 * Does the actual rendering of the taxonomy bar
-	 * 
+	 *
 	 * @since 0.8.0
-	 * 
+	 *
 	 * @param string $taxonomy
 	 * @param boolean $icons
 	 * @param string $sep
@@ -149,20 +149,20 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
 		} else {
 			$recipe_id = get_post()->ID;
 		}
-    	
+
 		/*
 		 *  Create an empty output string
 		 */
 		$out = '';
-		
+
 		$terms = get_the_term_list( $recipe_id, $taxonomy, '', __( $sep, 'recipepress-reloaded' ), '' );
 		$tax = get_taxonomy( $taxonomy );
-		
+
 		/*
 		 *  Get the index of the tax_custom array:
 		 */
 		$optkey = get_opt_tax_custom_id( $taxonomy );
-		
+
 		/*
 		 *  Add icons if set so:
 		 */
@@ -179,9 +179,9 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
         } elseif( $label && $tax ) {
         	$prefix = $tax->labels->name . ': ';
 		} else {
-			$prefix = ""; 
+			$prefix = "";
 		}
-		
+
 		/*
 		 *  Get the structured data property:
 		 */
@@ -192,7 +192,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
 		} else{
 			$property_id = esc_html( AdminPageFramework::getOption( 'rpr_options', array( 'tax_custom', $optkey, 'property_id' ), '' ) );
 		}
-		
+
 		/*
 		 *  Render the structured data property string
 		 */
@@ -204,7 +204,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
 				$struct = 'property="' . esc_html( $property_id ) . '"';
 			}
 		}
-		
+
 		/*
 		 *  Only display the term list if we have terms assigned to the recipe:
 		 */
@@ -217,7 +217,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
                     );
 				$out .= '&nbsp;';
 		}
-		
+
 		/*
 		 *  return the rendered output
 		 */
@@ -228,9 +228,9 @@ if( !function_exists( 'get_the_rpr_taxonomy_terms' ) ) {
 if ( !function_exists( 'the_rpr_taxonomy_terms' ) ) {
     /**
      * Outputs the rendered taxonomy bar
-     * 
+     *
      * @since 0.8.0
-     * 
+     *
      * @param string $taxonomy
      * @param boolean $icons
      * @param string $sep
@@ -244,20 +244,20 @@ if ( !function_exists( 'the_rpr_taxonomy_terms' ) ) {
 if( !function_exists( 'get_the_rpr_taxonomy_list' ) ) {
 	/**
 	 * Does the actual rendering of the taxonomy bar
-	 * 
+	 *
 	 * @since 0.8.0
-	 * 
+	 *
 	 * @param boolean $icons
 	 * @param string $sep
-	 * @param boolean $term set to true to enforce inclusion of terms (if active) 
+	 * @param boolean $term set to true to enforce inclusion of terms (if active)
 	 * @return string $out rendered ouptut
 	 */
 	function get_the_rpr_taxonomy_list( $icons=false, $label=false, $sep='&nbsp;/&nsbp;', $tags = false ) {
 		/*
-		 *  Define the output string 
+		 *  Define the output string
 		 */
         $out = "";
-		
+
 		/*
 		 *  include categories to the taxonomy bar, if used:
 		 */
@@ -291,7 +291,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_list' ) ) {
 				$out .= '</div>';
 			}
 		}
-		
+
 		/*
 		 *  Add the custom taxonomies
 		 */
@@ -300,7 +300,7 @@ if( !function_exists( 'get_the_rpr_taxonomy_list' ) ) {
 			$out .= get_the_rpr_taxonomy_terms($taxonomy['slug'], $icons, $label, $sep);
                     }
 		}
-		
+
 		/*
 		 *  return the rendered output
 		 */
@@ -310,12 +310,12 @@ if( !function_exists( 'get_the_rpr_taxonomy_list' ) ) {
 if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 	/**
 	 * Outputs the rendered taxonomy bar
-	 * 
+	 *
 	 * @since 0.8.0
-	 * 
+	 *
 	 * @param boolean $icons
 	 * @param string $sep
-	 * @param boolean $term set to true to enforce inclusion of terms (if active) 
+	 * @param boolean $term set to true to enforce inclusion of terms (if active)
 	 */
     function the_rpr_taxonomy_list( $icons=false, $label=false, $sep='&nbsp;/&nbsp;', $tags=false ){
         echo get_the_rpr_taxonomy_list( $icons, $label, $sep, $tags );
@@ -328,9 +328,9 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !function_exists( 'get_the_rpr_structured_data_header' ) ){
 //	/**
 //	 * Structured data help search engines to recognize the type and content
-//	 * of posts. This tag inserts the appropriate header depending which of the 
+//	 * of posts. This tag inserts the appropriate header depending which of the
 //	 * three strcutured data types by http://schema.org is set in the options
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @return string
 //	 */
@@ -344,12 +344,12 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			$recipe_id = get_post()->ID;
 //		}
 //		$recipe = get_post_custom( $recipe_id );
-//    	
+//
 //		/**
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		/**
 //		 * Start the recipe output according to the structured data model
 //		 * Some data as Title, image, ... are rendered by the theme but need
@@ -359,7 +359,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			$out .= '<div itemscope itemtype="http://schema.org/Recipe">';
 //			$out .= '<span class="rpr_title rpr-hidden" itemprop="name">' . get_the_title( $recipe_id ) . '</span>';
 //			$out .= '<span class="rpr_author rpr-hidden" itemprop="author">' . get_the_author() . '</span>';
-//			$out .= '<span class="rpr_date rpr-hidden" itemprop="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
+//			$out .= '<span class="rpr_date rpr-hidden" itemprop="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' .
 //				get_the_time( get_option('date_format') ) . '</span>';
 //			// Number of comments
 //			if( get_comments_number() > 0 ){
@@ -373,12 +373,12 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //				$out .= '<img src="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail') .'" itemprop="image" class="rpr-hidden" />';
 //				$out .= '<link itemprop="thumbnailUrl" href="' . get_the_post_thumbnail_url( $recipe_id, 'thumbnail' ) . '" />';
 //			}
-//			
+//
 //		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ) {
 //			$out .= '<div vocab="http://schema.org/" typeof="Recipe">';
 //			$out .= '<span class="rpr_title rpr-hidden" property="name">' . get_the_title( $recipe_id ) . '</span>';
 //			$out .= '<span class="rpr_author rpr-hidden" property="author">' . get_the_author() . '</span>';
-//			$out .= '<meta class="rpr_date rpr-hidden" property="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' . 
+//			$out .= '<meta class="rpr_date rpr-hidden" property="datePublished" content="' . get_the_time( 'Y-m-d' ) . '">' .
 //				get_the_time( get_option('date_format') ) . '</meta>';
 //			// Number of comments
 //			if( get_comments_number() > 0 ){
@@ -426,7 +426,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			if( isset( $recipe['rpr_recipe_ingredients'][0] ) && count( $recipe['rpr_recipe_ingredients'][0] ) > 0 ) {
 //				$out .= '"recipeIngredient": [';
 //				$ingredients = unserialize( $recipe['rpr_recipe_ingredients'][0] );
-//				
+//
 //				foreach( $ingredients as $ingredient ){
 //					if( !isset( $ingredient['grouptitle'] ) ){
 //						if( isset( $ingredient['ingredient_id'] ) ){
@@ -448,7 +448,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			// Instructions
 //			if( isset( $recipe['rpr_recipe_instructions'][0] ) && count( $recipe['rpr_recipe_instructions'][0] ) > 0 ) {
 //				$instructions = unserialize( $recipe['rpr_recipe_instructions'][0] );
-//				
+//
 //				$out .= '"recipeInstructions": "';
 //				foreach( $instructions as $instruction ){
 //					if( !isset( $instruction['grouptitle'] ) ){
@@ -465,7 +465,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) >= 0 ) {
 //				$out .= '"nutrition": {';
 //				$out .= '"@type": "NutritionInformation",';
-//				
+//
 //				if( isset( $recipe['rpr_recipe_calorific_value'][0] ) ){
 //					$out .= '"calories": "' . esc_html( $recipe['rpr_recipe_calorific_value'][0] ) . '",';
 //				}
@@ -542,7 +542,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !function_exists( 'the_rpr_structured_data_header') ) {
 //	/**
 //	 * Outputs the structured data header from above
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 */
 //	function the_rpr_structured_data_header() {
@@ -554,7 +554,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //	/**
 //	 * Defines a proper closing for the structured data header defined above
 //	 * telling search engines the end of the recipe.
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @return string
 //	 */
@@ -563,10 +563,10 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
-//		
+//
+//
 //		/**
-//		 * Close the recipe structure properly according to the structured 
+//		 * Close the recipe structure properly according to the structured
 //		 * data format
 //		 */
 //		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'microdata' ){
@@ -584,7 +584,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !function_exists( 'the_rpr_structured_data_footer') ) {
 //	/**
 //	 * Outputs the structured data footer from above
-//	 * 
+//	 *
 //	 * @sonce 0.8.0
 //	 */
 //	function the_rpr_structured_data_footer() {
@@ -598,7 +598,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'get_the_rpr_recipe_description' ) ){
 //	/**
 //	 * Renders the description. No output if description is empty.
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @return string
 //	 */
@@ -616,7 +616,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		/**
 //		 * Render the description only if it is not empty
 //		 */
@@ -633,7 +633,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //	//		$out .= apply_filters('the_content', $recipe['rpr_recipe_description'][0] );
 //			$out .= '</div>';
 //		}
-//		
+//
 //		/**
 //		 * Return the rendered description
 //		 */
@@ -644,7 +644,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'the_rpr_recipe_description' ) ){
 //	/**
 //	 * Outputs the rendered description
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 */
 //	function the_rpr_recipe_description() {
@@ -655,9 +655,9 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'get_the_rpr_recipe_ingredients_headline' ) ){
 //	/**
 //	 * Renders the headline for ingredient list.
-//	 * Icons are optional, headline level depends on embedded or standalone 
+//	 * Icons are optional, headline level depends on embedded or standalone
 //	 * recipe
-//	 * 
+//	 *
 //	 * @param boolean $icons
 //	 * @return string
 //	 */
@@ -666,9 +666,9 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		/**
-//		 * Add a third level heading for embedded recipes or a second level 
+//		 * Add a third level heading for embedded recipes or a second level
 //		 * heading for a standalone recipe
 //		 */
 //		if( recipe_is_embedded() ){
@@ -676,16 +676,16 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		}else{
 //			$out .= '<h2>';
 //		}
-//		
+//
 //		/**
 //		 * Add icon if desired
 //		 */
 //		if( $icons ){
 //			$out .= '<i class="' . esc_attr( AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'icon_class' ), 'fa fa-shopping-cart' ) ) . '"></i>&nbsp;';
 //		}
-//		
+//
 //		$out .= __( 'Ingredients', 'recipepress-reloaded' );
-//		
+//
 //		if( recipe_is_embedded() ){
 //			$out .= '</h3>';
 //		}else{
@@ -701,7 +701,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'the_rpr_recipe_ingredients_headline' ) ){
 //	/**
 //	 * Outputs the rendered headline
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param boolean $icons
 //	 */
@@ -713,7 +713,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'get_the_rpr_recipe_ingredients' ) ){
 //	/**
 //	 * Renders the ingredient list
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param boolean $icons
 //	 * @return string
@@ -733,12 +733,12 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		/**
 //		 *  Get the ingredients:
 //		 */
 //		$ingredients = unserialize( $recipe['rpr_recipe_ingredients'][0] );
-//		
+//
 //		if( count( $ingredients ) > 0 ) {
 //			/**
 //			* Loop over all the ingredients
@@ -779,7 +779,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			}
 //		   /**
 //             * Close the list on the last item
-//             */	
+//             */
 //            $out .= '</ul>';
 //		} else {
 //			/**
@@ -787,8 +787,8 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			 */
 //			$out .= '<p class="warning">' . __( 'No ingredients could be found for this recipe.', 'recipepress-reloaded' ) . '</p>';
 //		}
-//		
-//		
+//
+//
 //		/**
 //		 * Return the rendered ingredient list
 //		 */
@@ -798,7 +798,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'rpr_render_ingredient_grouptitle' ) ){
 //	/**
 //	 * Renders the ingredient group headline
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param array $ingredient
 //	 * @return string
@@ -808,10 +808,10 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		if( $ingredient['sort'] === 0 ){
 //			/**
-//			 * Do not close the ingredient list of the previous group if this is 
+//			 * Do not close the ingredient list of the previous group if this is
 //			 * the first group
 //			*/
 //		} else {
@@ -820,7 +820,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			 */
 //			$out .= '</ul>';
 //		}
-//		
+//
 //		/**
 //		 * Create the headline for the ingredient group
 //		 */
@@ -835,12 +835,12 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			 */
 //			$out .= '<h3 class="rpr-ingredient-group-title">' . esc_html( $ingredient['grouptitle'] ) . '</h3>';
 //		}
-//		
-//		/** 
+//
+//		/**
 //		 * Start the list for this ingredient group
 //		 */
 //		$out .= '<ul class="rpr-ingredient-list">';
-//		
+//
 //		/**
 //		 * Return the rendered output
 //		 */
@@ -851,7 +851,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'rpr_render_ingredient_line' ) ){
 //	/**
 //	 * Render the actual ingredient line
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param array $ingredient
 //	 * @return string
@@ -865,17 +865,17 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		} else {
 //			$term = get_term_by( 'name', $ingredient['ingredient'], 'rpr_ingredient' );
 //		}
-//                		
+//
 //		/**
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		/**
 //		 * Start the line
 //		 */
 //		$out .= '<li class="rpr-ingredient">';
-//		
+//
 //		/**
 //		 * Add the structured data properties
 //		 */
@@ -884,17 +884,17 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		} elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
 //			$out .= '<span property="recipeIngredient" >';
 //		}
-//			
+//
 //		/**
 //		 * Render amount
 //		 */
 //		$out .= '<span class="recipe-ingredient-quantity">' . esc_html( $ingredient['amount'] ) . '</span> ';
-//		
+//
 //		/**
 //		 * Render the unit
 //		 */
 //		$out .= '<span class="recipe-ingredient-unit">' . esc_html( $ingredient['unit'] ) . '</span> ';
-//	
+//
 //		/**
 //		 * Render the ingredient link according to the settings
 //		 */
@@ -919,9 +919,9 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			} else {
 //				$out .= '<a href="' . get_term_link( $term->slug, 'rpr_ingredient' ) . '">';
 //			}
-//			
+//
 //			$closing_tag ='</a>';
-//		} else{ 
+//		} else{
 //			/**
 //			 * Set custom link if available, no link if not
 //			 */
@@ -932,7 +932,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //				$closing_tag = '';
 //			}
 //		}
-//		
+//
 //		/**
 //		 * Render the ingredient name
 //		 */
@@ -951,9 +951,9 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			 */
 //			$out .= '<span name="rpr-ingredient-name" >' . $term->name . '</span>';
 //		}
-//		
+//
 //		$out .= $closing_tag;
-//	
+//
 //		/**
 //		 * Render the ingredient note
 //		 */
@@ -981,21 +981,21 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //				$closing_tag = '';
 //			}
 //			$out .= esc_html( $ingredient['notes'] ) . $closing_tag . '</span>';
-//			
+//
 //		}
-//		
+//
 //		/**
 //		 * End the structured data span
 //		 */
 //		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) != 'json-ld' ){
 //			$out .= '</span>';
 //		}
-//		
+//
 //		/**
 //		 * End the line
 //		 */
 //		$out .= '</li>';
-//		
+//
 //		/**
 //		 * Return the rendered output
 //		 */
@@ -1005,7 +1005,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'the_rpr_recipe_ingredients' ) ){
 //	/**
 //	 * Outputs the ingredient list rendered above
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param boolean $icons
 //	 */
@@ -1018,9 +1018,9 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !function_exists( 'get_the_rpr_recipe_instructions_headline' ) ){
 //	/**
 //	 * Renders the headline for instruction list.
-//	 * Icons are optional, headline level depends on embedded or standalone 
+//	 * Icons are optional, headline level depends on embedded or standalone
 //	 * recipe
-//	 * 
+//	 *
 //	 * @param boolean $icons
 //	 * @return string
 //	 */
@@ -1029,9 +1029,9 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		/**
-//		 * Add a third level heading for embedded recipes or a second level 
+//		 * Add a third level heading for embedded recipes or a second level
 //		 * heading for a standalone recipe
 //		 */
 //		if( recipe_is_embedded() ){
@@ -1039,7 +1039,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		}else{
 //			$out .= '<h2>';
 //		}
-//		
+//
 //		/**
 //		 * Add icon if desired
 //		 */
@@ -1050,9 +1050,9 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			$out .= '<i class="fa fa-cogs"></i>&nbsp;';
 //			//$out .= '<i class="' . AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'icon_class' ), 'fa fa-shoppingcart' ) . '"></i>&nbsp;';
 //		}
-//		
+//
 //		$out .= __( 'Instructions', 'recipepress-reloaded' );
-//		
+//
 //		if( recipe_is_embedded() ){
 //			$out .= '</h3>';
 //		}else{
@@ -1068,7 +1068,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'the_rpr_recipe_instructions_headline' ) ){
 //	/**
 //	 * Outputs the rendered headline
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param boolean $icons
 //	 */
@@ -1080,7 +1080,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'get_the_rpr_recipe_instructions' ) ){
 //    /**
 //     * Render the instructions list
-//     * 
+//     *
 //     * @since 0.8.0
 //     * @return string
 //     */
@@ -1104,7 +1104,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //         *  Get the instructions:
 //         */
 //        $instructions = unserialize( $recipe['rpr_recipe_instructions'][0] );
-//		
+//
 //        if( count( $instructions ) > 0 ) {
 //            /**
 //             * Add the structured data tag
@@ -1114,7 +1114,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //            } elseif( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) === 'rdfa' ){
 //                $out .= '<span property="recipeInstructions" >';
 //            }
-//            
+//
 //            /**
 //             * Loop over all the ingredients
 //            */
@@ -1124,7 +1124,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //					/**
 //					 * Check if the ingredient is a grouptitle
 //					 */
-//					if( isset( $instruction['grouptitle'] ) ){		   
+//					if( isset( $instruction['grouptitle'] ) ){
 //						/**
 //						 * Render the grouptitle
 //						 */
@@ -1148,24 +1148,24 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			}
 //            /**
 //             * Close the list on the last item
-//             */	
+//             */
 //            $out .= '</ol>';
-//		   
+//
 //            /**
 //             * Close the structured data tag
 //             */
 //            if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'structured_data_format' ), 'microdata' ) != 'json-ld' ){
 //                $out .= '</span>';
-//            }	   
+//            }
 //        } else {
 //            /**
 //             * Issue a warning, if there are no instructions for the recipe
 //             */
 //            $out .= '<p class="warning">' . __( 'No instructions could be found for this recipe.', 'recipepress-reloaded' ) . '</p>';
 //        }
-//        
+//
 //        $out .= '</div>';
-//		
+//
 //        /**
 //        * Return the rendered instructions list
 //        */
@@ -1176,7 +1176,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'rpr_render_instruction_grouptitle' ) ){
 //    /**
 //     * Render the grouptitle for a instruction group
-//     * 
+//     *
 //     * @since 0.8.0
 //     * @param array $instruction
 //     * @return string
@@ -1186,10 +1186,10 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //         *  Create an empty output string
 //         */
 //        $out = '';
-//		
+//
 //        if( $instruction['sort'] == 0 ){
 //            /**
-//            * Do not close the instruction list of the previous group if this is 
+//            * Do not close the instruction list of the previous group if this is
 //            * the first group
 //            */
 //        } else {
@@ -1198,7 +1198,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //             */
 //            $out .= '</ol>';
 //        }
-//	
+//
 //        /**
 //         * Create the headline for the instruction group
 //         */
@@ -1213,12 +1213,12 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //             */
 //            $out .= '<h3 class="rpr-instruction-group-title">' . esc_html( $instruction['grouptitle'] ) . '</h3>';
 //        }
-//		
-//        /** 
+//
+//        /**
 //         * Start the list for this ingredient group
 //         */
 //        $out .= '<ol class="rpr-instruction-list">';
-//		
+//
 //        /**
 //         * Return the rendered output
 //         */
@@ -1229,7 +1229,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'rpr_render_instruction_block' ) ){
 //    /**
 //     * Render an instruction block
-//     * 
+//     *
 //     * @since 0.8.0
 //     * @param type $instruction
 //     * @return string
@@ -1239,27 +1239,27 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //         *  Create an empty output string
 //         */
 //        $out = '';
-//		
+//
 //        /**
 //         * Start the line
 //         */
 //        $out .= '<li class="rpr-instruction">';
-//		
-//        /** 
+//
+//        /**
 //         * Determine the class for the instruction text depending on image options
 //         */
 //        if( isset( $instruction['image'] ) && $instruction['image'] != '' ){
 //            $instr_class = " has_thumbnail";
-//            $instr_class .= ' ' . esc_attr( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_instr_pos' ), 'right' ) ); 
+//            $instr_class .= ' ' . esc_attr( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_instr_pos' ), 'right' ) );
 //        } else {
 //            $instr_class = "";
 //        }
-//		
+//
 //        /**
 //         * Render the instruction text
 //         */
 //        $out .= '<span class="rpr-recipe-instruction-text' . $instr_class . '">' . esc_html( $instruction['description'] ) . '</span>' ;
-//		
+//
 //        /**
 //         * Render the instruction step image
 //         */
@@ -1287,7 +1287,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //            $out .= '<img class="';
 //            $out .= esc_attr( AdminPageFramework::getOption( 'rpr_options', array( 'layout_general', 'images_instr_pos' ), 'right' ) );
 //            $out .= '" src="' . esc_url( $img[0] ) . '" width="'. esc_attr( $img[1] ) .'" height="'. esc_attr( $img[2] ) .'" />';
-//			
+//
 //            /**
 //             * Close the link for clickable images
 //             */
@@ -1295,12 +1295,12 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //                $out .= '</a>';
 //            }
 //        }
-//		
+//
 //        /**
 //         * End the line
 //         */
 //        $out .= '</li>';
-//		
+//
 //        /**
 //         * Return the rendered output
 //         */
@@ -1317,9 +1317,9 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'get_the_rpr_recipe_notes_headline' ) ){
 //	/**
 //	 * Renders the headline for notes.
-//	 * Icons are optional, headline level depends on embedded or standalone 
+//	 * Icons are optional, headline level depends on embedded or standalone
 //	 * recipe
-//	 * 
+//	 *
 //	 * @param boolean $icons
 //	 * @return string
 //	 */
@@ -1334,7 +1334,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		}
 //
 //		$recipe = get_post_custom( $recipe_id );
-//		
+//
 //		/**
 //		 * Exit if recipe has no notes:
 //		 * isset returns true with empty strings, also check if notes is empty
@@ -1342,14 +1342,14 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		if( isset( $recipe['rpr_recipe_notes'][0] ) && empty( $recipe['rpr_recipe_notes'][0] ) ) {
 //			return;
 //		}
-//		
+//
 //		/**
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		/**
-//		 * Add a third level heading for embedded recipes or a second level 
+//		 * Add a third level heading for embedded recipes or a second level
 //		 * heading for a standalone recipe
 //		 */
 //		if( recipe_is_embedded() ){
@@ -1357,7 +1357,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		}else{
 //			$out .= '<h2>';
 //		}
-//		
+//
 //		/**
 //		 * Add icon if desired
 //		 */
@@ -1368,9 +1368,9 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			$out .= '<i class="fa fa-paperclip"></i>&nbsp;';
 //			//$out .= '<i class="' . AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'icon_class' ), 'fa fa-shoppingcart' ) . '"></i>&nbsp;';
 //		}
-//		
+//
 //		$out .= __( 'Notes', 'recipepress-reloaded' );
-//		
+//
 //		if( recipe_is_embedded() ){
 //			$out .= '</h3>';
 //		}else{
@@ -1386,7 +1386,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'the_rpr_recipe_notes_headline' ) ){
 //	/**
 //	 * Outputs the rendered headline
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param boolean $icons
 //	 */
@@ -1398,7 +1398,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'get_the_rpr_recipe_notes' ) ){
 //	/**
 //	 * Renders the notes. No output if no notes saved.
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @return string
 //	 */
@@ -1426,7 +1426,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		/**
 //		 * Render the notes only if it is not empty
 //		 */
@@ -1435,7 +1435,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			$out .= apply_filters('the_content', $recipe['rpr_recipe_notes'][0] );
 //			$out .= '</span>';
 //		}
-//		
+//
 //		/**
 //		 * Return the rendered description
 //		 */
@@ -1446,7 +1446,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !  function_exists( 'the_rpr_recipe_notes' ) ){
 //	/**
 //	 * Outputs the rendered notes
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 */
 //	function the_rpr_recipe_notes() {
@@ -1462,7 +1462,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !function_exists( 'get_the_rpr_recipe_servings' ) ){
 //	/**
 //	 * Renders the serving size information
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param boolean $icons
 //	 * @return string
@@ -1489,8 +1489,8 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
-//				
+//
+//
 //		/**
 //		 * Add servings in the correct structured data format
 //		 */
@@ -1501,8 +1501,8 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		} else {
 //			$out .= '<div class="rpr_servings">';
 //		}
-//		
-//		/** 
+//
+//		/**
 //		 * Add icon if set to do so:
 //		 */
 //		if( $icons ) {
@@ -1514,10 +1514,10 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			$out .= __( 'For:' , 'recipepress-reloaded' );
 //			$out .= '&nbsp;';
 //		}
-//		
+//
 //		$out .= '<span class="rpr_servings" >' . esc_html( $recipe['rpr_recipe_servings'][0] ) . '</span>&nbsp;';
 //		$out .= '<span class="rpr_servings_type" >' . esc_html( $recipe['rpr_recipe_servings_type'][0] ) . '</span>';
-//		
+//
 //		$out .= '</div>';
 //		/**
 //		 * Return the rendered servings data
@@ -1528,7 +1528,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !function_exists( 'the_rpr_recipe_servings' ) ){
 //	/**
 //	 * Outputs the servings rendered above
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param boolean $icons
 //	 */
@@ -1543,7 +1543,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !function_exists( 'get_the_rpr_recipe_nutrition_headline' ) ) {
 //	/**
 //	 * Render the headline for the recipe times
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param boolean $icons
 //	 * @return string
@@ -1553,9 +1553,9 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		/**
-//		 * Add a third level heading for embedded recipes or a second level 
+//		 * Add a third level heading for embedded recipes or a second level
 //		 * heading for a standalone recipe
 //		 */
 //		if( recipe_is_embedded() ){
@@ -1563,16 +1563,16 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		}else{
 //			$out .= '<h2>';
 //		}
-//		
+//
 //		/**
 //		 * Add icon if desired
 //		 */
 //		if( $icons ){
 //            $out .= '<i class="fa fa-fire" title=' . __( 'Nutritional data', 'recipepress-reloaded' ) . '></i> ';
 //		}
-//		
+//
 //		$out .= __( 'Nutritional data', 'recipepress-reloaded' );
-//		
+//
 //		if( recipe_is_embedded() ){
 //			$out .= '</h3>';
 //		}else{
@@ -1587,7 +1587,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !function_exists( 'the_rpr_recipe_nutrition_headline' ) ) {
 //	/**
 //	 * Outputs the headline rendered above
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param boolean $icons
 //	 */
@@ -1600,10 +1600,10 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !function_exists( 'get_the_rpr_recipe_nutrition' ) ){
 //	/**
 //	 * Renders the nutritional information
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @todo: Add icons if desired by option
-//	 * 
+//	 *
 //	 * @param boolean $icons
 //	 * @return string
 //	 */
@@ -1619,20 +1619,20 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //        $recipe = get_post_custom( $recipe_id );
 //
 //		/**
-//		 * Return if no nutritional data are saved or nutritional data is not 
+//		 * Return if no nutritional data are saved or nutritional data is not
 //		 * enabled
 //		 */
 //		if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data' ), false ) === false ||
 //			( $recipe['rpr_recipe_calorific_value'][0] + $recipe['rpr_recipe_fat'][0] +  $recipe['rpr_recipe_protein'][0] +  $recipe['rpr_recipe_carbohydrate'][0] ) <= 0 ) {
 //			return;
 //		}
-//		
+//
 //		/**
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
-//				
+//
+//
 //		/**
 //		 * Add nutritional data in the correct structured data format
 //		 */
@@ -1679,7 +1679,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			$struct_tran = '';
 //			$struct_unsa = '';
 //		}
-//		
+//
 //		switch( $recipe['rpr_recipe_nutrition_per'][0] ) {
 //			case 'per_100g':
 //				$out .= __('Per 100g', 'recipepress-reloaded' );
@@ -1693,11 +1693,11 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //			default:
 //				$out .= __('Per 100g', 'recipepress-reloaded' );
 //		}
-//		
+//
 //		$out .= '</span>';
-//		
+//
 //		$out .= '<dl>';
-//		
+//
 //		/**
 //		 * These are only the basic nutritional data as of rpr v0.8
 //		 * to be extended in the future to acomplete set of nutritional data
@@ -1715,10 +1715,10 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //		if( isset( $recipe['rpr_recipe_carbohydrate'][0] ) ){
 //			$out .= sprintf( '<dt>' . __( 'Carbohydrate:', 'recipepress-reloaded' ) . '</dt><dd ' . $struct_carb . '>%s g</dd>', esc_html( $recipe['rpr_recipe_carbohydrate'][0] ) );
 //		}
-//		
+//
 //		$out .= '</dl>';
 //		$out .= '</div>';
-//		
+//
 //		/**
 //		 * Return the rendered servings data
 //		 */
@@ -1728,7 +1728,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 //if( !function_exists( 'the_rpr_recipe_nutrition' ) ){
 //	/**
 //	 * Outputs the nutritional data rendered above
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param boolean $icons
 //	 */
@@ -1740,7 +1740,7 @@ if ( !function_exists( 'the_rpr_taxonomy_list' ) ) {
 if( !function_exists( 'get_the_rpr_recipe_times_headline' ) ) {
 	/**
 	 * Render the headline for the recipe times
-	 * 
+	 *
 	 * @since 0.8.0
 	 * @param boolean $icons
 	 * @return string
@@ -1750,9 +1750,9 @@ if( !function_exists( 'get_the_rpr_recipe_times_headline' ) ) {
 		 *  Create an empty output string
 		 */
 		$out = '';
-		
+
 		/**
-		 * Add a third level heading for embedded recipes or a second level 
+		 * Add a third level heading for embedded recipes or a second level
 		 * heading for a standalone recipe
 		 */
 		if( recipe_is_embedded() ){
@@ -1760,16 +1760,16 @@ if( !function_exists( 'get_the_rpr_recipe_times_headline' ) ) {
 		}else{
 			$out .= '<h2>';
 		}
-		
+
 		/**
 		 * Add icon if desired
 		 */
 		if( $icons ){
             $out .= '<i class="fa fa-clock-o" title=' . __( 'Time', 'recipepress-reloaded' ) . '></i> ';
 		}
-		
+
 		$out .= __( 'Time', 'recipepress-reloaded' );
-		
+
 		if( recipe_is_embedded() ){
 			$out .= '</h3>';
 		}else{
@@ -1784,7 +1784,7 @@ if( !function_exists( 'get_the_rpr_recipe_times_headline' ) ) {
 if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 	/**
 	 * Outputs the headline rendered above
-	 * 
+	 *
 	 * @since 0.8.0
 	 * @param boolean $icons
 	 */
@@ -1796,9 +1796,9 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //if( !function_exists( 'get_the_rpr_recipe_times' ) ){
 //	/**
 //	 * Renders the cook, prep and total time
-//	 * 
+//	 *
 //	 * @since 0.8.0
-//	 * 
+//	 *
 //	 * @param boolean $icons
 //	 * @return string
 //	 */
@@ -1814,7 +1814,7 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //        $recipe = get_post_custom( $recipe_id );
 //
 //		/**
-//		 * Fix empty times 
+//		 * Fix empty times
 //		 */
 //		if( !isset( $recipe['rpr_recipe_prep_time'][0] ) ){
 //			$recipe['rpr_recipe_prep_time'][0] = 0;
@@ -1831,12 +1831,12 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //		if( $recipe['rpr_recipe_prep_time'][0] + $recipe['rpr_recipe_cook_time'][0] +  $recipe['rpr_recipe_passive_time'][0]  <= 0 ) {
 //			return;
 //		}
-//		
+//
 //		/**
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		/**
 //		 * Add the times in correct structured data format
 //		 */
@@ -1883,7 +1883,7 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //		}
 //		$out .= '</dt>';
 //		$out .= '<dd>' . $struct_total . rpr_format_time_hum( esc_attr( $recipe['rpr_recipe_prep_time'][0] ) + esc_attr( $recipe['rpr_recipe_cook_time'][0] ) + esc_attr( $recipe['rpr_recipe_passive_time'][0] ) ) . '</dd>';
-//		
+//
 //		$out .= '</dl>';
 //		$out .= '</div>';
 //		/**
@@ -1895,7 +1895,7 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //if( !function_exists( 'the_rpr_recipe_times' ) ){
 //	/**
 //	 * Outputs the rendered times from above
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @param boolean $icons
 //	 */
@@ -1906,7 +1906,7 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 
 /**
  * Formats a number of minutes to a machine readable xml time string
- * 
+ *
  * @param int $min
  * @return string
  */
@@ -1926,7 +1926,7 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 
 /**
  * Formats a number of minutes to a human readable time string
- * 
+ *
  * @param int $min
  * @return string
  */
@@ -1948,9 +1948,9 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //
 //if( !function_exists( 'get_the_rpr_recipe_image' ) ) {
 //	/**
-//	 * Includes the recipe post image in embedded recipes and if is set in 
+//	 * Includes the recipe post image in embedded recipes and if is set in
 //	 * advanced options to fix the shortcomings of some recipes
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 * @return string
 //	 */
@@ -1963,12 +1963,12 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //		} else {
 //			$recipe_id = get_post()->ID;
 //		}
-//		
+//
 //		/**
 //		 *  Create an empty output string
 //		 */
 //		$out = '';
-//		
+//
 //		/**
 //		 * Recipe image only needs to be included if settings tell so
 //		 * or recipe is embedded into another post
@@ -1997,7 +1997,7 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //if( !function_exists( 'the_rpr_recipe_image' ) ) {
 //	/**
 //	 * Outputs the post image rendered above
-//	 * 
+//	 *
 //	 * @since 0.8.0
 //	 */
 //	function the_rpr_recipe_image() {
@@ -2027,9 +2027,9 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //				if ( get_post_meta( $recipe_id, "rpr_recipe_source", true ) == '' ) {
 //					return; // Return early if no recipe source data is stored
 //				}
-//        
+//
 //        $out = '';
-//        
+//
 //        /**
 //         * Only render the source if option is set so
 //         */
@@ -2043,7 +2043,7 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //             */
 //            $source = get_post_meta( $recipe_id, "rpr_recipe_source", true );
 //            $source_link = get_post_meta( $recipe_id, "rpr_recipe_source_link", true );
-//            
+//
 //            /**
 //             * Render the structured data
 //						 */
@@ -2055,7 +2055,7 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //            } else {
 //                $out .= '>';
 //            }
-//            
+//
 //            if( $source_link !== '' ) {
 //                $out .= '<a href="' . esc_url( $source_link ) . '" target="_blank" >';
 //            }
@@ -2066,7 +2066,7 @@ if( !function_exists( 'the_rpr_recipe_times_headline' ) ) {
 //            $out .= '</span>';
 //            $out .= '</cite>';
 //        }
-//        
+//
 //        return $out;
 //    }
 //
@@ -2092,10 +2092,10 @@ if( ! function_exists( 'get_the_alphabet_nav_bar' ) ){
 		$alphabet = array( 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' );
 		// Create an aempty output string
 		$out = '';
-		
+
 		// Start the list:
 		$out .= '<ul class="rpr_alphabet_navigation">';
-		
+
 		foreach( $alphabet as $a ){
 			// loop through the alphabet
 			if( $letters ) {
@@ -2111,10 +2111,10 @@ if( ! function_exists( 'get_the_alphabet_nav_bar' ) ){
 				$out .= '<li class="active"><a href="#' . $a . '">' . $a .'</a></li>';
 			}
 		}
-		
+
 		// End the list:
 		$out .= '</ul>';
-		
+
 		// return the renderd nav bar
 		return $out;
 	}
@@ -2132,9 +2132,9 @@ if( !function_exists( 'the_alphabet_nav_bar' ) ){
 
 /**
  * Get the index number for a given taxonomy in the tax_custom options array
- * 
+ *
  * @since 0.8.0
- * 
+ *
  * @param string $tax
  * @return int $key index number
  */
@@ -2160,7 +2160,7 @@ function recipe_is_embedded() {
 
 /**
  * Replaces special charactters and Umlaute with their basic letter
- * 
+ *
  * @todo: Maybe better replace Umlaute like Ö => Oe instead of O
  * @since 0.8.0
  * @param string $text
@@ -2205,7 +2205,7 @@ function normalize_special_chars( $text ){
 
 	// Replace special chars
 	$text = str_replace( array_keys( $trans ), array_values( $trans ), $text );
-	
+
 	// return the sanitized text
 	return $text;
 }

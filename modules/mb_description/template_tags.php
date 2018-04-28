@@ -4,9 +4,9 @@ if (!function_exists('get_the_rpr_recipe_description_headline')) {
 
     /**
      * Renders the headline for description.
-     * Icons are optional, headline level depends on embedded or standalone 
+     * Icons are optional, headline level depends on embedded or standalone
      * recipe
-     * 
+     *
      * @param boolean $icons
      * @return string
      */
@@ -36,7 +36,7 @@ if (!function_exists('get_the_rpr_recipe_description_headline')) {
         $out = '';
 
         /**
-         * Add a third level heading for embedded recipes or a second level 
+         * Add a third level heading for embedded recipes or a second level
          * heading for a standalone recipe
          */
         if (recipe_is_embedded()) {
@@ -55,11 +55,11 @@ if (!function_exists('get_the_rpr_recipe_description_headline')) {
             $out .= '<i class="fa fa-paperclip"></i>&nbsp;';
             //$out .= '<i class="' . AdminPageFramework::getOption( 'rpr_options', array( 'tax_builtin', 'ingredients', 'icon_class' ), 'fa fa-shoppingcart' ) . '"></i>&nbsp;';
         }
-        
+
         $headline = AdminPageFramework::getOption( 'rpr_options', array( 'advanced', 'description_headline' ), __('Notes', 'recipepress-reloaded') );
         var_dump($headline);
         $out .= $headline;
-        
+
 
         if (recipe_is_embedded()) {
             $out .= '</h3>';
@@ -78,7 +78,7 @@ if (!function_exists('the_rpr_recipe_description_headline')) {
 
     /**
      * Outputs the rendered headline
-     * 
+     *
      * @since 0.8.0
      * @param boolean $icons
      */
@@ -92,7 +92,7 @@ if (!function_exists('get_the_rpr_recipe_description')) {
 
     /**
      * Renders the description. No output if no description saved.
-     * 
+     *
      * @since 0.8.0
      * @return string
      */
@@ -142,7 +142,7 @@ if (!function_exists('the_rpr_recipe_description')) {
 
     /**
      * Outputs the rendered description
-     * 
+     *
      * @since 0.8.0
      */
     function the_rpr_recipe_description() {

@@ -20,9 +20,9 @@
 		<div id="rpr-modal-panel-scr">
 			<input id="recipe-id-field" type="hidden" name="recipeid" />
 			<input id="recipe-title-field" type="hidden" name="recipetitle" />
-			
+
 			<p class="howto"><?php _e( 'Choose the recipe you want to include from the list below or search for it.', 'recipepress-reloaded' ); ?></p>
-			
+
 			<div class="link-search-wrapper">
 				<label>
 					<span class="search-label"><?php _e( 'Search' ); ?></span>
@@ -30,7 +30,7 @@
 					<span class="spinner"></span>
 				</label>
 			</div>
-			
+
 			<div id="rpr-search-results" class="query-results" tabindex="0">
 					<ul></ul>
 					<div class="river-waiting">
@@ -55,13 +55,14 @@
 						<input type="checkbox" id="rpr-embed-excerpt" name="embed-excerpt" value="embed-excerpt" />
 						<label for="rpr-embed-excerpt"><span><?php _e( 'Embed excerpt only', 'recipepress-reloaded' ); ?></span></label>
 					</li>
+					<!--
 					<li>
 						<input type="checkbox" id="rpr-embed-nodesc" name="embed-nodesc" value="embed-nodesc" />
 						<label for="rpr-embed-nodesc"><span><?php _e( 'Embed <b>without</b> description', 'recipepress-reloaded' ); ?></span></label>
-					</li>
+					</li>-->
 				</ul>
 			</div>
-			
+
 			<div id="rpr-modal-scr-new-recipe-panel">
 				<?php printf(
 				/* Translators: 1: Link tag opening and icon  2: Link tag closure */
@@ -72,7 +73,7 @@
 				?>
 			</div>
 		</div>
-		
+
 		<div class="submitbox">
 			<div id="rpr-modal-cancel-scr">
 				<a class="submitdelete deletion" href="#"><?php _e( 'Cancel' ); ?></a>
