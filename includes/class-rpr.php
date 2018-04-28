@@ -73,14 +73,14 @@ class RPR {
      * For testing the list is defined fixed here
      */
     protected $modules = array ();
-    
+
     /**
      * Instance of the admin class
-     * @var RPR_Admin 
+     * @var RPR_Admin
      * @since 1.0.0
      */
     protected $admin;
-    
+
     /**
      * Instance of the public class
      * @var RPR_Public
@@ -107,10 +107,10 @@ class RPR {
         $this->register_posttype();
         $this->load_modules();
         $this->load_dependencies();
-        
+
         $this->admin = new RPR_Admin( $this->version, $this->dbversion, $this->modules );
         $this->public = new RPR_Public( $this->version, $this->modules );
-        
+
         $this->set_locale();
         $this->define_admin_hooks();
         $this->define_public_hooks();
@@ -118,7 +118,7 @@ class RPR {
 
     /**
      * Register the post type for all the recipes
-     * 
+     *
      * @since 1.0.0
      */
     private function register_posttype(){
@@ -131,7 +131,7 @@ class RPR {
     }
     /**
      * Load all enabled modules and instantiate objects
-     * 
+     *
      * @since 1.0.0
      * @todo Generate the list of modules from options
      */
@@ -142,7 +142,7 @@ class RPR {
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/abstract-class-rpr-module.php';
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/abstract-class-rpr-module-metabox.php';
 
-        
+
         $active_modules = $this->get_active_modules();
         //var_dump( $active_modules );
         /**
@@ -151,7 +151,7 @@ class RPR {
         foreach ( $active_modules as $active_module => $module_id ) {
             //var_dump($active_module);
 //            $module_id = preg_split("/_/", $active_module)[1];
-            
+
             /**
              * Load the module file
              */
@@ -244,14 +244,14 @@ class RPR {
          * side of the site.
          */
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-rpr-public.php';
-        
+
 
         /**
          * The admin page framework to create options pages and metaboxes
-         * 
+         *
          * @link http://www.admin-page-framework.michaeluno.jp/
          * @since 0.8.0
-         * 
+         *
          */
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'libraries/apf/admin-page-framework.php';
 
@@ -293,15 +293,15 @@ class RPR {
     private function define_admin_hooks() {
 
         $plugin_admin = new RPR_Admin( $this->version, $this->dbversion, $this->modules );
-   
+
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
         // Migration from older versions
-		$this->loader->add_action( 'admin_init', $plugin_admin->migration, 'fix_dbversion' );
+		    /*$this->loader->add_action( 'admin_init', $plugin_admin->migration, 'fix_dbversion' );
         $this->loader->add_action( 'admin_init', $plugin_admin->migration, 'check_migration' );
         $this->loader->add_action( 'admin_init', $plugin_admin->migration, 'rpr_do_migration' );
-        $this->loader->add_action( 'admin_notices', $plugin_admin->migration, 'notice_migration' );
+        $this->loader->add_action( 'admin_notices', $plugin_admin->migration, 'notice_migration' );*/
 
         // Install demo data / sample recipes
         $this->loader->add_action( 'admin_init', $plugin_admin->demo, 'do_install_base_options' );
@@ -315,16 +315,16 @@ class RPR {
         //$this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_postimage' );
         //$this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_description' );
         //$this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_details' );
-	
-        
+
+
         /*if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_source') , false ) ) {
             $this->loader->add_action( 'do_meta_boxes', $plugin_admin->source, 'metabox_source' );
         }*/
        /* if( AdminPageFramework::getOption( 'rpr_options', array( 'metadata', 'use_nutritional_data') , false ) ) {
-            $this->loader->add_action( 'do_meta_boxes', $plugin_admin->nutrition, 'metabox_nutrition' );	
+            $this->loader->add_action( 'do_meta_boxes', $plugin_admin->nutrition, 'metabox_nutrition' );
         }*/
-        
-        
+
+
         //$this->loader->add_action( 'do_meta_boxes', $plugin_admin->ingredients, 'metabox_ingredients' );
         //$this->loader->add_action( 'do_meta_boxes', $plugin_admin->instructions, 'metabox_instructions' );
         //$this->loader->add_action( 'do_meta_boxes', $plugin_admin->generalmeta, 'metabox_notes' );
@@ -347,7 +347,7 @@ class RPR {
         $this->loader->add_action( 'in_admin_footer', $plugin_admin->shortcodes, 'load_in_admin_footer_scl' );
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin->shortcodes, 'load_ajax_scripts_scl' );
 
-// Add recipes to Recent Activity widget
+        // Add recipes to Recent Activity widget
         $this->loader->add_filter( 'dashboard_recent_posts_query_args', $plugin_admin,  'add_to_dashboard_recent_posts_widget' );
 
         // Add recipes to 'At a Glance' widget
@@ -396,7 +396,7 @@ class RPR {
 
         // register the widgets
         $this->loader->add_action( 'widgets_init', $plugin_public, 'register_widgets' );
-        
+
         /**
          * Define the admin hooks for all modules
          */
@@ -440,7 +440,7 @@ class RPR {
     public function get_modules() {
         return $this->modules;
     }
-    
+
     /**
      * Retrieve the version number of the plugin.
      *
@@ -450,7 +450,7 @@ class RPR {
     public function get_version() {
         return $this->version;
     }
-    
+
     /**
      * Retrieve the version number of the database of the plugin.
      *

@@ -5,6 +5,14 @@
 #edit-slug-box{
     display:block!important;
 }
+
+/**
+* Labels and input boxes
+* General styles:
+**/
+
+
+/* TODO: double check, if these styles have been merged correctly! */
 /**
 * Ingredient Meta box styles
 * Instructions Meta box styles
@@ -29,15 +37,15 @@
     padding-bottom: 6px;
     text-align: left;
 }
-.rpr-metabox-table tbody tr:nth-child(even){
-    /*background: #efefef;*/
-}
+/*.rpr-metabox-table tbody tr:nth-child(even){
+    background: #efefef;
+}*/
 
 .rpr-metabox-table th.rpr-ing-sort,
-.rpr-ing-sort, 
+.rpr-ing-sort,
 .rpr-ing-sort div,
 .rpr-metabox-table th.rpr-ins-sort,
-.rpr-ins-sort, 
+.rpr-ins-sort,
 .rpr-ins-sort div{
     width:32px;
     text-align:center!important;
@@ -74,7 +82,7 @@
     float:left;
     width:10%;
     min-width:64px;
-    padding: 4px 1px;
+    padding: 4px 12px 4px 1px;
     line-height: 19px;
     font-weight: bold;
 }
@@ -169,7 +177,7 @@ tfoot .rpr-ins-add-row span{
 }
 .recipe-general-form-notes{
     clear:both;
-    margin-top: 1px; 
+    margin-top: 1px;
 }
 /*.detailsbox .recipe_details_row{
     float:left;
@@ -272,7 +280,7 @@ a.nav-tab{
 }
 .admin_demo{
     border:solid 1px #aaa;
-    background:#eee; 
+    background:#eee;
     padding:2px;
     margin: 0 2px;
     border-radius:3px;
@@ -309,4 +317,9 @@ a.nav-tab{
 #dashboard_right_now span.rpr_recipe-count:before {
     content: url('../../img/icon_16_gray.png');
     margin: -2px 0px 0px 0px;
+}
+
+/* Options page -- Modules -- priority fields */
+tr[id$="priority"]{
+  display: none;
 }

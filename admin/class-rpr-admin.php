@@ -40,7 +40,7 @@ class RPR_Admin {
      * @var      string    $version    The current version of the database of this plugin.
      */
     private $dbversion;
-    
+
     /**
      * A list of all activated modules
      * @since: 1.0.0
@@ -49,7 +49,7 @@ class RPR_Admin {
 
     /**
      * instance of the shortcode class handling all shortcode insertion related functions and scripts
-     * 
+     *
      * @since 0.8.0
      * @access public
      */
@@ -57,15 +57,15 @@ class RPR_Admin {
 
     /**
      * instance of the migration class handling all migration and database update tasks
-     * 
+     *
      * @since 0.8.0
      * @access public
      */
-    public $migration;
+    //public $migration;
 
     /**
      * instance of the demo class to install demo data
-     * 
+     *
      * @since 0.8.0
      * @access public
      */
@@ -86,8 +86,8 @@ class RPR_Admin {
         require_once 'class-rpr-admin-shortcodes.php';
         $this->shortcodes = new RPR_Admin_Shortcodes($this->version);
 
-        require_once 'class-rpr-admin-migration.php';
-        $this->migration = new RPR_Admin_Migration($this->version, $this->dbversion);
+        //require_once 'class-rpr-admin-migration.php';
+        //$this->migration = new RPR_Admin_Migration($this->version, $this->dbversion);
 
         require_once 'class-rpr-admin-demo.php';
         $this->demo = new RPR_Admin_Demo( $this->version, $this->dbversion );
@@ -113,7 +113,7 @@ class RPR_Admin {
      * @since    0.8.0
      */
     public function enqueue_scripts($hook) {
-	
+
         // Load jQuery Link script to add links to ingredients
         //wp_enqueue_script( 'wp-link' );
 
@@ -121,7 +121,7 @@ class RPR_Admin {
 
     /**
      * Load Admin Page Framework and create the options page
-     * 
+     *
      * @since 0.8.0
      */
     public function create_options() {
@@ -165,7 +165,7 @@ class RPR_Admin {
     		if ( isset( $data['rpr_save_recipe_meta_field'] ) &&  !wp_verify_nonce( $data['rpr_save_recipe_meta_field'], 'rpr_save_recipe_meta' ) ){
     			$errors = "There was an error saving the recipe. Description nonce not verified";
     		}
-			
+
 			// Check permissions
     		if ( !current_user_can( 'edit_post', $recipe_id ) ){
     			$errors = "There was an error saving the recipe. No sufficient rights.";
@@ -176,7 +176,7 @@ class RPR_Admin {
     			update_option('rpr_admin_errors', $errors);
     			return $recipe_id;
     		}
-			
+
 			//if(!isset($data)||$data==""){$data=$_POST;}
 			if( $recipe !== NULL && $recipe->post_type == 'rpr_recipe' )
 			{
@@ -184,7 +184,7 @@ class RPR_Admin {
 			}
 		}
     }
-	
+
 	/**
 	 * Function to display any errors in the backend
 	 * @since 0.8.0
@@ -197,14 +197,14 @@ class RPR_Admin {
 		if($errors) {
 			echo '<div class="error"><p>' . $errors . '</p></div>';
 		}
-		
+
 		// Reset the error option for the next error
 		update_option('rpr_admin_errors', false);
 	}
 
 	/**
 	 * Adds recipes to the 'Recent Activity' Dashboard widget
-	 * 
+	 *
 	 * @since 0.8.3
 	 * @param array $query_args
 	 */
@@ -215,27 +215,27 @@ class RPR_Admin {
 
 	/**
 	 * Adds recipes to the 'At a Glance' Dashboard widget
-	 * 
+	 *
 	 * @since 0.8.3
 	 * @param array $items
 	 */
 	public function add_recipes_glance_items( $items = array() ) {
 			$num_recipes = wp_count_posts( 'rpr_recipe' );
-			
+
 			if( $num_recipes ) {
 				$published = intval( $num_recipes->publish );
 				$post_type = get_post_type_object( 'rpr_recipe' );
-				
+
 				$text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, 'recipepress-reloaded' );
 				$text = sprintf( $text, number_format_i18n( $published ) );
-				
+
 				if ( current_user_can( $post_type->cap->edit_posts ) ) {
 					$items[] = sprintf( '<a class="%1$s-count" href="edit.php?post_type=%1$s">%2$s</a>', 'rpr_recipe', $text ) . "\n";
 				} else {
 					$items[] = sprintf( '<span class="%1$s-count">%2$s</span>', 'rpr_recipe', $text ) . "\n";
 				}
 			}
-    
+
 		return $items;
 	}
 
