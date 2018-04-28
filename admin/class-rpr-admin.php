@@ -53,7 +53,7 @@ class RPR_Admin {
      * @since 0.8.0
      * @access public
      */
-    public $shortcodes;
+    //public $shortcodes;
 
     /**
      * instance of the migration class handling all migration and database update tasks
@@ -83,8 +83,8 @@ class RPR_Admin {
         $this->dbversion = $dbversion;
         $this->modules = $modules;
 
-        require_once 'class-rpr-admin-shortcodes.php';
-        $this->shortcodes = new RPR_Admin_Shortcodes($this->version);
+        //require_once 'class-rpr-admin-shortcodes.php';
+        //$this->shortcodes = new RPR_Admin_Shortcodes($this->version);
 
         //require_once 'class-rpr-admin-migration.php';
         //$this->migration = new RPR_Admin_Migration($this->version, $this->dbversion);

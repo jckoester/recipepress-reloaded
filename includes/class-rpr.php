@@ -337,15 +337,18 @@ class RPR {
 
         // Shortcodes to embed recipes into post types
         // Shortcode for recipe
-        $this->loader->add_action( 'media_buttons', $plugin_admin->shortcodes, 'add_button_scr' );
+        // Moved to module
+        /*$this->loader->add_action( 'media_buttons', $plugin_admin->shortcodes, 'add_button_scr' );
         $this->loader->add_action( 'in_admin_footer', $plugin_admin->shortcodes, 'load_in_admin_footer_scr' );
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin->shortcodes, 'load_ajax_scripts_scr' );
-        $this->loader->add_action( 'wp_ajax_rpr_get_results', $plugin_admin->shortcodes, 'process_ajax_scr' );
+        $this->loader->add_action( 'wp_ajax_rpr_get_results', $plugin_admin->shortcodes, 'process_ajax_scr' );*/
 
         // Shortcode for listings
-        $this->loader->add_action( 'media_buttons', $plugin_admin->shortcodes, 'add_button_scl' );
+        // moved to module
+        /*$this->loader->add_action( 'media_buttons', $plugin_admin->shortcodes, 'add_button_scl' );
         $this->loader->add_action( 'in_admin_footer', $plugin_admin->shortcodes, 'load_in_admin_footer_scl' );
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin->shortcodes, 'load_ajax_scripts_scl' );
+        */
 
         // Add recipes to Recent Activity widget
         $this->loader->add_filter( 'dashboard_recent_posts_query_args', $plugin_admin,  'add_to_dashboard_recent_posts_widget' );
