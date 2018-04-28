@@ -2,7 +2,7 @@
  * Ingredients MetaBox functions
  * According to the following recipe:
  * @link http://wordpress.stackexchange.com/questions/127088/how-can-i-use-the-built-in-wordpress-browse-link-functionality
- * 
+ *
  * @since 0.8.0
  */
 
@@ -32,7 +32,7 @@ var ins_table = (function($){
             var button = $(this);
             _remove_instruction_image( button );
         });
-        
+
         $('#rpr-ins-add-row-ins').on('click', function(e){
             e.preventDefault();
             _add_instruction_row();
@@ -49,14 +49,14 @@ var ins_table = (function($){
            }
            _update_instruction_index();
         });
-        
+
         // Delete instruction row button
         $('.rpr-ins-remove-row').on('click', function(e){
             var delbutton = $(this);
             e.preventDefault();
             _delete_instruction_row(delbutton);
             _update_instruction_index();
-        }); 
+        });
         // Add ingredient row on tab
         $('#recipe-instructions .rpr-ins-instruction')
             .unbind('keydown')
@@ -71,7 +71,7 @@ var ins_table = (function($){
                     //_update_ingredient_delbuttons();
                 }
             });
-        
+
         // Add instruction heading
         $('#rpr-ins-add-row-grp').on('click', function(e){
             e.preventDefault();
@@ -92,15 +92,15 @@ var ins_table = (function($){
             }
         });
     }
-    
-    /* 
+
+    /*
      * Add a new empty row to the ingredient table
      */
     function _add_instruction_row( addbutton )
     {
         var last_row = $('#recipe-instructions tbody tr:last');
         var last_instruction = $('#recipe-instructions tr.rpr-ins-row:last');
-        
+
         if( addbutton ){
             last_row = addbutton.parent().parent();
             last_instruction = last_row;
@@ -112,15 +112,15 @@ var ins_table = (function($){
             .find('input').val('');
         clone_instruction.find('textarea').val('');
         clone_instruction.find('img.rpr_recipe_instructions_thumbnail').attr('src', "").hide();
-    
+
         clone_instruction.find('.rpr-ins-instruction textarea').focus();
     }
-    
+
     function _delete_instruction_row( delbutton ){
         delbutton.parents( "tr" ).remove();
     }
-    
-    /** 
+
+    /**
      * Add ingredient heading
      */
     function _add_instruction_heading( addbutton ){
@@ -138,7 +138,7 @@ var ins_table = (function($){
             .addClass('instruction-group')
             .find('input').val('').focus();
     }
-    
+
     /**
      * Recalculate all index numbers on the ingredient list
      * @returns {none}
@@ -182,7 +182,7 @@ var ins_table = (function($){
                 button.siblings('.rpr-ins-image-del').show();
             })
             .open();
-            
+
         } else { //fallback
             post_id = button.attr('rel');
 
@@ -200,23 +200,23 @@ var ins_table = (function($){
             $(preview).show();
             button.siblings('.rpr-ins-image-del').show();
         }
-        
+
     }
-    
+
     /*
      * Remove an existing instruction image
      * @param {type} button
      * @returns {undefined}
      */
     function _remove_instruction_image( button) {
-        var image = button.parent().siblings().find('.rpr_recipe_instructions_image');
+        var image = button.parent().siblings('.rpr_recipe_instructions_image');
         var preview = button.parent().siblings('.rpr_recipe_instructions_thumbnail');
-        
+
         image.val('');
         preview.attr('scr', '').hide();
         button.hide();
     }
-    
+
 
 /* PUBLIC ACCESSOR METHODS
 -------------------------------------------------------------- */

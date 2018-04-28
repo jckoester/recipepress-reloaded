@@ -20,42 +20,42 @@
  * @author		Jan Köster <rpr@cbjck.de>
  */
 class RPR_Options_Page_Appearance_Layout {
-    
+
     /**
      * The page slug to add the tab and form elements.
      */
     public $sPageSlug   = 'rpr_options';
-    
+
     /**
      * The tab slug to add to the page.
      */
     public $sTabSlug    = 'appearance';
-    
+
     /**
      * The section slug to add to the tab.
      */
     public $sSectionID  = 'layout';
-	
-   
+
+
     /**
      * A list of available layouts with their paths
      */
     private $layouts = array();
-        
+
     /**
      * Sets up a form section.
      */
     public function __construct( $oFactory ) {
-    
+
         /**
          * Get a list of all available layouts
          */
         $this->get_layouts_list();
-        
-        
+
+
         /* Create the sections for these options */
-        $oFactory->addSettingSections(    
-            $this->sPageSlug, // the target page slug   
+        $oFactory->addSettingSections(
+            $this->sPageSlug, // the target page slug
             array(
                 'section_id'    => 'layout_general',
                 'tab_slug'      => $this->sTabSlug,
@@ -139,7 +139,7 @@ class RPR_Options_Page_Appearance_Layout {
         }
 
     }
-    
+
     /**
      * Create a list of available layouts loacally and globally.
      */
@@ -148,16 +148,16 @@ class RPR_Options_Page_Appearance_Layout {
          * First create a list of all globally available layouts:
          */
 	$dirname = WP_PLUGIN_DIR . '/recipepress-reloaded/public/layouts/';
-                
+
         $this->add_layout_to_list($dirname);
 	/**
          * Then also add layouts available locally from the current theme (if applicable)
          */
 	$dirname = get_stylesheet_directory() . '/rpr_layouts/';
-	
+
         $this->add_layout_to_list($dirname);
     }
-    
+
     /**
      * Create a list of available layouts at the dir specified
      * The list will be saved as id=>path to the global layouts array
@@ -187,7 +187,7 @@ class RPR_Options_Page_Appearance_Layout {
             }
         }
     }
-    
+
     /**
      * Get an options array for the layouts select field
      * @return array
@@ -195,8 +195,8 @@ class RPR_Options_Page_Appearance_Layout {
     private function get_layout_selection() {
         $select = array();
         foreach( $this->layouts as $id => $meta ){
-            
             if( $meta['local'] ){
+                $id = 'local_'.$id;
                 $select[$id] = '[' . __( 'Local', 'recipepress-reloaded' ) . ']&nbsp;';
             } else {
                 $select[$id] = '[' . __( 'RPR', 'recipepress-reloaded' ) . ']&nbsp;';
@@ -204,7 +204,7 @@ class RPR_Options_Page_Appearance_Layout {
             $select[$id] .= $meta['title'];
             $select[$id] .= ' - ' . substr( $meta['description'], 0, 50 );
         }
-        
+
         return $select;
     }
     /**
@@ -213,7 +213,7 @@ class RPR_Options_Page_Appearance_Layout {
      */
     private function get_layouts_tabs() {
         $tabs = array();
-        
+
         foreach( $this->layouts as $id => $meta ){
             //$options = $this->layout2option($dirname, $layout);
             if( isset( $this->layouts[$id]['logo'] ) ){
@@ -225,33 +225,33 @@ class RPR_Options_Page_Appearance_Layout {
                 'section_id'            => $id,
                 'section_tab_slug'      => 'layout',
                 'title'                 => $title,
-                'description'           => $this->get_layout_description( $id )//$meta['description']                
+                'description'           => $this->get_layout_description( $id )//$meta['description']
             );
         }
 
         return $tabs;
     }
-    
+
     private function get_layout_meta( $dirname, $file ) {
         // Param parsing inspired by http://stackoverflow.com/questions/11504541/get-comments-in-a-php-file
 	$params=array();
 	$filename = $dirname . $file . '/recipe.php';
-					
+
 	$docComments = array_filter(
-		token_get_all( file_get_contents( $filename ) ), 
+		token_get_all( file_get_contents( $filename ) ),
 			"f_comment"
 	);
-	
+
 	$fileDocComment = array_shift( $docComments );
-					
+
 	$regexp = "/.*\:.*\n/";
 	preg_match_all($regexp, $fileDocComment[1], $matches);
-	
+
         foreach( $matches[0] as $match ){
 		$param = explode(": ", $match);
 		$params[ trim( $param[0] ) ] = trim( $param[1] );
 	}
-        
+
         $this->layouts[$file]['description'] = $params['Description'];
         $this->layouts[$file]['title'] = $params['Layout Name'];
         $this->layouts[$file]['author'] = $params['Author'];
@@ -271,7 +271,7 @@ class RPR_Options_Page_Appearance_Layout {
 //            $this->layouts[$file]['print_css'] = false;
 //        }
     }
-    
+
     /**
      * Returns a nicely formatted description text wth screenshot
      * @param type $layout_id
@@ -279,9 +279,9 @@ class RPR_Options_Page_Appearance_Layout {
      */
     private function get_layout_description( $layout_id ) {
         $description = '<span class="layout_description">';
-        
+
         /**
-         * Set a local note 
+         * Set a local note
          */
         if( $this->layouts[$layout_id]['local'] ){
             $description .= '<b>' . __( 'This is a local layout provided by your theme.', 'recipepress-reloaded' ) . '</b><br/>';
@@ -292,8 +292,8 @@ class RPR_Options_Page_Appearance_Layout {
         if( isset( $this->layouts[$layout_id]['description'] ) && ! empty( $this->layouts[$layout_id]['description'] ) ){
             $description .= $this->layouts[$layout_id]['description'] . '<br/>';
         }
-        
-        /** 
+
+        /**
          * Include version information as far as available
          */
         if( isset( $this->layouts[$layout_id]['version'] ) ){
@@ -330,32 +330,32 @@ class RPR_Options_Page_Appearance_Layout {
         if( isset( $this->layouts[$layout_id]['screenshot'] ) ){
             $description .= '<img src="' . $this->layouts[$layout_id]['screenshot'] . '" class="layout_screenshot" />';
         }
-        
+
         return $description;
     }
-    
+
     /*
     private function layout2option($dirname, $file)
 {
 	// Param parsing inspired by http://stackoverflow.com/questions/11504541/get-comments-in-a-php-file
 	$params=array();
 	$filename = $dirname . $file . '/recipe.php';
-					
+
 	$docComments = array_filter(
-		token_get_all( file_get_contents( $filename ) ), 
+		token_get_all( file_get_contents( $filename ) ),
 			"f_comment"
 	);
-	
+
 	$fileDocComment = array_shift( $docComments );
-					
+
 	$regexp = "/.*\:.*\n/";
 	preg_match_all($regexp, $fileDocComment[1], $matches);
-					
+
 	foreach( $matches[0] as $match ){
 		$param = explode(": ", $match);
 		$params[ trim( $param[0] ) ] = trim( $param[1] );
 	}
-					
+
 	$options['selection'] = array(
 			'value' => $file,
 			'title' => $params['Layout Name'],
@@ -368,7 +368,7 @@ class RPR_Options_Page_Appearance_Layout {
     	'subtitle' => sprintf( __('Version %s | ', 'recipepress-reloaded' ), $params['Version']),
 		'required' => array('rpr_template','equals',$file)
 	);
-	
+
 	if( isset( $params['Author URL'] ) && $params['Author URL'] != "" )
 	{
 		$link = $params['Author URL'];
@@ -377,26 +377,26 @@ class RPR_Options_Page_Appearance_Layout {
 	} else {
 		$options['description']['subtitle'].= __('By %s |  ', 'recipepress-reloaded' );
 	}
-	
+
 	if( isset( $params['Author Mail'] ) && $params['Author Mail'] != "" )
 	{
-		$options['description']['subtitle'].= sprintf( __('<a href="mailto:%s">Contact</a>', 'recipepress-reloaded' ), $params['Author Mail'] );	
+		$options['description']['subtitle'].= sprintf( __('<a href="mailto:%s">Contact</a>', 'recipepress-reloaded' ), $params['Author Mail'] );
 	}
-	
+
 	if( isset( $params['Description'] ) && $params['Description'] != "" )
 	{
-		$options['description']['subtitle'].= '</br>' . $params['Description'];	
+		$options['description']['subtitle'].= '</br>' . $params['Description'];
 	}
-	
-	
+
+
 	if( strpos($dirname, get_stylesheet_directory() ) !== false){
 		$options['selection']['value'] = 'local_'.$file;
 		$options['selection']['title'] = strtoupper( __('Local', 'recipepress-reloaded' )) . ' ' . $params['Layout Name'];
 		$options['selection']['img'] = get_stylesheet_directory_uri() . '/rpr_layouts/' . $file . '/screenshot.png';
-		
+
 		$options['description']['required'] = array('rpr_template','equals','local_'.$file);
 	}
-	
+
 	return $options;
     }
 */
