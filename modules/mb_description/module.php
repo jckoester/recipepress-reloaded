@@ -17,7 +17,7 @@ class RPR_Module_MB_Description extends RPR_Module_Metabox {
      * Load all files required for the module
      */
     public function load_module_dependencies() {
-        
+
     }
 
     /**
@@ -71,7 +71,7 @@ class RPR_Module_MB_Description extends RPR_Module_Metabox {
 
     /**
      * Procedure to save this module's data for the recipe
-     * 
+     *
      * @param type $recipe_id
      * @param type $recipe
      */
@@ -82,7 +82,7 @@ class RPR_Module_MB_Description extends RPR_Module_Metabox {
         // Disable this action so can't be called twice in parallel
         remove_action('save_post', array($this, 'save_recipe_description'));
 
-        // run some global checks (like permissions, recipe-object); 
+        // run some global checks (like permissions, recipe-object);
         // verify nonce, ...
         if ($this->check_before_saving($recipe, $data['rpr_nonce_description'], 'rpr_save_recipe_description')) {
             // save the data
@@ -104,17 +104,17 @@ class RPR_Module_MB_Description extends RPR_Module_Metabox {
      * Return the structured data related to this module encoded as an array
      * Core function will create JSON-LD schmema from this and other module's
      * data
-     * For more infomration on structured data see: 
+     * For more infomration on structured data see:
      * http://1.schemaorgae.appspot.com/NutritionInformation
      */
     public function get_structured_data($recipe_id, $recipe) {
         $json = array();
         if( isset( $recipe['rpr_recipe_description'] ) &&  $recipe['rpr_recipe_description'] != '' ){
-            $description = strip_tags($recipe['rpr_recipe_description'][0]);
+            $description = strip_tags( strip_shortcodes($recipe['rpr_recipe_description'][0]) );
             $description = preg_replace("/\s+/", " ", $description);
             $json['description'] = esc_html( $description );
         }
-        
+
         return $json;
     }
 
