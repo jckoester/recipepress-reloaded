@@ -11,13 +11,14 @@
   Description: This module adds a description ection to your recipes
  */
 
-class RPR_Module_MB_Description extends RPR_Module_Metabox {
+class RPR_Module_MB_Description extends RPR_Module_Metabox
+{
 
     /**
      * Load all files required for the module
      */
-    public function load_module_dependencies() {
-
+    public function load_module_dependencies()
+    {
     }
 
     /**
@@ -26,7 +27,8 @@ class RPR_Module_MB_Description extends RPR_Module_Metabox {
      * @since 1.0.0
      * @param RPR_Loader $loader
      */
-    public function define_module_admin_hooks($loader) {
+    public function define_module_admin_hooks($loader)
+    {
         if (is_a($loader, 'RPR_Loader')) {
             //echo "Got a valid loader";
             // Add metabox for this module
@@ -44,20 +46,28 @@ class RPR_Module_MB_Description extends RPR_Module_Metabox {
      * @since 1.0.0
      * @param RPR_Loader $loader
      */
-    public function define_module_public_hooks($loader) {
+    public function define_module_public_hooks($loader)
+    {
         if (is_a($loader, 'RPR_Loader')) {
             //echo "Got a valid loader";
         }
     }
 
-    public function metabox_description() {
+    public function metabox_description()
+    {
         // Add advanced metabox for nutritional information
         add_meta_box(
-                'recipe_description_meta_box', __('Description', 'recipepress-reloaded'), array($this, 'do_metabox_description'), 'rpr_recipe', 'normal', 'high'
+                'recipe_description_meta_box',
+            __('Description', 'recipepress-reloaded'),
+            array($this, 'do_metabox_description'),
+            'rpr_recipe',
+            'normal',
+            'high'
         );
     }
 
-    public function do_metabox_description($recipe) {
+    public function do_metabox_description($recipe)
+    {
         $description = get_post_meta($recipe->ID, "rpr_recipe_description", true);
         $options = array(
             'textarea_rows' => 4
@@ -65,8 +75,7 @@ class RPR_Module_MB_Description extends RPR_Module_Metabox {
         $options['media_buttons'] = true;
 
         wp_editor($description, 'rpr_recipe_description', $options);
-        wp_nonce_field( 'rpr_save_recipe_description', 'rpr_nonce_description' );
-
+        wp_nonce_field('rpr_save_recipe_description', 'rpr_nonce_description');
     }
 
     /**
@@ -75,7 +84,8 @@ class RPR_Module_MB_Description extends RPR_Module_Metabox {
      * @param type $recipe_id
      * @param type $recipe
      */
-    public function save_recipe_description($recipe_id, $recipe = NULL) {
+    public function save_recipe_description($recipe_id, $recipe = null)
+    {
         // Get the data submitted by the form:
         $data = $_POST;
 
@@ -84,38 +94,40 @@ class RPR_Module_MB_Description extends RPR_Module_Metabox {
 
         // run some global checks (like permissions, recipe-object);
         // verify nonce, ...
-        if ($this->check_before_saving($recipe, $data['rpr_nonce_description'], 'rpr_save_recipe_description')) {
-            // save the data
-            $fields = array(
+        if (isset($data['rpr_nonce_description'])) {
+            if ($this->check_before_saving($recipe, $data['rpr_nonce_description'], 'rpr_save_recipe_description')) {
+                // save the data
+                $fields = array(
                 'rpr_recipe_description'
             );
-            $this->save_fields($fields, $data, $recipe, 'editor' );
+                $this->save_fields($fields, $data, $recipe, 'editor');
+            }
         }
-
         // Re-enable this action so it can be called again:
         add_action('save_post', array($this, 'save_recipe_description'));
     }
 
-    public function get_path() {
+    public function get_path()
+    {
         return dirname(__FILE__);
     }
 
-     /**
-     * Return the structured data related to this module encoded as an array
-     * Core function will create JSON-LD schmema from this and other module's
-     * data
-     * For more infomration on structured data see:
-     * http://1.schemaorgae.appspot.com/NutritionInformation
-     */
-    public function get_structured_data($recipe_id, $recipe) {
+    /**
+    * Return the structured data related to this module encoded as an array
+    * Core function will create JSON-LD schmema from this and other module's
+    * data
+    * For more infomration on structured data see:
+    * http://1.schemaorgae.appspot.com/NutritionInformation
+    */
+    public function get_structured_data($recipe_id, $recipe)
+    {
         $json = array();
-        if( isset( $recipe['rpr_recipe_description'] ) &&  $recipe['rpr_recipe_description'] != '' ){
-            $description = strip_tags( strip_shortcodes($recipe['rpr_recipe_description'][0]) );
+        if (isset($recipe['rpr_recipe_description']) &&  $recipe['rpr_recipe_description'] != '') {
+            $description = strip_tags(strip_shortcodes($recipe['rpr_recipe_description'][0]));
             $description = preg_replace("/\s+/", " ", $description);
-            $json['description'] = esc_html( $description );
+            $json['description'] = esc_html($description);
         }
 
         return $json;
     }
-
 }
