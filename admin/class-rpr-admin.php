@@ -23,183 +23,156 @@
  */
 class RPR_Admin {
 
-    /**
-     * The version of this plugin.
-     *
-     * @since    0.8.0
-     * @access   private
-     * @var      string    $version    The current version of this plugin.
-     */
-    private $version;
+	/**
+	 * The version of this plugin.
+	 *
+	 * @since    0.8.0
+	 * @access   private
+	 * @var      string    $version    The current version of this plugin.
+	 */
+	private $version;
 
-    /**
-     * The version of the database of this plugin.
-     *
-     * @since    0.8.0
-     * @access   private
-     * @var      string    $version    The current version of the database of this plugin.
-     */
-    private $dbversion;
+	/**
+	 * The version of the database of this plugin.
+	 *
+	 * @since    0.8.0
+	 * @access   private
+	 * @var      string    $version    The current version of the database of this plugin.
+	 */
+	private $dbversion;
 
-    /**
-     * A list of all activated modules
-     * @since: 1.0.0
-     */
-    private $modules = array();
+	/**
+	 * A list of all activated modules
+	 *
+	 * @since: 1.0.0
+	 */
+	private $modules = array();
 
-    /**
-     * instance of the shortcode class handling all shortcode insertion related functions and scripts
-     *
-     * @since 0.8.0
-     * @access public
-     */
-    //public $shortcodes;
+	/**
+	 * instance of the demo class to install demo data
+	 *
+	 * @since 0.8.0
+	 * @access public
+	 */
+	public $demo;
 
-    /**
-     * instance of the migration class handling all migration and database update tasks
-     *
-     * @since 0.8.0
-     * @access public
-     */
-    //public $migration;
+	/**
+	 * Initialize the class and set its properties.
+	 *
+	 * @since    0.8.0
+	 * @param      string $version    The version of this plugin.
+	 */
+	public function __construct( $version, $dbversion, $modules = array() ) {
 
-    /**
-     * instance of the demo class to install demo data
-     *
-     * @since 0.8.0
-     * @access public
-     */
-    public $demo;
+		$this->version   = $version;
+		$this->dbversion = $dbversion;
+		$this->modules   = $modules;
 
-    /**
-     * Initialize the class and set its properties.
-     *
-     * @since    0.8.0
-     * @param      string    $version    The version of this plugin.
-     */
-    public function __construct($version, $dbversion, $modules=array() ) {
+		require_once 'class-rpr-admin-demo.php';
+		$this->demo = new RPR_Admin_Demo( $this->version, $this->dbversion );
+	}
 
-        $this->version = $version;
-        $this->dbversion = $dbversion;
-        $this->modules = $modules;
+	/**
+	 * Register the stylesheets for the admin area.
+	 *
+	 * @since    0.8.0
+	 */
+	public function enqueue_styles() {
+		/* General styles */
+		wp_enqueue_style( 'recipepress-reloaded', plugin_dir_url( __FILE__ ) . 'css/rpr-admin.css', array(), $this->version, 'all' );
+		/* Font Awesome style */
+		wp_enqueue_style( 'recipepress-reloaded' . '-fa', plugin_dir_url( dirname( __FILE__ ) ) . 'libraries/font-awesome/css/font-awesome.min.css', array(), $this->version, 'all' );
+		/* Styles for modal overlays */
+		wp_enqueue_style( 'rpr_modal', plugin_dir_url( __FILE__ ) . '/css/rpr-modal.css' );
+	}
 
-        //require_once 'class-rpr-admin-shortcodes.php';
-        //$this->shortcodes = new RPR_Admin_Shortcodes($this->version);
+	/**
+	 * Register the JavaScript for the admin area.
+	 *
+	 * @since    0.8.0
+	 */
+	public function enqueue_scripts( $hook ) {
 
-        //require_once 'class-rpr-admin-migration.php';
-        //$this->migration = new RPR_Admin_Migration($this->version, $this->dbversion);
+		// Load jQuery Link script to add links to ingredients
+		// wp_enqueue_script( 'wp-link' );
+	}
 
-        require_once 'class-rpr-admin-demo.php';
-        $this->demo = new RPR_Admin_Demo( $this->version, $this->dbversion );
-    }
-
-    /**
-     * Register the stylesheets for the admin area.
-     *
-     * @since    0.8.0
-     */
-    public function enqueue_styles() {
-        /* General styles */
-        wp_enqueue_style('recipepress-reloaded', plugin_dir_url(__FILE__) . 'css/rpr-admin.css', array(), $this->version, 'all');
-        /* Font Awesome style */
-        wp_enqueue_style('recipepress-reloaded' . '-fa', plugin_dir_url(dirname(__FILE__)) . 'libraries/font-awesome/css/font-awesome.min.css', array(), $this->version, 'all');
-        /* Styles for modal overlays */
-        wp_enqueue_style('rpr_modal', plugin_dir_url(__FILE__) . '/css/rpr-modal.css');
-    }
-
-    /**
-     * Register the JavaScript for the admin area.
-     *
-     * @since    0.8.0
-     */
-    public function enqueue_scripts($hook) {
-
-        // Load jQuery Link script to add links to ingredients
-        //wp_enqueue_script( 'wp-link' );
-
-    }
-
-    /**
-     * Load Admin Page Framework and create the options page
-     *
-     * @since 0.8.0
-     */
-    public function create_options() {
-        /**
-         * The class creating the options page
-         */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/views/class-rpr-options.php';
-
-        // Instantiate Admin Page Framework
-        new RPR_Options( $this->version, $this->modules );
-    }
-
-    /**
-     * Save the recipe data to database.
-     * This function does all the preparation and handling to combine taxonomies
-     * and metadata to a complete recipe
-     * @param int   $recipe_id  Post-Id of recipe to save
-     * @param mixed $recipe     The $recipe post object
-     * @since 0.8.0
-     */
-    public function save_recipe($recipe_id, $recipe = NULL) {
-        remove_action('save_post', array($this, 'save_recipe'));
-
-        $data = $_POST;
-
-        /**
-         *  This is done for testing! REMOVE WHEN DONE!
+	/**
+	 * Load Admin Page Framework and create the options page
+	 *
+	 * @since 0.8.0
+	 */
+	public function create_options() {
+		/**
+		 * The class creating the options page
 		 */
-        //var_dump( $_POST);
-        //die;
-        //var_dump( $recipe );
-			//die;
-		if( $recipe !== NULL && $recipe->post_type == 'rpr_recipe' ) {
-    		$errors = false;
-    		// verify if this is an auto save routine.
-    		// If it is our form has not been submitted, so we dont want to do anything
-    		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-    			$errors = "There was an error doing autosave";
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/views/class-rpr-options.php';
 
-    		//Verify the nonces for the metaboxes
-    		if ( isset( $data['rpr_save_recipe_meta_field'] ) &&  !wp_verify_nonce( $data['rpr_save_recipe_meta_field'], 'rpr_save_recipe_meta' ) ){
-    			$errors = "There was an error saving the recipe. Description nonce not verified";
-    		}
+		// Instantiate Admin Page Framework
+		new RPR_Options( $this->version, $this->modules );
+	}
+
+	/**
+	 * Save the recipe data to database.
+	 * This function does all the preparation and handling to combine taxonomies
+	 * and metadata to a complete recipe
+	 *
+	 * @param int   $recipe_id  Post-Id of recipe to save
+	 * @param mixed $recipe     The $recipe post object
+	 * @since 0.8.0
+	 */
+	public function save_recipe( $recipe_id, $recipe = null ) {
+		remove_action( 'save_post', array( $this, 'save_recipe' ) );
+
+		$data = $_POST;
+
+		if ( $recipe !== null && $recipe->post_type == 'rpr_recipe' ) {
+			$errors = false;
+			// verify if this is an auto save routine.
+			// If it is our form has not been submitted, so we dont want to do anything
+			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+				$errors = 'There was an error doing autosave';
+			}
+
+			// Verify the nonces for the metaboxes
+			if ( isset( $data['rpr_save_recipe_meta_field'] ) && ! wp_verify_nonce( $data['rpr_save_recipe_meta_field'], 'rpr_save_recipe_meta' ) ) {
+				$errors = 'There was an error saving the recipe. Description nonce not verified';
+			}
 
 			// Check permissions
-    		if ( !current_user_can( 'edit_post', $recipe_id ) ){
-    			$errors = "There was an error saving the recipe. No sufficient rights.";
-    		}
+			if ( ! current_user_can( 'edit_post', $recipe_id ) ) {
+				$errors = 'There was an error saving the recipe. No sufficient rights.';
+			}
 
-    		//If we have an error update the error_option and return
-    		if( $errors ) {
-    			update_option('rpr_admin_errors', $errors);
-    			return $recipe_id;
-    		}
+			// If we have an error update the error_option and return
+			if ( $errors ) {
+				update_option( 'rpr_admin_errors', $errors );
+				return $recipe_id;
+			}
 
-			//if(!isset($data)||$data==""){$data=$_POST;}
-			if( $recipe !== NULL && $recipe->post_type == 'rpr_recipe' )
-			{
-				add_action('save_post', array($this, 'save_recipe'));
+			// if(!isset($data)||$data==""){$data=$_POST;}
+			if ( $recipe !== null && $recipe->post_type == 'rpr_recipe' ) {
+				add_action( 'save_post', array( $this, 'save_recipe' ) );
 			}
 		}
-    }
+	}
 
 	/**
 	 * Function to display any errors in the backend
+	 *
 	 * @since 0.8.0
 	 */
 	// Display any errors
 	public function admin_notice_handler() {
 
-		$errors = get_option('rpr_admin_errors');
+		$errors = get_option( 'rpr_admin_errors' );
 
-		if($errors) {
+		if ( $errors ) {
 			echo '<div class="error"><p>' . $errors . '</p></div>';
 		}
 
 		// Reset the error option for the next error
-		update_option('rpr_admin_errors', false);
+		update_option( 'rpr_admin_errors', false );
 	}
 
 	/**
@@ -209,7 +182,7 @@ class RPR_Admin {
 	 * @param array $query_args
 	 */
 	public function add_to_dashboard_recent_posts_widget( $query_args ) {
-		$query_args =  array_merge( $query_args, array( 'post_type' => array( 'post', 'rpr_recipe' ) ));
+		$query_args = array_merge( $query_args, array( 'post_type' => array( 'post', 'rpr_recipe' ) ) );
 		return $query_args;
 	}
 
@@ -222,66 +195,67 @@ class RPR_Admin {
 	public function add_recipes_glance_items( $items = array() ) {
 			$num_recipes = wp_count_posts( 'rpr_recipe' );
 
-			if( $num_recipes ) {
-				$published = intval( $num_recipes->publish );
-				$post_type = get_post_type_object( 'rpr_recipe' );
+		if ( $num_recipes ) {
+			$published = intval( $num_recipes->publish );
+			$post_type = get_post_type_object( 'rpr_recipe' );
 
-				$text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, 'recipepress-reloaded' );
-				$text = sprintf( $text, number_format_i18n( $published ) );
+			$text = _n( '%s ' . $post_type->labels->singular_name, '%s ' . $post_type->labels->name, $published, 'recipepress-reloaded' );
+			$text = sprintf( $text, number_format_i18n( $published ) );
 
-				if ( current_user_can( $post_type->cap->edit_posts ) ) {
-					$items[] = sprintf( '<a class="%1$s-count" href="edit.php?post_type=%1$s">%2$s</a>', 'rpr_recipe', $text ) . "\n";
-				} else {
-					$items[] = sprintf( '<span class="%1$s-count">%2$s</span>', 'rpr_recipe', $text ) . "\n";
-				}
+			if ( current_user_can( $post_type->cap->edit_posts ) ) {
+				$items[] = sprintf( '<a class="%1$s-count" href="edit.php?post_type=%1$s">%2$s</a>', 'rpr_recipe', $text ) . "\n";
+			} else {
+				$items[] = sprintf( '<span class="%1$s-count">%2$s</span>', 'rpr_recipe', $text ) . "\n";
 			}
+		}
 
 		return $items;
 	}
 
-    /**
-    * Recipe update messages.
-    * See /wp-admin/edit-form-advanced.php
-    * @param array $messages Existing post update messages.
-    * @return array Amended post update messages with new recipe update messages.
-    */
-    function updated_rpr_messages( $messages ) {
-    $post             = get_post();
-    $post_type        = get_post_type( $post );
-    $post_type_object = get_post_type_object( $post_type );
+	/**
+	 * Recipe update messages.
+	 * See /wp-admin/edit-form-advanced.php
+	 *
+	 * @param array $messages Existing post update messages.
+	 * @return array Amended post update messages with new recipe update messages.
+	 */
+	function updated_rpr_messages( $messages ) {
+		$post             = get_post();
+		$post_type        = get_post_type( $post );
+		$post_type_object = get_post_type_object( $post_type );
 
-    $messages['rpr_recipe'] = array(
-        0  => '', // Unused. Messages start at index 1.
-        1  => __( 'Recipe updated.', 'recipepress-reloaded' ),
-        2  => __( 'Custom field updated.', 'recipepress-reloaded' ),
-        3  => __( 'Custom field deleted.', 'recipepress-reloaded' ),
-        4  => __( 'Recipe updated.', 'recipepress-reloaded' ),
-        /* translators: %s: date and time of the revision */
-        5  => isset( $_GET['revision'] ) ? sprintf( __( 'Recipe restored to revision from %s', 'recipepress-reloaded' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-        6  => __( 'Recipe published.', 'recipepress-reloaded' ),
-        7  => __( 'Recipe saved.', 'recipepress-reloaded' ),
-        8  => __( 'Recipe submitted.', 'recipepress-reloaded' ),
-        9  => sprintf(
-            __( 'Recipe scheduled for: <strong>%1$s</strong>.', 'recipepress-reloaded' ),
-            // translators: Publish box date format, see http://php.net/date
-            date_i18n( __( 'M j, Y @ G:i', 'recipepress-reloaded' ), strtotime( $post->post_date ) )
-        ),
-        10 => __( 'Recipe draft updated.', 'recipepress-reloaded' )
-    );
+		$messages['rpr_recipe'] = array(
+			0  => '', // Unused. Messages start at index 1.
+			1  => __( 'Recipe updated.', 'recipepress-reloaded' ),
+			2  => __( 'Custom field updated.', 'recipepress-reloaded' ),
+			3  => __( 'Custom field deleted.', 'recipepress-reloaded' ),
+			4  => __( 'Recipe updated.', 'recipepress-reloaded' ),
+			/* translators: %s: date and time of the revision */
+			5  => isset( $_GET['revision'] ) ? sprintf( __( 'Recipe restored to revision from %s', 'recipepress-reloaded' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+			6  => __( 'Recipe published.', 'recipepress-reloaded' ),
+			7  => __( 'Recipe saved.', 'recipepress-reloaded' ),
+			8  => __( 'Recipe submitted.', 'recipepress-reloaded' ),
+			9  => sprintf(
+				__( 'Recipe scheduled for: <strong>%1$s</strong>.', 'recipepress-reloaded' ),
+				// translators: Publish box date format, see http://php.net/date
+				date_i18n( __( 'M j, Y @ G:i', 'recipepress-reloaded' ), strtotime( $post->post_date ) )
+			),
+			10 => __( 'Recipe draft updated.', 'recipepress-reloaded' ),
+		);
 
-    if ( $post_type_object->publicly_queryable && 'rpr_recipe' === $post_type ) {
-        $permalink = get_permalink( $post->ID );
+		if ( $post_type_object->publicly_queryable && 'rpr_recipe' === $post_type ) {
+			$permalink = get_permalink( $post->ID );
 
-        $view_link = sprintf( ' <a href="%s">%s</a>', esc_url( $permalink ), __( 'View recipe', 'recipepress-reloaded' ) );
-        $messages[ $post_type ][1] .= $view_link;
-        $messages[ $post_type ][6] .= $view_link;
-        $messages[ $post_type ][9] .= $view_link;
+			$view_link                  = sprintf( ' <a href="%s">%s</a>', esc_url( $permalink ), __( 'View recipe', 'recipepress-reloaded' ) );
+			$messages[ $post_type ][1] .= $view_link;
+			$messages[ $post_type ][6] .= $view_link;
+			$messages[ $post_type ][9] .= $view_link;
 
-        $preview_permalink = add_query_arg( 'preview', 'true', $permalink );
-        $preview_link = sprintf( ' <a target="_blank" href="%s">%s</a>', esc_url( $preview_permalink ), __( 'Preview recipe', 'recipepress-reloaded' ) );
-        $messages[ $post_type ][8]  .= $preview_link;
-        $messages[ $post_type ][10] .= $preview_link;
-    }
-        return $messages;
-    }
+			$preview_permalink           = add_query_arg( 'preview', 'true', $permalink );
+			$preview_link                = sprintf( ' <a target="_blank" href="%s">%s</a>', esc_url( $preview_permalink ), __( 'Preview recipe', 'recipepress-reloaded' ) );
+			$messages[ $post_type ][8]  .= $preview_link;
+			$messages[ $post_type ][10] .= $preview_link;
+		}
+		return $messages;
+	}
 }
