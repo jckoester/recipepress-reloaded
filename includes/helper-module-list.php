@@ -24,6 +24,10 @@ if( !function_exists( 'rpr_get_active_modules' ) ){
               }
           }
       }
+      // Make sure, the db_update module get's alwyas loaded:
+      if( !isset( $active_modules['10_pl_update']) ){
+        $active_modules['10_pl_update'] = 'pl_update';
+      }
       ksort($active_modules);
       return $active_modules;
     }
@@ -106,7 +110,7 @@ if( !function_exists( 'rpr_get_modules_meta' ) ){
       if( isset( $module_config['selectable'] ) ){
           $modules[$file]['selectable'] = sanitize_text_field( $module_config['selectable'] );
       } else {
-          $modules[$file]['selectable'] = true;
+          $modules[$file]['selectable'] = false;
       }
       if( isset( $module_config['category'] ) ){
           $modules[$file]['category'] = strtolower( sanitize_text_field( $module_config['category'] ) );

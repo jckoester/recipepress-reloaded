@@ -1,13 +1,13 @@
 <?php
 
-/* 
+/*
  * This file is used to create a translatebal configuration for the module
  */
 
 $module_config = array(
     // Do not translate this! This is the unique identifier also saved to tha database
     // Same as directory name!
-    'id'            => 'ingredients',  
+    'id'            => 'ingredients',
     // REQUIRED: the title of the module
     'title'         => __( 'Ingredients', 'recipepress-reloaded' ),
     // REQUIRED: a short description of what this module does
@@ -19,8 +19,8 @@ $module_config = array(
     // higher values mean later loading
     // not to be translated
     'priority'      => 40,
-    // REQUIRED: define the module to be optional or always active
-    'selectable'    => true,
+    // OPTIONAL: define the module to be optional or always active, defaults to false
+    'selectable'    => false,
     // OPTIONAL: the category this module belongs to, select from 'Metadata', 'Core' (currently, more to come), defaulkts to 'None'
     // not to betranslated!
     'category'      => 'Core',
@@ -37,5 +37,3 @@ $module_config = array(
     // not to be translated
     'doc_url'       => 'https://rpr.dasmaeh.de/modules/demo',
 );
-
-
